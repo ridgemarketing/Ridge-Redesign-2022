@@ -13,5 +13,6 @@ module.exports = {
         url: `https://wpgatsbydemo.wpengine.com/graphql`,
       },
     },
+    'gatsby-plugin-postcss',
   ]
 };
