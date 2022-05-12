@@ -6,5 +6,12 @@ module.exports = {
     siteUrl: `https://www.ridgemarketing.com`
   },
   plugins: [
+    {
+      resolve: `gatsby-source-wordpress`,
+      options: {
+        // We'll need to make this an env variable for local, prod, etc environments
+        url: `https://wpgatsbydemo.wpengine.com/graphql`,
+      },
+    },
   ]
 };
