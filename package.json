@@ -1,0 +1,35 @@
+{
+  "name": "ridge-redesign-2022",
+  "version": "0.0.1",
+  "description": "Ridge Marketing's New Website circa 2022",
+  "main": "index.js",
+  "scripts": {
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
+    "build": "gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ridgemarketing/Ridge-Redesign-2022.git"
+  },
+  "author": "Ridge Marketing",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ridgemarketing/Ridge-Redesign-2022/issues"
+  },
+  "homepage": "https://github.com/ridgemarketing/Ridge-Redesign-2022#readme",
+  "dependencies": {
+    "gatsby": "^4.14.0",
+    "gatsby-source-wordpress": "^6.14.1",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.7",
+    "gatsby-plugin-postcss": "^5.14.0",
+    "postcss": "^8.4.13",
+    "tailwindcss": "^3.0.24"
+  }
+}
