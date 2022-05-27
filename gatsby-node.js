@@ -7,15 +7,56 @@ exports.createPages = async ({ graphql, actions }) => {
         {
             allWpPage {
                 nodes {
-                    id
-                    uri
-                    title
-                    content
-                    quickGatsbyTestField {
-                        basicTextInput
+                  id
+                  uri
+                  title
+                  content
+                  flexibleLayouts {
+                    fieldGroupName
+                    layouts {
+                      ... on WpPage_Flexiblelayouts_Layouts_CenteredContent {
+                        fieldGroupName
+                        layoutCenteredContent {
+                          fieldGroupName
+                          layoutContent {
+                            body
+                            componentButtonGroup {
+                              componentButton {
+                                colors {
+                                  fieldGroupName
+                                  hover
+                                }
+                                icon
+                                link {
+                                  target
+                                  title
+                                  url
+                                }
+                                style
+                              }
+                            }
+                          }
+                          layoutSettings {
+                            anchorId
+                            backgroundColor
+                            padding {
+                              bottom
+                              top
+                              fieldGroupName
+                            }
+                            id
+                            fieldGroupName
+                            classes
+                          }
+                        }
                       }
+                      ... on WpPage_Flexiblelayouts_Layouts_CenteredTextWIcons {
+                        fieldGroupName
+                      }
+                    }
+                  }
                 }
-            }
+              }
         }
   `)
 
