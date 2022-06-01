@@ -9,10 +9,43 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress`,
       options: {
-        // We'll need to make this an env variable for local, prod, etc environments
-        url: process.env.GRAPHQL_ENDPOINT,
+        url:
+        // allows a fallback url if WPGRAPHQL_URL is not set in the env, this may be a local or remote WP instance.
+          process.env.WPGRAPHQL_URL ||
+          `http://ridge-marketing-2022.local/graphql`,
+        schema: {
+          //Prefixes all WP Types with "Wp" so "Post and allPost" become "WpPost and allWpPost".
+          typePrefix: `Wp`,
+        },
+        develop: {
+          //caches media files outside of Gatsby's default cache an thus allows them to persist through a cache reset.
+          hardCacheMediaFiles: true,
+        },
+        type: {
+          Post: {
+            limit:
+              process.env.NODE_ENV === `development`
+                ? // Lets just pull 50 posts in development to make it easy on ourselves (aka. faster).
+                  50
+                : // and we don't actually need more than 5000 in production for this particular site
+                  5000,
+          },
+        },
       },
     },
+    {
+      resolve: "gatsby-plugin-gravity-forms",
+      options: {
+        // This URL should be the same as you use for your
+        // gatsby-source-wordpress options.
+        url: "http://ridge-marketing-2022.local/graphql",
+      },
+    },
+
     'gatsby-plugin-postcss',
+    `gatsby-plugin-sitemap`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
   ]
 };
