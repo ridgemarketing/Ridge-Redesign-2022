@@ -30,7 +30,8 @@
     "gatsby-source-wordpress": "^6.15.0",
     "gatsby-transformer-sharp": "^4.15.0",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "wp-graphql-yoast-seo": "github:ashhitch/wp-graphql-yoast-seo"
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.2",

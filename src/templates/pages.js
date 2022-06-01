@@ -1,40 +1,59 @@
 import React from "react"
+import ReactDOM from 'react-dom'
 import { graphql } from "gatsby"
 import gf_forms from '../components/gf_forms.js'
 
 let padding;
-let includes  = 'base';
+let includes  = ' base ';
+let button;
 
 const WpPage = ({ data }) =>{
   console.log(data);
 
+    //test for acf settings in layouts 
     if ( data.wpPage.flexibleLayouts.layouts[0].layoutCenteredContent.layoutSettings.padding.top === 'standard' ){
         padding = '20px';
     }else { 
         padding = '10px';
     }
 
+    //basic layout composer loop 
     for(var i =0; data.wpPage.flexibleLayouts.layouts.length > i; i++){ 
         if( data.wpPage.flexibleLayouts.layouts[i].fieldGroupName === 'Page_Flexiblelayouts_Layouts_CenteredContent'){
-            includes = includes + [i] + 'included';
+            includes = includes + [i] + ' included ';
+
+            button = data.wpPage.flexibleLayouts.layouts[i].layoutCenteredContent.layoutContent.componentButtonGroup[0].componentButton.link.title;
         }else{ 
-            includes = includes + [i] + 'nope';
+            includes = includes + [i] + ' nope ';
         }
     }
 
   return (
     <div>
       <h1 class="font-bold"> {data.wpPage.title} </h1>
-      <div dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
-      {
-      //data.wpPage.quickGatsbyTestField.basicTextInput
-      data.wpPage.flexibleLayouts.layouts[0].layoutCenteredContent.layoutContent.body}
+      <main id="rm-main" dangerouslySetInnerHTML={{__html: data.wpPage.content}}></main>
+      
+      <p>
+      {data.wpPage.flexibleLayouts.layouts[0].layoutCenteredContent.layoutContent.body}
 
       {data.wpPage.flexibleLayouts.layouts[0].layoutCenteredContent.layoutContent.componentButtonGroup[0].componentButton.colors.hover}
       {data.wpPage.flexibleLayouts.layouts[0].layoutCenteredContent.layoutContent.componentButtonGroup[0].componentButton.link.url}
         
       {padding}
+      
       {includes}
+      </p>
+
+      { (() => {
+                if ( button ) {
+                    return (
+                       <a href="#" class="buttons button-primary">{button}</a>
+                    )
+                } else { return }
+            }
+        )
+      () 
+      }
 
     </div>
   )
