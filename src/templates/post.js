@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 
 const WpPost = ({ data }) =>{
-  //console.log(data);
+  
   return (
     <div>
       <h1> {data.wpPost.title} </h1>
