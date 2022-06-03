@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base{
+    html {
+        @apply scroll-smooth;
+    }
+    :focus-visible{
+        @apply outline-rm-green;
+    }
+}
+
+@layer components{
+
+    .container{
+        @apply block max-w-[90%] sm:max-w-[365px] md:max-w-[710px] lg:max-w-[935px] xl:max-w-[1450px] ml-auto mr-auto;
+    }
+
+}
+
+/* Form label transitions */
+.translate-form input:focus + label {
+    @apply -translate-y-14 text-18px;
+}
+.translate-form textarea:focus + label {
+    @apply -translate-y-14 text-18px;
+}

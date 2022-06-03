@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ridgemarketing/Ridge-Redesign-2022#readme",
   "dependencies": {
+    "formik": "^2.2.9",
     "gatsby": "^4.14.0",
     "gatsby-plugin-gravity-forms": "^3.0.0",
     "gatsby-plugin-image": "^2.15.0",
@@ -30,10 +31,10 @@
     "gatsby-source-wordpress": "^6.15.0",
     "gatsby-transformer-sharp": "^4.15.0",
     "react": "^18.1.0",
-    "react-dom": "^18.1.0"
+    "react-dom": "^18.1.0",
+    "wp-graphql-yoast-seo": "github:ashhitch/wp-graphql-yoast-seo"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.2",
     "autoprefixer": "^10.4.7",
     "gatsby-plugin-postcss": "^5.14.0",
     "postcss": "^8.4.13",
