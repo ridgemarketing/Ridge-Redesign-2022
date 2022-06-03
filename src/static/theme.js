@@ -44,5 +44,10 @@ export const theme = {
         ARW_FWD_GREEN:      'before:hidden after:bg-[url("../static/arrow-right-green.svg")] ',
         ARW_BACK_GREEN:     'after:hidden before:bg-[url("../static/arrow-left-green.svg")] ',
     },
+
+    forms:{
+        INPUT:              'font-basic-sans border-b border-rm-black border-solid h-[30px] ',
+        LABEL:              '-translate-y-10 transition-all ease-out mb-12 ',
+    }
   
 }

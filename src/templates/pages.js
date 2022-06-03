@@ -51,21 +51,24 @@ const WpPage = ({ data }) =>{
       {includes}
       </p> */}
 
-      <form className="my-10">
+
+      <h5 className={ theme.text['H5'] }>NEED MARKETING SUPPORT?</h5>
+      <form className="translate-form my-5 flex flex-col w-1/2 drop-shadow-lg bg-rm-white p-11">
         <OneLineText 
             inputID     = {ID} 
-            inputName   = {`First Name`}
+            inputName   = {`Name`}
+            required    = {'true'}
         />
         <OneLineText 
             inputID     = {ID + '2'}
-            inputName   = {'Last Name'}
+            inputName   = {'Company Name'}
+            required    = {''}
         />
         <MultiLineText
             inputID     = {ID + 3}
             inputName   = {'What are Your Marketing Goals?'}
         />
       </form>
-
 
       <h1 className={ theme.text['H1_STD'] + 'text-rm-black' }> This is Heading 1 text.</h1>
       <h2 className={ theme.text['H2'] + 'text-rm-green' }> This is Heading 2 text. </h2>

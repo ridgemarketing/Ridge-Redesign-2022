@@ -6,10 +6,22 @@ import { Formik  } from "formik"
 const MultiLineText = (props) => {
     return(
         <>
-            {props.inputID &&
+            {props.inputID && props.inputName &&
                 <>  
-                    <label for={ 'textarea' + props.inputID }> { props.inputName } </label>
-                    <textarea id={ 'textarea' + props.inputID } name={ props.inputName }></textarea>
+                    <textarea 
+                        id={ 'textarea' + props.inputID } 
+                        name={ props.inputName }
+                        className={ theme.forms['INPUT'] + 'resize-none' }   
+                    >
+                    </textarea>
+                    <label 
+                        for={ 'textarea' + props.inputID } 
+                        className={ theme.text['P_STD'] + theme.forms['LABEL'] }
+                        placeholder=" "
+                        > 
+                        
+                        { props.inputName } 
+                    </label>
                 </>
             }
         </>

@@ -7,10 +7,23 @@ import { Formik  } from "formik"
 const OneLineText = (props) => {
     return(
         <>
-            {props.inputID &&
+            {props.inputID && props.inputName &&
                 <>
-                    <label for={'oneLineText' + props.inputID}>{ props.inputName }</label>
-                    <input type="text" id={'oneLineText' + props.inputID } name={ props.inputName } required />
+                    <input 
+                        type="text" 
+                        id={'oneLineText' + props.inputID } 
+                        className={ theme.forms['INPUT'] } 
+                        name={ props.inputName } 
+
+                        />
+                    <label 
+                        for={'oneLineText' + props.inputID} 
+                        className={ theme.text['P_STD'] + theme.forms['LABEL']}
+                        placeholder=" "
+                        >
+                        
+                        { props.inputName }
+                    </label>
                 </>
             }
         </>
