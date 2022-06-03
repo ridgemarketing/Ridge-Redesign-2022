@@ -44,6 +44,19 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
+  // allPages.forEach(page => {
+  //   createPage({
+  //     // will be the url for the page
+  //     path: page.uri,
+
+  //     // specify the component template of your choice
+  //     component: slash(pageTemplate),
+
+  // // const postTemplate = path.resolve(`./src/templates/post.js`)
+  // const pageTemplate = path.resolve(`./src/templates/flexibleLayouts.js`)
+
+
+
   allPages.forEach(page => {
     createPage({
       // will be the url for the page
