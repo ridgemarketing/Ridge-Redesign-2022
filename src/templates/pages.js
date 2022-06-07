@@ -2,10 +2,9 @@ import React from "react"
 import ReactDOM from 'react-dom'
 import { graphql } from "gatsby"
 import { theme } from '../static/theme'
-import gf_forms from '../components/gf_forms.js'
-import OneLineText  from '../components/form-OneLineText.js'
-import MultiLineText from '../components/form-MultiLineText.js'
 
+import PreFooterNavigation from '../components/pre-footer-navigation.js'
+import FormAll from '../templates/form-all.js'
 
 let padding;
 let includes  = ' base ';
@@ -51,24 +50,9 @@ const WpPage = ({ data }) =>{
       {includes}
       </p> */}
 
-
-      <h5 className={ theme.text['H5'] }>NEED MARKETING SUPPORT?</h5>
-      <form className="translate-form my-5 flex flex-col w-1/2 drop-shadow-lg bg-rm-white p-11">
-        <OneLineText 
-            inputID     = {ID} 
-            inputName   = {`Name`}
-            required    = {'true'}
-        />
-        <OneLineText 
-            inputID     = {ID + '2'}
-            inputName   = {'Company Name'}
-            required    = {''}
-        />
-        <MultiLineText
-            inputID     = {ID + 3}
-            inputName   = {'What are Your Marketing Goals?'}
-        />
-      </form>
+      <FormAll
+         ID = { ID }
+      />
 
       <h1 className={ theme.text['H1_STD'] + 'text-rm-black' }> This is Heading 1 text.</h1>
       <h2 className={ theme.text['H2'] + 'text-rm-green' }> This is Heading 2 text. </h2>
@@ -97,13 +81,7 @@ const WpPage = ({ data }) =>{
         <a href="#" className={ theme.button['BASE_STYLING'] + theme.button['PRIMARY_LIGHT'] }>{button}</a>
       }
 
-      {/* Pre Footer Nav */}
-      <div className="pre-footer-navigation w-full font-stratos block border-t border-[#c5c5c5] border-solid mt-8 mb-8">
-        <div className="w-full flex justify-between mt-8 text-rm-green">
-            <a href="#" className={ theme.text_links['BASE_STYLING'] + theme.text_links['STD'] + theme.text_links['BACK_BASE'] + theme.text_links['ARW_BACK_GREEN'] } >PREVIOUS PROJECT</a>
-            <a href="#" className={ theme.text_links['BASE_STYLING'] + theme.text_links['STD'] + theme.text_links['FWD_BASE'] + theme.text_links['ARW_FWD_GREEN'] } >NEXT PROJECT</a>
-        </div>
-      </div>
+     <PreFooterNavigation/>
 
     </div>
   )

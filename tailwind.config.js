@@ -4,6 +4,7 @@ module.exports = {
   ],
   safelist:[
     'text-rm-green', 
+    'bg-rm-green',
   ],
   darkMode: false, 
   theme: {
