@@ -25,6 +25,7 @@ export const theme = {
         PRIMARY_DARK:       'text-rm-white border-rm-green bg-rm-black hover:bg-rm-green hover:text-rm-black ',
         
         SECONDARY_LIGHT:    'text-rm-black border-rm-green bg-rm-green hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
+        SECONDARY_LIGHT_H_W:'text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
         SECONDARY_DARK:     'text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
         SECONDARY_BLACK:    'text-rm-white border-rm-black bg-rm-black hover:bg-rm-green hover:text-rm-black hover:border-rm-green ',
     
@@ -46,8 +47,13 @@ export const theme = {
     },
 
     forms:{
-        INPUT:              'font-basic-sans border-b border-rm-black border-solid h-[30px] ',
-        LABEL:              '-translate-y-10 transition-all ease-out mb-12 ',
+        INPUT:              'font-basic-sans border-b border-solid h-[30px] ',
+        LABEL:              '-translate-y-10 transition-all ease-out ',
+        CONTAINER:          'form-group font-basic-san w-full flex flex-col mb-12 ',
+        
+        BASE_STYLING:       'translate-form my-5 flex p-11 ',
+        FULL:               'form-two-col w-full flex-row justify-around flex-wrap ',
+        HALF:               'form-one-col w-1/2 flex-col ',
     }
   
 }
