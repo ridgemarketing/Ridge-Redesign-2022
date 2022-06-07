@@ -107,4 +107,4 @@ public
 # Envs
 .env.local
 
-‘.DS_Store
+.DS_Store
