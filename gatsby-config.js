@@ -33,19 +33,11 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: "gatsby-plugin-gravity-forms",
-      options: {
-        // This URL should be the same as you use for your
-        // gatsby-source-wordpress options.
-        url: "http://ridge-marketing-2022.local/graphql",
-      },
-    },
-
     'gatsby-plugin-postcss',
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-postcss`
   ]
 };
