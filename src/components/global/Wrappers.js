@@ -1,3 +1,5 @@
+import { GatsbyImage } from "gatsby-plugin-image";
+
 export const Container = (props) => {
     let containerClass = props.slim ? `max-w-[${props.maxWidth}] mx-auto relative` : "container";
     let id             = props.id ? props.id : '';
@@ -20,11 +22,11 @@ export const Section = (props) => {
         extras: ''
     }
 
-    let padding         =  props.padding ? props.padding : defaults.padding;
-    let backgroundColor =  props.bgColor ? props.bgColor : defaults.bgColor;
-    let position        =  props.position ? props.position : defaults.position;
-    let id              =  props.id ? props.id : defaults.id;
-    let extras          =  props.extras ? props.extras : defaults.extras;
+    let padding         =  props.settings.padding ? props.settings.padding : defaults.padding;
+    let backgroundColor =  props.settings.bgColor ? props.settings.bgColor : defaults.bgColor;
+    let position        =  props.settings.position ? props.settings.position : defaults.position;
+    let id              =  props.settings.id ? props.settings.id : defaults.id;
+    let extras          =  props.settings.extras ? props.settings.extras : defaults.extras;
 
     return (
         <section 
@@ -59,10 +61,9 @@ export const BackgroundImage = (props) => {
 
     return (
         <div 
-        id={id} 
-        style={`background-image: url(${props.img})`} 
+        id={id}
         className={`${position} ${bgSize} ${top} ${left} ${width} ${height} ${bgRepeat}`}>
-            {props.children}
+            <GatsbyImage image={props.image} />
         </div>
     )
 }
