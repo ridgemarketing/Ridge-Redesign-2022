@@ -9,6 +9,9 @@
     :focus-visible{
         @apply outline-rm-green;
     }
+    textarea{
+        @apply overflow-hidden;
+    }
 }
 
 @layer components{
@@ -25,7 +28,7 @@
     @apply w-[48%];
 }
 
-input:-internal-autofill-selected {
+input:-internal-autofill-selected, input:-internal-autofill:active, input:-internal-autofill {
     background-color: rgba(0,0,0,0) !important;
 }
 .form-group input, .form-group textarea, .form-group select{
