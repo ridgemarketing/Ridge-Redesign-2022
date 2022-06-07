@@ -1,102 +1,76 @@
 const path = require(`path`)
-
+const { slash } = require(`gatsby-core-utils`)
 exports.createPages = async ({ graphql, actions }) => {
-
- //pages
-  const pageResults = await graphql(`
-        {
-            allWpPage {
-                nodes {
-                  id
-                  uri
-                  title
-                  content
-                  flexibleLayouts {
-                    fieldGroupName
-                    layouts {
-                      ... on WpPage_Flexiblelayouts_Layouts_CenteredContent {
-                        fieldGroupName
-                        layoutCenteredContent {
-                          fieldGroupName
-                          layoutContent {
-                            body
-                            componentButtonGroup {
-                              componentButton {
-                                colors {
-                                  fieldGroupName
-                                  hover
-                                }
-                                icon
-                                link {
-                                  target
-                                  title
-                                  url
-                                }
-                                style
-                              }
-                            }
-                          }
-                          layoutSettings {
-                            anchorId
-                            backgroundColor
-                            padding {
-                              bottom
-                              top
-                              fieldGroupName
-                            }
-                            id
-                            fieldGroupName
-                            classes
-                          }
-                        }
-                      }
-                      ... on WpPage_Flexiblelayouts_Layouts_CenteredTextWIcons {
-                        fieldGroupName
-                      }
-                    }
-                  }
-                }
-              }
-        }
-  `)
-
-   if(pageResults?.errors){ }
-
-   const { allWpPage } = pageResults?.data;
-   const PageTemplate = path.resolve('./src/templates/pages.js')
-   allWpPage.nodes.map( page => {
-        actions.createPage({
-            path: page.uri,
-            component: PageTemplate,
-            context: page
-        })
-    })
-
- //posts
-  const postResults = await graphql(`
-     {
-        allWpPost {
-          nodes {
-            id
-            uri
-            title
-            content
-          }
+  const { createPage } = actions
+  // query content for WordPress posts
+  const {
+    data: {
+      allWpPost: { nodes: allPosts },
+      allWpPage: { nodes: allPages }
+    },
+  } = await graphql(`
+    query {
+      allWpPost {
+        nodes {
+          id
+          uri
         }
       }
+      allWpPage {
+        nodes {
+          id
+          uri
+        }
+      }
+    }
   `)
 
-    if(postResults?.errors){ }
-    
-    const { allWpPost } = postResults?.data;
-    const postTemplate = path.resolve(`./src/templates/posts.js`)
+  const postTemplate = path.resolve(`./src/templates/post.js`)
+  const pageTemplate = path.resolve(`./src/templates/page.js`)
+  const flexTemplate = path.resolve(`./src/templates/flexibleLayouts.js`)
 
-    allWpPost.nodes.map( post => {
-        actions.createPage({
-            path: post.uri,
-            component: postTemplate,
-            context: post
-        })   
+  allPosts.forEach(post => {
+    createPage({
+      // will be the url for the page
+      path: `blog` + post.uri,
+
+      // specify the component template of your choice
+      component: slash(postTemplate),
+
+      // In the ^template's GraphQL query, 'id' will be available
+      // as a GraphQL variable to query for this post's data.
+      context: {
+        id: post.id,
+      },
     })
+  })
 
+  // allPages.forEach(page => {
+  //   createPage({
+  //     // will be the url for the page
+  //     path: page.uri,
+
+  //     // specify the component template of your choice
+  //     component: slash(pageTemplate),
+
+  // // const postTemplate = path.resolve(`./src/templates/post.js`)
+  // const pageTemplate = path.resolve(`./src/templates/flexibleLayouts.js`)
+
+
+
+  allPages.forEach(page => {
+    createPage({
+      // will be the url for the page
+      path: page.uri,
+
+      // specify the component template of your choice
+      component: slash(flexTemplate),
+
+      // In the ^template's GraphQL query, 'id' will be available
+      // as a GraphQL variable to query for this post's data.
+      context: {
+        id: page.id,
+      },
+    })
+  })
 }
