@@ -111,7 +111,7 @@ const WpPage = ({ data }) =>{
 export default WpPage;
 
 export const query = graphql`
-  query PageById( $id: String ){
+  query PagesById( $id: String ){
     wpPage( id: {eq: $id} ){
             id
             uri
