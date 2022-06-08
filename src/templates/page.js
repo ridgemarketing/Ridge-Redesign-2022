@@ -1,6 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { ThreeUpIcons } from '../layouts/page/ThreeUpIcons.js'
+import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { Link } from "gatsby"
 import { theme } from '../static/theme.js'
 
 const WpPage = ({ data }) =>{
@@ -9,23 +10,41 @@ const WpPage = ({ data }) =>{
     <>
       <div className="mt-12 flex w-full flex-wrap justify-between">
 
-      <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12 md:mb-16 lg:mb-32">
-          <img className="h-[50px] mt-[12.5px] w-min" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/How_to_use_icon.svg/2214px-How_to_use_icon.svg.png" alt=""/>
-          
-          <div className="flex flex-col">
-              <div className="flex items-center ml-6 h-[75px]">
-                  <p className={ theme.text['H4'] }>Web Copywriting</p>
-              </div>
-              <div className="ml-6">
-              <p className={ theme.text['FOOTER'] }>
-                      Deliver compelling customer-focused content and campaign landing pages with strong calls-to-action. 
-                  </p>
-              </div>
-          </div>
+        <div className="flex flex-col justify-center w-full md:w-[48%] lg:w-[31%] mb-12">
+            {/* <GatsbyImage image={data.image} alt={``} className={ `object-cover w-full ` } /> */}
+            <StaticImage 
+                    src='https://i.insider.com/5bfec49248eb12058423acf7' 
+                    alt={``} 
+                    className={ `object-cover w-full ` }
+                    /> 
+             <Link className={ theme.text_links['BASE_STYLING'] + theme.text_links['STD'] + theme.text_links['FWD_BASE'] + theme.text_links['ARW_FWD_BLACK'] + 'mt-3' } to={'#'}>Project Name</Link>
+        </div>
+        <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12">
+            {/* <GatsbyImage image={data.image} alt={``} className={ `object-cover w-full ` } /> */}
+            <StaticImage 
+                    src='https://i.insider.com/5bfec49248eb12058423acf7' 
+                    alt={``} 
+                    className={ `object-cover w-full ` }
+                    /> 
+        </div>
+        <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12 ">
+            {/* <GatsbyImage image={data.image} alt={``} className={ `object-cover w-full ` } /> */}
+            <StaticImage 
+                    src='https://i.insider.com/5bfec49248eb12058423acf7' 
+                    alt={``} 
+                    className={ `object-cover w-full ` }
+                    /> 
+        </div>
+        <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12 ">
+            {/* <GatsbyImage image={data.image} alt={``} className={ `object-cover w-full ` } /> */}
+            <StaticImage 
+                    src='https://i.insider.com/5bfec49248eb12058423acf7' 
+                    alt={``} 
+                    className={ `object-cover w-full ` }
+                    /> 
+        </div>
 
-      </div>
-
-      </div>
+    </div>
     </>
   )
 }
