@@ -3,10 +3,8 @@ import { GatsbyImage } from "gatsby-plugin-image";
 
 export const Container = (props) => {
     let containerClass = props.slim ? `max-w-[${props.maxWidth}] mx-auto relative` : "container";
-    let id             = props.id ? props.id : '';
     return (
         <div 
-        id={id} 
         className={containerClass}>
             {props.children}
         </div>
@@ -22,7 +20,6 @@ export const Section = (props) => {
         id: '',
         extras: ''
     }
-
     let padding         =  props.settings.padding ? props.settings.padding : defaults.padding;
     let backgroundColor =  props.settings.bgColor ? props.settings.bgColor : defaults.bgColor;
     let position        =  props.settings.position ? props.settings.position : defaults.position;
