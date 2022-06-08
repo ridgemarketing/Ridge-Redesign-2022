@@ -9,13 +9,13 @@ const TwoColImageText = (props) => {
     const settings = props.layoutData.layoutSettings;
     const image = getImage(content.componentFlexibleMedia.image)
     let order;
-    (settings.id == 'image-left') ? order= 'order-2' : order = '';
+    (content.imageLeft) ? order= 'order-2' : order = '';
 
     return (
         <Section settings={settings}>
             <Container>
                 <div className={'lg:grid grid-cols-2 gap-16 pt-16'}>
-                    <div className={'pb-12 xl:px-20 xl:pt-12 lg:pb-0' + order}>
+                    <div className={'pb-12 xl:px-20 xl:pt-12 lg:pb-0 ' + order}>
                         <h3>
                             <span className={theme.text.H2 + ' uppercase'}>
                                 {content.heading}
