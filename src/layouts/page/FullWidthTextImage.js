@@ -10,12 +10,19 @@ const FullWidthTextImage = (props) => {
     const image = getImage(content.componentFlexibleMedia.image)
 
     return (
-        <div class="lg:grid grid-cols-16 gap-4">
-            <h1>Full Width Text Image</h1>
-            <div className={'max-w-[164px]'}>
-            <GatsbyImage image={image} />
-            </div>
-        </div>
+        <Section settings={settings}>
+            <Container>
+                <div class="text-center">
+                    <h1 className={theme.text.H2 + ' z-10 relative'}>Full Width Text Image</h1>
+                    <div className={'max-w-[328px] mx-auto relative bottom-6 z-0'}>
+                        <GatsbyImage image={image} />
+                    </div>
+                    <p className={'mt-8'}>
+                        Test text to view spacing below positioned image
+                    </p>
+                </div>
+            </Container>
+        </Section>
     )
 }
 
