@@ -7,7 +7,7 @@ const TwoColList = (props) => {
     const settings = props.layoutData.layoutSettings;
  
     return (
-        <Section settings={props.settings}>
+        <Section settings={settings}>
             <h1>
                 <span className={theme.text.P_STD}>This is from the Two Col List Layout</span>
                 </h1>

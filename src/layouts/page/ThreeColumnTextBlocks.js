@@ -14,7 +14,7 @@ const ThreeColumnTextBlocks = (props) => {
                 <div className={"max-w-[54px]"}>
                     <GatsbyImage image={image} />
                 </div>
-                <p className={`px-4 mt-4 text-left`}>{item.WYSIWYG_text}</p>
+                <p className={`px-4 mt-4 text-left`}>{item.wysiwygText}</p>
             </div>
         )
     })

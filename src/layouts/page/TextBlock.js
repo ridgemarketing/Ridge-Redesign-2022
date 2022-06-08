@@ -1,6 +1,7 @@
 import React from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import  { theme } from "../../static/theme"
+import Link from "../../components/global/FlexibleLink"
 
 const TextBlock = (props) => {
     const content = props.layoutData.layoutContent;
@@ -10,23 +11,21 @@ const TextBlock = (props) => {
         <Section settings={settings}>
             <Container>
                 <h2>
-                    <span className={theme.text.H2}>
-                        {content.mainText}
+                    <span className={theme.text.H1}>
+                        {content.headerText}
                     </span>
                 </h2>
                 <p>
                     <span className={theme.text.P_STD}>
-                    {content.bodyText}
-                    </span>
-                    <span className={theme.text.P_BLD}>
-                        {content.boldText}
+                        {content.wysiwygText}
                     </span>
                 </p>
                 {
-                    content.isButton &&  
-                    <a href={content.buttonHREF} className={text.button.BASE_STYLING}>
-                        {content.buttonText}
-                    </a>
+                    content.hasButton &&  
+                    <Link
+                    link={content.link}
+                    classes={theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_link.ARW_FWD_WHITE}
+                    />
                 }
             </Container>
         </Section>
