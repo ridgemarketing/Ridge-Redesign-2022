@@ -11,10 +11,10 @@ const ThreeColumnTextBlocks = (props) => {
         const image = getImage(item.image)
         return (
             <div className={'md:px-4 py-3'}>
-                <div className={"text-center max-w-[54px] mx-auto lg:mx-0"}>
+                <div className={"text-center md:text-left lg:mx-0 min-h-[54px]"}>
                     <GatsbyImage image={image} />
-                </div>
-                <p className={`mt-4 text-center lg:text-left`}>{item.text}</p>
+                </div>              
+                <p className={`mt-4 text-center md:text-left`}>{item.text}</p>
             </div>
         )
     })
