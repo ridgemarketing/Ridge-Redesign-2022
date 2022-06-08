@@ -10,7 +10,6 @@ export const Section = (props) => {
         id: ``,
         classes: ``
     }
-
     let padding         =  props.settings.padding ? props.settings.padding : defaults.padding;
     let backgroundColor =  props.settings.bgColor ? props.settings.bgColor : defaults.bgColor;
     let position        =  props.settings.position ? props.settings.position : defaults.position;
