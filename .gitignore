@@ -108,3 +108,4 @@ public
 .env.local
 
 .DS_Store
+.wordpress-cache
