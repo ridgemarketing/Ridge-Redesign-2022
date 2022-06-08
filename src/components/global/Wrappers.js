@@ -1,6 +1,31 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image";
 
+export const Section = (props) => {
+
+    const defaults = {
+        padding:  `py-12 px-0`,
+        bgColor:  `bg-white`,
+        position: `relative`,
+        id: ``,
+        classes: ``
+    }
+
+    let padding         =  props.settings.padding ? props.settings.padding : defaults.padding;
+    let backgroundColor =  props.settings.bgColor ? props.settings.bgColor : defaults.bgColor;
+    let position        =  props.settings.position ? props.settings.position : defaults.position;
+    let id              =  props.settings.id ? props.settings.id : defaults.id;
+    let classes          =  props.settings.classes ? props.settings.classes : defaults.classes;
+
+    return (
+        <section 
+        id={id} 
+        className={`${padding} ${backgroundColor} ${position} ${classes}`}>
+            {props.children}
+        </section>
+    )
+}
+
 export const Container = (props) => {
     let containerClass = props.size == `slim` ? `container xl:max-w-[1120px] relative` : `container`;
     
@@ -11,42 +36,17 @@ export const Container = (props) => {
     )
 }
 
-export const Section = (props) => {
-
-    const defaults = {
-        padding:  'py-12 px-0',
-        bgColor:  'bg-white',
-        position: 'relative',
-        id: '',
-        extras: ''
-    }
-
-    let padding         =  props.settings.padding ? props.settings.padding : defaults.padding;
-    let backgroundColor =  props.settings.bgColor ? props.settings.bgColor : defaults.bgColor;
-    let position        =  props.settings.position ? props.settings.position : defaults.position;
-    let id              =  props.settings.id ? props.settings.id : defaults.id;
-    let extras          =  props.settings.extras ? props.settings.extras : defaults.extras;
-
-    return (
-        <section 
-        id={id} 
-        className={`${padding} ${backgroundColor} ${position} ${extras}`}>
-            {props.children}
-        </section>
-    )
-}
-
 export const BackgroundImage = (props) => {
 
     const defaults = {
-        position: 'absolute',
-        bgSize: 'bg-cover',
-        top: 0,
-        left: 0,
-        width: 'w-full',
-        height: 'h-full',
-        bgRepeat: 'bg-no-repeat',
-        id: ''
+        position: `absolute`,
+        bgSize: `bg-cover`,
+        top: `top-0`,
+        left: `left-0`,
+        width: `w-full`,
+        height: `h-full`,
+        bgRepeat: `bg-no-repeat`,
+        id: ``
     }
     
     let position  =  props.position ? props.position : defaults.position;
@@ -66,3 +66,5 @@ export const BackgroundImage = (props) => {
         </div>
     )
 }
+
+
