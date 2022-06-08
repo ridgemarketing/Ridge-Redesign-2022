@@ -9,6 +9,9 @@
     :focus-visible{
         @apply outline-rm-green;
     }
+    textarea{
+        @apply overflow-hidden;
+    }
 }
 
 @layer components{
@@ -18,11 +21,37 @@
     }
 
 }
+.form-one-col .form-group {
+    @apply w-full;
+}
+.form-two-col .form-group {
+    @apply w-[48%];
+}
+
+input:-internal-autofill-selected, input:-internal-autofill:active, input:-internal-autofill {
+    background-color: rgba(0,0,0,0) !important;
+}
+.form-group input, .form-group textarea, .form-group select{
+    background-color: rgba(0,0,0,0)!important;
+    @apply text-21px;
+}
 
 /* Form label transitions */
-.translate-form input:focus + label {
+.translate-form .form-group input:focus + label, .translate-form .form-group input:valid + label, .translate-form .form-group input:not(:placeholder-shown) + label {
     @apply -translate-y-14 text-18px;
 }
-.translate-form textarea:focus + label {
+.translate-form textarea:focus + label, .translate-form .form-group textarea:not(:placeholder-shown) + label {
     @apply -translate-y-14 text-18px;
+} 
+.translate-form .form-group select + label{
+    @apply -translate-y-14 text-18px;
+}
+
+
+.pristine-error {
+    @apply -translate-y-4 text-[#EA0000] font-basic-sans text-18px;
+}
+
+.translate-form .has-danger input, .translate-form .has-danger textarea {
+    @apply border-[#EA0000];
 }

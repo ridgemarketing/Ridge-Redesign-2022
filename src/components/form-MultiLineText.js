@@ -1,22 +1,25 @@
 import React from "react"
-import { graphql } from "gatsby"
 import { theme } from '../static/theme'
-import { Formik  } from "formik"
+import { Field } from "formik"
 
 const MultiLineText = (props) => {
     return(
-        <>
+        <div className={ theme.forms['CONTAINER'] }>
             {props.inputID && props.inputName &&
                 <>  
-                    <textarea 
+                    <Field 
+                        component="textarea"
                         id={ 'textarea' + props.inputID } 
                         name={ props.inputName }
-                        className={ theme.forms['INPUT'] + 'resize-none' }   
-                    >
-                    </textarea>
+                        className={ theme.forms['INPUT'] + 'resize-none ' + 'border-' + props.color + ' text-' + props.color} 
+                        required={ props.required }   
+                        spellCheck
+                        placeholder=" "
+                    />
+                    
                     <label 
-                        for={ 'textarea' + props.inputID } 
-                        className={ theme.text['P_STD'] + theme.forms['LABEL'] }
+                        htmlFor={ 'textarea' + props.inputID } 
+                        className={ theme.text['P_STD'] + theme.forms['LABEL']  + ' text-' + props.color }
                         placeholder=" "
                         > 
                         
@@ -24,7 +27,7 @@ const MultiLineText = (props) => {
                     </label>
                 </>
             }
-        </>
+        </div>
     )
 }
 export default MultiLineText

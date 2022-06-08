@@ -71,6 +71,7 @@ typings/
 # dotenv environment variables file
 .env
 .env.test
+.env.*
 
 # parcel-bundler cache (https://parceljs.org/)
 .cache
@@ -107,3 +108,4 @@ public
 .env.local
 
 .DS_Store
+.wordpress-cache
