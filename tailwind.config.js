@@ -64,6 +64,9 @@ module.exports = {
           '120px'           : '7.5rem',
           //Stats D
           '160px'           : '10rem',
+      },
+      boxShadow: {
+        'block': '0px 0px 20px rgba(0, 0, 0, 0.2)'
       }
     }
   }
