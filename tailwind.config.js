@@ -12,7 +12,7 @@ module.exports = {
       'sm'                 : '414px',
       'md'                 : '768px',
       'lg'                 : '1024px',
-      'xl'                 : '1920px',
+      '2xl'                : '1920px',
     },
     fontFamily: {
       'basic-sans'         : ['basic-sans', 'sans-serif'],

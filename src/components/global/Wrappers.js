@@ -1,9 +1,9 @@
+import React from "react"
+
 export const Container = (props) => {
     let containerClass = props.slim ? `max-w-[${props.maxWidth}] mx-auto relative` : "container";
-    let id             = props.id ? props.id : '';
     return (
         <div 
-        id={id} 
         className={containerClass}>
             {props.children}
         </div>
@@ -19,12 +19,11 @@ export const Section = (props) => {
         id: '',
         extras: ''
     }
-
-    let padding         =  props.padding ? props.padding : defaults.padding;
-    let backgroundColor =  props.bgColor ? props.bgColor : defaults.bgColor;
-    let position        =  props.position ? props.position : defaults.position;
-    let id              =  props.id ? props.id : defaults.id;
-    let extras          =  props.extras ? props.extras : defaults.extras;
+    let padding         =  props.settings.padding ? props.settings.padding : defaults.padding;
+    let backgroundColor =  props.settings.bgColor ? props.settings.bgColor : defaults.bgColor;
+    let position        =  props.settings.position ? props.settings.position : defaults.position;
+    let id              =  props.settings.id ? props.settings.id : defaults.id;
+    let extras          =  props.settings.extras ? props.settings.extras : defaults.extras;
 
     return (
         <section 
