@@ -2,12 +2,10 @@ import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image";
 
 export const Container = (props) => {
-    let containerClass = props.slim ? `max-w-[${props.maxWidth}] mx-auto relative` : "container";
-    let id             = props.id ? props.id : '';
+    let containerClass = props.size == `slim` ? `container xl:max-w-[1120px] relative` : `container`;
+    
     return (
-        <div 
-        id={id} 
-        className={containerClass}>
+        <div className={containerClass}>
             {props.children}
         </div>
     )
