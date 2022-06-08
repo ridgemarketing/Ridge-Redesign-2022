@@ -10,11 +10,11 @@ const ThreeColumnTextBlocks = (props) => {
     const textBlocks = content.list.map(item => {
         const image = getImage(item.image)
         return (
-            <div>
-                <div className={"max-w-[54px]"}>
+            <div className={'md:px-4 py-3'}>
+                <div className={"text-center max-w-[54px] mx-auto lg:mx-0"}>
                     <GatsbyImage image={image} />
                 </div>
-                <p className={`px-4 mt-4 text-left`}>{item.wysiwygText}</p>
+                <p className={`mt-4 text-center lg:text-left`}>{item.text}</p>
             </div>
         )
     })
@@ -23,22 +23,24 @@ const ThreeColumnTextBlocks = (props) => {
     return (
         <Section settings={settings}>
             <Container>
-                <div>
-                <h3>
-                    <span className={theme.text.H2}>{content.heading}</span>
-                </h3>
-                <p className={"mt-6 max-w-5xl mx-auto"}>
-                    <span className={theme.text.P_STD}>{content.bodyText}</span>
-                </p>
-            
-                <p>
-                    <span className={theme.text.H4}>{content.subheading}</span>
-                </p>
-                </div>
+            <div>
+            <h3 className={'text-center'}>
+                <span className={theme.text.H2}>{content.heading}
+                </span>
+            </h3>
+            <p className={"mt-6 max-w-5xl mx-auto text-center"}>
+                <span className={theme.text.P_STD}>{content.bodyText}
+                </span>
+            </p>
+        
+            <p className={'mt-10 text-center'}>
+                <span className={theme.text.H4}>{content.subheading}</span>
+            </p>
+            </div>
 
-                <div className={'md:grid md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-[1100px] mx-auto mt-12'}>
-                    {textBlocks}
-                </div>
+            <div className={'md:grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 max-w-[1100px] mx-auto mt-6 lg:mt-12'}>
+                {textBlocks}
+            </div>
             </Container>
         </Section>
     )
