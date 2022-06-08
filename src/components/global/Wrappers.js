@@ -18,18 +18,18 @@ export const Section = (props) => {
         bgColor:  'bg-white',
         position: 'relative',
         id: '',
-        extras: ''
+        classes: ''
     }
     let padding         =  props.settings.padding ? props.settings.padding : defaults.padding;
     let backgroundColor =  props.settings.bgColor ? props.settings.bgColor : defaults.bgColor;
     let position        =  props.settings.position ? props.settings.position : defaults.position;
     let id              =  props.settings.id ? props.settings.id : defaults.id;
-    let extras          =  props.settings.extras ? props.settings.extras : defaults.extras;
+    let classes          =  props.settings.classes ? props.settings.classes : defaults.classes;
 
     return (
         <section 
         id={id} 
-        className={`${padding} ${backgroundColor} ${position} ${extras}`}>
+        className={`${padding} ${backgroundColor} ${position} ${props.classes} `}>
             {props.children}
         </section>
     )
