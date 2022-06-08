@@ -9,7 +9,6 @@ const getFlex = ({ data }) => {
   let layouts = data.wpPage.flexibleLayouts.layouts;
   const layoutsArray = [];
 
-  console.log(layouts)
   layouts.map((res) => {
       if (Object.keys(res).length > 0) {
         let subString = res.fieldGroupName.split('_').pop();
@@ -18,8 +17,8 @@ const getFlex = ({ data }) => {
         let layoutProps;
         if (Layouts[subString]) {
             layoutProps = {
-                layoutContent: res[layoutArrTitle].layoutContent,
-                layoutSettings: res[layoutArrTitle].layoutSettings
+                layoutContent: res[layoutArrTitle].layoutContent || {},
+                layoutSettings: res[layoutArrTitle].layoutSettings  || {}
             }
         }
         
@@ -38,7 +37,7 @@ export default getFlex
 
 export const query = graphql`
   query FlexLayoutById( $id: String ){
-    wpPage( id: {eq: $id} ){
+    wpPage(id: {eq: $id}) {
       id
       uri
       title
@@ -66,6 +65,11 @@ export const query = graphql`
                     style
                   }
                 }
+                componentFlexibleMedia {
+                  image {
+                    gatsbyImage(width: 200, formats: AUTO)
+                  }
+                }
               }
               layoutSettings {
                 anchorId
@@ -75,6 +79,19 @@ export const query = graphql`
                 padding {
                   bottom
                   top
+                }
+              }
+            }
+          }
+          ... on WpPage_Flexiblelayouts_Layouts_TwoColList {
+            fieldGroupName
+            layoutTwoColList {
+              fieldGroupName
+              layoutContent {
+                fieldGroupName
+                list {
+                  fieldGroupName
+                  listItem
                 }
               }
             }

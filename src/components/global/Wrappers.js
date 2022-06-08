@@ -1,3 +1,5 @@
+import React from "react"
+
 export const Container = (props) => {
     let containerClass = props.slim ? `max-w-[${props.maxWidth}] mx-auto relative` : "container";
     let id             = props.id ? props.id : '';
