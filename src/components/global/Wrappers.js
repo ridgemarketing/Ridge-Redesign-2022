@@ -1,4 +1,5 @@
 import React from "react"
+import { GatsbyImage } from "gatsby-plugin-image";
 
 export const Container = (props) => {
     let containerClass = props.slim ? `max-w-[${props.maxWidth}] mx-auto relative` : "container";
@@ -58,10 +59,9 @@ export const BackgroundImage = (props) => {
 
     return (
         <div 
-        id={id} 
-        style={`background-image: url(${props.img})`} 
+        id={id}
         className={`${position} ${bgSize} ${top} ${left} ${width} ${height} ${bgRepeat}`}>
-            {props.children}
+            <GatsbyImage image={props.image} />
         </div>
     )
 }
