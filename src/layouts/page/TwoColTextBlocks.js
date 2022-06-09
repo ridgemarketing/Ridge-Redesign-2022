@@ -16,11 +16,11 @@ const TwoColImageText = (props) => {
             <Container>
                 <div className={'lg:grid grid-cols-2 gap-16 pt-16'}>
                     <div className={'pb-12 xl:px-20 xl:pt-12 lg:pb-0 ' + order}>
-                        <h3>
+                        <h2>
                             <span className={theme.text['H2'] }>
                                 {content.heading}
                             </span>
-                        </h3>
+                        </h2>
                         <p className={theme.text['P_STD'] + ' mt-8'}>
                             {content.bodyText}  
                         </p>
@@ -30,6 +30,12 @@ const TwoColImageText = (props) => {
                         <q className={ theme.text['Q'] + ' ' + content.quoteColor }>
                             {content.quoteText}
                         </q>
+                        <p className={ theme.text['P_BLD'] }>
+                            { content.quote.name }
+                        </p>
+                        <small className={ theme.text['FOOTER'] }>
+                            { content.quote.company }
+                        </small>
                     </div>
                 </div>
             </Container>

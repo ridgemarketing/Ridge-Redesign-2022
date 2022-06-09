@@ -1,9 +1,35 @@
 import React from "react" 
-import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
+
+export const ThreeColImageGrid_Loop = (props) =>{
+
+    return(
+        <>
+            {/* loop items */}
+            <div className="flex flex-col justify-center w-full md:w-[48%] lg:w-[31%] mb-12">
+                <GatsbyImage 
+                    image={ image } 
+                    alt={ content.image.alt } 
+                    className={ `object-cover w-full ` } 
+                /> 
+                <Link 
+                    className={ 
+                        theme.text_links['BASE_STYLING'] + 
+                        theme.text_links['STD'] + 
+                        theme.text_links['FWD_BASE'] + 
+                        theme.text_links['ARW_FWD_BLACK'] + 
+                        'mt-3' } 
+                    to={ content.link.url }>
+                    { content.link.heading }
+                </Link>
+            </div>
+            {/* end loop */}
+        </>
+    )
+}
 
 const ThreeColImageGrid = ({ props }) => {
 
@@ -28,26 +54,9 @@ const ThreeColImageGrid = ({ props }) => {
                         </h2>
                     </>
                 }
+
                 <div className="flex w-full flex-wrap justify-between">
-                    {/* loop items */}
-                    <div className="flex flex-col justify-center w-full md:w-[48%] lg:w-[31%] mb-12">
-                        <GatsbyImage 
-                            image={ image } 
-                            alt={ content.image.alt } 
-                            className={ `object-cover w-full ` } 
-                        /> 
-                        <Link 
-                            className={ 
-                                theme.text_links['BASE_STYLING'] + 
-                                theme.text_links['STD'] + 
-                                theme.text_links['FWD_BASE'] + 
-                                theme.text_links['ARW_FWD_BLACK'] + 
-                                'mt-3' } 
-                            to={ content.link.url }>
-                            { content.link.heading }
-                        </Link>
-                    </div>
-                    {/* end loop */}
+                    <ThreeColImageGrid_Loop />
                 </div>
 
                 {content.subHeading &&

@@ -47,6 +47,25 @@ const WpPage = ({ data }) =>{
               </div>  
           </div>
           {/* end loop */}
+              {/* loop items */}
+              <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12 md:mb-16 lg:mb-32">
+              {/* <GatsbyImage 
+                      image={ image } 
+                      alt={ content.image.alt } 
+                      className={ `object-cover w-full ` } 
+              />  */}
+              <div className="flex flex-col">
+                  <div className="flex items-center ml-6 h-[75px]">
+                      <p className={ theme.text['H4'] }>eBooks and Whitepapers and newspapers</p>
+                  </div>
+                  <div className="ml-6">
+                      <p className={ theme.text['FOOTER'] }>
+                        Grow your readership and establish your authority with well written and stunning eBooks and whitepapers.  
+                      </p>
+                  </div>
+              </div>  
+          </div>
+          {/* end loop */}
       </div>
     </>
   )
