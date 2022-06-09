@@ -8,43 +8,46 @@ const WpPage = ({ data }) =>{
 
   return (
     <>
-      <div className="mt-12 flex w-full flex-wrap justify-between">
-
-        <div className="flex flex-col justify-center w-full md:w-[48%] lg:w-[31%] mb-12">
-            {/* <GatsbyImage image={data.image} alt={``} className={ `object-cover w-full ` } /> */}
-            <StaticImage 
-                    src='https://i.insider.com/5bfec49248eb12058423acf7' 
-                    alt={``} 
-                    className={ `object-cover w-full ` }
-                    /> 
-             <Link className={ theme.text_links['BASE_STYLING'] + theme.text_links['STD'] + theme.text_links['FWD_BASE'] + theme.text_links['ARW_FWD_BLACK'] + 'mt-3' } to={'#'}>Project Name</Link>
-        </div>
-        <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12">
-            {/* <GatsbyImage image={data.image} alt={``} className={ `object-cover w-full ` } /> */}
-            <StaticImage 
-                    src='https://i.insider.com/5bfec49248eb12058423acf7' 
-                    alt={``} 
-                    className={ `object-cover w-full ` }
-                    /> 
-        </div>
-        <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12 ">
-            {/* <GatsbyImage image={data.image} alt={``} className={ `object-cover w-full ` } /> */}
-            <StaticImage 
-                    src='https://i.insider.com/5bfec49248eb12058423acf7' 
-                    alt={``} 
-                    className={ `object-cover w-full ` }
-                    /> 
-        </div>
-        <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12 ">
-            {/* <GatsbyImage image={data.image} alt={``} className={ `object-cover w-full ` } /> */}
-            <StaticImage 
-                    src='https://i.insider.com/5bfec49248eb12058423acf7' 
-                    alt={``} 
-                    className={ `object-cover w-full ` }
-                    /> 
-        </div>
-
-    </div>
+      <div className="flex w-full flex-wrap justify-between">
+          {/* loop items */}
+          <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12 md:mb-16 lg:mb-32">
+              {/* <GatsbyImage 
+                      image={ image } 
+                      alt={ content.image.alt } 
+                      className={ `object-cover w-full ` } 
+              />  */}
+              <div className="flex flex-col">
+                  <div className="flex items-center ml-6 h-[75px]">
+                      <p className={ theme.text['H4'] }>Web Copywriting</p>
+                  </div>
+                  <div className="ml-6">
+                      <p className={ theme.text['FOOTER'] }>
+                          Deliver compelling customer-focused content and campaign landing pages with strong calls-to-action. 
+                      </p>
+                  </div>
+              </div>  
+          </div>
+          {/* end loop */}
+            {/* loop items */}
+            <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12 md:mb-16 lg:mb-32">
+              {/* <GatsbyImage 
+                      image={ image } 
+                      alt={ content.image.alt } 
+                      className={ `object-cover w-full ` } 
+              />  */}
+              <div className="flex flex-col">
+                  <div className="flex items-center ml-6 h-[75px]">
+                      <p className={ theme.text['H4'] }>eBooks and Whitepapers</p>
+                  </div>
+                  <div className="ml-6">
+                      <p className={ theme.text['FOOTER'] }>
+                        Grow your readership and establish your authority with well written and stunning eBooks and whitepapers.  
+                      </p>
+                  </div>
+              </div>  
+          </div>
+          {/* end loop */}
+      </div>
     </>
   )
 }
