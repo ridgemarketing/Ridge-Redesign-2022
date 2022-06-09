@@ -22,10 +22,6 @@
 }
 
 @layer components{
- 
-    .container{
-        @apply block max-w-[90%] sm:max-w-[365px] md:max-w-[710px] lg:max-w-[935px] 2xl:max-w-[1450px] ml-auto mr-auto;
-    }
 
 }
 

@@ -3,10 +3,7 @@ import { theme } from '../static/theme'
 import { Formik, Form  } from 'formik'
 import Pristine from 'pristinejs'
 
-import BasicInputs  from '../components/form-BasicInputs.js'
-import MultiLineText from '../components/form-MultiLineText.js'
-import SelectInput from '../components/form-select.js'
-import FormSubmit from '../components/form-submit.js'
+import { BasicInputs, MultiLineText, SelectInput, FormSubmit}  from '../components/global/Forms'
 
 //const sendGridURL = 'https://api.sendgrid.com/v3/mail/send';
 //const sendGridKey = process.env.SENDGRID_API_KEY;
