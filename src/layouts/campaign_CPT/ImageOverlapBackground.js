@@ -10,7 +10,7 @@ const ImageOverlapBackground = ({ props }) => {
     const settings = props.layoutData.layoutSettings;
     const image = getImage(content.componentFlexibleMedia.image);
 
-    let img_size  = content.imgSize == 'full' ? 'w-full -mt-[calc(50%)] ' : 'w-1/2 -mt-[calc(12.5%)]';
+    let img_size  = content.imgSize == 'full' ? 'w-full -mt-[50%] ' : 'w-1/2 -mt-[12.5%]';
 
     return(
         <Section Settings={ settings }>

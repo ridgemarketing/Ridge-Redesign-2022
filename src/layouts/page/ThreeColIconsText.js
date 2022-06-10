@@ -13,16 +13,16 @@ export const ThreeColIconsText_Loop = ( props ) => {
                     <GatsbyImage 
                             image={ image } 
                             alt={ content.image.alt } 
-                            className={ `object-cover w-full ` } 
+                            className={ `flex self-start object-contain w-[55px] h-[55px]` } 
                     /> 
                     <div className="flex flex-col">
-                        <div className="flex items-center ml-6 h-[75px]">
+                        <div className="flex items-center ml-6">
                             <p 
-                                className={ theme.text['H4'] }>
+                                className={ theme.text['H4'] + 'icon-block-title flex items-center' }>
                                 { content.col.heading }
                             </p>
                         </div>
-                        <div className="ml-6">
+                        <div className="ml-6 mt-4">
                             <p 
                                 className={ theme.text['FOOTER'] }>
                                 { content.col.bodyText }
@@ -41,6 +41,40 @@ const ThreeColIconsText = ({ props }) => {
     const settings = props.layoutData.layoutSettings;
     const image = getImage(content.componentFlexibleMedia.image);
     
+    useEffect(() => {
+        window.addEventListener('load', function(){
+          if ( document.getElementsByClassName('threeColIconsText').length > 0 ){
+              const allimg  = document.getElementsByClassName('threeColIconsText')[0].getElementsByTagName('img');
+              const allText = document.getElementsByClassName('threeColIconsText')[0].getElementsByClassName('icon-block-title');
+  
+              let heights = [];
+              let currentHeight;
+  
+              for ( let i = 0; allText.length > i; i++ ){
+                heights.push(allText[i].clientHeight);
+              }
+  
+              for ( let i = 0; heights.length > i; i++ ){
+                currentHeight = heights[i];
+                  for ( let z = 0; allText.length > z; z++ ){
+                    if(allText[z].clientHeight < currentHeight){
+                      allText[z].style.height = currentHeight + 'px';
+                    }
+                  }
+              }
+  
+              for ( let i = 0; allText.length > i; i++ ){
+                  if( allText[i].clientHeight > allimg[i].clientHeight ){
+                      allimg[i].style.marginTop = ( allText[i].clientHeight - allimg[i].clientHeight )/2 + 'px' ;
+                  }
+                  if( allText[i].clientHeight < allimg[i].clientHeight){
+                      allText[i].parentNode.style.height = allimg[i].clientHeight + 'px';
+                  }
+              }
+          }
+        })
+    });
+
     return(
         <Section Settings={ settings }>
             <Container>
@@ -72,7 +106,7 @@ const ThreeColIconsText = ({ props }) => {
                     </>
                 }
 
-                <div className="flex w-full flex-wrap justify-between">
+                <div className="flex w-full flex-wrap justify-between threeColIconsText">
                     <ThreeColIconsText_Loop/>
                 </div>
 

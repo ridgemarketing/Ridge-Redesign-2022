@@ -3,20 +3,23 @@ import { venn } from 'venny'
 
 const vennDiagram = ({ props }) => {
     
-    const elems = useMemo(
-        () => [
-          { name: '', sets: ['S1', 'S2'] },
-          { name: '', sets: ['S1'] },
-          { name: '', sets: ['S2'] },
-        ],
-        []
-      ); 
-    
-      const sets = useMemo(() => extractSets(elems), [elems]);
-      const combinations = useMemo(() => generateCombinations(sets), [sets]);
-      
-      const [selection, setSelection] = React.useState(null);
-    
+    const content = props.layoutData.layoutContent;
+    const settings = props.layoutData.layoutSettings;
+
+        useEffect(() => {
+            window.addEventListener('load', function(){
+            if( document.getElementById('shadow-container') ){
+                let shadowRoot_ =  document.getElementById('shadow-container').shadowRoot;
+                let allElements =  shadowRoot_.querySelector('svg').querySelectorAll('g');
+                
+                for(var i =0; allElements.length > i; i++){
+                    allElements[i].style.fillOpacity = '1';
+                    allElements[i].style.opacity = '1';
+                }
+            }
+            })
+        });
+
       return(
         <Section Settings={ settings }>
             <Container>
