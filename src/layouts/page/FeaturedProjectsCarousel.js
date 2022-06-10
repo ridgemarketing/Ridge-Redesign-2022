@@ -42,19 +42,22 @@ const FeaturedProjectsCarousel = (props) => {
     return (
         <Section settings={false}>
             <Container>
-                <div className={`lg:flex`}>
-                    <div className={`w-full max-w-[712px] h-[734px] text-right bg-rm-carbon relative`}>
-                        <h2 className={theme.text.H2 + `absolute top-6 right-4`}>{props.content.heading}</h2>
-                        <BackgroundImage image={props.content.image} />
+                <div className={`relative lg:flex`}>
+                    <div class="lg:hidden">
+                        {/* <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{props.content.heading}</h2> */}
                     </div>
-                    <div className={`flex w-full relative`}>
-                        <h2 className={theme.text.H2 + `mt-6 ml-4`}>{props.content.heading}</h2>
-                        <div className={`self-end w-full -ml-20`}>
+                    <div className={`flex-shrink-0 w-full max-w-[712px] h-[734px] text-right md:w-[calc(100%+(50vw-350px))] md:-ml-[calc(50vw-350px)] lg:w-[calc(100%+(50vw-465px))] lg:-ml-[calc(50vw-465px)] xl:w-full xl:ml-0 bg-rm-carbon relative`}>
+                        {/* <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{props.content.heading}</h2>
+                        <BackgroundImage image={props.content.image} /> */}
+                    </div>
+                    <div className={`absolute bottom-0 right-0 w-full lg:relative lg:flex`}>
+                        {/* <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:mt-6 lg:ml-4`}>{props.content.heading}</h2> */}
+                        <div className={`self-end flex flex-col items-end w-full mx-auto lg:-ml-1/2 xl:-ml-20`}>
                             <div className={`px-8 pt-7 pb-10 bg-white w-full max-w-[548px] md:px-12 md:pt-9 shadow-block`}>
                                 <span></span>
                                 <h3>{slides[slide].heading}</h3>
                                 <div>
-                                    <Link link={`/`} classes={theme.buttons.GHOST_STD}></Link>
+                                    {/* <Link link={`/`} classes={theme.buttons.GHOST_STD}></Link> */}
                                 </div>
                             </div>
                             <div className={`w-36 flex bg-rm-pale-grey`}>
@@ -62,7 +65,7 @@ const FeaturedProjectsCarousel = (props) => {
                                    <FontAwesomeIcon icon={faAngleLeft} />
                                 </button>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={nextSlide}>
-                                    <FontAwesomeIcon icon={faAngleRight} />
+                                <FontAwesomeIcon icon={faAngleRight} />
                                 </button>
                             </div>
                         </div>
