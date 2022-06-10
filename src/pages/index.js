@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import { graphql } from "gatsby"
 import { theme } from '../static/theme'
 
-import FormAll from '../templates/form-all.js'
 
 export default function Home() {
   return ( 

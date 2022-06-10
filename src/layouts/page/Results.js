@@ -63,7 +63,7 @@ export const Results_Loop_Text_Loop = (props) =>{
 
 const Results = ({ props }) => {
     
-    let theSize = props.ResultsSize; //large or small 
+    let theSize = content.ResultsSize; //large or small 
     let resultTextSize_Container        = theSize == 'large' ? `large md:w-[48%]` : `small lg:w-[31%] mb-12`;  
     let resultTextSize_textSizeLarge    = theSize == 'large' ? theme.text['STATS'] : theme.text['H2'];
     let resultTextSize_textSizeSmall    = theSize == 'large' ? theme.text['P_STD'] : theme.text['H4'];

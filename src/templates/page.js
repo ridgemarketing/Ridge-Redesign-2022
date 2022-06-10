@@ -1,13 +1,42 @@
-import React from "react"
+import React, { useState, useMemo } from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { theme } from '../static/theme.js'
 
-const WpPage = ({ data }) =>{
+import { extractSets, generateCombinations, VennDiagram } from '@upsetjs/react';
 
+const WpPage = ({ data }) =>{
+    
+      // const elems = useMemo(
+      //   () => [
+      //     { name: '', sets: ['S1', 'S2'] },
+      //     { name: '', sets: ['S1'] },
+      //     { name: '', sets: ['S2'] },
+      //   ],
+      //   []
+      // ); 
+    
+      // const sets = useMemo(() => extractSets(elems), [elems]);
+      // const combinations = useMemo(() => generateCombinations(sets), [sets]);
+      
+      // const [selection, setSelection] = React.useState(null);
+      // return (
+      //   <VennDiagram
+      //     sets={sets}
+      //     combinations={combinations}
+      //     width={780}
+      //     height={400}
+      //   />
+      // );
+    
   return (
     <>
+      <div className="bg-rm-black h-[500px] w-full"></div>
+      <div className="flex w-full">
+          <img className="w-1/2 -mt-[calc(12.5%)] block ml-auto mr-auto " src="https://atlantis.nyc3.digitaloceanspaces.com/media/legacy/atlantis/Things_To_Do/Water_Park/Beaches/Hero/Experiences_Beach.jpg" />
+      </div>
+
       <div className="flex w-full flex-wrap justify-between">
           {/* loop items */}
           <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12 md:mb-16 lg:mb-32">
