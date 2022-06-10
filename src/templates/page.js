@@ -8,7 +8,7 @@ const WpPage = ({ data }) =>{
 
   return (
     <>
-      
+      <FeaturedProjectsCarousel />
     </>
   )
 }
