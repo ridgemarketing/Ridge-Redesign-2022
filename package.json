@@ -34,6 +34,7 @@
     "pristinejs": "^0.1.9",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "venny": "^0.1.0",
     "wp-graphql-yoast-seo": "github:ashhitch/wp-graphql-yoast-seo"
   },
   "devDependencies": {

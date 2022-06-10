@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react"
-import { extractSets, generateCombinations, VennDiagram } from '@upsetjs/react';
+import { venn } from 'venny'
 
 const vennDiagram = ({ props }) => {
     
@@ -20,12 +20,12 @@ const vennDiagram = ({ props }) => {
       return(
         <Section Settings={ settings }>
             <Container>
-                <VennDiagram
-                    sets={sets}
-                    combinations={combinations}
-                    width={780}
-                    height={400}
-                />
+                {/* not react layouts, custom html tags */}
+                <venn-diagram class="block w-min ml-auto mr-auto drop-shadow-lg">
+                    <venn-set name="A" label=""></venn-set>
+                    <venn-set name="B" label=""></venn-set>
+                    <venn-n sets="A B" label=""></venn-n>
+                </venn-diagram>
             </Container>
         </Section>
     )
