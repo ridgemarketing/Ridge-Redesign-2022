@@ -62,7 +62,7 @@ exports.createPages = async ({ graphql, actions }) => {
       path: page.uri,
 
       // specify the component template of your choice
-      component: slash(pageTemplate),
+      component: slash(flexTemplate),
       //component: slash(flexTemplate),
 
       // In the ^template's GraphQL query, 'id' will be available

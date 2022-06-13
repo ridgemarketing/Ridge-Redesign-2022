@@ -1,15 +1,14 @@
+
+   
 import React from "react"
 import { graphql } from "gatsby"
-import { ThreeUpIcons } from '../layouts/page/ThreeUpIcons.js'
-import { theme } from '../static/theme.js'
-import FeaturedProjectsCarousel from "../layouts/page/FeaturedProjectsCarousel"
 
 const WpPage = ({ data }) =>{
-
   return (
-    <>
-      <FeaturedProjectsCarousel />
-    </>
+    <div>
+      <h1> {data.wpPage.title} </h1>
+      <p> {data.wpPage.content} </p>
+    </div>
   )
 }
 export default WpPage;
