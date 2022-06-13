@@ -28,6 +28,7 @@
     "@fortawesome/pro-solid-svg-icons": "^6.1.1",
     "@fortawesome/pro-thin-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
+    "@upsetjs/react": "^1.11.0",
     "formik": "^2.2.9",
     "gatsby": "^4.14.0",
     "gatsby-plugin-gravity-forms": "^3.0.0",
@@ -40,6 +41,7 @@
     "pristinejs": "^0.1.9",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
+    "venny": "^0.1.0",
     "wp-graphql-yoast-seo": "github:ashhitch/wp-graphql-yoast-seo"
   },
   "devDependencies": {

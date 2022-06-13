@@ -3,55 +3,55 @@ import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
-import BlogCard from '../../components/BlogCards.js'
+import BlogCard from '../../components/BlogCard.js'
 
 const RelatedBlogArticles = ({ props }) => {
-
+    
+    const content = props.layoutData.layoutContent;
+    const settings = props.layoutData.layoutSettings;
+    const image = getImage(content.componentFlexibleMedia.image);
+    
     return(
-        <Section Settings={props.settings}>
-            <Container ContainerClass={props.ContainerClass}>
-                {props.title &&
-                        <> 
-                            <h2>
-                                <span 
-                                    className={ 
-                                                theme.text['H2'] 
-                                                + ' text-' + props.textColor 
-                                                + ' text-' + props.textAlign
-                                            }> 
-                                    { props.title }
-                                </span>
-                            </h2>
-                        </>
-                    }
-                    {props.description &&
-                        <>
-                            <p>
-                                <span className={ 
-                                                theme.text['P_STD'] 
-                                                + ' text-' + props.textColor 
-                                                + ' text-' + props.textAlign
-                                            }>
-                                    { props.description }
-                                </span>
-                            </p>
-                        </>
-                    }
-                    <div className="mt-12 flex w-full flex-wrap justify-between">
+        <Section Settings={ settings }>
+            <Container>
+                {content.heading &&
+                    <> 
+                        <h2>
+                            <span 
+                                className={ 
+                                            theme.text['H2'] 
+                                            + ' text-' + content.textColor 
+                                            + ' text-' + content.textAlign
+                                        }> 
+                                { content.heading }
+                            </span>
+                        </h2>
+                    </>
+                }
+                {content.bodyText &&
+                    <>
+                        <p>
+                            <span className={ 
+                                            theme.text['P_STD'] 
+                                            + ' text-' + content.textColor 
+                                            + ' text-' + content.textAlign
+                                        }>
+                                { content.bodyText }
+                            </span>
+                        </p>
+                    </>
+                }
+                    <div className="mt-12 flex w-full flex-col justify-center items-center lg:flex-row lg:flex-wrap lg:justify-between lg:items-baseline">
 
                         <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12 md:mb-16 lg:mb-32">
-                            <img className="h-[50px] mt-[12.5px] w-min" src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/How_to_use_icon.svg/2214px-How_to_use_icon.svg.png" alt=""/>
-                            
-                            <div className="flex flex-col">
-                                <div className="flex items-center ml-6 h-[75px]">
-                                    <p className={ theme.text['H4'] }>Web Copywriting</p>
-                                </div>
-                                <div className="ml-6">
-                                <p className={ theme.text['FOOTER'] }>
-                                        Deliver compelling customer-focused content and campaign landing pages with strong calls-to-action. 
-                                    </p>
-                                </div>
-                            </div>
+                           
+                            <BlogCard
+                                heading = { `Elevate Your Next Content Marketing Campaign Today. Download our Field Guide` }
+                                link = {
+                                        url = ''
+                                }
+                                image = { `` }
+                            />
 
                         </div>
 
