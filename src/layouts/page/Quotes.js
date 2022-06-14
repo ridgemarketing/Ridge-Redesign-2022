@@ -9,7 +9,7 @@ export const Quote_Loop = (props) =>{
     return(
         <>
             {content.quote &&
-                <div className={ `frosted-glass p-8 lg:p-14` }>
+                <div className={ `frosted-glass p-8 lg:p-14 w-full` }>
                 
                         <q className={ theme.text['Q'] }>
                             { content.quote.main }
@@ -32,6 +32,39 @@ const Quote = ({ props }) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     
+    const [slide, setSlide] = useState(0);
+
+    const nextSlide = () => {
+        let i = slide
+        if (i === slides.length - 1) {
+            setSlide(0)
+        } else {
+            setSlide(i + 1)
+        }
+    }
+
+    const prevSlide = () => {
+        let i = slide
+        if (i === 0) { 
+            setSlide(slides.length - 1)
+        } else {
+            setSlide(i - 1)
+        }
+    }
+
+    const slides = [
+        {
+            heading: "Slide 1"
+        },
+        {
+            heading: "Slide 2"
+        },
+        {
+            heading: "Slide 3"
+        }
+    ];
+
+
     return(
         <Section Settings={ settings }>
             <Container>

@@ -29,6 +29,7 @@ const getFlex = ({ data }) => {
   return (
     <div>
       {layoutsArray}
+
     </div>
   )
 }

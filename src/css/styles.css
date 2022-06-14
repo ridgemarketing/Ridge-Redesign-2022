@@ -97,3 +97,60 @@ venn-diagram {
     --venn-label-font-weight: bold;
     --venn-label-line-height:2.75rem;
   }
+
+
+
+  /* test animation, not final production implementation */
+  .first-slide, .second-slide, .third-slide{
+      animation-timing-function: ease-out;
+      animation-duration: .75s;
+  }
+  .first-slide{
+      animation-name: quote-1;
+  }
+  .second-slide{
+     animation-name: quote-2;
+   }
+  .third-slide{
+     animation-name: quote-3;
+  }
+  
+@keyframes quote-1{
+    0%      { 
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+    25%{
+        opacity: 0;
+    }
+    100%      { 
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes quote-2{
+    0%      { 
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+    25%{
+        opacity: 0;
+    }
+    100%      { 
+        opacity: 1;
+        transform: translateX(0px);
+    }
+}
+@keyframes quote-3{
+    0%      { 
+        opacity: 0;
+        transform: translateX(-25px);
+    }
+    25%{
+        opacity: 0;
+    }
+    100%      { 
+        opacity: 1;
+        transform: translateX(0px);
+    }
+} 

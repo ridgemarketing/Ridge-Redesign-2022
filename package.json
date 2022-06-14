@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/ridgemarketing/Ridge-Redesign-2022#readme",
   "dependencies": {
-    "@upsetjs/react": "^1.11.0",
     "formik": "^2.2.9",
     "gatsby": "^4.14.0",
     "gatsby-plugin-gravity-forms": "^3.0.0",
