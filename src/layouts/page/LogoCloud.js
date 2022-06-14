@@ -21,31 +21,14 @@ const LogoCloud = ({ props }) => {
         <Section Settings={ settings }>
             <Container>
                 {content.heading &&
-                    <> 
-                        <h2>
-                            <span 
-                                className={ 
-                                            theme.text['H2'] 
-                                            + ' text-' + content.textColor 
-                                            + ' text-' + content.textAlign
-                                        }> 
-                                { content.heading }
-                            </span>
-                        </h2>
-                    </>
+                    <h2 className={theme.text['H2'] + ''}> 
+                        { content.heading }
+                    </h2>
                 }
                 {content.bodyText &&
-                    <>
-                        <p>
-                            <span className={ 
-                                            theme.text['P_STD'] 
-                                            + ' text-' + content.textColor 
-                                            + ' text-' + content.textAlign
-                                        }>
-                                { content.bodyText }
-                            </span>
-                        </p>
-                    </>
+                    <p className={theme.text['P_STD'] + ''}>
+                        { content.bodyText }
+                    </p>
                 }
                 <div className="mt-12 flex w-full flex-wrap justify-around">
                     <LogoCloud_Loop/>
