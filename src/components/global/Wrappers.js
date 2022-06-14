@@ -25,11 +25,12 @@ export const Section = (props) => {
     let position        =  props.settings.position ? props.settings.position : defaults.position;
     let id              =  props.settings.id ? props.settings.id : defaults.id;
     let classes          =  props.settings.classes ? props.settings.classes : defaults.classes;
+    let classes_temp = props.classes ? props.classes : ''; //used for testing until we pull class data from props
 
     return (
         <section 
         id={id} 
-        className={`${padding} ${backgroundColor} ${position} ${props.classes} `}>
+        className={`${padding} ${backgroundColor} ${position} ${classes} ${classes_temp}`}> 
             {props.children}
         </section>
     )
