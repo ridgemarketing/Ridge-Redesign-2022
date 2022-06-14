@@ -4,7 +4,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 
-export const PlatformLogos_Loop = (props) =>{
+export const LogoCloud_Loop = (props) =>{
     
     return(
         <GatsbyImage 
@@ -15,7 +15,7 @@ export const PlatformLogos_Loop = (props) =>{
     )
 }
 
-const PlatformLogos = ({ props }) => {
+const LogoCloud = ({ props }) => {
 
     return(
         <Section Settings={ settings }>
@@ -48,10 +48,10 @@ const PlatformLogos = ({ props }) => {
                     </>
                 }
                 <div className="mt-12 flex w-full flex-wrap justify-around">
-                    <PlatformLogos_Loop/>
+                    <LogoCloud_Loop/>
                 </div> 
             </Container>
         </Section>
     )
 }
-export default PlatformLogos
+export default LogoCloud

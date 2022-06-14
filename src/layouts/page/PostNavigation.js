@@ -3,7 +3,7 @@ import { theme } from '../static/theme'
 import { Link } from "gatsby"
 import { Container, Section } from '../../components/global/Wrappers.js'
 
-const PreFooterNavigation = (props) => {
+const PostNavigation = (props) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -38,4 +38,4 @@ const PreFooterNavigation = (props) => {
     )
 }
 
-export default PreFooterNavigation
+export default PostNavigation
