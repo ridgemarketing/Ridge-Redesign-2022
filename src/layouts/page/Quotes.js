@@ -8,22 +8,17 @@ import { content } from "../../../tailwind.config.js"
 export const Quote_Loop = (props) =>{
     return(
         <>
-            {content.quote &&
-                <div className={ `frosted-glass p-8 lg:p-14 w-full` }>
-                
-                        <q className={ theme.text['Q'] }>
-                            { content.quote.main }
-                        </q>
-                        <p className={ theme.text['P_BLD'] }>
-                            { content.quote.name }
-                        </p>
-                        <small className={ theme.text['FOOTER'] }>
-                            { content.quote.company }
-                        </small>
-    
-                </div>
-            }
+            <q className={ theme.text['Q'] + slides[slide].class + ' block transition-all ease-in-out' }>
+                {slides[slide].heading}
+            </q>
+            <p className={ theme.text['P_BLD'] }>
+                { content.quote.name }
+            </p>
+            <small className={ theme.text['FOOTER'] }>
+                { content.quote.company }
+            </small>
         </>
+
     )
 }
 
@@ -33,7 +28,6 @@ const Quote = ({ props }) => {
     const settings = props.layoutData.layoutSettings;
     
     const [slide, setSlide] = useState(0);
-
     const nextSlide = () => {
         let i = slide
         if (i === slides.length - 1) {
@@ -51,18 +45,40 @@ const Quote = ({ props }) => {
             setSlide(i - 1)
         }
     }
-
     const slides = [
-        {
-            heading: "Slide 1"
-        },
-        {
-            heading: "Slide 2"
-        },
-        {
-            heading: "Slide 3"
-        }
+      {
+          heading: "We’re very pleased with the quality of work that Ridge Marketing provided in redesigning our website. They’ve exceeded our expectations and provided a dramatically improved user experience for our customers.",
+          class:  'first-slide'
+      },
+      {
+          heading: "Slide 2",
+          class:  'second-slide'
+      },
+      {
+          heading: "Slide 3",
+          class:  'third-slide'
+      }
     ];
+
+    let animationClass = `.`+ slides[slide].class + ` {          
+        animation-timing-function: ease-out;
+        animation-duration: .75s;
+        animation-name: ` + slides[slide].class + ` ;
+    }`;
+
+    let animationKeyframes =`@keyframes ` +  slides[slide].class + ` {
+        0%        { 
+            opacity: 0;
+            transform: translateX(-25px);
+        }
+        25%       {
+            opacity: 0;
+        }
+        100%      { 
+            opacity: 1;
+            transform: translateX(0px);
+        }
+    }`;
 
 
     return(
@@ -82,9 +98,26 @@ const Quote = ({ props }) => {
                             </h2>
                         </>
                     }
+                    <div className="hidden invisible" aria-hidden="true">
+                        <style type="text/css">
+                            { animationClass }
+                            { animationKeyframes }
+                        </style>
+                    </div>
                     <div className={` mt-12 flex w-full flex-wrap justify-between relative `}>
-                       
-                        <Quote_Loop/>
+                        <div className={ `frosted-glass p-8 lg:p-14 w-full` }>
+                            <Quote_Loop/>
+                        </div>
+                        <div className={`w-36 flex bg-rm-pale-grey`}>
+                            <button className={`flex-1 px-5 py-3 text-40px`} onClick={prevSlide}>
+                                {/* <FontAwesomeIcon icon={faAngleLeft} /> */}
+                            </button>
+                            <button className={`flex-1 px-5 py-3 text-40px`} onClick={nextSlide}>
+                                {/* <FontAwesomeIcon icon={faAngleRight} /> */}
+                            </button>
+                        </div>
+                    </div>  
+                    <div>
                         <span
                             aria-hidden="true" 
                             className={ 

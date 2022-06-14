@@ -5,23 +5,38 @@ import { Link } from "gatsby"
 const IconCard = (props) => {
     let wrapperClasses  = ``;
     let imageClasses    = ``;
+    let marginClasses   = `ml-6 `;
     
     if (props.orientation == `stacked`) {
-
+        let stacked = 'flex-col ';
+        marginClasses = ` `;
     }
-    return (
-        <div className={`flex`}>
-            <div className={`mr-4`}>
-                <GatsbyImage image={props.image} alt={``} className={`h-14 w-auto`} />
-            </div>
-            <div className={`w-full max-h`}>
-                <h3 className={`mb-4`}>{props.heading}</h3>
-                <p className={`mb-8`}>{props.body}</p>
-                <div>
-                    <Link to={props.link.url}>See How</Link>
+    return(
+        <>
+           {/* loop items */}
+           <div className={ stacked + 'flex w-full md:w-[48%] lg:w-[31%] mb-12 md:mb-16 lg:mb-32'}>
+                    <GatsbyImage 
+                            image={ props.image } 
+                            alt={ props.image.alt } 
+                            className={ `flex self-start object-contain w-[55px] h-[55px]` } 
+                    /> 
+                    <div className="flex flex-col">
+                        <div className={ marginClasses + `flex items-center ml-6`}>
+                            <p 
+                                className={ theme.text['H4'] + 'icon-block-title flex items-center' }>
+                                { props.heading }
+                            </p>
+                        </div>
+                        <div className={ marginClasses + `mt-4`}>
+                            <p 
+                                className={ theme.text['FOOTER'] }>
+                                { props.bodyText }
+                            </p>
+                        </div>
+                    </div>  
                 </div>
-            </div>
-        </div>
+            {/* end loop */}
+        </>
     )
 }
 

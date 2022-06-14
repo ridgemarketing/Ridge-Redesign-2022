@@ -8,7 +8,7 @@ import { venn } from 'venny'
 //import { extractSets, generateCombinations, VennDiagram } from '@upsetjs/react';
 
 const WpPage = ({ data }) =>{
-
+  
   useEffect(() => {
       window.addEventListener('load', function(){
        
@@ -33,9 +33,7 @@ const WpPage = ({ data }) =>{
               allText[i].style.textAlign   = 'right';
             }
 
-          }
-
-          
+          }  
 
         }
 
@@ -105,7 +103,28 @@ const WpPage = ({ data }) =>{
           heading: "Slide 3",
           class:  'third-slide'
       }
-  ];
+    ];
+
+      let animationClass = `.`+ slides[slide].class + ` {          
+        animation-timing-function: ease-out;
+        animation-duration: .75s;
+        animation-name: ` + slides[slide].class + ` ;
+       }`;
+
+      let animationKeyframes =`
+        @keyframes ` +  slides[slide].class + ` {
+            0%      { 
+                opacity: 0;
+                transform: translateX(-25px);
+            }
+            25%{
+                opacity: 0;
+            }
+            100%      { 
+                opacity: 1;
+                transform: translateX(0px);
+            }
+        }`;
 
 
   return (
@@ -218,7 +237,12 @@ const WpPage = ({ data }) =>{
           {/* end loop */}
       </div>
 
-
+      <div className="hidden invisible" aria-hidden="true">
+        <style type="text/css">
+          { animationClass }
+          { animationKeyframes }
+        </style>
+      </div>
       <div className={` mt-12 mb-20 flex w-full flex-wrap justify-between relative `}>
         <div className={ `frosted-glass p-8 lg:p-14 w-full` }>
                   
