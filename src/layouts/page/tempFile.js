@@ -60,25 +60,71 @@
         //         </div>
         //     </Container>
         // </Section>
-        <Section settings={settings}>
-        <Container>
-            <div>
-            <h3 className={'text-center'}>
-                <span className={theme.text.H2}>Our Content Marketing Approach 
-                </span>
-            </h3>
-            <p className={"mt-6 max-w-5xl mx-auto text-center"}>
-                <span className={theme.text.P_STD}>Many prospects do extensive research online before making a purchase or reaching out to talk to a sales rep. Content marketing helps you build trust with your audience while alerting sales when action is needed. Ridge Marketing is a content marketing agency that helps you start or ramp up your existing content marketing efforts to win more loyal customers who expect smart, multi-channel digital experiences with your brand. 
-                </span>
-            </p>
-        
-            <p className={'mt-10 text-center'}>
-                <span className={theme.text.H4}>When you partner with Ridge, we will:</span>
-            </p>
-            </div>
 
-            <div className={'md:grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 max-w-[1100px] mx-auto mt-6 lg:mt-12'}>
-                {textBlocks}
-            </div>
-        </Container>
-    </Section>
+
+    //     <Section settings={settings}>
+    //     <Container>
+    //         <div>
+    //         <h3 className={'text-center'}>
+    //             <span className={theme.text.H2}>Our Content Marketing Approach 
+    //             </span>
+    //         </h3>
+    //         <p className={"mt-6 max-w-5xl mx-auto text-center"}>
+    //             <span className={theme.text.P_STD}>Many prospects do extensive research online before making a purchase or reaching out to talk to a sales rep. Content marketing helps you build trust with your audience while alerting sales when action is needed. Ridge Marketing is a content marketing agency that helps you start or ramp up your existing content marketing efforts to win more loyal customers who expect smart, multi-channel digital experiences with your brand. 
+    //             </span>
+    //         </p>
+        
+    //         <p className={'mt-10 text-center'}>
+    //             <span className={theme.text.H4}>When you partner with Ridge, we will:</span>
+    //         </p>
+    //         </div>
+
+    //         <div className={'md:grid md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 max-w-[1100px] mx-auto mt-6 lg:mt-12'}>
+    //             {textBlocks}
+    //         </div>
+    //     </Container>
+    // </Section>
+
+
+
+// THIS IS THE BREAKOUT IMAGE TEXT SECTION 
+
+<Section settings={settings} classes={'grid xl:block 2xl:max-w-[1920px] 2xl:mx-auto'}>
+<div className={'xl:absolute xl:left-[-202px] px-6 order-2 mt-16 xl:mt-0 mx-auto xl:mx-0 max-w-[928px] xl:max-w-[850px] order-2'}>
+    <GatsbyImage image={image}/>
+</div>
+<Container>
+    <div className={'flex justify-start xl:mt-20 xl:mb-[600px]'}>
+        <div className={`hidden xl:block xl:w-[calc(650px-(50vw-640px))] 2xl:w-[calc(726px-(50vw-640px)+(50vw-960px))] mr-8`}></div>
+
+        <div className={'flex-1 px-5 xl:pr-10'}>
+            <h4>
+                <span className={theme.text.H3}>RIDGE MARKETING<br/>WEBSITE DESIGN SERVICES</span>
+            </h4>
+            <p className={theme.text.P_STD + ' my-8 text-rm-grey'}>
+                Our in-house team of strategists, writers, search engine specialists, web designers and developers work with cutting-edge tools and web design techniques - allowing us to build you a supercharged web-based marketing asset. Our web design agency services include:
+            </p>
+            <ul className={'md:flex md:flex-wrap md:gap-[5%]'}>
+                <li className={'md:w-[45%] text-21px leading-[26px] mb-5 text-rm-grey'}>
+                    Prospect and Industry Research
+                </li>
+                <li className={'md:w-[45%] text-21px leading-[26px] mb-5 text-rm-grey'}>
+                    QA and Performance Testing
+                </li>
+                <li className={'md:w-[45%] text-21px leading-[26px] mb-5 text-rm-grey'}>
+                   Messaging and Copy Writing
+                </li>
+                <li className={'md:w-[45%] text-21px leading-[26px] mb-5 text-rm-grey'}>
+                    First Page Google Rankings
+                </li>
+                <li className={'md:w-[45%] text-21px leading-[26px] mb-5 text-rm-grey'}>
+                   Sitemap and Architecture Planning
+                </li>
+                <li className={'md:w-[45%] text-21px leading-[26px] mb-5 text-rm-grey'}>
+                    Analytics and Marketing Integrations
+                </li>
+            </ul>
+        </div>
+    </div>
+</Container>
+</Section>
