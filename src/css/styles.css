@@ -21,6 +21,10 @@
     }
 }
 
+@layer components{
+
+}
+
 
 /* Form Styling */
 .form-one-col .form-group {
@@ -72,3 +76,24 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
         -webkit-backdrop-filter: saturate(150%) blur(1px);
     }
 }
+
+/* Venn Diagrams */
+venn-diagram {
+    --venn-circle-stroke: #FFFFFF;
+    --venn-circle-stroke-width: 15;
+    --venn-circle-fill-opacity: 1;
+    --venn-circle-a-fill:#A9CF38;
+    --venn-circle-b-fill:#24b6bf;
+
+    --venn-intersection-a-b-fill: purple;
+    --venn-intersection-a-b-opacity:1; 
+    --venn-intersection-a-b-fill-opacity:1;
+    --venn-intersection-a-b-stroke: white;
+    --venn-intersection-a-b-stroke-width: 15px;
+
+    --venn-label-font-family: 'stratos';
+    --venn-label-color: #FFFFFF;
+    --venn-label-size: 2.5rem;
+    --venn-label-font-weight: bold;
+    --venn-label-line-height:2.75rem;
+  }

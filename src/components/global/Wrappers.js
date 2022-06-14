@@ -1,25 +1,16 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image";
 
-export const Container = (props) => {
-    let containerClass = props.slim ? `max-w-[${props.maxWidth}] mx-auto relative` : "container";
-    return (
-        <div 
-        className={containerClass}>
-            {props.children}
-        </div>
-    )
-}
-
 export const Section = (props) => {
 
     const defaults = {
-        padding:  'py-12 px-0',
-        bgColor:  'bg-white',
-        position: 'relative',
-        id: '',
-        classes: ''
+        padding:  `py-12 px-0`,
+        bgColor:  `bg-white`,
+        position: `relative`,
+        id: ``,
+        classes: ``
     }
+    
     let padding         =  props.settings.padding ? props.settings.padding : defaults.padding;
     let backgroundColor =  props.settings.bgColor ? props.settings.bgColor : defaults.bgColor;
     let position        =  props.settings.position ? props.settings.position : defaults.position;
@@ -36,17 +27,27 @@ export const Section = (props) => {
     )
 }
 
+export const Container = (props) => {
+    let containerClass = props.size == `slim` ? `container xl:max-w-[1120px] relative` : `container`;
+    
+    return (
+        <div className={containerClass}>
+            {props.children}
+        </div>
+    )
+}
+
 export const BackgroundImage = (props) => {
 
     const defaults = {
-        position: 'absolute',
-        bgSize: 'bg-cover',
-        top: 0,
-        left: 0,
-        width: 'w-full',
-        height: 'h-full',
-        bgRepeat: 'bg-no-repeat',
-        id: ''
+        position: `absolute`,
+        bgSize: `bg-cover`,
+        top: `top-0`,
+        left: `left-0`,
+        width: `w-full`,
+        height: `h-full`,
+        bgRepeat: `bg-no-repeat`,
+        id: ``
     }
     
     let position  =  props.position ? props.position : defaults.position;
@@ -66,3 +67,5 @@ export const BackgroundImage = (props) => {
         </div>
     )
 }
+
+
