@@ -68,7 +68,12 @@ export const query = graphql`
                 }
                 componentFlexibleMedia {
                   image {
-                    gatsbyImage(width: 393, formats: AUTO)
+                    gatsbyImage(width: 1120, formats: AUTO)
+                  }
+                }
+                responsiveImages {
+                  mobile {
+                    gatsbyImage(width: 365, formats: AUTO)
                   }
                 }
               }
