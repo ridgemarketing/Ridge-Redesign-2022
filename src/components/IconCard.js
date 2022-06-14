@@ -3,7 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
 const IconCard = (props) => {
-    let wrapperClasses  = ``;
+    let wrapperClasses  = `flex w-full md:w-[48%] lg:w-[31%] mb-12 md:mb-16 lg:mb-32`;
     let imageClasses    = ``;
     let marginClasses   = `ml-6 `;
     
@@ -11,10 +11,14 @@ const IconCard = (props) => {
         let stacked = 'flex-col ';
         marginClasses = ` `;
     }
+    if (props.twoCol){
+        wrapperClasses = `flex w-full md:w-[48%] mb-12 md:mb-16 lg:mb-32`;
+    }
+
     return(
         <>
            {/* loop items */}
-           <div className={ stacked + 'flex w-full md:w-[48%] lg:w-[31%] mb-12 md:mb-16 lg:mb-32'}>
+           <div className={ stacked + wrapperClasses }>
                     <GatsbyImage 
                             image={ props.image } 
                             alt={ props.image.alt } 
