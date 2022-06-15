@@ -33,38 +33,38 @@ const FullWidthTextImage = (props) => {
         {
             "text": 'Complete an extensive audit of your existing content',
             "heading": `We're your extended team`,
-            "image": content.componentFlexibleMedia.image,
-            "iconType": 'blah'
+            "image": image,
+            "iconType": 'icon'
         },
         {
             "text": 'Create a content calendar that outlines campaign activities',
             "heading": `A full service agency`,
             "image": image,
-            "iconType": 'blah'
+            "iconType": 'icon'
         },
         {
             "text": 'Develop meaningful digital content to engage your audience',
             "heading": `with a customized approach`,
             "image": image,
-            "iconType": 'blah'
+            "iconType": 'icon'
         },
         {
             "text": 'Complete an extensive audit of your existing content',
             "heading": `always nimble, always hungry`,
             "image": image,
-            "iconType": ''
+            "iconType": 'icon'
         },
         {
             "text": 'Create a content calendar that outlines campaign activities',
             "heading": 'data-driven, results oriented',
             "image": image,
-            "iconType": 'blah'
+            "iconType": 'icon'
         },
         {
             "text": 'Develop meaningful digital content to engage your audience',
             "heading": `and your long-term partner`,
             "image": image,
-            "iconType": 'blah'
+            "iconType": 'icon'
         }
 ]
 
@@ -92,9 +92,10 @@ const FullWidthTextImage = (props) => {
                     <span className={theme.text.H4}>When you partner with Ridge, we will:</span>
                 </p>
                 </div>
-                <div className={`md:grid md:grid-cols-2 ${cols} gap-x-5 gap-y-8 max-w-[1100px] mx-auto mt-6 lg:mt-12`}>
-                    {li_items.map(item => {
 
+                <div className={`md:grid md:grid-cols-2 ${cols} gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12`}>
+                    {li_items.map(item => {
+                        
                         // const icon = 
                         // item.iconType == 'icon'
                         //     ? 

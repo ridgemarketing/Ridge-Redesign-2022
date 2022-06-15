@@ -11,7 +11,7 @@ const IconTextBoxStack = (props) => {
             <span className={'block w-[138px] border-t-2 border-t-rm-green mb-7'}>
             </span>;
                                        
-    if (iconType == 'icon') {
+    if (iconType == 'icon' && content.image) {
         component = 
         <div className={"mb-8 text-center md:text-left lg:mx-0 min-h-[108px]"}>
             <GatsbyImage image={content.image} />
@@ -24,7 +24,7 @@ const IconTextBoxStack = (props) => {
         </div> 
     }                   
             return (
-            <div className={'md:px-4 py-4'}>
+            <div className={'py-4'}>
                 {component}
                 <h5 className={theme.text.H5}>{content.heading}</h5>        
                 <p className={`mt-4 text-center md:text-left`}>{content.text}</p>
