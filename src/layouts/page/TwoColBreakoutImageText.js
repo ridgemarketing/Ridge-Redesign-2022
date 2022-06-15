@@ -25,21 +25,13 @@ const TwoColTextBreakoutImage = (props) => {
                             {content.body}
                         </p>
                         <ul>
-                            <li>
-                                item for the li
-                            </li>
-                            <li>
-                                item for the li
-                            </li>
-                            <li>
-                                item for the li
-                            </li>
-                            <li>
-                                item for the li
-                            </li>
-                            <li>
-                                item for the li
-                            </li>
+                            {content.list.map(item => {
+                                    return (
+                                        <li>
+                                           {item.text}
+                                        </li>                                       
+                                    )
+                                })}
                         </ul>
                     </div>
                 </div>
