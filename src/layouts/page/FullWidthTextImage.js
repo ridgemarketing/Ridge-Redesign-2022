@@ -1,8 +1,9 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import IconTextBoxStack from '../../components/IconTextBoxStack'
+import IconTextBoxFlex from '../../components/IconTextBoxFlex'
 
 //USE THIS SECTION FOR TESTING SECTION STYLES
 //any code put on this page will render to /sample-page
@@ -17,9 +18,45 @@ const FullWidthTextImage = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     const image = getImage(content.componentFlexibleMedia.image);
+    const orientation = 'flex';
 
-    let threeCols = false;
+    const threeCols = true;
     const cols = threeCols ? 'lg:grid-cols-3' : '';
+    const wrapperClasses = orientation == 'stacked' ? `md:grid md:grid-cols-2 ${cols} gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
+
+    useEffect(() => {
+        window.addEventListener('load', function(){
+          if ( document.getElementsByClassName('threeColIconsText').length > 0 ){
+              const allimg  = document.getElementsByClassName('threeColIconsText')[0].getElementsByTagName('img');
+              const allText = document.getElementsByClassName('threeColIconsText')[0].getElementsByClassName('icon-block-title');
+  
+              let heights = [];
+              let currentHeight;
+  
+              for ( let i = 0; allText.length > i; i++ ){
+                heights.push(allText[i].clientHeight);
+              }
+  
+              for ( let i = 0; heights.length > i; i++ ){
+                currentHeight = heights[i];
+                  for ( let z = 0; allText.length > z; z++ ){
+                    if(allText[z].clientHeight < currentHeight){
+                      allText[z].style.height = currentHeight + 'px';
+                    }
+                  }
+              }
+  
+              for ( let i = 0; allText.length > i; i++ ){
+                  if( allText[i].clientHeight > allimg[i].clientHeight ){
+                      allimg[i].style.marginTop = ( allText[i].clientHeight - allimg[i].clientHeight )/2 + 'px' ;
+                  }
+                  if( allText[i].clientHeight < allimg[i].clientHeight){
+                      allText[i].parentNode.style.height = allimg[i].clientHeight + 'px';
+                  }
+              }
+          }
+        })
+    });
 
     const li_items = [
         {
@@ -78,8 +115,11 @@ const FullWidthTextImage = (props) => {
                 </p>
                 </div>
 
-                <div className={`md:grid md:grid-cols-2 ${cols} gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12`}>
-                    {li_items.map(item => <IconTextBoxStack content={item} />)}
+                {/* className={`md:grid md:grid-cols-2 ${cols} gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12`} */}
+                <div className={wrapperClasses}>
+                    {li_items.map(item => {
+                        return (orientation == 'stacked') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex twoCol={false} content={item}/>;
+                    })}
                 </div>
             </Container>
         </Section>          

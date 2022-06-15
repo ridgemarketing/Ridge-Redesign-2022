@@ -5,7 +5,7 @@ import { theme } from "../static/theme"
 const IconTextBoxStack = (props) => {
     const content = props.content;
     const iconType = content.iconType;
-    
+
     let component =  <span className={'block w-[138px] border-t-2 border-t-rm-green mb-7'}></span>;
                                        
     if (iconType == 'icon') {
@@ -23,7 +23,7 @@ const IconTextBoxStack = (props) => {
             return (
             <div className={'py-4'}>
                 {component}
-                <h5 className={theme.text.H5}>{content.heading}</h5>        
+                <h5 className={theme.text.H5 + ` text-center md:text-left`}>{content.heading}</h5>        
                 <p className={`mt-4 text-center md:text-left`}>{content.text}</p>
             </div>
             )
