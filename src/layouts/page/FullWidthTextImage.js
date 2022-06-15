@@ -17,18 +17,10 @@ const FullWidthTextImage = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     const image = getImage(content.componentFlexibleMedia.image);
-    // const mobileImage = getImage(content.responsiveImages.mobile);
-    // let logo = image ? <GatsbyImage image={image} alt={content.imageAlt} /> : <></>;
+
     let threeCols = false;
     const cols = threeCols ? 'lg:grid-cols-3' : '';
-    // const images = mobileImage 
-    // ? 
-    //     <>
-    //     <GatsbyImage className={'md:hidden'} image={mobileImage} alt={content.imageAlt} />
-    //     <GatsbyImage className={'hidden md:block mx-auto'} image={image} alt={content.imageAlt} />
-    //     </>
-    // :
-    //     <GatsbyImage image={image} alt={content.imageAlt} />; 
+
     const li_items = [
         {
             "text": 'Complete an extensive audit of your existing content',
@@ -69,13 +61,6 @@ const FullWidthTextImage = (props) => {
 ]
 
         return (
-            // <Section settings={settings}>
-            // <Container>
-            //     <div className={'max-w-[1120px] mx-auto text-center'}>
-            //         {images}
-            //     </div>
-            // </Container>
-            // </Section>  
         <Section settings={settings}>
             <Container>
                 <div>
@@ -94,30 +79,7 @@ const FullWidthTextImage = (props) => {
                 </div>
 
                 <div className={`md:grid md:grid-cols-2 ${cols} gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12`}>
-                    {li_items.map(item => {
-                        
-                        // const icon = 
-                        // item.iconType == 'icon'
-                        //     ? 
-                        //         <div className={"mb-8 text-center md:text-left lg:mx-0 min-h-[108px]"}>
-                        //             <GatsbyImage image={item.image} />
-                        //         </div> 
-                        //     :  
-                        //     <>
-                        //         <div className={"mb-8 text-center md:text-left lg:mx-0 min-h-[78px]"}></div>    
-                        //         <span className={'block w-[138px] border-t-2 border-t-rm-green mb-7'}>
-                        //         </span>  
-                        //     </>   
-                                
-                        // return (
-                        // <div className={'md:px-4 py-3'}>
-                        //     {icon}
-                        //     <h5 className={theme.text.H5}>{item.heading}</h5>        
-                        //     <p className={`mt-4 text-center md:text-left`}>{item.text}</p>
-                        // </div>
-                        // )
-                        return <IconTextBoxStack content={item} />
-                    })}
+                    {li_items.map(item => <IconTextBoxStack content={item} />)}
                 </div>
             </Container>
         </Section>          

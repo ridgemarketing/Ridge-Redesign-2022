@@ -21,7 +21,6 @@ const FullWidthImage = (props) => {
     return (
         <Section settings={settings}>
             <Container>
-                {/* possible to control image size without using parent div????  */}
                 <div className={'max-w-[1120px] mx-auto'}> 
                     {image}
                 </div>
