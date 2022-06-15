@@ -30,7 +30,7 @@ const FullWidthTextImage = (props) => {
         return (
             <Section settings={settings}>
             <Container>
-                <div className={'max-w-[1120px] mx-auto'}>
+                <div className={'max-w-[1120px] mx-auto text-center'}>
                     {images}
                 </div>
             </Container>
