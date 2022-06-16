@@ -13,19 +13,6 @@ const ThreeColNumberedText = (props) => {
     const cols = content.threeCols ? 'lg:grid-cols-3' : '';
     const wrapperClasses = (content.orientation == 'stacked') ? `md:grid md:grid-cols-2 ${cols} gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
 
-    // const textBlocks = content.list.map(item => {
-    //     const image = getImage(item.image)
-    //     return (
-    //         <div className={'md:px-4 py-3'}>
-    //             <div className={"text-center md:text-left lg:mx-0 min-h-[54px]"}>
-    //                 <GatsbyImage image={image} />
-    //             </div>              
-    //             <p className={`mt-4 text-center md:text-left`}>{item.text}</p>
-    //         </div>
-    //     )
-    // })
-
-
     return (
         <Section settings={settings}>
             <Container>
