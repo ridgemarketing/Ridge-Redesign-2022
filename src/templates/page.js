@@ -85,38 +85,6 @@ const WpPage = ({ data }) =>{
           }  
 
         }
-
-        //three col icon text height
-        if ( document.getElementsByClassName('threeColIconsText').length > 0 ){
-            const allimg  = document.getElementsByClassName('threeColIconsText')[0].getElementsByTagName('img');
-            const allText = document.getElementsByClassName('threeColIconsText')[0].getElementsByClassName('icon-block-title');
-
-            let heights = [];
-            let currentHeight;
-
-            for ( let i = 0; allText.length > i; i++ ){
-              heights.push(allText[i].clientHeight);
-            }
-
-            for ( let i = 0; heights.length > i; i++ ){
-              currentHeight = heights[i];
-                for ( let z = 0; allText.length > z; z++ ){
-                  if(allText[z].clientHeight < currentHeight){
-                    allText[z].style.height = currentHeight + 'px';
-                  }
-                }
-            }
-
-            for ( let i = 0; allText.length > i; i++ ){
-                if( allText[i].clientHeight > allimg[i].clientHeight ){
-                    allimg[i].style.marginTop = ( allText[i].clientHeight - allimg[i].clientHeight )/2 + 'px' ;
-                }
-                if( allText[i].clientHeight < allimg[i].clientHeight){
-                    allText[i].parentNode.style.height = allimg[i].clientHeight + 'px';
-                }
-            }
-        }
-
       })
   });
 
