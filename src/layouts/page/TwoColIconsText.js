@@ -15,5 +15,4 @@ const TwoColIconsText = (props) => {
         </Section>
     )
 }
-
 export default TwoColIconsText

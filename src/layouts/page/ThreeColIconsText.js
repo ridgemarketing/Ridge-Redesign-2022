@@ -1,9 +1,9 @@
-// import React from "react" 
-// import { graphql } from "gatsby"
-// import { GatsbyImage } from "gatsby-plugin-image"
-// import { theme } from '../../static/theme.js'
-// import { Container, Section } from '../../components/global/Wrappers.js'
-// import { IconCard } from `../../components/ResultItems.js`
+import React from "react" 
+import { graphql } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
+import { theme } from '../../static/theme.js'
+import { Container, Section } from '../../components/global/Wrappers.js'
+import { IconCard } from `../../components/ResultItems.js`
 
 // const ThreeColIconsText = ({ props }) => {
     
@@ -76,9 +76,13 @@
 //                     </>
 //                 }
 
-//                 <div className="flex w-full flex-wrap justify-between threeColIconsText">
-//                     <IconCard
-//                         orientation     = { content.col.stacked }
+                <div className="flex w-full flex-wrap justify-between threeColIconsText">
+                    <IconCard
+                        heading         = { content.col.heading }
+                        bodyText        = { content.col.bodyText }
+                        image           = { image }
+                    />
+                </div>
 
 //                         heading         = { content.col.heading }
 //                         bodyText        = { content.col.bodyText }

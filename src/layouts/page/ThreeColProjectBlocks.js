@@ -4,7 +4,7 @@ import { Link } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 
-export const ThreeColImageGrid_Loop = (props) =>{
+export const ThreeColProjectBlocks_Loop = (props) =>{
 
     return(
         <>
@@ -31,7 +31,7 @@ export const ThreeColImageGrid_Loop = (props) =>{
     )
 }
 
-const ThreeColImageGrid = ({ props }) => {
+const ThreeColProjectBlocks = ({ props }) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -56,7 +56,7 @@ const ThreeColImageGrid = ({ props }) => {
                 }
 
                 <div className="flex w-full flex-wrap justify-between">
-                    <ThreeColImageGrid_Loop />
+                    <ThreeColProjectBlocks_Loop />
                 </div>
 
                 {content.subHeading &&
@@ -90,4 +90,4 @@ const ThreeColImageGrid = ({ props }) => {
         </Section>
     )
 }
-export default ThreeColImageGrid;
+export default ThreeColProjectBlocks;
