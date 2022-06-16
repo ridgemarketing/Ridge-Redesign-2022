@@ -9,36 +9,35 @@ const IconTextBoxFlex = (props) => {
 
     const iconElement = useRef();
     const headingElement = useRef();
-    const [height, setHieght] = useState();
 
     useEffect(() => {
-        const heading = headingElement.current;
-        const icon = iconElement.current;
-
-        const headingHeight = heading.clientHeight;
-        const iconHeight = icon.clientHeight;
-
-        console.log(headingHeight);
-        let tallest = props.handler(headingHeight);
-        setHieght(tallest);
-
-        let difference = iconHeight - headingHeight;
-
-        if (difference > 0) {
-            var mt = difference /2;
-            heading.style.marginTop = mt + 'px';
+        const alignIconCards = () => {
+            const heading = headingElement.current;
+            const icon = iconElement.current;
+    
+            const headingHeight = heading.scrollHeight;
+            const iconHeight = icon.clientHeight;
+    
+            console.log("head: " + headingHeight);
+            // console.log("icon: " + iconHeight);
+    
+            let difference = iconHeight - headingHeight;
+    
+            if (difference > 0) {
+                var mt = difference / 2;
+                heading.style.marginTop = mt + 'px';
+            }
+            heading.style.marginBottom = (mt + 6) + 'px';
         }
-            heading.style.minHeight = '40px';
-        // heading.style.marginBottom = mt + 'px';
-    },[])
+
+        window.addEventListener('resize', alignIconCards);
+
+        return () => window.removeEventListener('resize', alignIconCards);
+    }, [])
   
     if (props.threeCol){
         wrapperClasses += ` lg:w-[31%]`;
     }
-
-    //two refs --> icon & heading
-    //calculate the height of the icon and the heading
-    // if the difference is > 0, divide by two and use as mt
 
     return(
         <>
@@ -53,10 +52,12 @@ const IconTextBoxFlex = (props) => {
                 </div>
                 <div className="flex flex-col">
                     <div className={ marginClasses + `flex items-center ml-6`}>
+                        <div>
                         <p  ref={headingElement}
                             className={ theme.text['H4'] + 'icon-block-title flex items-center' }>
                             { props.content.heading }
                         </p>
+                        </div>
                     </div>
                     <div className={ marginClasses + `mt-4`}>
                         <p 
