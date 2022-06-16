@@ -18,9 +18,6 @@ const IconTextBoxFlex = (props) => {
             const headingHeight = heading.scrollHeight;
             const iconHeight = icon.clientHeight;
     
-            console.log("head: " + headingHeight);
-            // console.log("icon: " + iconHeight);
-    
             let difference = iconHeight - headingHeight;
     
             if (difference > 0) {
