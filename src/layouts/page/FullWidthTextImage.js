@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React, { useEffect, useState } from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
@@ -19,6 +19,14 @@ const FullWidthTextImage = (props) => {
     const settings = props.layoutData.layoutSettings;
     const image = getImage(content.componentFlexibleMedia.image);
     const orientation = 'flex';
+    const [tallest, setTallest] = useState(0);
+
+    const handleHeight = (height) => {
+        if (height > tallest) {
+            setTallest(height);
+        }
+        return tallest;
+    }
 
     const threeCols = true;
     const cols = threeCols ? 'lg:grid-cols-3' : '';
@@ -84,7 +92,7 @@ const FullWidthTextImage = (props) => {
                 {/* className={`md:grid md:grid-cols-2 ${cols} gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12`} */}
                 <div className={wrapperClasses}>
                     {li_items.map(item => {
-                        return (orientation == 'stacked') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex threeCol={threeCols} content={item}/>;
+                        return (orientation == 'stacked') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex handler={handleHeight} threeCol={threeCols} content={item}/>;
                     })}
                 </div>
             </Container>

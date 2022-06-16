@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react"
+import React, { useRef, useEffect, useState } from "react"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
 
@@ -9,6 +9,7 @@ const IconTextBoxFlex = (props) => {
 
     const iconElement = useRef();
     const headingElement = useRef();
+    const [height, setHieght] = useState();
 
     useEffect(() => {
         const heading = headingElement.current;
@@ -17,14 +18,18 @@ const IconTextBoxFlex = (props) => {
         const headingHeight = heading.clientHeight;
         const iconHeight = icon.clientHeight;
 
+        console.log(headingHeight);
+        let tallest = props.handler(headingHeight);
+        setHieght(tallest);
+
         let difference = iconHeight - headingHeight;
 
         if (difference > 0) {
             var mt = difference /2;
             heading.style.marginTop = mt + 'px';
         }
-
-        heading.style.marginBottom = mt + 'px';
+            heading.style.minHeight = '40px';
+        // heading.style.marginBottom = mt + 'px';
     },[])
   
     if (props.threeCol){
