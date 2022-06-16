@@ -10,9 +10,10 @@ import { venn } from 'venny'
 const WpPage = ({ data }) =>{
 
   const [vslide, setVslide] = useState(0);
-  const firstSlide = useRef(null);
-  let slideHeight = 650;
-  let totalHeight = 0;
+  const firstSlide  = useRef(null);
+  let slideHeight   = 500;
+  let totalHeight   = slideHeight;
+  let scrollPoints  = []
 
   const vslides = [
     {
@@ -27,19 +28,33 @@ const WpPage = ({ data }) =>{
     }
   ]
 
-  for (let i =0; vslides.length + 1 > i; i++){
+  for (let i = 0; vslides.length > i; i++){
+    scrollPoints.push(totalHeight);
     totalHeight = totalHeight + slideHeight;
   }
-  
 
   onscroll = () => {
-    if( firstSlide.current.offsetTop > slideHeight ){
-      slideHeight = slideHeight + slideHeight;
-      setVslide( 1 );
+
+   for( let i =0; scrollPoints.length > i; i++ ){
+    if ( firstSlide.current.offsetTop > scrollPoints[i] ){
+        console.log('greater than', scrollPoints[i], i);
+        setVslide(i);
     }else{
-      console.log(vslide);
-      console.log(firstSlide.current.offsetTop);
-    }  
+        console.log('less than', scrollPoints[i], i);
+        setVslide(i);
+    }
+   }
+
+    if ( firstSlide.current.offsetTop > slideHeight ){
+      setVslide(1);
+    }
+    if ( firstSlide.current.offsetTop < slideHeight ) { 
+      setVslide(0);
+    }
+      // console.log(vslide);
+      // console.log(firstSlide.current.offsetTop);
+      // console.log(scrollPoints);
+
   }
 
   useEffect(() => {

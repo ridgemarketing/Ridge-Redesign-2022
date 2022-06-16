@@ -78,8 +78,6 @@ const ThreeColIconsText = ({ props }) => {
 
                 <div className="flex w-full flex-wrap justify-between threeColIconsText">
                     <IconCard
-                        orientation     = { content.col.stacked }
-
                         heading         = { content.col.heading }
                         bodyText        = { content.col.bodyText }
                         image           = { image }
