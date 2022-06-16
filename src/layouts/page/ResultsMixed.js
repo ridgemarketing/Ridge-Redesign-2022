@@ -6,7 +6,7 @@ import { Container, Section } from '../../components/global/Wrappers.js'
 import { content } from "../../../tailwind.config.js"
 
 
-export const Results_Loop = (props) =>{
+export const ResultsMixed_Loop = (props) =>{
     
     return(
         <>
@@ -61,7 +61,7 @@ export const Results_Loop_Text_Loop = (props) =>{
     )
 }
 
-const Results = ({ props }) => {
+const ResultsMixed = ({ props }) => {
     
     let theSize = content.ResultsSize; //large or small 
     let resultTextSize_Container        = theSize == 'large' ? `large md:w-[48%]` : `small lg:w-[31%] mb-12`;  
@@ -105,4 +105,4 @@ const Results = ({ props }) => {
         </Section>
     )
 }
-export default Results;
+export default ResultsMixed;
