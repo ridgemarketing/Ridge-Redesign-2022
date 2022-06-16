@@ -3,37 +3,7 @@ import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
-
-export const ThreeColIconsText_Loop = ( props ) => {
-
-    return(
-        <>
-           {/* loop items */}
-           <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12 md:mb-16 lg:mb-32">
-                    <GatsbyImage 
-                            image={ image } 
-                            alt={ content.image.alt } 
-                            className={ `flex self-start object-contain w-[55px] h-[55px]` } 
-                    /> 
-                    <div className="flex flex-col">
-                        <div className="flex items-center ml-6">
-                            <p 
-                                className={ theme.text['H4'] + 'icon-block-title flex items-center' }>
-                                { content.col.heading }
-                            </p>
-                        </div>
-                        <div className="ml-6 mt-4">
-                            <p 
-                                className={ theme.text['FOOTER'] }>
-                                { content.col.bodyText }
-                            </p>
-                        </div>
-                    </div>  
-                </div>
-            {/* end loop */}
-        </>
-    )
-}
+import { IconCard } from `../../components/ResultItems.js`
 
 const ThreeColIconsText = ({ props }) => {
     
@@ -107,7 +77,11 @@ const ThreeColIconsText = ({ props }) => {
                 }
 
                 <div className="flex w-full flex-wrap justify-between threeColIconsText">
-                    <ThreeColIconsText_Loop/>
+                    <IconCard
+                        heading         = { content.col.heading }
+                        bodyText        = { content.col.bodyText }
+                        image           = { image }
+                    />
                 </div>
 
                 {content.subHeading &&
