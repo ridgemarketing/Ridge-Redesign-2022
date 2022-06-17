@@ -46,11 +46,9 @@ const RelatedBlogArticles = ({ props }) => {
                         <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12 md:mb-16 lg:mb-32">
                            
                             <BlogCard
-                                heading = { `Elevate Your Next Content Marketing Campaign Today. Download our Field Guide` }
-                                link = {
-                                        url = ''
-                                }
-                                image = { `` }
+                                heading = { ` ` }
+                                link    = { ` `}
+                                image   = { ` ` }
                             />
 
                         </div>

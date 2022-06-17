@@ -35,6 +35,12 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: "gatsby-plugin-anchor-links",
+      options: {
+        duration: 0 
+      }
+    },
     'gatsby-plugin-postcss',
     `gatsby-plugin-sitemap`,
     `gatsby-plugin-image`,

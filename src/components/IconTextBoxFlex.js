@@ -9,7 +9,7 @@ const IconTextBoxFlex = (props) => {
 
     const iconElement = useRef();
     const headingElement = useRef();
-    const [height, setHieght] = useState();
+    const [height, setHeight] = useState();
 
     useEffect(() => {
         const heading = headingElement.current;
@@ -20,7 +20,7 @@ const IconTextBoxFlex = (props) => {
 
         console.log(headingHeight);
         let tallest = props.handler(headingHeight);
-        setHieght(tallest);
+        setHeight(tallest);
 
         let difference = iconHeight - headingHeight;
 

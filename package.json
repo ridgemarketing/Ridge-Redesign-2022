@@ -20,17 +20,11 @@
     "url": "https://github.com/ridgemarketing/Ridge-Redesign-2022/issues"
   },
   "homepage": "https://github.com/ridgemarketing/Ridge-Redesign-2022#readme",
-  "dependencies": { 
-    "@fortawesome/fontawesome-svg-core": "^6.1.1",
-    "@fortawesome/pro-duotone-svg-icons": "^6.1.1",
-    "@fortawesome/pro-light-svg-icons": "^6.1.1",
-    "@fortawesome/pro-regular-svg-icons": "^6.1.1",
-    "@fortawesome/pro-solid-svg-icons": "^6.1.1",
-    "@fortawesome/pro-thin-svg-icons": "^6.1.1",
-    "@fortawesome/react-fontawesome": "^0.1.18",
+  "dependencies": {
     "@upsetjs/react": "^1.11.0",
     "formik": "^2.2.9",
     "gatsby": "^4.14.0",
+    "gatsby-plugin-anchor-links": "^1.2.1",
     "gatsby-plugin-gravity-forms": "^3.0.0",
     "gatsby-plugin-image": "^2.15.0",
     "gatsby-plugin-sharp": "^4.15.0",

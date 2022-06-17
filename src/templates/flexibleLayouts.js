@@ -36,74 +36,74 @@ const getFlex = ({ data }) => {
 
 export default getFlex
 
-export const query = graphql`
-  query FlexLayoutById( $id: String ){
-    wpPage(id: {eq: $id}) {
-      id
-      uri
-      title
-      content
-      flexibleLayouts {
-        layouts {
-          ... on WpPage_Flexiblelayouts_Layouts_FullWidthTextImage {
-            fieldGroupName
-            layoutFullWidthTextImage {
-              layoutContent {
-                body
-                componentButtonGroup {
-                  componentButton {
-                    colors {
-                      fieldGroupName
-                      hover
-                      resting
-                    }
-                    icon
-                    link {
-                      target
-                      title
-                      url
-                    }
-                    style
-                  }
-                }
-                componentFlexibleMedia {
-                  image {
-                    gatsbyImage(width: 55, formats: AUTO)
-                  }
-                }
-                responsiveImages {
-                  mobile {
-                    gatsbyImage(width: 365, formats: AUTO)
-                  }
-                }
-              }
-              layoutSettings {
-                anchorId
-                backgroundColor
-                classes
-                id
-                padding {
-                  bottom
-                  top
-                }
-              }
-            }
-          }
-          ... on WpPage_Flexiblelayouts_Layouts_TwoColList {
-            fieldGroupName
-            layoutTwoColList {
-              fieldGroupName
-              layoutContent {
-                fieldGroupName
-                list {
-                  fieldGroupName
-                  listItem
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-` 
+// export const query = graphql`
+//   query FlexLayoutById( $id: String ){
+//     wpPage(id: {eq: $id}) {
+//       id
+//       uri
+//       title
+//       content
+//       flexibleLayouts {
+//         layouts {
+//           ... on WpPage_Flexiblelayouts_Layouts_FullWidthTextImage {
+//             fieldGroupName
+//             layoutFullWidthTextImage {
+//               layoutContent {
+//                 body
+//                 componentButtonGroup {
+//                   componentButton {
+//                     colors {
+//                       fieldGroupName
+//                       hover
+//                       resting
+//                     }
+//                     icon
+//                     link {
+//                       target
+//                       title
+//                       url
+//                     }
+//                     style
+//                   }
+//                 }
+//                 componentFlexibleMedia {
+//                   image {
+//                     gatsbyImage(width: 55, formats: AUTO)
+//                   }
+//                 }
+//                 responsiveImages {
+//                   mobile {
+//                     gatsbyImage(width: 365, formats: AUTO)
+//                   }
+//                 }
+//               }
+//               layoutSettings {
+//                 anchorId
+//                 backgroundColor
+//                 classes
+//                 id
+//                 padding {
+//                   bottom
+//                   top
+//                 }
+//               }
+//             }
+//           }
+//           ... on WpPage_Flexiblelayouts_Layouts_TwoColList {
+//             fieldGroupName
+//             layoutTwoColList {
+//               fieldGroupName
+//               layoutContent {
+//                 fieldGroupName
+//                 list {
+//                   fieldGroupName
+//                   listItem
+//                 }
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// ` 
