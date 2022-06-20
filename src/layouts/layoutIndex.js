@@ -1,16 +1,13 @@
 import React from 'react'
-import FullWidthTextImage from './page/FullWidthTextImage';
-import TwoColList from './page/TwoColList';
-import TwoColImageText from './page/TwoColImageText';
-import FullContainerImage from './page/FullContainerImage'
-import FullContainerImageTextBlock from './page/FullContainerImageTextBlock'
-import ThreeColumnTextBlock from './page/ThreeColumnTextBlocks'
-import TextBlock from './page/TextBlock'
-import HomeHero from './page/HomeHero'
+import ContactFourSquare from "./page/ContactFourSquare"
+import FeaturedProjectsCarousel from "./page/FeaturedProjectsCarousel"
+import FeaturedProjectsGrid from "./page/FeaturedProjectsGrid"
+import FullWidthImage from "./page/FullWidthImage"
+import FullWidthImageText from "./page/FullWidthImageText"
 
 let Layouts = {};
 
-Layouts['TwoColList'] = TwoColList;
+Layouts['TwoColList'] = ;
 Layouts['FullWidthTextImage'] = FullWidthTextImage;
 Layouts['TwoColImageText'] = TwoColImageText;
 Layouts['FullContainerImage'] = FullContainerImage;
