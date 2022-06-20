@@ -14,7 +14,7 @@ export default WpPost;
 
 
 export const query = graphql`
-  query PageById( $id: String ){
+  query PostById( $id: String ){
     wpPost(id: {eq: $id}) {
       id
       uri

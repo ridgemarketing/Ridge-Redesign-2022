@@ -22,7 +22,7 @@ export const Quote_Loop = (props) =>{
     )
 }
 
-const Quote = ({ props }) => {
+const Quotes = ( props ) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -138,4 +138,4 @@ const Quote = ({ props }) => {
         </Section>
     )
 }
-export default Quote
+export default Quotes

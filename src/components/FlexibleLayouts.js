@@ -21,12 +21,17 @@ const FlexibleLayouts = (props) => {
         }
         
         const LayoutToRender = Layouts[subString]
-        layoutsArray.push(<LayoutToRender layoutData={layoutProps} title={title} uri={uri} test={`some testing`} />);
+        layoutsArray.push(<LayoutToRender layoutData={layoutProps} />);
     }
   });
   return (
     <div>
+      <h1>FLEX LAYOUTS</h1>
       {layoutsArray}
+
+      {layouts && 
+        <h1>there are layouts</h1>
+      }
 
     </div>
   )

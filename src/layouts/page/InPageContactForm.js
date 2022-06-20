@@ -1,10 +1,9 @@
 import React, { useRef, useEffect } from "react"
-import { theme } from '../static/theme'
+import { theme } from '../../static/theme'
 import { Formik, Form  } from 'formik'
 import Pristine from 'pristinejs'
 import { Container, Section } from '../../components/global/Wrappers.js'
-
-import { BasicInputs, MultiLineText, SelectInput, FormSubmit}  from '../components/global/Forms'
+import { BasicInputs, MultiLineText, SelectInput, FormSubmit}  from '../../components/global/Forms'
 
 //const sendGridURL = 'https://api.sendgrid.com/v3/mail/send';
 //const sendGridKey = process.env.SENDGRID_API_KEY;

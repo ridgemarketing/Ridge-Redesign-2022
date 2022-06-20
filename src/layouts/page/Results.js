@@ -2,7 +2,7 @@ import React from "react"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { content } from "../../../tailwind.config.js"
-import { ResultItem } from '../../components/ResultItem.js'
+import ResultItem from '../../components/ResultItem.js'
 
 const Results = ({ props }) => {
     
@@ -14,18 +14,18 @@ const Results = ({ props }) => {
     const settings = props.layoutData.layoutSettings;
 
     let theSize = content.ResultsSize; //large or small 
-    let resultTextSize_Container        = theSize == 'large' ? `large md:w-[48%] ` : `small lg:w-[31%] mb-12 `;  
-    let resultTextSize_textSizeLarge    = theSize == 'large' ? theme.text['STATS'] : theme.text['H2'];
+    let resultTextSize_Container        = theSize === 'large' ? `large md:w-[48%] ` : `small lg:w-[31%] mb-12 `;  
+    let resultTextSize_textSizeLarge    = theSize === 'large' ? theme.text['STATS'] : theme.text['H2'];
     let resultTextSize_textSizeSmall;
 
     //three sizes for smaller text sections (Homepage, Work Page, Services Page)
-    if( content.descriptorSize == 'large' ){
+    if( content.descriptorSize === 'large' ){
         resultTextSize_textSizeSmall    = theme.text['H3'];
     }
-    if( content.descriptorSize == 'medium' ){
+    if( content.descriptorSize === 'medium' ){
         resultTextSize_textSizeSmall    = theme.text['H4'];
     }
-    if( content.descriptorSize == 'small' ){
+    if( content.descriptorSize === 'small' ){
         resultTextSize_textSizeSmall    = theme.text['P_STD'];
     }
 
@@ -73,8 +73,6 @@ const Results = ({ props }) => {
                             padding     = { content.results.textPadding }
 
                             container   = { resultTextSize_Container + resultOrientation }
-
-                            caseStudy = { content.results.caseStudy }
 
                         />
                     }

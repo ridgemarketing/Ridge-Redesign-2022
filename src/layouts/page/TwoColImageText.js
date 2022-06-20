@@ -1,9 +1,10 @@
 import React from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import theme from "../../static/theme"
+import { theme } from "../../static/theme"
+import { graphql } from "gatsby"
 
-const TwoColTextBlocks = (props) => {
+const TwoColImageText = (props) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -33,4 +34,51 @@ const TwoColTextBlocks = (props) => {
     )
 }
 
-export default TwoColTextBlocks
+export default TwoColImageText
+
+
+export const query = graphql`
+  fragment TwoColImageTextFragment on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_TwoColImageText {
+        fieldGroupName
+        layoutTwoColImageText {
+          layoutContent {
+            body
+            heading
+            imagePosition
+            componentFlexibleMedia {
+              video
+              type
+              lottie
+              image {
+                gatsbyImage
+              }
+            }
+            componentButton {
+              colors {
+                hover
+                resting
+              }
+              link {
+                target
+                title
+                url
+              }
+              icon
+              style
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

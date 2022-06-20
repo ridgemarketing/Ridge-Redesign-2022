@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import Link from "../../components/global/FlexibleLink"
 import { Section, Container, BackgroundImage } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
+
 //import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 //import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
 
