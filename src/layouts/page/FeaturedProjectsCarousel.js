@@ -2,8 +2,8 @@ import React, { useState } from "react"
 import Link from "../../components/global/FlexibleLink"
 import { Section, Container, BackgroundImage } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+//import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
 
 const FeaturedProjectsCarousel = (props) => {
     const [slide, setSlide] = useState(0);
@@ -19,7 +19,7 @@ const FeaturedProjectsCarousel = (props) => {
 
     const prevSlide = () => {
         let i = slide
-        if (i === 0) {
+        if (i === 0) { 
             setSlide(slides.length - 1)
         } else {
             setSlide(i - 1)
@@ -59,13 +59,13 @@ const FeaturedProjectsCarousel = (props) => {
                                 <div>
                                     {/* <Link link={`/`} classes={theme.buttons.GHOST_STD}></Link> */}
                                 </div>
-                            </div>
+                            </div> 
                             <div className={`w-36 flex bg-rm-pale-grey`}>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={prevSlide}>
-                                   <FontAwesomeIcon icon={faAngleLeft} />
+                                   {/* <FontAwesomeIcon icon={faAngleLeft} /> */}
                                 </button>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={nextSlide}>
-                                <FontAwesomeIcon icon={faAngleRight} />
+                                    {/* <FontAwesomeIcon icon={faAngleRight} /> */}
                                 </button>
                             </div>
                         </div>

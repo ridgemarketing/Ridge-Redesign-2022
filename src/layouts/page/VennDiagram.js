@@ -8,15 +8,15 @@ const vennDiagram = ({ props }) => {
 
         useEffect(() => {
             window.addEventListener('load', function(){
-            if( document.getElementById('shadow-container') ){
-                let shadowRoot_ =  document.getElementById('shadow-container').shadowRoot;
-                let allElements =  shadowRoot_.querySelector('svg').querySelectorAll('g');
-                
-                for(var i =0; allElements.length > i; i++){
-                    allElements[i].style.fillOpacity = '1';
-                    allElements[i].style.opacity = '1';
+                if( document.getElementById('shadow-container') ){
+                    let shadowRoot_ =  document.getElementById('shadow-container').shadowRoot;
+                    let allElements =  shadowRoot_.querySelector('svg').querySelectorAll('g');
+                    
+                    for(var i =0; allElements.length > i; i++){
+                        allElements[i].style.fillOpacity = '1';
+                        allElements[i].style.opacity = '1';
+                    }
                 }
-            }
             })
         });
 

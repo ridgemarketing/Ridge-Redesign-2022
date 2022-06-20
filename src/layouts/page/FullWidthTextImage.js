@@ -1,39 +1,103 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
+import IconTextBoxStack from '../../components/IconTextBoxStack'
+import IconTextBoxFlex from '../../components/IconTextBoxFlex'
 
 //USE THIS SECTION FOR TESTING SECTION STYLES
 //any code put on this page will render to /sample-page
+
+
+// <-------------------------------------------------->
+// <--------------- TESTING SECTION ------------------>
+// <-------------------------------------------------->
 
 const FullWidthTextImage = (props) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    const image = getImage(content.componentFlexibleMedia.image)
+    const image = getImage(content.componentFlexibleMedia.image);
+    const orientation = 'flex';
+    const [tallest, setTallest] = useState(0);
 
+    const handleHeight = (height) => {
+        if (height > tallest) {
+            setTallest(height);
+        }
+        return tallest;
+    }
 
-    return (
-        <Section settings={settings} classes={'2xl:max-w-[1920px] 2xl:mx-auto'}>
-            <div className={'xl:absolute xl:left-[-202px] px-6 order-2 mt-16 xl:mt-0 mx-auto xl:mx-0'}>
-            <GatsbyImage image={image}/>
-            </div>
+    const threeCols = true;
+    const cols = threeCols ? 'lg:grid-cols-3' : '';
+    const wrapperClasses = orientation == 'stacked' ? `md:grid md:grid-cols-2 ${cols} gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
+
+    const li_items = [
+        {
+            "text": 'Complete an extensive audit of your existing content',
+            "heading": `We're your extended team`,
+            "image": image,
+            "iconType": 'icon'
+        },
+        {
+            "text": 'Create a content calendar that outlines campaign activities',
+            "heading": `A full service agency`,
+            "image": image,
+            "iconType": 'icon'
+        },
+        {
+            "text": 'Develop meaningful digital content to engage your audience',
+            "heading": `with a customized approach`,
+            "image": image,
+            "iconType": 'icon'
+        },
+        {
+            "text": 'Complete an extensive audit of your existing content',
+            "heading": `always nimble, always hungry`,
+            "image": image,
+            "iconType": 'icon'
+        },
+        {
+            "text": 'Create a content calendar that outlines campaign activities',
+            "heading": 'data-driven, results oriented',
+            "image": image,
+            "iconType": 'icon'
+        },
+        {
+            "text": 'Develop meaningful digital content to engage your audience',
+            "heading": `and your long-term partner`,
+            "image": image,
+            "iconType": 'icon'
+        }
+]
+
+        return (
+        <Section settings={settings}>
             <Container>
-                <div className={'flex justify-start xl:mt-20 xl:mb-[600px] order-1'}>
-                    <div className={`hidden xl:block xl:w-[calc(726px-(50vw-640px))] 2xl:w-[calc(726px-(50vw-640px)+(50vw-960px))] mr-8`}></div>
+                <div>
+                <h3 className={'text-center'}>
+                    <span className={theme.text.H2}>Our Content Marketing Approach 
+                    </span>
+                </h3>
+                <p className={"mt-6 max-w-5xl mx-auto text-center"}>
+                    <span className={theme.text.P_STD}>Many prospects do extensive research online before making a purchase or reaching out to talk to a sales rep. Content marketing helps you build trust with your audience while alerting sales when action is needed. Ridge Marketing is a content marketing agency that helps you start or ramp up your existing content marketing efforts to win more loyal customers who expect smart, multi-channel digital experiences with your brand. 
+                    </span>
+                </p>
+            
+                <p className={'mt-10 text-center'}>
+                    <span className={theme.text.H4}>When you partner with Ridge, we will:</span>
+                </p>
+                </div>
 
-                    <div className={'flex-1'}>
-                        <h4>
-                            <span className={theme.text.H3}>RIDGE MARKETING<br/>WEBSITE DESIGN SERVICES</span>
-                        </h4>
-                        <p className={theme.text.P_STD + ' mt-8'}>
-                            Our in-house team of strategists, writers, search engine specialists, web designers and developers work with cutting-edge tools and web design techniques - allowing us to build you a supercharged web-based marketing asset. Our web design agency services include:
-                        </p>
-                    </div>
+                {/* className={`md:grid md:grid-cols-2 ${cols} gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12`} */}
+                <div className={wrapperClasses}>
+                    {li_items.map(item => {
+                        return (orientation == 'stacked') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex handler={handleHeight} threeCol={threeCols} content={item}/>;
+                    })}
                 </div>
             </Container>
-        </Section>
-    )
+        </Section>          
+        )
 }
 
 export default FullWidthTextImage

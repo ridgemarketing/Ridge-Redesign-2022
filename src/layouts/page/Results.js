@@ -1,72 +1,37 @@
 import React from "react" 
-import { graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { content } from "../../../tailwind.config.js"
-
-
-export const Results_Loop = (props) =>{
-    
-    return(
-        <>
-            <div className={ 'flex flex-col w-full ' + resultTextSize_Container }>
-                <Results_Loop_Text_Loop 
-                    type    = { 'descriptor' }
-                    color   = { `` }
-                    padding = { `mb-1 ? mb-9 ? mb-0` }
-                    class   = { resultTextSize_textSizeSmall }
-                />
-                <Results_Loop_Text_Loop 
-                    type    = { 'callOut' }
-                    color   = { `text-rm-green` }
-                    padding = { `mb-12 ? mb-0` }
-                    class   = { resultTextSize_textSizeLarge }
-                />
-                { content.results.caseStudy &&
-                    <a 
-                        href="#" 
-                        className={ 
-                            theme.text_links['BASE_STYLING'] + 
-                            theme.text_links['FWD_BASE'] + 
-                            theme.text_links['STD'] + 
-                            theme.text_links['ARW_FWD_BLACK'] }>
-                        VIEW CASE STUDY
-                    </a>
-                }
-            </div>
-        </>
-    )
-}
-
-export const Results_Loop_Text_Loop = (props) =>{
-    return(
-        <>
-            {/* descriptor */}
-            <p 
-                className={ 
-                    resultTextSize_textSizeSmall + 
-                    ' ' }>
-                { content.results.topText }
-            </p>
-
-            {/* call out */}
-            <p 
-                className={ 
-                    resultTextSize_textSizeLarge + 
-                    '' }>
-                 Ecommerce Website
-            </p>
-        </>
-    )
-}
+import { ResultItem } from '../../components/ResultItem.js'
 
 const Results = ({ props }) => {
     
+    // IMPORTANT
+    //small text needs padding options of   mb-1 ? mb-9 ? mb-0
+    //large text needs padding options of   mb-12 ? mb-0
+
+    const content = props.layoutData.layoutContent;
+    const settings = props.layoutData.layoutSettings;
+
     let theSize = content.ResultsSize; //large or small 
-    let resultTextSize_Container        = theSize == 'large' ? `large md:w-[48%]` : `small lg:w-[31%] mb-12`;  
+    let resultTextSize_Container        = theSize == 'large' ? `large md:w-[48%] ` : `small lg:w-[31%] mb-12 `;  
     let resultTextSize_textSizeLarge    = theSize == 'large' ? theme.text['STATS'] : theme.text['H2'];
-    let resultTextSize_textSizeSmall    = theSize == 'large' ? theme.text['P_STD'] : theme.text['H4'];
+    let resultTextSize_textSizeSmall;
+
+    //three sizes for smaller text sections (Homepage, Work Page, Services Page)
+    if( content.descriptorSize == 'large' ){
+        resultTextSize_textSizeSmall    = theme.text['H3'];
+    }
+    if( content.descriptorSize == 'medium' ){
+        resultTextSize_textSizeSmall    = theme.text['H4'];
+    }
+    if( content.descriptorSize == 'small' ){
+        resultTextSize_textSizeSmall    = theme.text['P_STD'];
+    }
+
+    let stacked = content.ResultsStack;
+    let resultOrientation               = stacked == `stacked` ? `flex-row ` : `flex-col `; 
+
 
     return(
         <Section Settings={ settings }>
@@ -99,7 +64,31 @@ const Results = ({ props }) => {
                     </>
                 }
                 <div className={` mt-12 flex w-full flex-wrap justify-between `}>
-                    <Results_Loop/>
+                    { content.results.smallText &&     
+                        <ResultItem
+                            smallText   = { content.results.smallText }
+                            className   = { resultTextSize_textSizeSmall }
+                            textColor   = { content.results.textColor }
+                            caseStudy   = { content.results.caseStudy }
+                            padding     = { content.results.textPadding }
+
+                            container   = { resultTextSize_Container + resultOrientation }
+
+                            caseStudy = { content.results.caseStudy }
+
+                        />
+                    }
+                    { content.results.largeText &&
+                        <ResultItem
+                            largeText   = { content.results.largeText }
+                            className   = { resultTextSize_textSizeLarge }
+                            textColor   = { content.results.textColor }
+                            padding     = { content.results.textPadding }
+                        
+                            container   = { resultTextSize_Container + resultOrientation }
+
+                        />
+                    }
                 </div>
             </Container>
         </Section>

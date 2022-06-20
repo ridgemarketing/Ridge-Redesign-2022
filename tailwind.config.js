@@ -79,6 +79,9 @@ module.exports = {
       },
       boxShadow: {
         'block': '0px 0px 20px rgba(0, 0, 0, 0.2)'
+      },
+      gridTemplateColumns: {
+        '75/25': '75% 25%'
       }
     }
   }
