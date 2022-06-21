@@ -33,8 +33,8 @@ const FullWidthTextImage = (props) => {
     // }
 
     const threeCols = true;
-    const cols = threeCols ? 'lg:grid-cols-3' : '';
-    const wrapperClasses = orientation == 'stacked' ? `md:grid md:grid-cols-2 ${cols} gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
+    const cols = threeCols ? ' lg:grid-cols-3 ' : ' ';
+    const wrapperClasses = orientation == 'stacked' ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
 
     const li_items = [
         {
@@ -63,7 +63,7 @@ const FullWidthTextImage = (props) => {
         },
         {
             "text": 'Create a content calendar that outlines campaign activities',
-            "heading": 'data-driven, results oriented',
+            "heading": 'data-driven, results oriented, data-driven',
             "image": image,
             "iconType": 'icon'
         },
