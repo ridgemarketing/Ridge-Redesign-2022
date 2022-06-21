@@ -106,3 +106,33 @@ const ResultsMixed = ({ props }) => {
     )
 }
 export default ResultsMixed;
+
+
+export const query = graphql`
+  fragment ResultsMix on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_ResultsMix {
+        fieldGroupName
+        layoutResultsMix {
+          layoutContent {
+            body
+            heading
+            results {
+              company
+              description
+              stat
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
