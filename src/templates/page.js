@@ -62,7 +62,7 @@ const WpPage = ({ data }) =>{
                 for( let i = 0; scrollPoints.length > i; i++ ){
                   if ( firstSlide.current.offsetTop > scrollPoints[i] ){
                     //console.log('greater than', scrollPoints[i], i);
-                    console.log(firstSlide.current.offsetTop, scrollPoints[i] + slideHeight);
+                    //console.log(firstSlide.current.offsetTop, scrollPoints[i] + slideHeight);
                     setVslide(i);
                     current = i;
 
@@ -151,7 +151,6 @@ const WpPage = ({ data }) =>{
       observer.observe(outerContainer.current);
 
       window.addEventListener('load', function(){
-       
         //shadow container 
         if( document.getElementById('shadow-container') ){
           let shadowRoot_ =  document.getElementById('shadow-container').shadowRoot;

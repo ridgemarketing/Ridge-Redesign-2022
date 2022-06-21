@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Ridge Marketing`,
-    siteUrl: `https://www.ridgemarketing.com`
+    siteUrl: `http://www.ridgemarketing.com`
   },
   plugins: [
     {
