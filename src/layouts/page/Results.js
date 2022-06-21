@@ -3,6 +3,7 @@ import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { content } from "../../../tailwind.config.js"
 import ResultItem from '../../components/ResultItem.js'
+import { graphql } from "gatsby"
 
 const Results = ({ props }) => {
     
@@ -93,3 +94,33 @@ const Results = ({ props }) => {
     )
 }
 export default Results;
+
+
+export const query = graphql`
+  fragment Results on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_Results {
+        fieldGroupName
+        layoutResults {
+          layoutContent {
+            body
+            heading
+            results {
+              company
+              description
+              stat
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

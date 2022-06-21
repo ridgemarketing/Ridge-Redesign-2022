@@ -1,22 +1,22 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-const FeaturedProjectsGrid = () => {
+const TwoColProjectsGrid = () => {
     return(
-        <></>
+      <h1>2 col project grid</h1>
     )
 }
 
-export default FeaturedProjectsGrid
+export default TwoColProjectsGrid
 
 
 export const query = graphql`
-  fragment FeaturedProjectsGrid on WpPage_Flexiblelayouts_Layouts {
-    ... on WpPage_Flexiblelayouts_Layouts_FeaturedProjectsGrid {
+  fragment TwoColProjectsGrid on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_TwoColProjectsGrid {
         fieldGroupName
-        layoutFeaturedProjectsGrid {
+        layoutTwoColProjectsGrid {
           layoutContent {
-            heading
+            fieldGroupName
           }
           layoutSettings {
             padding {

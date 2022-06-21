@@ -6,14 +6,14 @@ import FullWidthImage from "./page/FullWidthImage"
 import FullWidthImageText from "./page/FullWidthImageText"
 import HomeHero from "./page/HomeHero"
 import IconTextBoxes from "./page/IconTextBoxes"
-import InPageContactForm from "./page/InPageContactForm"
+import InPageContactForm from "./page/CtaForm"
 import LogoCloud from "./page/LogoCloud"
 import Quotes from "./page/Quotes"
 import PostCards from "./page/PostCards"
 import Results from "./page/Results"
 import ResultsMixed from "./page/ResultsMixed"
 import TextBlock from "./page/TextBlock"
-import ThreeColIconsText from "./page/ThreeColIconsText"
+import ThreeColIconsText from "./page/_ThreeColIconsText"
 import ThreeColProjectBlocks from "./page/ThreeColProjectBlocks"
 import TwoColBreakoutImageText from "./page/TwoColBreakoutImageText"
 import TwoColIconsText from "./page/TwoColIconsText"
@@ -25,29 +25,29 @@ import VerticalSlider from "./page/VerticalSlider"
 
 let Layouts = {};
 
-// Layouts['ContactFourSquare'] = ContactFourSquare;
-// Layouts['FeaturedProjectsCarousel'] = FeaturedProjectsCarousel;
-// Layouts['FeaturedProjectsGrid'] = FeaturedProjectsGrid;
-// Layouts['FullWidthImage'] = FullWidthImage;
-// Layouts['FullWidthImageText'] = FullWidthImageText;
-// Layouts['HomeHero'] = HomeHero;
-// Layouts['IconTextBoxes'] = IconTextBoxes;
-// Layouts['InPageContactForm'] = InPageContactForm;
-// Layouts['LogoCloud'] = LogoCloud;
-// Layouts['VerticalSlider'] = VerticalSlider;
-// Layouts['Quotes'] = Quotes;
-// Layouts['PostCards'] = PostCards;
-// Layouts['Results'] = Results;
-// Layouts['ResultsMixed'] = ResultsMixed;
-// Layouts['TextBlock'] = TextBlock;
-// Layouts['ThreeColIconsText'] = ThreeColIconsText;
-// Layouts['ThreeColProjectBlocks'] = ThreeColProjectBlocks;
-// Layouts['TwoColBreakoutImageText'] = TwoColBreakoutImageText;
-// Layouts['TwoColIconsText'] = TwoColIconsText;
+Layouts['ContactFourSquare'] = ContactFourSquare;
+Layouts['FeaturedProjectsCarousel'] = FeaturedProjectsCarousel;
+Layouts['FeaturedProjectsGrid'] = FeaturedProjectsGrid;
+Layouts['FullWidthImage'] = FullWidthImage;
+Layouts['FullWidthImageText'] = FullWidthImageText;
+Layouts['HomeHero'] = HomeHero;
+Layouts['IconTextBoxes'] = IconTextBoxes;
+Layouts['InPageContactForm'] = InPageContactForm;
+Layouts['LogoCloud'] = LogoCloud;
+Layouts['VerticalSlider'] = VerticalSlider;
+Layouts['Quotes'] = Quotes;
+Layouts['PostCards'] = PostCards;
+Layouts['Results'] = Results;
+Layouts['ResultsMixed'] = ResultsMixed;
+Layouts['TextBlock'] = TextBlock;
+Layouts['ThreeColIconsText'] = ThreeColIconsText;
+Layouts['ThreeColProjectBlocks'] = ThreeColProjectBlocks;
+Layouts['TwoColBreakoutImageText'] = TwoColBreakoutImageText;
+Layouts['TwoColBreakoutImageHeading'] = TwoColBreakoutImageHeading;
+Layouts['TwoColIconsText'] = TwoColIconsText;
 Layouts['TwoColImageText'] = TwoColImageText;
-// Layouts['TwoColList'] = TwoColList;
-// Layouts['woColTextQuote'] = TwoColTextQuote;
-// Layouts['VennDiagram'] = VennDiagram;
-
+Layouts['TwoColList'] = TwoColList;
+Layouts['TwoColTextQuote'] = TwoColTextQuote;
+Layouts['VennDiagram'] = VennDiagram;
 
 export default Layouts

@@ -2,6 +2,7 @@ import React from "react"
 import { Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
+import { graphql } from "gatsby"
 
 const FullWidthImageText = (props) => {
     const content = props.layoutData.layoutContent;
@@ -30,3 +31,32 @@ const FullWidthImageText = (props) => {
 }
 
 export default FullWidthImageText
+
+
+export const query = graphql`
+  fragment FullWidthImageText on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_FullWidthImageText {
+        fieldGroupName
+        layoutFullWidthImageText {
+          layoutContent {
+            body
+            heading
+            intro
+            image {
+                gatsbyImage
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

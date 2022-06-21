@@ -4,6 +4,7 @@ import { Formik, Form  } from 'formik'
 import Pristine from 'pristinejs'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { BasicInputs, MultiLineText, SelectInput, FormSubmit}  from '../../components/global/Forms'
+import { graphql } from "gatsby"
 
 //const sendGridURL = 'https://api.sendgrid.com/v3/mail/send';
 //const sendGridKey = process.env.SENDGRID_API_KEY;
@@ -11,7 +12,7 @@ import { BasicInputs, MultiLineText, SelectInput, FormSubmit}  from '../../compo
 let form_;
 const phoneNumberPattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
 
-const FormAll = (props) => {
+const CtaForm = (props) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -159,4 +160,28 @@ const FormAll = (props) => {
     )
 }
 
-export default FormAll
+export default CtaForm
+
+export const query = graphql`
+  fragment CtaForm on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_CtaForm {
+        fieldGroupName
+        layoutCtaForm {
+          layoutContent {
+            body
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+    }
+  }
+`

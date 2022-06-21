@@ -23,11 +23,7 @@ query PageById($id: String) {
     uri
     title
     content
-    flexibleLayouts {
-      layouts {
-        ...TwoColImageTextFragment
-      }
-    }
+    ...FlexibleLayouts
   }
 }
 

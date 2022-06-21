@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from "react"
 import { venn } from 'venny'
+import { graphql } from "gatsby"
 
-const vennDiagram = ({ props }) => {
+const VennDiagram = ({ props }) => {
     
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -34,4 +35,27 @@ const vennDiagram = ({ props }) => {
     )
 }
 
-export default vennDiagram
+export default VennDiagram
+
+export const query = graphql`
+  fragment VennDiagram on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_VennDiagram {
+        fieldGroupName
+        layoutVennDiagram {
+          layoutContent {
+            fieldGroupName
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

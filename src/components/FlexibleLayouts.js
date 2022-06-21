@@ -38,3 +38,36 @@ const FlexibleLayouts = (props) => {
 }
 
 export default FlexibleLayouts
+
+
+
+export const query = graphql`
+  fragment FlexibleLayouts on WpPage {
+    flexibleLayouts{
+      layouts {
+        ...TwoColImageText 
+        ...TwoColBreakoutImageText 
+        ...TwoColBreakoutImageHeading 
+        ...TwoColTextQuote 
+        ...TwoColProjectsGrid 
+        ...ThreeColProjectBlocks 
+        ...TextBlock 
+        ...VideoPlayer 
+        ...FullWidthImage 
+        ...FullWidthImageText
+        ...IconTextBoxes 
+        ...MediaBlocks 
+        ...FeaturedProjectsCarousel 
+        ...Quotes 
+        ...Results 
+        ...ResultsMix 
+        ...LogoCloud 
+        ...PostCards 
+        ...CtaForm
+        ...ProjectPortfolio 
+      }
+    }
+  }
+`
+
+

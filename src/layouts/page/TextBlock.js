@@ -2,6 +2,7 @@ import React from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import  { theme } from "../../static/theme"
 import Link from "../../components/global/FlexibleLink"
+import { graphql } from "gatsby"
 
 const TextBlock = (props) => {
     const content = props.layoutData.layoutContent;
@@ -33,3 +34,41 @@ const TextBlock = (props) => {
 }
 
 export default TextBlock
+
+export const query = graphql`
+  fragment TextBlock on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_TextBlock {
+        fieldGroupName
+        layoutTextBlock {
+          layoutContent {
+            alignment
+            body
+            componentButton {
+                colors {
+                hover
+                resting
+                }
+                icon
+                link {
+                target
+                title
+                url
+                }
+                style
+            }
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
