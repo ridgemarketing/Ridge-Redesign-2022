@@ -3,6 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
+import { graphql } from "gatsby"
 
 export const ThreeColProjectBlocks_Loop = (props) =>{
 
@@ -91,3 +92,28 @@ const ThreeColProjectBlocks = ({ props }) => {
     )
 }
 export default ThreeColProjectBlocks;
+
+
+
+export const query = graphql`
+  fragment ThreeColProjectBlocks on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_ThreeColProjectBlocks {
+        fieldGroupName
+        layoutThreeColProjectBlocks {
+          layoutContent {
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
