@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react"
 import { graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
+// import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { content } from "../../../tailwind.config.js"
@@ -10,6 +10,7 @@ const VerticalSlider = (props) => {
     const [vslide, setVslide] = useState(0);
     const firstSlide = useRef(null);
     const slideHeight = 650;
+    const settings = props.layoutContent.settings || {};
     let totalHeight = 0;
   
     const vslides = [
@@ -71,7 +72,7 @@ const VerticalSlider = (props) => {
 
             {/* need to change outer container location */}
             <div className="bg-rm-black text-rm-white w-full block">
-                <div className={ `container ` + `flex-wrap relative`} style={ {height:totalHeight +'px'} }>
+                <div className={ `container flex-wrap relative`} style={ {height:totalHeight +'px'} }>
                     
                     <div ref={firstSlide} className="flex w-full items-center sticky top-1/4">
                         <div className="bg-rm-green h-full w-[10px]"></div>

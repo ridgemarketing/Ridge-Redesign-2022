@@ -1,5 +1,5 @@
 import React from 'react'
-import FullWidthTextImage from './page/FullWidthTextImage';
+import FullWidthTextImage from './page/_FullWidthTextImage';
 // import ThreeColumnTextBlock from './page/ThreeColumnTextBlocks'
 import ContactFourSquare from "./page/ContactFourSquare"
 import FeaturedProjectsCarousel from "./page/FeaturedProjectsCarousel"
