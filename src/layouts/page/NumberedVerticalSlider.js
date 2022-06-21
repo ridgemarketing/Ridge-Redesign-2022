@@ -56,17 +56,18 @@ const VerticalSlider = (props) => {
         console.log(entry.isIntersecting);
           if( entry.isIntersecting ){
 
-            onscroll = () => {
+              onscroll = () => {
                 for( let i = 0; scrollPoints.length > i; i++ ){
                   if ( firstSlide.current.offsetTop > scrollPoints[i] ){
+                    //console.log('greater than', scrollPoints[i], i);
+                    //console.log(firstSlide.current.offsetTop, scrollPoints[i] + slideHeight);
+                    setVslide(i);
+                    current = i;
 
-                      setVslide(i);
-                      current = i;
-
-                      progressBar.current[i].style.height = 200 / ( vslides.length  + 1 ) + '%';
-                      progressBar.current[i].style.backgroundColor = '#FFFFFF';
-                      progressBar.current[i].children[0].style.backgroundColor = '#A9CF38';
-                      progressBar.current[i].children[0].style.height = ( ( firstSlide.current.offsetTop - scrollPoints[i] ) / slideHeight ) * 100 + '%';
+                    progressBar.current[i].style.height = 200 / ( vslides.length  + 1 ) + '%';
+                    progressBar.current[i].style.backgroundColor = '#FFFFFF';
+                    progressBar.current[i].children[0].style.backgroundColor = '#A9CF38';
+                    progressBar.current[i].children[0].style.height = ( ( firstSlide.current.offsetTop - scrollPoints[i] ) / slideHeight ) * 100 + '%';
                   }
                 }
                 for( let z = 0; scrollPoints.length > z; z++){

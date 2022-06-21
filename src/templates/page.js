@@ -143,6 +143,7 @@ const WpPage = ({ data }) =>{
   //   threshold: 0
   // });
 
+  let shadowContainer = useRef(null);
   useEffect(() => {
   
       // for(let i =0; otherSlides.current.length > i; i++){
@@ -152,10 +153,15 @@ const WpPage = ({ data }) =>{
 
       window.addEventListener('load', function(){
         //shadow container 
-        if( document.getElementById('shadow-container') ){
-          let shadowRoot_ =  document.getElementById('shadow-container').shadowRoot;
+        if( shadowContainer.current ){
+          let shadowRoot_ =  shadowContainer.current.shadowRoot;
           let allSVG =  shadowRoot_.querySelector('svg').querySelectorAll('g');
           let allText = shadowRoot_.querySelectorAll('label');  
+          
+          if(window.innerWidth >= 1280){
+              let textContainer = shadowRoot_.getElementById('labels');
+              textContainer.style.transform='translateX(10%)';
+            }
 
           for(let i =0; allSVG.length > i; i++){
               allSVG[i].style.fillOpacity = '1';
@@ -271,7 +277,9 @@ const WpPage = ({ data }) =>{
 
     <div className="pt-12 bg-rm-black h-[750px] w-full">
       <div className="container">
-        <venn-diagram id="shadow-container" class="block w-min ml-auto mr-auto drop-shadow-lg" width="1000" height="585">
+        <div className="flex justify-center overflow-hidden items-center">
+          <img className="scale-50 lg:scale-100 h-[100px] w-[100px] z-10 absolute" src="https://media-exp1.licdn.com/dms/image/C560BAQEh3MdMkU-4oQ/company-logo_200_200/0/1615821999267?e=2147483647&v=beta&t=DkVybyqbal7MeWTIACfU-ilUc9svx0im4C7qm0gSfJI" />
+        <venn-diagram ref={shadowContainer} class="flex xl:w-full rotate-90 md:rotate-0 scale-50 lg:scale-75 xl:scale-100 justify-center ml-auto mr-auto drop-shadow-lg" width="1000" height="585">
           <venn-set name="A" label="AWARD-WINNING DOERS, WRITERS, DESIGNERS & DEVELOPERS "></venn-set>
           <venn-set name="B" label="STRATEGIC THINKERS WHO GET MEASURABLE RESULTS"></venn-set>
           <venn-n part="intersection" sets="A B" label=""></venn-n>
@@ -287,6 +295,7 @@ const WpPage = ({ data }) =>{
             <path fill-rule="evenodd" clip-rule="evenodd" d="M349 310.97H405.435V348.033H406.058C409.142 320.979 429.496 308 458.481 308H480.997C509.059 308 528.183 322.459 539.28 352.109C549.149 318.009 561.793 308 595.409 308H613.603C667.571 308 687 339.508 687 393.626V500H627.792V398.443C627.792 372.494 622.241 363.598 587.702 363.598C559.329 363.598 547.607 371.013 547.607 395.845V500H488.396V392.881C488.396 369.532 481.303 363.598 445.531 363.598C420.244 363.598 408.214 371.013 408.214 400.296V500H349V310.97Z" fill="#A9CF38"/>
             <path fill-rule="evenodd" clip-rule="evenodd" d="M148 310.97H203.533V346.919H204.15C210.937 316.898 235.001 308 261.839 308C305.034 308 322 330.24 322 382.503C322 387.325 321.694 392.509 321.38 399.182H270.172C270.172 375.094 265.544 363.604 241.789 363.604C221.429 363.604 207.235 372.866 207.235 395.479V500H148V310.97Z" fill="#FEFEFE"/>
         </svg> */}
+        </div>
       </div>
     </div>
 
