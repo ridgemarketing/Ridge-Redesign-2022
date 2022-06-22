@@ -122,7 +122,7 @@ export const query = graphql`
         fieldGroupName
         layoutThreeColProjectBlocks {
           layoutContent {
-            heading
+            topHeading
           }
           layoutSettings {
             padding {
