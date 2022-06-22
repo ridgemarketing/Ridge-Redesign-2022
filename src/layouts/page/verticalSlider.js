@@ -1,10 +1,8 @@
 import React, { useRef, useEffect, useState } from "react"
 import { graphql } from "gatsby"
-// import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { AnchorLink } from "gatsby-plugin-anchor-links";
-import { content } from "../../../tailwind.config.js"
 
 const VerticalSlider = (props) => {
 
@@ -96,31 +94,31 @@ const VerticalSlider = (props) => {
 
     return(
         <>
-            <Section Settings={ settings }>
+            <Section settings={ props.settings }>
                 <Container>
-                    {content.heading &&
+                    {props.content.heading &&
                         <> 
                             <h2>
                                 <span 
                                     className={ 
                                                 theme.text['H1'] 
-                                                + ' text-' + content.textColor 
-                                                + ' text-' + content.textAlign
+                                                + ' text-' + props.content.textColor 
+                                                + ' text-' + props.content.textAlign
                                             }> 
-                                    { content.heading }
+                                    { props.content.heading }
                                 </span>
                             </h2>
                         </>
                     }
-                    {content.bodyText &&
+                    {props.content.bodyText &&
                         <>
                             <p>
                                 <span className={ 
                                                 theme.text['P_STD'] 
-                                                + ' text-' + content.textColor 
-                                                + ' text-' + content.textAlign
+                                                + ' text-' + props.content.textColor 
+                                                + ' text-' + props.content.textAlign
                                             }>
-                                    { content.bodyText }
+                                    { props.content.bodyText }
                                 </span>
                             </p>
                         </>
