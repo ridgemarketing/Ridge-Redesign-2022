@@ -57,5 +57,4 @@ export const theme = {
         FULL:               'form-two-col w-full flex-row justify-around flex-wrap ',
         HALF:               'form-one-col w-1/2 flex-col ',
     }
-  
 }
