@@ -3,6 +3,7 @@ import {Section, Container } from "../../components/global/Wrappers"
 import  { theme } from "../../static/theme"
 import Link from "../../components/global/FlexibleLink"
 import { graphql } from "gatsby"
+import Parser from "../../components/global/Parser";
 
 const TextBlock = (props) => {
     const content = props.layoutData.layoutContent;
@@ -15,15 +16,15 @@ const TextBlock = (props) => {
     } else if (content.alignment === 'right') {
       buttonAlignment = ' justify-end'
     }
+    const body = Parser(content.body);
+    const heading = Parser(content.heading);
 
     return (
         <Section settings={settings}>
             <Container classes={` ${alignment}`}>
-                <h2 className={theme.text.H1_LTE + ' pb-6'}>
-                        {content.heading}
+                <h2 className={theme.text.H1_LTE + ' pb-6'} dangerouslySetInnerHTML={{__html: heading}}>
                 </h2>
-                <p className={theme.text.P_STD + ' pb-8'}>
-                        {content.body}
+                <p className={theme.text.P_STD + ' pb-8'} dangerouslySetInnerHTML={{__html: body}}>
                 </p>
                 {
                     content.componentButton &&  
