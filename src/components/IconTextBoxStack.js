@@ -1,5 +1,5 @@
 import React from "react"
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
 
 const IconTextBoxStack = (props) => {
@@ -8,13 +8,13 @@ const IconTextBoxStack = (props) => {
 
     let component =  <span className={'block w-[138px] border-t-2 border-t-rm-green mb-7'}></span>;
                                        
-    if (iconType == 'icon') {
+    if (iconType === 'icon') {
         component = 
         <div className={"mb-8 text-center md:text-left lg:mx-0"}>
             <GatsbyImage image={content.image} />
         </div> 
     } 
-    if (iconType == 'numbers') {
+    if (iconType === 'numbers') {
         component = 
         <div className={"mb-5 text-center md:text-left lg:mx-0"}>
             <GatsbyImage image={content.image} />

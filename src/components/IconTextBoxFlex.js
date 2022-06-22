@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from "react"
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
 
 const IconTextBoxFlex = (props) => {
     let wrapperClasses  = `flex w-full md:w-[48%] mb-12 md:mb-16 lg:mb-32 items-start`;
-    let imageClasses    = ``;
+    // let imageClasses    = ``;
     let marginClasses   = `ml-6 `;
 
     const [height, setHeight] = useState(0);

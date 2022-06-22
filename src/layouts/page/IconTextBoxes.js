@@ -1,6 +1,5 @@
 import React from 'react'
 import {Section, Container } from "../../components/global/Wrappers"
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import IconTextBoxStack from '../../components/IconTextBoxStack'
@@ -12,7 +11,7 @@ const IconTextBoxes = (props) => {
     const settings = props.layoutData.layoutSettings;
 
     const cols = content.threeCols ? ' lg:grid-cols-3 ' : ' ';
-    const wrapperClasses = (content.orientation == 'stacked') ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
+    const wrapperClasses = (content.orientation === 'stacked') ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
 
     return (
         <Section settings={settings}>
@@ -34,7 +33,7 @@ const IconTextBoxes = (props) => {
 
             <div className={wrapperClasses}>
                 {content.list.map(item => {
-                    return (content.orientation == 'stacked') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex threeCol={content.threeCols} content={item}/>;
+                    return (content.orientation === 'stacked') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex threeCol={content.threeCols} content={item}/>;
                 })}
             </div>
             </Container>
