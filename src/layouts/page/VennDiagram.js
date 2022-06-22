@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useEffect } from "react"
+import React, { useRef, useEffect } from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import { venn } from 'venny'
 import { graphql } from "gatsby"

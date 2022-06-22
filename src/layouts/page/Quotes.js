@@ -3,7 +3,8 @@ import { graphql } from "gatsby"
 // import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
-// import { content } from "../../../tailwind.config.js"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faAngleRight, faAngleLeft} from '@fortawesome/pro-regular-svg-icons'
 
 // export const Quote_Loop = (props) =>{
 //     return(

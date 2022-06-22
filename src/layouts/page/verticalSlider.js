@@ -7,6 +7,8 @@ import { AnchorLink } from "gatsby-plugin-anchor-links";
 import { content } from "../../../tailwind.config.js"
 
 const VerticalSlider = (props) => {
+  
+  const settings = props.layoutData.layoutSettings;
 
   const [vslide, setVslide]   = useState(0);
   const firstSlide            = useRef(null);
