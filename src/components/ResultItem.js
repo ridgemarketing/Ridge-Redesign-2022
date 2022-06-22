@@ -28,7 +28,7 @@ export const Results_Loop_Text_Loop = (props) =>{
 }
 
 const ResultItem = (props) => {
-    const content = props.layoutContent;
+    const content = props.layoutData.layoutContent;
     return (
         <>
             <div className={ 'flex w-full ' + content.container }>

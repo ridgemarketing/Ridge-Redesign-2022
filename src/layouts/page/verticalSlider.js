@@ -10,7 +10,7 @@ const VerticalSlider = (props) => {
     const [vslide, setVslide] = useState(0);
     const firstSlide = useRef(null);
     const slideHeight = 650;
-    const settings = props.layoutContent.settings || {};
+    const settings = props.layoutData.layoutSettings || {};
     let totalHeight = 0;
   
     const vslides = [
