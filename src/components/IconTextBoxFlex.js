@@ -37,7 +37,7 @@ const IconTextBoxFlex = (props) => {
     }, [height, iconHeight, windowWidth])
 
 
-    if (props.threeCol){
+    if (props.columns === 3){
         wrapperClasses += ` lg:w-[31%]`;
     }
 
@@ -62,7 +62,7 @@ const IconTextBoxFlex = (props) => {
                     <div className={ marginClasses + `mt-4`}>
                         <p 
                             className={ theme.text['FOOTER'] }>
-                            { props.content.text }
+                            { props.content.body }
                         </p>
                     </div>
                 </div>

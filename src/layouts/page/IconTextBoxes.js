@@ -9,33 +9,39 @@ import IconTextBoxFlex from '../../components/IconTextBoxFlex'
 const IconTextBoxes = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
+    console.log(content);
 
-    const cols = content.threeCols ? ' lg:grid-cols-3 ' : ' ';
-    const wrapperClasses = (content.orientation === 'stacked') ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
+    const cols = content.settings.columns == 3 ? ' lg:grid-cols-3 ' : ' ';
+    const wrapperClasses = (content.settings.type === 'stack') ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
 
     return (
         <Section settings={settings}>
             <Container>
             <div>
+              {content.heading &&
             <h3 className={'text-center'}>
                 <span className={theme.text.H2}>{content.heading}
                 </span>
             </h3>
+              }
+            {content.body &&
             <p className={"mt-6 max-w-5xl mx-auto text-center"}>
-                <span className={theme.text.P_STD}>{content.bodyText}
+                <span className={theme.text.P_STD}>{content.body}
                 </span>
             </p>
-        
+            }
+            {content.subheading &&
             <p className={'mt-10 text-center'}>
                 <span className={theme.text.H4}>{content.subheading}</span>
             </p>
+            }
             </div>
 
-            {/* <div className={wrapperClasses}>
-                {content.list.map(item => {
-                    return (content.orientation === 'stacked') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex threeCol={content.threeCols} content={item}/>;
+            <div className={wrapperClasses}>
+                {content.boxes.map(item => {
+                    return (content.settings.type === 'stack') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex columns={content.settings.columns} content={item}/>;
                 })}
-            </div> */}
+            </div>
             </Container>
         </Section>
     )

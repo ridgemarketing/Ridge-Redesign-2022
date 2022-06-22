@@ -5,7 +5,6 @@ import Link from "../../components/global/FlexibleLink"
 import { graphql } from "gatsby"
 
 const TextBlock = (props) => {
-  console.log(props)
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
 
