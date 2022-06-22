@@ -9,22 +9,32 @@ const IconTextBoxFlex = (props) => {
 
     const [height, setHeight] = useState(0);
     const [iconHeight, setIconHeight] = useState(0);
-    const [customTop, setcustomTop] = useState('0px');
+    const [customTop, setCustomTop] = useState('0px');
+    const [customBottom, setCustomBottom] = useState('0px');
+    const [windowWidth, setWindowWidth] = useState(0);
 
     const iconElement = useRef();
     const ref = useRef();
 
     useEffect(() => {
+        function handleResize() {
+            setWindowWidth(window.innerWidth);
+        }
+
         setTimeout(function() {
             setHeight(ref.current.clientHeight);
             setIconHeight(iconElement.current.clientHeight);
         }, 0)
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     })
 
     useEffect(() => {
             let difference = iconHeight - height;
-            setcustomTop((difference > 0) ? (difference / 2) + 'px' : '0px');
-    }, [height, iconHeight])
+            setCustomTop((difference > 0) ? (difference / 2) + 'px' : '0px');
+            setCustomBottom((difference > 0) ? (difference / 2 + 6) + 'px' : '0px');
+    }, [height, iconHeight, windowWidth])
 
 
     if (props.threeCol){
@@ -44,7 +54,7 @@ const IconTextBoxFlex = (props) => {
                 <div className={'flex-col flex'}>
                     <div>
                         <p ref={ref}
-                            style={{marginTop: customTop, marginLeft: '24px'}}
+                            style={{marginTop: customTop, marginBottom: customBottom, marginLeft: '24px'}}
                             className={ theme.text['H4'] + 'block items-center' }>
                             { props.content.heading }
                         </p>
