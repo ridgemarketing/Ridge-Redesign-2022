@@ -9,7 +9,6 @@ import IconTextBoxFlex from '../../components/IconTextBoxFlex'
 const IconTextBoxes = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    console.log(content);
 
     const cols = content.settings.columns == 3 ? ' lg:grid-cols-3 ' : ' ';
     const wrapperClasses = (content.settings.type === 'stack') ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
@@ -39,7 +38,7 @@ const IconTextBoxes = (props) => {
 
             <div className={wrapperClasses}>
                 {content.boxes.map(item => {
-                    return (content.settings.type === 'stack') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex columns={content.settings.columns} content={item}/>;
+                    return (content.settings.type === 'stack') ? <IconTextBoxStack content={item} iconType={content.settings.feature}/> : <IconTextBoxFlex columns={content.settings.columns} content={item}/>;
                 })}
             </div>
             </Container>

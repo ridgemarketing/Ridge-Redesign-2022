@@ -4,7 +4,8 @@ import { theme } from "../static/theme"
 
 const IconTextBoxStack = (props) => {
     const content = props.content;
-    const iconType = content.iconType;
+    const iconType = props.iconType;
+    console.log(iconType)
 
     let component =  <span className={'block w-[138px] border-t-2 border-t-rm-green mb-7'}></span>;
                                        
