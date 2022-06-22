@@ -1,5 +1,6 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image";
+import { theme } from '../../static/theme'
 
 export const Section = (props) => {
 
@@ -15,7 +16,7 @@ export const Section = (props) => {
     let backgroundColor =  props.settings.bgColor ? props.settings.bgColor : defaults.bgColor;
     let position        =  props.settings.position ? props.settings.position : defaults.position;
     let id              =  props.settings.id ? props.settings.id : defaults.id;
-    let classes          =  props.settings.classes ? props.settings.classes : defaults.classes;
+    let classes         =  props.settings.classes ? props.settings.classes : defaults.classes;
     let classes_temp = props.classes ? props.classes : ''; //used for testing until we pull class data from props
 
     return (

@@ -24,6 +24,9 @@ import { Container, Section } from '../../components/global/Wrappers.js'
 
 const Quotes = (props) => {
 
+    console.log("QUOTES")
+    console.log(props)
+
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     
@@ -105,9 +108,9 @@ const Quotes = (props) => {
     })
 
 
-return (
-    <></>
-)
+    return(
+        <></>
+    )
 }
 export default Quotes
 
