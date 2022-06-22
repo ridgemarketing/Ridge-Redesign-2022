@@ -159,12 +159,12 @@ const VerticalSlider = (props) => {
                     
                     <img className="w-full h-[45%] mt-[5%] md:mt-0 md:h-auto md:w-[50%] lg:h-full block object-cover " src={ vslides[vslide].img }  />
                     <AnchorLink
-                            to='/sample-page/#skipVerticalSlider'
-                            title="Skip to the next section"
-                            className={ `md:hidden text-left w-full mt-[2%] h-[3%] ` + theme.text[`H4_LTE`]  + `flex items-center text-rm-grey`}
+                          to='/sample-page/#skipVerticalSlider'
+                          title="Skip to the next section"
+                          className={ `md:hidden text-left w-full mt-[2%] h-[3%] ` + theme.text[`H4_LTE`]  + `flex items-center text-rm-grey`}
                             >
                             Skip
-                        </AnchorLink>
+                    </AnchorLink>
                 </div>
                 
                 { vslides.map( (key) => (
