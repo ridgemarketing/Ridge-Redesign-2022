@@ -10,7 +10,7 @@ const FullWidthImageText = (props) => {
 
   const content = props.layoutData.layoutContent;
   const settings = props.layoutData.layoutSettings;
-  console.log(content);
+  console.log(props);
   const image = getImage(content.image.gatsbyImage);
   const orientation = 'flex';
 

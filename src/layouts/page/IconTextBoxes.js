@@ -31,11 +31,11 @@ const IconTextBoxes = (props) => {
             </p>
             </div>
 
-            <div className={wrapperClasses}>
+            {/* <div className={wrapperClasses}>
                 {content.list.map(item => {
                     return (content.orientation === 'stacked') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex threeCol={content.threeCols} content={item}/>;
                 })}
-            </div>
+            </div> */}
             </Container>
         </Section>
     )

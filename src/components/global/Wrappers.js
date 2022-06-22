@@ -31,7 +31,7 @@ export const Container = (props) => {
     let containerClass = props.size == `slim` ? `container xl:max-w-[1120px] relative` : `container`;
     
     return (
-        <div className={containerClass}>
+        <div className={containerClass + props.classes}>
             {props.children}
         </div>
     )

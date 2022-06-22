@@ -5,27 +5,32 @@ import Link from "../../components/global/FlexibleLink"
 import { graphql } from "gatsby"
 
 const TextBlock = (props) => {
+  console.log(props)
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
 
+    const alignment = `text-${content.alignment}`;
+    let buttonAlignment = ' justify-center';
+    if (content.alignment === 'left') {
+      buttonAlignment = ' justify-start'
+    } else if (content.alignment === 'right') {
+      buttonAlignment = ' justify-end'
+    }
+
     return (
         <Section settings={settings}>
-            <Container>
-                <h2>
-                    <span className={theme.text.H1}>
-                        {content.headerText}
-                    </span>
+            <Container classes={` ${alignment}`}>
+                <h2 className={theme.text.H1_LTE + ' pb-6'}>
+                        {content.heading}
                 </h2>
-                <p>
-                    <span className={theme.text.P_STD}>
-                        {content.wysiwygText}
-                    </span>
+                <p className={theme.text.P_STD + ' pb-8'}>
+                        {content.body}
                 </p>
                 {
-                    content.hasButton &&  
+                    content.componentButton &&  
                     <Link
-                    link={content.link}
-                    classes={theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_link.ARW_FWD_WHITE}
+                    link={content.componentButton.link}
+                    classes={theme.button.BASE_STYLING + theme.button.PRIMARY_LIGHT + theme.text_links.ARW_FWD_WHITE + buttonAlignment}
                     />
                 }
             </Container>
