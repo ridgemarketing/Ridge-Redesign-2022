@@ -151,9 +151,9 @@ const VerticalSlider = (props) => {
                         </AnchorLink>
                         </div>
                         <div id="slides-main" className="ml-[10%] mr-[10%]">
-                        <p className={ theme.text['CIRCLE_NUM'] + 'text-rm-green border-rm-green' }> { vslide + 1 } </p>
-                        <h2 className={ theme.text['H2']  + 'mt-10'}> { vslides[vslide].heading } </h2>
-                        <p className={ theme.text['P_STD'] + 'mt-6'}> { vslides[vslide].p } </p>
+                          <p className={ theme.text['CIRCLE_NUM'] + 'text-rm-green border-rm-green' }> { vslide + 1 } </p>
+                          <h2 className={ theme.text['H2']  + 'mt-10'}> { vslides[vslide].heading } </h2>
+                          <p className={ theme.text['P_STD'] + 'mt-6'}> { vslides[vslide].p } </p>
                         </div>
                     </div>
                     
@@ -179,3 +179,27 @@ const VerticalSlider = (props) => {
 }
 
 export default VerticalSlider;
+
+
+export const query = graphql`
+  fragment VerticalSlider on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_VerticalSlider {
+        fieldGroupName
+        layoutVerticalSlider {
+          layoutContent {
+            fieldGroupName
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

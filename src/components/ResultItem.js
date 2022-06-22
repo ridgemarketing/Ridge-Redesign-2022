@@ -1,6 +1,7 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+import { theme } from "../../static/theme"
 
 export const Results_Loop_Text_Loop = (props) =>{
     return(

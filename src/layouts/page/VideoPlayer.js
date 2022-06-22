@@ -1,22 +1,25 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-const FeaturedProjectsGrid = () => {
+const VideoPlayer = () => {
     return(
-        <></>
+      <h1>Contact 4 square</h1>
     )
 }
 
-export default FeaturedProjectsGrid
+export default VideoPlayer
 
 
 export const query = graphql`
-  fragment FeaturedProjectsGrid on WpPage_Flexiblelayouts_Layouts {
-    ... on WpPage_Flexiblelayouts_Layouts_FeaturedProjectsGrid {
+  fragment VideoPlayer on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_VideoPlayer {
         fieldGroupName
-        layoutFeaturedProjectsGrid {
+        layoutVideoPlayer {
           layoutContent {
-            heading
+            sideImage {
+                gatsbyImage
+              }
+              video
           }
           layoutSettings {
             padding {

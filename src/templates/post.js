@@ -12,13 +12,14 @@ const WpPost = ({ data }) =>{
 }
 export default WpPost;
 
+
 export const query = graphql`
   query PostById( $id: String ){
-    wpPost( id: {eq: $id} ){
+    wpPost(id: {eq: $id}) {
       id
       uri
       title
       content
     }
   }
-`
+` 

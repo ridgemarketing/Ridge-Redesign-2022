@@ -1,9 +1,12 @@
-import React from "react" 
+import React, { useRef, useEffect, useState } from "react" 
 import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { content } from "../../../tailwind.config.js"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
 
 export const Quote_Loop = (props) =>{
     return(
@@ -22,7 +25,7 @@ export const Quote_Loop = (props) =>{
     )
 }
 
-const Quote = ({ props }) => {
+const Quotes = ( props ) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -110,10 +113,10 @@ const Quote = ({ props }) => {
                         </div>
                         <div className={`w-36 flex bg-rm-pale-grey`}>
                             <button className={`flex-1 px-5 py-3 text-40px`} onClick={prevSlide}>
-                                {/* <FontAwesomeIcon icon={faAngleLeft} /> */}
+                                <FontAwesomeIcon icon={faAngleLeft} />
                             </button>
                             <button className={`flex-1 px-5 py-3 text-40px`} onClick={nextSlide}>
-                                {/* <FontAwesomeIcon icon={faAngleRight} /> */}
+                                <FontAwesomeIcon icon={faAngleRight} />
                             </button>
                         </div>
                     </div>  
@@ -138,4 +141,28 @@ const Quote = ({ props }) => {
         </Section>
     )
 }
-export default Quote
+export default Quotes
+
+
+export const query = graphql`
+  fragment Quotes on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_Quotes {
+        fieldGroupName
+        layoutQuotes {
+          layoutContent {
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
