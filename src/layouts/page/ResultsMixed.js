@@ -136,14 +136,14 @@ export const query = graphql`
             body
             heading
             results {
-                allText {
-                    description
-                    stat
-                    link {
-                        url
-                        title
-                        target
-                    }
+                content {
+                    style
+                    text
+                }
+                link {
+                    target
+                    title
+                    url
                 }
             }
           }
