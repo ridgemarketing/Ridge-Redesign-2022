@@ -1,6 +1,7 @@
 import React from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
+import { graphql } from "gatsby"
 
 const TwoColList = (props) => {
     const content = props.layoutData.layoutContent;

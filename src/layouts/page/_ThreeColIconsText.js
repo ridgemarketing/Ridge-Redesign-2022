@@ -1,20 +1,19 @@
 import React from "react"
 import { graphql } from "gatsby"
 
-const FeaturedProjectsGrid = () => {
+const ThreeColIconsText = () => {
     return(
         <></>
     )
 }
 
-export default FeaturedProjectsGrid
-
+export default ThreeColIconsText
 
 // export const query = graphql`
-//   fragment FeaturedProjectsGrid on WpPage_Flexiblelayouts_Layouts {
-//     ... on WpPage_Flexiblelayouts_Layouts_FeaturedProjectsGrid {
+//   fragment ThreeColIconsText on WpPage_Flexiblelayouts_Layouts {
+//     ... on WpPage_Flexiblelayouts_Layouts_ThreeColIconsText {
 //         fieldGroupName
-//         layoutFeaturedProjectsGrid {
+//         layoutThreeColIconsText {
 //           layoutContent {
 //             heading
 //           }

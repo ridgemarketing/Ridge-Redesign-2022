@@ -1,11 +1,11 @@
 import React from "react" 
 import { graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import BlogCard from '../../components/BlogCard.js'
 
-const RelatedBlogArticles = ({ props }) => {
+const PostCards = ({ props }) => {
     
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -46,9 +46,11 @@ const RelatedBlogArticles = ({ props }) => {
                         <div className="flex w-full md:w-[48%] lg:w-[31%] mb-12 md:mb-16 lg:mb-32">
                            
                             <BlogCard
-                                heading = { ` ` }
-                                link    = { ` `}
-                                image   = { ` ` }
+                                heading = { `Elevate Your Next Content Marketing Campaign Today. Download our Field Guide` }
+                                link = {{
+                                        'url': ''
+                                }}
+                                image = { `` }
                             />
 
                         </div>
@@ -58,4 +60,30 @@ const RelatedBlogArticles = ({ props }) => {
         </Section>
     )
 }
-export default RelatedBlogArticles
+export default PostCards
+
+export const query = graphql`
+  fragment PostCards on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_PostCards {
+        fieldGroupName
+        layoutPostCards {
+          layoutContent {
+            heading
+            taxonomy {
+                id
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+    }
+  }
+`

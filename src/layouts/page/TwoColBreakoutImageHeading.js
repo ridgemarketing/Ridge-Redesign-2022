@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 
-const TwoColBreakoutImageText = (props) => {
+const TwoColBreakoutImageHeading = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     const image = getImage(content.image)
@@ -41,25 +41,20 @@ const TwoColBreakoutImageText = (props) => {
     )
 }
 
-export default TwoColBreakoutImageText
+export default TwoColBreakoutImageHeading
 
 
 export const query = graphql`
-  fragment TwoColBreakoutImageText on WpPage_Flexiblelayouts_Layouts {
-    ... on WpPage_Flexiblelayouts_Layouts_TwoColBreakoutImageText {
+  fragment TwoColBreakoutImageHeading on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_TwoColBreakoutImageHeading {
         fieldGroupName
-        layoutTwoColBreakoutImageText {
+        layoutTwoColBreakoutImageHeading {
           layoutContent {
-            body
-            eyebrow
             heading
-            imagePosition
             image {
                 gatsbyImage
             }
-            list {
-                item
-            }
+            imagePosition
           }
           layoutSettings {
             padding {

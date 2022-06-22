@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react"
 import { graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
+// import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { AnchorLink } from "gatsby-plugin-anchor-links";
@@ -151,20 +151,20 @@ const VerticalSlider = (props) => {
                         </AnchorLink>
                         </div>
                         <div id="slides-main" className="ml-[10%] mr-[10%]">
-                        <p className={ theme.text['CIRCLE_NUM'] + 'text-rm-green border-rm-green' }> { vslide + 1 } </p>
-                        <h2 className={ theme.text['H2']  + 'mt-10'}> { vslides[vslide].heading } </h2>
-                        <p className={ theme.text['P_STD'] + 'mt-6'}> { vslides[vslide].p } </p>
+                          <p className={ theme.text['CIRCLE_NUM'] + 'text-rm-green border-rm-green' }> { vslide + 1 } </p>
+                          <h2 className={ theme.text['H2']  + 'mt-10'}> { vslides[vslide].heading } </h2>
+                          <p className={ theme.text['P_STD'] + 'mt-6'}> { vslides[vslide].p } </p>
                         </div>
                     </div>
                     
                     <img className="w-full h-[45%] mt-[5%] md:mt-0 md:h-auto md:w-[50%] lg:h-full block object-cover " src={ vslides[vslide].img }  />
                     <AnchorLink
-                            to='/sample-page/#skipVerticalSlider'
-                            title="Skip to the next section"
-                            className={ `md:hidden text-left w-full mt-[2%] h-[3%] ` + theme.text[`H4_LTE`]  + `flex items-center text-rm-grey`}
+                          to='/sample-page/#skipVerticalSlider'
+                          title="Skip to the next section"
+                          className={ `md:hidden text-left w-full mt-[2%] h-[3%] ` + theme.text[`H4_LTE`]  + `flex items-center text-rm-grey`}
                             >
                             Skip
-                        </AnchorLink>
+                    </AnchorLink>
                 </div>
                 
                 { vslides.map( (key) => (
@@ -179,3 +179,27 @@ const VerticalSlider = (props) => {
 }
 
 export default VerticalSlider;
+
+
+export const query = graphql`
+  fragment VerticalSlider on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_VerticalSlider {
+        fieldGroupName
+        layoutVerticalSlider {
+          layoutContent {
+            fieldGroupName
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

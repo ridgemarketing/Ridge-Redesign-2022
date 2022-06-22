@@ -2,8 +2,10 @@ import React, { useState } from "react"
 import Link from "../../components/global/FlexibleLink"
 import { Section, Container, BackgroundImage } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
+import { graphql } from "gatsby"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
 
 const FeaturedProjectsCarousel = (props) => {
     const [slide, setSlide] = useState(0);
@@ -77,3 +79,27 @@ const FeaturedProjectsCarousel = (props) => {
 }
 
 export default FeaturedProjectsCarousel
+
+
+export const query = graphql`
+  fragment FeaturedProjectsCarousel on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_FeaturedProjectsCarousel {
+        fieldGroupName
+        layoutFeaturedProjectsCarousel {
+          layoutContent {
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
