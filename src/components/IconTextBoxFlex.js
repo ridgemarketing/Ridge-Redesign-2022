@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect, useState, useCallback, useEffect } from "react"
+import React, { useRef, useState, useEffect } from "react"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
 
@@ -12,17 +12,19 @@ const IconTextBoxFlex = (props) => {
 
     const iconElement = useRef();
     const headingElement = useRef();
-    const ref = React.createRef();
+    const ref = useRef();
 
     useEffect(() => {
-        setHeight(ref.current.clientHeight);
+        setTimeout(function() {
+            setHeight(ref.current.clientHeight);
+        }, 0)
     })
 
     useEffect(() => {
-        let difference = 55 - height;
-        console.log(difference);
-        console.log(height < 55);
-        setcustomTop((difference > 0) ? (difference / 2) + 'px' : '0px');
+            let difference = 55 - height;
+            console.log(difference);
+            console.log(height < 55);
+            setcustomTop((difference > 0) ? (difference / 2) + 'px' : '0px');
     }, [height])
 
 
@@ -31,35 +33,6 @@ const IconTextBoxFlex = (props) => {
     }
 
     return(
-        <>
-           {/* <div className={wrapperClasses}>
-                <div className={'w-[55px]'}  ref={iconElement}>
-                        <GatsbyImage 
-                                image={ props.content.image } 
-                                alt={ props.content.image.alt } 
-                                className={ `flex self-start w-[54px] h-[55px]` } 
-                                objectFit={'contain'}
-                        /> 
-                </div>
-                <div className={"flex flex-col"}>
-                    <div className={ marginClasses }>
-                        <p className={'hidden'}>
-                            {height}
-                        </p>
-                        <p  ref={ref}
-                            style={{marginTop: customTop}}
-                            className={ theme.text['H4'] + 'block items-center' }>
-                            { props.content.heading }
-                        </p>
-                    </div>
-                    <div className={ marginClasses + `mt-4`}>
-                        <p 
-                            className={ theme.text['FOOTER'] }>
-                            { props.content.text }
-                        </p>
-                    </div>
-                </div>  
-            </div> */}
             <div className={wrapperClasses}>
                 <div className={'w-[55px]'}>
                         <GatsbyImage 
@@ -71,7 +44,6 @@ const IconTextBoxFlex = (props) => {
                 </div>
                 <div className={'flex-col flex'}>
                     <div>
-                        <p className={'hidden'}>{height}</p>
                         <p ref={ref}
                             style={{marginTop: customTop, marginLeft: '24px'}}
                             className={ theme.text['H4'] + 'block items-center' }>
@@ -86,11 +58,6 @@ const IconTextBoxFlex = (props) => {
                     </div>
                 </div>
             </div>
-                        {/* <div ref={ref}>
-                <p>Hello</p>
-                <p>{height}</p>
-            </div> */}
-        </>
     )
 }
 
