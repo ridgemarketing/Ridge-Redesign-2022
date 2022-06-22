@@ -13,18 +13,6 @@ const FullWidthImageText = (props) => {
   console.log(content);
   const image = getImage(content.image.gatsbyImage);
   const orientation = 'flex';
-  // const [tallest, setTallest] = useState(0);
-
-  // const handleHeight = (h) => {
-  //     let height = parseInt(h);
-  //     console.log("Heightx: " + height)
-  //     console.log("tallestx: " + tallest)
-  //     if (height > tallest) {
-  //         console.log('hello')
-  //         setTallest(height);
-  //     }
-  //     return tallest;
-  // }
 
   const threeCols = true;
   const cols = threeCols ? ' lg:grid-cols-3 ' : ' ';
@@ -87,7 +75,6 @@ const FullWidthImageText = (props) => {
           </p>
           </div>
 
-          {/* className={`md:grid md:grid-cols-2 ${cols} gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12`} */}
           <div className={wrapperClasses}>
               {li_items.map(item => {
                   return (orientation == 'stacked') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex threeCol={threeCols} content={item}/>;

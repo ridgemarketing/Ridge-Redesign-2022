@@ -8,24 +8,23 @@ const IconTextBoxFlex = (props) => {
     let marginClasses   = `ml-6 `;
 
     const [height, setHeight] = useState(0);
+    const [iconHeight, setIconHeight] = useState(0);
     const [customTop, setcustomTop] = useState('0px');
 
     const iconElement = useRef();
-    const headingElement = useRef();
     const ref = useRef();
 
     useEffect(() => {
         setTimeout(function() {
             setHeight(ref.current.clientHeight);
+            setIconHeight(iconElement.current.clientHeight);
         }, 0)
     })
 
     useEffect(() => {
-            let difference = 55 - height;
-            console.log(difference);
-            console.log(height < 55);
+            let difference = iconHeight - height;
             setcustomTop((difference > 0) ? (difference / 2) + 'px' : '0px');
-    }, [height])
+    }, [height, iconHeight])
 
 
     if (props.threeCol){
@@ -34,7 +33,7 @@ const IconTextBoxFlex = (props) => {
 
     return(
             <div className={wrapperClasses}>
-                <div className={'w-[55px]'}>
+                <div className={'w-[55px]'} ref={iconElement}>
                         <GatsbyImage 
                                 image={ props.content.image } 
                                 alt={ props.content.image.alt } 
