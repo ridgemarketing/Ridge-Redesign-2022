@@ -4,8 +4,8 @@ import { Section, Container, BackgroundImage } from "../../components/global/Wra
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-//import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
 
 const FeaturedProjectsCarousel = (props) => {
     const [slide, setSlide] = useState(0);

@@ -56,6 +56,7 @@ export const query = graphql`
         ...FullWidthImage 
         ...FullWidthImageText
         ...IconTextBoxes 
+        ...VerticalSlider
         ...MediaBlocks 
         ...FeaturedProjectsCarousel 
         ...Quotes 
@@ -63,7 +64,7 @@ export const query = graphql`
         ...ResultsMix 
         ...LogoCloud 
         ...PostCards 
-        ...CtaForm
+        
         ...ProjectPortfolio 
       }
     }
