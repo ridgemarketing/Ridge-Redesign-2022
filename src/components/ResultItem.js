@@ -1,13 +1,12 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
-import { theme } from "../../static/theme"
+import { theme } from "../static/theme"
 
 export const Results_Loop_Text_Loop = (props) =>{
     return(
         <>
-            {/* descriptor */}
-            { props.smallText &&
+            {/* { props.smallText &&
                 <p 
                     className={ 
                         props.className + 
@@ -16,7 +15,6 @@ export const Results_Loop_Text_Loop = (props) =>{
                 </p>
             }
 
-            {/* call out */}
             { props.largeText &&
                 <p 
                     className={ 
@@ -24,36 +22,37 @@ export const Results_Loop_Text_Loop = (props) =>{
                         '' }>
                     { props.largeText }
                 </p>
-            }
+            } */}
         </>
     )
 }
 
 const ResultItem = (props) => {
+    const content = props.layoutContent;
     return (
         <>
-            <div className={ 'flex w-full ' + props.container }>
-                { props.smallText &&   
-                    <Results_Loop_Text_Loop 
-                        content    = { props.smallText }
+            <div className={ 'flex w-full ' + content.container }>
 
-                        color       = { props.textColor }
-                        padding     = { props.padding }
-                        className   = { props.className }
-                    />
+                {/* IF THIS IS A LOOP UNCOMMENT LINE BELOW AND MOVE CODE INTO MAP*/}
+                {/* CHANGE FROM 'content.smallText', etc. to 'block.smallText', etc. */}
+
+                {/* {content.textBlocks.map(block => {
+                })} */}
+                { content.smallText && 
+                    <p 
+                        className={`${content.className} `}>
+                        { content.smallText }
+                    </p>  
                 }
-                { props.largeText &&  
-                    <Results_Loop_Text_Loop 
-                        content    = { props.largeText }
-                    
-                        color       = { props.textColor  }
-                        padding     = { props.padding }
-                        className   = { props.className }
-                    />
+                { content.largeText &&  
+                   <p 
+                        className={`${content.className} `}>
+                        { content.largeText }
+                    </p>  
                 }
-                { props.caseStudy &&
+                { content.caseStudy &&
                     <Link 
-                        to={ props.caseStudy } 
+                        to={ content.caseStudy } 
                         className={ 
                             theme.text_links['BASE_STYLING'] + 
                             theme.text_links['FWD_BASE'] + 

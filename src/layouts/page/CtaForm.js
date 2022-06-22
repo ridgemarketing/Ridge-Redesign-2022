@@ -1,6 +1,7 @@
 import React, { useRef, useEffect } from "react"
 import { theme } from '../../static/theme'
 import { Formik, Form  } from 'formik'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Pristine from 'pristinejs'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { BasicInputs, MultiLineText, SelectInput, FormSubmit}  from '../../components/global/Forms'

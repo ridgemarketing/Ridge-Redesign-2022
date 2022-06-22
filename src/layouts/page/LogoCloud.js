@@ -1,29 +1,27 @@
 import React from "react" 
 import { graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 
 export const LogoCloud_Loop = (props) =>{
     
-    return(
-        <GatsbyImage 
-            image={ image } 
-            alt={ content.image.alt } 
-            className={ `w-full md:w-[31%] lg:w-[18%] ` } 
-        />
-    )
+    // return(
+    //     <GatsbyImage 
+    //         image={ image } 
+    //         alt={ content.image.alt } 
+    //         className={ `w-full md:w-[31%] lg:w-[18%] ` } 
+    //     />
+    // )
 }
 
-const LogoCloud = ({ props }) => {
-    const content = props.layoutData.layoutContent;
-    const settings = props.layoutData.layoutSettings;
-    const desktopImage = getImage(content.flexibleMedia.image);
-    const mobileImage = getImage(content.responsiveImages.mobile);
-    const image = mobileImage 
-    
+const LogoCloud = props => {
+
+  const content = props.layoutContent;
+  const settings = props.layoutSettings;
+
     return(
-        <Section Settings={ settings }>
+        <Section settings={ settings }>
             <Container>
                 {content.heading &&
                     <h2 className={theme.text['H2'] + ''}> 
@@ -36,7 +34,16 @@ const LogoCloud = ({ props }) => {
                     </p>
                 }
                 <div className="mt-12 flex w-full flex-wrap justify-around">
-                    <LogoCloud_Loop/>
+                    {content.logos.map(logo => {
+                      const image = getImage(logo.image);
+                      return(
+                        <GatsbyImage 
+                            image={ image } 
+                            alt={ logo.alt } 
+                            className={ `w-full md:w-[31%] lg:w-[18%] ` } 
+                        />
+                    )
+                    })}
                 </div> 
             </Container>
         </Section>

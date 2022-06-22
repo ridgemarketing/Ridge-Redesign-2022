@@ -10,7 +10,7 @@ export const ResultsMixed_Loop = (props) =>{
     
     return(
         <>
-            <div className={ 'flex flex-col w-full ' + resultTextSize_Container }>
+            {/* <div className={ 'flex flex-col w-full ' + resultTextSize_Container }>
                 <Results_Loop_Text_Loop 
                     type    = { 'descriptor' }
                     color   = { `` }
@@ -34,7 +34,7 @@ export const ResultsMixed_Loop = (props) =>{
                         VIEW CASE STUDY
                     </a>
                 }
-            </div>
+            </div> */}
         </>
     )
 }
@@ -43,26 +43,28 @@ export const Results_Loop_Text_Loop = (props) =>{
     return(
         <>
             {/* descriptor */}
-            <p 
+            {/* <p 
                 className={ 
                     resultTextSize_textSizeSmall + 
                     ' ' }>
                 { content.results.topText }
             </p>
 
-            {/* call out */}
+ 
             <p 
                 className={ 
                     resultTextSize_textSizeLarge + 
                     '' }>
                  Ecommerce Website
-            </p>
+            </p> */}
         </>
     )
 }
 
-const ResultsMixed = ({ props }) => {
+const ResultsMixed = (props) => {
     
+    const content = props.layoutContent;
+    const settings = props.layoutSettings;
     let theSize = content.ResultsSize; //large or small 
     let resultTextSize_Container        = theSize == 'large' ? `large md:w-[48%]` : `small lg:w-[31%] mb-12`;  
     let resultTextSize_textSizeLarge    = theSize == 'large' ? theme.text['STATS'] : theme.text['H2'];
@@ -99,7 +101,24 @@ const ResultsMixed = ({ props }) => {
                     </>
                 }
                 <div className={` mt-12 flex w-full flex-wrap justify-between `}>
-                    <Results_Loop/>
+                    {content.resultsBlocks.map(result => {
+                        return (
+                            <>
+                                <p 
+                                    className={ 
+                                        resultTextSize_textSizeSmall + 
+                                        ' ' }>
+                                    { result.topText }
+                                </p>
+                                <p 
+                                    className={ 
+                                        resultTextSize_textSizeLarge + 
+                                        '' }>
+                                    {result.bottomText}
+                                </p>
+                            </>
+                        )
+                    })}
                 </div>
             </Container>
         </Section>
@@ -117,9 +136,15 @@ export const query = graphql`
             body
             heading
             results {
-              company
-              description
-              stat
+                content {
+                    style
+                    text
+                }
+                link {
+                    target
+                    title
+                    url
+                }
             }
           }
           layoutSettings {

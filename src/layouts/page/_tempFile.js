@@ -192,3 +192,87 @@
     //         </Container>
     //     </Section>
     // )
+
+
+
+
+    // ISSUES WITH FLEX SECTION 
+    // useEffect(() => {
+        // const heading = headingElement.current;
+        // const icon = iconElement.current;
+        // console.log(heading);
+    
+        // const headingHeight = heading.scrollHeight;
+        // const iconHeight = icon.clientHeight;
+        // console.log("Heading: " + headingHeight);
+        // console.log("Icon: " + iconHeight);
+    
+        // let difference = iconHeight - headingHeight;
+    
+        // if (difference > 0) {
+        //     var mt = difference /2;
+        //     heading.style.marginTop = mt + 'px';
+        // }
+        //     heading.style.marginBottom = (mt + 6) + 'px';
+    
+    
+    //     function handleResize() {
+    //         setScreenSize({
+    //             "height": window.innerHeight,
+    //             "width": window.innerWidth
+    //         })
+    //     }
+    
+    //     window.addEventListener('resize', handleResize);
+    
+    //     return () => window.removeEventListener('resize', handleResize);
+    // },[])
+
+        // const [refState, setRefState] = useState<React.MutableRefObject<HTMLParagraphElement | null>>(null);
+    // const headingElement = useCallback((node) => setRefState(node), node)
+    // const [height, setHeight] = useState(0);
+
+    // const alignHeadings = (node) => {
+    //     let headingHeight = node.clientHeight;
+    //     const icon = iconElement.current;
+    //     let iconHeight = icon.clientHeight;
+
+    //     let difference = iconHeight - headingHeight;
+
+    //     if (difference > 0) {
+    //         var mt = difference /2;
+    //         node.style.marginTop = mt + 'px';
+    //     }
+    //         node.style.marginBottom = (mt + 6) + 'px';
+    // }
+
+    // const headingElement = useCallback(node => {
+    //     if (node) {
+    //         console.log(node.clientHeight);
+    //         return node;
+    //         alignHeadings(node);
+    //     } else {
+    //         console.log('null!')
+    //     }
+    // }, [])
+    
+    
+    // useEffect(() => {
+
+    //     const heading = headingElement.current;
+    //     const icon = iconElement.current;
+    //     let iconHeight = icon.clientHeight;
+
+        
+    //     let headingHeight = heading.clientHeight;
+
+
+    //     let difference = iconHeight - headingHeight;
+
+    //     if (difference > 0) {
+    //         var mt = difference /2;
+    //         heading.style.marginTop = mt + 'px';
+    //     }
+    //         heading.style.marginBottom = (mt + 6) + 'px';
+
+    // }, [])

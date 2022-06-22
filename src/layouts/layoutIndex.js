@@ -1,4 +1,6 @@
 import React from 'react'
+import FullWidthTextImage from './page/_FullWidthTextImage';
+// import ThreeColumnTextBlock from './page/ThreeColumnTextBlocks'
 import ContactFourSquare from "./page/ContactFourSquare"
 import FeaturedProjectsCarousel from "./page/FeaturedProjectsCarousel"
 import FeaturedProjectsGrid from "./page/FeaturedProjectsGrid"
@@ -31,6 +33,8 @@ Layouts['FeaturedProjectsCarousel'] = FeaturedProjectsCarousel;
 Layouts['FeaturedProjectsGrid'] = FeaturedProjectsGrid;
 Layouts['FullWidthImage'] = FullWidthImage;
 Layouts['FullWidthImageText'] = FullWidthImageText;
+// Layouts['ThreeColumnTextBlock'] = ThreeColumnTextBlock;
+Layouts['TextBlock'] = TextBlock;
 Layouts['HomeHero'] = HomeHero;
 Layouts['IconTextBoxes'] = IconTextBoxes;
 Layouts['InPageContactForm'] = InPageContactForm;

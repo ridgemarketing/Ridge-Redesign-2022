@@ -10,13 +10,13 @@ const IconTextBoxStack = (props) => {
                                        
     if (iconType == 'icon') {
         component = 
-        <div className={"mb-8 text-center md:text-left lg:mx-0 min-h-[108px]"}>
+        <div className={"mb-8 text-center md:text-left lg:mx-0"}>
             <GatsbyImage image={content.image} />
         </div> 
     } 
     if (iconType == 'numbers') {
         component = 
-        <div className={"mb-5 text-center md:text-left lg:mx-0 min-h-[54px]"}>
+        <div className={"mb-5 text-center md:text-left lg:mx-0"}>
             <GatsbyImage image={content.image} />
         </div> 
     }                   
