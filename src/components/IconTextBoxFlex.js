@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from "react"
+import React, { useRef, useLayoutEffect, useState, useCallback, useEffect } from "react"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
 
@@ -7,42 +7,32 @@ const IconTextBoxFlex = (props) => {
     let imageClasses    = ``;
     let marginClasses   = `ml-6 `;
 
+    const [height, setHeight] = useState(0);
+    const [customTop, setcustomTop] = useState('0px');
+
     const iconElement = useRef();
     const headingElement = useRef();
-    const [height, setHieght] = useState();
+    const ref = React.createRef();
 
     useEffect(() => {
-        const heading = headingElement.current;
-        const icon = iconElement.current;
+        setHeight(ref.current.clientHeight);
+    })
 
-        const headingHeight = heading.clientHeight;
-        const iconHeight = icon.clientHeight;
+    useEffect(() => {
+        let difference = 55 - height;
+        console.log(difference);
+        console.log(height < 55);
+        setcustomTop((difference > 0) ? (difference / 2) + 'px' : '0px');
+    }, [height])
 
-        console.log(headingHeight);
-        let tallest = props.handler(headingHeight);
-        setHieght(tallest);
 
-        let difference = iconHeight - headingHeight;
-
-        if (difference > 0) {
-            var mt = difference /2;
-            heading.style.marginTop = mt + 'px';
-        }
-            heading.style.minHeight = '40px';
-        // heading.style.marginBottom = mt + 'px';
-    },[])
-  
     if (props.threeCol){
         wrapperClasses += ` lg:w-[31%]`;
     }
 
-    //two refs --> icon & heading
-    //calculate the height of the icon and the heading
-    // if the difference is > 0, divide by two and use as mt
-
     return(
         <>
-           <div className={wrapperClasses}>
+           {/* <div className={wrapperClasses}>
                 <div className={'w-[55px]'}  ref={iconElement}>
                         <GatsbyImage 
                                 image={ props.content.image } 
@@ -51,10 +41,14 @@ const IconTextBoxFlex = (props) => {
                                 objectFit={'contain'}
                         /> 
                 </div>
-                <div className="flex flex-col">
-                    <div className={ marginClasses + `flex items-center ml-6`}>
-                        <p  ref={headingElement}
-                            className={ theme.text['H4'] + 'icon-block-title flex items-center' }>
+                <div className={"flex flex-col"}>
+                    <div className={ marginClasses }>
+                        <p className={'hidden'}>
+                            {height}
+                        </p>
+                        <p  ref={ref}
+                            style={{marginTop: customTop}}
+                            className={ theme.text['H4'] + 'block items-center' }>
                             { props.content.heading }
                         </p>
                     </div>
@@ -65,7 +59,37 @@ const IconTextBoxFlex = (props) => {
                         </p>
                     </div>
                 </div>  
+            </div> */}
+            <div className={wrapperClasses}>
+                <div className={'w-[55px]'}>
+                        <GatsbyImage 
+                                image={ props.content.image } 
+                                alt={ props.content.image.alt } 
+                                className={ `flex self-start w-[54px] h-[55px]` } 
+                                objectFit={'contain'}
+                        /> 
+                </div>
+                <div className={'flex-col flex'}>
+                    <div>
+                        <p className={'hidden'}>{height}</p>
+                        <p ref={ref}
+                            style={{marginTop: customTop, marginLeft: '24px'}}
+                            className={ theme.text['H4'] + 'block items-center' }>
+                            { props.content.heading }
+                        </p>
+                    </div>
+                    <div className={ marginClasses + `mt-4`}>
+                        <p 
+                            className={ theme.text['FOOTER'] }>
+                            { props.content.text }
+                        </p>
+                    </div>
+                </div>
             </div>
+                        {/* <div ref={ref}>
+                <p>Hello</p>
+                <p>{height}</p>
+            </div> */}
         </>
     )
 }

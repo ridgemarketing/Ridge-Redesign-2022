@@ -1,6 +1,6 @@
 import React from "react" 
 import { graphql } from "gatsby"
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import BlogCard from '../../components/BlogCard.js'
@@ -47,9 +47,9 @@ const PostCards = ({ props }) => {
                            
                             <BlogCard
                                 heading = { `Elevate Your Next Content Marketing Campaign Today. Download our Field Guide` }
-                                link = {
-                                        url = ''
-                                }
+                                link = {{
+                                        'url': ''
+                                }}
                                 image = { `` }
                             />
 

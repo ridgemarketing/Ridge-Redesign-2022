@@ -1,5 +1,5 @@
 import React from "react" 
-import { GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
@@ -10,7 +10,7 @@ export const ThreeColProjectBlocks_Loop = (props) =>{
     return(
         <>
             {/* loop items */}
-            <div className="flex flex-col justify-center w-full md:w-[48%] lg:w-[31%] mb-12">
+            {/* <div className="flex flex-col justify-center w-full md:w-[48%] lg:w-[31%] mb-12">
                 <GatsbyImage 
                     image={ image } 
                     alt={ content.image.alt } 
@@ -26,7 +26,7 @@ export const ThreeColProjectBlocks_Loop = (props) =>{
                     to={ content.link.url }>
                     { content.link.heading }
                 </Link>
-            </div>
+            </div> */}
             {/* end loop */}
         </>
     )
@@ -36,7 +36,6 @@ const ThreeColProjectBlocks = ({ props }) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    const image = getImage(content.componentFlexibleMedia.image);
 
     return(
         <Section Settings={ settings }>
@@ -57,7 +56,29 @@ const ThreeColProjectBlocks = ({ props }) => {
                 }
 
                 <div className="flex w-full flex-wrap justify-between">
-                    <ThreeColProjectBlocks_Loop />
+                    {/* <ThreeColProjectBlocks_Loop /> */}
+                    {content.projectBlocks.map(block => {
+                        const image = getImage(block.image);
+                        return (
+                        <div className="flex flex-col justify-center w-full md:w-[48%] lg:w-[31%] mb-12">
+                            <GatsbyImage 
+                                image={ image } 
+                                alt={ block.imageAlt } 
+                                className={ `object-cover w-full ` } 
+                            /> 
+                            <Link 
+                                className={ 
+                                    theme.text_links['BASE_STYLING'] + 
+                                    theme.text_links['STD'] + 
+                                    theme.text_links['FWD_BASE'] + 
+                                    theme.text_links['ARW_FWD_BLACK'] + 
+                                    'mt-3' } 
+                                to={ block.link.url }>
+                                { block.link.heading }
+                            </Link>
+                    </div>
+                        )
+                    })}
                 </div>
 
                 {content.subHeading &&
@@ -79,7 +100,7 @@ const ThreeColProjectBlocks = ({ props }) => {
                         <Link
                             className={ 
                                 theme.button['BASE_STYLING'] + 
-                                theme.button[ context.button.color ] + 
+                                theme.button[ content.button.color ] + 
                                 'w-[210px] h-min '}
                             to={ content.button.url }
                         >
