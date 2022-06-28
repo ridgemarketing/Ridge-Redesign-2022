@@ -5,8 +5,10 @@ import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 
 const FullWidthImageText = (props) => {
+  console.log(props);
 
   const content = props.layoutData.layoutContent;
+  console.log(content);
   const settings = props.layoutData.layoutSettings;
   const image = getImage(content.image.gatsbyImage);
 
