@@ -56,5 +56,13 @@ export const theme = {
         BASE_STYLING:       'translate-form my-5 flex p-11 ',
         FULL:               'form-two-col w-full flex-row justify-around flex-wrap ',
         HALF:               'form-one-col w-1/2 flex-col ',
+    },
+    paddingTop:{
+        standard: 'pt-20',
+        none: 'pt-0'
+    },
+    paddingBottom:{
+        standard: 'pb-20',
+        none: 'pb-0'
     }
 }

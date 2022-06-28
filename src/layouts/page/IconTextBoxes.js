@@ -65,7 +65,7 @@ export const query = graphql`
                 url
               }
               image {
-                gatsbyImage
+                gatsbyImage(width: 108)
               }
             }
             heading

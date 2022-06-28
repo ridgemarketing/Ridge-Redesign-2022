@@ -21,7 +21,7 @@ const TextBlock = (props) => {
 
     return (
         <Section settings={settings}>
-            <Container classes={` ${alignment}`}>
+            <Container classes={`${alignment}`}>
                 <h2 className={theme.text.H1_LTE + ' pb-6'} dangerouslySetInnerHTML={{__html: heading}}>
                 </h2>
                 <p className={theme.text.P_STD + ' pb-8'} dangerouslySetInnerHTML={{__html: body}}>

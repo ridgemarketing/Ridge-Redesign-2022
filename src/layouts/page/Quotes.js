@@ -106,9 +106,7 @@ const Quotes = (props) => {
                 transform: translateX(0px);
             }
         }`;
-        return (
-            {animations}
-        )
+        return animations;
     })
 
 
@@ -142,7 +140,7 @@ const Quotes = (props) => {
                            {slides.map(slide => {
                             return (
                                 <>
-                                <p className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out' }>
+                                {/* <p className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out' }>
                                     {slide.heading}
                                 </p>
                                 <p className={ theme.text['P_BLD'] }>
@@ -150,7 +148,7 @@ const Quotes = (props) => {
                                 </p>
                                 <small className={ theme.text['FOOTER'] }>
                                     { content.quote.company }
-                                </small>
+                                </small> */}
                             </>
                             )
                            })}

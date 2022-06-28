@@ -5,20 +5,19 @@ import { theme } from "../static/theme"
 const IconTextBoxStack = (props) => {
     const content = props.content;
     const iconType = props.iconType;
-    console.log(iconType)
 
     let component =  <span className={'block w-[138px] border-t-2 border-t-rm-green mb-7'}></span>;
                                        
     if (iconType === 'icon') {
         component = 
         <div className={"mb-8 text-center md:text-left lg:mx-0"}>
-            <GatsbyImage image={content.image} />
+            <GatsbyImage image={content.image.gatsbyImage} />
         </div> 
     } 
     if (iconType === 'numbers') {
         component = 
         <div className={"mb-5 text-center md:text-left lg:mx-0"}>
-            <GatsbyImage image={content.image} />
+            <GatsbyImage image={content.image.gatsbyImage} />
         </div> 
     }                   
             return (

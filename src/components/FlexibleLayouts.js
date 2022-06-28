@@ -26,13 +26,7 @@ const FlexibleLayouts = (props) => {
   });
   return (
     <div>
-      <h1>FLEX LAYOUTS</h1>
       {layoutsArray}
-
-      {layouts && 
-        <h1>there are layouts</h1>
-      }
-
     </div>
   )
 }
