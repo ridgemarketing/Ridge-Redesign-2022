@@ -10,7 +10,7 @@ const ResultCard = (props) => {
             <div className={ `px-4 ${content.container} text-center lg:text-left lg:w-[50%] my-6 2xl:w-fit` }>
                 { content.stat && 
                     <p 
-                        className={`${content.className} text-rm-green text-[120px] lg:text-[160px] font-bold`}>
+                        className={`${content.className} text-rm-green text-[120px] xl:text-[160px] font-bold`}>
                         { content.stat }
                     </p>  
                 }
