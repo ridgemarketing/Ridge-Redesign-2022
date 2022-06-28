@@ -12,7 +12,7 @@ export const Section = (props) => {
         classes: ``
     }
 
-    if (props.settings) {
+    if (props.settings && props.settings.padding) {
         var pt = theme.paddingTop[`${props.settings.padding.top}`];
         var pb = theme.paddingBottom[`${props.settings.padding.bottom}`];
     }
