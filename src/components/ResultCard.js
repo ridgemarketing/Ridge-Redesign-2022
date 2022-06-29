@@ -5,12 +5,18 @@ import { theme } from "../static/theme"
 
 const ResultCard = (props) => {
     const content = props.content;
-    console.log(content);
+
+    const classes = {
+        1: 'flex items-center gap-8 max-w-[900px]',
+        2: 'lg:flex-[50%]',
+        3: 'lg:w-[30%]'
+    }
+
     return (
-            <div className={ `px-4 ${content.container} text-center lg:text-left lg:w-[50%] my-6 2xl:w-fit` }>
+            <div className={ `px-4 ${content.container} text-center lg:text-left ${classes[props.columns]} my-6` }>
                 { content.stat && 
                     <p 
-                        className={`${content.className} text-rm-green text-[120px] xl:text-[160px] font-bold`}>
+                        className={`${content.className} text-rm-green text-[120px] font-bold`}>
                         { content.stat }
                     </p>  
                 }

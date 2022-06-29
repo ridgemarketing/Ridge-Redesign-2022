@@ -9,24 +9,22 @@ import { faLoveseat } from "@fortawesome/pro-duotone-svg-icons"
 import Parser from "../../components/global/Parser";
 
 const Results = (props) => {
-    console.log(props);
+  console.log(props)
     
     const content = props.layoutData.layoutContent || {};
     const settings = props.layoutData.layoutSettings || {};
 
+
     const body = Parser(content.body);
 
-    const gridCols = content.columns == 2 ? '' : `xl:grid-cols-${content.columns}`;
-
-    let stacked = content.ResultsStack;
-    let resultOrientation = stacked == `stacked` ? `flex-row ` : `flex-col `; 
+  let columns = content.columns === '1' ? '' : 'lg:justify-between';
 
 
     return(
         <Section settings={settings}>
             <Container>
                 {content.heading &&
-                        <h2 className={'text-center'}>
+                        <h2 className={'text-center mb-4 '}>
                             <span 
                                 className={`${theme.text['H2']} text-${content.textColor}`}> 
                                 { content.heading }
@@ -34,13 +32,13 @@ const Results = (props) => {
                         </h2>
                 }
                 {content.body &&
-                        <p className={'mt-4 text-center'}>
+                        <p className={'mb-6 text-center'}>
                             <span dangerouslySetInnerHTML={{__html: body}} className={`${theme.text['P_STD']} text-${content.textColor} text-${content.textAlign}`}></span>
                         </p>
                 }
-                <div className={`mt-6 flex flex-wrap justify-center lg:justify-between`}>
+                <div className={`flex flex-wrap justify-center ${columns}`}>
                     { content.results && content.results.map(result => {
-                      return <ResultCard content ={result} />
+                      return <ResultCard content ={result} columns={content.columns}/>
                     })           
                     }
                 </div>
@@ -57,6 +55,7 @@ export const query = graphql`
         fieldGroupName
         layoutResults {
           layoutContent {
+            columns
             body
             heading
             results {

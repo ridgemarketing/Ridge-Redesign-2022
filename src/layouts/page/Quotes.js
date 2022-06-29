@@ -28,9 +28,6 @@ import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
 
 const Quotes = (props) => {
 
-    console.log("QUOTES")
-    console.log(props)
-
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     
