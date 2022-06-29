@@ -6,7 +6,6 @@ import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser";
 
 const Results = (props) => {
-  console.log(props)
     
     const content = props.layoutData.layoutContent || {};
     const settings = props.layoutData.layoutSettings || {};
@@ -14,7 +13,7 @@ const Results = (props) => {
 
     const body = Parser(content.body);
 
-  let columns = content.columns === '1' ? '' : 'lg:justify-between';
+    let columns = content.columns === '1' ? '' : 'lg:justify-between';
 
 
     return(
@@ -23,14 +22,14 @@ const Results = (props) => {
                 {content.heading &&
                         <h2 className={'text-center mb-4 '}>
                             <span 
-                                className={`${theme.text['H2']} text-${content.textColor}`}> 
+                                className={`${theme.text['H2']}`}> 
                                 { content.heading }
                             </span>
                         </h2>
                 }
                 {content.body &&
                         <p className={'mb-6 text-center'}>
-                            <span dangerouslySetInnerHTML={{__html: body}} className={`${theme.text['P_STD']} text-${content.textColor} text-${content.textAlign}`}></span>
+                            <span dangerouslySetInnerHTML={{__html: body}} className={`${theme.text['P_STD']}`}></span>
                         </p>
                 }
                 <div className={`flex flex-wrap justify-center ${columns}`}>
