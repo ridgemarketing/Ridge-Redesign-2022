@@ -1,11 +1,8 @@
 import React from "react" 
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
-import { content } from "../../../tailwind.config.js"
-import ResultItem from '../../components/ResultItem.js'
 import ResultCard from '../../components/ResultCard.js'
 import { graphql } from "gatsby"
-import { faLoveseat } from "@fortawesome/pro-duotone-svg-icons"
 import Parser from "../../components/global/Parser";
 
 const Results = (props) => {
