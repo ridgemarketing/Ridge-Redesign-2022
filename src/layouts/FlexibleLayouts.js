@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import React from 'react'
-import Layouts from '../layouts/layoutIndex';
+import Layouts from './layoutIndex';
 
 const FlexibleLayouts = (props) => {
 
@@ -41,8 +41,8 @@ export default FlexibleLayouts
 
 
 
-export const query = graphql`
-  fragment FlexibleLayouts on WpPage {
+export const pageQuery = graphql`
+  fragment FlexibleLayoutsPage on WpPage {
     flexibleLayouts{
       layouts {
         ...TwoColImageText 
@@ -64,11 +64,66 @@ export const query = graphql`
         ...ResultsMix 
         ...LogoCloud 
         ...PostCards 
-        
+        ...ProjectPortfolio 
+      }
+    }
+  }
+`
+export const serviceQuery = graphql`
+  fragment FlexibleLayoutsService on WpPage {
+    flexibleLayouts{
+      layouts {
+        ...TwoColImageText 
+        ...TwoColBreakoutImageText 
+        ...TwoColBreakoutImageHeading 
+        ...TwoColTextQuote 
+        ...TwoColProjectsGrid 
+        ...ThreeColProjectBlocks 
+        ...TextBlock 
+        ...VideoPlayer 
+        ...FullWidthImage 
+        ...FullWidthImageText
+        ...IconTextBoxes 
+        ...VerticalSlider
+        ...MediaBlocks 
+        ...FeaturedProjectsCarousel 
+        ...Quotes 
+        ...Results 
+        ...ResultsMix 
+        ...LogoCloud 
+        ...PostCards
         ...ProjectPortfolio 
       }
     }
   }
 `
 
+export const projectQuery = graphql`
+  fragment FlexibleLayoutsProject on WpPage {
+    flexibleLayouts{
+      layouts {
+        ...TwoColImageText 
+        ...TwoColBreakoutImageText 
+        ...TwoColBreakoutImageHeading 
+        ...TwoColTextQuote 
+        ...TwoColProjectsGrid 
+        ...ThreeColProjectBlocks 
+        ...TextBlock 
+        ...VideoPlayer 
+        ...FullWidthImage 
+        ...FullWidthImageText
+        ...IconTextBoxes 
+        ...VerticalSlider
+        ...MediaBlocks 
+        ...FeaturedProjectsCarousel 
+        ...Quotes 
+        ...Results 
+        ...ResultsMix 
+        ...LogoCloud 
+        ...PostCards 
+        ...ProjectPortfolio 
+      }
+    }
+  }
+`
 

@@ -17,8 +17,12 @@ export const query = graphql`
         layoutVideoPlayer {
           layoutContent {
             sideImage {
-                gatsbyImage
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
               }
+            }
               video
           }
           layoutSettings {

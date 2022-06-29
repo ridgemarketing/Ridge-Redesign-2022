@@ -43,7 +43,11 @@ export const query = graphql`
             heading
             intro
             image {
-                gatsbyImage
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
             }
           }
           layoutSettings {
