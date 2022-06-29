@@ -43,85 +43,85 @@ export default FlexibleLayouts
 
 export const pageQuery = graphql`
   fragment FlexibleLayoutsPage on WpPage {
-    flexibleLayouts{
+    flexibleLayouts {
       layouts {
-        ...TwoColImageText 
-        ...TwoColBreakoutImageText 
-        ...TwoColBreakoutImageHeading 
-        ...TwoColTextQuote 
-        ...TwoColProjectsGrid 
-        ...ThreeColProjectBlocks 
-        ...TextBlock 
-        ...VideoPlayer 
-        ...FullWidthImage 
-        ...FullWidthImageText
-        ...IconTextBoxes 
-        ...VerticalSlider
-        ...MediaBlocks 
-        ...FeaturedProjectsCarousel 
-        ...Quotes 
-        ...Results 
-        ...ResultsMix 
-        ...LogoCloud 
-        ...PostCards 
-        ...ProjectPortfolio 
+        ...TwoColImageTextPage
+        ...TwoColBreakoutImageTextPage
+        ...TwoColBreakoutImageHeadingPage
+        ...TwoColTextQuotePage
+        ...TwoColProjectsGridPage
+        ...ThreeColProjectBlocksPage
+        ...TextBlockPage
+        ...VideoPlayerPage
+        ...FullWidthImagePage
+        ...FullWidthImageTextPage
+        ...IconTextBoxesPage
+        ...VerticalSliderPage
+        ...MediaBlocksPage
+        ...FeaturedProjectsCarouselPage
+        ...QuotesPage
+        ...ResultsPage
+        ...ResultsMixPage
+        ...LogoCloudPage
+        ...PostCardsPage
+        ...ProjectPortfolioPage 
       }
     }
   }
 `
 export const serviceQuery = graphql`
-  fragment FlexibleLayoutsService on WpPage {
-    flexibleLayouts{
+  fragment FlexibleLayoutsService on WpService {
+    flexibleLayouts {
       layouts {
-        ...TwoColImageText 
-        ...TwoColBreakoutImageText 
-        ...TwoColBreakoutImageHeading 
-        ...TwoColTextQuote 
-        ...TwoColProjectsGrid 
-        ...ThreeColProjectBlocks 
-        ...TextBlock 
-        ...VideoPlayer 
-        ...FullWidthImage 
-        ...FullWidthImageText
-        ...IconTextBoxes 
-        ...VerticalSlider
-        ...MediaBlocks 
-        ...FeaturedProjectsCarousel 
-        ...Quotes 
-        ...Results 
-        ...ResultsMix 
-        ...LogoCloud 
-        ...PostCards
-        ...ProjectPortfolio 
+        ...TwoColImageTextService
+        ...TwoColBreakoutImageTextService
+        ...TwoColBreakoutImageHeadingService 
+        ...TwoColTextQuoteService
+        ...TwoColProjectsGridService
+        ...ThreeColProjectBlocksService
+        ...TextBlockService
+        ...VideoPlayerService
+        ...FullWidthImageService
+        ...FullWidthImageTextService
+        ...IconTextBoxesService
+        ...VerticalSliderService
+        ...MediaBlocksService
+        ...FeaturedProjectsCarouselService 
+        ...QuotesService
+        ...ResultsService
+        ...ResultsMixService
+        ...LogoCloudService
+        ...PostCardsService
+        ...ProjectPortfolioService 
       }
     }
   }
 `
 
 export const projectQuery = graphql`
-  fragment FlexibleLayoutsProject on WpPage {
-    flexibleLayouts{
+  fragment FlexibleLayoutsProject on WpProject {
+    flexibleLayouts {
       layouts {
-        ...TwoColImageText 
-        ...TwoColBreakoutImageText 
-        ...TwoColBreakoutImageHeading 
-        ...TwoColTextQuote 
-        ...TwoColProjectsGrid 
-        ...ThreeColProjectBlocks 
-        ...TextBlock 
-        ...VideoPlayer 
-        ...FullWidthImage 
-        ...FullWidthImageText
-        ...IconTextBoxes 
-        ...VerticalSlider
-        ...MediaBlocks 
-        ...FeaturedProjectsCarousel 
-        ...Quotes 
-        ...Results 
-        ...ResultsMix 
-        ...LogoCloud 
-        ...PostCards 
-        ...ProjectPortfolio 
+        ...TwoColImageTextService
+        ...TwoColBreakoutImageTextService 
+        ...TwoColBreakoutImageHeadingService
+        ...TwoColTextQuoteService
+        ...TwoColProjectsGridService
+        ...ThreeColProjectBlocksService
+        ...TextBlockService
+        ...VideoPlayerService
+        ...FullWidthImageService
+        ...FullWidthImageTextService
+        ...IconTextBoxesService
+        ...VerticalSliderService
+        ...MediaBlocksService
+        ...FeaturedProjectsCarouselService
+        ...QuotesService
+        ...ResultsService
+        ...ResultsMixService
+        ...LogoCloudService
+        ...PostCardsService
+        ...ProjectPortfolioService 
       }
     }
   }

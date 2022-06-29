@@ -1,6 +1,6 @@
 import React, { useRef, useEffect, useState } from "react"
 import { graphql } from "gatsby"
-import FlexibleLayouts from "../components/FlexibleLayouts"
+import FlexibleLayouts from "../layouts/FlexibleLayouts"
 
 const WpPage = ({ data }) =>{
   return (

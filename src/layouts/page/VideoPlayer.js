@@ -10,9 +10,69 @@ const VideoPlayer = () => {
 export default VideoPlayer
 
 
-export const query = graphql`
-  fragment VideoPlayer on WpPage_Flexiblelayouts_Layouts {
+export const pageQuery = graphql`
+  fragment VideoPlayerPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_VideoPlayer {
+        fieldGroupName
+        layoutVideoPlayer {
+          layoutContent {
+            sideImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+              video
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const serviceQuery = graphql`
+  fragment VideoPlayerService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_VideoPlayer {
+        fieldGroupName
+        layoutVideoPlayer {
+          layoutContent {
+            sideImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+              video
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const projectQuery = graphql`
+  fragment VideoPlayerProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_VideoPlayer {
         fieldGroupName
         layoutVideoPlayer {
           layoutContent {
