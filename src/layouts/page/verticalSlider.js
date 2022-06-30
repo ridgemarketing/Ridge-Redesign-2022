@@ -1,10 +1,8 @@
 import React, { useRef, useEffect, useState } from "react"
 import { graphql } from "gatsby"
-// import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { AnchorLink } from "gatsby-plugin-anchor-links";
-import { content } from "../../../tailwind.config.js"
 
 const VerticalSlider = (props) => {
   
@@ -73,7 +71,7 @@ const VerticalSlider = (props) => {
                   }
                 }
                 for( let z = 0; scrollPoints.length > z; z++){
-                  if( z == current ){}else{
+                  if( z === current ){}else{
                     progressBar.current[z].style.height = 100 / ( vslides.length  + 1 ) + '%';
                     progressBar.current[z].children[0].style.backgroundColor = '#FFFFFF';
                     progressBar.current[z].style.backgroundColor = '#FFFFFF';
@@ -98,31 +96,31 @@ const VerticalSlider = (props) => {
 
     return(
         <>
-            <Section Settings={ settings }>
+            <Section settings={ props.settings }>
                 <Container>
-                    {content.heading &&
+                    {props.content.heading &&
                         <> 
                             <h2>
                                 <span 
                                     className={ 
                                                 theme.text['H1'] 
-                                                + ' text-' + content.textColor 
-                                                + ' text-' + content.textAlign
+                                                + ' text-' + props.content.textColor 
+                                                + ' text-' + props.content.textAlign
                                             }> 
-                                    { content.heading }
+                                    { props.content.heading }
                                 </span>
                             </h2>
                         </>
                     }
-                    {content.bodyText &&
+                    {props.content.bodyText &&
                         <>
                             <p>
                                 <span className={ 
                                                 theme.text['P_STD'] 
-                                                + ' text-' + content.textColor 
-                                                + ' text-' + content.textAlign
+                                                + ' text-' + props.content.textColor 
+                                                + ' text-' + props.content.textAlign
                                             }>
-                                    { content.bodyText }
+                                    { props.content.bodyText }
                                 </span>
                             </p>
                         </>
@@ -133,7 +131,7 @@ const VerticalSlider = (props) => {
             {/* need to change outer container location */}
             <div className="bg-rm-black text-rm-white w-full block">
             <div className={ `block invisible` } style={ { height:slideHeight + 'px' } } aria-hidden="true"></div>
-            <div ref={outerContainer} className={ `container ` + `flex-wrap relative`}  >
+            <div ref={outerContainer} className={ `container flex-wrap relative`}  >
                 <div ref={firstSlide} className="flex flex-col ml-auto mr-auto w-[95%] md:flex-row md:w-full items-center sticky -translate-y-1/2 top-[50%]" style={ { height : slideHeight } }>
                     <div className="w-full h-[45%] md:w-[50%] md:h-[80%] flex items-center" >
                         <div className="h-[100%] md:h-[70%]">
@@ -184,7 +182,7 @@ export default VerticalSlider;
 
 
 export const query = graphql`
-  fragment VerticalSlider on WpPage_Flexiblelayouts_Layouts {
+  fragment VerticalSliderPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_VerticalSlider {
         fieldGroupName
         layoutVerticalSlider {

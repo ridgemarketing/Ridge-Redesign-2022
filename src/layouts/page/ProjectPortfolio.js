@@ -11,7 +11,7 @@ export default ProjectPortfolio
 
 
 export const query = graphql`
-  fragment ProjectPortfolio on WpPage_Flexiblelayouts_Layouts {
+  fragment ProjectPortfolioPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_ProjectPortfolio {
         fieldGroupName
         layoutProjectPortfolio {
@@ -19,19 +19,35 @@ export const query = graphql`
             heading
             images {
               desktop {
-                gatsbyImage
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
               }
               mobile {
-                gatsbyImage
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
               }
               tablet {
-                gatsbyImage
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
               }
             }
             settings {
               backgroundColor
               backgroundImage {
-                gatsbyImage
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
               }
               textAlign
             }

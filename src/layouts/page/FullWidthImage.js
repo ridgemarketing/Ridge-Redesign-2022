@@ -34,13 +34,17 @@ export default FullWidthImage
 
 
 export const query = graphql`
-  fragment FullWidthImage on WpPage_Flexiblelayouts_Layouts {
+  fragment FullWidthImagePage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_FullWidthImage {
         fieldGroupName
         layoutFullWidthImage {
           layoutContent {
             image {
-                gatsbyImage
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
             }
           }
           layoutSettings {

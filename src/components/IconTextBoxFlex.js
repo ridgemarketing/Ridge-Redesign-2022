@@ -1,101 +1,81 @@
-import React, { useRef, useLayoutEffect, useState, useCallback, useEffect } from "react"
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import React, { useRef, useState, useEffect } from "react"
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
+import Link from '../components/global/FlexibleLink'
 
 const IconTextBoxFlex = (props) => {
+    const content = props.content;
 
-    console.log(props);
+    console.log(content);
 
-    let wrapperClasses  = `flex w-full md:w-[48%] mb-12 md:mb-16 lg:mb-32 items-start`;
-    let imageClasses    = ``;
+    let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
     let marginClasses   = `ml-6 `;
 
-    const [height, setHeight] = useState(0);
-    const [customTop, setcustomTop] = useState('0px');
+    const [height, setHeight] = useState(0); 
+    const [iconHeight, setIconHeight] = useState(0);
+    const [customTop, setCustomTop] = useState('0px');
+    const [customBottom, setCustomBottom] = useState('0px');
+    const [windowWidth, setWindowWidth] = useState(0);
 
     const iconElement = useRef();
-    const headingElement = useRef();
-    const ref = React.createRef();
+    const ref = useRef();
 
     useEffect(() => {
-        setHeight(ref.current.clientHeight);
+        function handleResize() {
+            setWindowWidth(window.innerWidth);
+        }
+
+        setTimeout(function() {
+            setHeight(ref.current.clientHeight);
+            setIconHeight(iconElement.current.clientHeight);
+        }, 0)
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
     })
 
     useEffect(() => {
-        let difference = 55 - height;
-        console.log(difference);
-        console.log(height < 55);
-        setcustomTop((difference > 0) ? (difference / 2) + 'px' : '0px');
-    }, [height])
+            let difference = iconHeight - height;
+            setCustomTop((difference > 0) ? (difference / 2) + 'px' : '0px');
+            setCustomBottom((difference > 0) ? (difference / 2 + 6) + 'px' : '0px');
+    }, [height, iconHeight, windowWidth])
 
 
-    if (props.threeCol){
+    if (props.columns === 3){
         wrapperClasses += ` lg:w-[31%]`;
     }
 
     return(
-        <>
-           {/* <div className={wrapperClasses}>
-                <div className={'w-[55px]'}  ref={iconElement}>
-                        <GatsbyImage 
-                                image={ props.content.image } 
-                                alt={ props.content.image.alt } 
-                                className={ `flex self-start w-[54px] h-[55px]` } 
-                                objectFit={'contain'}
-                        /> 
-                </div>
-                <div className={"flex flex-col"}>
-                    <div className={ marginClasses }>
-                        <p className={'hidden'}>
-                            {height}
-                        </p>
-                        <p  ref={ref}
-                            style={{marginTop: customTop}}
-                            className={ theme.text['H4'] + 'block items-center' }>
-                            { props.content.heading }
-                        </p>
-                    </div>
-                    <div className={ marginClasses + `mt-4`}>
-                        <p 
-                            className={ theme.text['FOOTER'] }>
-                            { props.content.text }
-                        </p>
-                    </div>
-                </div>  
-            </div> */}
             <div className={wrapperClasses}>
-                {props.content.image &&
-                    <div className={'w-[55px]'}>
+                <div className={'w-[55px]'} ref={iconElement}>
+                        {content.image && 
                             <GatsbyImage 
-                                    image={ props.content.image } 
-                                    alt={ props.content.image.alt } 
+                                    image={ content.image.gatsbyImage } 
+                                    alt={ content.image.alt } 
                                     className={ `flex self-start w-[54px] h-[55px]` } 
                                     objectFit={'contain'}
                             /> 
-                    </div>
-                }
+                        }
+                </div>
                 <div className={'flex-col flex'}>
                     <div>
-                        <p className={'hidden'}>{height}</p>
                         <p ref={ref}
-                            style={{marginTop: customTop, marginLeft: '24px'}}
+                            style={{marginTop: customTop, marginBottom: customBottom, marginLeft: '24px'}}
                             className={ theme.text['H4'] + 'block items-center' }>
-                            { props.content.heading }
+                            { content.heading }
                         </p>
                     </div>
                     <div className={ marginClasses + `mt-4`}>
                         <p 
                             className={ theme.text['FOOTER'] }>
-                            { props.content.body }
+                            { content.body }
                         </p>
+                    </div>
+                    <div className={ marginClasses + `mt-4`}>
+                    <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD}  ${theme.text_links.ARW_FWD_GREEN} text-[#A9CF38]` } />
                     </div>
                 </div>
             </div>
-                        {/* <div ref={ref}>
-                <p>Hello</p>
-                <p>{height}</p>
-            </div> */}
-        </>
     )
 }
 

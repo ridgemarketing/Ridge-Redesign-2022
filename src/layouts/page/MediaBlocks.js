@@ -10,7 +10,7 @@ const MediaBlocks = () => {
 export default MediaBlocks
 
 export const query = graphql`
-  fragment MediaBlocks on WpPage_Flexiblelayouts_Layouts {
+  fragment MediaBlocksPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_MediaBlocks {
         fieldGroupName
         layoutMediaBlocks {
@@ -22,7 +22,11 @@ export const query = graphql`
                 type
                 video
                 image {
-                  gatsbyImage
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
                 }
               }
             }

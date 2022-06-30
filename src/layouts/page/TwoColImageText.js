@@ -6,9 +6,11 @@ import { graphql } from "gatsby"
 
 const TwoColImageText = (props) => {
 
+  console.log(props);
+
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    const image = getImage(content.componentFlexibleMedia.image)
+    const image = getImage(content.componentFlexibleMedia.image.localFile);
     let order;
     order = (content.imagePosition) == 'left' ? 'lg:order-2' : '' ;
 
@@ -21,7 +23,7 @@ const TwoColImageText = (props) => {
                             {content.heading}
                         </h3>
                         <p className={theme.text.P_STD + ' mt-8'}>
-                            {content.bodyText}  
+                            {content.body}  
                         </p>
                     </div>
 
@@ -38,7 +40,7 @@ export default TwoColImageText
 
 
 export const query = graphql`
-  fragment TwoColImageText on WpPage_Flexiblelayouts_Layouts {
+  fragment TwoColImageTextPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_TwoColImageText {
         fieldGroupName
         layoutTwoColImageText {
@@ -51,7 +53,11 @@ export const query = graphql`
               type
               lottie
               image {
-                gatsbyImage
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
               }
             }
             componentButton {
@@ -64,7 +70,6 @@ export const query = graphql`
                 title
                 url
               }
-              icon
               style
             }
           }

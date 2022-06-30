@@ -1,5 +1,6 @@
 import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image";
+import { theme } from '../../static/theme'
 
 export const Section = (props) => {
 
@@ -10,18 +11,24 @@ export const Section = (props) => {
         id: ``,
         classes: ``
     }
+
+    if (props.settings && props.settings.padding) {
+        var pt = theme.paddingTop[`${props.settings.padding.top}`];
+        var pb = theme.paddingBottom[`${props.settings.padding.bottom}`];
+    }
+    // const pt = theme.paddingTop[`${props.settings.padding.top}`];
     
     let padding         =  props.settings.padding ? props.settings.padding : defaults.padding;
     let backgroundColor =  props.settings.bgColor ? props.settings.bgColor : defaults.bgColor;
     let position        =  props.settings.position ? props.settings.position : defaults.position;
     let id              =  props.settings.id ? props.settings.id : defaults.id;
-    let classes          =  props.settings.classes ? props.settings.classes : defaults.classes;
+    let classes         =  props.settings.classes ? props.settings.classes : defaults.classes;
     let classes_temp = props.classes ? props.classes : ''; //used for testing until we pull class data from props
 
     return (
         <section 
         id={id} 
-        className={`${padding} ${backgroundColor} ${position} ${classes} ${classes_temp}`}> 
+        className={`${pt} ${pb} ${backgroundColor} ${position} ${classes} ${classes_temp}`}> 
             {props.children}
         </section>
     )
@@ -31,7 +38,7 @@ export const Container = (props) => {
     let containerClass = props.size == `slim` ? `container xl:max-w-[1120px] relative` : `container`;
     
     return (
-        <div className={containerClass}>
+        <div className={`${containerClass} ${props.classes}`}>
             {props.children}
         </div>
     )

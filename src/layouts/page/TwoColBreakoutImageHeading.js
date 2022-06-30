@@ -45,14 +45,18 @@ export default TwoColBreakoutImageHeading
 
 
 export const query = graphql`
-  fragment TwoColBreakoutImageHeading on WpPage_Flexiblelayouts_Layouts {
+  fragment TwoColBreakoutImageHeadingPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_TwoColBreakoutImageHeading {
         fieldGroupName
         layoutTwoColBreakoutImageHeading {
           layoutContent {
             heading
             image {
-                gatsbyImage
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
             }
             imagePosition
           }

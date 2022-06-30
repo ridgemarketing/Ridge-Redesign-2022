@@ -17,8 +17,8 @@ export const LogoCloud_Loop = (props) =>{
 
 const LogoCloud = props => {
 
-  const content = props.layoutContent;
-  const settings = props.layoutSettings;
+  const content = props.layoutData.layoutContent;
+  const settings = props.layoutData.layoutSettings;
 
     return(
         <Section settings={ settings }>
@@ -53,7 +53,7 @@ export default LogoCloud
 
 
 export const query = graphql`
-  fragment LogoCloud on WpPage_Flexiblelayouts_Layouts {
+  fragment LogoCloudPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_LogoCloud {
         fieldGroupName
         layoutLogoCloud {
@@ -62,7 +62,11 @@ export const query = graphql`
             heading
             logos {
               image {
-                gatsbyImage
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
               }
             }
           }

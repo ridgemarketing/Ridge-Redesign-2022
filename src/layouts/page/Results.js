@@ -1,92 +1,41 @@
 import React from "react" 
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
-import { content } from "../../../tailwind.config.js"
-import ResultItem from '../../components/ResultItem.js'
+import ResultCard from '../../components/ResultCard.js'
 import { graphql } from "gatsby"
+import Parser from "../../components/global/Parser";
 
-const Results = ({ props }) => {
+const Results = (props) => {
     
-    // IMPORTANT
-    //small text needs padding options of   mb-1 ? mb-9 ? mb-0
-    //large text needs padding options of   mb-12 ? mb-0
+    const content = props.layoutData.layoutContent || {};
+    const settings = props.layoutData.layoutSettings || {};
 
-    const content = props.layoutData.layoutContent;
-    const settings = props.layoutData.layoutSettings;
 
-    let theSize = content.ResultsSize; //large or small 
-    let resultTextSize_Container        = theSize === 'large' ? `large md:w-[48%] ` : `small lg:w-[31%] mb-12 `;  
-    let resultTextSize_textSizeLarge    = theSize === 'large' ? theme.text['STATS'] : theme.text['H2'];
-    let resultTextSize_textSizeSmall;
+    const body = Parser(content.body);
 
-    //three sizes for smaller text sections (Homepage, Work Page, Services Page)
-    if( content.descriptorSize === 'large' ){
-        resultTextSize_textSizeSmall    = theme.text['H3'];
-    }
-    if( content.descriptorSize === 'medium' ){
-        resultTextSize_textSizeSmall    = theme.text['H4'];
-    }
-    if( content.descriptorSize === 'small' ){
-        resultTextSize_textSizeSmall    = theme.text['P_STD'];
-    }
-
-    let stacked = content.ResultsStack;
-    let resultOrientation               = stacked == `stacked` ? `flex-row ` : `flex-col `; 
+    let columns = content.columns === '1' ? '' : 'lg:justify-between';
 
 
     return(
-        <Section Settings={ settings }>
+        <Section settings={settings}>
             <Container>
                 {content.heading &&
-                    <> 
-                        <h2>
+                        <h2 className={'text-center mb-4 '}>
                             <span 
-                                className={ 
-                                            theme.text['H2'] 
-                                            + ' text-' + content.textColor 
-                                            + ' text-' + content.textAlign
-                                        }> 
+                                className={`${theme.text['H2']}`}> 
                                 { content.heading }
                             </span>
                         </h2>
-                    </>
                 }
-                {content.bodyText &&
-                    <>
-                        <p>
-                            <span className={ 
-                                            theme.text['P_STD'] 
-                                            + ' text-' + content.textColor 
-                                            + ' text-' + content.textAlign
-                                        }>
-                                { content.bodyText }
-                            </span>
+                {content.body &&
+                        <p className={'mb-6 text-center'}>
+                            <span dangerouslySetInnerHTML={{__html: body}} className={`${theme.text['P_STD']}`}></span>
                         </p>
-                    </>
                 }
-                <div className={` mt-12 flex w-full flex-wrap justify-between `}>
-                    { content.results.smallText &&     
-                        <ResultItem
-                            smallText   = { content.results.smallText }
-                            className   = { resultTextSize_textSizeSmall }
-                            textColor   = { content.results.textColor }
-                            caseStudy   = { content.results.caseStudy }
-                            padding     = { content.results.textPadding }
-
-                            container   = { resultTextSize_Container + resultOrientation }
-
-                        />
-                    }
-                    { content.results.largeText &&
-                        <ResultItem
-                            largeText   = { content.results.largeText }
-                            className   = { resultTextSize_textSizeLarge }
-                            textColor   = { content.results.textColor }
-                            padding     = { content.results.textPadding }
-                        
-                            container   = { resultTextSize_Container + resultOrientation }
-
-                        />
+                <div className={`flex flex-wrap justify-center ${columns}`}>
+                    { content.results && content.results.map(result => {
+                      return <ResultCard content ={result} columns={content.columns}/>
+                    })           
                     }
                 </div>
             </Container>
@@ -97,11 +46,12 @@ export default Results;
 
 
 export const query = graphql`
-  fragment Results on WpPage_Flexiblelayouts_Layouts {
+  fragment ResultsPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_Results {
         fieldGroupName
         layoutResults {
           layoutContent {
+            columns
             body
             heading
             results {

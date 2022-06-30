@@ -11,7 +11,7 @@ export default TwoColProjectsGrid
 
 
 export const query = graphql`
-  fragment TwoColProjectsGrid on WpPage_Flexiblelayouts_Layouts {
+  fragment TwoColProjectsGridPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_TwoColProjectsGrid {
         fieldGroupName
         layoutTwoColProjectsGrid {

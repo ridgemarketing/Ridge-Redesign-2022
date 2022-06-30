@@ -1,13 +1,14 @@
 import React, { useRef, useEffect, useState } from "react"
 import { graphql } from "gatsby"
-import FlexibleLayouts from "../components/FlexibleLayouts"
+import FlexibleLayouts from "../layouts/FlexibleLayouts"
 
 const WpPage = ({ data }) =>{
+  console.log(data);
   return (
     <div>
-      {/* <h1> {data.wpPage.title} </h1>
-      <p> {data.wpPage.content} </p> */}
-      <div>
+      {/* <h1> {data.wpPage.title} </h1> */}
+      <p> {data.wpPage.content} </p>
+      <div> 
           <FlexibleLayouts flexibleLayouts={data.wpPage.flexibleLayouts} />
       </div>
     </div>
@@ -23,7 +24,7 @@ query PageById($id: String) {
     uri
     title
     content
-    ...FlexibleLayouts
+    ...FlexibleLayoutsPage
   }
 }
 

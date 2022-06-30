@@ -11,7 +11,7 @@ export default FeaturedProjectsGrid
 
 
 // export const query = graphql`
-//   fragment FeaturedProjectsGrid on WpPage_Flexiblelayouts_Layouts {
+//   fragment FeaturedProjectsGridPage on WpPage_Flexiblelayouts_Layouts {
 //     ... on WpPage_Flexiblelayouts_Layouts_FeaturedProjectsGrid {
 //         fieldGroupName
 //         layoutFeaturedProjectsGrid {

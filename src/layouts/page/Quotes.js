@@ -3,8 +3,11 @@ import { graphql } from "gatsby"
 // import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faAngleRight, faAngleLeft} from '@fortawesome/pro-regular-svg-icons'
+import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
+ 
+// import { content } from "../../../tailwind.config.js"
 
 // export const Quote_Loop = (props) =>{
 //     return(
@@ -23,7 +26,7 @@ import {faAngleRight, faAngleLeft} from '@fortawesome/pro-regular-svg-icons'
 //     )
 // }
 
-const Quotes = ( props ) => {
+const Quotes = (props) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -100,14 +103,12 @@ const Quotes = ( props ) => {
                 transform: translateX(0px);
             }
         }`;
-        return (
-            {animations}
-        )
+        return animations;
     })
 
 
     return(
-        <Section Settings={ settings }>
+        <Section settings={ settings }>
             <Container>
                     {content.heading &&
                         <> 
@@ -136,7 +137,7 @@ const Quotes = ( props ) => {
                            {slides.map(slide => {
                             return (
                                 <>
-                                <p className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out' }>
+                                {/* <p className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out' }>
                                     {slide.heading}
                                 </p>
                                 <p className={ theme.text['P_BLD'] }>
@@ -144,7 +145,7 @@ const Quotes = ( props ) => {
                                 </p>
                                 <small className={ theme.text['FOOTER'] }>
                                     { content.quote.company }
-                                </small>
+                                </small> */}
                             </>
                             )
                            })}
@@ -183,7 +184,7 @@ export default Quotes
 
 
 export const query = graphql`
-  fragment Quotes on WpPage_Flexiblelayouts_Layouts {
+  fragment QuotesPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_Quotes {
         fieldGroupName
         layoutQuotes {

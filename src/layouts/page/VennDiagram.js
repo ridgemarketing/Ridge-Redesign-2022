@@ -1,8 +1,7 @@
-import React, { useRef, useEffect } from "react"
+import React, { useState, useMemo, useEffect, useRef } from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import { venn } from 'venny'
 import { graphql } from "gatsby"
-
 const VennDiagram = ({ props }) => {
     
     const content = props.layoutData.layoutContent;
@@ -62,7 +61,7 @@ const VennDiagram = ({ props }) => {
 export default VennDiagram
 
 // export const query = graphql`
-//   fragment VennDiagram on WpPage_Flexiblelayouts_Layouts {
+//   fragment VennDiagramPage on WpPage_Flexiblelayouts_Layouts {
 //     ... on WpPage_Flexiblelayouts_Layouts_VennDiagram {
 //         fieldGroupName
 //         layoutVennDiagram {

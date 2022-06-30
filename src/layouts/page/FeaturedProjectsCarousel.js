@@ -82,7 +82,7 @@ export default FeaturedProjectsCarousel
 
 
 export const query = graphql`
-  fragment FeaturedProjectsCarousel on WpPage_Flexiblelayouts_Layouts {
+  fragment FeaturedProjectsCarouselPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_FeaturedProjectsCarousel {
         fieldGroupName
         layoutFeaturedProjectsCarousel {

@@ -158,31 +158,33 @@ const CtaForm = (props) => {
                 </Formik>
         </Container>
     </Section>
-    )
+    ) 
 }
  
 export default CtaForm
 
-export const query = graphql`
-  fragment CtaForm on WpPage_Flexiblelayouts_Layouts {
-    ... on WpPage_Flexiblelayouts_Layouts_CtaForm {
-        fieldGroupName
-        layoutCtaForm {
-          layoutContent {
-            body
-            heading
-          }
-          layoutSettings {
-            padding {
-              bottom
-              top
-            }
-            anchorId
-            backgroundColor
-            classes
-            id
-          }
-        }
-    }
-  }
-`
+// export default CtaForm
+
+// export const query = graphql`
+//   fragment CtaFormPage on WpPage_Flexiblelayouts_Layouts {
+//     ... on WpPage_Flexiblelayouts_Layouts_CtaForm {
+//         fieldGroupName
+//         layoutCtaForm {
+//           layoutContent {
+//             body
+//             heading
+//           }
+//           layoutSettings {
+//             padding {
+//               bottom
+//               top
+//             }
+//             anchorId
+//             backgroundColor
+//             classes
+//             id
+//           }
+//         }
+//     }
+//   }
+// `
