@@ -5,8 +5,8 @@ import FlexibleLayouts from "../components/FlexibleLayouts"
 const WpPage = ({ data }) =>{
   return (
     <div>
-      <h1> {data.wpPage.title} </h1>
-      <p> {data.wpPage.content} </p>
+      {/* <h1> {data.wpPage.title} </h1>
+      <p> {data.wpPage.content} </p> */}
       <div>
           <FlexibleLayouts flexibleLayouts={data.wpPage.flexibleLayouts} />
       </div>

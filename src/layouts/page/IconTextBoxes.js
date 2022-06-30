@@ -14,6 +14,8 @@ const IconTextBoxes = (props) => {
     const cols = content.threeCols ? ' lg:grid-cols-3 ' : ' ';
     const wrapperClasses = (content.orientation == 'stacked') ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
 
+    console.log(content, content.boxes);
+
     return (
         <Section settings={settings}>
             <Container>
@@ -23,7 +25,7 @@ const IconTextBoxes = (props) => {
                 </span>
             </h3>
             <p className={"mt-6 max-w-5xl mx-auto text-center"}>
-                <span className={theme.text.P_STD}>{content.bodyText}
+                <span className={theme.text.P_STD}>{content.body}
                 </span>
             </p>
         
@@ -33,8 +35,8 @@ const IconTextBoxes = (props) => {
             </div>
 
             <div className={wrapperClasses}>
-                {content.list.map(item => {
-                    return (content.orientation == 'stacked') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex threeCol={content.threeCols} content={item}/>;
+                {content.boxes.map(item => {
+                    return (content.settings.type == 'stacked') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex threeCol={content.threeCols} content={item}/>;
                 })}
             </div>
             </Container>

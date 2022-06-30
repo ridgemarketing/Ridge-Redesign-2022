@@ -3,6 +3,9 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
 
 const IconTextBoxFlex = (props) => {
+
+    console.log(props);
+
     let wrapperClasses  = `flex w-full md:w-[48%] mb-12 md:mb-16 lg:mb-32 items-start`;
     let imageClasses    = ``;
     let marginClasses   = `ml-6 `;
@@ -61,14 +64,16 @@ const IconTextBoxFlex = (props) => {
                 </div>  
             </div> */}
             <div className={wrapperClasses}>
-                <div className={'w-[55px]'}>
-                        <GatsbyImage 
-                                image={ props.content.image } 
-                                alt={ props.content.image.alt } 
-                                className={ `flex self-start w-[54px] h-[55px]` } 
-                                objectFit={'contain'}
-                        /> 
-                </div>
+                {props.content.image &&
+                    <div className={'w-[55px]'}>
+                            <GatsbyImage 
+                                    image={ props.content.image } 
+                                    alt={ props.content.image.alt } 
+                                    className={ `flex self-start w-[54px] h-[55px]` } 
+                                    objectFit={'contain'}
+                            /> 
+                    </div>
+                }
                 <div className={'flex-col flex'}>
                     <div>
                         <p className={'hidden'}>{height}</p>
@@ -81,7 +86,7 @@ const IconTextBoxFlex = (props) => {
                     <div className={ marginClasses + `mt-4`}>
                         <p 
                             className={ theme.text['FOOTER'] }>
-                            { props.content.text }
+                            { props.content.body }
                         </p>
                     </div>
                 </div>
