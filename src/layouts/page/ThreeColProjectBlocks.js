@@ -117,7 +117,7 @@ export default ThreeColProjectBlocks;
 
 
 export const query = graphql`
-  fragment ThreeColProjectBlocks on WpPage_Flexiblelayouts_Layouts {
+  fragment ThreeColProjectBlocksPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_ThreeColProjectBlocks {
         fieldGroupName
         layoutThreeColProjectBlocks {

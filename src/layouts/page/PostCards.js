@@ -18,7 +18,7 @@ return (
 export default PostCards
 
 export const query = graphql`
-  fragment PostCards on WpPage_Flexiblelayouts_Layouts {
+  fragment PostCardsPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_PostCards {
         fieldGroupName
         layoutPostCards {

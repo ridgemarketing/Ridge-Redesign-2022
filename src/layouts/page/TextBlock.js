@@ -41,7 +41,7 @@ const TextBlock = (props) => {
 export default TextBlock
 
 export const query = graphql`
-  fragment TextBlock on WpPage_Flexiblelayouts_Layouts {
+  fragment TextBlockPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_TextBlock {
         fieldGroupName
         layoutTextBlock {

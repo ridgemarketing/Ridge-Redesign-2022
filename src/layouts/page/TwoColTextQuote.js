@@ -48,7 +48,7 @@ export default TwoColTextQuote
 
 
 export const query = graphql`
-  fragment TwoColTextQuote on WpPage_Flexiblelayouts_Layouts {
+  fragment TwoColTextQuotePage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_TwoColTextQuote {
         fieldGroupName
         layoutTwoColTextQuote {

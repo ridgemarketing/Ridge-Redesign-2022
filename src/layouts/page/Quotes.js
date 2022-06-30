@@ -184,7 +184,7 @@ export default Quotes
 
 
 export const query = graphql`
-  fragment Quotes on WpPage_Flexiblelayouts_Layouts {
+  fragment QuotesPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_Quotes {
         fieldGroupName
         layoutQuotes {

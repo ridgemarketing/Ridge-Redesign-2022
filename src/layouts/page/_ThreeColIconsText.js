@@ -10,7 +10,7 @@ const ThreeColIconsText = () => {
 export default ThreeColIconsText
 
 // export const query = graphql`
-//   fragment ThreeColIconsText on WpPage_Flexiblelayouts_Layouts {
+//   fragment ThreeColIconsTextPage on WpPage_Flexiblelayouts_Layouts {
 //     ... on WpPage_Flexiblelayouts_Layouts_ThreeColIconsText {
 //         fieldGroupName
 //         layoutThreeColIconsText {

@@ -164,7 +164,7 @@
 // export default CtaForm
 
 // export const query = graphql`
-//   fragment CtaForm on WpPage_Flexiblelayouts_Layouts {
+//   fragment CtaFormPage on WpPage_Flexiblelayouts_Layouts {
 //     ... on WpPage_Flexiblelayouts_Layouts_CtaForm {
 //         fieldGroupName
 //         layoutCtaForm {

@@ -128,7 +128,7 @@ export default ResultsMixed;
 
 
 export const query = graphql`
-  fragment ResultsMix on WpPage_Flexiblelayouts_Layouts {
+  fragment ResultsMixPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_ResultsMix {
         fieldGroupName
         layoutResultsMix {

@@ -35,7 +35,7 @@ export default FullWidthImageText
 
 
 export const query = graphql`
-  fragment FullWidthImageText on WpPage_Flexiblelayouts_Layouts {
+  fragment FullWidthImageTextPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_FullWidthImageText {
         fieldGroupName
         layoutFullWidthImageText {

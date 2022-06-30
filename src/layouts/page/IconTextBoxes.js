@@ -50,7 +50,7 @@ export default IconTextBoxes
 
 
 export const query = graphql`
-  fragment IconTextBoxes on WpPage_Flexiblelayouts_Layouts {
+  fragment IconTextBoxesPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_IconTextBoxes {
         fieldGroupName
         layoutIconTextBoxes {

@@ -46,7 +46,7 @@ export default Results;
 
 
 export const query = graphql`
-  fragment Results on WpPage_Flexiblelayouts_Layouts {
+  fragment ResultsPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_Results {
         fieldGroupName
         layoutResults {
