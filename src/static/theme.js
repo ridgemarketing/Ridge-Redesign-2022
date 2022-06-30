@@ -63,7 +63,8 @@ export const theme = {
     },
     paddingBottom:{
         standard: 'pb-20',
-        none: 'pb-0'
+        none: 'pb-0',
+        footer: 'pb-24'
     },
     backgroundColor: {
         black: 'black',
