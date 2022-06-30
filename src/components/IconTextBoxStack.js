@@ -23,8 +23,8 @@ const IconTextBoxStack = (props) => {
             return (
             <div className={'py-4'}>
                 {component}
-                <h5 className={theme.text.H5 + ` text-center md:text-left`}>{content.heading}</h5>        
-                <p className={`mt-4 text-center md:text-left`}>{content.body}</p>
+                <h5 className={theme.text.H5 + ` text-center md:text-left ${props.color}`}>{content.heading}</h5>        
+                <p className={`mt-4 text-center md:text-left ${props.color}`}>{content.body}</p>
             </div>
             )
 }

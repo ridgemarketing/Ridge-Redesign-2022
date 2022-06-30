@@ -9,28 +9,33 @@ import IconTextBoxFlex from '../../components/IconTextBoxFlex'
 const IconTextBoxes = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
+    let textColor = 'text-black';
+
+    if (settings.backgroundColor == 'black') {
+      textColor = 'text-white';
+    }
 
     const cols = content.settings.columns == 3 ? ' lg:grid-cols-3 ' : ' ';
-    const wrapperClasses = (content.settings.type === 'stack') ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
+    const wrapperClasses = (content.settings.type === 'stack') ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6 lg:mt-12`;
 
     return (
         <Section settings={settings}>
             <Container>
             <div>
               {content.heading &&
-            <h3 className={'text-center'}>
+            <h3 className={`text-center ${textColor}`}>
                 <span className={theme.text.H2}>{content.heading}
                 </span>
             </h3>
               }
             {content.body &&
-            <p className={"mt-6 max-w-5xl mx-auto text-center"}>
+            <p className={`mt-6 max-w-5xl mx-auto text-center ${textColor}`}>
                 <span className={theme.text.P_STD}>{content.body}
                 </span>
             </p>
             }
             {content.subheading &&
-            <p className={'mt-10 text-center'}>
+            <p className={`mt-10 text-center ${textColor}`}>
                 <span className={theme.text.H4}>{content.subheading}</span>
             </p>
             }
@@ -38,7 +43,7 @@ const IconTextBoxes = (props) => {
 
             <div className={wrapperClasses}>
                 {content.boxes.map(item => {
-                    return (content.settings.type === 'stack') ? <IconTextBoxStack content={item} iconType={content.settings.feature}/> : <IconTextBoxFlex columns={content.settings.columns} content={item}/>;
+                    return (content.settings.type === 'stack') ? <IconTextBoxStack color={textColor} content={item} iconType={content.settings.feature}/> : <IconTextBoxFlex color={textColor} columns={content.settings.columns} content={item}/>;
                 })}
             </div>
             </Container>

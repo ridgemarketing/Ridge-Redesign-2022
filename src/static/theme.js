@@ -64,5 +64,10 @@ export const theme = {
     paddingBottom:{
         standard: 'pb-20',
         none: 'pb-0'
+    },
+    backgroundColor: {
+        black: '#000000',
+        white: '#FFFFFF',
+        paleGrey: '#F3F9F9'
     }
 }
