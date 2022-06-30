@@ -66,8 +66,9 @@ export const theme = {
         none: 'pb-0'
     },
     backgroundColor: {
-        black: '#000000',
-        white: '#FFFFFF',
-        paleGrey: '#F3F9F9'
+        black: 'black',
+        white: 'white',
+        paleGrey: 'rm-pale-grey',
+        paleTeal: 'rm-pale-teal'
     }
 }
