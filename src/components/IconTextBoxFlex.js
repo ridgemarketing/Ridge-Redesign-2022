@@ -1,10 +1,11 @@
 import React, { useRef, useState, useEffect } from "react"
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
+import Link from '../components/global/FlexibleLink'
 
 const IconTextBoxFlex = (props) => {
-    let wrapperClasses  = `flex w-full md:w-[48%] mb-12 md:mb-16 lg:mb-32 items-start`;
-    // let imageClasses    = ``;
+    const content = props.content;
+    let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
     let marginClasses   = `ml-6 `;
 
     const [height, setHeight] = useState(0);
@@ -45,8 +46,8 @@ const IconTextBoxFlex = (props) => {
             <div className={wrapperClasses}>
                 <div className={'w-[55px]'} ref={iconElement}>
                         <GatsbyImage 
-                                image={ props.content.image } 
-                                alt={ props.content.image.alt } 
+                                image={ content.image.gatsbyImage } 
+                                alt={ content.image.alt } 
                                 className={ `flex self-start w-[54px] h-[55px]` } 
                                 objectFit={'contain'}
                         /> 
@@ -56,14 +57,17 @@ const IconTextBoxFlex = (props) => {
                         <p ref={ref}
                             style={{marginTop: customTop, marginBottom: customBottom, marginLeft: '24px'}}
                             className={ theme.text['H4'] + 'block items-center' }>
-                            { props.content.heading }
+                            { content.heading }
                         </p>
                     </div>
                     <div className={ marginClasses + `mt-4`}>
                         <p 
                             className={ theme.text['FOOTER'] }>
-                            { props.content.body }
+                            { content.body }
                         </p>
+                    </div>
+                    <div className={ marginClasses + `mt-4`}>
+                    <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD}  ${theme.text_links.ARW_FWD_GREEN} text-[#A9CF38]` } />
                     </div>
                 </div>
             </div>

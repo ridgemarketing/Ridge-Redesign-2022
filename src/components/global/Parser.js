@@ -14,6 +14,14 @@ const tagList = [
     {
         tag: `[/green]`,
         replace: '</span>'
+    },
+    {
+        tag: `[accent]`,
+        replace: `<span>`
+    },
+    {
+        tag: `[/accent]`,
+        replace: '</span>'
     }
 ];
 

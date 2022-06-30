@@ -69,7 +69,7 @@ const VerticalSlider = (props) => {
                   }
                 }
                 for( let z = 0; scrollPoints.length > z; z++){
-                  if( z == current ){}else{
+                  if( z === current ){}else{
                     progressBar.current[z].style.height = 100 / ( vslides.length  + 1 ) + '%';
                     progressBar.current[z].children[0].style.backgroundColor = '#FFFFFF';
                     progressBar.current[z].style.backgroundColor = '#FFFFFF';
@@ -129,7 +129,7 @@ const VerticalSlider = (props) => {
             {/* need to change outer container location */}
             <div className="bg-rm-black text-rm-white w-full block">
             <div className={ `block invisible` } style={ { height:slideHeight + 'px' } } aria-hidden="true"></div>
-            <div ref={outerContainer} className={ `container ` + `flex-wrap relative`}  >
+            <div ref={outerContainer} className={ `container flex-wrap relative`}  >
                 <div ref={firstSlide} className="flex flex-col ml-auto mr-auto w-[95%] md:flex-row md:w-full items-center sticky -translate-y-1/2 top-[50%]" style={ { height : slideHeight } }>
                     <div className="w-full h-[45%] md:w-[50%] md:h-[80%] flex items-center" >
                         <div className="h-[100%] md:h-[70%]">
