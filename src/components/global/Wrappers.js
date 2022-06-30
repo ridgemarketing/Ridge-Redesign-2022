@@ -4,8 +4,6 @@ import { theme } from '../../static/theme'
 
 export const Section = (props) => {
 
-    console.log(props);
-
     const defaults = {
         padding:  `py-12 px-0`,
         bgColor:  `bg-white`,
