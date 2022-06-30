@@ -24,14 +24,14 @@ const LogoCloud = props => {
                 {content.body &&
                     <p className={`theme.text['P_STD']} text-center my-4`} dangerouslySetInnerHTML={{__html: body}}></p>
                 }
-                <div className="mt-12 flex w-full flex-wrap justify-around gap-y-16">
+                <div className="mt-12 flex w-full flex-wrap justify-center lg:justify-around gap-y-10 md:gap-y-16 gap-x-12 md:gap-x-20 lg:gap-x-6">
                     {content.logos.map(logo => {
                       const image = getImage(logo.image.localFile.childImageSharp.gatsbyImageData);
                       return(
                         <GatsbyImage 
                             image={ image } 
                             alt={ logo.alt } 
-                            className={ `w-full md:w-[31%] lg:w-[12%] ` } 
+                            className={`w-[24%] lg:w-[14%]`} 
                             objectFit="contain"
                         />
                     )

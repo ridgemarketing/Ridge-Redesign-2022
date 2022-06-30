@@ -10,8 +10,8 @@ const ResultCard = (props) => {
 
     const classes = {
         1: 'flex items-center gap-8 max-w-[900px]',
-        2: 'lg:flex-[50%]',
-        3: 'lg:w-[30%]'
+        2: 'md:flex-[45%] lg:flex-[50%]',
+        3: 'md:w-[45%] lg:w-[30%]'
     }
     if (props.columns != "3") {
         statClass += ' lg:text-[160px]';
