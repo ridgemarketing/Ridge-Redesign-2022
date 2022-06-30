@@ -14,7 +14,6 @@ const ThreeFourthsTextOneFourthList = (props) => {
         <Section settings={settings}>
             <Container>
                 {logo}
-
                 <div className={'mt-16 xl:grid xl:grid-cols-75/25'}>
                     <div className={'xl:w-[80%]'}>
                         <h1 className={theme.text.H1_STD + ' text-[#191984] mb-12'}>

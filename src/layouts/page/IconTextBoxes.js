@@ -65,7 +65,11 @@ export const query = graphql`
                 url
               }
               image {
-                gatsbyImage(width: 108)
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
               }
             }
             heading
