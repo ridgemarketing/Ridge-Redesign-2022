@@ -45,7 +45,7 @@ export default TwoColBreakoutImageText
 
 
 export const query = graphql`
-  fragment TwoColBreakoutImageText on WpPage_Flexiblelayouts_Layouts {
+  fragment TwoColBreakoutImageTextPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_TwoColBreakoutImageText {
         fieldGroupName
         layoutTwoColBreakoutImageText {

@@ -180,7 +180,7 @@ export default VerticalSlider;
 
 
 export const query = graphql`
-  fragment VerticalSlider on WpPage_Flexiblelayouts_Layouts {
+  fragment VerticalSliderPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_VerticalSlider {
         fieldGroupName
         layoutVerticalSlider {

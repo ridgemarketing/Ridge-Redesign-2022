@@ -40,7 +40,7 @@ export default TwoColImageText
 
 
 export const query = graphql`
-  fragment TwoColImageText on WpPage_Flexiblelayouts_Layouts {
+  fragment TwoColImageTextPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_TwoColImageText {
         fieldGroupName
         layoutTwoColImageText {

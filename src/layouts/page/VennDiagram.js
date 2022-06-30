@@ -62,7 +62,7 @@ const VennDiagram = ({ props }) => {
 export default VennDiagram
 
 // export const query = graphql`
-//   fragment VennDiagram on WpPage_Flexiblelayouts_Layouts {
+//   fragment VennDiagramPage on WpPage_Flexiblelayouts_Layouts {
 //     ... on WpPage_Flexiblelayouts_Layouts_VennDiagram {
 //         fieldGroupName
 //         layoutVennDiagram {

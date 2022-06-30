@@ -11,7 +11,7 @@ export default ProjectPortfolio
 
 
 export const query = graphql`
-  fragment ProjectPortfolio on WpPage_Flexiblelayouts_Layouts {
+  fragment ProjectPortfolioPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_ProjectPortfolio {
         fieldGroupName
         layoutProjectPortfolio {
