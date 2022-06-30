@@ -19,19 +19,35 @@ export const query = graphql`
             heading
             images {
               desktop {
-                gatsbyImage
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
               }
               mobile {
-                gatsbyImage
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
               }
               tablet {
-                gatsbyImage
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
               }
             }
             settings {
               backgroundColor
               backgroundImage {
-                gatsbyImage
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
               }
               textAlign
             }

@@ -40,7 +40,11 @@ export const query = graphql`
         layoutFullWidthImage {
           layoutContent {
             image {
-                gatsbyImage
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
             }
           }
           layoutSettings {

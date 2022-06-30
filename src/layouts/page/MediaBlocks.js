@@ -22,7 +22,11 @@ export const query = graphql`
                 type
                 video
                 image {
-                  gatsbyImage
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
                 }
               }
             }

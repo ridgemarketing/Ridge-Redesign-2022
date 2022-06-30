@@ -51,7 +51,11 @@ export const query = graphql`
               type
               lottie
               image {
-                gatsbyImage
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
               }
             }
             componentButton {
