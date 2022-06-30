@@ -53,7 +53,6 @@ export const query = graphql`
                 hover
                 resting
                 }
-                icon
                 link {
                 target
                 title
