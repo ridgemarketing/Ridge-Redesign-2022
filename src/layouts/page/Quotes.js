@@ -10,19 +10,10 @@ const Quotes = (props) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-
-    console.log(content);
     const slides = content.quotes;
-    
     const [slide, setSlide] = useState(0);
-
     const [data, setData] = useState(content.quotes[0]);
-    // const [data, setData] = useState({
-    //     heading: "We’re very pleased with the quality of work that Ridge Marketing provided in redesigning our website. They’ve exceeded our expectations and provided a dramatically improved user experience for our customers.",
-    //     class:  'first-slide',
-    //     name: 'Chris Burd',
-    //     company: 'Sr. Director, Digital Marketing & Communications, Prevalent'
-    // });
+
     const nextSlide = () => {
         if (slide === slides.length - 1) {
             setSlide(0)
@@ -38,25 +29,6 @@ const Quotes = (props) => {
         setData(slides[i]);
         setSlide(i);
     }
-
-    // const slides = [
-    //   {
-    //       heading: "We’re very pleased with the quality of work that Ridge Marketing provided in redesigning our website. They’ve exceeded our expectations and provided a dramatically improved user experience for our customers.",
-    //       class:  'first-slide',
-    //       name: 'Chris Burd',
-    //       company: 'Sr. Director, Digital Marketing & Communications, Prevalent'
-    //   },
-    //   {
-    //       heading: "We work with Ridge on a monthly retainer, which provides us access to their entire range of services. They’ve helped reduce our cost [green]of PPC MQLs by 35%[/green]. They understand our business, which enables rapid production.",
-    //       class:  'second-slide',
-    //       name: 'Burd Chris'
-    //   },
-    //   {
-    //       heading: "Check if this is Working",
-    //       class:  'third-slide',
-    //       name: 'Nicolas Borges'
-    //   }
-    // ];
 
     return(
         <Section settings={ settings }>
