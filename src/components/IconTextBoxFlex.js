@@ -14,7 +14,7 @@ const IconTextBoxFlex = (props) => {
     : <GatsbyImage 
         image={content.image.localFile.childImageSharp.gatsbyImageData} 
         alt={ ' ' } 
-        className={ `flex self-start w-[54px] h-[55px]` } 
+        className={ `flex self-start w-auto h-[55px]` } 
         objectFit={'contain'}/> ;
 
     const [height, setHeight] = useState(0);
@@ -53,7 +53,7 @@ const IconTextBoxFlex = (props) => {
 
     return(
             <div className={wrapperClasses}>
-                <div className={'w-[55px]'} ref={iconElement}>
+                <div className={'h-[54px]'} ref={iconElement}>
                         {image}
                 </div>
                 <div className={'flex-col flex flex-1'}>
