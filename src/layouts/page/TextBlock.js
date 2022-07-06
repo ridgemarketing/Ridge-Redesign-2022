@@ -50,7 +50,6 @@ export const query = graphql`
             body
             componentButton {
                 colors {
-                hover
                 resting
                 }
                 link {

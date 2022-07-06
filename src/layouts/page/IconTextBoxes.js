@@ -49,7 +49,7 @@ const IconTextBoxes = (props) => {
 export default IconTextBoxes
 
 
-export const query = graphql`
+export const pageQuery = graphql`
   fragment IconTextBoxesPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_IconTextBoxes {
         fieldGroupName
@@ -70,6 +70,99 @@ export const query = graphql`
                     gatsbyImageData
                   }
                 }
+                sourceUrl
+              }
+            }
+            heading
+            settings {
+              columns
+              feature
+              type
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const serviceQuery = graphql`
+  fragment IconTextBoxesService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_IconTextBoxes {
+        fieldGroupName
+        layoutIconTextBoxes {
+          layoutContent {
+            body
+            boxes {
+              body
+              heading
+              link {
+                target
+                title
+                url
+              }
+              image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+                sourceUrl
+              }
+            }
+            heading
+            settings {
+              columns
+              feature
+              type
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const projectQuery = graphql`
+  fragment IconTextBoxesProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_IconTextBoxes {
+        fieldGroupName
+        layoutIconTextBoxes {
+          layoutContent {
+            body
+            boxes {
+              body
+              heading
+              link {
+                target
+                title
+                url
+              }
+              image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+                sourceUrl
               }
             }
             heading
