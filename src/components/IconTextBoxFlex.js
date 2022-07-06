@@ -7,6 +7,15 @@ const IconTextBoxFlex = (props) => {
     const content = props.content;
     let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
     let marginClasses   = `ml-6 `;
+    // const image = content.image.localFile.childImageSharp.gatsbyImageData;
+    console.log(content);
+    const image = (content.image.localFile.ext === ".svg") 
+    ? <img className={''} src={content.image.sourceUrl} />
+    : <GatsbyImage 
+        image={content.image.localFile.childImageSharp.gatsbyImageData} 
+        alt={ ' ' } 
+        className={ `flex self-start w-auto h-[55px]` } 
+        objectFit={'contain'}/> ;
 
     const [height, setHeight] = useState(0);
     const [iconHeight, setIconHeight] = useState(0);
@@ -39,35 +48,30 @@ const IconTextBoxFlex = (props) => {
 
 
     if (props.columns === 3){
-        wrapperClasses += ` lg:w-[31%]`;
+        wrapperClasses += ` xl:w-[31%]`;
     }
 
     return(
             <div className={wrapperClasses}>
-                <div className={'w-[55px]'} ref={iconElement}>
-                        <GatsbyImage 
-                                image={ content.image.gatsbyImage } 
-                                alt={ content.image.alt } 
-                                className={ `flex self-start w-[54px] h-[55px]` } 
-                                objectFit={'contain'}
-                        /> 
+                <div className={'h-[54px]'} ref={iconElement}>
+                        {image}
                 </div>
-                <div className={'flex-col flex'}>
+                <div className={'flex-col flex flex-1'}>
                     <div>
                         <p ref={ref}
                             style={{marginTop: customTop, marginBottom: customBottom, marginLeft: '24px'}}
-                            className={ theme.text['H4'] + 'block items-center' }>
+                            className={ `${theme.text['H4']} block items-center ${props.color}` }>
                             { content.heading }
                         </p>
                     </div>
-                    <div className={ marginClasses + `mt-4`}>
+                    <div className={ `${marginClasses} mt-4`}>
                         <p 
-                            className={ theme.text['FOOTER'] }>
+                            className={ `${theme.text['FOOTER']}  ${props.color}` }>
                             { content.body }
                         </p>
                     </div>
                     <div className={ marginClasses + `mt-4`}>
-                    <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD}  ${theme.text_links.ARW_FWD_GREEN} text-[#A9CF38]` } />
+                    <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} text-[#A9CF38]`} />
                     </div>
                 </div>
             </div>

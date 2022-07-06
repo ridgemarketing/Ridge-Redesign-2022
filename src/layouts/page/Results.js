@@ -13,7 +13,7 @@ const Results = (props) => {
 
     const body = Parser(content.body);
 
-    let columns = content.columns === '1' ? '' : 'lg:justify-between';
+    let columns = content.columns === '1' ? '' : 'md:justify-between';
 
 
     return(

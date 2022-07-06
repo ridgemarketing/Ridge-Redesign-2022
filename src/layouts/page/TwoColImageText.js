@@ -6,7 +6,6 @@ import { graphql } from "gatsby"
 
 const TwoColImageText = (props) => {
 
-  console.log(props);
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -62,7 +61,6 @@ export const query = graphql`
             }
             componentButton {
               colors {
-                hover
                 resting
               }
               link {
