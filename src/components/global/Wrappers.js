@@ -16,10 +16,8 @@ export const Section = (props) => {
         var pt = theme.paddingTop[`${props.settings.padding.top}`];
         var pb = theme.paddingBottom[`${props.settings.padding.bottom}`];
     }
-    // const pt = theme.paddingTop[`${props.settings.padding.top}`];
-    
-    let padding         =  props.settings.padding ? props.settings.padding : defaults.padding;
-    let backgroundColor =  props.settings.bgColor ? props.settings.bgColor : defaults.bgColor;
+
+    let bg =  props.settings.backgroundColor ? props.settings.backgroundColor : defaults.bgColor;
     let position        =  props.settings.position ? props.settings.position : defaults.position;
     let id              =  props.settings.id ? props.settings.id : defaults.id;
     let classes         =  props.settings.classes ? props.settings.classes : defaults.classes;
@@ -28,7 +26,7 @@ export const Section = (props) => {
     return (
         <section 
         id={id} 
-        className={`${pt} ${pb} ${backgroundColor} ${position} ${classes} ${classes_temp}`}> 
+        className={`${pt} ${pb} bg-${theme.backgroundColor[bg]} ${position} ${classes} ${classes_temp}`}> 
             {props.children}
         </section>
     )
