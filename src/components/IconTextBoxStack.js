@@ -1,11 +1,10 @@
 import React from "react"
-import { GatsbyImage, getImage} from 'gatsby-plugin-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
 
 const IconTextBoxStack = (props) => {
     const content = props.content;
     const iconType = props.iconType;
-    console.log(content);
 
     let component =  <span className={'block w-[138px] border-t-2 border-t-rm-green mb-7'}></span>;
 
@@ -19,10 +18,10 @@ const IconTextBoxStack = (props) => {
             {image}
         </div> 
     } 
-    if (iconType === 'numbers') {
+    if (iconType === 'number') {
         component = 
         <div className={"mb-5 text-center md:text-left lg:mx-0"}>
-            <GatsbyImage image={content.image.gatsbyImage} />
+            <span className={`${theme.text.CIRCLE_NUM} text-rm-green border-rm-green`}>{props.idx}</span>
         </div> 
     }                   
             return (

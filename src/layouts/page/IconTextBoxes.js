@@ -10,7 +10,6 @@ const IconTextBoxes = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     let textColor = 'text-black';
-    console.log(content);
 
     if (settings.backgroundColor == 'black') {
       textColor = 'text-white';
@@ -43,8 +42,8 @@ const IconTextBoxes = (props) => {
             </div>
 
             <div className={wrapperClasses}>
-                {content.boxes.map(item => {
-                    return (content.settings.type === 'stack') ? <IconTextBoxStack color={textColor} content={item} iconType={content.settings.feature}/> : <IconTextBoxFlex iconType={content.settings.feature} color={textColor} columns={content.settings.columns} content={item}/>;
+                {content.boxes.map((item, idx) => {
+                    return (content.settings.type === 'stack') ? <IconTextBoxStack idx={idx+1} color={textColor} content={item} iconType={content.settings.feature}/> : <IconTextBoxFlex iconType={content.settings.feature} color={textColor} columns={content.settings.columns} content={item}/>;
                 })}
             </div>
             </Container>
