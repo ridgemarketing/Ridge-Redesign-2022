@@ -11,7 +11,7 @@ const FeaturedProjectsCarousel = (props) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    console.log(content.heading);
+    console.log(content);
     const [slide, setSlide] = useState(0);
 
     const nextSlide = () => {
@@ -68,10 +68,10 @@ const FeaturedProjectsCarousel = (props) => {
                             </div> 
                             <div className={`w-36 flex bg-rm-pale-grey`}>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={prevSlide}>
-                                   {/* <FontAwesomeIcon icon={faAngleLeft} /> */}
+                                   <FontAwesomeIcon icon={faAngleLeft} />
                                 </button>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={nextSlide}>
-                                    {/* <FontAwesomeIcon icon={faAngleRight} /> */}
+                                    <FontAwesomeIcon icon={faAngleRight} />
                                 </button>
                             </div>
                         </div>

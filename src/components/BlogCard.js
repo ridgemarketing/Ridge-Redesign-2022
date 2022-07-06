@@ -5,7 +5,7 @@ import { theme } from '../static/theme.js'
 
 const BlogCard = (props) => {
     return (
-        <div>
+        <div className="w-[330px]">
             <div className={`pt-[.367%] mb-4 bg-grey `}>
                 <GatsbyImage image={ props.image } alt={``} className={ `object-cover h-[125px] w-full ` } />
             </div>

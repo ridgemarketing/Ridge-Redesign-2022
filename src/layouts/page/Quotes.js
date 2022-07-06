@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react" 
+import React, { useState } from "react" 
 import { graphql } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
@@ -31,7 +31,7 @@ const Quotes = (props) => {
     }
 
     return(
-        <Section settings={ settings }>
+        <Section settings={ settings } classes={`bg-[url('https://rm2022dev.wpengine.com/wp-content/uploads/2022/07/Group-24.png')] bg-cover bg-[center_50%]`}>
         <Container>
                 {content.heading &&
                         <h2 className={ theme.text['H2'] }>
