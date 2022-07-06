@@ -40,7 +40,7 @@ const IconTextBoxFlex = (props) => {
 
 
     if (props.columns === 3){
-        wrapperClasses += ` lg:w-[31%]`;
+        wrapperClasses += ` xl:w-[31%]`;
     }
 
     return(
@@ -68,7 +68,7 @@ const IconTextBoxFlex = (props) => {
                         </p>
                     </div>
                     <div className={ marginClasses + `mt-4`}>
-                    <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD}  ${theme.text_links.ARW_FWD_GREEN} text-[#A9CF38]` } />
+                    <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} text-[#A9CF38]`} />
                     </div>
                 </div>
             </div>

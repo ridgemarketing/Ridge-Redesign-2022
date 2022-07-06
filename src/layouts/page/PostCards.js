@@ -20,9 +20,8 @@ return (
       {content.bodyText &&
         <p className={`${theme.text['H2']}`}>{content.body}</p>
       }
-      {/* className="flex w-full md:w-[48%] lg:w-[31%] mb-12 md:mb-16 lg:mb-32" */}
           <div className={'max-w-[1080px] mx-auto'}>    
-            <div className="mt-12 flex w-full flex-col justify-between items-center lg:flex-row lg:flex-wrap lg:justify-between lg:items-baseline">
+            <div className="mt-12 flex w-full flex-col items-center lg:items-stretch justify-between lg:flex-row lg:flex-wrap lg:justify-between">
               {
                 cards.map((card) => {
                   return <BlogCard

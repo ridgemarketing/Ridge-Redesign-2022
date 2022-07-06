@@ -15,17 +15,12 @@ const Quotes = (props) => {
     const [data, setData] = useState(content.quotes[0]);
 
     const nextSlide = () => {
-        if (slide === slides.length - 1) {
-            setSlide(0)
-            setData(slides[0])
-        } else {
-            setSlide(slide + 1);
-            setData(slides[slide + 1])
-        }
+        let i = (slide === slides.length - 1) ? 0 : slide + 1;
+        setSlide(i);
+        setData(slides[i]);
     }
     const prevSlide = () => {
-        let i = (slide - 1) + slides.length;
-        i = i % slides.length;
+        let i = (slide - 1 + slides.length) % slides.length;
         setData(slides[i]);
         setSlide(i);
     }
