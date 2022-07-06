@@ -1,182 +1,108 @@
-import React, { useState } from "react" 
+import React, { useEffect, useState } from "react" 
 import { graphql } from "gatsby"
-// import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
-
+import Parser from '../../components/global/Parser';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
-
-// import { content } from "../../../tailwind.config.js"
-
-// export const Quote_Loop = (props) =>{
-//     return(
-//         <>
-//             <q className={ theme.text['Q'] + slides[slide].class + ' block transition-all ease-in-out' }>
-//                 {slides[slide].heading}
-//             </q>
-//             <p className={ theme.text['P_BLD'] }>
-//                 { content.quote.name }
-//             </p>
-//             <small className={ theme.text['FOOTER'] }>
-//                 { content.quote.company }
-//             </small>
-//         </>
-
-//     )
-// }
 
 const Quotes = (props) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
+
+    console.log(content);
+    const slides = content.quotes;
     
     const [slide, setSlide] = useState(0);
+
+    const [data, setData] = useState(content.quotes[0]);
+    // const [data, setData] = useState({
+    //     heading: "We’re very pleased with the quality of work that Ridge Marketing provided in redesigning our website. They’ve exceeded our expectations and provided a dramatically improved user experience for our customers.",
+    //     class:  'first-slide',
+    //     name: 'Chris Burd',
+    //     company: 'Sr. Director, Digital Marketing & Communications, Prevalent'
+    // });
     const nextSlide = () => {
-        let i = slide
-        if (i === slides.length - 1) {
+        if (slide === slides.length - 1) {
             setSlide(0)
+            setData(slides[0])
         } else {
-            setSlide(i + 1)
+            setSlide(slide + 1);
+            setData(slides[slide + 1])
         }
     }
-
     const prevSlide = () => {
-        let i = slide
-        if (i === 0) { 
-            setSlide(slides.length - 1)
-        } else {
-            setSlide(i - 1)
-        }
+        let i = (slide - 1) + slides.length;
+        i = i % slides.length;
+        setData(slides[i]);
+        setSlide(i);
     }
-    const slides = [
-      {
-          heading: "We’re very pleased with the quality of work that Ridge Marketing provided in redesigning our website. They’ve exceeded our expectations and provided a dramatically improved user experience for our customers.",
-          class:  'first-slide'
-      },
-      {
-          heading: "Slide 2",
-          class:  'second-slide'
-      },
-      {
-          heading: "Slide 3",
-          class:  'third-slide'
-      }
-    ];
-        // let animationClass = `.`+ slide.class + ` {          
-        //     animation-timing-function: ease-out;
-        //     animation-duration: .75s;
-        //     animation-name: ` + slide.class + ` ;
-        // }`;
-    
-        // let animationKeyframes =`@keyframes ` +  slide.class + ` {
-        //     0%        { 
-        //         opacity: 0;
-        //         transform: translateX(-25px);
-        //     }
-        //     25%       {
-        //         opacity: 0;
-        //     }
-        //     100%      { 
-        //         opacity: 1;
-        //         transform: translateX(0px);
-        //     }
-        // }`;
 
-    //will be content.slides.map or something along those lines 
-    const styles = slides.map(slide => {
-        let animations = `.${slide.class} {          
-            animation-timing-function: ease-out;
-            animation-duration: .75s;
-            animation-name: ${slide.class} ;
-        },
-        @keyframes ${slide.class} {
-            0%        { 
-                opacity: 0;
-                transform: translateX(-25px);
-            }
-            25%       {
-                opacity: 0;
-            }
-            100%      { 
-                opacity: 1;
-                transform: translateX(0px);
-            }
-        }`;
-        return animations;
-    })
-
+    // const slides = [
+    //   {
+    //       heading: "We’re very pleased with the quality of work that Ridge Marketing provided in redesigning our website. They’ve exceeded our expectations and provided a dramatically improved user experience for our customers.",
+    //       class:  'first-slide',
+    //       name: 'Chris Burd',
+    //       company: 'Sr. Director, Digital Marketing & Communications, Prevalent'
+    //   },
+    //   {
+    //       heading: "We work with Ridge on a monthly retainer, which provides us access to their entire range of services. They’ve helped reduce our cost [green]of PPC MQLs by 35%[/green]. They understand our business, which enables rapid production.",
+    //       class:  'second-slide',
+    //       name: 'Burd Chris'
+    //   },
+    //   {
+    //       heading: "Check if this is Working",
+    //       class:  'third-slide',
+    //       name: 'Nicolas Borges'
+    //   }
+    // ];
 
     return(
         <Section settings={ settings }>
-            <Container>
-                    {content.heading &&
-                        <> 
-                            <h2>
-                                <span 
-                                    className={ 
-                                                theme.text['H2'] 
-                                                + ' text-' + content.textColor 
-                                                + ' text-' + content.textAlign
-                                            }> 
-                                    { content.heading }
-                                </span>
-                            </h2>
-                        </>
-                    }
-                    <div className="hidden invisible" aria-hidden="true">
-                        <style type="text/css">
-                            {/* { animationClass }
-                            { animationKeyframes } */}
-                            {styles}
-                        </style>
+        <Container>
+                {content.heading &&
+                        <h2 className={ theme.text['H2'] }>
+                            { content.heading }
+                        </h2>
+                }
+                <div key={Math.random()} className={` mt-12 flex w-full flex-wrap justify-between relative animate-quote`}>
+                    <div className={ `frosted-glass p-8 lg:p-14 w-full` }>
+                            <p dangerouslySetInnerHTML={{__html: Parser(data.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out' }></p>
+                            <p className={ `${theme.text['P_BLD']} pt-8 pb-2` }>
+                                { data.title }
+                            </p>
+                            <small className={ `${theme.text['FOOTER']} ` }>
+                                { data.company }
+                            </small>
                     </div>
-                    <div className={` mt-12 flex w-full flex-wrap justify-between relative `}>
-                        <div className={ `frosted-glass p-8 lg:p-14 w-full` }>
-                            {/* will be content.slides.map once accurately passing data */}
-                           {slides.map(slide => {
-                            return (
-                                <>
-                                {/* <p className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out' }>
-                                    {slide.heading}
-                                </p>
-                                <p className={ theme.text['P_BLD'] }>
-                                    { content.quote.name }
-                                </p>
-                                <small className={ theme.text['FOOTER'] }>
-                                    { content.quote.company }
-                                </small> */}
-                            </>
-                            )
-                           })}
-                        </div>
-                        <div className={`w-36 flex bg-rm-pale-grey`}>
-                            <button className={`flex-1 px-5 py-3 text-40px`} onClick={prevSlide}>
-                                <FontAwesomeIcon icon={faAngleLeft} />
-                            </button>
-                            <button className={`flex-1 px-5 py-3 text-40px`} onClick={nextSlide}>
-                                <FontAwesomeIcon icon={faAngleRight} />
-                            </button>
-                        </div>
-                    </div>  
-                    <div>
-                        <span
-                            aria-hidden="true" 
-                            className={ 
-                                theme.text['STATS'] + 
-                                'text-rm-green absolute -z-10 '}>
-                            “
-                        </span>
-                        <span
-                            aria-hidden="true" 
-                            className={ 
-                                theme.text['STATS'] + 
-                                'text-rm-green absolute -z-10 '}>
-                            ”
-                        </span>
+                    <div className={`w-36 flex bg-rm-pale-grey`}>
+                        <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => prevSlide()}>
+                            <FontAwesomeIcon icon={faAngleLeft} />
+                        </button>
+                        <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => nextSlide()}>
+                            <FontAwesomeIcon icon={faAngleRight} />
+                        </button>
+                    </div>
+                </div>  
+                <div>
+                    <span
+                        aria-hidden="true" 
+                        className={ 
+                            theme.text['STATS'] + 
+                            'text-rm-green absolute -z-10 '}>
+                        “
+                    </span>
+                    <span
+                        aria-hidden="true" 
+                        className={ 
+                            theme.text['STATS'] + 
+                            'text-rm-green absolute -z-10 '}>
+                        ”
+                    </span>
 
-                    </div>
-            </Container>
+                </div>
+        </Container>
         </Section>
     )
 }
@@ -190,6 +116,12 @@ export const query = graphql`
         layoutQuotes {
           layoutContent {
             heading
+            quotes {
+                ... on WpReview {
+                  title
+                  content
+                }
+              }
           }
           layoutSettings {
             padding {
