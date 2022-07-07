@@ -13,7 +13,7 @@ import { graphql } from "gatsby"
 let form_;
 const phoneNumberPattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
 
-const CtaForm = (props) => {
+const CTAForm = (props) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -22,6 +22,8 @@ const CtaForm = (props) => {
     useEffect( () => {
         form_ = new Pristine(formRef.current);
     });
+
+    console.log(content);
 
     return(
         <Section Settings={ settings }>
@@ -40,7 +42,7 @@ const CtaForm = (props) => {
                         </h2>
                     </>
                 }
-                {content.bodyText &&
+                {content.body &&
                     <>
                         <p>
                             <span className={ 
@@ -138,14 +140,14 @@ const CtaForm = (props) => {
                             pristineM   = { 'Please complete the required field' }
                         />
                         <SelectInput
-                        type        = { 'select' }
-                        color       = { 'rm-white' }
-                        inputID     = { props.ID + '5' }
-                        inputName   = { 'Budget Range' }
-                        required    = { true }
-                        pristineM   = { 'Please complete the required field' }
-                        option1     = { '$0 – $10,000' }
-                        option2     = { '$10,000 – $30,000' }
+                            type        = { 'select' }
+                            color       = { 'rm-white' }
+                            inputID     = { props.ID + '5' }
+                            inputName   = { 'Budget Range' }
+                            required    = { true }
+                            pristineM   = { 'Please complete the required field' }
+                            option1     = { '$0 – $10,000' }
+                            option2     = { '$10,000 – $30,000' }
                         /> 
                         <FormSubmit 
                             inputID     = { props.ID }
@@ -161,30 +163,29 @@ const CtaForm = (props) => {
     ) 
 }
  
-export default CtaForm
+export default CTAForm
 
-// export default CtaForm
 
-// export const query = graphql`
-//   fragment CtaFormPage on WpPage_Flexiblelayouts_Layouts {
-//     ... on WpPage_Flexiblelayouts_Layouts_CtaForm {
-//         fieldGroupName
-//         layoutCtaForm {
-//           layoutContent {
-//             body
-//             heading
-//           }
-//           layoutSettings {
-//             padding {
-//               bottom
-//               top
-//             }
-//             anchorId
-//             backgroundColor
-//             classes
-//             id
-//           }
-//         }
-//     }
-//   }
-// `
+export const query = graphql`
+  fragment CTAFormPage on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_CtaForm {
+        fieldGroupName
+        layoutCtaForm {
+          layoutContent {
+            body
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+    }
+  }
+`

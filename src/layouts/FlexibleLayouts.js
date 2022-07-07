@@ -58,7 +58,7 @@ export const pageQuery = graphql`
         ...ResultsMixPage
         ...LogoCloudPage
         ...PostCardsPage
-        ...ProjectPortfolioPage 
+        ...ProjectPortfolioPage
       }
     }
   }

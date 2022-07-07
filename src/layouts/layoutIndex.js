@@ -8,7 +8,7 @@ import FullWidthImage from "./page/FullWidthImage"
 import FullWidthImageText from "./page/FullWidthImageText"
 import HomeHero from "./page/HomeHero"
 import IconTextBoxes from "./page/IconTextBoxes"
-import InPageContactForm from "./page/CtaForm"
+import CTAForm from "./page/CTAForm"
 import LogoCloud from "./page/LogoCloud"
 import Quotes from "./page/Quotes"
 import PostCards from "./page/PostCards"
@@ -37,7 +37,7 @@ Layouts['FullWidthImageText'] = FullWidthImageText;
 Layouts['TextBlock'] = TextBlock;
 Layouts['HomeHero'] = HomeHero;
 Layouts['IconTextBoxes'] = IconTextBoxes;
-Layouts['InPageContactForm'] = InPageContactForm;
+Layouts['CTAForm'] = CTAForm;
 Layouts['LogoCloud'] = LogoCloud;
 Layouts['VerticalSlider'] = VerticalSlider;
 Layouts['Quotes'] = Quotes;

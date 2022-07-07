@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 
 const WpPage = ({ data }) =>{
-  console.log(data);
+  //console.log(data);
   return (
     <div>
       {/* <h1> {data.wpPage.title} </h1> */}

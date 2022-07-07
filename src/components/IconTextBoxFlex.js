@@ -46,7 +46,7 @@ const IconTextBoxFlex = (props) => {
     }
 
     return(
-            <div className={wrapperClasses}>
+            <div className={wrapperClasses} key={content.heading}>
                 <div className={'w-[55px]'} ref={iconElement}>
                         {content.image && 
                             <GatsbyImage 
