@@ -201,3 +201,25 @@ export const query = graphql`
       }
   }
 `
+export const serviceQuery = graphql`
+  fragment VerticalSliderService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_VerticalSlider {
+        fieldGroupName
+        layoutVerticalSlider {
+          layoutContent {
+            fieldGroupName
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

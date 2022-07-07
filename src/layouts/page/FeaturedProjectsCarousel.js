@@ -107,3 +107,25 @@ export const query = graphql`
       }
   }
 `
+export const serviceQuery = graphql`
+  fragment FeaturedProjectsCarouselService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_FeaturedProjectsCarousel {
+        fieldGroupName
+        layoutFeaturedProjectsCarousel {
+          layoutContent {
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

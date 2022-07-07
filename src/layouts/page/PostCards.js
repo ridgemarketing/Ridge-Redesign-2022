@@ -64,3 +64,28 @@ export const query = graphql`
     }
   }
 `
+export const serviceQuery = graphql`
+  fragment PostCardsService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_PostCards {
+        fieldGroupName
+        layoutPostCards {
+          layoutContent {
+            heading
+            taxonomy {
+                id
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+    }
+  }
+`

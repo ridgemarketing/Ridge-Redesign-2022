@@ -138,3 +138,25 @@ export const query = graphql`
       }
   }
 `
+export const serviceQuery = graphql`
+  fragment ThreeColProjectBlocksService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_ThreeColProjectBlocks {
+        fieldGroupName
+        layoutThreeColProjectBlocks {
+          layoutContent {
+            topHeading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

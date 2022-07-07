@@ -32,3 +32,25 @@ export const query = graphql`
       }
   }
 `
+export const serviceQuery = graphql`
+  fragment TwoColProjectsGridService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_TwoColProjectsGrid {
+        fieldGroupName
+        layoutTwoColProjectsGrid {
+          layoutContent {
+            fieldGroupName
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

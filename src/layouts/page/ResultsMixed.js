@@ -161,3 +161,37 @@ export const query = graphql`
       }
   }
 `
+export const serviceQuery = graphql`
+  fragment ResultsMixService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_ResultsMix {
+        fieldGroupName
+        layoutResultsMix {
+          layoutContent {
+            body
+            heading
+            results {
+                content {
+                    style
+                    text
+                }
+                link {
+                    target
+                    title
+                    url
+                }
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

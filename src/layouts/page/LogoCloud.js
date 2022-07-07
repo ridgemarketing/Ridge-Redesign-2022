@@ -74,3 +74,35 @@ export const query = graphql`
       }
   }
 `
+export const serviceQuery = graphql`
+  fragment LogoCloudService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_LogoCloud {
+        fieldGroupName
+        layoutLogoCloud {
+          layoutContent {
+            body
+            heading
+            logos {
+              image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
