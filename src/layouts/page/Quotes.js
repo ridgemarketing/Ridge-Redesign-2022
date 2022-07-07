@@ -104,3 +104,31 @@ export const query = graphql`
       }
   }
 `
+export const serviceQuery = graphql`
+  fragment QuotesService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_Quotes {
+        fieldGroupName
+        layoutQuotes {
+          layoutContent {
+            heading
+            quotes {
+                ... on WpReview {
+                  title
+                  content
+                }
+              }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

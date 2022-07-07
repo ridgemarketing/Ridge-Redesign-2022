@@ -61,3 +61,31 @@ export const query = graphql`
       }
   }
 `
+export const serviceQuery = graphql`
+  fragment FullWidthImageService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_FullWidthImage {
+        fieldGroupName
+        layoutFullWidthImage {
+          layoutContent {
+            image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

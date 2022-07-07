@@ -74,3 +74,32 @@ export const query = graphql`
       }
   }
 `
+export const serviceQuery = graphql`
+  fragment ResultsService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_Results {
+        fieldGroupName
+        layoutResults {
+          layoutContent {
+            columns
+            body
+            heading
+            results {
+              company
+              description
+              stat
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

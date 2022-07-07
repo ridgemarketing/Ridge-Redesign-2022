@@ -79,3 +79,35 @@ export const query = graphql`
       }
   }
 `
+export const serviceQuery = graphql`
+  fragment TwoColTextQuoteService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_TwoColTextQuote {
+        fieldGroupName
+        layoutTwoColTextQuote {
+          layoutContent {
+            quoteContent {
+                author
+                quote
+                title
+              }
+              quotePosition
+              textContent {
+                body
+                heading
+                intro
+              }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
