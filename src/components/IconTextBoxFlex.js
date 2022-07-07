@@ -11,7 +11,7 @@ const IconTextBoxFlex = (props) => {
     let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
     let marginClasses   = `ml-6 `;
 
-    if (props.iconType == 'icon' || props.iconType == 'number') {
+    if (props.iconType == 'icon') {
         var image = (content.image.localFile.ext === ".svg") 
         ? <img className={''} src={content.image.sourceUrl} />
         : <GatsbyImage 

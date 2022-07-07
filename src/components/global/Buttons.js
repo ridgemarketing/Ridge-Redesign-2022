@@ -3,7 +3,6 @@ import { theme } from '../../static/theme'
 import Link from "../../components/global/FlexibleLink"
 
 const Buttons = (props) => {
-    console.log(props.content, 'this is the buttons', props.sectionBackground);
 
     const content           = props.content;
     const background        = props.sectionBackground == 'black' ? `_HOVER_LIGHT` : `_HOVER_DARK`;
@@ -11,8 +10,7 @@ const Buttons = (props) => {
     const baseColor         = content.colors.resting;
     //const hoverColor        = content.colors.hover;
 
-    const buttonClass   = style + baseColor + background;
-    console.log(buttonClass);
+    let buttonClass   = style + baseColor + background;
 
     const check = function(){
         if( background == 'black' ){

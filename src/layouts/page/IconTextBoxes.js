@@ -59,7 +59,7 @@ const IconTextBoxes = (props) => {
                   <span className={theme.text.P_STD}>{content.bottomBody}</span>
               </p>
               }
-              {content.componentButton.link.url &&
+              {content.componentButton.link &&
                 <div className='text-center'>
                   <Buttons 
                     content={content.componentButton} 

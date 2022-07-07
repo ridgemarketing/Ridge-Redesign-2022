@@ -7,7 +7,7 @@ import { graphql } from "gatsby"
 const FullWidthImageText = (props) => {
 
   const content = props.layoutData.layoutContent;
-  console.log(content);
+  // console.log(content);
   let headerClasses;
   let imageWrapperClasses;
   let imageClasses ='';
