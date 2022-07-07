@@ -165,7 +165,7 @@ const CtaForm = (props) => {
 export default CtaForm
 
 // export const query = graphql`
-//   fragment CtaFormPage on WpPage_Flexiblelayouts_Layouts {
+//   fragment CTAFormPage on WpPage_Flexiblelayouts_Layouts {
 //     ... on WpPage_Flexiblelayouts_Layouts_CtaForm {
 //         fieldGroupName
 //         layoutCtaForm {

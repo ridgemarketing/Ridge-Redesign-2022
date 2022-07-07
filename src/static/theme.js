@@ -7,7 +7,7 @@ export const theme = {
         H2:                 'font-stratos uppercase font-bold text-50px leading-H2-H3 ',
         H3:                 'font-basic-sans font-semibold text-50px leading-H2-H3 ',
         H4:                 'font-basic-sans font-semibold text-26px leading-30px ',
-        H4_LTE:             'font-basic-sans font-light text-26px leading-30px ',
+        H4_LTE:             'font-basic-sans font-light text-26px leading-36px ',
         H5:                 'font-stratos uppercase font-bold text-40px leading-44px ',
         P_STD:              'font-basic-sans font-light text-21px leading-28px ',
         P_BLD:              'font-basic-sans font-bold text-21px leading-28px ',
@@ -20,18 +20,18 @@ export const theme = {
     },
 
     button: {
-        BASE_STYLING:       'inline-block text-21px font-stratos uppercase py-3 px-16 text-center font-normal border-2 border-solid transition-all ease-in-out ',
+        BASE_STYLING:               'inline-block text-21px font-stratos uppercase py-3 px-16 text-center font-normal border-2 border-solid transition-all ease-in-out ',
         
-        PRIMARY_LIGHT:      'text-rm-black border-rm-green bg-rm-white hover:bg-rm-green ',
-        PRIMARY_DARK:       'text-rm-white border-rm-green bg-rm-black hover:bg-rm-green hover:text-rm-black ',
+        GHOST_GREEN_HOVER_LIGHT:    'text-rm-black border-rm-green bg-rm-white hover:bg-rm-green ',
+        GHOST_GREEN_HOVER_DARK:     'text-rm-white border-rm-green bg-rm-black hover:bg-rm-green hover:text-rm-black ',
         
-        SECONDARY_LIGHT:    'text-rm-black border-rm-green bg-rm-green hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
-        SECONDARY_LIGHT_H_W:'text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
-        SECONDARY_DARK:     'text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
-        SECONDARY_BLACK:    'text-rm-white border-rm-black bg-rm-black hover:bg-rm-green hover:text-rm-black hover:border-rm-green ',
+        SOLID_GREEN_HOVER_LIGHT:    'text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
+        SOLID_GREEN_HOVER_DARK:     'text-rm-black border-rm-green bg-rm-green hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
+        
+        SOLID_BLACK_HOVER_LIGHT:    'text-rm-white border-rm-black bg-rm-black hover:bg-rm-green hover:text-rm-black hover:border-rm-green ',
     
-        GHOST_STD:          'text-rm-white border-rm-green hover:bg-rm-green hover:text-rm-black ',
-        GHOST_WHITE:        'text-rm-white border-rm-white hover:bg-rm-green hover:text-rm-black ',
+        GHOST_WHITE_HOVER_DARK:     'text-rm-white border-rm-green hover:bg-rm-green hover:text-rm-black ',
+        GHOST_WHITE_HOVER_LIGHT:    'text-rm-white border-rm-white hover:bg-rm-green hover:text-rm-black ',
     },
     
     text_links: {

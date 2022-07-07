@@ -1,10 +1,10 @@
 import React from 'react'
-import {Section, Container } from "../../components/global/Wrappers"
+import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import IconTextBoxStack from '../../components/IconTextBoxStack'
 import IconTextBoxFlex from '../../components/IconTextBoxFlex'
-
+import Buttons from '../../components/global/Buttons'
 
 const IconTextBoxes = (props) => {
   const content = props.layoutData.layoutContent;
@@ -46,6 +46,28 @@ const IconTextBoxes = (props) => {
                   return (content.settings.type === 'stack') ? <IconTextBoxStack idx={idx+1} color={textColor} content={item} iconType={content.settings.feature}/> : <IconTextBoxFlex iconType={content.settings.feature} color={textColor} columns={content.settings.columns} content={item}/>;
               })}
           </div>
+
+          <div>
+              {content.bottomHeading &&
+              <h3 className={'text-center'}>
+                  <span className={theme.text.H5}>{content.bottomHeading}
+                  </span>
+              </h3>
+              }
+              {content.bottomBody &&
+              <p className={'mt-10 text-center'}>
+                  <span className={theme.text.P_STD}>{content.bottomBody}</span>
+              </p>
+              }
+              {content.componentButton.link.url &&
+                <div className='text-center'>
+                  <Buttons 
+                    content={content.componentButton} 
+                    sectionBackground={settings.backgroundColor}/>
+                </div>
+              }
+            </div>
+
           </Container>
       </Section>
   )
@@ -60,10 +82,10 @@ export const pageQuery = graphql`
         fieldGroupName
         layoutIconTextBoxes {
           layoutContent {
-            body
             boxes {
               body
               heading
+              
               link {
                 target
                 title
@@ -80,6 +102,21 @@ export const pageQuery = graphql`
               }
             }
             heading
+            bottomHeading
+            bottomBody
+            componentButton {
+              fieldGroupName
+              colors {
+                fieldGroupName
+                resting
+              }
+              link {
+                url
+                title
+                target
+              }
+              style
+            }
             settings {
               columns
               feature
@@ -126,6 +163,21 @@ export const serviceQuery = graphql`
               }
             }
             heading
+            bottomHeading
+            bottomBody
+            componentButton {
+              fieldGroupName
+              colors {
+                fieldGroupName
+                resting
+              }
+              link {
+                url
+                title
+                target
+              }
+              style
+            }
             settings {
               columns
               feature
@@ -172,6 +224,24 @@ export const projectQuery = graphql`
               }
             }
             heading
+            body
+            bottomHeading
+            bottomBody
+
+            componentButton {
+              fieldGroupName
+              colors {
+                fieldGroupName
+                resting
+              }
+              link {
+                url
+                title
+                target
+              }
+              style
+            }
+
             settings {
               columns
               feature

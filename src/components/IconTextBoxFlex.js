@@ -5,6 +5,9 @@ import Link from '../components/global/FlexibleLink'
 
 const IconTextBoxFlex = (props) => {
     const content = props.content;
+
+    console.log(content);
+
     let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
     let marginClasses   = `ml-6 `;
 
