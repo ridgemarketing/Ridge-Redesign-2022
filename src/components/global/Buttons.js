@@ -15,14 +15,14 @@ const Buttons = (props) => {
     console.log(buttonClass);
 
     const check = function(){
-        if(background == 'black'){
-            buttonClass = `SOLID_GREEN_HOVER_LIGHT`;
+        if( background == 'black' ){
+            buttonClass = theme.button['SOLID_GREEN_HOVER_LIGHT'];
         }else{
-            buttonClass = `SOLID_GREEN_HOVER_DARK`;
+            buttonClass = theme.button[`SOLID_GREEN_HOVER_DARK`];
         }
     }
 
-    if( (baseColor == background) || (!theme.button[buttonClass]) ){
+    if( ( baseColor == background ) || ( !theme.button[buttonClass] ) ){
         check()
     }
 
@@ -30,7 +30,7 @@ const Buttons = (props) => {
         <>
         {content.link.title && content.link.url &&
             <Link
-                classes = { theme.button.BASE_STYLING + theme.button[buttonClass] }
+                classes = {theme.button.BASE_STYLING + theme.button[buttonClass]}
                 link = {content.link}
             >
             </Link>

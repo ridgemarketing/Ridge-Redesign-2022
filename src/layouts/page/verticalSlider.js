@@ -5,8 +5,6 @@ import { Container, Section } from '../../components/global/Wrappers.js'
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 
 const VerticalSlider = (props) => {
-  
-  const settings = props.layoutData.layoutSettings;
 
   const content = props.layoutData.layoutContent;
   const settings = props.layoutData.layoutSettings;

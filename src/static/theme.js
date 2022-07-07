@@ -7,7 +7,7 @@ export const theme = {
         H2:                 'font-stratos uppercase font-bold text-50px leading-H2-H3 ',
         H3:                 'font-basic-sans font-semibold text-50px leading-H2-H3 ',
         H4:                 'font-basic-sans font-semibold text-26px leading-30px ',
-        H4_LTE:             'font-basic-sans font-light text-26px leading-30px ',
+        H4_LTE:             'font-basic-sans font-light text-26px leading-36px ',
         H5:                 'font-stratos uppercase font-bold text-40px leading-44px ',
         P_STD:              'font-basic-sans font-light text-21px leading-28px ',
         P_BLD:              'font-basic-sans font-bold text-21px leading-28px ',
