@@ -5,8 +5,8 @@ import FlexibleLayouts from "../layouts/FlexibleLayouts"
 const WpService = ({ data }) =>{
   return (
     <div>
-      <h1> {data.wpService.title} </h1>
-      <p> {data.wpService.content} </p>
+      {/* <h1> {data.wpService.title} </h1>
+      <p> {data.wpService.content} </p> */}
       <div>
           <FlexibleLayouts flexibleLayouts={data.wpService.flexibleLayouts} />
       </div>

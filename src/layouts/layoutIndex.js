@@ -25,6 +25,7 @@ import TwoColList from "./page/TwoColList"
 import TwoColTextQuote from "./page/TwoColTextQuote"
 import VennDiagram from "./page/VennDiagram"
 import VerticalSlider from "./page/VerticalSlider"
+import CtaForm from "./page/CtaForm"
 
 let Layouts = {};
 
@@ -43,7 +44,7 @@ Layouts['VerticalSlider'] = VerticalSlider;
 Layouts['Quotes'] = Quotes;
 Layouts['PostCards'] = PostCards;
 Layouts['Results'] = Results;
-Layouts['ResultsMixed'] = ResultsMixed;
+Layouts['ResultsMix'] = ResultsMixed; //component name is different in backend, causing this change to be necessary to match up
 Layouts['TextBlock'] = TextBlock;
 // Layouts['ThreeColIconsText'] = ThreeColIconsText;
 Layouts['ThreeColProjectBlocks'] = ThreeColProjectBlocks;
@@ -54,5 +55,6 @@ Layouts['TwoColImageText'] = TwoColImageText;
 Layouts['TwoColList'] = TwoColList;
 Layouts['TwoColTextQuote'] = TwoColTextQuote;
 Layouts['VennDiagram'] = VennDiagram;
+Layouts['CtaForm'] = CtaForm;
 
 export default Layouts

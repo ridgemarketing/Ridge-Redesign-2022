@@ -7,22 +7,33 @@ import { graphql } from "gatsby"
 const FullWidthImageText = (props) => {
 
   const content = props.layoutData.layoutContent;
+  console.log(content);
 
+  // <GatsbyImage image={''} alt={content.imageAlt} />
   const settings = props.layoutData.layoutSettings;
-  const image = getImage(content.image.gatsbyImage);
+  if (content.image) {
+    var image = (content.image.localFile.ext === ".svg") 
+    ? <img className={''} src={content.image.sourceUrl} />
+    : <GatsbyImage 
+        image={content.image.localFile.childImageSharp.gatsbyImageData} 
+        alt={ ' ' } 
+        className={ `` } 
+        objectFit={'contain'}/> ;
+  }
+  // const image = getImage(content.image.gatsbyImage);
 
     return (
       <Section settings={settings}>
         <Container>
           <div class="text-center">
-              <h1 className={theme.text.H2 + ' z-10 relative'}>{content.headingText}</h1>
+              <h1 className={theme.text.H2 + ' z-10 relative'}>{content.heading}</h1>
 
-              <div className={'mx-auto relative bottom-6 z-0'}>
-                  <GatsbyImage image={image} alt={content.imageAlt} />
+              <div className={'mx-auto relative bottom-6 z-10'}>
+                {image}
               </div>
 
               <p className={'mt-8'}>
-                {content.body}
+                {content.intro}
               </p>
           </div>     
         </Container>
@@ -75,10 +86,12 @@ export const serviceQuery = graphql`
             intro
             image {
               localFile {
+                ext
                 childImageSharp {
                   gatsbyImageData
                 }
               }
+              sourceUrl
             }
           }
           layoutSettings {
