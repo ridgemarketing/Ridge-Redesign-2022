@@ -8,33 +8,49 @@ const FullWidthImageText = (props) => {
 
   const content = props.layoutData.layoutContent;
   console.log(content);
+  let headerClasses;
+  let imageClasses;
 
-  // <GatsbyImage image={''} alt={content.imageAlt} />
   const settings = props.layoutData.layoutSettings;
   if (content.image) {
     var image = (content.image.localFile.ext === ".svg") 
-    ? <img className={''} src={content.image.sourceUrl} />
+    ? <img className={'mx-auto'} src={content.image.sourceUrl} />
     : <GatsbyImage 
         image={content.image.localFile.childImageSharp.gatsbyImageData} 
         alt={ ' ' } 
         className={ `` } 
         objectFit={'contain'}/> ;
   }
-  // const image = getImage(content.image.gatsbyImage);
+
+  if (content.alignment === 'overlap') {
+    headerClasses = 'z-10 relative';
+    imageClasses = 'relative bottom-6 z-10';
+  } else if (content.alignment === 'standard') {
+    headerClasses = '';
+    imageClasses = 'mt-20';
+  }
 
     return (
       <Section settings={settings}>
         <Container>
           <div class="text-center">
-              <h1 className={theme.text.H2 + ' z-10 relative'}>{content.heading}</h1>
+              <h1 className={`${theme.text.H2} ${headerClasses}`}>{content.heading}</h1>
+              
+              {
+              content.intro && <p className={`mt-6 ${theme.text.P_STD} max-w-[1120px] mx-auto`}>
+                {content.intro}
+              </p> 
+              }
 
-              <div className={'mx-auto relative bottom-6 z-10'}>
+              <div className={`mx-auto ${imageClasses}`}>
                 {image}
               </div>
 
-              <p className={'mt-8'}>
-                {content.intro}
-              </p>
+              {
+              content.body && <p className={`mt-8 ${theme.text.H4_LTE}`}>
+                {content.body}
+              </p> 
+              }
           </div>     
         </Container>
       </Section>
@@ -50,6 +66,7 @@ export const query = graphql`
         fieldGroupName
         layoutFullWidthImageText {
           layoutContent {
+            alignment
             body
             heading
             intro
@@ -81,6 +98,7 @@ export const serviceQuery = graphql`
         fieldGroupName
         layoutFullWidthImageText {
           layoutContent {
+            alignment
             body
             heading
             intro
