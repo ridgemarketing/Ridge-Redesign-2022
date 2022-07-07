@@ -29,7 +29,7 @@ const IconTextBoxes = (props) => {
           </h3>
             }
           {content.body &&
-          <p className={`mt-6 max-w-5xl mx-auto text-center ${textColor}`}>
+          <p className={`mt-6 max-w-[1120px] mx-auto text-center ${textColor}`}>
               <span className={theme.text.P_STD}>{content.body}
               </span>
           </p>

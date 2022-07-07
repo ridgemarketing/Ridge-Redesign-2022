@@ -7,11 +7,12 @@ import { graphql } from "gatsby"
 const TwoColBreakoutImageText = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    const image = getImage(content.image)
+    const image = getImage(content.image.localFile.childImageSharp.gatsbyImageData);
+    console.log(content);
 
     return (
         <Section settings={settings} classes={'2xl:max-w-[1920px] 2xl:mx-auto'}>
-            <div className={'xl:absolute xl:left-[-202px] px-6 order-2 mt-16 xl:mt-0 mx-auto xl:mx-0'}>
+            <div className={'xl:absolute xl:left-[-102px] px-6 order-2 mt-16 xl:mt-0 mx-auto xl:mx-0'}>
             <GatsbyImage image={image}/>
             </div>
             <Container>
@@ -25,11 +26,11 @@ const TwoColBreakoutImageText = (props) => {
                         <p className={theme.text.P_STD + ' my-8 text-rm-grey'}>
                             {content.body}
                         </p>
-                        <ul>
-                            {content.list.map(item => {
+                        <ul className={'flex flex-wrap'}>
+                            {content.list.map(data => {
                                     return (
-                                        <li>
-                                           {item.text}
+                                        <li className={`w-[50%] leading-10`}>
+                                           {data.item}
                                         </li>                                       
                                     )
                                 })}
