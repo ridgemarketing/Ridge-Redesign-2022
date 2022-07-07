@@ -5,9 +5,9 @@ exports.createPages = async ({ graphql, actions }) => {
   // query content for WordPress posts
   const {
     data: {
-      allWpPost:    { nodes: allPosts },
-      allWpPage:    { nodes: allPages },
-      allWpService: { nodes: allService }
+      allWpPost: { nodes: allPosts },
+      allWpPage: { nodes: allPages },
+      allWpService: { nodes: allServices }
     },
   } = await graphql(`
     query {
@@ -23,7 +23,7 @@ exports.createPages = async ({ graphql, actions }) => {
           uri
         }
       }
-      allWpService{
+      allWpService {
         nodes {
           id
           uri
@@ -32,8 +32,8 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `)
 
-  const postTemplate    = path.resolve(`./src/templates/post.js`)
-  const pageTemplate    = path.resolve(`./src/templates/page.js`)
+  const postTemplate = path.resolve(`./src/templates/post.js`)
+  const pageTemplate = path.resolve(`./src/templates/page.js`)
   const serviceTemplate = path.resolve(`./src/templates/service.js`)
 
   allPosts.forEach(post => {
@@ -83,6 +83,23 @@ exports.createPages = async ({ graphql, actions }) => {
       // as a GraphQL variable to query for this post's data.
       context: {
         id: page.id,
+      },
+    })
+  })
+
+  allServices.forEach(service => {
+    createPage({
+      // will be the url for the page
+      path: service.uri,
+
+      // specify the component template of your choice
+      component: slash(serviceTemplate),
+      // component: slash(flexTemplate),
+
+      // In the ^template's GraphQL query, 'id' will be available
+      // as a GraphQL variable to query for this post's data.
+      context: {
+        id: service.id,
       },
     })
   })

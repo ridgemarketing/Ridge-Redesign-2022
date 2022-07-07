@@ -7,39 +7,47 @@ import IconTextBoxFlex from '../../components/IconTextBoxFlex'
 import Buttons from '../../components/global/Buttons'
 
 const IconTextBoxes = (props) => {
-    const content = props.layoutData.layoutContent;
-    const settings = props.layoutData.layoutSettings;
+  const content = props.layoutData.layoutContent;
+  const settings = props.layoutData.layoutSettings;
+  let textColor = 'text-black';
 
-    const cols = content.settings.columns == 3 ? ' lg:grid-cols-3 ' : ' ';
-    const wrapperClasses = (content.settings.type === 'stack') ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
+  if (settings.backgroundColor == 'black') {
+    textColor = 'text-white';
+  }
 
-    console.log(settings);
+  const cols = content.settings.columns == 3 ? ' xl:grid-cols-3 ' : ' ';
+  const wrapperClasses = (content.settings.type === 'stack') ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6 lg:mt-12`;
 
-    return (
-        <Section settings={settings}>
-            <Container>
-            <div>
-              {content.heading &&
-            <h3 className={'text-center'}>
-                <span className={theme.text.H2}>{content.heading}
-                </span>
-            </h3>
-              }
-            {content.body &&
-            <p className={"mt-6 max-w-5xl mx-auto text-center"}>
-                <span className={theme.text.P_STD}>{content.body}
-                </span>
-            </p>
+  return (
+      <Section settings={settings}>
+          <Container>
+          <div>
+            {content.heading &&
+          <h3 className={`text-center ${textColor}`}>
+              <span className={theme.text.H2}>{content.heading}
+              </span>
+          </h3>
             }
-            </div>
- 
-            <div className={wrapperClasses}>
-                {content.boxes.map(item => {
-                    return (content.settings.type === 'stack') ? <IconTextBoxStack content={item} key={item.heading} iconType={content.settings.feature}/> : <IconTextBoxFlex columns={content.settings.columns} content={item}/>;
-                })}
-            </div>
+          {content.body &&
+          <p className={`mt-6 max-w-5xl mx-auto text-center ${textColor}`}>
+              <span className={theme.text.P_STD}>{content.body}
+              </span>
+          </p>
+          }
+          {content.subheading &&
+          <p className={`mt-10 text-center ${textColor}`}>
+              <span className={theme.text.H4}>{content.subheading}</span>
+          </p>
+          }
+          </div>
 
-            <div>
+          <div className={wrapperClasses}>
+              {content.boxes.map((item, idx) => {
+                  return (content.settings.type === 'stack') ? <IconTextBoxStack idx={idx+1} color={textColor} content={item} iconType={content.settings.feature}/> : <IconTextBoxFlex iconType={content.settings.feature} color={textColor} columns={content.settings.columns} content={item}/>;
+              })}
+          </div>
+
+          <div>
               {content.bottomHeading &&
               <h3 className={'text-center'}>
                   <span className={theme.text.H5}>{content.bottomHeading}
@@ -53,24 +61,90 @@ const IconTextBoxes = (props) => {
               }
               {content.componentButton.link.url &&
                 <div className='text-center'>
-                  <Buttons content={content.componentButton} sectionBackground={settings.backgroundColor}/>
+                  <Buttons 
+                    content={content.componentButton} 
+                    sectionBackground={settings.backgroundColor}/>
                 </div>
               }
             </div>
-            </Container>
-        </Section>
-    )
+
+          </Container>
+      </Section>
+  )
 }
 
 export default IconTextBoxes
 
 
-export const query = graphql`
+export const pageQuery = graphql`
   fragment IconTextBoxesPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_IconTextBoxes {
         fieldGroupName
         layoutIconTextBoxes {
           layoutContent {
+            boxes {
+              body
+              heading
+              
+              link {
+                target
+                title
+                url
+              }
+              image {
+                localFile {
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+                sourceUrl
+              }
+            }
+            heading
+            bottomHeading
+            bottomBody
+            componentButton {
+              fieldGroupName
+              colors {
+                fieldGroupName
+                resting
+              }
+              link {
+                url
+                title
+                target
+              }
+              style
+            }
+            settings {
+              columns
+              feature
+              type
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const serviceQuery = graphql`
+  fragment IconTextBoxesService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_IconTextBoxes {
+        fieldGroupName
+        layoutIconTextBoxes {
+          layoutContent {
+            body
             boxes {
               body
               heading
@@ -85,6 +159,68 @@ export const query = graphql`
                     gatsbyImageData
                   }
                 }
+                sourceUrl
+              }
+            }
+            heading
+            bottomHeading
+            bottomBody
+            componentButton {
+              fieldGroupName
+              colors {
+                fieldGroupName
+                resting
+              }
+              link {
+                url
+                title
+                target
+              }
+              style
+            }
+            settings {
+              columns
+              feature
+              type
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const projectQuery = graphql`
+  fragment IconTextBoxesProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_IconTextBoxes {
+        fieldGroupName
+        layoutIconTextBoxes {
+          layoutContent {
+            body
+            boxes {
+              body
+              heading
+              link {
+                target
+                title
+                url
+              }
+              image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+                sourceUrl
               }
             }
             heading
@@ -96,7 +232,6 @@ export const query = graphql`
               fieldGroupName
               colors {
                 fieldGroupName
-                hover
                 resting
               }
               link {

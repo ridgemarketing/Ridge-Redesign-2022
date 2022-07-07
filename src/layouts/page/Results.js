@@ -13,7 +13,7 @@ const Results = (props) => {
 
     const body = Parser(content.body);
 
-    let columns = content.columns === '1' ? '' : 'lg:justify-between';
+    let columns = content.columns === '1' ? '' : 'md:justify-between';
 
 
     return(
@@ -48,6 +48,35 @@ export default Results;
 export const query = graphql`
   fragment ResultsPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_Results {
+        fieldGroupName
+        layoutResults {
+          layoutContent {
+            columns
+            body
+            heading
+            results {
+              company
+              description
+              stat
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+export const serviceQuery = graphql`
+  fragment ResultsService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_Results {
         fieldGroupName
         layoutResults {
           layoutContent {

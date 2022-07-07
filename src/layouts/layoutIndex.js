@@ -15,16 +15,17 @@ import PostCards from "./page/PostCards"
 import Results from "./page/Results"
 import ResultsMixed from "./page/ResultsMixed"
 import TextBlock from "./page/TextBlock"
-import ThreeColIconsText from "./page/_ThreeColIconsText"
+// import ThreeColIconsText from "./page/_ThreeColIconsText"
 import ThreeColProjectBlocks from "./page/ThreeColProjectBlocks"
 import TwoColBreakoutImageText from "./page/TwoColBreakoutImageText"
 import TwoColBreakoutImageHeading from "./page/TwoColBreakoutImageHeading"
-import TwoColIconsText from "./page/TwoColIconsText"
+// import TwoColIconsText from "./page/TwoColIconsText"
 import TwoColImageText from "./page/TwoColImageText"
 import TwoColList from "./page/TwoColList"
 import TwoColTextQuote from "./page/TwoColTextQuote"
 import VennDiagram from "./page/VennDiagram"
 import VerticalSlider from "./page/VerticalSlider"
+import CtaForm from "./page/CtaForm"
 
 let Layouts = {};
 
@@ -37,22 +38,23 @@ Layouts['FullWidthImageText'] = FullWidthImageText;
 Layouts['TextBlock'] = TextBlock;
 Layouts['HomeHero'] = HomeHero;
 Layouts['IconTextBoxes'] = IconTextBoxes;
-Layouts['CTAForm'] = CTAForm;
+// Layouts['InPageContactForm'] = InPageContactForm;
 Layouts['LogoCloud'] = LogoCloud;
 Layouts['VerticalSlider'] = VerticalSlider;
 Layouts['Quotes'] = Quotes;
 Layouts['PostCards'] = PostCards;
 Layouts['Results'] = Results;
-Layouts['ResultsMixed'] = ResultsMixed;
+Layouts['ResultsMix'] = ResultsMixed; //component name is different in backend, causing this change to be necessary to match up
 Layouts['TextBlock'] = TextBlock;
-Layouts['ThreeColIconsText'] = ThreeColIconsText;
+// Layouts['ThreeColIconsText'] = ThreeColIconsText;
 Layouts['ThreeColProjectBlocks'] = ThreeColProjectBlocks;
 Layouts['TwoColBreakoutImageText'] = TwoColBreakoutImageText;
 Layouts['TwoColBreakoutImageHeading'] = TwoColBreakoutImageHeading;
-Layouts['TwoColIconsText'] = TwoColIconsText;
+// Layouts['TwoColIconsText'] = TwoColIconsText;
 Layouts['TwoColImageText'] = TwoColImageText;
 Layouts['TwoColList'] = TwoColList;
 Layouts['TwoColTextQuote'] = TwoColTextQuote;
 Layouts['VennDiagram'] = VennDiagram;
+Layouts['CtaForm'] = CtaForm;
 
 export default Layouts

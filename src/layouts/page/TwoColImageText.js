@@ -6,7 +6,6 @@ import { graphql } from "gatsby"
 
 const TwoColImageText = (props) => {
 
-  console.log(props);
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -62,7 +61,53 @@ export const query = graphql`
             }
             componentButton {
               colors {
-                hover
+                resting
+              }
+              link {
+                target
+                title
+                url
+              }
+              style
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+export const serviceQuery = graphql`
+  fragment TwoColImageTextService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_TwoColImageText {
+        fieldGroupName
+        layoutTwoColImageText {
+          layoutContent {
+            body
+            heading
+            imagePosition
+            componentFlexibleMedia {
+              video
+              type
+              lottie
+              image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+            componentButton {
+              colors {
                 resting
               }
               link {

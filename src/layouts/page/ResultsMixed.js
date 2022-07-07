@@ -71,57 +71,58 @@ const ResultsMixed = (props) => {
     let resultTextSize_textSizeSmall    = theSize == 'large' ? theme.text['P_STD'] : theme.text['H4'];
 
     return(
-        <Section Settings={ settings }>
-            <Container>
-                {content.heading &&
-                    <> 
-                        <h2>
-                            <span 
-                                className={ 
-                                            theme.text['H2'] 
-                                            + ' text-' + content.textColor 
-                                            + ' text-' + content.textAlign
-                                        }> 
-                                { content.heading }
-                            </span>
-                        </h2>
-                    </>
-                }
-                {content.bodyText &&
-                    <>
-                        <p>
-                            <span className={ 
-                                            theme.text['P_STD'] 
-                                            + ' text-' + content.textColor 
-                                            + ' text-' + content.textAlign
-                                        }>
-                                { content.bodyText }
-                            </span>
-                        </p>
-                    </>
-                }
-                <div className={` mt-12 flex w-full flex-wrap justify-between `}>
-                    {content.resultsBlocks.map(result => {
-                        return (
-                            <>
-                                <p 
-                                    className={ 
-                                        resultTextSize_textSizeSmall + 
-                                        ' ' }>
-                                    { result.topText }
-                                </p>
-                                <p 
-                                    className={ 
-                                        resultTextSize_textSizeLarge + 
-                                        '' }>
-                                    {result.bottomText}
-                                </p>
-                            </>
-                        )
-                    })}
-                </div>
-            </Container>
-        </Section>
+        <></>
+        // <Section Settings={ settings }>
+        //     <Container>
+        //         {content.heading &&
+        //             <> 
+        //                 <h2>
+        //                     <span 
+        //                         className={ 
+        //                                     theme.text['H2'] 
+        //                                     + ' text-' + content.textColor 
+        //                                     + ' text-' + content.textAlign
+        //                                 }> 
+        //                         { content.heading }
+        //                     </span>
+        //                 </h2>
+        //             </>
+        //         }
+        //         {content.bodyText &&
+        //             <>
+        //                 <p>
+        //                     <span className={ 
+        //                                     theme.text['P_STD'] 
+        //                                     + ' text-' + content.textColor 
+        //                                     + ' text-' + content.textAlign
+        //                                 }>
+        //                         { content.bodyText }
+        //                     </span>
+        //                 </p>
+        //             </>
+        //         }
+        //         <div className={` mt-12 flex w-full flex-wrap justify-between `}>
+        //             {content.resultsBlocks.map(result => {
+        //                 return (
+        //                     <>
+        //                         <p 
+        //                             className={ 
+        //                                 resultTextSize_textSizeSmall + 
+        //                                 ' ' }>
+        //                             { result.topText }
+        //                         </p>
+        //                         <p 
+        //                             className={ 
+        //                                 resultTextSize_textSizeLarge + 
+        //                                 '' }>
+        //                             {result.bottomText}
+        //                         </p>
+        //                     </>
+        //                 )
+        //             })}
+        //         </div>
+        //     </Container>
+        // </Section>
     )
 }
 export default ResultsMixed;
@@ -130,6 +131,40 @@ export default ResultsMixed;
 export const query = graphql`
   fragment ResultsMixPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_ResultsMix {
+        fieldGroupName
+        layoutResultsMix {
+          layoutContent {
+            body
+            heading
+            results {
+                content {
+                    style
+                    text
+                }
+                link {
+                    target
+                    title
+                    url
+                }
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+export const serviceQuery = graphql`
+  fragment ResultsMixService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_ResultsMix {
         fieldGroupName
         layoutResultsMix {
           layoutContent {

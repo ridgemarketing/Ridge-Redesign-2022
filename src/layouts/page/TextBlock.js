@@ -50,7 +50,41 @@ export const query = graphql`
             body
             componentButton {
                 colors {
-                hover
+                resting
+                }
+                link {
+                target
+                title
+                url
+                }
+                style
+            }
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+export const serviceQuery = graphql`
+  fragment TextBlockService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_TextBlock {
+        fieldGroupName
+        layoutTextBlock {
+          layoutContent {
+            alignment
+            body
+            componentButton {
+                colors {
                 resting
                 }
                 link {

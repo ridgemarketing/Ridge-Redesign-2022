@@ -8,6 +8,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
 
 const FeaturedProjectsCarousel = (props) => {
+
+    const content = props.layoutData.layoutContent;
+    const settings = props.layoutData.layoutSettings;
+    console.log(content);
     const [slide, setSlide] = useState(0);
 
     const nextSlide = () => {
@@ -42,15 +46,15 @@ const FeaturedProjectsCarousel = (props) => {
 
 
     return (
-        <Section settings={false}>
+        <Section settings={settings}>
             <Container>
                 <div className={`relative lg:flex`}>
                     <div class="lg:hidden">
-                        {/* <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{props.content.heading}</h2> */}
+                        <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{content.heading}</h2>
                     </div>
                     <div className={`flex-shrink-0 w-full max-w-[712px] h-[734px] text-right md:w-[calc(100%+(50vw-350px))] md:-ml-[calc(50vw-350px)] lg:w-[calc(100%+(50vw-465px))] lg:-ml-[calc(50vw-465px)] xl:w-full xl:ml-0 bg-rm-carbon relative`}>
-                        {/* <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{props.content.heading}</h2>
-                        <BackgroundImage image={props.content.image} /> */}
+                        <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{content.heading}</h2>
+                        {/* <BackgroundImage image={props.content.image} /> */}
                     </div>
                     <div className={`absolute bottom-0 right-0 w-full lg:relative lg:flex`}>
                         {/* <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:mt-6 lg:ml-4`}>{props.content.heading}</h2> */}
@@ -64,10 +68,10 @@ const FeaturedProjectsCarousel = (props) => {
                             </div> 
                             <div className={`w-36 flex bg-rm-pale-grey`}>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={prevSlide}>
-                                   {/* <FontAwesomeIcon icon={faAngleLeft} /> */}
+                                   <FontAwesomeIcon icon={faAngleLeft} />
                                 </button>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={nextSlide}>
-                                    {/* <FontAwesomeIcon icon={faAngleRight} /> */}
+                                    <FontAwesomeIcon icon={faAngleRight} />
                                 </button>
                             </div>
                         </div>
@@ -84,6 +88,28 @@ export default FeaturedProjectsCarousel
 export const query = graphql`
   fragment FeaturedProjectsCarouselPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_FeaturedProjectsCarousel {
+        fieldGroupName
+        layoutFeaturedProjectsCarousel {
+          layoutContent {
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+export const serviceQuery = graphql`
+  fragment FeaturedProjectsCarouselService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_FeaturedProjectsCarousel {
         fieldGroupName
         layoutFeaturedProjectsCarousel {
           layoutContent {

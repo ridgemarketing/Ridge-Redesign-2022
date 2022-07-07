@@ -13,7 +13,7 @@ import { graphql } from "gatsby"
 let form_;
 const phoneNumberPattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
 
-const CTAForm = (props) => {
+const CtaForm = (props) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -23,49 +23,48 @@ const CTAForm = (props) => {
         form_ = new Pristine(formRef.current);
     });
 
-    console.log(content);
-
     return(
-        <Section Settings={ settings }>
-            <Container>
-                {content.heading &&
-                    <> 
-                        <h2>
-                            <span 
-                                className={ 
-                                            theme.text['H5'] 
-                                            + ' text-' + content.textColor 
-                                            + ' text-' + content.textAlign
-                                            }> 
-                                { content.heading }
-                            </span>
-                        </h2>
-                    </>
-                }
-                {content.body &&
-                    <>
-                        <p>
-                            <span className={ 
-                                            theme.text['P_STD'] 
-                                            + ' text-' + content.textColor 
-                                            + ' text-' + content.textAlign
-                                        }>
-                                { content.bodyText }
-                            </span>
-                        </p>
-                    </>
-                }
-                <Formik
-                    initialValues={{}}
-                    onSubmit={ async (values, actions) => {
+        <></>
+        // <Section Settings={ settings }>
+        //     <Container>
+        //         {content.heading &&
+        //             <> 
+        //                 <h2>
+        //                     <span 
+        //                         className={ 
+        //                                     theme.text['H5'] 
+        //                                     + ' text-' + content.textColor 
+        //                                     + ' text-' + content.textAlign
+        //                                     }> 
+        //                         { content.heading }
+        //                     </span>
+        //                 </h2>
+        //             </>
+        //         }
+        //         {content.bodyText &&
+        //             <>
+        //                 <p>
+        //                     <span className={ 
+        //                                     theme.text['P_STD'] 
+        //                                     + ' text-' + content.textColor 
+        //                                     + ' text-' + content.textAlign
+        //                                 }>
+        //                         { content.bodyText }
+        //                     </span>
+        //                 </p>
+        //             </>
+        //         }
+        //         <Formik
+        //             initialValues={{}}
+        //             onSubmit={ async (values, actions) => {
                         
-                        let valid = form_.validate();
+        //                 let valid = form_.validate();
 
-                        if( valid ){
-                            console.log(JSON.stringify(values, null, 2));
-                            actions.resetForm({
-                                values: { }
-                            });
+        //                 if( valid ){
+        //                     console.log(JSON.stringify(values, null, 2));
+        //                     actions.resetForm({
+        //                         values: { }
+        //                     });
                                 // const response = await fetch (sendGridURL, {
                                 //     method: 'POST',
                                 //     headers: {
@@ -89,103 +88,102 @@ const CTAForm = (props) => {
                                 //     alert("uh, oh ");
                                 // }
 
-                        }else{}
-                    }}  
-                >
-                {({ isSubmitting }) => (
+                //         }else{}
+                //     }}  
+                // >
+                /* {({ isSubmitting }) => ( */
                     //class name = props. half form
                     //props.full width 
                     //props.form background color 
                     //props.form drop shadow
-                    <Form ref={formRef} className={ theme.forms['BASE_STYLING'] + theme.forms['FULL'] + 'bg-rm-black drop-shadow-lg' } autoComplete="on">
-                        <BasicInputs 
-                            type        = { 'text' }
-                            inputID     = { props.ID } 
-                            color       = { 'rm-white' }
-                            inputName   = { `Name` }
-                            required    = { true }
-                            pristineM   = { 'Please complete the required field' }
-                        />
-                        <BasicInputs 
-                            type        = { 'text' }
-                            color       = { 'rm-white' }
-                            inputID     = { props.ID + '1' }
-                            inputName   = { 'Company Name' }
-                            required    = { true }
-                            pristineM   = { 'Please complete the required field' }
-                        />
-                        <BasicInputs 
-                            type        = { 'email' }
-                            color       = { 'rm-white' }
-                            inputID     = { props.ID + '2' }
-                            inputName   = { 'Email' }
-                            required    = { true }
-                            pristineM   = { 'Please complete the required field' }
-                        />
-                        <BasicInputs 
-                            type        = { 'tel' }
-                            color       = { 'rm-white' }
-                            inputID     = { props.ID + '3' }
-                            inputName   = { 'Phone' }
-                            required    = { true }
-                            pristineP   = { phoneNumberPattern }
-                            pristineI   = { 'Please enter a valid phone number' }
-                            pristineM   = { 'Please complete the required field' }
-                        />
-                        <MultiLineText
-                            inputID     = { props.ID + '4' }
-                            color       = { 'rm-white' }
-                            inputName   = { 'What are Your Marketing Goals?' }
-                            required    = { true }
-                            pristineM   = { 'Please complete the required field' }
-                        />
-                        <SelectInput
-                            type        = { 'select' }
-                            color       = { 'rm-white' }
-                            inputID     = { props.ID + '5' }
-                            inputName   = { 'Budget Range' }
-                            required    = { true }
-                            pristineM   = { 'Please complete the required field' }
-                            option1     = { '$0 – $10,000' }
-                            option2     = { '$10,000 – $30,000' }
-                        /> 
-                        <FormSubmit 
-                            inputID     = { props.ID }
-                            value       = { "SUBMIT" }
-                            submit      = { isSubmitting }
-                            buttonColor = { 'SECONDARY_LIGHT_H_W' }
-                        />
-                    </Form>
-                )}
-                </Formik>
-        </Container>
-    </Section>
-    ) 
+    //                 <Form ref={formRef} className={ theme.forms['BASE_STYLING'] + theme.forms['FULL'] + 'bg-rm-black drop-shadow-lg' } autoComplete="on">
+    //                     <BasicInputs 
+    //                         type        = { 'text' }
+    //                         inputID     = { props.ID } 
+    //                         color       = { 'rm-white' }
+    //                         inputName   = { `Name` }
+    //                         required    = { true }
+    //                         pristineM   = { 'Please complete the required field' }
+    //                     />
+    //                     <BasicInputs 
+    //                         type        = { 'text' }
+    //                         color       = { 'rm-white' }
+    //                         inputID     = { props.ID + '1' }
+    //                         inputName   = { 'Company Name' }
+    //                         required    = { true }
+    //                         pristineM   = { 'Please complete the required field' }
+    //                     />
+    //                     <BasicInputs 
+    //                         type        = { 'email' }
+    //                         color       = { 'rm-white' }
+    //                         inputID     = { props.ID + '2' }
+    //                         inputName   = { 'Email' }
+    //                         required    = { true }
+    //                         pristineM   = { 'Please complete the required field' }
+    //                     />
+    //                     <BasicInputs 
+    //                         type        = { 'tel' }
+    //                         color       = { 'rm-white' }
+    //                         inputID     = { props.ID + '3' }
+    //                         inputName   = { 'Phone' }
+    //                         required    = { true }
+    //                         pristineP   = { phoneNumberPattern }
+    //                         pristineI   = { 'Please enter a valid phone number' }
+    //                         pristineM   = { 'Please complete the required field' }
+    //                     />
+    //                     <MultiLineText
+    //                         inputID     = { props.ID + '4' }
+    //                         color       = { 'rm-white' }
+    //                         inputName   = { 'What are Your Marketing Goals?' }
+    //                         required    = { true }
+    //                         pristineM   = { 'Please complete the required field' }
+    //                     />
+    //                     <SelectInput
+    //                     type        = { 'select' }
+    //                     color       = { 'rm-white' }
+    //                     inputID     = { props.ID + '5' }
+    //                     inputName   = { 'Budget Range' }
+    //                     required    = { true }
+    //                     pristineM   = { 'Please complete the required field' }
+    //                     option1     = { '$0 – $10,000' }
+    //                     option2     = { '$10,000 – $30,000' }
+    //                     /> 
+    //                     <FormSubmit 
+    //                         inputID     = { props.ID }
+    //                         value       = { "SUBMIT" }
+    //                         submit      = { isSubmitting }
+    //                         buttonColor = { 'SECONDARY_LIGHT_H_W' }
+    //                     />
+    //                 </Form>
+    //             )}
+    //             </Formik>
+    //     </Container>
+    // </Section>
+    )
 }
- 
-export default CTAForm
 
+export default CtaForm
 
-export const query = graphql`
-  fragment CTAFormPage on WpPage_Flexiblelayouts_Layouts {
-    ... on WpPage_Flexiblelayouts_Layouts_CtaForm {
-        fieldGroupName
-        layoutCtaForm {
-          layoutContent {
-            body
-            heading
-          }
-          layoutSettings {
-            padding {
-              bottom
-              top
-            }
-            anchorId
-            backgroundColor
-            classes
-            id
-          }
-        }
-    }
-  }
-`
+// export const query = graphql`
+//   fragment CTAFormPage on WpPage_Flexiblelayouts_Layouts {
+//     ... on WpPage_Flexiblelayouts_Layouts_CtaForm {
+//         fieldGroupName
+//         layoutCtaForm {
+//           layoutContent {
+//             body
+//             heading
+//           }
+//           layoutSettings {
+//             padding {
+//               bottom
+//               top
+//             }
+//             anchorId
+//             backgroundColor
+//             classes
+//             id
+//           }
+//         }
+//     }
+//   }
+// `

@@ -12,7 +12,7 @@ const VideoPlayer = () => {
             title="BRPC Workcamp 2019">
           </iframe>
         </div>
-        <script src="https://player.vimeo.com/api/player.js"></script>
+        {/* <script src="https://player.vimeo.com/api/player.js"></script> */}
       </div>
     )
 }
