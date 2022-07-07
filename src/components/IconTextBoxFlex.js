@@ -1,29 +1,15 @@
 import React, { useRef, useState, useEffect } from "react"
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
 import Link from '../components/global/FlexibleLink'
 
 const IconTextBoxFlex = (props) => {
-    // body
-    // heading
-    // link {
-    // target
-    // title
-    // url
-    // }
-    // image {
-    //     localFile {
-    //         childImageSharp {
-    //         gatsbyImageData
-    //         }
-    //     }
-    // }
     const content = props.content;
-    const image = getImage(content.image.localFile);
     let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
     let marginClasses   = `ml-6 `;
-    // const image = content.image.localFile.childImageSharp.gatsbyImageData;
+
     console.log(content);
+    
     const image = (content.image.localFile.ext === ".svg") 
     ? <img className={''} src={content.image.sourceUrl} />
     : <GatsbyImage 
@@ -68,13 +54,8 @@ const IconTextBoxFlex = (props) => {
 
     return(
             <div className={wrapperClasses}>
-                <div className={'w-[55px]'} ref={iconElement}>
-                        <GatsbyImage 
-                                image={ image } 
-                                alt={ image.alt } 
-                                className={ `flex self-start w-[54px] h-[55px]` } 
-                                objectFit={'contain'}
-                        /> 
+                <div className={'h-[54px]'} ref={iconElement}>
+                        {image}
                 </div>
                 <div className={'flex-col flex flex-1'}>
                     <div>
