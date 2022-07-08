@@ -1,5 +1,5 @@
 import React from "react"
-import { GatsbyImage, StaticImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { theme } from '../static/theme.js'
 
@@ -19,7 +19,7 @@ const BlogCard = (props) => {
                             theme.text_links['FWD_BASE'] + 
                             theme.text_links['ARW_FWD_BLACK'] } 
                             
-                            to={ props.link.url }>
+                            to={ props.link }>
                         READ ARTICLE
                     </Link>
                 </div>
