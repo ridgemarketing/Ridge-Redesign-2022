@@ -9,6 +9,7 @@ const LogoCloud = props => {
 
   const content = props.layoutData.layoutContent;
   const settings = props.layoutData.layoutSettings;
+  console.log(content.logos);
 
   const heading = Parser(content.heading);
   const body = Parser(content.body);
@@ -24,15 +25,13 @@ const LogoCloud = props => {
                 }
                 <div className="mt-12 flex w-full flex-wrap justify-center lg:justify-around gap-y-10 md:gap-y-16 gap-x-12 md:gap-x-20 lg:gap-x-6">
                     {content.logos.map(logo => {
-                      const image = getImage(logo.image.localFile.childImageSharp.gatsbyImageData);
+                      // const image = getImage(logo.image.localFile.childImageSharp.gatsbyImageData);
+                      const image = (logo.image.localFile.ext === ".svg") 
+                      ? <img className={`w-[24%] lg:w-[14%] object-contain`} src={logo.image.sourceUrl} />
+                      : <GatsbyImage className={`w-[24%] lg:w-[14%]`} objectFit="contain" image={logo.image.localFile.childImageSharp.gatsbyImageData} /> ;
                       return(
-                        <GatsbyImage 
-                            image={ image } 
-                            alt={ logo.alt } 
-                            className={`w-[24%] lg:w-[14%]`} 
-                            objectFit="contain"
-                        />
-                    )
+                        image
+                      )
                     })}
                 </div> 
             </Container>
@@ -52,7 +51,9 @@ export const query = graphql`
             heading
             logos {
               image {
+                sourceUrl
                 localFile {
+                  ext
                   childImageSharp {
                     gatsbyImageData
                   }
@@ -84,7 +85,9 @@ export const serviceQuery = graphql`
             heading
             logos {
               image {
+                sourceUrl
                 localFile {
+                  ext
                   childImageSharp {
                     gatsbyImageData
                   }
