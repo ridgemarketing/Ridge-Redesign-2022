@@ -46,7 +46,7 @@ const Quotes = (props) => {
                     </small>
                   </div>
                 </div>
-                <div className={`w-[175px] flex bg-rm-pale-grey`}>
+                <div className={`w-[175px] flex bg-rm-pale-grey lg:ml-10`}>
                     <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => prevSlide()}>
                         <FontAwesomeIcon icon={faAngleLeft} />
                     </button>
@@ -73,7 +73,7 @@ const Quotes = (props) => {
                         'text-rm-green absolute -z-10 '}>
                     ”
                 </span>
-                
+
             </div>
           </Container>
         </Section>

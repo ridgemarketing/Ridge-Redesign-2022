@@ -5,12 +5,29 @@ import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import { Container, Section } from '../components/global/Wrappers.js'
 import { theme } from '../static/theme'
 import Buttons from '../components/global/Buttons'
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 const WpService = ({ data }) =>{
     
   const settings  = data.wpService.servicesHeader.serviceHeader.layoutSettings;
   const content   = data.wpService.servicesHeader.serviceHeader.layoutContent;
+ 
+  let floatP = [];
+  let visibility  = 'hidden invisible';
+  console.log('header', content, floatP);
   
+  //if floated image, push all small text into a div
+  if(content.intextFloatedImage){
+    for(let i =0; content.bodyContent.length > i; i++){
+        if(content.bodyContent[i].textSize === "standard"){
+          floatP.push(content.bodyContent[i]);
+          content.bodyContent.splice(i,1);
+          i--;
+        }
+    }
+    visibility = 'inline-block';
+  }
+
   return (
     <div>
       <Section settings={settings}>
@@ -30,14 +47,32 @@ const WpService = ({ data }) =>{
                 </span>
             </h2>
           }
-          {content.bodyContent.map( (key) =>{
-            const textSize = key.textSize == 'large' ? 'H4_LTE' : 'P_STD';  
+          {content.bodyContent.map((key) =>{
+            const textSize = key.textSize === 'large' ? 'H4_LTE' : 'P_STD';  
             return(
-                <p className={theme.text[textSize] + 'mb-9'} key={key.body}>
-                  {key.body}
-                </p>
+                <> 
+                  <p className={theme.text[textSize] + 'mb-9' } key={key.body}>
+                    {key.body} 
+                  </p>
+                </>
             )
           })}
+         
+          <div className={visibility + ` lg:w-3/4`}>
+            {floatP.map((key) => {
+              const textSize = 'P_STD';
+              return(
+                  <p className={theme.text[textSize] + 'mb-9' } key={key.body}>
+                    {key.body} 
+                  </p>
+              )
+            })}
+          </div>
+
+          {content.intextFloatedImage &&
+            <GatsbyImage className="mb-9 lg:mb-0 lg:w-1/5 lg:ml-[5%]" objectFit="contain" imgStyle="objectFit:contain;" image={content.intextFloatedImage.localFile.childImageSharp.gatsbyImageData} alt={` `} />  
+          }
+          
           {content.componentButton.link.url &&
             <div className='text-left'>
               <Buttons 
@@ -70,7 +105,6 @@ export const query = graphql`
               black
               green
             }
-            fieldGroupName
             eyebrow
             componentButton {
               colors {
@@ -87,6 +121,13 @@ export const query = graphql`
             bodyContent {
               body
               textSize
+            }
+            intextFloatedImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
             }
           }
           layoutSettings {

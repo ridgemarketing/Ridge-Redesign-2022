@@ -141,7 +141,7 @@ const CtaForm = (props) => {
                             inputID     = { props.ID + '6' }
                             value       = { "SUBMIT" }
                             submit      = { isSubmitting }
-                            buttonColor = { 'SOLID_GREEN_HOVER_LIGHT' }
+                            buttonColor = { 'SOLID_GREEN_HOVER_DARK' }
                         />
                     </Form>
                  )}

@@ -25,8 +25,8 @@ export const theme = {
         GHOST_GREEN_HOVER_DARK:    'text-rm-black border-rm-green bg-transparent hover:bg-rm-green ',
         GHOST_GREEN_HOVER_LIGHT:   'text-rm-white border-rm-green bg-rm-black hover:bg-rm-green hover:text-rm-black ',
         
-        SOLID_GREEN_HOVER_LIGHT:    'text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
-        SOLID_GREEN_HOVER_DARK:     'text-rm-black border-rm-green bg-rm-green hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
+        SOLID_GREEN_HOVER_DARK:    'text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
+        SOLID_GREEN_HOVER_LIGHT:     'text-rm-black border-rm-green bg-rm-green hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
         
         SOLID_BLACK_HOVER_LIGHT:    'text-rm-white border-rm-black bg-rm-black hover:bg-rm-green hover:text-rm-black hover:border-rm-green ',
     

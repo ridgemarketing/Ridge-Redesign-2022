@@ -23,6 +23,10 @@ export const Section = (props) => {
     let classes         =  props.settings.classes ? props.settings.classes : defaults.classes;
     let classes_temp = props.classes ? props.classes : ''; //used for testing until we pull class data from props
 
+    if(props.transparent){
+        bg ='transparent';
+    }
+
     return (
         <section 
         id={id} 

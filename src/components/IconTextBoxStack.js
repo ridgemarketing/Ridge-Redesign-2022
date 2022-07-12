@@ -5,13 +5,15 @@ import { theme } from "../static/theme"
 const IconTextBoxStack = (props) => {
     const content = props.content;
     const iconType = props.iconType;
-
+    
+    const image = '';
     let component =  <span className={'block w-[138px] border-t-2 border-t-rm-green mb-7'}></span>;
 
-    const image = (content.image.localFile.ext === ".svg") 
-    ? <img className={'h-full w-auto'} src={content.image.sourceUrl} />
-    : <GatsbyImage objectFit={'contain'} className={'h-full w-auto'} image={content.image.localFile.childImageSharp.gatsbyImageData} /> ;
-                                       
+    if(content.image){
+        image = (content.image.localFile.ext === ".svg") 
+        ? <img className={'h-full w-auto'} src={content.image.sourceUrl} />
+        : <GatsbyImage objectFit={'contain'} className={'h-full w-auto'} image={content.image.localFile.childImageSharp.gatsbyImageData} /> ;
+    }                                     
     if (iconType === 'icon') {
         component = 
         <div className={"mb-8 text-center md:text-left lg:mx-0 h-[105px]"}>
