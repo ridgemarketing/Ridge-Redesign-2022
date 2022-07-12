@@ -4,33 +4,21 @@ import { theme } from "../static/theme"
 import Link from '../components/global/FlexibleLink'
 
 const IconTextBoxFlex = (props) => {
-    // body
-    // heading
-    // link {
-    // target
-    // title
-    // url
-    // }
-    // image {
-    //     localFile {
-    //         childImageSharp {
-    //         gatsbyImageData
-    //         }
-    //     }
-    // }
     const content = props.content;
-    const image = getImage(content.image.localFile);
+
     let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
+
     let marginClasses   = `ml-6 `;
-    // const image = content.image.localFile.childImageSharp.gatsbyImageData;
-    console.log(content);
-    const image = (content.image.localFile.ext === ".svg") 
-    ? <img className={''} src={content.image.sourceUrl} />
-    : <GatsbyImage 
-        image={content.image.localFile.childImageSharp.gatsbyImageData} 
-        alt={ ' ' } 
-        className={ `flex self-start w-auto h-[55px]` } 
-        objectFit={'contain'}/> ;
+
+    if (props.iconType == `icon`) {
+        var image = (content.image.localFile.ext === `.svg`) 
+        ? <img className={''} src={content.image.sourceUrl} />
+        : <GatsbyImage 
+            image={content.image.localFile.childImageSharp.gatsbyImageData} 
+            alt={''} 
+            className={ `flex self-start w-auto h-[55px]` } 
+            objectFit={'contain'}/> ;
+    }
 
     const [height, setHeight] = useState(0);
     const [iconHeight, setIconHeight] = useState(0);
@@ -69,12 +57,7 @@ const IconTextBoxFlex = (props) => {
     return(
             <div className={wrapperClasses}>
                 <div className={'w-[55px]'} ref={iconElement}>
-                        <GatsbyImage 
-                                image={ image } 
-                                alt={ image.alt } 
-                                className={ `flex self-start w-[54px] h-[55px]` } 
-                                objectFit={'contain'}
-                        /> 
+                    {image}
                 </div>
                 <div className={'flex-col flex flex-1'}>
                     <div>
