@@ -57,14 +57,13 @@ const PostCards = (props) => {
       }
     }
   }
-  console.log('postcards', taxonomy, posts, cards);
 
   //let cards = [{heading: "Send Marketing Emails? Get the Mop! Time for Email List Cleaning..."}, {heading: "How Apple's IOS Update Will Change Email Marketing"}, {heading: "Marketing Value Misconceptions: Is Your Strategy a Tragedy?"}]
 
 return (
 <>
   <Section settings={settings}>
-    <Container>
+    <Container classes={'xl:max-w-[1120px]'}>
         {content.heading &&
           <h2 className={ theme.text.H2 + `text-center`}>
             {content.heading}

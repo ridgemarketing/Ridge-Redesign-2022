@@ -2,11 +2,10 @@ import React, { useRef, useState, useEffect } from "react"
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
 import Link from '../components/global/FlexibleLink'
+import Parser from "./global/Parser"
 
 const IconTextBoxFlex = (props) => {
     const content = props.content;
-
-    console.log('icon text box flex', content);
 
     let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
     let marginClasses   = `ml-6 `;
@@ -69,10 +68,7 @@ const IconTextBoxFlex = (props) => {
                         </p>
                     </div>
                     <div className={ `${marginClasses} mt-4`}>
-                        <p 
-                            className={ `${theme.text['FOOTER']}  ${props.color}` }>
-                            { content.body }
-                        </p>
+                        <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={ `${theme.text['FOOTER']}  ${props.color}` }></p>
                     </div>
                     <div className={ marginClasses + `mt-4`}>
                     <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} text-[#A9CF38]`} />

@@ -12,7 +12,6 @@ const phoneNumberPattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
 
 const CtaForm = (props) => {
 
-    console.log('form', props);
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
 

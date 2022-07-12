@@ -7,18 +7,22 @@ import { graphql } from "gatsby"
 const FullWidthImageText = (props) => {
 
   const content = props.layoutData.layoutContent;
-  // console.log(content);
+  const settings = props.layoutData.layoutSettings;
   let headerClasses;
   let imageWrapperClasses;
   let imageClasses ='';
   let mobile;
+  let textColor;
+
+  if (settings.backgroundColor == 'black') {
+    textColor = 'text-white';
+  }
 
   if (content.mobile) {
     imageClasses += 'hidden md:block';
     mobile = <img className={`mx-auto md:hidden`} src={content.mobile.sourceUrl} />
   }
 
-  const settings = props.layoutData.layoutSettings;
   if (content.image) {
     var image = (content.image.localFile.ext === ".svg") 
     ? <img className={`mx-auto ${imageClasses}`} src={content.image.sourceUrl} />
@@ -31,7 +35,7 @@ const FullWidthImageText = (props) => {
   }
 
   if (content.alignment === 'overlap') {
-    headerClasses = 'z-10 relative';
+    headerClasses = 'z-20 relative';
     imageWrapperClasses = 'relative bottom-6 z-10';
   } else if (content.alignment === 'standard') {
     headerClasses = '';
@@ -40,12 +44,12 @@ const FullWidthImageText = (props) => {
 
     return (
       <Section settings={settings}>
-        <Container>
+        <Container classes={'xl:max-w-[860px]'}>
           <div class="text-center">
-              <h1 className={`${theme.text.H2} ${headerClasses}`}>{content.heading}</h1>
+              <h1 className={`${theme.text.H2} ${headerClasses} ${textColor}`}>{content.heading}</h1>
 
               {
-              content.intro && <p className={`mt-6 ${theme.text.P_STD} max-w-[1120px] mx-auto`}>
+              content.intro && <p className={`mt-6 ${theme.text.P_STD} max-w-[1120px] mx-auto ${textColor}`}>
                 {content.intro}
               </p> 
               }
@@ -56,19 +60,10 @@ const FullWidthImageText = (props) => {
               </div>
 
               {
-              content.body && <p className={`mt-8 ${theme.text.H4_LTE}`}>
+              content.body && <p className={`text-left mt-8 ${theme.text.H4_LTE} ${textColor}`}>
                 {content.body}
               </p> 
               }
-              {/* <h1 className={theme.text.H2 + ' z-10 relative mb-9'}>{content.heading}</h1>
-
-              <p className={theme.text.P_STD +'mt-8 mb-9'}>
-                {content.intro}
-              </p>
-
-              <div className={'mx-auto relative bottom-6 z-10 flex justify-center w-full'}>
-                {image}
-              </div> */}
           </div>     
         </Container>
       </Section>
