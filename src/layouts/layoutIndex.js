@@ -25,6 +25,7 @@ import TwoColList from "./page/TwoColList"
 import TwoColTextQuote from "./page/TwoColTextQuote"
 import VennDiagram from "./page/VennDiagram"
 import VerticalSlider from "./page/VerticalSlider"
+import QuarterImageText from "./page/QuarterImageText"
 
 let Layouts = {};
 
@@ -54,5 +55,6 @@ Layouts['TwoColImageText'] = TwoColImageText;
 Layouts['TwoColList'] = TwoColList;
 Layouts['TwoColTextQuote'] = TwoColTextQuote;
 Layouts['VennDiagram'] = VennDiagram;
+Layouts['QuarterImageText'] = QuarterImageText;
 
 export default Layouts
