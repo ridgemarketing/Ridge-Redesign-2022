@@ -25,7 +25,6 @@ const LogoCloud = props => {
                 }
                 <div className="mt-12 flex w-full flex-wrap justify-center lg:justify-around gap-y-10 md:gap-y-16 gap-x-12 md:gap-x-20 lg:gap-x-6">
                     {content.logos.map(logo => {
-                      // const image = getImage(logo.image.localFile.childImageSharp.gatsbyImageData);
                       const image = (logo.image.localFile.ext === ".svg") 
                       ? <img className={`w-[24%] lg:w-[14%] object-contain`} src={logo.image.sourceUrl} />
                       : <GatsbyImage className={`w-[24%] lg:w-[14%]`} objectFit="contain" image={logo.image.localFile.childImageSharp.gatsbyImageData} /> ;

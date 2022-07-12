@@ -10,6 +10,7 @@ const IconTextBoxes = (props) => {
   const content = props.layoutData.layoutContent;
   const settings = props.layoutData.layoutSettings;
   let textColor = 'text-black';
+  const bottomHeadingMargin = (content.settings.type === 'stack') ? 'lg:mt-20' : '';
 
   if (settings.backgroundColor == 'black') {
     textColor = 'text-white';
@@ -46,7 +47,7 @@ const IconTextBoxes = (props) => {
 
           <div>
               {content.bottomHeading &&
-              <h3 className={`mt-10 lg:mt-20 mb-12 text-center ${textColor}`}>
+              <h3 className={`mt-10 ${bottomHeadingMargin} mb-12 text-center ${textColor}`}>
                   <span className={theme.text.H5}>{content.bottomHeading}
                   </span>
               </h3>

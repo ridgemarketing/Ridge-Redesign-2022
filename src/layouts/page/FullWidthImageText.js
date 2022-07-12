@@ -3,6 +3,7 @@ import { Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
+import Parser from "../../components/global/Parser"
 
 const FullWidthImageText = (props) => {
 
@@ -46,24 +47,21 @@ const FullWidthImageText = (props) => {
       <Section settings={settings}>
         <Container classes={'xl:max-w-[860px]'}>
           <div class="text-center">
+            { content.heading && 
               <h1 className={`${theme.text.H2} ${headerClasses} ${textColor}`}>{content.heading}</h1>
+            }
+            {
+            content.intro && <p dangerouslySetInnerHTML={{__html: Parser(content.intro)}} className={`mt-6 ${theme.text.P_STD} max-w-[1120px] mx-auto ${textColor}`}></p> 
+            }
 
-              {
-              content.intro && <p className={`mt-6 ${theme.text.P_STD} max-w-[1120px] mx-auto ${textColor}`}>
-                {content.intro}
-              </p> 
-              }
+            <div className={`mx-auto ${imageWrapperClasses}`}>
+              {image}
+              {mobile}
+            </div>
 
-              <div className={`mx-auto ${imageWrapperClasses}`}>
-                {image}
-                {mobile}
-              </div>
-
-              {
-              content.body && <p className={`text-left mt-8 ${theme.text.H4_LTE} ${textColor}`}>
-                {content.body}
-              </p> 
-              }
+            {
+            content.body && <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`text-left mt-8 ${theme.text.H4_LTE} ${textColor}`}></p> 
+            }
           </div>     
         </Container>
       </Section>
