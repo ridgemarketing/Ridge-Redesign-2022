@@ -39,12 +39,15 @@ export const query = graphql`
         fieldGroupName
         layoutFullWidthImage {
           layoutContent {
-            image {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
+            componentFlexibleMedia {
+              image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(placeholder: DOMINANT_COLOR)
+                  }
                 }
               }
+              imageAlt
             }
           }
           layoutSettings {

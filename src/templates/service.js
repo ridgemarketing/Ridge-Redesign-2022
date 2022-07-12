@@ -16,14 +16,14 @@ const WpService = ({ data }) =>{
 export default WpService;
 
 
-export const query = graphql`
-  query ServiceById( $id: String ){
-    wpService(id: {eq: $id}) {
-      id
-      uri
-      title
-      content
-      ...FlexibleLayoutsService
-    }
-  }
-` 
+// export const query = graphql`
+//   query ServiceById( $id: String ){
+//     wpService(id: {eq: $id}) {
+//       id
+//       uri
+//       title
+//       content
+//       ...FlexibleLayoutsService
+//     }
+//   }
+// ` 
