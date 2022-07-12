@@ -155,6 +155,7 @@ export const serviceQuery = graphql`
               }
               image {
                 localFile {
+                  ext
                   childImageSharp {
                     gatsbyImageData
                   }
@@ -216,6 +217,7 @@ export const projectQuery = graphql`
               }
               image {
                 localFile {
+                  ext
                   childImageSharp {
                     gatsbyImageData
                   }
