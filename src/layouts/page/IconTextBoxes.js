@@ -5,7 +5,7 @@ import { graphql } from "gatsby"
 import IconTextBoxStack from '../../components/IconTextBoxStack'
 import IconTextBoxFlex from '../../components/IconTextBoxFlex'
 import Buttons from '../../components/global/Buttons'
-
+import Parser from "../../components/global/Parser"
 const IconTextBoxes = (props) => {
   const content = props.layoutData.layoutContent;
   const settings = props.layoutData.layoutSettings;
@@ -29,10 +29,7 @@ const IconTextBoxes = (props) => {
           </h3>
             }
           {content.body &&
-          <p className={`mt-6 max-w-[1120px] mx-auto text-center ${textColor}`}>
-              <span className={theme.text.P_STD}>{content.body}
-              </span>
-          </p>
+          <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} mt-6 max-w-[1120px] mx-auto text-center ${textColor}`}></p>
           }
           {content.subheading &&
           <p className={`mt-10 text-center ${textColor}`}>
@@ -49,18 +46,18 @@ const IconTextBoxes = (props) => {
 
           <div>
               {content.bottomHeading &&
-              <h3 className={`text-center ${textColor}`}>
+              <h3 className={`mt-10 lg:mt-20 mb-12 text-center ${textColor}`}>
                   <span className={theme.text.H5}>{content.bottomHeading}
                   </span>
               </h3>
               }
               {content.bottomBody &&
-              <p className={ `mt-10 text-center ${textColor}`}>
+              <p className={ `text-center ${textColor}`}>
                   <span className={theme.text.P_STD}>{content.bottomBody}</span>
               </p>
               }
-              {content.componentButton &&
-                <div className='text-center mt-10'>
+              {content.componentButton && content.componentButton.link &&
+                <div className='text-center my-8'>
                   <Buttons 
                     content={content.componentButton} 
                     sectionBackground={settings.backgroundColor}/>
