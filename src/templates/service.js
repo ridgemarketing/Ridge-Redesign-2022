@@ -14,7 +14,6 @@ const WpService = ({ data }) =>{
  
   let floatP = [];
   let visibility  = 'hidden invisible';
-  console.log('header', content, floatP);
   
   //if floated image, push all small text into a div
   if(content.intextFloatedImage){
@@ -47,7 +46,7 @@ const WpService = ({ data }) =>{
                 </span>
             </h2>
           }
-          {content.bodyContent.map((key) =>{
+          {content.bodyContent && content.bodyContent.map((key) =>{
             const textSize = key.textSize === 'large' ? 'H4_LTE' : 'P_STD';  
             return(
                 <> 
@@ -73,7 +72,7 @@ const WpService = ({ data }) =>{
             <GatsbyImage className="mb-9 lg:mb-0 lg:w-1/5 lg:ml-[5%]" objectFit="contain" imgStyle="objectFit:contain;" image={content.intextFloatedImage.localFile.childImageSharp.gatsbyImageData} alt={` `} />  
           }
           
-          {content.componentButton.link.url &&
+          {content.componentButton && content.componentButton.link.url &&
             <div className='text-left'>
               <Buttons 
                 content={content.componentButton} 
