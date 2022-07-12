@@ -25,7 +25,6 @@ const tagList = [
     }
 ];
 
-
 const Parser = string => {
     let output = string;
     tagList.map(data => {

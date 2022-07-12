@@ -87,6 +87,7 @@ export const serviceQuery = graphql`
         ...LogoCloudService
         ...PostCardsService
         ...ProjectPortfolioService 
+        ...CTAFormService
       }
     }
   }

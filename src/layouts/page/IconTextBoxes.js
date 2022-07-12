@@ -49,18 +49,18 @@ const IconTextBoxes = (props) => {
 
           <div>
               {content.bottomHeading &&
-              <h3 className={'text-center'}>
+              <h3 className={`text-center ${textColor}`}>
                   <span className={theme.text.H5}>{content.bottomHeading}
                   </span>
               </h3>
               }
               {content.bottomBody &&
-              <p className={'mt-10 text-center'}>
+              <p className={ `mt-10 text-center ${textColor}`}>
                   <span className={theme.text.P_STD}>{content.bottomBody}</span>
               </p>
               }
-              {content.componentButton.link &&
-                <div className='text-center'>
+              {content.componentButton &&
+                <div className='text-center mt-10'>
                   <Buttons 
                     content={content.componentButton} 
                     sectionBackground={settings.backgroundColor}/>

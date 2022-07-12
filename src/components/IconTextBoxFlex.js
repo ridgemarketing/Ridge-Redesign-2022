@@ -6,14 +6,14 @@ import Link from '../components/global/FlexibleLink'
 const IconTextBoxFlex = (props) => {
     const content = props.content;
 
-    console.log(content);
+    console.log('icon text box flex', content);
 
     let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
     let marginClasses   = `ml-6 `;
 
     if (props.iconType == 'icon') {
         var image = (content.image.localFile.ext === ".svg") 
-        ? <img className={''} src={content.image.sourceUrl} />
+        ? <img className={'h-inherit'} src={content.image.sourceUrl} />
         : <GatsbyImage 
             image={content.image.localFile.childImageSharp.gatsbyImageData} 
             alt={ ' ' } 

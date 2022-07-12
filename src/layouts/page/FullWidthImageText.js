@@ -22,6 +22,7 @@ const FullWidthImageText = (props) => {
   if (content.image) {
     var image = (content.image.localFile.ext === ".svg") 
     ? <img className={`mx-auto ${imageClasses}`} src={content.image.sourceUrl} />
+    // ? <img className={'block w-full lg:mt-9 lg:w-4/5 h-auto'} src={content.image.sourceUrl} />
     : <GatsbyImage 
         image={content.image.localFile.childImageSharp.gatsbyImageData} 
         alt={ ' ' } 
@@ -59,6 +60,15 @@ const FullWidthImageText = (props) => {
                 {content.body}
               </p> 
               }
+              {/* <h1 className={theme.text.H2 + ' z-10 relative mb-9'}>{content.heading}</h1>
+
+              <p className={theme.text.P_STD +'mt-8 mb-9'}>
+                {content.intro}
+              </p>
+
+              <div className={'mx-auto relative bottom-6 z-10 flex justify-center w-full'}>
+                {image}
+              </div> */}
           </div>     
         </Container>
       </Section>
