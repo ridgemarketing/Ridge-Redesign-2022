@@ -44,7 +44,7 @@ const FullWidthImageText = (props) => {
 
     return (
       <Section settings={settings}>
-        <Container classes={'xl:max-w-[860px]'}>
+        <Container classes={'xl:max-w-[1120px]'}>
           <div class="text-center">
             { content.heading && 
               <h1 className={`${theme.text.H2} ${headerClasses} ${textColor}`}>{content.heading}</h1>
