@@ -28,22 +28,7 @@ export const query = graphql`
       title
       content
       ...FlexibleLayoutsPage
-      pageHeader {
-        pageHeader {
-          eyebrow
-          heading
-          maxWidth
-          reverseHeading
-          subheading
-          backgroundImage {
-            localFile {
-              childImageSharp {
-                gatsbyImageData
-              }
-            }
-          }
-        }
-      }
+
     }
   } 
 `
