@@ -1,11 +1,11 @@
 const tagList = [
     {
         tag: `[b]`,
-        replace: '<strong>'
+        replace: '<span className="font-bold">'
     },
     {
         tag: `[/b]`,
-        replace: '</strong>'
+        replace: '</span>'
     },
     {
         tag: `[green]`,
