@@ -6,10 +6,10 @@ const ResultCard = (props) => {
 
     const content = props.content;
     let statClass= 'text-[120px]';
-    let descriptionClass= props.columns === '1' ? 'max-w-[60%]' : '';
+    let descriptionClass= props.columns === '1' ? 'md:max-w-[60%]' : '';
 
     const classes = {
-        1: 'flex items-center gap-8 max-w-[900px]',
+        1: 'md:flex items-center gap-8 max-w-[900px]',
         2: 'md:flex-[45%] lg:flex-[50%]',
         3: 'md:w-[45%] lg:w-[30%]'
     }
