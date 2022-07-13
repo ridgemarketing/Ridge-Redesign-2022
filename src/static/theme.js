@@ -70,6 +70,7 @@ export const theme = {
         black: 'black',
         white: 'white',
         paleGrey: 'rm-pale-grey',
-        paleTeal: 'rm-pale-teal'
+        paleTeal: 'rm-pale-teal',
+        transparent: 'transparent'
     }
 }
