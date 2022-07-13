@@ -47,3 +47,41 @@ export const query = graphql`
       }
   }
 `
+export const serviceQuery = graphql`
+  fragment MediaBlocksService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_MediaBlocks {
+        fieldGroupName
+        layoutMediaBlocks {
+          layoutContent {
+            blocks {
+              heading
+              componentFlexibleMedia {
+                lottie
+                type
+                video
+                image {
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+                }
+              }
+            }
+            columns
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

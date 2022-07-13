@@ -7,7 +7,7 @@ const WpPage = ({ data }) =>{
   return (
     <div>
       {/* <h1> {data.wpPage.title} </h1> */}
-      <p> {data.wpPage.content} </p>
+      {/* <p> {data.wpPage.content} </p> */}
       {data.wpPage.pageHeader &&
         <PageHeader layoutContent={data.wpPage.pageHeader.pageHeader} />
       }

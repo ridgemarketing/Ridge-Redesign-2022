@@ -7,7 +7,8 @@ import { graphql } from "gatsby"
 const TwoColBreakoutImageText = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    const image = getImage(content.image)
+    const image = getImage(content.image.localFile.childImageSharp.gatsbyImageData);
+    console.log(content);
 
     return (
         <Section settings={settings} classes={'2xl:max-w-[1920px] 2xl:mx-auto'}>
@@ -27,11 +28,11 @@ const TwoColBreakoutImageText = (props) => {
                         <p className={theme.text.P_STD + ' my-8 text-rm-grey'}>
                             {content.body}
                         </p>
-                        <ul>
-                            {content.list.map(item => {
+                        <ul className={'flex flex-wrap'}>
+                            {content.list.map(data => {
                                     return (
-                                        <li>
-                                           {item.text}
+                                        <li className={`w-[50%] leading-10`}>
+                                           {data.item}
                                         </li>                                       
                                     )
                                 })}
@@ -58,6 +59,41 @@ export const query = graphql`
             imagePosition
             image {
               localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+            }
+            list {
+                item
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+export const serviceQuery = graphql`
+  fragment TwoColBreakoutImageTextService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_TwoColBreakoutImageText {
+        fieldGroupName
+        layoutTwoColBreakoutImageText {
+          layoutContent {
+            body
+            eyebrow
+            heading
+            imagePosition
+            image {
+                                localFile {
                   childImageSharp {
                     gatsbyImageData
                   }

@@ -75,7 +75,7 @@ module.exports = {
           //H1 Mobile - 59.7px
           'H1-m'            : '3.73rem',
           // H1 - 79.6px
-          'H1'              : '4.975rem',
+          'H1'              : '6.25rem',
           //Stats M
           '120px'           : '7.5rem',
           //Stats D

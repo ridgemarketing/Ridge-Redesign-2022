@@ -23,6 +23,10 @@ export const Section = (props) => {
     let classes         =  props.settings.classes ? props.settings.classes : defaults.classes;
     let classes_temp = props.classes ? props.classes : ''; //used for testing until we pull class data from props
 
+    if(props.transparent){
+        bg ='transparent';
+    }
+
     return (
         <section 
         id={id} 
@@ -36,7 +40,7 @@ export const Container = (props) => {
     let containerClass = props.size == `slim` ? `container xl:max-w-[1120px] relative` : `container`;
     
     return (
-        <div className={`${containerClass} ${props.classes}`}>
+        <div className={`${containerClass} ${props.classes || ''}`}>
             {props.children}
         </div>
     )

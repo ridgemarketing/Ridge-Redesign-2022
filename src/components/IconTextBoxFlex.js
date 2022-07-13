@@ -1,7 +1,8 @@
 import React, { useRef, useState, useEffect } from "react"
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
 import Link from '../components/global/FlexibleLink'
+import Parser from "./global/Parser"
 
 const IconTextBoxFlex = (props) => {
     const content = props.content;
@@ -56,7 +57,7 @@ const IconTextBoxFlex = (props) => {
 
     return(
             <div className={wrapperClasses}>
-                <div className={'w-[55px]'} ref={iconElement}>
+                <div className={`w-[55px]`} ref={iconElement}>
                     {image}
                 </div>
                 <div className={'flex-col flex flex-1'}>
@@ -68,10 +69,7 @@ const IconTextBoxFlex = (props) => {
                         </p>
                     </div>
                     <div className={ `${marginClasses} mt-4`}>
-                        <p 
-                            className={ `${theme.text['FOOTER']}  ${props.color}` }>
-                            { content.body }
-                        </p>
+                        <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={ `${theme.text['FOOTER']}  ${props.color}` }></p>
                     </div>
                     <div className={ marginClasses + `mt-4`}>
                     <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} text-[#A9CF38]`} />
