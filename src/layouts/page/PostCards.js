@@ -11,7 +11,7 @@ const PostCards = (props) => {
     
     const allPosts = useStaticQuery( graphql`
       query GetPosts {
-        allWpPost {
+        allWpPost(limit: 3) {
           nodes {
             title
             content
@@ -58,9 +58,6 @@ const PostCards = (props) => {
       }
     }
     console.log('postcards', taxonomy, posts, cards);
-
-    //let cards = [{heading: "Send Marketing Emails? Get the Mop! Time for Email List Cleaning..."}, {heading: "How Apple's IOS Update Will Change Email Marketing"}, {heading: "Marketing Value Misconceptions: Is Your Strategy a Tragedy?"}]
-
 return (
   <>
     <Section settings={settings}>

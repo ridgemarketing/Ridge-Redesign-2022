@@ -51,9 +51,9 @@ export const theme = {
     forms:{
         INPUT:              'font-basic-sans border-b border-solid h-[30px] ',
         LABEL:              '-translate-y-10 transition-all ease-out ',
-        CONTAINER:          'form-group font-basic-san w-full flex flex-col mb-12 ',
+        CONTAINER:          'form-group w-full lg:w-[48%] font-basic-san w-full flex flex-col mb-12 ',
         
-        BASE_STYLING:       'translate-form my-7 flex p-11 ',
+        BASE_STYLING:       'translate-form my-7 flex p-5 lg:p-11 ',
         FULL:               'form-two-col w-full flex-row justify-around flex-wrap ',
         HALF:               'form-one-col w-1/2 flex-col ',
     },

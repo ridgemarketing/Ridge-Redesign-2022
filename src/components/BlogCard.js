@@ -5,7 +5,7 @@ import { theme } from '../static/theme'
 
 const BlogCard = (props) => {
     return (
-        <div className="w-[360px] md:w-[330px] lg:w-[300px] xl:w-[330px] flex flex-col mb-7 lg:mb-0">
+        <article className="w-[360px] md:w-[330px] lg:w-[300px] xl:w-[330px] flex flex-col mb-7 lg:mb-0 justify-between">
             <Link to={ props.link }>
                 <div className={`pt-[.367%] mb-4 bg-grey `}>
                     <GatsbyImage image={ props.image } alt={``} className={ `object-cover h-[125px] w-full ` } />
@@ -25,7 +25,7 @@ const BlogCard = (props) => {
                     </div>
                 </div>
             </Link>
-        </div>
+        </article>
     )
 }
 
