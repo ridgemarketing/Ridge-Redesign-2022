@@ -8,7 +8,6 @@ import FullWidthImage from "./page/FullWidthImage"
 import FullWidthImageText from "./page/FullWidthImageText"
 import HomeHero from "./page/HomeHero"
 import IconTextBoxes from "./page/IconTextBoxes"
-import InPageContactForm from "./page/CtaForm"
 import LogoCloud from "./page/LogoCloud"
 import Quotes from "./page/Quotes"
 import PostCards from "./page/PostCards"
@@ -25,6 +24,7 @@ import TwoColList from "./page/TwoColList"
 import TwoColTextQuote from "./page/TwoColTextQuote"
 import VennDiagram from "./page/VennDiagram"
 import VerticalSlider from "./page/VerticalSlider"
+import QuarterImageText from "./page/QuarterImageText"
 import CtaForm from "./page/CtaForm"
 
 let Layouts = {};
@@ -55,6 +55,7 @@ Layouts['TwoColImageText'] = TwoColImageText;
 Layouts['TwoColList'] = TwoColList;
 Layouts['TwoColTextQuote'] = TwoColTextQuote;
 Layouts['VennDiagram'] = VennDiagram;
+Layouts['QuarterImageText'] = QuarterImageText;
 Layouts['CtaForm'] = CtaForm;
 
 export default Layouts

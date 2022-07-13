@@ -2,7 +2,6 @@ import React, { useState, useMemo, useEffect, useRef } from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import { venn } from 'venny'
 import { graphql } from "gatsby"
-
 const VennDiagram = ({ props }) => {
     
     const content = props.layoutData.layoutContent;

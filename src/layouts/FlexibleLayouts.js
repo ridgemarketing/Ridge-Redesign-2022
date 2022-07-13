@@ -58,66 +58,67 @@ export const pageQuery = graphql`
         ...ResultsMixPage
         ...LogoCloudPage
         ...PostCardsPage
-        ...ProjectPortfolioPage 
+        ...ProjectPortfolioPage
+        ...QuarterImageTextPage
       }
     }
   }
 `
-export const serviceQuery = graphql`
-  fragment FlexibleLayoutsService on WpService {
-    flexibleLayouts {
-      layouts {
-        ...TwoColImageTextService
-        ...TwoColBreakoutImageTextService
-        ...TwoColBreakoutImageHeadingService 
-        ...TwoColTextQuoteService
-        ...TwoColProjectsGridService
-        ...ThreeColProjectBlocksService
-        ...TextBlockService
-        ...VideoPlayerService
-        ...FullWidthImageService
-        ...FullWidthImageTextService
-        ...IconTextBoxesService
-        ...VerticalSliderService
-        ...MediaBlocksService
-        ...FeaturedProjectsCarouselService 
-        ...QuotesService
-        ...ResultsService
-        ...ResultsMixService
-        ...LogoCloudService
-        ...PostCardsService
-        ...ProjectPortfolioService 
-      }
-    }
-  }
-`
+// export const serviceQuery = graphql`
+//   fragment FlexibleLayoutsService on WpService {
+//     flexibleLayouts {
+//       layouts {
+//         ...TwoColImageTextService
+//         ...TwoColBreakoutImageTextService
+//         ...TwoColBreakoutImageHeadingService 
+//         ...TwoColTextQuoteService
+//         ...TwoColProjectsGridService
+//         ...ThreeColProjectBlocksService
+//         ...TextBlockService
+//         ...VideoPlayerService
+//         ...FullWidthImageService
+//         ...FullWidthImageTextService
+//         ...IconTextBoxesService
+//         ...VerticalSliderService
+//         ...MediaBlocksService
+//         ...FeaturedProjectsCarouselService 
+//         ...QuotesService
+//         ...ResultsService
+//         ...ResultsMixService
+//         ...LogoCloudService
+//         ...PostCardsService
+//         ...ProjectPortfolioService 
+//       }
+//     }
+//   }
+// `
 
-export const projectQuery = graphql`
-  fragment FlexibleLayoutsProject on WpProject {
-    flexibleLayouts {
-      layouts {
-        ...TwoColImageTextService
-        ...TwoColBreakoutImageTextService 
-        ...TwoColBreakoutImageHeadingService
-        ...TwoColTextQuoteService
-        ...TwoColProjectsGridService
-        ...ThreeColProjectBlocksService
-        ...TextBlockService
-        ...VideoPlayerService
-        ...FullWidthImageService
-        ...FullWidthImageTextService
-        ...IconTextBoxesService
-        ...VerticalSliderService
-        ...MediaBlocksService
-        ...FeaturedProjectsCarouselService
-        ...QuotesService
-        ...ResultsService
-        ...ResultsMixService
-        ...LogoCloudService
-        ...PostCardsService
-        ...ProjectPortfolioService 
-      }
-    }
-  }
-`
+// export const projectQuery = graphql`
+//   fragment FlexibleLayoutsProject on WpProject {
+//     flexibleLayouts {
+//       layouts {
+//         ...TwoColImageTextService
+//         ...TwoColBreakoutImageTextService 
+//         ...TwoColBreakoutImageHeadingService
+//         ...TwoColTextQuoteService
+//         ...TwoColProjectsGridService
+//         ...ThreeColProjectBlocksService
+//         ...TextBlockService
+//         ...VideoPlayerService
+//         ...FullWidthImageService
+//         ...FullWidthImageTextService
+//         ...IconTextBoxesService
+//         ...VerticalSliderService
+//         ...MediaBlocksService
+//         ...FeaturedProjectsCarouselService
+//         ...QuotesService
+//         ...ResultsService
+//         ...ResultsMixService
+//         ...LogoCloudService
+//         ...PostCardsService
+//         ...ProjectPortfolioService 
+//       }
+//     }
+//   }
+// `
 

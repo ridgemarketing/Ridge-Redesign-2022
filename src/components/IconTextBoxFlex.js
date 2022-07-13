@@ -2,18 +2,21 @@ import React, { useRef, useState, useEffect } from "react"
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
 import Link from '../components/global/FlexibleLink'
+import Parser from "./global/Parser"
 
 const IconTextBoxFlex = (props) => {
     const content = props.content;
+
     let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
+
     let marginClasses   = `ml-6 `;
 
-    if (props.iconType == 'icon' || props.iconType == 'number') {
-        var image = (content.image.localFile.ext === ".svg") 
+    if (props.iconType == `icon`) {
+        var image = (content.image.localFile.ext === `.svg`) 
         ? <img className={''} src={content.image.sourceUrl} />
         : <GatsbyImage 
             image={content.image.localFile.childImageSharp.gatsbyImageData} 
-            alt={ ' ' } 
+            alt={''} 
             className={ `flex self-start w-auto h-[55px]` } 
             objectFit={'contain'}/> ;
     }
@@ -54,8 +57,8 @@ const IconTextBoxFlex = (props) => {
 
     return(
             <div className={wrapperClasses}>
-                <div className={'h-[54px]'} ref={iconElement}>
-                        {image}
+                <div className={`w-[55px]`} ref={iconElement}>
+                    {image}
                 </div>
                 <div className={'flex-col flex flex-1'}>
                     <div>
@@ -66,10 +69,7 @@ const IconTextBoxFlex = (props) => {
                         </p>
                     </div>
                     <div className={ `${marginClasses} mt-4`}>
-                        <p 
-                            className={ `${theme.text['FOOTER']}  ${props.color}` }>
-                            { content.body }
-                        </p>
+                        <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={ `${theme.text['FOOTER']}  ${props.color}` }></p>
                     </div>
                     <div className={ marginClasses + `mt-4`}>
                     <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} text-[#A9CF38]`} />
