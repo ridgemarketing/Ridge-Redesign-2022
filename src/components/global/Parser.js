@@ -1,7 +1,7 @@
 const tagList = [
     {
         tag: `[b]`,
-        replace: '<span className="font-bold">'
+        replace: '<span style="font-weight: 700;">'
     },
     {
         tag: `[/b]`,
