@@ -26,6 +26,9 @@ import VennDiagram from "./page/VennDiagram"
 import VerticalSlider from "./page/VerticalSlider"
 import QuarterImageText from "./page/QuarterImageText"
 import CtaForm from "./page/CtaForm"
+import ProjectPortfolio from "./page/ProjectPortfolio"
+import VideoPlayer from "./page/VideoPlayer"
+import MediaBlocks from "./page/MediaBlocks"
 
 let Layouts = {};
 
@@ -57,5 +60,8 @@ Layouts['TwoColTextQuote'] = TwoColTextQuote;
 Layouts['VennDiagram'] = VennDiagram;
 Layouts['QuarterImageText'] = QuarterImageText;
 Layouts['CtaForm'] = CtaForm;
+Layouts['ProjectPortfolio'] = ProjectPortfolio;
+Layouts['VideoPlayer'] = VideoPlayer;
+Layouts['MediaBlocks'] = MediaBlocks;
 
 export default Layouts

@@ -97,26 +97,22 @@ export const projectQuery = graphql`
   fragment FlexibleLayoutsProject on WpProject {
     flexibleLayouts {
       layouts {
-        ...TwoColImageTextService
-        ...TwoColBreakoutImageTextService 
-        ...TwoColBreakoutImageHeadingService
-        ...TwoColTextQuoteService
-        ...TwoColProjectsGridService
-        ...ThreeColProjectBlocksService
-        ...TextBlockService
-        ...VideoPlayerService
-        ...FullWidthImageService
-        ...FullWidthImageTextService
-        ...IconTextBoxesService
-        ...VerticalSliderService
-        ...MediaBlocksService
-        ...FeaturedProjectsCarouselService
-        ...QuotesService
-        ...ResultsService
-        ...ResultsMixService
-        ...LogoCloudService
-        ...PostCardsService
-        ...ProjectPortfolioService 
+        ...TwoColImageTextProject
+        ...TwoColBreakoutImageTextProject 
+        ...TwoColBreakoutImageHeadingProject
+        ...TwoColTextQuoteProject
+        ...TextBlockProject
+        ...VideoPlayerProject
+        ...FullWidthImageProject
+        ...FullWidthImageTextProject
+        ...IconTextBoxesProject
+        ...MediaBlocksProject
+        ...QuotesProject
+        ...ResultsProject
+        ...ResultsMixProject
+        ...LogoCloudProject
+        ...PostCardsProject
+        ...ProjectPortfolioProject 
       }
     }
   }

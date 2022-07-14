@@ -108,3 +108,38 @@ export const serviceQuery = graphql`
       }
   }
 `
+
+export const projectQuery = graphql`
+  fragment LogoCloudProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_LogoCloud {
+        fieldGroupName
+        layoutLogoCloud {
+          layoutContent {
+            body
+            heading
+            logos {
+              image {
+                sourceUrl
+                localFile {
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

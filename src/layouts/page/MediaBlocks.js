@@ -85,3 +85,42 @@ export const serviceQuery = graphql`
       }
   }
 `
+
+export const projectQuery = graphql`
+  fragment MediaBlocksProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_MediaBlocks {
+        fieldGroupName
+        layoutMediaBlocks {
+          layoutContent {
+            blocks {
+              heading
+              componentFlexibleMedia {
+                lottie
+                type
+                video
+                image {
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+                }
+              }
+            }
+            columns
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

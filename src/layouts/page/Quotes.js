@@ -143,3 +143,35 @@ export const serviceQuery = graphql`
       }
   }
 `
+
+export const projectQuery = graphql`
+  fragment QuotesProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_Quotes {
+        fieldGroupName
+        layoutQuotes {
+          layoutContent {
+            heading
+            quotes {
+                ... on WpReview {
+                  title
+                  content
+                  reviewsFields {
+                    titleCompany
+                  }
+                }
+              }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

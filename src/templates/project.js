@@ -1,24 +1,27 @@
 import React from "react"
 import { graphql } from "gatsby"
+import FlexibleLayouts from "../layouts/FlexibleLayouts"
 
-const WpPage = ({ data }) =>{
+const WpProject = ({ data }) =>{
   return (
     <div>
-      <h1> {data.wpPage.title} </h1>
-      <p> {data.wpPage.content} </p>
+      <div>
+          <FlexibleLayouts flexibleLayouts={data.wpProject.flexibleLayouts} />
+      </div>
     </div>
   )
 }
-export default WpPage;
+export default WpProject;
 
 
 export const query = graphql`
   query ProjectById( $id: String ){
-    wpPage(id: {eq: $id}) {
+    wpProject(id: {eq: $id}) {
       id
       uri
       title
       content
+      ...FlexibleLayoutsProject
     }
   }
 ` 

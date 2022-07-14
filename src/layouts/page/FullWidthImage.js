@@ -97,3 +97,35 @@ export const serviceQuery = graphql`
       }
   }
 `
+
+export const projectQuery = graphql`
+  fragment FullWidthImageProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_FullWidthImage {
+        fieldGroupName
+        layoutFullWidthImage {
+          layoutContent {
+            componentFlexibleMedia {
+              image {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData(placeholder: DOMINANT_COLOR)
+                  }
+                }
+              }
+              imageAlt
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

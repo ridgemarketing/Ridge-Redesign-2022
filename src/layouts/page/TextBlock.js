@@ -110,3 +110,39 @@ export const serviceQuery = graphql`
       }
   }
 `
+
+export const projectQuery = graphql`
+  fragment TextBlockProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_TextBlock {
+        fieldGroupName
+        layoutTextBlock {
+          layoutContent {
+            alignment
+            body
+            componentButton {
+                colors {
+                resting
+                }
+                link {
+                target
+                title
+                url
+                }
+                style
+            }
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
