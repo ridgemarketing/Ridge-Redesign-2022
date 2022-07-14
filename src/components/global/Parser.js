@@ -5,7 +5,7 @@ const tagList = [
     },
     {
         tag: `[/b]`,
-        replace: '</span>'
+        replace: `</span>`
     },
     {
         tag: `[temp]`,
@@ -21,7 +21,7 @@ const tagList = [
     },
     {
         tag: `[/green]`,
-        replace: '</span>'
+        replace: `</span>`
     },
     {
         tag: `[accent]`,
@@ -29,7 +29,7 @@ const tagList = [
     },
     {
         tag: `[/accent]`,
-        replace: '</span>'
+        replace: `</span>`
     }
 ];
 

@@ -8,14 +8,15 @@ const IconTextBoxFlex = (props) => {
     const content = props.content;
 
     let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
+
     let marginClasses   = `ml-6 `;
 
-    if (props.iconType == 'icon') {
-        var image = (content.image.localFile.ext === ".svg") 
-        ? <img className={'h-inherit'} src={content.image.sourceUrl} />
+    if (props.iconType == `icon`) {
+        var image = (content.image.localFile.ext === `.svg`) 
+        ? <img className={''} src={content.image.sourceUrl} />
         : <GatsbyImage 
             image={content.image.localFile.childImageSharp.gatsbyImageData} 
-            alt={ ' ' } 
+            alt={''} 
             className={ `flex self-start w-auto h-[55px]` } 
             objectFit={'contain'}/> ;
     }
@@ -56,8 +57,8 @@ const IconTextBoxFlex = (props) => {
 
     return(
             <div className={wrapperClasses}>
-                <div className={'h-[54px]'} ref={iconElement}>
-                        {image}
+                <div className={`w-[55px]`} ref={iconElement}>
+                    {image}
                 </div>
                 <div className={'flex-col flex flex-1'}>
                     <div>

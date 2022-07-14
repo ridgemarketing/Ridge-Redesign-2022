@@ -1,3 +1,7 @@
+import resolveConfig from 'tailwindcss/resolveConfig'
+import tailwindConfig from '../../tailwind.config'
+const styleConfig = resolveConfig(tailwindConfig)
+
 export const theme = {
     
     text:{
@@ -67,10 +71,20 @@ export const theme = {
         footer: 'pb-24'
     },
     backgroundColor: {
-        black: 'black',
+        black: 'black text-white',
         white: 'white',
         paleGrey: 'rm-pale-grey',
         paleTeal: 'rm-pale-teal',
         transparent: 'transparent'
+    },
+    containers: {
+        standard: styleConfig.theme.container.screens,
+        slim: {
+            'sm'    : '640px',
+            'md'    : '700px',
+            'lg'    : '930px',
+            'xl'    : '1120px',
+            '2xl'   : '1120px', 
+        }
     }
 }

@@ -14,8 +14,8 @@ const FullWidthImage = (props) => {
     const image = mobileImage 
         ? 
             <>
-            <GatsbyImage className={'md:hidden'} image={mobileImage} alt={content.componentFlexibleMedia.imageAlt} />
-            <GatsbyImage className={'hidden md:block'} image={desktopImage} alt={content.componentFlexibleMedia.imageAlt} />
+            <GatsbyImage className={`md:hidden`} image={mobileImage} alt={content.componentFlexibleMedia.imageAlt} />
+            <GatsbyImage className={`hidden md:block`} image={desktopImage} alt={content.componentFlexibleMedia.imageAlt} />
             </>
         :
             <GatsbyImage image={desktopImage} alt={content.componentFlexibleMedia.imageAlt} />;    
@@ -24,7 +24,7 @@ const FullWidthImage = (props) => {
     return (
         <Section settings={settings}>
             <Container>
-                <div className={'max-w-[1120px] mx-auto'}> 
+                <div className={`max-w-[1120px] mx-auto`}> 
                     {image}
                 </div>
             </Container>

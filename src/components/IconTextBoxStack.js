@@ -14,8 +14,8 @@ const IconTextBoxStack = (props) => {
 
     if (iconType == 'icon') {
             var image = (content.image.localFile.ext === ".svg") 
-            ? <img className={'h-full w-auto'} src={content.image.sourceUrl} />
-            : <GatsbyImage objectFit={'contain'} className={'h-full w-auto'} image={content.image.localFile.childImageSharp.gatsbyImageData} /> ;
+            ? <img className={`h-full w-auto`} src={content.image.sourceUrl} />
+            : <GatsbyImage objectFit={`contain`} className={`h-full w-auto`} image={content.image.localFile.childImageSharp.gatsbyImageData} /> ;
     }
                                                                          
     if (iconType === 'icon') {
