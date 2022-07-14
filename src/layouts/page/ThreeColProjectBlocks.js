@@ -64,14 +64,14 @@ const ThreeColProjectBlocks = (props) => {
                       { content.bottomHeading }
                   </h2>
                 }
-                {content.button &&
+                {content.componentButton &&
                   <Link
                       className={ 
                           theme.button['BASE_STYLING'] + 
-                          theme.button[ content.button.color ] + 
+                          theme.button[ content.componentButton.color ] + 
                           'w-[210px] h-min '}
-                      to={ content.button.url }>
-                  { content.button.heading }
+                      to={ content.componentButton.url }>
+                  { content.componentButton.heading }
                   </Link>
                 }
             </Container>

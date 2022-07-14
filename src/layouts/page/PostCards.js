@@ -11,7 +11,7 @@ const PostCards = (props) => {
     
     const allPosts = useStaticQuery( graphql`
       query GetPosts {
-        allWpPost(limit: 3) {
+        allWpPost(limit: 4) {
           nodes {
             title
             content

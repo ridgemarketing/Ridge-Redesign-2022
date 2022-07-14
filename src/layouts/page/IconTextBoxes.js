@@ -5,18 +5,19 @@ import { graphql } from "gatsby"
 import IconTextBoxStack from '../../components/IconTextBoxStack'
 import IconTextBoxFlex from '../../components/IconTextBoxFlex'
 import Buttons from '../../components/global/Buttons'
-
+import Parser from "../../components/global/Parser"
 const IconTextBoxes = (props) => {
   const content = props.layoutData.layoutContent;
   const settings = props.layoutData.layoutSettings;
   let textColor = 'text-black';
+  const bottomHeadingMargin = (content.settings.type === 'stack') ? 'lg:mt-20' : '';
 
   if (settings.backgroundColor == 'black') {
     textColor = 'text-white';
   }
 
   const cols = content.settings.columns == 3 ? ' xl:grid-cols-3 ' : ' ';
-  const wrapperClasses = (content.settings.type === 'stack') ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6 lg:mt-12`;
+  const wrapperClasses = (content.settings.type === 'stack') ? `md:grid md:grid-cols-2${cols}gap-16 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6 lg:mt-12`;
 
   return (
       <Section settings={settings}>
@@ -29,10 +30,7 @@ const IconTextBoxes = (props) => {
           </h3>
             }
           {content.body &&
-          <p className={`mt-6 max-w-5xl mx-auto text-center ${textColor}`}>
-              <span className={theme.text.P_STD}>{content.body}
-              </span>
-          </p>
+          <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} mt-6 max-w-[1120px] mx-auto text-center ${textColor}`}></p>
           }
           {content.subheading &&
           <p className={`mt-10 text-center ${textColor}`}>
@@ -49,18 +47,18 @@ const IconTextBoxes = (props) => {
 
           <div>
               {content.bottomHeading &&
-              <h3 className={`text-center ${textColor}`}>
+              <h3 className={`mt-10 ${bottomHeadingMargin} mb-12 text-center ${textColor}`}>
                   <span className={theme.text.H5}>{content.bottomHeading}
                   </span>
               </h3>
               }
               {content.bottomBody &&
-              <p className={ `mt-10 text-center ${textColor}`}>
+              <p className={ `text-center ${textColor}`}>
                   <span className={theme.text.P_STD}>{content.bottomBody}</span>
               </p>
               }
-              {content.componentButton &&
-                <div className='text-center mt-10'>
+              {content.componentButton && content.componentButton.link &&
+                <div className='text-center my-8'>
                   <Buttons 
                     content={content.componentButton} 
                     sectionBackground={settings.backgroundColor}/>

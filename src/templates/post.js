@@ -6,25 +6,19 @@ import { Link } from "gatsby"
 
 const WpPost = ({ data }) =>{
     const content     = data.wpPost;
-    const nextPosts   = data.allWpPost.nodes;
-    let counter       = 1;
-    
+    const nextPosts   = data.allWpPost;
+
     let next          = '';
     let previous      = '';
 
-    if(nextPosts[counter + 1].id === content.id){
-        next = nextPosts[counter].link;
-    }else{
-        next = nextPosts[counter + 1].link;
+    for(let i =0; nextPosts.edges.length  > i; i++){
+        if(nextPosts.edges[i].node.id === content.id){
+            next      = nextPosts.edges[i].next.link;
+            previous  = nextPosts.edges[i].previous.link;
+        }
     }
     
-    if(nextPosts[counter - 1].id === content.id){
-        previous = nextPosts[counter].link;
-    }else{
-        previous = nextPosts[counter - 1].link;
-    }
-    
-    console.log(content,next, previous);
+    // console.log(content,nextPosts, next, previous);
   return (
     <> 
       <header className="container mt-20">
@@ -92,35 +86,19 @@ export const query = graphql`
       }
     }
 
-    allWpPost(limit: 3) {
-        nodes {
+    allWpPost {
+      edges {
+        node {
           id
-          title
-          content
+        }
+        next {
           link
-          featuredImage {
-            node {
-              localFile {
-                childImageSharp {
-                  gatsbyImageData
-                }
-              }
-            }
-          }
-          categories {
-            nodes {
-              id
-              name
-            }
-          }
-          tags {
-            nodes {
-              id
-              name
-            }
-          }
+        }
+        previous {
+          link
         }
       }
+    }
 
   }
 ` 

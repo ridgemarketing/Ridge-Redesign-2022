@@ -9,7 +9,6 @@ const VerticalSlider = (props) => {
   const content               = props.layoutData.layoutContent;
   const settings              = props.layoutData.layoutSettings;
 
-  console.log('vertical slider', content, settings);
   const textColor               = settings.backgroundColor === 'black' ? 'white' : 'black'; 
 
   const [vslide, setVslide]   = useState(0);
@@ -59,14 +58,11 @@ const VerticalSlider = (props) => {
 
       let observer = new IntersectionObserver( (entries) =>{
         entries.forEach ( entry => {
-          console.log(entry.isIntersecting);
             if( entry.isIntersecting ){
   
                 onscroll = () => {
                   for( let i = 0; scrollPoints.length > i; i++ ){
                     if ( firstSlide.current.offsetTop > scrollPoints[i] ){
-                      console.log('greater than', scrollPoints[i], i);
-                      console.log(firstSlide.current.offsetTop, scrollPoints[i] + slideHeight);
                       setVslide(i);
                       current = i;
   

@@ -19,6 +19,9 @@
     q:before, q:after{
         @apply hidden;
     }
+    strong{
+        @apply font-bold;
+    }
 }
 
 @layer components{

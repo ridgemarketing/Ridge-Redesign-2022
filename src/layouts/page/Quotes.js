@@ -11,7 +11,6 @@ const Quotes = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     const slides = content.quotes;
-    console.log('quotes',slides, slides.length);
     const [slide, setSlide] = useState(0);
     const [data, setData] = useState(content.quotes[0]);
 

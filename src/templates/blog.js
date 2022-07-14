@@ -1,12 +1,47 @@
 import React, {useRef, useState} from "react"
-import { graphql } from "gatsby"
+import { graphql, useStaticQuery } from "gatsby"
 import { theme } from '../static/theme'
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
-const Blog = ({data}) => {
+const Blog = () => {
 
-  const posts                 = data.allWpPost.nodes;
+  const getThePosts = useStaticQuery(graphql`
+    query GetBlogPosts {
+        allWpPost {
+        nodes {
+            id
+            title
+            content
+            link
+            excerpt
+            featuredImage {
+            node {
+                localFile {
+                childImageSharp {
+                    gatsbyImageData
+                }
+                }
+            }
+            }
+            categories {
+            nodes {
+                id
+                name
+            }
+            }
+            tags {
+            nodes {
+                id
+                name
+            }
+            }
+        }
+        }
+    }
+  `)
+
+  const posts                 = getThePosts.allWpPost.nodes;
   const featured              = posts[0];
   const postsToAdd            = 2;
   const [counter, setCounter] = useState(postsToAdd);
@@ -92,37 +127,4 @@ const Blog = ({data}) => {
 }
 export default Blog
 
-export const query = graphql`
-query GetBlogPosts {
-  allWpPost {
-    nodes {
-      id
-      title
-      content
-      link
-      excerpt
-      featuredImage {
-        node {
-          localFile {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-        }
-      }
-      categories {
-        nodes {
-          id
-          name
-        }
-      }
-      tags {
-        nodes {
-          id
-          name
-        }
-      }
-    }
-  }
-}
-`
+//export const query = 

@@ -1,5 +1,5 @@
 import React from "react"
-import { Field  } from "formik"
+import { Field } from "formik"
 import { theme } from '../../static/theme'
 
 export const BasicInputs = (props) => {
@@ -52,7 +52,6 @@ export const MultiLineText = (props) => {
                         className={ theme.text['P_STD'] + theme.forms['LABEL']  + ' text-' + props.color }
                         placeholder=" "
                         > 
-                        
                         { props.inputName } 
                     </label>
                 </>
