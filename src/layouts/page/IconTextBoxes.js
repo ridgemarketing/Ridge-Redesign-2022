@@ -24,16 +24,16 @@ const IconTextBoxes = (props) => {
           <Container>
           <div>
             {content.heading &&
-          <h3 className={`text-center ${textColor}`}>
+          <h3 className={`text-center ${textColor} mb-6`}>
               <span className={theme.text.H2}>{content.heading}
               </span>
           </h3>
             }
           {content.body &&
-          <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} mt-6 max-w-[1120px] mx-auto text-center ${textColor}`}></p>
+          <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} max-w-[1120px] mx-auto text-center mb-10 ${textColor}`}></p>
           }
           {content.subheading &&
-          <p className={`mt-10 text-center ${textColor}`}>
+          <p className={`text-center ${textColor}`}>
               <span className={theme.text.H4}>{content.subheading}</span>
           </p>
           }
