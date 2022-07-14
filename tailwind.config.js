@@ -7,7 +7,11 @@ module.exports = {
     'bg-rm-green',
     'bg-rm-pale-grey',
     'bg-black',
-    'bg-white'
+    'bg-white',
+    'md:pt-36',
+    'pt-24',
+    '-mb-12',
+    'md:-mb-32'
   ],
   darkMode: false, 
   theme: {
