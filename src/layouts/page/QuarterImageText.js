@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import Buttons from "../../components/global/Buttons"
+import Parser from "../../components/global/Parser"
 
 const QuarterImageText = (props) => {
 
@@ -11,6 +12,9 @@ const QuarterImageText = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     const image = getImage(content.componentFlexibleMedia.image.localFile);
+    const introText = Parser(content.introText);
+    const body = Parser(content.body);
+
     let order;
     order = (content.imagePosition) == 'left' ? '' : 'flex-reverse' ;
 
@@ -18,7 +22,7 @@ const QuarterImageText = (props) => {
         <Section settings={settings}>
             <Container size={`slim`}>
                 <div className={`mb-12`}>
-                  <p dangerouslySetInnerHTML={{__html: content.introText}} className={theme.text.H4_LTE}>
+                  <p dangerouslySetInnerHTML={{__html: introText}} className={theme.text.H4_LTE}>
                   </p>
                 </div>
                 <div className={`lg:flex ${order}`}>
@@ -26,7 +30,7 @@ const QuarterImageText = (props) => {
                         <GatsbyImage image={image} />
                     </div>
                     <div className={``}>
-                        <p dangerouslySetInnerHTML={{__html: content.body}} className={`${theme.text.P_STD}`}>
+                        <p dangerouslySetInnerHTML={{__html:body}} className={`${theme.text.P_STD}`}>
                         </p>
                         {content.componentButton && content.componentButton.link.url &&
                           <div className={`mt-14`}>
