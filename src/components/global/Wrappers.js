@@ -30,7 +30,7 @@ export const Section = (props) => {
     return (
         <section 
         id={id} 
-        className={`${pt} ${pb} bg-${theme.backgroundColor[bg]} ${position} ${classes} ${classes_temp}`}> 
+        className={`-mt-px ${pt} ${pb} bg-${theme.backgroundColor[bg]} ${position} ${classes} ${classes_temp}`}> 
             {props.children}
         </section>
     )

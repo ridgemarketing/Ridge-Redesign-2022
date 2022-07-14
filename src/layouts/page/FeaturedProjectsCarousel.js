@@ -59,7 +59,7 @@ const FeaturedProjectsCarousel = (props) => {
                         {/* <BackgroundImage image={props.content.image} /> */}
                     </div>
                     <div className={`absolute bottom-0 right-0 w-full lg:relative lg:flex`}>
-                        <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:mt-6 lg:ml-4`}>{headingArr[1]}</h2>
+                        <h2 className={theme.text.H2 + `text-black hidden lg:block lg:absolute lg:mt-6 lg:ml-4`}>{headingArr[1]}</h2>
                         <div className={`self-end flex flex-col items-end w-full mx-auto lg:-ml-1/2 xl:-ml-20`}>
                             <div className={`px-8 pt-7 pb-10 bg-white w-full max-w-[548px] md:px-12 md:pt-9 shadow-block`}>
                                 <span></span>

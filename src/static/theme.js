@@ -77,7 +77,8 @@ export const theme = {
         white: 'white',
         paleGrey: 'rm-pale-grey',
         paleTeal: 'rm-pale-teal',
-        transparent: 'transparent'
+        transparent: 'transparent',
+        whiteToBlack: 'white-black'
     },
     containers: {
         standard: styleConfig.theme.container.screens,
