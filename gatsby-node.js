@@ -87,20 +87,20 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   })
 
-  // allServices.forEach(service => {
-  //   createPage({
-  //     // will be the url for the page
-  //     path: service.uri,
+  allServices.forEach(service => {
+    createPage({
+      // will be the url for the page
+      path: service.uri,
 
-  //     // specify the component template of your choice
-  //     component: slash(serviceTemplate),
-  //     // component: slash(flexTemplate),
+      // specify the component template of your choice
+      component: slash(serviceTemplate),
+      // component: slash(flexTemplate),
 
-  //     // In the ^template's GraphQL query, 'id' will be available
-  //     // as a GraphQL variable to query for this post's data.
-  //     context: {
-  //       id: service.id,
-  //     },
-  //   })
-  // })
+      // In the ^template's GraphQL query, 'id' will be available
+      // as a GraphQL variable to query for this post's data.
+      context: {
+        id: service.id,
+      },
+    })
+  })
 }
