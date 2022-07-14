@@ -22,7 +22,7 @@ const TextBlock = (props) => {
     return (
         <Section settings={settings}>
             <Container classes={`${alignment}`}>
-                <h2 className={theme.text.H1_LTE + ' pb-6'} dangerouslySetInnerHTML={{__html: heading}}>
+                <h2 className={theme.text.H1_LTE + ' leading-[80px] pb-6'} dangerouslySetInnerHTML={{__html: heading}}>
                 </h2>
                 <p className={theme.text.P_STD + ' pb-8'} dangerouslySetInnerHTML={{__html: body}}>
                 </p>
@@ -30,7 +30,7 @@ const TextBlock = (props) => {
                     content.componentButton &&  
                     <Link
                     link={content.componentButton.link}
-                    classes={theme.button.BASE_STYLING + theme.button.PRIMARY_LIGHT + theme.text_links.ARW_FWD_WHITE + buttonAlignment}
+                    classes={theme.button.BASE_STYLING + theme.button.GHOST_GREEN_HOVER_DARK + buttonAlignment}
                     />
                 }
             </Container>

@@ -16,6 +16,14 @@ const tagList = [
         replace: '</span>'
     },
     {
+        tag: `[extra-slim]`,
+        replace: '<span style="max-width: 976px; display:block;">'
+    },
+    {
+        tag: `[/extra-slim]`,
+        replace: '</span>'
+    },
+    {
         tag: `[green]`,
         replace: `<span class="text-rm-green font-semibold">`
     },

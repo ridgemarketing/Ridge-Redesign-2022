@@ -21,7 +21,7 @@ const Buttons = (props) => {
     if( ( baseColor == background ) || ( !theme.button[buttonClass] ) ){
         check()
     }
-
+    
     return(
         <>
         {content.link &&
