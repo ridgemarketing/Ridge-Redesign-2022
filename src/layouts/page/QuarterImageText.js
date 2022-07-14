@@ -3,7 +3,7 @@ import {Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
-import Link from "../../components/global/FlexibleLink"
+import Buttons from "../../components/global/Buttons"
 
 const QuarterImageText = (props) => {
 
@@ -18,8 +18,7 @@ const QuarterImageText = (props) => {
         <Section settings={settings}>
             <Container size={`slim`}>
                 <div className={`mb-12`}>
-                  <p className={theme.text.H4_LTE}>
-                    {content.introText}
+                  <p dangerouslySetInnerHTML={{__html: content.introText}} className={theme.text.H4_LTE}>
                   </p>
                 </div>
                 <div className={`lg:flex ${order}`}>
@@ -27,17 +26,14 @@ const QuarterImageText = (props) => {
                         <GatsbyImage image={image} />
                     </div>
                     <div className={``}>
-                        <p className={`${theme.text.P_STD}`}>
-                            {content.body}  
+                        <p dangerouslySetInnerHTML={{__html: content.body}} className={`${theme.text.P_STD}`}>
                         </p>
-                        
-                        {content.componentButton &&  
-                          <div className={`mt-28`}>
-                            <Link
-                              link={content.componentButton.link}
-                            />
+                        {content.componentButton && content.componentButton.link.url &&
+                          <div className={`mt-14`}>
+                            <Buttons 
+                              content={content.componentButton} 
+                              sectionBackground={settings.backgroundColor}/>
                           </div>
-
                         }
                     </div>
                 </div>
