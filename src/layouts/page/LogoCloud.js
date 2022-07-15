@@ -9,7 +9,6 @@ const LogoCloud = props => {
 
   const content = props.layoutData.layoutContent;
   const settings = props.layoutData.layoutSettings;
-  console.log(content.logos);
 
   const heading = Parser(content.heading);
   const body = Parser(content.body);

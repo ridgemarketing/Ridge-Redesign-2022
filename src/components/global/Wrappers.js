@@ -71,8 +71,8 @@ export const BackgroundImage = (props) => {
     return (
         <div 
         id={id}
-        className={`${position} ${bgSize} ${top} ${left} ${width} ${height} ${bgRepeat}`}>
-            <GatsbyImage image={props.image} />
+        className={`${position} ${bgSize} ${top} ${left} ${width} ${height} ${bgRepeat} ${props.classes}`}>
+            <GatsbyImage objectFit={'cover'} className={'z-[-10]'} image={props.image} />
         </div>
     )
 }
