@@ -1,11 +1,15 @@
+// !!!!!!!!!!! 
+// !!!!!!!!!!! 
+// Nic/Aaron, dont accept the FA changes in merge 
+// FA still accepting the Auth code again ಠ╭╮ಠ
 import React, { useState } from "react"
 import Link from "../../components/global/FlexibleLink"
 import { Section, Container, BackgroundImage } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
 
 const FeaturedProjectsCarousel = (props) => {
 
@@ -68,10 +72,10 @@ const FeaturedProjectsCarousel = (props) => {
                             </div> 
                             <div className={`w-36 flex bg-rm-pale-grey`}>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={prevSlide}>
-                                   <FontAwesomeIcon icon={faAngleLeft} />
+                                   {/* <FontAwesomeIcon icon={faAngleLeft} /> */}
                                 </button>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={nextSlide}>
-                                    <FontAwesomeIcon icon={faAngleRight} />
+                                    {/* <FontAwesomeIcon icon={faAngleRight} /> */}
                                 </button>
                             </div>
                         </div>

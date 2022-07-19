@@ -100,7 +100,7 @@ export const FormSubmit = (props) => {
                 <Field 
                     type='submit'
                     id={'formSubmit' + props.inputID } 
-                    className={ theme.button['BASE_STYLING'] + ' ' + theme.button[props.buttonColor] + ' w-[210px] h-min -mt-6'}
+                    className={ theme.button['BASE_STYLING'] + ' ' + theme.button[props.buttonColor] + ' cursor-pointer w-[210px] h-min -mt-6'}
                     value={props.value}
                     disabled={props.submit}
                 />

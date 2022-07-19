@@ -39,7 +39,7 @@ module.exports = {
     {
       resolve: "gatsby-plugin-anchor-links",
       options: {
-        duration: 0 
+        duration: 10,
       }
     },
     'gatsby-plugin-postcss',

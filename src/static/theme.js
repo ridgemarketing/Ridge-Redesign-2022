@@ -42,6 +42,7 @@ export const theme = {
         LARGE:              'text-40px after:w-[40px] before:w-[40px] ', 
         
         ARW_FWD_WHITE:      'before:hidden after:bg-[url("../static/arrow-right-white.svg")] ',
+        ARW_FWD_GREY:       'before:hidden after:bg-[url("../static/arrow-right-grey.svg")] hover:after:bg-[url("../static/arrow-right-white.svg")] ',
         ARW_FWD_BLACK:      'before:hidden after:bg-[url("../static/arrow-right-black.svg")] ',
         ARW_FWD_GREEN:      'before:hidden after:bg-[url("../static/arrow-right-green.svg")] ',
         ARW_BACK_GREEN:     'after:hidden before:bg-[url("../static/arrow-left-green.svg")] ',
@@ -53,8 +54,8 @@ export const theme = {
         CONTAINER:          'form-group w-full lg:w-[48%] font-basic-san w-full flex flex-col mb-12 ',
         
         BASE_STYLING:       'translate-form ',
-        HALF:               'form-one-col w-[45%] ml-[5%] mr-[5%] flex-col',
-        HALF_PADDING:       'p-4 lg:p-16',
+        HALF:               'form-one-col w-full xl:w-[45%] xl:ml-[5%] xl:mr-[5%] flex-col',
+        HALF_PADDING:       'p-8 lg:p-16',
         FULL_DISPLAY:       'form-two-col mt-20 ml-auto mr-auto w-full lg:w-3/4 flex flex-row justify-around flex-wrap',
     },
     paddingTop:{

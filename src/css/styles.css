@@ -33,6 +33,9 @@
     }
 }
 
+.lf-player-container{
+    @apply w-full h-full;
+}
 
 /* Form Styling */
 .form-one-col .form-group {

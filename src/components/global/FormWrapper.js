@@ -14,9 +14,13 @@ const FormWrapper = (props) => {
     let formBkg         = props.formBkg;
     const dropShadow    = props.dropShadow === true ? `drop-shadow-lg` :``;
     let full            = false;
+    let half            = false;
 
     if(formSize === 'FULL'){
         full = true;
+    }
+    if(formSize === 'HALF'){
+        half = true;
     }
 
     if(formBkg === 'white'){
@@ -74,7 +78,7 @@ const FormWrapper = (props) => {
             <>
             <div className={`${theme.forms.BASE_STYLING} ${theme.forms[formSize]}`}>
               {props.heading &&
-                <h2 className={`${theme.text.H5} ${textColor} mb-4`}>{props.heading}</h2>
+                <h2 className={`${theme.text.H5} ${textColor} text-center lg:text-left mt-20 xl:mt-0 mb-4`}>{props.heading}</h2>
               }
                 <Form 
                     ref={formRef} 
@@ -114,24 +118,36 @@ const FormWrapper = (props) => {
                             pristineI   = { 'Please enter a valid phone number' }
                             pristineM   = { 'Please complete the required field' }
                         />
-                        <MultiLineText
-                            inputID     = { 'form-part-4' }
-                            color       = { textColor }
-                            inputName   = { 'What are Your Marketing Goals?' }
-                            required    = { true }
-                            pristineM   = { 'Please complete the required field' }
-                        />
+                        {half &&
+                            <MultiLineText
+                                inputID     = { 'form-part-4' }
+                                color       = { textColor }
+                                inputName   = { 'What are Your Marketing Goals?' }
+                                required    = { true }
+                                pristineM   = { 'Please complete the required field' }
+                            />
+                        }
                         {full && 
+                        <>
                             <SelectInput
                                 type        = { 'select' }
                                 color       = { textColor }
-                                inputID     = { 'form-part-5' }
+                                inputID     = { 'form-part-4' }
                                 inputName   = { 'Budget Range' }
                                 required    = { true }
                                 pristineM   = { 'Please complete the required field' }
                                 option1     = { '$0 – $10,000' }
                                 option2     = { '$10,000 – $30,000' }
                             /> 
+                            <BasicInputs
+                                type        = { 'date' }
+                                inputID     = { 'form-part-5' }
+                                color       = { textColor }
+                                inputName   = { 'Timing for Start' }
+                                required    = { true }
+                                pristineM   = { 'Please complete the required field' }
+                            />
+                        </>
                         }
                         <FormSubmit 
                             inputID     = { 'form-part-6' }

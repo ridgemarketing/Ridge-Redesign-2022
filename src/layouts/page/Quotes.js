@@ -1,10 +1,14 @@
-import React, { useState } from "react" 
+// !!!!!!!!!!! 
+// !!!!!!!!!!! 
+// Nic/Aaron, dont accept the FA changes in merge 
+// FA still accepting the Auth code again ಠ╭╮ಠ
+import React, { useState, useRef } from "react" 
 import { graphql } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import Parser from '../../components/global/Parser';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
 
 const Quotes = (props) => {
 
@@ -25,8 +29,10 @@ const Quotes = (props) => {
         setSlide(i);
     }
 
+    //classes={`bg-[url('https://rm2022dev.wpengine.com/wp-content/uploads/2022/07/Group-24.png')] bg-cover bg-[center_50%]`}
+
     return(
-        <Section settings={ settings } classes={`bg-[url('https://rm2022dev.wpengine.com/wp-content/uploads/2022/07/Group-24.png')] bg-cover bg-[center_50%]`}>
+        <Section classes="overflow-hidden" settings={ settings }>
           <Container>
             {content.heading &&
               <h2 className={ theme.text['H2'] }>
@@ -47,34 +53,17 @@ const Quotes = (props) => {
                 </div>
                 <div className={`w-[175px] flex bg-rm-pale-grey lg:ml-10`}>
                     <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => prevSlide()}>
-                        <FontAwesomeIcon icon={faAngleLeft} />
+                        {/* <FontAwesomeIcon icon={faAngleLeft} /> */}
                     </button>
                     <span className={ theme.text.FOOTER + 'flex items-center font-basic-sans'}> {slide + 1} / {slides.length}</span>
                     <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => nextSlide()}>
-                        <FontAwesomeIcon icon={faAngleRight} />
+                        {/* <FontAwesomeIcon icon={faAngleRight} /> */}
                     </button>
                 </div>
             </div> 
-            
-            {/* Text based quotes for possible parallaxing purposes */}
-            <div className="hidden invisible">
-                <span
-                    aria-hidden="true" 
-                    className={ 
-                        theme.text['STATS'] + 
-                        'text-rm-green absolute -z-10 '}>
-                    “
-                </span>
-                <span
-                    aria-hidden="true" 
-                    className={ 
-                        theme.text['STATS'] + 
-                        'text-rm-green absolute -z-10 '}>
-                    ”
-                </span>
-
-            </div>
           </Container>
+            <span aria-hidden="true" className={`${theme.text.STATS} text-rm-green opacity-20 absolute scale-[10] top-[75%] left-[20%] -z-10`}> “</span>
+            <span aria-hidden="true" className={`${theme.text.STATS} text-rm-green opacity-20 absolute scale-[10] top-[125%] right-[20%] -z-10`}>” </span>
         </Section>
     )
 }

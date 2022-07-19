@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useLayoutEffect } from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { graphql } from "gatsby"
@@ -21,25 +21,44 @@ const FullWidthImage = (props) => {
         :
             <GatsbyImage image={desktopImage} alt={content.componentFlexibleMedia.imageAlt} />;    
     
-      const overlap           = content.imageOverlap;
-      
-      const overlapImageClass = overlap === false ? ` ` : `-mb-[50px] md:-mb-[225px] lg:-mb-[350px] z-10 relative `;
-      const overlapSection    = overlap === false ? `hidden` : `block w-full h-[50px] md:h-[225px] lg:h-[500px] relative`;
-      const overlapBkg        = content.backgroundColor;
-      
-      console.log('overlap', content, settings);
+    const overlap           = content.imageOverlap;
+    const overlapImageClass = overlap === false ? ` ` : `z-10 relative `;
+    const overlapSection    = overlap === false ? `hidden invisible` : `block w-full relative`;
+    const overlapBkg        = content.backgroundColor;
+    const overlapImage      = useRef(null);
+    const overlapDiv        = useRef(null);
+
+    useLayoutEffect( () => {
+      if(overlap){
+        function windowLoads() {
+          overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
+          overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;
+        }
+        window.addEventListener('load', windowLoads);
+        windowLoads();
+
+        function windowResizes() {
+          overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
+          overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;
+        }
+        window.addEventListener('resize', windowResizes);
+        windowResizes();
+        return () => window.removeEventListener('resize', windowResizes), window.removeEventListener('onload', windowResizes);
+      }
+    }, []);
+
 
     return (
       <>
         <Section settings={settings}>
             <Container>
-                <div className={`max-w-[1120px] mx-auto ${overlapImageClass}`}> 
+                <div ref={overlapImage} className={`max-w-[1120px] mx-auto ${overlapImageClass}`}> 
                     {image}
                 </div>
             </Container>
         </Section>
-        <div className={`${overlapSection} bg-${theme.backgroundColor[overlapBkg]}`}></div>
-       </> 
+        <div ref={overlapDiv} className={`${overlapSection} bg-${theme.backgroundColor[overlapBkg]}`}></div>
+      </> 
     )
 }
 

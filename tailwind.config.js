@@ -87,20 +87,20 @@ module.exports = {
       keyframes: {
         quoteSlide: {
           '0%': { 
-            opacity: '0',
-            transform: 'translateX(-25px)'
-        },
-        '25%': {
-            opacity: '0'
-        },
-        '100%': { 
-            opacity: '1',
-            transform: 'translateX(0px)'
-        }
+              opacity: '0',
+              transform: 'translateX(-25px)'
+          },
+          '25%': {
+              opacity: '0'
+          },
+          '100%': { 
+              opacity: '1',
+              transform: 'translateX(0px)'
+          }
         }
       },
       animation: {
-        quote: 'quoteSlide .75s ease-out'
+        quote: 'quoteSlide .75s ease-out forwards'
       }
     }
   }
