@@ -53,7 +53,7 @@ const ProjectPortfolioImage = forwardRef((props, ref) => {
       }
 
       {last &&
-        <div ref={endRef} className={`portfolio-end absolute ${props.length === 1 ? `bottom-[12.5%]` : `bottom-[12.5%] xl:bottom-2/3`}`}></div>
+        <div ref={endRef} className={`portfolio-end absolute ${props.length === 1 ? `bottom-[12.5%]` : `bottom-[87.5%] xl:bottom-2/3`}`}></div>
       }
 
       {mobile &&
@@ -82,10 +82,19 @@ const ProjectPortfolio = (props) => {
 
   const bgImage   = content.settings.backgroundImage ? getImage(content.settings.backgroundImage.localFile) : false
   const images    = content.images
+  let textAlign   = `text-left`
 
   const startRef  = useRef(null)
   const endRef    = useRef(null)
   const ref       = useRef({startRef, endRef})
+
+  if (content.settings.textAlign === `center`) {
+    textAlign = `text-center`
+  }
+
+  if (content.settings.textAlign === `right`) {
+    textAlign = `text-right`
+  }
 
   const [bgHeight, setBgHeight] = useState(null)
 
@@ -109,6 +118,9 @@ const ProjectPortfolio = (props) => {
           <GatsbyImage image={bgImage} objectFit={`cover`} className={`absolute w-full`} style={{height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }} />
         }
         <Container>
+          {content.heading &&
+            <h2 className={`mb-10 ${textAlign} ${theme.text.H2}`}>{content.heading}</h2>
+          }
           <div className={`relative`}>
             {images &&
               images.map((image, index) => {
