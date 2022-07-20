@@ -1,13 +1,21 @@
 import React from "react"
 import { graphql } from "gatsby"
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
+import ProjectHeader from "../layouts/page/ProjectHeader"
 
 const WpProject = ({ data }) =>{
   return (
     <div>
-      <div>
-          <FlexibleLayouts flexibleLayouts={data.wpProject.flexibleLayouts} />
-      </div>
+        {data.wpProject && 
+          <div>
+            <ProjectHeader content={data.wpProject.projectHeader} info={data.wpProject.projectInformation} />
+          </div>
+        }
+      {data.wpProject.flexibleLayouts && 
+        <div>
+            <FlexibleLayouts flexibleLayouts={data.wpProject.flexibleLayouts} />
+        </div>
+      }
     </div>
   )
 }
@@ -22,6 +30,7 @@ export const query = graphql`
       title
       content
       ...FlexibleLayoutsProject
+      ...ProjectHeader
     }
   }
 ` 
