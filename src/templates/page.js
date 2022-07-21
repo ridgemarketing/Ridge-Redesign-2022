@@ -5,7 +5,7 @@ import PageHeader from "../layouts/page/PageHeader"
 import HomeHero from "../layouts/page/HomeHero"
 
 const WpPage = ({ data }) =>{
-  console.log(data.wpPage);
+  // console.log(data.wpPage);
   return (
     <div>
       {/* <h1> {data.wpPage.title} </h1> */}
@@ -50,9 +50,24 @@ export const query = graphql`
               }
             }
             backgroundImage {
+              sourceUrl
               localFile {
                 childImageSharp {
                   gatsbyImageData
+                }
+              }
+            }
+            mobileImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(height: 686)
+                }
+              }
+            }
+            tabletImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(height: 686)
                 }
               }
             }
