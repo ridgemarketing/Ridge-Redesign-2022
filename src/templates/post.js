@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import { theme } from "../static/theme"
 import { GatsbyImage } from "gatsby-plugin-image"
-import { Link } from "gatsby"
+import { Link }from "gatsby"
 
 const WpPost = ({ data }) =>{
     const content     = data.wpPost;
@@ -15,6 +15,7 @@ const WpPost = ({ data }) =>{
         if(nextPosts.edges[i].node.id === content.id){
             next      = nextPosts.edges[i].next.link;
             previous  = nextPosts.edges[i].previous.link;
+            console.log(nextPosts.edges[i]);
         }
     }
     

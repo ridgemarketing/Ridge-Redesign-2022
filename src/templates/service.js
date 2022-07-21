@@ -15,7 +15,6 @@ const WpService = ({ data }) =>{
   let floatP = [];
   let visibility  = 'hidden invisible';
   
-  //if floated image, push all small text into a div
   if(content.intextFloatedImage){
     for(let i =0; content.bodyContent.length > i; i++){
         if(content.bodyContent[i].textSize === "standard"){
