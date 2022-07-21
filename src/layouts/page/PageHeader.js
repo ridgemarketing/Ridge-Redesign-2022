@@ -16,15 +16,13 @@ const PageHeader = (props) => {
           <div className={``}> 
             <Container classes={`relative pt-80`}>
               <div className={`bg-black text-white py-12 px-6 lg:px-12 xl:pt-14 xl:pb-12 xl:pl-20 xl:pr-16`} style={{maxWidth:content.maxWidth}}>
-                
                 {content.eyebrow &&
                   <span className={`block mb-8 ${theme.text.H4}`}>
                     {content.eyebrow}
                   </span>
                 }
-                
                 {content.heading &&
-                  <h1>
+                  <h1 className={`flex flex-col ${content.reverseHeading ? `flex-col-reverse` : ``}`}>
                     <span className={`block ${theme.text.HERO}`}>
                       {content.heading}
                     </span>
