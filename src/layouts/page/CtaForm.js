@@ -21,7 +21,7 @@ const CtaForm = (props) => {
                   </h2>
                 }
                 {content.body &&
-                  <p className={`${theme.text['P_STD']} ${textColor} text-center mt-6`}>
+                  <p className={`${theme.text.P_STD} ${textColor} text-center mt-6`}>
                       { content.body }
                   </p>
                 }

@@ -14,8 +14,6 @@ const ContactFourSquare = (props) => {
   const iconsHeader   = content.contactInfo.heading;
   let image           = '';
 
-  console.log('contact four square',content);
-
     return(
       <>
         <Section settings={settings}>

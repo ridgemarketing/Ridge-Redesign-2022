@@ -5,7 +5,7 @@ import { graphql } from "gatsby"
 const LineBreak = (props) => {
     const settings    = props.layoutData.layoutSettings;
 
-    const lineClasses = `ml-auto mr-auto h-[2px] w-full lg:w-3/4 block border-none`;
+    const lineClasses = `ml-auto mr-auto h-[1px] w-full lg:w-3/4 block border-none`;
     let lineColor     = ``;
 
     if (settings.backgroundColor === 'black'){
