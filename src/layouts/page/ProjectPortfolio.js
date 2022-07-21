@@ -110,25 +110,31 @@ const ProjectPortfolio = (props) => {
 
     return(
       <Section classes={`relative`} settings={settings}>
-        {content.settings.backgroundColor && 
-          <div className={`absolute w-full`} style={{backgroundColor: content.settings.backgroundColor, height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }}></div>
-        }
-
-        {bgImage && 
-          <GatsbyImage image={bgImage} objectFit={`cover`} className={`absolute w-full`} style={{height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }} />
-        }
         <Container>
-          {content.heading &&
-            <h2 className={`mb-10 ${textAlign} ${theme.text.H2}`}>{content.heading}</h2>
-          }
-          <div className={`relative`}>
-            {images &&
-              images.map((image, index) => {
-                return <ProjectPortfolioImage ref={ref} image={image} key={index} index={index} length={images.length} />
-              })
+            {content.heading &&
+              <h2 className={`mb-10 ${textAlign} ${theme.text.H2}`}>{content.heading}</h2>
             }
-          </div>
         </Container>
+        <div className={`relative`}>
+          {content.settings.backgroundColor && 
+            <div className={`absolute w-full`} style={{backgroundColor: content.settings.backgroundColor, height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }}></div>
+          }
+          {bgImage && 
+            <GatsbyImage image={bgImage} objectFit={`cover`} className={`absolute w-full`} style={{height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }} />
+          }
+
+          <Container>
+
+            <div className={`relative`}>
+              {images &&
+                images.map((image, index) => {
+                  return <ProjectPortfolioImage ref={ref} image={image} key={index} index={index} length={images.length} />
+                })
+              }
+            </div>
+          </Container>
+        </div>
+
       </Section>
     )
 }
