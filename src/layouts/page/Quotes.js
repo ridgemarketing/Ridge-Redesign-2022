@@ -1,14 +1,10 @@
-// !!!!!!!!!!! 
-// !!!!!!!!!!! 
-// Nic/Aaron, dont accept the FA changes in merge 
-// FA still accepting the Auth code again ಠ╭╮ಠ
 import React, { useState, useRef, useEffect } from "react" 
 import { graphql } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import Parser from '../../components/global/Parser';
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
 
 const Quotes = (props) => {
 
@@ -100,11 +96,11 @@ const Quotes = (props) => {
                 </div>
                 <div className={`w-[175px] flex bg-rm-pale-grey lg:ml-10`}>
                     <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => prevSlide()}>
-                        {/* <FontAwesomeIcon icon={faAngleLeft} /> */}
+                        <FontAwesomeIcon icon={faAngleLeft} />
                     </button>
                     <span className={ theme.text.FOOTER + 'flex items-center font-basic-sans'}> {slide + 1} / {slides.length}</span>
                     <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => nextSlide()}>
-                        {/* <FontAwesomeIcon icon={faAngleRight} /> */}
+                        <FontAwesomeIcon icon={faAngleRight} />
                     </button>
                 </div>
             </div> 
