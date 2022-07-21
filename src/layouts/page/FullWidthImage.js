@@ -1,7 +1,8 @@
-import React from "react"
+import React, { useRef, useLayoutEffect } from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { graphql } from "gatsby"
+import { theme } from '../../static/theme'
 
 const FullWidthImage = (props) => {
     console.log('image layout', props);
@@ -20,15 +21,44 @@ const FullWidthImage = (props) => {
         :
             <GatsbyImage image={desktopImage} alt={content.componentFlexibleMedia.imageAlt} />;    
     
+    const overlap           = content.imageOverlap;
+    const overlapImageClass = overlap === false ? ` ` : `z-10 relative `;
+    const overlapSection    = overlap === false ? `hidden invisible` : `block w-full relative`;
+    const overlapBkg        = content.backgroundColor;
+    const overlapImage      = useRef(null);
+    const overlapDiv        = useRef(null);
+
+    useLayoutEffect( () => {
+      if(overlap){
+        function windowLoads() {
+          overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
+          overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;
+        }
+        window.addEventListener('load', windowLoads);
+        windowLoads();
+
+        function windowResizes() {
+          overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
+          overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;
+        }
+        window.addEventListener('resize', windowResizes);
+        windowResizes();
+        return () => window.removeEventListener('resize', windowResizes), window.removeEventListener('onload', windowResizes);
+      }
+    }, []);
+
 
     return (
+      <>
         <Section settings={settings}>
             <Container>
-                <div className={`max-w-[1120px] mx-auto`}> 
+                <div ref={overlapImage} className={`max-w-[1120px] mx-auto ${overlapImageClass}`}> 
                     {image}
                 </div>
             </Container>
         </Section>
+        <div ref={overlapDiv} className={`${overlapSection} bg-${theme.backgroundColor[overlapBkg]}`}></div>
+      </> 
     )
 }
 
@@ -41,6 +71,8 @@ export const query = graphql`
         fieldGroupName
         layoutFullWidthImage {
           layoutContent {
+            imageOverlap
+            backgroundColor
             componentFlexibleMedia {
               image {
                 localFile {
@@ -72,6 +104,8 @@ export const serviceQuery = graphql`
         fieldGroupName
         layoutFullWidthImage {
           layoutContent {
+            imageOverlap
+            backgroundColor
             componentFlexibleMedia {
               image {
                 localFile {

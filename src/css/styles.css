@@ -16,8 +16,14 @@
     sup {
         top: -0.25em;
     }
-    q:before, q:after{
-        @apply hidden;
+    q:before{
+        @apply content-['“'] -ml-3 absolute;
+    }
+    q:after{
+        @apply content-['”'];
+    }
+    strong{
+        @apply font-bold;
     }
 }
 
@@ -32,13 +38,13 @@
 }
 }
 
+.lf-player-container{
+    @apply w-full h-full;
+}
 
 /* Form Styling */
 .form-one-col .form-group {
     @apply w-full;
-}
-.form-two-col .form-group {
-    @apply w-[48%];
 }
 
 input:-internal-autofill-selected, input:-internal-autofill:active, input:-internal-autofill {
@@ -65,7 +71,7 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 }
 
 .translate-form .has-danger input, .translate-form .has-danger textarea {
-    @apply border-[#EA0000];
+    @apply border-[#ea0000];
 }
 
 /* Frosted Effect */

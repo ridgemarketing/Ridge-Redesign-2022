@@ -1,5 +1,5 @@
 import React from "react"
-import { Field  } from "formik"
+import { Field } from "formik"
 import { theme } from '../../static/theme'
 
 export const BasicInputs = (props) => {
@@ -52,7 +52,6 @@ export const MultiLineText = (props) => {
                         className={ theme.text['P_STD'] + theme.forms['LABEL']  + ' text-' + props.color }
                         placeholder=" "
                         > 
-                        
                         { props.inputName } 
                     </label>
                 </>
@@ -101,7 +100,7 @@ export const FormSubmit = (props) => {
                 <Field 
                     type='submit'
                     id={'formSubmit' + props.inputID } 
-                    className={ theme.button['BASE_STYLING'] + ' ' + theme.button[props.buttonColor] + ' w-[210px] h-min -mt-6'}
+                    className={ theme.button['BASE_STYLING'] + ' ' + theme.button[props.buttonColor] + ' cursor-pointer w-[210px] h-min -mt-6'}
                     value={props.value}
                     disabled={props.submit}
                 />

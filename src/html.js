@@ -13,10 +13,10 @@ export default function HTML(props) {
         />
         {props.headComponents}
         <link rel="stylesheet" href="https://use.typekit.net/thq8rzi.css"></link>
-      </head>
+      </head> 
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
-        <div
+        <main
           key={`body`}
           id="___gatsby"
           dangerouslySetInnerHTML={{ __html: props.body }}
