@@ -146,3 +146,47 @@ export const serviceQuery = graphql`
       }
   }
 `
+
+export const projectQuery = graphql`
+  fragment FullWidthImageTextProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_FullWidthImageText {
+        fieldGroupName
+        layoutFullWidthImageText {
+          layoutContent {
+            alignment
+            body
+            heading
+            intro
+            image {
+              localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+              sourceUrl
+            }
+            mobile {
+              localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+              sourceUrl
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

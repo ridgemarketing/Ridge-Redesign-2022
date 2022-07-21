@@ -16,6 +16,7 @@ const Results = (props) => {
     let columns = content.columns === '1' ? '' : 'md:justify-between';
 
 
+    console.log(content.columns)
     return(
         <Section settings={settings}>
             <Container>
@@ -77,6 +78,36 @@ export const query = graphql`
 export const serviceQuery = graphql`
   fragment ResultsService on WpService_Flexiblelayouts_Layouts {
     ... on WpService_Flexiblelayouts_Layouts_Results {
+        fieldGroupName
+        layoutResults {
+          layoutContent {
+            columns
+            body
+            heading
+            results {
+              company
+              description
+              stat
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const projectQuery = graphql`
+  fragment ResultsProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_Results {
         fieldGroupName
         layoutResults {
           layoutContent {

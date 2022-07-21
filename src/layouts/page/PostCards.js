@@ -149,6 +149,34 @@ export const serviceQuery = graphql`
   }
 `
 
+export const projectQuery = graphql`
+  fragment PostCardsProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_PostCards {
+        fieldGroupName
+        layoutPostCards {
+          layoutContent {
+            heading
+            body
+            taxonomy {
+                id
+                name
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+    }
+  }
+`
+
 // const PostCards = (props) => {
     
 //   const content = props.layoutData.layoutContent;

@@ -9,7 +9,7 @@ const WpPage = ({ data }) =>{
       {/* <h1> {data.wpPage.title} </h1> */}
       {/* <p> {data.wpPage.content} </p> */}
       {data.wpPage.pageHeader &&
-        <PageHeader layoutContent={data.wpPage.pageHeader.pageHeader} />
+        <PageHeader layoutData={data.wpPage.pageHeader.pageHeader} />
       }
       <div>
           <FlexibleLayouts flexibleLayouts={data.wpPage.flexibleLayouts} />
@@ -28,7 +28,7 @@ export const query = graphql`
       title
       content
       ...FlexibleLayoutsPage
-
+      ...PageHeader
     }
   } 
 `
