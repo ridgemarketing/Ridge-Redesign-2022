@@ -25,8 +25,7 @@ const IconTextBoxes = (props) => {
           <div>
             {content.heading &&
           <h3 className={`text-center ${textColor}`}>
-              <span className={theme.text.H2}>{content.heading}
-              </span>
+              <span dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={theme.text.H2}></span>
           </h3>
             }
           {content.body &&
@@ -34,7 +33,7 @@ const IconTextBoxes = (props) => {
           }
           {content.subheading &&
           <p className={`mt-10 text-center ${textColor}`}>
-              <span className={theme.text.H4}>{content.subheading}</span>
+              <span dangerouslySetInnerHTML={{__html: Parser(content.subheading)}} className={theme.text.H4}></span>
           </p>
           }
           </div>
@@ -48,13 +47,12 @@ const IconTextBoxes = (props) => {
           <div>
               {content.bottomHeading &&
               <h3 className={`mt-10 ${bottomHeadingMargin} mb-12 text-center ${textColor}`}>
-                  <span className={theme.text.H5}>{content.bottomHeading}
-                  </span>
+                  <span dangerouslySetInnerHTML={{__html: Parser(content.bottomHeading)}} className={theme.text.H5}></span>
               </h3>
               }
               {content.bottomBody &&
               <p className={ `text-center ${textColor}`}>
-                  <span className={theme.text.P_STD}>{content.bottomBody}</span>
+                  <span dangerouslySetInnerHTML={{__html: Parser(content.bottomBody)}} className={theme.text.P_STD}></span>
               </p>
               }
               {content.componentButton && content.componentButton.link &&
