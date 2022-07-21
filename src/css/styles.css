@@ -16,8 +16,11 @@
     sup {
         top: -0.25em;
     }
-    q:before, q:after{
-        @apply hidden;
+    q:before{
+        @apply content-['“'] -ml-3 absolute;
+    }
+    q:after{
+        @apply content-['”'];
     }
     strong{
         @apply font-bold;
