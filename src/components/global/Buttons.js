@@ -26,7 +26,7 @@ const Buttons = (props) => {
     if ( (baseColor.toUpperCase() == props.sectionBackground.toUpperCase())  || !(theme.button[buttonClass]) ){
         check();
     }
-
+    
     return(
         <>
         {content.link &&

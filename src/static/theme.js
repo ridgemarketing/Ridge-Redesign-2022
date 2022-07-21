@@ -64,18 +64,22 @@ export const theme = {
     },
     paddingTop:{
         standard: 'pt-20',
-        none: 'pt-0'
+        none: 'pt-0',
+        custom: ''
     },
     paddingBottom:{
         standard: 'pb-20',
         none: 'pb-0',
-        footer: 'pb-24'
+        footer: 'pb-24',
+        custom : ''
     },
     backgroundColor: {
         black: 'black text-white',
         white: 'white',
         paleGrey: 'rm-pale-grey',
-        paleTeal: 'rm-pale-teal'
+        paleTeal: 'rm-pale-teal',
+        transparent: 'transparent',
+        whiteToBlack: 'white-black'
     },
     containers: {
         standard: styleConfig.theme.container.screens,

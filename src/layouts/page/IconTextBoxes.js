@@ -16,7 +16,7 @@ const IconTextBoxes = (props) => {
     textColor = 'text-white';
   }
     const cols = content.settings.columns == 3 ? 'xl:grid-cols-3' : '';
-    const wrapperClasses = (content.settings.type === 'stack') ? `grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} gap-8 max-w-[1100px] mx-auto` : `flex w-full flex-wrap justify-between threeColIconsText`;
+    const wrapperClasses = (content.settings.type === 'stack') ? `grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} mt-8 gap-8 max-w-[1100px] mx-auto` : `flex w-full flex-wrap justify-between mt-8 threeColIconsText`;
 
   return (
       <Section settings={settings}>
@@ -24,16 +24,15 @@ const IconTextBoxes = (props) => {
           <div>
             {content.heading &&
           <h3 className={`text-center ${textColor} mb-6`}>
-              <span className={theme.text.H2}>{content.heading}
-              </span>
+              <span dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={theme.text.H2}></span>
           </h3>
             }
           {content.body &&
           <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} max-w-[1120px] mx-auto text-center mb-10 ${textColor}`}></p>
           }
           {content.subheading &&
-          <p className={`text-center ${textColor}`}>
-              <span className={theme.text.H4}>{content.subheading}</span>
+          <p className={`mt-10 text-center ${textColor}`}>
+              <span dangerouslySetInnerHTML={{__html: Parser(content.subheading)}} className={theme.text.H4}></span>
           </p>
           }
           </div>
@@ -47,13 +46,12 @@ const IconTextBoxes = (props) => {
           <div>
               {content.bottomHeading &&
               <h3 className={`mt-10 ${bottomHeadingMargin} mb-12 text-center ${textColor}`}>
-                  <span className={theme.text.H5}>{content.bottomHeading}
-                  </span>
+                  <span dangerouslySetInnerHTML={{__html: Parser(content.bottomHeading)}} className={theme.text.H5}></span>
               </h3>
               }
               {content.bottomBody &&
               <p className={ `text-center ${textColor}`}>
-                  <span className={theme.text.P_STD}>{content.bottomBody}</span>
+                  <span dangerouslySetInnerHTML={{__html: Parser(content.bottomBody)}} className={theme.text.P_STD}></span>
               </p>
               }
               {content.componentButton && content.componentButton.link &&

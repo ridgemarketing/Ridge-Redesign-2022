@@ -24,6 +24,9 @@ const WpPage = ({ data }) =>{
           </Container>
         </Section>
         }
+        {data.wpPage.title == 'Home Page' &&
+          <HomeHero layoutData={data.wpPage.homeHero.layoutHomeHero}/>
+        }
         
         <FlexibleLayouts flexibleLayouts={data.wpPage.flexibleLayouts} />
 
@@ -35,14 +38,55 @@ export default WpPage;
 
 
 export const query = graphql`
-query PageById($id: String) {
-  wpPage(id: {eq: $id}) {
-    id
-    uri
-    title
-    content
-    isPostsPage
+  query PageById($id: String) {
+    wpPage(id: {eq: $id}) {
+      id
+      uri
+      title
+      content
+      isPostsPage
 
+      homeHero {
+        layoutHomeHero {
+          layoutContent {
+            heading
+            subheading
+            componentButton {
+              style
+              link {
+                url
+                title
+                target
+              }
+              colors {
+                resting
+              }
+            }
+            backgroundImage {
+              sourceUrl
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+            mobileImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(height: 686)
+                }
+              }
+            }
+            tabletImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData(height: 686)
+                }
+              }
+            }
+          }
+        }
+      }
     pageHeader {
       pageHeader {
         layoutContent {

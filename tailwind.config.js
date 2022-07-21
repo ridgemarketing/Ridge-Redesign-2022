@@ -7,7 +7,12 @@ module.exports = {
     'bg-rm-green',
     'bg-rm-pale-grey',
     'bg-black',
-    'bg-white'
+    'bg-white',
+    'bg-white-black',
+    'md:pt-36',
+    'pt-24',
+    '-mb-12',
+    'md:-mb-32'
   ],
   darkMode: false, 
   theme: {
@@ -42,7 +47,7 @@ module.exports = {
         'rm-carbon'          : '#1F1F1F',
         'rm-grey'            : '#474848',
         'rm-pale-grey'       : '#F1F5F5',
-        'rm-pale-teal'       : '#F3F9F9',
+        'rm-pale-teal'       : '#F3F9F9'
       },
       fontSize: {
           '18px'             : '1.125rem',
@@ -104,6 +109,9 @@ module.exports = {
       },
       animation: {
         quote: 'quoteSlide .75s ease-out forwards'
+      },
+      backgroundImage: {
+        'white-black': 'linear-gradient( to bottom, #ffffff 0%, #ffffff 60%, #000000 60%, #000000 100%)'
       }
     }
   }
