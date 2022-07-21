@@ -118,3 +118,39 @@ export const serviceQuery = graphql`
       }
   }
 `
+
+export const projectQuery = graphql`
+  fragment TwoColBreakoutImageTextProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_TwoColBreakoutImageText {
+        fieldGroupName
+        layoutTwoColBreakoutImageText {
+          layoutContent {
+            body
+            eyebrow
+            heading
+            imagePosition
+            image {
+              localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+            }
+            list {
+                item
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

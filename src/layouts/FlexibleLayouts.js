@@ -102,11 +102,11 @@ export const projectQuery = graphql`
     flexibleLayouts {
       layouts {
         ...TwoColImageTextProject
-        ...TwoColBreakoutImageTextSProject
         ...TwoColBreakoutImageHeadingProject
         ...TwoColTextQuoteProject
         ...TwoColProjectsGridProject
         ...ThreeColProjectBlocksProject
+        ...TwoColBreakoutImageTextProject 
         ...TextBlockProject
         ...VideoPlayerProject
         ...FullWidthImageProject

@@ -139,3 +139,38 @@ export const serviceQuery = graphql`
       }
   }
 `
+
+export const projectQuery = graphql`
+  fragment ResultsMixProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_ResultsMix {
+        fieldGroupName
+        layoutResultsMix {
+          layoutContent {
+            body
+            heading
+            results {
+                content {
+                    style
+                    text
+                }
+                link {
+                    target
+                    title
+                    url
+                }
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
