@@ -87,7 +87,6 @@ export const query = graphql`
           }
         }
       }
-    }
     pageHeader {
       pageHeader {
         layoutContent {
