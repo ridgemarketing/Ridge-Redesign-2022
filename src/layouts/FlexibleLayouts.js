@@ -59,6 +59,8 @@ export const pageQuery = graphql`
         ...LogoCloudPage
         ...PostCardsPage
         ...ProjectPortfolioPage
+        ...LineBreakPage
+        ...ContactFourSquare
         ...QuarterImageTextPage
       }
     }
@@ -88,6 +90,8 @@ export const serviceQuery = graphql`
         ...LogoCloudService
         ...PostCardsService
         ...ProjectPortfolioService 
+        ...CTAFormService
+        ...LineBreakService
       }
     }
   }
@@ -117,6 +121,27 @@ export const projectQuery = graphql`
         ...LogoCloudService
         ...PostCardsService
         ...ProjectPortfolioService 
+        ...TwoColImageTextProject
+        ...TwoColBreakoutImageHeadingProject
+        ...TwoColTextQuoteProject
+        ...TwoColProjectsGridProject
+        ...ThreeColProjectBlocksProject
+        ...TwoColBreakoutImageTextProject 
+        ...TextBlockProject
+        ...VideoPlayerProject
+        ...FullWidthImageProject
+        ...FullWidthImageTextProject
+        ...IconTextBoxesProject
+        ...VerticalSliderProject
+        ...MediaBlocksProject
+        ...FeaturedProjectsCarouselProject
+        ...QuotesProject
+        ...ResultsProject
+        ...ResultsMixProject
+        ...LogoCloudProject
+        ...PostCardsProject
+        ...ProjectPortfolioProject 
+        ...LineBreakProject
       }
     }
   }

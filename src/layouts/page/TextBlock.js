@@ -4,6 +4,7 @@ import  { theme } from "../../static/theme"
 import Link from "../../components/global/FlexibleLink"
 import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser";
+import Buttons from '../../components/global/Buttons'
 
 const TextBlock = (props) => {
     const content = props.layoutData.layoutContent;
@@ -78,6 +79,42 @@ export const query = graphql`
 export const serviceQuery = graphql`
   fragment TextBlockService on WpService_Flexiblelayouts_Layouts {
     ... on WpService_Flexiblelayouts_Layouts_TextBlock {
+        fieldGroupName
+        layoutTextBlock {
+          layoutContent {
+            alignment
+            body
+            componentButton {
+                colors {
+                resting
+                }
+                link {
+                target
+                title
+                url
+                }
+                style
+            }
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const projectQuery = graphql`
+  fragment TextBlockProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_TextBlock {
         fieldGroupName
         layoutTextBlock {
           layoutContent {

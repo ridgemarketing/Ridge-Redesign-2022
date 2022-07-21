@@ -1,26 +1,38 @@
 import React, { useRef, useEffect, useState } from "react"
 import { graphql } from "gatsby"
+import { Section, Container } from "../components/global/Wrappers"
+import { theme } from '../static/theme.js'
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
-import PageHeader from "../layouts/page/PageHeader"
-import HomeHero from "../layouts/page/HomeHero"
+import Parser from "../components/global/Parser"
+import Blog from "./blog"
 
 const WpPage = ({ data }) =>{
-  // console.log(data.wpPage);
-  return (
-    <div>
-      {/* <h1> {data.wpPage.title} </h1> */}
-      {/* <p> {data.wpPage.content} </p> */}
-      {data.wpPage.pageHeader &&
-        <PageHeader layoutContent={data.wpPage.pageHeader.pageHeader} />
-      }
-      {data.wpPage.title == 'Home Page' &&
-        <HomeHero layoutData={data.wpPage.homeHero.layoutHomeHero}/>
-      }
-      <div>
-          <FlexibleLayouts flexibleLayouts={data.wpPage.flexibleLayouts} />
-      </div>
-    </div>
-  )
+
+  const content     = data.wpPage.pageHeader.pageHeader.layoutContent;
+  const settings    = data.wpPage.pageHeader.pageHeader.layoutSettings;
+  console.log(data.wpPage);
+
+  if(data.wpPage.isPostsPage === true){
+    return( <Blog/> )
+  }else{
+    return (
+      <>
+      {content.heading &&
+        <Section settings={settings}>
+          <Container>
+              <h1 className={`${theme.text.H1_STD}`} dangerouslySetInnerHTML={{__html: Parser(content.heading)}}></h1>
+          </Container>
+        </Section>
+        }
+        {data.wpPage.title == 'Home Page' &&
+          <HomeHero layoutData={data.wpPage.homeHero.layoutHomeHero}/>
+        }
+        
+        <FlexibleLayouts flexibleLayouts={data.wpPage.flexibleLayouts} />
+
+      </>
+    )
+  }
 }
 export default WpPage;
 
@@ -32,7 +44,8 @@ export const query = graphql`
       uri
       title
       content
-      ...FlexibleLayoutsPage
+      isPostsPage
+
       homeHero {
         layoutHomeHero {
           layoutContent {
@@ -75,5 +88,28 @@ export const query = graphql`
         }
       }
     }
-  } 
+    pageHeader {
+      pageHeader {
+        layoutContent {
+          eyebrow
+          heading
+          subheading
+        }
+        layoutSettings {
+          classes
+          id
+          backgroundColor
+          anchorId
+          padding {
+            bottom
+            fieldGroupName
+            top
+          }
+        }
+      }
+    }
+
+    ...FlexibleLayoutsPage
+  }
+}
 `

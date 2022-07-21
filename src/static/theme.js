@@ -26,16 +26,15 @@ export const theme = {
     button: {
         BASE_STYLING:              'inline-block text-21px font-stratos uppercase py-3 px-16 text-center font-normal border-2 border-solid transition-all ease-in-out ',
         
-        GHOST_GREEN_HOVER_DARK:    'text-rm-black border-rm-green bg-transparent hover:bg-rm-green ',
-        GHOST_GREEN_HOVER_LIGHT:   'text-rm-white border-rm-green bg-rm-black hover:bg-rm-green hover:text-rm-black ',
+        GHOST_GREEN_HOVER_DARK:    'GHOST_GREEN_HOVER_DARK text-rm-black border-rm-green bg-white hover:bg-rm-green ',
+        GHOST_GREEN_HOVER_LIGHT:   'GHOST_GREEN_HOVER_LIGHT text-rm-white border-rm-green bg-rm-black hover:bg-rm-green hover:text-rm-black ',
         
-        SOLID_GREEN_HOVER_DARK:    'text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
-        SOLID_GREEN_HOVER_LIGHT:     'text-rm-black border-rm-green bg-rm-green hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
+        SOLID_GREEN_HOVER_LIGHT:    'SOLID_GREEN_HOVER_LIGHT text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
+        SOLID_GREEN_HOVER_DARK:     'SOLID_GREEN_HOVER_DARK text-rm-black border-rm-green bg-rm-green hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
         
-        SOLID_BLACK_HOVER_LIGHT:    'text-rm-white border-rm-black bg-rm-black hover:bg-rm-green hover:text-rm-black hover:border-rm-green ',
+        SOLID_BLACK_HOVER_DARK:     'SOLID_BLACK_HOVER_LIGHT text-rm-white border-rm-black bg-rm-black hover:bg-rm-green hover:text-rm-black hover:border-rm-green ',
     
-        GHOST_WHITE_HOVER_DARK:     'text-rm-white border-rm-green hover:bg-rm-green hover:text-rm-black ',
-        GHOST_WHITE_HOVER_LIGHT:    'text-rm-white border-rm-white hover:bg-rm-green hover:text-rm-black ',
+        GHOST_WHITE_HOVER_LIGHT:    'GHOST_WHITE_HOVER_LIGHT text-rm-white border-rm-white hover:bg-rm-green hover:text-rm-black hover:border-rm-green',
     },
     
     text_links: {
@@ -47,6 +46,7 @@ export const theme = {
         LARGE:              'text-40px after:w-[40px] before:w-[40px] ', 
         
         ARW_FWD_WHITE:      'before:hidden after:bg-[url("../static/arrow-right-white.svg")] ',
+        ARW_FWD_GREY:       'before:hidden after:bg-[url("../static/arrow-right-grey.svg")] hover:after:bg-[url("../static/arrow-right-white.svg")] ',
         ARW_FWD_BLACK:      'before:hidden after:bg-[url("../static/arrow-right-black.svg")] ',
         ARW_FWD_GREEN:      'before:hidden after:bg-[url("../static/arrow-right-green.svg")] ',
         ARW_BACK_GREEN:     'after:hidden before:bg-[url("../static/arrow-left-green.svg")] ',
@@ -55,11 +55,12 @@ export const theme = {
     forms:{
         INPUT:              'font-basic-sans border-b border-solid h-[30px] ',
         LABEL:              '-translate-y-10 transition-all ease-out ',
-        CONTAINER:          'form-group font-basic-san w-full flex flex-col mb-12 ',
+        CONTAINER:          'form-group w-full lg:w-[48%] font-basic-san w-full flex flex-col mb-12 ',
         
-        BASE_STYLING:       'translate-form my-7 flex p-11 ',
-        FULL:               'form-two-col w-full flex-row justify-around flex-wrap ',
-        HALF:               'form-one-col w-1/2 flex-col ',
+        BASE_STYLING:       'translate-form ',
+        HALF:               'form-one-col w-full xl:w-[45%] xl:ml-[5%] xl:mr-[5%] flex-col',
+        HALF_PADDING:       'p-8 lg:p-16',
+        FULL_DISPLAY:       'form-two-col mt-20 ml-auto mr-auto w-full lg:w-3/4 flex flex-row justify-around flex-wrap',
     },
     paddingTop:{
         standard: 'pt-20',

@@ -15,7 +15,6 @@ const IconTextBoxes = (props) => {
   if (settings.backgroundColor == 'black') {
     textColor = 'text-white';
   }
-
     const cols = content.settings.columns == 3 ? 'xl:grid-cols-3' : '';
     const wrapperClasses = (content.settings.type === 'stack') ? `grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} mt-8 gap-8 max-w-[1100px] mx-auto` : `flex w-full flex-wrap justify-between mt-8 threeColIconsText`;
 
@@ -24,12 +23,12 @@ const IconTextBoxes = (props) => {
           <Container>
           <div>
             {content.heading &&
-          <h3 className={`text-center ${textColor}`}>
+          <h3 className={`text-center ${textColor} mb-6`}>
               <span dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={theme.text.H2}></span>
           </h3>
             }
           {content.body &&
-          <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} mt-6 max-w-[1120px] mx-auto text-center ${textColor}`}></p>
+          <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} max-w-[1120px] mx-auto text-center mb-10 ${textColor}`}></p>
           }
           {content.subheading &&
           <p className={`mt-10 text-center ${textColor}`}>
