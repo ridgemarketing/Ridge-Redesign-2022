@@ -22,22 +22,23 @@ const TwoColBreakoutImageText = (props) => {
                     <div className={`hidden xl:block xl:w-[calc(726px-(50vw-640px))] 2xl:w-[calc(726px-(50vw-640px)+(50vw-960px))] mr-8`}></div>
 
                     <div className={'flex-1 px-5 xl:pr-10'}>
-                        <h4>
-                            <span className={theme.text.H3}>{content.heading}</span>
+                        <h4 className={theme.text.H1_STD}>
+                          {content.heading}
                         </h4>
                         <p className={theme.text.P_STD + ' my-8 text-rm-grey'}>
                             {content.body}
                         </p>
-                        <ul className={'flex flex-wrap'}>
+                        <ul className={'flex flex-wrap justify-between'}>
                             {content.list.map(data => {
-                                    return (
-                                        <li className={`w-[50%] leading-10`}>
-                                           {data.item}
-                                        </li>                                       
-                                    )
-                                })}
+                              return (
+                                <li className={theme.text.P_STD + `w-[48%] mb-4 text-rm-grey`}>
+                                    {data.item}
+                                </li>                                       
+                              )
+                            })}
                         </ul>
                     </div>
+
                 </div>
             </Container>
         </Section>

@@ -59,6 +59,8 @@ export const pageQuery = graphql`
         ...LogoCloudPage
         ...PostCardsPage
         ...ProjectPortfolioPage
+        ...LineBreakPage
+        ...ContactFourSquare
         ...QuarterImageTextPage
       }
     }
@@ -88,6 +90,8 @@ export const serviceQuery = graphql`
         ...LogoCloudService
         ...PostCardsService
         ...ProjectPortfolioService 
+        ...CTAFormService
+        ...LineBreakService
       }
     }
   }
@@ -97,22 +101,47 @@ export const projectQuery = graphql`
   fragment FlexibleLayoutsProject on WpProject {
     flexibleLayouts {
       layouts {
+        ...TwoColImageTextService
+        ...TwoColBreakoutImageTextService 
+        ...TwoColBreakoutImageHeadingService
+        ...TwoColTextQuoteService
+        ...TwoColProjectsGridService
+        ...ThreeColProjectBlocksService
+        ...TextBlockService
+        ...VideoPlayerService
+        ...FullWidthImageService
+        ...FullWidthImageTextService
+        ...IconTextBoxesService
+        ...VerticalSliderService
+        ...MediaBlocksService
+        ...FeaturedProjectsCarouselService
+        ...QuotesService
+        ...ResultsService
+        ...ResultsMixService
+        ...LogoCloudService
+        ...PostCardsService
+        ...ProjectPortfolioService 
         ...TwoColImageTextProject
-        ...TwoColBreakoutImageTextProject 
         ...TwoColBreakoutImageHeadingProject
         ...TwoColTextQuoteProject
+        ...TwoColProjectsGridProject
+        ...ThreeColProjectBlocksProject
+        ...TwoColBreakoutImageTextProject 
         ...TextBlockProject
         ...VideoPlayerProject
         ...FullWidthImageProject
         ...FullWidthImageTextProject
         ...IconTextBoxesProject
+        ...VerticalSliderProject
         ...MediaBlocksProject
+        ...FeaturedProjectsCarouselProject
         ...QuotesProject
         ...ResultsProject
         ...ResultsMixProject
         ...LogoCloudProject
         ...PostCardsProject
         ...ProjectPortfolioProject 
+        ...LineBreakProject
       }
     }
   }

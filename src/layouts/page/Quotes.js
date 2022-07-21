@@ -1,4 +1,4 @@
-import React, { useState } from "react" 
+import React, { useState, useRef, useEffect } from "react" 
 import { graphql } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
@@ -25,17 +25,66 @@ const Quotes = (props) => {
         setSlide(i);
     }
 
+    const parallaxContainer  = useRef(null);
+    const quoteLeft          = useRef(null);
+    const quoteRight         = useRef(null);
+    let topLeft              = 75;
+    let topRight             = 125;
+    let topCounter           = 0.65;
+
+    if(window.innerWidth < 769){
+      topCounter  = 0.35;
+      topLeft     = 50;
+      topRight    = 75;
+      
+    }
+
+    useEffect(() => {
+      let prevDirection = `0`;
+      function inView(entry){
+
+        if (window.pageYOffset > prevDirection){
+          topLeft   = topLeft - topCounter;
+          topRight  = topRight + topCounter; 
+          quoteLeft.current.style.top   = topLeft + '%';
+          quoteRight.current.style.top  = topRight + '%';
+        }
+        if (window.pageYOffset < prevDirection){
+          topLeft   = topLeft + topCounter;
+          topRight  = topRight - topCounter; 
+          quoteLeft.current.style.top   = topLeft + '%';
+          quoteRight.current.style.top  = topRight + '%';
+        }
+        prevDirection = window.pageYOffset;
+      }
+
+      let observer = new IntersectionObserver( (entries) => {
+        entries.forEach ( entry => {
+          if( entry.isIntersecting ){
+            window.addEventListener('scroll', inView, true);
+            console.log(entry.isIntersecting);
+          }else{
+            window.removeEventListener('scroll', inView, true);
+            console.log(entry.isIntersecting);
+          }
+        })
+      })
+      observer.observe(parallaxContainer.current);
+    }, [])
+
+    //classes={`bg-[url('https://rm2022dev.wpengine.com/wp-content/uploads/2022/07/Group-24.png')] bg-cover bg-[center_50%]`}
     return(
-        <Section settings={ settings } classes={`bg-[url('https://rm2022dev.wpengine.com/wp-content/uploads/2022/07/Group-24.png')] bg-cover bg-[center_50%]`}>
+      <div ref={parallaxContainer} className={`block `}>
+        <Section classes="overflow-hidden" settings={ settings } ref={parallaxContainer}>
           <Container>
             {content.heading &&
               <h2 className={ theme.text['H2'] }>
                   { content.heading }
               </h2>
             }
-            <div key={Math.random()} className={` mt-12 flex w-full flex-wrap justify-between relative`}>
+            <div className={` mt-12 flex w-full flex-wrap justify-between relative`}>
                 <div className={ `frosted-glass p-8 lg:p-14 w-full` }>
-                  <div className={`animate-quote`}>
+                  <div key={Math.random()} className={`animate-quote`}>
                     <p dangerouslySetInnerHTML={{__html: Parser(data.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out' }></p>
                     <p className={ theme.text.P_BLD +  `pt-8 pb-2` }>
                         { data.title }
@@ -55,27 +104,11 @@ const Quotes = (props) => {
                     </button>
                 </div>
             </div> 
-            
-            {/* Text based quotes for possible parallaxing purposes */}
-            <div className="hidden invisible">
-                <span
-                    aria-hidden="true" 
-                    className={ 
-                        theme.text['STATS'] + 
-                        'text-rm-green absolute -z-10 '}>
-                    “
-                </span>
-                <span
-                    aria-hidden="true" 
-                    className={ 
-                        theme.text['STATS'] + 
-                        'text-rm-green absolute -z-10 '}>
-                    ”
-                </span>
-
-            </div>
           </Container>
+            <span ref={quoteLeft}  aria-hidden="true" className={`${theme.text.STATS} transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-[50%] lg:top-[75%] left-[30%] lg:left-[20%] -z-10`}> “</span>
+            <span ref={quoteRight} aria-hidden="true" className={`${theme.text.STATS} transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-[75%] lg:top-[125%] right-[30%] lg:right-[20%] -z-10`}>” </span>
         </Section>
+      </div>
     )
 }
 export default Quotes

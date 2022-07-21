@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useRef} from "react"
 import { GatsbyImage } from "gatsby-plugin-image";
 import { theme } from '../../static/theme'
 
@@ -9,7 +9,8 @@ export const Section = (props) => {
         bgColor:  `bg-white`,
         position: `relative`,
         id: ``,
-        classes: ``
+        classes: ``,
+        role: ``,
     }
 
     if (props.settings && props.settings.padding) {
@@ -21,7 +22,8 @@ export const Section = (props) => {
     let position        =  props.settings.position ? props.settings.position : defaults.position;
     let id              =  props.settings.id ? props.settings.id : defaults.id;
     let classes         =  props.settings.classes ? props.settings.classes : defaults.classes;
-    let classes_temp = props.classes ? props.classes : ''; //used for testing until we pull class data from props
+    let classes_temp    =  props.classes ? props.classes : ''; //used for testing until we pull class data from props
+    let role            =  props.role ? props.role : defaults.role;
 
     if(props.transparent){
         bg ='transparent';
@@ -30,7 +32,8 @@ export const Section = (props) => {
     return (
         <section 
         id={id} 
-        className={`${pt} ${pb} bg-${theme.backgroundColor[bg]} ${position} ${classes} ${classes_temp}`}> 
+        className={`-mt-px ${pt} ${pb} bg-${theme.backgroundColor[bg]} ${position} ${classes} ${classes_temp}`}
+        role={role}> 
             {props.children}
         </section>
     )
@@ -71,8 +74,10 @@ export const BackgroundImage = (props) => {
     return (
         <div 
         id={id}
-        className={`${position} ${bgSize} ${top} ${left} ${width} ${height} ${bgRepeat}`}>
-            <GatsbyImage image={props.image} />
+        className={`${position} ${bgSize} ${top} ${left} ${width} ${height} ${bgRepeat} ${props.classes}`}>
+            { props.image && <GatsbyImage objectFit={'cover'} className={'z-[-10] hidden xl:block'} image={props.image} /> }
+            { props.mobile && <GatsbyImage objectFit={'cover'} className={'z-[-10] md:hidden block'} image={props.mobile} /> }
+            { props.tablet && <GatsbyImage objectFit={'cover'} className={'z-[-10] hidden md:block xl:hidden'} image={props.tablet} /> }
         </div>
     )
 }
