@@ -1,11 +1,11 @@
 const tagList = [
     {
         tag: `[b]`,
-        replace: '<strong>'
+        replace: `<span class="font-bold">`
     },
     {
         tag: `[/b]`,
-        replace: '</strong>'
+        replace: `</span>`
     },
     {
         tag: `[green]`,
@@ -13,7 +13,7 @@ const tagList = [
     },
     {
         tag: `[/green]`,
-        replace: '</span>'
+        replace: `</span>`
     },
     {
         tag: `[accent]`,
@@ -21,12 +21,13 @@ const tagList = [
     },
     {
         tag: `[/accent]`,
-        replace: '</span>'
+        replace: `</span>`
     }
 ];
 
 const Parser = string => {
     let output = string;
+    output = output.replace(/\s*<script>.*?<\/script>\s*/g, ' ');
     tagList.map(data => {
         output = output.replace(data.tag, data.replace);
     });

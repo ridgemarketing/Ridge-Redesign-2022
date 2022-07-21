@@ -67,5 +67,4 @@ query PageById($id: String) {
     ...FlexibleLayoutsPage
   }
 }
-
-` 
+`

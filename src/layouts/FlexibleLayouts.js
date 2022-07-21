@@ -61,6 +61,7 @@ export const pageQuery = graphql`
         ...ProjectPortfolioPage
         ...LineBreakPage
         ...ContactFourSquare
+        ...QuarterImageTextPage
       }
     }
   }

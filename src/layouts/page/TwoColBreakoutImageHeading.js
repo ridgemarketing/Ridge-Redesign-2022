@@ -5,25 +5,41 @@ import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 
 const TwoColBreakoutImageHeading = (props) => {
-    const content = props.layoutData.layoutContent;
-    const settings = props.layoutData.layoutSettings;
-    const image = getImage(content.image.localFile)
+    const content       = props.layoutData.layoutContent;
+    const settings      = props.layoutData.layoutSettings;
+    const image         = getImage(content.image.localFile);
+    let imgWrapperCss   = 'lg:left-[calc(50%+2.25rem)] xl:left-[calc(655px+3.5rem)]';
+    let FlexWrapperCss  = 'lg:flex';
+    let headingCss      = 'lg:mr-9 xl:mr-14';
+    
+    if (content.imagePosition && content.imagePosition == 'left') {
+      imgWrapperCss   = 'lg:right-[calc(50%+2.25rem)] xl:right-[calc(655px+3.5rem)]';
+      FlexWrapperCss  = 'lg:flex lg:flex-row-reverse';
+      headingCss      = 'lg:ml-9 xl:ml-14';
+    }
+
+    const bgColor = settings.backgroundColor ? settings.backgroundColor : `white`;
 
     return (
-        <Section settings={settings} classes={'2xl:max-w-[1920px] 2xl:mx-auto'}>
-            <div className={'px-6 order-2 mt-16 mx-auto max-w-[812px] xl:absolute xl:mt-0 xl:mx-0 xl:right-0 xl:top-0 '}>
-              <GatsbyImage image={image} />
-            </div>
-            <Container>
-                <div className={'flex justify-start xl:mt-20 xl:mb-[600px] order-1 relative z-10'}>
-                    <div className={'flex-1 px-5 xl:pl-10'}>
-                        <h2>
-                            <span className={theme.text.H2}>{content.heading}</span>
-                        </h2>
-                    </div>
-                    <div className={`hidden xl:block xl:w-[calc(726px-(50vw-640px))] 2xl:w-[calc(726px-(50vw-640px)+(50vw-960px))] ml-8`}></div>
+        <Section settings={settings} classes={`overflow-hidden relative bg-transparent`}>
+          <div className={`bg-${theme.backgroundColor[bgColor]} absolute top-32 left-0 right-0 bottom-0 w-full h-full`}></div>
+          <Container size={`slim`}>
+            <div className={`relative`}>
+              <div className={`lg:absolute lg:top-0 max-w-[810px] lg:w-[calc(50%+50vw-465px)] xl:w-[calc(655px+50vw-640px)] ${imgWrapperCss}`}>
+                <div className={`pt-[54.64%] w-full h-0`}>
+                  <GatsbyImage className={`absolute top-0 left-0 w-full object-cover`} image={image} />
                 </div>
-            </Container>
+              </div>
+              <div className={`py-16 lg:pt-48 2xl:pt-64 ${FlexWrapperCss}`}>
+                  <div className={`lg:w-1/2 xl:w-[655px] ${headingCss}`}>
+                      <h2 className={theme.text.H1_STD}>
+                          {content.heading}
+                      </h2>
+                  </div>
+                  <div className={`lg:max-w-1/2`}></div>
+              </div>
+              </div>
+          </Container>
         </Section>
     )
 }

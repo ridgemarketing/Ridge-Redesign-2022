@@ -18,6 +18,8 @@ const FeaturedProjectsCarousel = (props) => {
     console.log(content);
     const [slide, setSlide] = useState(0);
 
+    let headingArr = content.heading.split(' ');
+
     const nextSlide = () => {
         let i = slide
         if (i === slides.length - 1) {
@@ -57,11 +59,11 @@ const FeaturedProjectsCarousel = (props) => {
                         <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{content.heading}</h2>
                     </div>
                     <div className={`flex-shrink-0 w-full max-w-[712px] h-[734px] text-right md:w-[calc(100%+(50vw-350px))] md:-ml-[calc(50vw-350px)] lg:w-[calc(100%+(50vw-465px))] lg:-ml-[calc(50vw-465px)] xl:w-full xl:ml-0 bg-rm-carbon relative`}>
-                        <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{content.heading}</h2>
+                        <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{headingArr[0]}</h2>
                         {/* <BackgroundImage image={props.content.image} /> */}
                     </div>
                     <div className={`absolute bottom-0 right-0 w-full lg:relative lg:flex`}>
-                        {/* <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:mt-6 lg:ml-4`}>{props.content.heading}</h2> */}
+                        <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:mt-6 lg:ml-4`}>{headingArr[1]}</h2>
                         <div className={`self-end flex flex-col items-end w-full mx-auto lg:-ml-1/2 xl:-ml-20`}>
                             <div className={`px-8 pt-7 pb-10 bg-white w-full max-w-[548px] md:px-12 md:pt-9 shadow-block`}>
                                 <span></span>
