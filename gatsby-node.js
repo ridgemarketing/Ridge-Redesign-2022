@@ -5,8 +5,8 @@ exports.createPages = async ({ graphql, actions }) => {
   // query content for WordPress posts
   const {
     data: {
-      allWpPost: { nodes: allPosts },
-      allWpPage: { nodes: allPages },
+      allWpPost:    { nodes: allPosts },
+      allWpPage:    { nodes: allPages },
       allWpService: { nodes: allServices },
       allWpProject: { nodes: allProjects }
     },
@@ -59,7 +59,6 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-
 
   allPages.forEach(page => {
     createPage({

@@ -1,5 +1,7 @@
 import React from "react"
 import PropTypes from "prop-types"
+import { graphql, useStaticQuery } from "gatsby"
+import Footer from "./components/global/Footer"
 
 export default function HTML(props) {
   return (
@@ -22,7 +24,7 @@ export default function HTML(props) {
           dangerouslySetInnerHTML={{ __html: props.body }}
         />
         {props.postBodyComponents}
-        <footer></footer>
+        <Footer/>
       </body>
     </html>
   )
