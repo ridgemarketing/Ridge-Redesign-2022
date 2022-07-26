@@ -162,3 +162,43 @@ export const serviceQuery = graphql`
       }
   }
 `
+export const projectQuery = graphql`
+  fragment ThreeColProjectBlocksProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_ThreeColProjectBlocks {
+        fieldGroupName
+        layoutThreeColProjectBlocks {
+          layoutContent {
+            topHeading
+            bottomHeading
+            projects {
+              ... on WpProject {
+                id
+                title
+              }
+            }
+            componentButton {
+              colors {
+                resting
+              }
+              link {
+                target
+                title
+                url
+              }
+              style
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

@@ -10,7 +10,6 @@ const VerticalSlider = (props) => {
   const content               = props.layoutData.layoutContent;
   const settings              = props.layoutData.layoutSettings;
 
-  console.log('vertical slider');
   const textColor             = settings.backgroundColor === 'black' ? 'text-rm-white' : 'text-rm-black'; 
   const backgroundColor       = settings.backgroundColor === 'black' ? 'bg-rm-black' : 'bg-rm-white';
 
@@ -37,15 +36,12 @@ const VerticalSlider = (props) => {
 
       let observer = new IntersectionObserver( (entries) => {
           entries.forEach ( entry => {
-              console.log(entry);
               if( entry.isIntersecting ){
                 if(firstSlide.current.offsetTop < totalHeight ){
     
                   onscroll = () => {
                     for( let i = 0; scrollPoints.length > i; i++ ){
                       if ( firstSlide.current.offsetTop > scrollPoints[i] ){
-
-                        console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
 
                         setVslide(i);
                         current = i;
@@ -174,6 +170,34 @@ export const query = graphql`
 export const serviceQuery = graphql`
   fragment VerticalSliderService on WpService_Flexiblelayouts_Layouts {
     ... on WpService_Flexiblelayouts_Layouts_VerticalSlider {
+        fieldGroupName
+        layoutVerticalSlider {
+          layoutContent {
+            slides {
+              heading
+              lottieJsonUrl
+              smallText
+            }
+            body
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+export const projectQuery = graphql`
+  fragment VerticalSliderProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_VerticalSlider {
         fieldGroupName
         layoutVerticalSlider {
           layoutContent {

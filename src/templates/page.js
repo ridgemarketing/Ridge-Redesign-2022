@@ -5,6 +5,7 @@ import { theme } from '../static/theme.js'
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import Parser from "../components/global/Parser"
 import Blog from "./blog"
+import HomeHero from "../layouts/page/HomeHero"
 
 const WpPage = ({ data }) =>{
 

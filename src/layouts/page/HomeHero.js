@@ -14,7 +14,7 @@ const HomeHero = (props) => {
     const image = (content.backgroundImage) ? getImage(content.backgroundImage.localFile.childImageSharp.gatsbyImageData) : false;
     const mobileImage = (content.mobileImage) ? getImage(content.mobileImage.localFile.childImageSharp.gatsbyImageData) : false;
     const tabletImage = (content.tabletImage) ? getImage(content.tabletImage.localFile.childImageSharp.gatsbyImageData) : false;
-    console.log(content);
+
     let isImage = true;
     if (content.video) {
         var video = <video src={content.video.sourcUrl} className={''}></video>
