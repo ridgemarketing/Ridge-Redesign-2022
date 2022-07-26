@@ -12,46 +12,33 @@ const FeaturedProjectsCarousel = (props) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    const [slide, setSlide] = useState(0);
     const slides = content.featuredProjects;
-    const [data, setData] = useState(slides[0]);
-    console.log(data);
-    // const image = slides.projectInformation.images.carouselFeature;
-
-    console.log(content);
-
     let headingArr = content.heading.split(' ');
+    const [slide, setSlide] = useState(0);
+    const [data, setData] = useState(slides[0]);
+    console.log(slides);
 
     const nextSlide = () => {
         let i = slide
         if (i === slides.length - 1) {
-            setSlide(0)
+            setSlide(0);
+            setData(slides[slide]);
         } else {
-            setSlide(i + 1)
+            setSlide(i + 1);
+            setData(slides[slide]);
         }
     }
 
     const prevSlide = () => {
         let i = slide
         if (i === 0) { 
-            setSlide(slides.length - 1)
+            setSlide(slides.length - 1);
+            setData(slides[slide]);            
         } else {
-            setSlide(i - 1)
+            setSlide(i - 1);
+            setData(slides[slide]);
         }
     }
-
-    // const slides = [
-    //     {
-    //         heading: "Slide 1"
-    //     },
-    //     {
-    //         heading: "Slide 2"
-    //     },
-    //     {
-    //         heading: "Slide 3"
-    //     }
-    // ];
-
 
     return (
         <Section settings={settings}>
@@ -62,12 +49,11 @@ const FeaturedProjectsCarousel = (props) => {
                     </div>
                     <div className={`flex-shrink-0 w-full max-w-[712px] h-[734px] text-right md:w-[calc(100%+(50vw-350px))] md:-ml-[calc(50vw-350px)] lg:w-[calc(100%+(50vw-465px))] lg:-ml-[calc(50vw-465px)] xl:w-full xl:ml-0 bg-rm-carbon relative`}>
                         <h2 className={theme.text.H2 + `z-20 text-white hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{headingArr[0]}</h2>
-                        {/* <BackgroundImage image={props.content.image} /> */}
-                        <GatsbyImage 
+                        {data.project.projectInformation.images.carouselFeature && <GatsbyImage 
                         image={data.project.projectInformation.images.carouselFeature.localFile.childImageSharp.gatsbyImageData} 
                         alt={ ' ' } 
                         className={ `` } 
-                        objectFit={'contain'}/>
+                        objectFit={'contain'}/> }
                     </div>
                     <div className={`absolute bottom-0 right-0 w-full lg:relative lg:flex`}>
                         <h2 className={theme.text.H2 + `text-black hidden lg:block lg:absolute lg:mt-6 lg:ml-4`}>{headingArr[1]}</h2>
