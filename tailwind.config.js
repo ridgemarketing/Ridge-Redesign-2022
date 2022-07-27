@@ -12,7 +12,8 @@ module.exports = {
     'md:pt-36',
     'pt-24',
     '-mb-12',
-    'md:-mb-32'
+    'md:-mb-32',
+    'overflow-hidden'
   ],
   darkMode: false, 
   theme: {
