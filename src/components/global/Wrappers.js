@@ -40,13 +40,14 @@ export const Section = (props) => {
 }
 
 export const Container = (props) => {
-    let container = {
+    let size = {
         default: 'container',
         slim: 'container xl:max-w-[1120px] relative',
         none: ''
     }
+    let container = (props.container) ? container[props.container] : 'container xl:max-w-[1120px] relative';
     return (
-        <div className={`${container[props.container]} ${props.classes || ''}`}>
+        <div className={`${container} ${props.classes || ''}`}>
             {props.children}
         </div>
     )
