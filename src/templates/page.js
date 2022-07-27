@@ -6,8 +6,9 @@ import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import Parser from "../components/global/Parser"
 import Blog from "./blog"
 import HomeHero from "../layouts/page/HomeHero"
+import PageHeader from "../layouts/page/PageHeader"
 
-const WpPage = ({ data }) =>{
+const WpPage = ({ data }) => {
 
   const content     = data.wpPage.pageHeader.pageHeader.layoutContent;
   const settings    = data.wpPage.pageHeader.pageHeader.layoutSettings;
@@ -17,14 +18,10 @@ const WpPage = ({ data }) =>{
   }else{
     return (
       <>
-      {content.heading &&
-        <Section settings={settings}>
-          <Container>
-              <h1 className={`${theme.text.H1_STD}`} dangerouslySetInnerHTML={{__html: Parser(content.heading)}}></h1>
-          </Container>
-        </Section>
+        {data.wpPage.pageHeader && !data.wpPage.isFrontPage &&
+          <PageHeader layoutData={data.wpPage.pageHeader.pageHeader}/>
         }
-        {data.wpPage.title == 'Home Page' &&
+        {data.wpPage.isFrontPage &&
           <HomeHero layoutData={data.wpPage.homeHero.layoutHomeHero}/>
         }
         
@@ -45,6 +42,7 @@ export const query = graphql`
       title
       content
       isPostsPage
+      isFrontPage
 
       homeHero {
         layoutHomeHero {

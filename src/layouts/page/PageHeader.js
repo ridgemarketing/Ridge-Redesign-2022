@@ -6,6 +6,7 @@ import { graphql } from "gatsby"
 
 const PageHeader = (props) => {
     const content       = props.layoutData.layoutContent;
+    console.log(content);
     const image         = content.backgroundImage !== undefined ? getImage(content.backgroundImage.localFile) : false;
 
     return (
@@ -48,6 +49,7 @@ export const query = graphql`
       pageHeader {
         layoutContent {
           backgroundImage {
+            title
             localFile {
               childImageSharp {
                 gatsbyImageData
