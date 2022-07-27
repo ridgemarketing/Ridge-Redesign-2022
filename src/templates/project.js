@@ -2,11 +2,17 @@ import React from "react"
 import { graphql } from "gatsby"
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import ProjectHeader from "../layouts/page/ProjectHeader"
+import PostNav from "../components/PostNav"
 
-const WpProject = ({ data }) =>{
+const WpProject = ({ data, pageContext }) => {
+  const project = pageContext
+  const links = {
+    prev: project.previous,
+    next: project.next
+  }
   return (
     <div>
-      {data.wpProject && 
+      {data.wpProject.projectHeader && 
         <div>
           <ProjectHeader content={data.wpProject.projectHeader} info={data.wpProject.projectInformation} />
         </div>
@@ -16,6 +22,7 @@ const WpProject = ({ data }) =>{
             <FlexibleLayouts flexibleLayouts={data.wpProject.flexibleLayouts} />
         </div>
       }
+      <PostNav links={links} postType={`project`} />
     </div>
   )
 }
