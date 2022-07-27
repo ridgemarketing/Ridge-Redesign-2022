@@ -123,9 +123,11 @@ export const query = graphql`
     projectInformation {
         accentColor
         services {
-            ... on WpService {
-            link
-            id
+            service {
+                ... on WpService {
+                link
+                id
+                }
             }
         }
         websites {
