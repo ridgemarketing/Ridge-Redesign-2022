@@ -2,7 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 import { theme } from '../../static/theme'
 import { Container, Section } from '../../components/global/Wrappers.js'
-import { content } from "../../../tailwind.config.js"
 import { Link } from "gatsby"
 
 const ResultsMixed = (props) => {
@@ -108,6 +107,41 @@ export const query = graphql`
 export const serviceQuery = graphql`
   fragment ResultsMixService on WpService_Flexiblelayouts_Layouts {
     ... on WpService_Flexiblelayouts_Layouts_ResultsMix {
+        fieldGroupName
+        layoutResultsMix {
+          layoutContent {
+            body
+            heading
+            results {
+                content {
+                    style
+                    text
+                }
+                link {
+                    target
+                    title
+                    url
+                }
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const projectQuery = graphql`
+  fragment ResultsMixProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_ResultsMix {
         fieldGroupName
         layoutResultsMix {
           layoutContent {

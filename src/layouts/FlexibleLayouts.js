@@ -101,12 +101,29 @@ export const projectQuery = graphql`
   fragment FlexibleLayoutsProject on WpProject {
     flexibleLayouts {
       layouts {
+        ...TwoColImageTextService
+        ...TwoColBreakoutImageTextService 
+        ...TwoColBreakoutImageHeadingService
+        ...TwoColTextQuoteService
+        ...TwoColProjectsGridService
+        ...ThreeColProjectBlocksService
+        ...VideoPlayerService
+        ...FullWidthImageService
+        ...FullWidthImageTextService
+        ...IconTextBoxesService
+        ...MediaBlocksService
+        ...QuotesService
+        ...ResultsService
+        ...ResultsMixService
+        ...LogoCloudService
+        ...PostCardsService
+        ...ProjectPortfolioService 
         ...TwoColImageTextProject
-        ...TwoColBreakoutImageTextProject
         ...TwoColBreakoutImageHeadingProject
         ...TwoColTextQuoteProject
         ...TwoColProjectsGridProject
         ...ThreeColProjectBlocksProject
+        ...TwoColBreakoutImageTextProject 
         ...TextBlockProject
         ...VideoPlayerProject
         ...FullWidthImageProject

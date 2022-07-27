@@ -66,4 +66,5 @@ Layouts['ProjectPortfolio']                 = ProjectPortfolio;
 Layouts['VideoPlayer']                      = VideoPlayer;
 Layouts['MediaBlocks']                      = MediaBlocks;
 
+
 export default Layouts

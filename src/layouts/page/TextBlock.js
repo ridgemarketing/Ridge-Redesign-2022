@@ -23,12 +23,16 @@ const TextBlock = (props) => {
     return (
         <Section settings={settings}>
             <Container classes={`${alignment}`}>
-                <h2 className={theme.text.H1_LTE + ' pb-6'} dangerouslySetInnerHTML={{__html: heading}}></h2>
-                <p className={theme.text.P_STD + ' pb-8'} dangerouslySetInnerHTML={{__html: body}}></p>
-                {content.componentButton &&  
-                  <Buttons 
-                    content={content.componentButton} 
-                    sectionBackground={settings.backgroundColor}/>
+                <h2 className={theme.text.H1_LTE + ' leading-[80px] pb-6'} dangerouslySetInnerHTML={{__html: heading}}>
+                </h2>
+                <p className={theme.text.P_STD + ' pb-8'} dangerouslySetInnerHTML={{__html: body}}>
+                </p>
+                {
+                    content.componentButton &&  
+                    <Link
+                    link={content.componentButton.link}
+                    classes={theme.button.BASE_STYLING + theme.button.GHOST_GREEN_HOVER_DARK + buttonAlignment}
+                    />
                 }
             </Container>
         </Section>
@@ -75,6 +79,42 @@ export const query = graphql`
 export const serviceQuery = graphql`
   fragment TextBlockService on WpService_Flexiblelayouts_Layouts {
     ... on WpService_Flexiblelayouts_Layouts_TextBlock {
+        fieldGroupName
+        layoutTextBlock {
+          layoutContent {
+            alignment
+            body
+            componentButton {
+                colors {
+                resting
+                }
+                link {
+                target
+                title
+                url
+                }
+                style
+            }
+            heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const projectQuery = graphql`
+  fragment TextBlockProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_TextBlock {
         fieldGroupName
         layoutTextBlock {
           layoutContent {

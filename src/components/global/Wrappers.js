@@ -32,7 +32,7 @@ export const Section = (props) => {
     return (
         <section 
         id={id} 
-        className={`${pt} ${pb} bg-${theme.backgroundColor[bg]} ${position} ${classes} ${classes_temp}`}
+        className={`-mt-px ${pt} ${pb} bg-${theme.backgroundColor[bg]} ${position} ${classes} ${classes_temp}`}
         role={role}> 
             {props.children}
         </section>
@@ -74,8 +74,10 @@ export const BackgroundImage = (props) => {
     return (
         <div 
         id={id}
-        className={`${position} ${bgSize} ${top} ${left} ${width} ${height} ${bgRepeat}`}>
-            <GatsbyImage image={props.image} />
+        className={`${position} ${bgSize} ${top} ${left} ${width} ${height} ${bgRepeat} ${props.classes}`}>
+            { props.image && <GatsbyImage objectFit={'cover'} className={'z-[-10] hidden xl:block'} image={props.image} /> }
+            { props.mobile && <GatsbyImage objectFit={'cover'} className={'z-[-10] md:hidden block'} image={props.mobile} /> }
+            { props.tablet && <GatsbyImage objectFit={'cover'} className={'z-[-10] hidden md:block xl:hidden'} image={props.tablet} /> }
         </div>
     )
 }

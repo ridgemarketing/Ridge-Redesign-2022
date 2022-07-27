@@ -1,11 +1,27 @@
 const tagList = [
     {
         tag: `[b]`,
-        replace: `<span class="font-bold">`
+        replace: '<span style="font-weight: 700;">'
     },
     {
         tag: `[/b]`,
         replace: `</span>`
+    },
+    {
+        tag: `[temp]`,
+        replace: '<span style="font-weight: 600; font-size: 26px;">'
+    },
+    {
+        tag: `[/temp]`,
+        replace: '</span>'
+    },
+    {
+        tag: `[extra-slim]`,
+        replace: '<span style="max-width: 976px; display:block;">'
+    },
+    {
+        tag: `[/extra-slim]`,
+        replace: '</span>'
     },
     {
         tag: `[green]`,

@@ -27,7 +27,6 @@ const FullWidthImageText = (props) => {
   if (content.image) {
     var image = (content.image.localFile.ext === ".svg") 
     ? <img className={`mx-auto ${imageClasses}`} src={content.image.sourceUrl} />
-    // ? <img className={'block w-full lg:mt-9 lg:w-4/5 h-auto'} src={content.image.sourceUrl} />
     : <GatsbyImage 
         image={content.image.localFile.childImageSharp.gatsbyImageData} 
         alt={ ' ' } 
@@ -45,13 +44,13 @@ const FullWidthImageText = (props) => {
 
     return (
       <Section settings={settings}>
-        <Container classes={'xl:max-w-[860px]'}>
+        <Container classes={'xl:max-w-[1120px]'}>
           <div class="text-center">
             { content.heading && 
               <h1 className={`${theme.text.H2} ${headerClasses} ${textColor}`}>{content.heading}</h1>
             }
             {
-            content.intro && <p dangerouslySetInnerHTML={{__html: Parser(content.intro)}} className={`mt-6 ${theme.text.P_STD} max-w-[1120px] mx-auto ${textColor}`}></p> 
+            content.alignment === 'standard' && content.body && <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`mt-6 ${theme.text.P_STD} max-w-[1120px] mx-auto ${textColor}`}></p> 
             }
 
             <div className={`mx-auto ${imageWrapperClasses}`}>
@@ -60,7 +59,7 @@ const FullWidthImageText = (props) => {
             </div>
 
             {
-            content.body && <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`text-left mt-8 ${theme.text.H4_LTE} ${textColor}`}></p> 
+            content.alignment === 'overlap' && content.body &&  <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`text-left mt-8 ${theme.text.H4_LTE} ${textColor}`}></p> 
             }
           </div>     
         </Container>
@@ -106,6 +105,50 @@ export const query = graphql`
 export const serviceQuery = graphql`
   fragment FullWidthImageTextService on WpService_Flexiblelayouts_Layouts {
     ... on WpService_Flexiblelayouts_Layouts_FullWidthImageText {
+        fieldGroupName
+        layoutFullWidthImageText {
+          layoutContent {
+            alignment
+            body
+            heading
+            intro
+            image {
+              localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+              sourceUrl
+            }
+            mobile {
+              localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+              sourceUrl
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const projectQuery = graphql`
+  fragment FullWidthImageTextProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_FullWidthImageText {
         fieldGroupName
         layoutFullWidthImageText {
           layoutContent {

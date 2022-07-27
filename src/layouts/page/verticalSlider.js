@@ -3,14 +3,14 @@ import { graphql } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { AnchorLink } from "gatsby-plugin-anchor-links";
-import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 const VerticalSlider = (props) => {
 
   const content               = props.layoutData.layoutContent;
   const settings              = props.layoutData.layoutSettings;
 
-  console.log('vertical slider');
+  //console.log('vertical slider');
   const textColor             = settings.backgroundColor === 'black' ? 'text-rm-white' : 'text-rm-black'; 
   const backgroundColor       = settings.backgroundColor === 'black' ? 'bg-rm-black' : 'bg-rm-white';
 
@@ -37,7 +37,7 @@ const VerticalSlider = (props) => {
 
       let observer = new IntersectionObserver( (entries) => {
           entries.forEach ( entry => {
-              console.log(entry);
+              //console.log(entry);
               if( entry.isIntersecting ){
                 if(firstSlide.current.offsetTop < totalHeight ){
     
@@ -45,7 +45,7 @@ const VerticalSlider = (props) => {
                     for( let i = 0; scrollPoints.length > i; i++ ){
                       if ( firstSlide.current.offsetTop > scrollPoints[i] ){
 
-                        console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
+                        //console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
 
                         setVslide(i);
                         current = i;

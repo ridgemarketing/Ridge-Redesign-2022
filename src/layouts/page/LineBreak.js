@@ -65,3 +65,23 @@ export const serviceQuery = graphql`
       }
   }
 `
+
+export const projectQuery = graphql`
+  fragment LineBreakProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_LineBreak {
+        fieldGroupName
+        layoutLineBreak {
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

@@ -10,7 +10,7 @@ const Quotes = (props) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    const slides = content.quotes;
+    const slides = content.quotes ? content.quotes : [];
     const [slide, setSlide] = useState(0);
     const [data, setData] = useState(content.quotes[0]);
 
@@ -148,6 +148,38 @@ export const query = graphql`
 export const serviceQuery = graphql`
   fragment QuotesService on WpService_Flexiblelayouts_Layouts {
     ... on WpService_Flexiblelayouts_Layouts_Quotes {
+        fieldGroupName
+        layoutQuotes {
+          layoutContent {
+            heading
+            quotes {
+                ... on WpReview {
+                  title
+                  content
+                  reviewsFields {
+                    titleCompany
+                  }
+                }
+              }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const projectQuery = graphql`
+  fragment QuotesProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_Quotes {
         fieldGroupName
         layoutQuotes {
           layoutContent {

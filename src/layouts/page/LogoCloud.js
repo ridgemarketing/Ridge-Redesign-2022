@@ -9,7 +9,6 @@ const LogoCloud = props => {
 
   const content = props.layoutData.layoutContent;
   const settings = props.layoutData.layoutSettings;
-  console.log(content.logos);
 
   const heading = Parser(content.heading);
   const body = Parser(content.body);
@@ -23,7 +22,7 @@ const LogoCloud = props => {
                 {content.body &&
                     <p className={`theme.text['P_STD']} text-center my-4`} dangerouslySetInnerHTML={{__html: body}}></p>
                 }
-                <div className="mt-12 flex w-full flex-wrap justify-center lg:justify-around gap-y-10 md:gap-y-16 gap-x-12 md:gap-x-20 lg:gap-x-6">
+                <div className="mt-12 flex w-full flex-wrap justify-center lg:justify-around gap-y-10 md:gap-y-16 gap-x-10 sm:gap-x-12 md:gap-x-20 lg:gap-x-6">
                     {content.logos.map(logo => {
                       const image = (logo.image.localFile.ext === ".svg") 
                       ? <img className={`w-[24%] lg:w-[14%] object-contain`} src={logo.image.sourceUrl} />
@@ -77,6 +76,41 @@ export const query = graphql`
 export const serviceQuery = graphql`
   fragment LogoCloudService on WpService_Flexiblelayouts_Layouts {
     ... on WpService_Flexiblelayouts_Layouts_LogoCloud {
+        fieldGroupName
+        layoutLogoCloud {
+          layoutContent {
+            body
+            heading
+            logos {
+              image {
+                sourceUrl
+                localFile {
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const projectQuery = graphql`
+  fragment LogoCloudProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_LogoCloud {
         fieldGroupName
         layoutLogoCloud {
           layoutContent {

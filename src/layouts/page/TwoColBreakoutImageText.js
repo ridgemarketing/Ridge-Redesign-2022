@@ -8,7 +8,6 @@ const TwoColBreakoutImageText = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     const image = getImage(content.image.localFile.childImageSharp.gatsbyImageData);
-    console.log(content);
 
     return (
         <Section settings={settings} classes={'2xl:max-w-[1920px] 2xl:mx-auto'}>
@@ -95,6 +94,42 @@ export const serviceQuery = graphql`
             imagePosition
             image {
                                 localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+            }
+            list {
+                item
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const projectQuery = graphql`
+  fragment TwoColBreakoutImageTextProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_TwoColBreakoutImageText {
+        fieldGroupName
+        layoutTwoColBreakoutImageText {
+          layoutContent {
+            body
+            eyebrow
+            heading
+            imagePosition
+            image {
+              localFile {
                   childImageSharp {
                     gatsbyImageData
                   }
