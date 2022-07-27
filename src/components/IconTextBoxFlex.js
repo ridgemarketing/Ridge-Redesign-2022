@@ -12,7 +12,7 @@ const IconTextBoxFlex = (props) => {
     let marginClasses   = `ml-6 `;
 
     if (props.iconType == `icon`) {
-        var image = (content.image.localFile.ext === `.svg`) 
+        var image = content.image && (content.image.localFile.ext === `.svg`) 
         ? <img className={''} src={content.image.sourceUrl} />
         : <GatsbyImage 
             image={content.image.localFile.childImageSharp.gatsbyImageData} 
