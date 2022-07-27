@@ -21,27 +21,35 @@ const ProjectHeader = (props) => {
     const featuredImage = content.featuredImage ? getImage(content.featuredImage.localFile) : false;
     const imageOverhang = content.imageOverhang ? getImage(content.imageOverhang.localFile) : false;
 
-    const heading   = Parser(content.heading);
-    const body      = Parser(content.body);
+    const heading       = Parser(content.heading);
+    const body          = Parser(content.body);
+
+    let top             = `top-0`
+
+    if (featuredImage) {
+        let top = `top-96`
+    }
     
     return (
         <section className={`relative text-white`}>
             {content.backgroundColor &&
-                <div className={`absolute top-96 bottom-80 left-0 w-full h-full max-h-[calc(100%-44rem)] object-cover`} style={{backgroundColor: content.backgroundColor}}></div>
+                <div className={`absolute ${top} bottom-80 left-0 w-full h-full max-h-[calc(100%-44rem)] object-cover`} style={{backgroundColor: content.backgroundColor}}></div>
             }
             {bgImage && 
-                <GatsbyImage className={`absolute top-96 bottom-80 left-0 w-full h-full max-h-[calc(100%-44rem)] object-cover`} image={bgImage} />
+                <GatsbyImage className={`absolute ${top} bottom-80 left-0 w-full h-full max-h-[calc(100%-44rem)] object-cover`} image={bgImage} />
             }
-            <Container classes={``}>
-                <div className={`mt-8`}>
-                    {featuredImage && 
+            
+            {featuredImage && 
+                <Container classes={``}>
+                    <div className={`mt-8`}>
                         <GatsbyImage className={``} image={featuredImage} />
-                    }
-                </div>
-            </Container>
+                    </div>
+                </Container>
+            }
+
 
             <Container size={`slim`} classes={`pt-20 pb-44`}>
-                <div>
+                <div className={`max-w-[400px] mb-16`}>
                     {logo}
                 </div>
                 <div className={`lg:flex`}>
@@ -123,10 +131,13 @@ export const query = graphql`
     projectInformation {
         accentColor
         services {
-            ... on WpService {
-            link
-            id
+            service {
+                ... on WpService {
+                    link
+                    id
+                }
             }
+            titleOverride
         }
         websites {
             url
