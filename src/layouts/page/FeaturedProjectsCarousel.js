@@ -46,7 +46,7 @@ const FeaturedProjectsCarousel = (props) => {
                     <div class="lg:hidden">
                         <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{content.heading}</h2>
                     </div>
-                    <div className={`flex-shrink-0 w-full max-w-[712px] h-[734px] text-right md:w-[calc(100%+(50vw-350px))] md:-ml-[calc(50vw-350px)] lg:w-[calc(100%+(50vw-465px))] lg:-ml-[calc(50vw-465px)] xl:w-full xl:ml-0 bg-rm-carbon relative`}>
+                    <div className={`flex-shrink-0 w-full max-w-[680px] 2xl:max-w-[712px] h-[734px] text-right md:w-[calc(100%+(50vw-350px))] md:-ml-[calc(50vw-350px)] lg:w-[calc(100%+(50vw-465px))] lg:-ml-[calc(50vw-465px)] xl:w-full xl:ml-0 bg-rm-carbon relative`}>
                         <h2 className={theme.text.H2 + `z-20 text-white hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{headingArr[0]}</h2>
                         {data.project.projectInformation.images.carouselFeature && <GatsbyImage 
                         image={data.project.projectInformation.images.carouselFeature.localFile.childImageSharp.gatsbyImageData} 
