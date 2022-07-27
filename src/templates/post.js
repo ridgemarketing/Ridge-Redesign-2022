@@ -15,11 +15,9 @@ const WpPost = ({ data }) =>{
         if(nextPosts.edges[i].node.id === content.id){
             next      = nextPosts.edges[i].next.link;
             previous  = nextPosts.edges[i].previous.link;
-            console.log(nextPosts.edges[i]);
         }
     }
     
-    // console.log(content,nextPosts, next, previous);
   return (
     <> 
       <header className="container mt-20">

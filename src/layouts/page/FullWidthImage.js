@@ -5,13 +5,11 @@ import { graphql } from "gatsby"
 import { theme } from '../../static/theme'
 
 const FullWidthImage = (props) => {
-    console.log('image layout', props);
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     const desktopImage = getImage(content.componentFlexibleMedia.image.localFile);
     //const mobileImage = getImage(content.responsiveImages.mobile);
     const mobileImage = getImage(content.componentFlexibleMedia.image.localFile);
-    console.log(desktopImage);
     const image = mobileImage 
         ? 
             <>

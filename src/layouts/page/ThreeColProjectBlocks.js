@@ -11,8 +11,6 @@ const ThreeColProjectBlocks = (props) => {
     const settings      = props.layoutData.layoutSettings;
     let transparent     = 'transparent';
 
-    console.log('three col project blocks', content);
-
     const textColor     = settings.backgroundColor === 'black' ? 'white' : 'black'; 
     
     return(

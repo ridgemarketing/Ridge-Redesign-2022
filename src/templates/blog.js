@@ -57,7 +57,6 @@ const Blog = () => {
     buttonDisplay ='hidden invsibile';
   }
 
-  console.log('blog', posts, featured, counter );
   return ( 
    <>
    <div className="w-full bg-cover bg-center bg-no-repeat" style={{backgroundImage:'url("https://rm2022dev.wpengine.com/wp-content/uploads/2022/07/blog-hero.png")'}}>

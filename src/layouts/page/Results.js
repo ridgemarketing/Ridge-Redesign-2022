@@ -15,8 +15,6 @@ const Results = (props) => {
 
     let columns = content.columns === '1' ? '' : 'md:justify-between';
 
-
-    console.log(content.columns)
     return(
         <Section settings={settings}>
             <Container>

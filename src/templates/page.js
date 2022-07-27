@@ -11,7 +11,6 @@ const WpPage = ({ data }) =>{
 
   const content     = data.wpPage.pageHeader.pageHeader.layoutContent;
   const settings    = data.wpPage.pageHeader.pageHeader.layoutSettings;
-  console.log(data.wpPage);
 
   if(data.wpPage.isPostsPage === true){
     return( <Blog/> )

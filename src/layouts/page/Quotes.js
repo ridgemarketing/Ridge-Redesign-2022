@@ -62,10 +62,8 @@ const Quotes = (props) => {
         entries.forEach ( entry => {
           if( entry.isIntersecting ){
             window.addEventListener('scroll', inView, true);
-            console.log(entry.isIntersecting);
           }else{
             window.removeEventListener('scroll', inView, true);
-            console.log(entry.isIntersecting);
           }
         })
       })

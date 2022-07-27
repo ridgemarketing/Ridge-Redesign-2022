@@ -16,7 +16,6 @@ const FeaturedProjectsCarousel = (props) => {
     let headingArr = content.heading.split(' ');
     const [slide, setSlide] = useState(0);
     const [data, setData] = useState(slides[0]);
-    console.log(slides);
 
     const nextSlide = () => {
         let i = slide
