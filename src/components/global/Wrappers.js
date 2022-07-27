@@ -45,7 +45,7 @@ export const Container = (props) => {
         slim: 'container xl:max-w-[1120px] relative',
         none: ''
     }
-    let container = (props.container) ? container[props.container] : 'container xl:max-w-[1120px] relative';
+    let container = (props.container) ? size[props.container] : 'container xl:max-w-[1120px] relative';
     return (
         <div className={`${container} ${props.classes || ''}`}>
             {props.children}
