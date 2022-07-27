@@ -10,9 +10,6 @@ import PageHeader from "../layouts/page/PageHeader"
 
 const WpPage = ({ data }) => {
 
-  const content     = data.wpPage.pageHeader.pageHeader.layoutContent;
-  const settings    = data.wpPage.pageHeader.pageHeader.layoutSettings;
-
   if(data.wpPage.isPostsPage === true){
     return( <Blog/> )
   }else{
