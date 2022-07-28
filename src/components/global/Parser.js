@@ -17,7 +17,7 @@ const tagList = [
     },
     {
         tag: `[extra-slim]`,
-        replace: '<span style="max-width: 976px; display:block;">'
+        replace: '<span style="max-width: 976px; display:block; margin: 0 auto;">'
     },
     {
         tag: `[/extra-slim]`,

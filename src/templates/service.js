@@ -6,6 +6,7 @@ import { Container, Section } from '../components/global/Wrappers.js'
 import { theme } from '../static/theme'
 import Buttons from '../components/global/Buttons'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import Parser from '../components/global/Parser'
 
 const WpService = ({ data }) =>{
     
@@ -49,9 +50,7 @@ const WpService = ({ data }) =>{
             const textSize = key.textSize === 'large' ? 'H4_LTE' : 'P_STD';  
             return(
                 <> 
-                  <p className={theme.text[textSize] + 'mb-9' } key={key.body}>
-                    {key.body} 
-                  </p>
+                  <p dangerouslySetInnerHTML={{__html: Parser(key.body)}} className={theme.text[textSize] + 'mb-9' } key={key.body}></p>
                 </>
             )
           })}
