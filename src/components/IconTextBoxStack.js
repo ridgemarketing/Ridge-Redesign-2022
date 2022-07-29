@@ -34,7 +34,7 @@ const IconTextBoxStack = (props) => {
     if (props.iconType === `icon-number`) {
         component = 
         <div className={`flex items-start`}>
-            <div className={`w-[75px]`} ref={iconElement}>
+            <div className={`w-[75px]`}>
                 {image}
             </div>
             <div className={"text-center md:text-left ml-6"}>
