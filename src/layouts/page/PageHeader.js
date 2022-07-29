@@ -22,14 +22,18 @@ const PageHeader = (props) => {
                     {content.eyebrow}
                   </span>
                 }
-                {content.heading &&
+                {(content.heading || content.subheading) &&
                   <h1 className={`flex flex-col ${content.reverseHeading ? `flex-col-reverse` : ``}`}>
-                    <span className={`block ${theme.text.HERO}`}>
-                      {content.heading}
-                    </span>
-                    <span className={`block ${theme.text.H1_LTE}`}>
-                      {content.subheading}
-                    </span>
+                    {content.heading && 
+                      <span className={`block ${theme.text.HERO}`}>
+                        {content.heading}
+                      </span>
+                    }
+                    {content.subheading && 
+                      <span className={`block ${theme.text.H1_LTE}`} style={{fontSize: content.subheadingFontSize ? content.subheadingFontSize : ``}}>
+                        {content.subheading}
+                      </span>
+                    }
                   </h1>
                 }
               </div>
@@ -59,6 +63,7 @@ export const query = graphql`
           maxWidth
           reverseHeading
           subheading
+          subheadingFontSize
         }
         layoutSettings {
           anchorId
