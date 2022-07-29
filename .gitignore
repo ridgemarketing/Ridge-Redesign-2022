@@ -110,3 +110,4 @@ public
 .DS_Store
 .wordpress-cache
 .wordpress-cache/
+*.wordpress-cache
