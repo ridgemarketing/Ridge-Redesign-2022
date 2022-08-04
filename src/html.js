@@ -1,8 +1,5 @@
-import React, { useState, useEffect} from "react"
-import { theme, ThemeContext } from "./static/theme"
+import React from "react"
 import PropTypes from "prop-types"
-import Layout
- from "./components/global/Layout"
 export default function HTML(props) {  
 
   return (

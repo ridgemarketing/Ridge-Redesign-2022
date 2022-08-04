@@ -34,7 +34,6 @@ const ProjectHeader = (props) => {
 
     if (info.accentColor) {
         context.updateAccentFunction(info.accentColor)
-        console.log(info.accentColor)
     }
 
     return (
