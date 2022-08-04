@@ -1,3 +1,4 @@
+import React from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../../tailwind.config'
 const styleConfig = resolveConfig(tailwindConfig)
@@ -90,5 +91,15 @@ export const theme = {
             'xl'    : '1120px',
             '2xl'   : '1120px', 
         }
+    },
+    colors: {
+        primary: {
+            accent: `#A9CF38`
+        }
     }
 }
+
+export const ThemeContext = React.createContext({
+    accent: theme.colors.primary.accent,
+    updateAccentFunction: () => {}
+});

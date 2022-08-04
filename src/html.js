@@ -1,7 +1,10 @@
-import React from "react"
+import React, { useState, useEffect} from "react"
+import { theme, ThemeContext } from "./static/theme"
 import PropTypes from "prop-types"
+import Layout
+ from "./components/global/Layout"
+export default function HTML(props) {  
 
-export default function HTML(props) {
   return (
     <html {...props.htmlAttributes}>
       <head>
@@ -14,16 +17,16 @@ export default function HTML(props) {
         {props.headComponents}
         <link rel="stylesheet" href="https://use.typekit.net/thq8rzi.css"></link>
       </head> 
-      <body {...props.bodyAttributes}>
-        {props.preBodyComponents}
-        <main
-          key={`body`}
-          id="___gatsby"
-          dangerouslySetInnerHTML={{ __html: props.body }}
-        />
-        {props.postBodyComponents}
-        <footer></footer>
-      </body>
+        <body {...props.bodyAttributes}>
+          {props.preBodyComponents}
+          <main
+            key={`body`}
+            id="___gatsby"
+            dangerouslySetInnerHTML={{ __html: props.body }}
+          />
+          {props.postBodyComponents}
+          <footer></footer>
+        </body>
     </html>
   )
 }

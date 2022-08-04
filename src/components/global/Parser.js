@@ -33,7 +33,7 @@ const tagList = [
     },
     {
         tag: `[accent]`,
-        replace: `<span>`
+        replace: `<span class="accent-text">`
     },
     {
         tag: `[/accent]`,
