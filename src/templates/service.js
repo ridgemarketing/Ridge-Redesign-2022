@@ -37,10 +37,10 @@ const WpService = ({ data }) =>{
           }
           {content.heading.green && content.heading.black && 
             <h2 className={theme.text.HERO + 'mb-9'}>
-                <span className="text-rm-green block">
+                <span className="text-rm-green">
                   {content.heading.green}
                 </span>
-                <span className="text-rm-black block">
+                <span className="text-rm-black">
                   {content.heading.black}
                 </span>
             </h2>
