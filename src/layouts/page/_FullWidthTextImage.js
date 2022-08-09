@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react"
+import React from "react"
 import {Section, Container } from "../../components/global/Wrappers"
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import IconTextBoxStack from '../../components/IconTextBoxStack'
 import IconTextBoxFlex from '../../components/IconTextBoxFlex'
@@ -34,7 +34,7 @@ const FullWidthTextImage = (props) => {
 
     const threeCols = true;
     const cols = threeCols ? ' lg:grid-cols-3 ' : ' ';
-    const wrapperClasses = orientation == 'stacked' ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
+    const wrapperClasses = orientation === 'stacked' ? `md:grid md:grid-cols-2${cols}gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12` : `flex w-full flex-wrap justify-between threeColIconsText mt-6`;
 
     const li_items = [
         {
@@ -96,7 +96,7 @@ const FullWidthTextImage = (props) => {
                 {/* className={`md:grid md:grid-cols-2 ${cols} gap-8 max-w-[1100px] mx-auto mt-6 lg:mt-12`} */}
                 <div className={wrapperClasses}>
                     {li_items.map(item => {
-                        return (orientation == 'stacked') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex threeCol={threeCols} content={item}/>;
+                        return (orientation === 'stacked') ? <IconTextBoxStack content={item} /> : <IconTextBoxFlex threeCol={threeCols} content={item}/>;
                     })}
                 </div>
             </Container>

@@ -12,7 +12,7 @@ const TwoColBreakoutImageHeading = (props) => {
     let FlexWrapperCss  = 'lg:flex';
     let headingCss      = 'lg:mr-9 xl:mr-14';
     
-    if (content.imagePosition && content.imagePosition == 'left') {
+    if (content.imagePosition && content.imagePosition === 'left') {
       imgWrapperCss   = 'lg:right-[calc(50%+2.25rem)] xl:right-[calc(655px+3.5rem)]';
       FlexWrapperCss  = 'lg:flex lg:flex-row-reverse';
       headingCss      = 'lg:ml-9 xl:ml-14';

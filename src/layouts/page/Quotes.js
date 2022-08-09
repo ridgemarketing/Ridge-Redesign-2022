@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react" 
-import { graphql, useStaticQuery } from "gatsby"
+import { graphql } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import Parser from '../../components/global/Parser';
@@ -28,21 +28,21 @@ const Quotes = (props) => {
     const parallaxContainer  = useRef(null);
     const quoteLeft          = useRef(null);
     const quoteRight         = useRef(null);
-    let topLeft              = 75;
-    let topRight             = 125;
-    let topCounter           = 0.65;
-
-    if(window.innerWidth < 769){
-      topCounter  = 0.35;
-      topLeft     = 50;
-      topRight    = 75;
-      
-    }
 
     useEffect(() => {
-      let prevDirection = `0`;
-      function inView(entry){
 
+      let topLeft              = 75;
+      let topRight             = 125;
+      let topCounter           = 0.65;
+      let prevDirection = `0`;
+
+      if(window.innerWidth < 1024){
+        topCounter  = 0.35;
+        topLeft     = 50;
+        topRight    = 75;
+        
+      }
+      function inView(){
         if (window.pageYOffset > prevDirection){
           topLeft   = topLeft - topCounter;
           topRight  = topRight + topCounter; 
@@ -58,14 +58,27 @@ const Quotes = (props) => {
         prevDirection = window.pageYOffset;
       }
 
+      function reset(){
+        if(window.innerWidth < 1024){
+          topLeft                       = 50;
+          topRight                      = 75;
+          quoteLeft.current.style.top   = `${topLeft}%`;
+          quoteRight.current.style.top  = `${topRight}%`;
+        }else{
+          topLeft                       = 75;
+          topRight                      = 125;
+          quoteLeft.current.style.top   = `${topLeft}%`;
+          quoteRight.current.style.top  = `${topRight}%`;
+        }
+      }
+
       let observer = new IntersectionObserver( (entries) => {
         entries.forEach ( entry => {
           if( entry.isIntersecting ){
-            window.addEventListener('scroll', inView, true);
-            console.log(entry.isIntersecting);
+            window.addEventListener('scroll', inView, {passive: true});
           }else{
-            window.removeEventListener('scroll', inView, true);
-            console.log(entry.isIntersecting);
+            reset();
+            window.removeEventListener('scroll', inView, {passive: true});
           }
         })
       })

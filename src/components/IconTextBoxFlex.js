@@ -11,12 +11,12 @@ const IconTextBoxFlex = (props) => {
 
     let marginClasses   = `ml-6 `;
 
-    if (props.iconType == `icon`) {
+    if (props.iconType === `icon`) {
         var image = (content.image.localFile.ext === `.svg`) 
-        ? <img className={''} src={content.image.sourceUrl} />
+        ? <img className={''} src={content.image.sourceUrl} alt={content.image.altText} />
         : <GatsbyImage 
             image={content.image.localFile.childImageSharp.gatsbyImageData} 
-            alt={''} 
+            alt={content.image.altText} 
             className={ `flex self-start w-auto h-[55px]` } 
             objectFit={'contain'}/> ;
     }
@@ -56,7 +56,7 @@ const IconTextBoxFlex = (props) => {
     }
 
     return(
-            <div className={wrapperClasses}>
+            <div className={wrapperClasses} key={`iconTextBoxFlex-item${Math.random()}`}>
                 <div className={`w-[55px]`} ref={iconElement}>
                     {image}
                 </div>
@@ -72,7 +72,7 @@ const IconTextBoxFlex = (props) => {
                         <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={ `${theme.text['FOOTER']}  ${props.color}` }></p>
                     </div>
                     <div className={ marginClasses + `mt-4`}>
-                    <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} text-[#A9CF38]`} />
+                        <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} text-[#A9CF38]`} />
                     </div>
                 </div>
             </div>

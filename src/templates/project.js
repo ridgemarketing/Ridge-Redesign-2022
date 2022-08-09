@@ -3,9 +3,14 @@ import { graphql } from "gatsby"
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import ProjectHeader from "../layouts/page/ProjectHeader"
 
+import Header from "../components/global/Header"
+import Footer from "../components/global/Footer"
+
 const WpProject = ({ data }) =>{
   return (
-    <div>
+    <>
+    <Header/>
+    <main>
       {data.wpProject && 
         <div>
           <ProjectHeader content={data.wpProject.projectHeader} info={data.wpProject.projectInformation} />
@@ -16,7 +21,9 @@ const WpProject = ({ data }) =>{
             <FlexibleLayouts flexibleLayouts={data.wpProject.flexibleLayouts} />
         </div>
       }
-    </div>
+    </main>
+    <Footer/>
+    </>
   )
 }
 export default WpProject;

@@ -5,13 +5,13 @@ import { theme } from '../../static/theme'
 export const BasicInputs = (props) => {
 
     return(
-        <div className={ theme.forms['CONTAINER'] }>
+        <div className={ theme.forms.CONTAINER }>
             {props.inputID && props.inputName && props.type &&
                 <>
                     <Field 
                         type={ props.type }
                         id={'basicInputs' + props.inputID } 
-                        className={ theme.forms['INPUT'] + 'form-control ' + 'border-' + props.color + ' text-' + props.color } 
+                        className={`${theme.forms.INPUT} form-control border-${props.color} text-${props.color}`} 
                         name={ props.inputName } 
                         data-pristine-required-message = { props.pristineM }
                         pattern = { props.pristineP }
@@ -39,17 +39,16 @@ export const MultiLineText = (props) => {
                 <>  
                     <Field 
                         component="textarea"
-                        id={ 'textarea' + props.inputID } 
+                        id={`textarea${props.inputID}`} 
                         name={ props.inputName }
-                        className={ theme.forms['INPUT'] + 'resize-none ' + 'border-' + props.color + ' text-' + props.color} 
+                        className={`${theme.forms.INPUT} resize-none border-${props.color} text-${props.color}`} 
                         required={ props.required }   
                         spellCheck
                         placeholder=" "
                     />
-                    
                     <label 
                         htmlFor={ 'textarea' + props.inputID } 
-                        className={ theme.text['P_STD'] + theme.forms['LABEL']  + ' text-' + props.color }
+                        className={` ${theme.text.P_STD} ${theme.forms.LABEL} text-${props.color }`}
                         placeholder=" "
                         > 
                         { props.inputName } 
@@ -68,8 +67,8 @@ export const SelectInput = (props) => {
                     <Field 
                         as={ props.type }
                         id={'selectInput' + props.inputID } 
-                        className={ theme.forms['INPUT'] + 'form-control ' + 'border-' + props.color + ' text-' + props.color } 
-                        name={ props.inputName } 
+                        className={`${theme.forms.INPUT} form-control border-${props.color} text-${props.color}`} 
+                        name={`${props.inputName}`} 
                         data-pristine-required-message = { props.pristineM }
                         pattern = { props.pristineP }
                         data-pristine-pattern-message = { props.pristineI  }

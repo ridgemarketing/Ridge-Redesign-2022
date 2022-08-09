@@ -13,7 +13,7 @@ const ResultCard = (props) => {
         2: 'md:flex-[45%] lg:flex-[50%]',
         3: 'md:w-[45%] lg:w-[30%]'
     }
-    if (props.columns != "3") {
+    if (props.columns !== "3") {
         statClass += ' lg:text-[160px]';
     }
 

@@ -1,4 +1,4 @@
-import React, {useRef} from "react"
+import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image";
 import { theme } from '../../static/theme'
 
@@ -40,7 +40,7 @@ export const Section = (props) => {
 }
 
 export const Container = (props) => {
-    let containerClass = props.size == `slim` ? `container xl:max-w-[1120px] relative` : `container`;
+    let containerClass = props.size === `slim` ? `container xl:max-w-[1120px] relative` : `container`;
     
     return (
         <div className={`${containerClass} ${props.classes || ''}`}>
@@ -69,7 +69,7 @@ export const BackgroundImage = (props) => {
     let width     =  props.width ? props.width : defaults.width;
     let height    =  props.height ? props.height : defaults.height;
     let bgRepeat  =  props.bgRepeat ? props.bgRepeat : defaults.bgRepeat;
-    let id        =  props. id ? props.id : defaults.id;
+    let id        =  props.id ? props.id : defaults.id;
 
     return (
         <div 

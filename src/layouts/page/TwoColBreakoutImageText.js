@@ -13,7 +13,7 @@ const TwoColBreakoutImageText = (props) => {
         <Section settings={settings} classes={'2xl:max-w-[1920px] 2xl:mx-auto'}>
           {image && 
             <div className={'xl:absolute xl:left-[-202px] px-6 order-2 mt-16 xl:mt-0 mx-auto xl:mx-0'}>
-              <GatsbyImage image={image}/>
+              <GatsbyImage image={image} alt={``}/>
             </div>
             }
             <Container>
@@ -30,7 +30,7 @@ const TwoColBreakoutImageText = (props) => {
                         <ul className={'flex flex-wrap justify-between'}>
                             {content.list.map(data => {
                               return (
-                                <li className={theme.text.P_STD + `w-[48%] mb-4 text-rm-grey`}>
+                                <li key={`TwoColBreakoutImageText${data.item}`} className={theme.text.P_STD + `w-[48%] mb-4 text-rm-grey`}>
                                     {data.item}
                                 </li>                                       
                               )

@@ -10,7 +10,7 @@ const ProjectHeader = (props) => {
     const info          = props.info;
 
     const logo          = (info.logo.localFile.ext === `.svg`) 
-    ? <img className={''} src={info.logo.sourceUrl} />
+    ? <img className={''} src={info.logo.sourceUrl} alt={``} />
     : <GatsbyImage 
         image={info.logo.localFile.childImageSharp.gatsbyImageData} 
         alt={''} 
@@ -122,12 +122,7 @@ export const query = graphql`
       }
     projectInformation {
         accentColor
-        services {
-            ... on WpService {
-            link
-            id
-            }
-        }
+        
         websites {
             url
         }
