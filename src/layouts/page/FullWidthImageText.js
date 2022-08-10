@@ -1,6 +1,6 @@
 import React from "react"
 import { Section, Container } from "../../components/global/Wrappers"
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser"
@@ -15,18 +15,18 @@ const FullWidthImageText = (props) => {
   let mobile;
   let textColor;
 
-  if (settings.backgroundColor == 'black') {
+  if (settings.backgroundColor === 'black') {
     textColor = 'text-white';
   }
 
   if (content.mobile) {
     imageClasses += 'hidden md:block';
-    mobile = <img className={`mx-auto md:hidden`} src={content.mobile.sourceUrl} />
+    mobile = <img className={`mx-auto md:hidden`} src={content.mobile.sourceUrl} alt={content.mobile.altText} />
   }
 
   if (content.image) {
     var image = (content.image.localFile.ext === ".svg") 
-    ? <img className={`mx-auto ${imageClasses}`} src={content.image.sourceUrl} />
+    ? <img className={`mx-auto ${imageClasses}`} src={content.image.sourceUrl} alt={content.image.altText}/>
     : <GatsbyImage 
         image={content.image.localFile.childImageSharp.gatsbyImageData} 
         alt={ ' ' } 
@@ -86,6 +86,7 @@ export const query = graphql`
                   gatsbyImageData
                 }
               }
+              altText
             }
           }
           layoutSettings {
@@ -119,6 +120,7 @@ export const serviceQuery = graphql`
                   gatsbyImageData
                 }
               }
+              altText
               sourceUrl
             }
             mobile {
@@ -128,6 +130,7 @@ export const serviceQuery = graphql`
                   gatsbyImageData
                 }
               }
+              altText
               sourceUrl
             }
           }
@@ -163,6 +166,7 @@ export const projectQuery = graphql`
                   gatsbyImageData
                 }
               }
+              altText
               sourceUrl
             }
             mobile {
@@ -172,6 +176,7 @@ export const projectQuery = graphql`
                   gatsbyImageData
                 }
               }
+              altText
               sourceUrl
             }
           }

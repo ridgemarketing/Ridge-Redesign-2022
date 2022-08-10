@@ -49,7 +49,7 @@ const PostCards = (props) => {
     for(let a =0; taxonomy.length > a; a++){
       for(let b =0; posts.length > b; b++){
         for(let c =0; posts[b].categories.nodes.length > c; c++){
-          if(taxonomy[a].name == posts[b].categories.nodes[c].name){
+          if(taxonomy[a].name === posts[b].categories.nodes[c].name){
             if (cards.length >= 3){}else{
               cards.push(posts[b]);
             }

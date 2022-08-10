@@ -4,7 +4,6 @@ import  { theme } from "../../static/theme"
 import Link from "../../components/global/FlexibleLink"
 import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser";
-import Buttons from '../../components/global/Buttons'
 
 const TextBlock = (props) => {
     const content = props.layoutData.layoutContent;

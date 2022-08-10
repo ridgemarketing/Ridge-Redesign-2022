@@ -1,5 +1,4 @@
-import React from 'react'
-import FullWidthTextImage from './page/_FullWidthTextImage';
+//import FullWidthTextImage from './page/_FullWidthTextImage';
 // import ThreeColumnTextBlock from './page/ThreeColumnTextBlocks'
 import ContactFourSquare from "./page/ContactFourSquare"
 import FeaturedProjectsCarousel from "./page/FeaturedProjectsCarousel"
@@ -15,7 +14,7 @@ import Results from "./page/Results"
 import ResultsMixed from "./page/ResultsMixed"
 import TextBlock from "./page/TextBlock"
 // import ThreeColIconsText from "./page/_ThreeColIconsText"
-import ThreeColProjectBlocks from "./page/ThreeColProjectBlocks"
+import ProjectBlocks from "./page/ProjectBlocks"
 import TwoColBreakoutImageText from "./page/TwoColBreakoutImageText"
 import TwoColBreakoutImageHeading from "./page/TwoColBreakoutImageHeading"
 // import TwoColIconsText from "./page/TwoColIconsText"
@@ -51,7 +50,7 @@ Layouts['Results']                          = Results;
 Layouts['ResultsMix']                       = ResultsMixed; //component name is different in backend, causing this change to be necessary to match up
 Layouts['TextBlock']                        = TextBlock;
 // Layouts['ThreeColIconsText']             = ThreeColIconsText;
-Layouts['ThreeColProjectBlocks']            = ThreeColProjectBlocks;
+Layouts['ProjectBlocks']                    = ProjectBlocks;
 Layouts['TwoColBreakoutImageText']          = TwoColBreakoutImageText;
 Layouts['TwoColBreakoutImageHeading']       = TwoColBreakoutImageHeading;
 // Layouts['TwoColIconsText']               = TwoColIconsText;

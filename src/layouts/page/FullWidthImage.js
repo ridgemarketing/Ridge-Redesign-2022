@@ -1,23 +1,25 @@
 import React, { useRef, useLayoutEffect } from "react"
 import {Section, Container } from "../../components/global/Wrappers"
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { GatsbyImage } from 'gatsby-plugin-image'
 import { graphql } from "gatsby"
 import { theme } from '../../static/theme'
 
 const FullWidthImage = (props) => {
-    const content = props.layoutData.layoutContent;
-    const settings = props.layoutData.layoutSettings;
-    console.log(content);
-    const desktopImage = getImage(content.image.localFile);
-    const mobileImage = getImage(content.image.localFile);
-    const image = mobileImage 
+    const content       = props.layoutData.layoutContent;
+    const settings      = props.layoutData.layoutSettings;
+    const desktopImage  = content.image.localFile.childImageSharp.gatsbyImageData;
+    let mobileImage     = ``;
+    if(content.mobileImage){
+       mobileImage   = content.mobileImage.localFile.childImageSharp.gatsbyImageData;
+    }
+    const image         = mobileImage 
         ? 
             <>
-            <GatsbyImage className={`md:hidden`} image={mobileImage} alt={content.image.altText} />
+            <GatsbyImage className={`md:hidden`} image={mobileImage} alt={content.mobileImage.altText} />
             <GatsbyImage className={`hidden md:block`} image={desktopImage} alt={content.image.altText} />
             </>
         :
-            <GatsbyImage image={desktopImage} alt={content.imageAlt} />;    
+            <GatsbyImage image={desktopImage} alt={content.image.altText} />;    
     
     const overlap           = content.imageOverlap;
     const overlapImageClass = overlap === false ? ` ` : `z-10 relative `;
@@ -41,10 +43,9 @@ const FullWidthImage = (props) => {
         }
         window.addEventListener('resize', windowResizes);
         windowResizes();
-        return () => window.removeEventListener('resize', windowResizes), window.removeEventListener('onload', windowResizes);
+        return (window.removeEventListener('resize', windowResizes), window.removeEventListener('onload', windowResizes));
       }
-    }, []);
-
+    });
 
     return (
       <>
@@ -71,13 +72,22 @@ export const query = graphql`
           layoutContent {
             imageOverlap
             backgroundColor
-              image {
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(placeholder: DOMINANT_COLOR)
-                  }
+            image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
                 }
               }
+              altText
+            }
+            mobileImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+              altText
+            }
           }
           layoutSettings {
             containerWidth
@@ -102,13 +112,22 @@ export const serviceQuery = graphql`
           layoutContent {
             imageOverlap
             backgroundColor
-              image {
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(placeholder: DOMINANT_COLOR)
-                  }
+            image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
                 }
               }
+              altText
+            }
+            mobileImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+              altText
+            }
           }
           layoutSettings {
             containerWidth
@@ -132,13 +151,22 @@ export const projectQuery = graphql`
         fieldGroupName
         layoutFullWidthImage {
           layoutContent {
-              image {
-                localFile {
-                  childImageSharp {
-                    gatsbyImageData(placeholder: DOMINANT_COLOR)
-                  }
+            image {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
                 }
               }
+              altText
+            }
+            mobileImage {
+              localFile {
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+              altText
+            }
           }
           layoutSettings {
             containerWidth

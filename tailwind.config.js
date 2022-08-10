@@ -13,9 +13,20 @@ module.exports = {
     'pt-24',
     '-mb-12',
     'md:-mb-32',
-    'overflow-hidden'
+    'overflow-hidden',
+    '-lg:after:transition-all', 
+    '-lg:after:ease-out',
+    '-lg:after:inline-block',
+    '-lg:after:bg-contain',
+    '-lg:after:bg-center',
+    '-lg:after:bg-no-repeat',
+    '-lg:after:w-[20px]',
+    '-lg:after:h-[20px]', 
+    '-lg:after:ml-2', 
+    '-lg:hover:after:translate-x-2',
+    '-lg:before:hidden', 
+    '-lg:after:bg-[url("../static/arrow-right-black.svg")]',
   ],
-  darkMode: false, 
   theme: {
     screens:{
       'sm'                 : '414px',
@@ -35,6 +46,9 @@ module.exports = {
       }
     },
     extend: {
+      screens:{
+        '-lg' : { max: '1024px'},
+      },
       fontFamily: {
         'basic-sans'         : ['basic-sans', 'sans-serif'],
         'stratos'            : ['stratos', 'sans-serif'],

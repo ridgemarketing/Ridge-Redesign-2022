@@ -21,7 +21,7 @@ const FlexibleLayouts = (props) => {
         }
         
         const LayoutToRender = Layouts[subString]
-        layoutsArray.push(<LayoutToRender layoutData={layoutProps} />);
+        return(layoutsArray.push(<LayoutToRender layoutData={layoutProps} />));
     }
   });
   return (
@@ -32,8 +32,6 @@ const FlexibleLayouts = (props) => {
 }
 
 export default FlexibleLayouts
-
-
 
 export const pageQuery = graphql`
   fragment FlexibleLayoutsPage on WpPage {

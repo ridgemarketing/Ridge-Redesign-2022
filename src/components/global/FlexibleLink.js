@@ -9,7 +9,7 @@ const FlexibleLink = (props) => {
             <Link className={props.classes} to={props.link.url}>{props.link.title}</Link>
         }
 
-        {props.link && props.link.target == `_blank` && 
+        {props.link && props.link.target === `_blank` && 
             <a className={props.classes} href={props.link.url} target={props.link.target}>{props.link.title}</a>
         }
         </>

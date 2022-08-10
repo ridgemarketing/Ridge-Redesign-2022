@@ -2,7 +2,6 @@ import React from "react"
 import { graphql } from "gatsby"
 import { theme } from '../../static/theme'
 import { Container, Section } from '../../components/global/Wrappers.js'
-import { content } from "../../../tailwind.config.js"
 import { Link } from "gatsby"
 
 const ResultsMixed = (props) => {
@@ -17,34 +16,27 @@ const ResultsMixed = (props) => {
         <Section settings={ settings }>
             <Container>
                 {content.heading &&
-                    <h2
-                        className={ 
-                            theme.text['H2'] 
-                            + 'mb-9 text-center text-rm-' + textColor 
-                        }> 
-                    { content.heading }
+                    <h2 className={`${theme.text.H2} mb-9 text-center text-rm-${textColor}`}> 
+                      {content.heading}
                     </h2>
                 }
                 {content.body &&
-                    <p className={ 
-                            theme.text['P_STD'] 
-                            + 'text-center text-rm-' + textColor 
-                        }>
-                        { content.body }
+                    <p className={`${theme.text.P_STD} text-center text-rm-${textColor}`}>
+                        {content.body}
                     </p>
                 }
-                <div className={` mt-12 flex w-full flex-wrap justify-between `}>
+                <div className={`mt-12 flex w-full flex-wrap justify-between`}>
                     {content.results.map((result) => {
                         return(
-                            <div className={ 'flex flex-col w-full small lg:w-[31%] justify-between' }>
+                            <div key={`resultsMixed ${Math.random()}`} className={ 'flex flex-col w-full small lg:w-[31%] justify-between' }>
                                 <p>
                                 {result.content.map((text) => {
-                                    const fontSize  = text.style == 'stat' ? 'H2' :'H4';
-                                    const color     = text.style == 'stat' ? ' text-rm-green' : ' text-rm-black';
-                                    const padding   = text.style == 'stat' ? ' mb-1' : ' mb-1';
+                                    const fontSize  = text.style === 'stat' ? 'H2' :'H4';
+                                    const color     = text.style === 'stat' ? ' text-rm-green' : ' text-rm-black';
+                                    const padding   = text.style === 'stat' ? ' mb-1' : ' mb-1';
                                 
                                     return (
-                                        <span className={theme.text[fontSize] + color + padding + ' block'}>
+                                        <span key={`resultsMixed${text.text}${Math.random()}`} className={`${theme.text[fontSize]} ${color} ${padding} block`}>
                                             { text.text }
                                         </span>
                                     )

@@ -8,6 +8,8 @@ import Buttons from '../components/global/Buttons'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Parser from '../components/global/Parser'
 
+import Layout from "../components/global/Layout"
+
 const WpService = ({ data }) =>{
     
   const settings  = data.wpService.servicesHeader.serviceHeader.layoutSettings;
@@ -26,9 +28,9 @@ const WpService = ({ data }) =>{
     }
     visibility = 'inline-block';
   }
-
+ 
   return (
-    <div>
+    <Layout>
       <Section settings={settings}>
         <Container>
           {content.eyebrow &&
@@ -54,35 +56,35 @@ const WpService = ({ data }) =>{
                 </>
             )
           })}
-         
-          <div className={visibility + ` lg:w-3/4`}>
-            {floatP.map((key) => {
-              const textSize = 'P_STD';
-              return(
-                  <p className={theme.text[textSize] + 'mb-9' } key={key.body}>
-                    {key.body} 
-                  </p>
-              )
-            })}
-          </div>
-
-          {content.intextFloatedImage &&
-            <GatsbyImage className="mb-9 lg:mb-0 lg:w-1/5 lg:ml-[5%]" objectFit="contain" imgStyle="objectFit:contain;" image={content.intextFloatedImage.localFile.childImageSharp.gatsbyImageData} alt={` `} />  
-          }
           
-          {content.componentButton && content.componentButton.link.url &&
-            <div className='text-left'>
-              <Buttons 
-                content={content.componentButton} 
-                sectionBackground={settings.backgroundColor}/>
+            <div className={visibility + ` lg:w-3/4`}>
+              {floatP.map((key) => {
+                const textSize = 'P_STD';
+                return(
+                    <p className={theme.text[textSize] + 'mb-9' } key={key.body}>
+                      {key.body} 
+                    </p>
+                )
+              })}
             </div>
+
+            {content.intextFloatedImage &&
+              <GatsbyImage className="mb-9 lg:mb-0 lg:w-1/5 lg:ml-[5%]" objectFit="contain" imgStyle="objectFit:contain;" image={content.intextFloatedImage.localFile.childImageSharp.gatsbyImageData} alt={` `} />  
             }
-        </Container>
-      </Section>
-      <div>
+            
+            {content.componentButton && content.componentButton.link.url &&
+              <div className='text-left'>
+                <Buttons 
+                  content={content.componentButton} 
+                  sectionBackground={settings.backgroundColor}/>
+              </div>
+              }
+          </Container>
+        </Section>
+        {data.wpService.flexibleLayouts &&
           <FlexibleLayouts flexibleLayouts={data.wpService.flexibleLayouts} />
-      </div>
-    </div>
+        }
+    </Layout>
   )
 }
 export default WpService;

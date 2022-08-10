@@ -33,7 +33,7 @@ const tagList = [
     },
     {
         tag: `[accent]`,
-        replace: `<span>`
+        replace: `<span class="accent-text">`
     },
     {
         tag: `[/accent]`,
@@ -44,7 +44,7 @@ const tagList = [
 const Parser = string => {
     let output = string;
     output = output.replace(/\s*<script>.*?<\/script>\s*/g, ' ');
-    tagList.map(data => {
+    tagList.map(function(data) {
         output = output.replaceAll(data.tag, data.replace);
     });
     return output;

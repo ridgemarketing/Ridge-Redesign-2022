@@ -2,9 +2,8 @@ import React from "react"
 import Link from "../../components/global/FlexibleLink"
 import { Section, Container, BackgroundImage } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
-import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
+import { getImage } from "gatsby-plugin-image"
 
 const HomeHero = (props) => {
 

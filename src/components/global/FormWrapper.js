@@ -2,10 +2,9 @@ import React, { useRef, useEffect } from "react"
 import { theme } from '../../static/theme'
 import { Formik, Form  } from 'formik'
 
-import Pristine from 'pristinejs'
+//import Pristine from 'pristinejs'
 import { BasicInputs, MultiLineText, SelectInput, FormSubmit}  from './FormParts'
  
-let form_;
 const phoneNumberPattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;
 
 const FormWrapper = (props) => {
@@ -34,7 +33,7 @@ const FormWrapper = (props) => {
 
     const formRef = useRef(null);
     useEffect( () => {
-        form_ = new Pristine(formRef.current);
+        //let form_ = new Pristine(formRef.current);
     });
 
     return( 
@@ -42,7 +41,7 @@ const FormWrapper = (props) => {
             initialValues={{}}
             onSubmit={ async (values, actions) => {
                 
-                let valid = form_.validate();
+                //let valid = form_.validate();
 
                 // if( valid ){
                 //     console.log(JSON.stringify(values, null, 2));

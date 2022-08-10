@@ -1,9 +1,9 @@
 import React from "react"
 import { Section, Container } from "../../components/global/Wrappers"
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import FlexibleMedia from "../../components/global/FlexibleMedia"
+import Parser from "../../components/global/Parser"
 
 const TwoColImageText = (props) => {
 
@@ -11,7 +11,7 @@ const TwoColImageText = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     let order;
-    order = (content.imagePosition) == 'left' ? 'lg:order-2' : '' ;
+    order = (content.imagePosition) === 'left' ? 'lg:order-2' : '' ;
 
     return (
         <Section settings={settings}>
@@ -21,9 +21,7 @@ const TwoColImageText = (props) => {
                         <h3 className={theme.text.H2}>
                             {content.heading}
                         </h3>
-                        <p className={theme.text.P_STD + ' mt-8'}>
-                            {content.body}  
-                        </p>
+                        <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={theme.text.P_STD + ' mt-8'}></p>
                     </div>
 
                     <div className={"lg:text-left text-center"}>

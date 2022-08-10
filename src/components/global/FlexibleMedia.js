@@ -1,6 +1,6 @@
 import React from "react"
-import { theme } from '../../static/theme'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { Player } from '@lottiefiles/react-lottie-player'
 
 const FlexibleMedia = (props) => {
     
@@ -17,7 +17,7 @@ const FlexibleMedia = (props) => {
 
             : <GatsbyImage 
                 image={data.image.localFile.childImageSharp.gatsbyImageData} 
-                alt={data.image_alt} 
+                alt={data.image_alt}
                 className={props.className} 
                 objectFit={props.objectFit}/> 
     }
@@ -38,7 +38,15 @@ const FlexibleMedia = (props) => {
                 </div>
             }
             {lottie &&
-                <div></div>
+                <div>
+                    <Player
+                        autoplay
+                        loop
+                        src={lottie}
+                        style={{ height: 'auto', width: '100%' }}
+                    >
+                    </Player>
+                </div>
             }
             {video &&
                 <div dangerouslySetInnerHTML={{__html: video}}></div>

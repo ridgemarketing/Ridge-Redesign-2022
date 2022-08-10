@@ -10,20 +10,20 @@ const Buttons = (props) => {
         bkg = `white`;
     }
 
-    const background        = bkg == `white` ? `_HOVER_DARK` : `_HOVER_LIGHT`;
-    const style             = content.style == `solid` ? `SOLID_` : `GHOST_`;
+    const background        = bkg === `white` ? `_HOVER_DARK` : `_HOVER_LIGHT`;
+    const style             = content.style === `solid` ? `SOLID_` : `GHOST_`;
     const baseColor         = content.colors.resting;
 
     let buttonClass   = style + baseColor + background;
     const check = function(){
-        if( props.sectionBackground == `black` ){
+        if( props.sectionBackground === `black` ){
             buttonClass = `SOLID_GREEN_HOVER_LIGHT`;
         }else{
             buttonClass = `SOLID_GREEN_HOVER_DARK`;
         }
     }
 
-    if ( (baseColor.toUpperCase() == props.sectionBackground.toUpperCase())  || !(theme.button[buttonClass]) ){
+    if ( (baseColor.toUpperCase() === props.sectionBackground.toUpperCase())  || !(theme.button[buttonClass]) ){
         check();
     }
     
