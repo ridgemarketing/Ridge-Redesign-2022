@@ -1,3 +1,4 @@
+import React from 'react'
 import resolveConfig from 'tailwindcss/resolveConfig'
 import tailwindConfig from '../../tailwind.config'
 const styleConfig = resolveConfig(tailwindConfig)
@@ -20,7 +21,7 @@ export const theme = {
         Q:                  'font-basic-sans italic font-normal text-30px lg:text-40px leading-36px lg:leading-44px ',
         PULL_Q:             'font-basic-sans italic font-semibold text-30px lg:text-55px leading-36px lg:leading-PULL-Q ',
         STATS:              'font-stratos uppercase font-bold text-120px lg:text-160px leading-120px lg:leading-160px ',
-        CIRCLE_NUM:         'font-stratos font-bold text-45px leading-26px flex items-center justify-center w-[65px] h-[65px] border-solid border-[3px] rounded-full '
+        CIRCLE_NUM:         'font-stratos font-bold text-45px leading-26px flex items-center justify-center border-solid border-[3px] rounded-full '
     },
 
     button: {
@@ -90,5 +91,15 @@ export const theme = {
             'xl'    : '1120px',
             '2xl'   : '1120px', 
         }
+    },
+    colors: {
+        primary: {
+            accent: `#A9CF38`
+        }
     }
 }
+
+export const ThemeContext = React.createContext({
+    accent: theme.colors.primary.accent,
+    updateAccentFunction: () => {}
+});

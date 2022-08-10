@@ -7,11 +7,13 @@ import Parser from "./global/Parser"
 const IconTextBoxFlex = (props) => {
     const content = props.content;
 
+    let component = ''
+
     let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
 
     let marginClasses   = `ml-6 `;
 
-    if (props.iconType == `icon`) {
+    if (props.iconType === `icon` || props.iconType === `icon-number`) {
         var image = (content.image.localFile.ext === `.svg`) 
         ? <img className={''} src={content.image.sourceUrl} />
         : <GatsbyImage 
@@ -19,6 +21,35 @@ const IconTextBoxFlex = (props) => {
             alt={''} 
             className={ `flex self-start w-auto h-[55px]` } 
             objectFit={'contain'}/> ;
+    }
+
+    if (props.iconType === `icon`) {
+        component = 
+        <div className={`w-[55px]`} ref={iconElement}>
+            {image}
+        </div>
+    }
+    if (props.iconType === `number`) {
+        component = 
+        <div className={`text-center md:text-left ml-6`}>
+            <span className={`${theme.text.CIRCLE_NUM}  w-[65px] h-[65px] ${props.textColor === `text-white` ? `text-white border-white` : `text-black border-black`}`}>{props.idx}</span>
+        </div> 
+    }
+
+    if (props.iconType === `icon-number`) {
+        component = 
+        <div className={`flex items-start`}>
+            <div className={`w-[75px]`} ref={iconElement}>
+                {image}
+            </div>
+            <div className={"text-center md:text-left ml-6"}>
+                <span className={`${theme.text.CIRCLE_NUM} h-[55px] w-[55px] ${props.textColor === `text-white` ? `text-white border-white` : `text-black border-black`}`}>{props.idx}</span>
+            </div> 
+        </div>
+    }
+
+    if (props.columns === 3){
+        wrapperClasses += ` xl:w-[31%]`;
     }
 
     const [height, setHeight] = useState(0);
@@ -36,7 +67,8 @@ const IconTextBoxFlex = (props) => {
         }
 
         setTimeout(function() {
-            setHeight(ref.current.clientHeight);
+
+            setHeight(ref.current ? ref.current.clientHeight : 0 );
             setIconHeight(iconElement.current.clientHeight);
         }, 0)
 
@@ -50,25 +82,22 @@ const IconTextBoxFlex = (props) => {
             setCustomBottom((difference > 0) ? (difference / 2 + 6) + 'px' : '0px');
     }, [height, iconHeight, windowWidth])
 
-
-    if (props.columns === 3){
-        wrapperClasses += ` xl:w-[31%]`;
-    }
-
     return(
             <div className={wrapperClasses}>
-                <div className={`w-[55px]`} ref={iconElement}>
-                    {image}
+                <div ref={iconElement}>
+                    {component}
                 </div>
                 <div className={'flex-col flex flex-1'}>
-                    <div>
-                        <p ref={ref}
-                            style={{marginTop: customTop, marginBottom: customBottom, marginLeft: '24px'}}
-                            className={ `${theme.text['H4']} block items-center ${props.color}` }>
-                            { content.heading }
-                        </p>
-                    </div>
-                    <div className={ `${marginClasses} mt-4`}>
+                    {content.heading && 
+                        <div className={`mb-4`}>
+                            <p ref={ref}
+                                style={{marginTop: customTop, marginBottom: customBottom, marginLeft: '24px'}}
+                                className={ `${theme.text['H4']} block items-center ${props.color}` }>
+                                { content.heading }
+                            </p>
+                        </div>
+                    }
+                    <div className={ `${marginClasses}`}>
                         <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={ `${theme.text['FOOTER']}  ${props.color}` }></p>
                     </div>
                     <div className={ marginClasses + `mt-4`}>

@@ -33,8 +33,6 @@ const FlexibleLayouts = (props) => {
 
 export default FlexibleLayouts
 
-
-
 export const pageQuery = graphql`
   fragment FlexibleLayoutsPage on WpPage {
     flexibleLayouts {
@@ -101,26 +99,6 @@ export const projectQuery = graphql`
   fragment FlexibleLayoutsProject on WpProject {
     flexibleLayouts {
       layouts {
-        ...TwoColImageTextService
-        ...TwoColBreakoutImageTextService 
-        ...TwoColBreakoutImageHeadingService
-        ...TwoColTextQuoteService
-        ...TwoColProjectsGridService
-        ...ThreeColProjectBlocksService
-        ...TextBlockService
-        ...VideoPlayerService
-        ...FullWidthImageService
-        ...FullWidthImageTextService
-        ...IconTextBoxesService
-        ...VerticalSliderService
-        ...MediaBlocksService
-        ...FeaturedProjectsCarouselService
-        ...QuotesService
-        ...ResultsService
-        ...ResultsMixService
-        ...LogoCloudService
-        ...PostCardsService
-        ...ProjectPortfolioService 
         ...TwoColImageTextProject
         ...TwoColBreakoutImageHeadingProject
         ...TwoColTextQuoteProject
