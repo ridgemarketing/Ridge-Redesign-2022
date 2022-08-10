@@ -9,20 +9,20 @@ const ProjectHeader = (props) => {
     const content       = props.content.projectHeader;
     const info          = props.info;
 
-    const logo          = (info.logo.localFile.ext === `.svg`) 
-    ? <img className={''} src={info.logo.sourceUrl} alt={``} />
+    const logo          = (info.logos.light.localFile.ext === `.svg`) 
+    ? <img className={''} src={info.logos.light.sourceUrl} alt={info.logos.light.altText} />
     : <GatsbyImage 
-        image={info.logo.localFile.childImageSharp.gatsbyImageData} 
-        alt={''} 
-        className={ `` } 
+        image={info.logos.light.localFile.childImageSharp.gatsbyImageData} 
+        alt={info.logos.light.altText} 
+        className={``} 
         objectFit={'contain'}/> ;
 
     const bgImage       = content.backgroundImage ? getImage(content.backgroundImage.localFile) : false;
-    const featuredImage = content.featuredImage ? getImage(content.featuredImage.localFile) : false;
-    const imageOverhang = content.imageOverhang ? getImage(content.imageOverhang.localFile) : false;
+    const featuredImage = content.featuredImage   ? getImage(content.featuredImage.localFile)   : false;
+    const imageOverhang = content.imageOverhang   ? getImage(content.imageOverhang.localFile)   : false;
 
-    const heading   = Parser(content.heading);
-    const body      = Parser(content.body);
+    const heading       = Parser(content.heading);
+    const body          = Parser(content.body);
     
     return (
         <section className={`relative text-white`}>
@@ -74,9 +74,7 @@ const ProjectHeader = (props) => {
                 </div>
             </Container>
             <Container size={`slim`}>
-                {imageOverhang && 
-                        <GatsbyImage className={``} image={imageOverhang} />
-                }
+                {imageOverhang &&  <GatsbyImage className={``} image={imageOverhang} /> }
             </Container>
         </section>
     )
@@ -122,18 +120,22 @@ export const query = graphql`
       }
     projectInformation {
         accentColor
+
+        logos {
+          light {
+            localFile {
+              ext
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+            sourceUrl
+            altText
+          }
+        }
         
         websites {
             url
-        }
-        logo {
-            sourceUrl
-            localFile {
-                ext
-                childImageSharp {
-                    gatsbyImageData
-                }
-            }
         }
     }
   }

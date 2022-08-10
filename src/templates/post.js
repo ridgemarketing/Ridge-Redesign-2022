@@ -27,7 +27,7 @@ const WpPost = ({ data }) =>{
   return (
     <> 
     <Header/>
-    <main>
+    <main id="mainContent" tabIndex={0} aria-label="Main Content">
       <hgroup className="container mt-20">
         <h1 className={theme.text.H1_STD + 'mb-9'}> {content.title} </h1>
         <span className={theme.text.P_STD + 'inline'}> By <address className={theme.text.P_BLD + 'inline not-italic'}>{content.author.node.name}</address> on <time pubdate dateTime={content.date} className="inline not-italic">{content.date}</time></span>

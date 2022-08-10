@@ -1,9 +1,8 @@
-import React, {useRef, useState} from "react"
+import React, { useRef, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { theme } from '../../static/theme'
 import { Link } from "gatsby" 
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { AnchorLink } from "gatsby-plugin-anchor-links"
 
 const Header = (props) => {
 
@@ -21,71 +20,71 @@ const Header = (props) => {
     }
 
     const headerMenu = useStaticQuery(graphql`
-    query GetHeaderMenu {
-        allWpMenu(filter: {name: {eq: "Primary"}}) {
-          nodes {
-            menuItems {
-              nodes {
-                url
-                label
-                parentId
-                childItems {
-                  nodes {
+        query GetHeaderMenu {
+            allWpMenu(filter: {name: {eq: "Primary"}}) {
+            nodes {
+                menuItems {
+                nodes {
                     url
                     label
                     parentId
-                    acfWpMenu {
-                        icon {
-                            sourceUrl
-                          localFile {
-                            ext
-                            childImageSharp {
-                              gatsbyImageData
-                            }
-                          }
-                        }
-                      }
-                  }
-                }
-              }
-            }
-          }
-        }
-
-        allWp {
-                nodes {
-                globalSettings {
-                    globalSettings {
-
-                        logos {
-                            light {
+                    childItems {
+                    nodes {
+                        url
+                        label
+                        parentId
+                        acfWpMenu {
+                            icon {
+                                sourceUrl
                             localFile {
                                 ext
                                 childImageSharp {
                                 gatsbyImageData
                                 }
                             }
-                            altText
-                            sourceUrl
                             }
+                        }
+                    }
+                    }
+                }
+                }
+            }
+            }
 
-                            dark {
+            allWp {
+                    nodes {
+                    globalSettings {
+                        globalSettings {
+
+                            logos {
+                                light {
                                 localFile {
                                     ext
                                     childImageSharp {
                                     gatsbyImageData
                                     }
                                 }
+                                altText
                                 sourceUrl
                                 }
 
+                                dark {
+                                    localFile {
+                                        ext
+                                        childImageSharp {
+                                        gatsbyImageData
+                                        }
+                                    }
+                                    sourceUrl
+                                    }
+
+                            }
                         }
                     }
                 }
             }
-        }
 
-      }
+        }
     `);
     const content = headerMenu.allWpMenu.nodes[0].menuItems.nodes;
     const checkImg = function(img, classes){
@@ -144,10 +143,16 @@ const Header = (props) => {
         }
     }
 
+    const focusMain = () =>{
+        if(document.getElementById('mainContent')){
+            document.getElementById('mainContent').focus();
+        }
+    }
+
     return(
         <>
         <header className={`${textColor} w-full sticky h-[100px] z-50 top-0 flex items-center`} style={{background:customBkg}}>
-            <AnchorLink to={`#pastNavigation`} className="bg-rm-white text-rm-black p-5 font-basic-sans text-18px absolute -top-96 -left-96 focus:left-0 focus:top-0 focus:underline z-50" title="skip main navigation">Skip Main Navigation</AnchorLink>
+            <button type="button" onClick={()=>focusMain()} onKeyDown={()=>focusMain()} className="bg-rm-white text-rm-black p-5 font-basic-sans text-18px absolute -top-96 -left-96 focus:left-0 focus:top-0 focus:underline z-50" title="skip main navigation">Skip Main Navigation</button>
             <section className="container">
                 <nav>
                     <ul key={`MasterUL${Math.random()}`} className="flex items-center justify-between">

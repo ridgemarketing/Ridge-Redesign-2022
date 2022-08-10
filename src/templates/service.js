@@ -32,7 +32,7 @@ const WpService = ({ data }) =>{
   return (
     <>
     <Header color={`white`}/>
-    <main id="main">
+    <main id="mainContent" tabIndex={0} aria-label="Main Content">
         <Section settings={settings}>
           <Container>
             {content.eyebrow &&

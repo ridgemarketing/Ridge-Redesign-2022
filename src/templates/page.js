@@ -20,7 +20,7 @@ const WpPage = ({ data }) =>{
     return (
       <>
       <Header/>
-      <main id="pastNavigation">
+      <main id="mainContent" tabIndex={0} aria-label="Main Content">
       {content.heading &&
         <Section settings={settings}>
           <Container>

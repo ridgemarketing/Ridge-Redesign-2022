@@ -64,7 +64,7 @@ const Blog = () => {
   return ( 
    <>
    <Header color={'white'}/>
-   <main>
+   <main id="mainContent" tabIndex={0} aria-label="Main Content">
    <div className="w-full bg-cover bg-center bg-no-repeat" style={{backgroundImage:'url("https://rm2022dev.wpengine.com/wp-content/uploads/2022/07/blog-hero.png")'}}>
       <hgroup className="container">
         <h1 className={theme.text.H1_STD + 'text-rm-white text-left py-12'}>

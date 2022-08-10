@@ -10,7 +10,7 @@ const WpProject = ({ data }) =>{
   return (
     <>
     <Header/>
-    <main>
+    <main id="mainContent" tabIndex={0} aria-label="Main Content">
       {data.wpProject && 
         <div>
           <ProjectHeader content={data.wpProject.projectHeader} info={data.wpProject.projectInformation} />
