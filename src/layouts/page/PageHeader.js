@@ -51,6 +51,7 @@ export const query = graphql`
       pageHeader {
         layoutContent {
           backgroundImage {
+            title
             localFile {
               childImageSharp {
                 gatsbyImageData

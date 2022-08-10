@@ -16,8 +16,8 @@ const TextBlock = (props) => {
     } else if (content.alignment === 'right') {
       buttonAlignment = ' justify-end'
     }
-    const body = Parser(content.body);
-    const heading = Parser(content.heading);
+    const body = content.body && Parser(content.body);
+    const heading = content.heading && Parser(content.heading);
 
     return (
         <Section settings={settings}>

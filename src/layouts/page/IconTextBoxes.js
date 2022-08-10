@@ -49,7 +49,7 @@ const IconTextBoxes = (props) => {
               </h3>
               }
               {content.bottomBody &&
-              <p className={ `text-center ${textColor}`}>
+              <p className={ `mt-16 text-center ${textColor}`}>
                   <span dangerouslySetInnerHTML={{__html: Parser(content.bottomBody)}} className={theme.text.P_STD}></span>
               </p>
               }

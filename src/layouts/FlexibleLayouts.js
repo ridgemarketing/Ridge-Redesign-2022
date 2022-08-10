@@ -7,7 +7,7 @@ const FlexibleLayouts = (props) => {
   let layouts = props.flexibleLayouts.layouts;
   const layoutsArray = [];
 
-  layouts.map((res) => {
+  layouts && layouts.map((res) => {
       if (Object.keys(res).length > 0) {
         let subString = res.fieldGroupName.split('_').pop();
         let layoutArrTitle = `layout${subString}`;
@@ -130,4 +130,3 @@ export const projectQuery = graphql`
     }
   }
 `
-

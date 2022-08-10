@@ -80,6 +80,8 @@ const ProjectPortfolio = (props) => {
   const content   = props.layoutData.layoutContent;
   const settings  = props.layoutData.layoutSettings;
 
+  console.log(content);
+
   const bgImage   = content.settings.backgroundImage ? getImage(content.settings.backgroundImage.localFile) : false
   const images    = content.images
   let textAlign   = `text-left`
@@ -112,7 +114,10 @@ const ProjectPortfolio = (props) => {
       <Section classes={`relative`} settings={settings}>
         <Container>
             {content.heading &&
-              <h2 className={`mb-10 ${textAlign} ${theme.text.H2}`}>{content.heading}</h2>
+              <h2 className={`mb-8 ${textAlign} ${theme.text.H2}`}>{content.heading}</h2>
+            }
+            {content.body && 
+              <p className={`mb-12 ${theme.text.P_STD}`}>{content.body}</p>
             }
         </Container>
         <div className={`relative`}>
@@ -205,6 +210,7 @@ export const serviceQuery = graphql`
         layoutProjectPortfolio {
           layoutContent {
             heading
+            body
             images {
               desktop {
                 localFile {
@@ -262,6 +268,7 @@ export const projectQuery = graphql`
         layoutProjectPortfolio {
           layoutContent {
             heading
+            body
             images {
               desktop {
                 localFile {

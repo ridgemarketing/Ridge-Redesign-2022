@@ -57,7 +57,6 @@ const PostCards = (props) => {
         }
       }
     }
-    console.log('postcards', taxonomy, posts, cards);
 return (
   <>
     <Section settings={settings}>

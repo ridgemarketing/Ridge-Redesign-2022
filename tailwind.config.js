@@ -13,6 +13,7 @@ module.exports = {
     'pt-24',
     '-mb-12',
     'md:-mb-32',
+    'overflow-hidden',
     '-lg:after:transition-all', 
     '-lg:after:ease-out',
     '-lg:after:inline-block',

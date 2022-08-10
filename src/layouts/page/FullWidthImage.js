@@ -5,7 +5,6 @@ import { graphql } from "gatsby"
 import { theme } from '../../static/theme'
 
 const FullWidthImage = (props) => {
-    console.log('image layout', props);
     const content       = props.layoutData.layoutContent;
     const settings      = props.layoutData.layoutSettings;
     const desktopImage  = content.image.localFile.childImageSharp.gatsbyImageData;
@@ -51,8 +50,8 @@ const FullWidthImage = (props) => {
     return (
       <>
         <Section settings={settings}>
-            <Container>
-                <div ref={overlapImage} className={`max-w-[1120px] mx-auto ${overlapImageClass}`}> 
+            <Container container={settings.containerWidth}>
+                <div ref={overlapImage} className={`mx-auto ${overlapImageClass}`}> 
                     {image}
                 </div>
             </Container>
@@ -91,6 +90,7 @@ export const query = graphql`
             }
           }
           layoutSettings {
+            containerWidth
             padding {
               bottom
               top
@@ -130,6 +130,7 @@ export const serviceQuery = graphql`
             }
           }
           layoutSettings {
+            containerWidth
             padding {
               bottom
               top
@@ -168,6 +169,7 @@ export const projectQuery = graphql`
             }
           }
           layoutSettings {
+            containerWidth
             padding {
               bottom
               top
