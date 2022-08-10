@@ -16,7 +16,7 @@ const QuarterImageText = (props) => {
     const body = Parser(content.body);
 
     let order;
-    order = (content.imagePosition) == 'left' ? '' : 'flex-reverse' ;
+    order = (content.imagePosition) === 'left' ? '' : 'flex-reverse' ;
 
     return (
         <Section settings={settings}>

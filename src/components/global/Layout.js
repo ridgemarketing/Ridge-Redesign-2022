@@ -1,5 +1,7 @@
-import React, { useState, useEffect} from "react"
+import React, { useState } from "react"
 import { theme, ThemeContext } from "../../static/theme"
+import Header from "./Header"
+import Footer from "./Footer"
 
 export default function Layout({ children }) {
 
@@ -26,9 +28,11 @@ export default function Layout({ children }) {
             updateAccentFunction: updateAccent
         }}>
              <style>{globalStyles}</style>
-            <div>
+             <Header color={`white`}/>
+             <main id="mainContent" tabIndex={0} aria-label="Main Content">
                 {children}
-            </div>
+             </main>
+             <Footer/>
         </ThemeContext.Provider>
     )
   }

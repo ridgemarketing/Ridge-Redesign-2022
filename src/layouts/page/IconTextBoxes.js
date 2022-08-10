@@ -12,10 +12,10 @@ const IconTextBoxes = (props) => {
   let textColor = 'text-black';
   const bottomHeadingMargin = (content.settings.type === 'stack') ? 'lg:mt-20' : '';
 
-  if (settings.backgroundColor == 'black') {
+  if (settings.backgroundColor === 'black') {
     textColor = 'text-white';
   }
-    const cols = content.settings.columns == 3 ? 'xl:grid-cols-3' : '';
+    const cols = content.settings.columns === 3 ? 'xl:grid-cols-3' : '';
     const wrapperClasses = (content.settings.type === 'stack') ? `grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} gap-8 max-w-[1100px] mx-auto` : `flex w-full flex-wrap justify-between threeColIconsText`;
 
   return (
@@ -38,7 +38,7 @@ const IconTextBoxes = (props) => {
 
           <div className={wrapperClasses}>
               {content.boxes.map((item, idx) => {
-                  return (content.settings.type === 'stack') ? <IconTextBoxStack idx={idx+1} color={textColor} content={item} iconType={content.settings.feature}/> : <IconTextBoxFlex iconType={content.settings.feature} idx={idx+1} color={textColor} columns={content.settings.columns} content={item}/>;
+                  return (content.settings.type === 'stack') ? <IconTextBoxStack key={`iconTextBoxStack${idx}${Math.random()}`} idx={idx+1} color={textColor} content={item} iconType={content.settings.feature}/> : <IconTextBoxFlex key={`iconTextBoxFlex${idx}${Math.random()}`} iconType={content.settings.feature} idx={idx+1} color={textColor} columns={content.settings.columns} content={item}/>;
               })}
           </div>
 
@@ -91,6 +91,7 @@ export const pageQuery = graphql`
                     gatsbyImageData
                   }
                 }
+                altText
                 sourceUrl
               }
             }
@@ -153,6 +154,7 @@ export const serviceQuery = graphql`
                     gatsbyImageData
                   }
                 }
+                altText
                 sourceUrl
               }
             }
@@ -215,6 +217,7 @@ export const projectQuery = graphql`
                     gatsbyImageData
                   }
                 }
+                altText
                 sourceUrl
               }
             }

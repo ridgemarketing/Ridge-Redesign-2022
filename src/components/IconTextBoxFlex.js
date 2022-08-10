@@ -7,6 +7,15 @@ import Parser from "./global/Parser"
 const IconTextBoxFlex = (props) => {
     const content = props.content;
 
+    const [height, setHeight] = useState(0);
+    const [iconHeight, setIconHeight] = useState(0);
+    const [customTop, setCustomTop] = useState('0px');
+    const [customBottom, setCustomBottom] = useState('0px');
+    const [windowWidth, setWindowWidth] = useState(0);
+
+    const iconElement = useRef();
+    const ref = useRef();
+
     let component = ''
 
     let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
@@ -15,10 +24,10 @@ const IconTextBoxFlex = (props) => {
 
     if (props.iconType === `icon` || props.iconType === `icon-number`) {
         var image = (content.image.localFile.ext === `.svg`) 
-        ? <img className={''} src={content.image.sourceUrl} />
+        ? <img className={''} src={content.image.sourceUrl} alt={content.image.altText} />
         : <GatsbyImage 
             image={content.image.localFile.childImageSharp.gatsbyImageData} 
-            alt={''} 
+            alt={content.image.altText} 
             className={ `flex self-start w-auto h-[55px]` } 
             objectFit={'contain'}/> ;
     }
@@ -52,14 +61,6 @@ const IconTextBoxFlex = (props) => {
         wrapperClasses += ` xl:w-[31%]`;
     }
 
-    const [height, setHeight] = useState(0);
-    const [iconHeight, setIconHeight] = useState(0);
-    const [customTop, setCustomTop] = useState('0px');
-    const [customBottom, setCustomBottom] = useState('0px');
-    const [windowWidth, setWindowWidth] = useState(0);
-
-    const iconElement = useRef();
-    const ref = useRef();
 
     useEffect(() => {
         function handleResize() {
@@ -83,7 +84,7 @@ const IconTextBoxFlex = (props) => {
     }, [height, iconHeight, windowWidth])
 
     return(
-            <div className={wrapperClasses}>
+            <div className={wrapperClasses} key={`iconTextBoxFlex-item${Math.random()}`}>
                 <div ref={iconElement}>
                     {component}
                 </div>
@@ -101,7 +102,7 @@ const IconTextBoxFlex = (props) => {
                         <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={ `${theme.text['FOOTER']}  ${props.color}` }></p>
                     </div>
                     <div className={ marginClasses + `mt-4`}>
-                    <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} text-[#A9CF38]`} />
+                        <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} text-[#A9CF38]`} />
                     </div>
                 </div>
             </div>

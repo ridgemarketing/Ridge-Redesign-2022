@@ -1,5 +1,4 @@
 import React from "react"
-import { theme } from '../../static/theme'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Player } from '@lottiefiles/react-lottie-player'
 

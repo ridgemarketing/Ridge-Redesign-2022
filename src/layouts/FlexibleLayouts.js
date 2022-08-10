@@ -21,7 +21,7 @@ const FlexibleLayouts = (props) => {
         }
         
         const LayoutToRender = Layouts[subString]
-        layoutsArray.push(<LayoutToRender layoutData={layoutProps} />);
+        return(layoutsArray.push(<LayoutToRender layoutData={layoutProps} />));
     }
   });
   return (
@@ -41,8 +41,7 @@ export const pageQuery = graphql`
         ...TwoColBreakoutImageTextPage
         ...TwoColBreakoutImageHeadingPage
         ...TwoColTextQuotePage
-        ...TwoColProjectsGridPage
-        ...ThreeColProjectBlocksPage
+        ...ProjectBlocksPage
         ...TextBlockPage
         ...VideoPlayerPage
         ...FullWidthImagePage
@@ -72,8 +71,7 @@ export const serviceQuery = graphql`
         ...TwoColBreakoutImageTextService
         ...TwoColBreakoutImageHeadingService 
         ...TwoColTextQuoteService
-        ...TwoColProjectsGridService
-        ...ThreeColProjectBlocksService
+        ...ProjectBlocksService
         ...TextBlockService
         ...VideoPlayerService
         ...FullWidthImageService
@@ -100,19 +98,27 @@ export const projectQuery = graphql`
     flexibleLayouts {
       layouts {
         ...TwoColImageTextProject
+        ...TwoColBreakoutImageTextProject
         ...TwoColBreakoutImageHeadingProject
         ...TwoColTextQuoteProject
-        ...TwoColProjectsGridProject
-        ...ThreeColProjectBlocksProject
-        ...TwoColBreakoutImageTextProject 
+        ...ProjectBlocksProject
+        ...VideoPlayerProject
+        ...FullWidthImageProject
+        ...FullWidthImageTextProject
+        ...IconTextBoxesProject
+        ...MediaBlocksProject
+        ...QuotesProject
+        ...ResultsProject
+        ...ResultsMixProject
+        ...LogoCloudProject
+        ...PostCardsProject
+        ...ProjectPortfolioProject
         ...TextBlockProject
         ...VideoPlayerProject
         ...FullWidthImageProject
         ...FullWidthImageTextProject
         ...IconTextBoxesProject
-        ...VerticalSliderProject
         ...MediaBlocksProject
-        ...FeaturedProjectsCarouselProject
         ...QuotesProject
         ...ResultsProject
         ...ResultsMixProject

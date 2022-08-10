@@ -3,14 +3,14 @@ import { graphql } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { AnchorLink } from "gatsby-plugin-anchor-links";
-import { Player, Controls } from '@lottiefiles/react-lottie-player';
+import { Player } from '@lottiefiles/react-lottie-player';
 
 const VerticalSlider = (props) => {
 
   const content               = props.layoutData.layoutContent;
   const settings              = props.layoutData.layoutSettings;
 
-  console.log('vertical slider');
+  //console.log('vertical slider');
   const textColor             = settings.backgroundColor === 'black' ? 'text-rm-white' : 'text-rm-black'; 
   const backgroundColor       = settings.backgroundColor === 'black' ? 'bg-rm-black' : 'bg-rm-white';
 
@@ -30,54 +30,52 @@ const VerticalSlider = (props) => {
     scrollPoints.push(totalHeight);
     totalHeight = totalHeight + slideHeight;
   }
-   
-  let current = 0;
   
   useEffect(() => {
+    let current = 0;
+    let observer = new IntersectionObserver( (entries) => {
+        entries.forEach ( entry => {
+            //console.log(entry);
+            if( entry.isIntersecting ){
+              if(firstSlide.current.offsetTop < totalHeight ){
+  
+                onscroll = () => {
+                  for( let i = 0; scrollPoints.length > i; i++ ){
+                    if ( firstSlide.current.offsetTop > scrollPoints[i] ){
 
-      let observer = new IntersectionObserver( (entries) => {
-          entries.forEach ( entry => {
-              console.log(entry);
-              if( entry.isIntersecting ){
-                if(firstSlide.current.offsetTop < totalHeight ){
-    
-                  onscroll = () => {
-                    for( let i = 0; scrollPoints.length > i; i++ ){
-                      if ( firstSlide.current.offsetTop > scrollPoints[i] ){
+                      //console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
 
-                        console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
-
-                        setVslide(i);
-                        current = i;
-    
-                        progressBar.current[i].style.height = 200 / ( vslides.length  + 1 ) + '%';
-                        progressBar.current[i].style.backgroundColor = '#FFFFFF';
-                        progressBar.current[i].children[0].style.backgroundColor = '#A9CF38';
-                        progressBar.current[i].children[0].style.height = ( ( firstSlide.current.offsetTop - scrollPoints[i] ) / slideHeight ) * 100 + '%';
-                        progressBar.current[i].parentElement.setAttribute('aria-valuenow', Math.round( (firstSlide.current.offsetTop / totalHeight) * 100 ) );
-                      }
+                      setVslide(i);
+                      current = i;
+  
+                      progressBar.current[i].style.height = 200 / ( vslides.length  + 1 ) + '%';
+                      progressBar.current[i].style.backgroundColor = '#FFFFFF';
+                      progressBar.current[i].children[0].style.backgroundColor = '#A9CF38';
+                      progressBar.current[i].children[0].style.height = ( ( firstSlide.current.offsetTop - scrollPoints[i] ) / slideHeight ) * 100 + '%';
+                      progressBar.current[i].parentElement.setAttribute('aria-valuenow', Math.round( (firstSlide.current.offsetTop / totalHeight) * 100 ) );
                     }
-                    for( let z = 0; scrollPoints.length > z; z++){
-                      if( z === current ){}else{
-                        progressBar.current[z].style.height = 100 / ( vslides.length  + 1 ) + '%';
-                        progressBar.current[z].children[0].style.backgroundColor = '#FFFFFF';
-                        progressBar.current[z].style.backgroundColor = '#FFFFFF';
-                      }
+                  }
+                  for( let z = 0; scrollPoints.length > z; z++){
+                    if( z === current ){}else{
+                      progressBar.current[z].style.height = 100 / ( vslides.length  + 1 ) + '%';
+                      progressBar.current[z].children[0].style.backgroundColor = '#FFFFFF';
+                      progressBar.current[z].style.backgroundColor = '#FFFFFF';
                     }
                   }
                 }
-                observer.unobserve(innerContainer.current);
               }
-            }) 
-          },
-        {
-          threshold: [0.1, 1]
-        }
-      );
-      observer.observe(innerContainer.current);
-      //observer.unobserve(outerContainer.current);
-  }, []);
-
+              observer.unobserve(innerContainer.current);
+            }
+          }) 
+        },
+      {
+        threshold: [0.1, 1] 
+      }
+    );
+    observer.observe(innerContainer.current);
+    //observer.unobserve(outerContainer.current);
+  })
+ 
     const skipTo = (location) => {
       window.scrollBy(0, (scrollPoints[location] + slideHeight) - firstSlide.current.offsetTop );
     }
@@ -107,11 +105,11 @@ const VerticalSlider = (props) => {
                 <div className={`h-[100%] md:h-[70%]`}>
                   <div role={`progressbar`} aria-valuenow={0} aria-labelledby={`slides-main`} className={`h-full w-[7px]`}>
                     { vslides.map( (key, index)  => (
-                        <div ref={ el => progressBar.current[ index ] = el } aria-label="slider tabs" className={`cursor-pointer overflow-hidden border-b-8 last:border-b-0 border-rm-black bg-rm-white transition-all ease-out`}  key={ 'slides' + index } style={ { height: 100 / ( vslides.length  + 1 )  + '%' } }  onClick={() => skipTo(index)}>
-                            <div className={`w-full h-0 transition-all ease-out`}></div>
+                        <div ref={ el => progressBar.current[ index ] = el } aria-label="slider tabs" role="navigation" tabIndex={0} className="w-[5px] cursor-pointer overflow-hidden border-b-8 last:border-b-0 border-rm-black bg-rm-white transition-all ease-out"  key={ 'slides' + index } style={ { height: 100 / ( vslides.length  + 1 )  + '%' } }  onClick={() => skipTo(index)} onKeyDown={() => skipTo(index)}>
+                            <div className="w-full h-0 transition-all ease-out"></div>
                         </div>
                     ) ) } 
-                  </div>
+                  </div> 
 
                   <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `hidden md:flex transition-all ease-out ` + theme.text.H4_LTE + theme.text_links.BASE_STYLING + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_GREY + ` items-center text-rm-grey h-[30%] hover:text-rm-white capitalize`}> Skip </AnchorLink>
                 </div>
