@@ -20,7 +20,6 @@ const WpProject = ({ data, pageContext }) => {
             <FlexibleLayouts flexibleLayouts={data.wpProject.flexibleLayouts} />
         }
         <PostNav links={links} postType={`project`} />
-      <Footer/>
     </Layout>
   )
 }

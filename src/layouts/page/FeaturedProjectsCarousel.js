@@ -6,7 +6,6 @@ import { graphql } from "gatsby"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
-import Buttons from "../../components/global/Buttons"
 
 const FeaturedProjectsCarousel = (props) => {
 

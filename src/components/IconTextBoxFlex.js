@@ -7,6 +7,15 @@ import Parser from "./global/Parser"
 const IconTextBoxFlex = (props) => {
     const content = props.content;
 
+    const [height, setHeight] = useState(0);
+    const [iconHeight, setIconHeight] = useState(0);
+    const [customTop, setCustomTop] = useState('0px');
+    const [customBottom, setCustomBottom] = useState('0px');
+    const [windowWidth, setWindowWidth] = useState(0);
+
+    const iconElement = useRef();
+    const ref = useRef();
+
     let component = ''
 
     let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
@@ -52,14 +61,6 @@ const IconTextBoxFlex = (props) => {
         wrapperClasses += ` xl:w-[31%]`;
     }
 
-    const [height, setHeight] = useState(0);
-    const [iconHeight, setIconHeight] = useState(0);
-    const [customTop, setCustomTop] = useState('0px');
-    const [customBottom, setCustomBottom] = useState('0px');
-    const [windowWidth, setWindowWidth] = useState(0);
-
-    const iconElement = useRef();
-    const ref = useRef();
 
     useEffect(() => {
         function handleResize() {

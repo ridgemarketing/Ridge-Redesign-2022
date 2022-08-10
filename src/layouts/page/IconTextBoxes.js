@@ -15,7 +15,7 @@ const IconTextBoxes = (props) => {
   if (settings.backgroundColor === 'black') {
     textColor = 'text-white';
   }
-    const cols = content.settings.columns == 3 ? 'xl:grid-cols-3' : '';
+    const cols = content.settings.columns === 3 ? 'xl:grid-cols-3' : '';
     const wrapperClasses = (content.settings.type === 'stack') ? `grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} gap-8 max-w-[1100px] mx-auto` : `flex w-full flex-wrap justify-between threeColIconsText`;
 
   return (

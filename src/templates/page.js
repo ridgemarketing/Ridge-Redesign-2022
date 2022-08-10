@@ -1,9 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import { Section, Container } from "../components/global/Wrappers"
-import { theme } from '../static/theme.js'
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
-import Parser from "../components/global/Parser"
 import Blog from "./blog"
 import HomeHero from "../layouts/page/HomeHero"
 import PageHeader from "../layouts/page/PageHeader"
