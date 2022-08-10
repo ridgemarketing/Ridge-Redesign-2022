@@ -185,3 +185,47 @@ export const serviceQuery = graphql`
       }
   }
 `
+
+export const projectQuery = graphql`
+  fragment FeaturedProjectsCarouselProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_FeaturedProjectsCarousel {
+        fieldGroupName
+        layoutFeaturedProjectsCarousel {
+          layoutContent {
+            heading
+            featuredProjects {
+                caption
+                project {
+                    ... on WpProject {
+                      id
+                      title
+                      link
+                      projectInformation {
+                        images {
+                          carouselFeature {
+                            localFile {
+                              childImageSharp {
+                                gatsbyImageData
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+              }
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

@@ -3,8 +3,7 @@ import { graphql } from "gatsby"
 import { theme } from "../static/theme"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link }from "gatsby"
-import Header from "../components/global/Header"
-import Footer from "../components/global/Footer"
+import Layout from "../components/global/Layout"
 
 const WpPost = ({ data }) =>{
     const content     = data.wpPost;
@@ -25,9 +24,7 @@ const WpPost = ({ data }) =>{
     }
     
   return (
-    <> 
-    <Header/>
-    <main id="mainContent" tabIndex={0} aria-label="Main Content">
+    <Layout>
       <hgroup className="container mt-20">
         <h1 className={theme.text.H1_STD + 'mb-9'}> {content.title} </h1>
         <span className={theme.text.P_STD + 'inline'}> By <address className={theme.text.P_BLD + 'inline not-italic'}>{content.author.node.name}</address> on <time pubdate dateTime={content.date} className="inline not-italic">{content.date}</time></span>
@@ -64,9 +61,7 @@ const WpPost = ({ data }) =>{
             </div>
         </div>
       </nav>
-      </main>
-      <Footer/>
-    </>
+    </Layout>
   )
 }
 export default WpPost;

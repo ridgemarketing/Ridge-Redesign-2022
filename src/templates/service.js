@@ -7,8 +7,7 @@ import { theme } from '../static/theme'
 import Buttons from '../components/global/Buttons'
 import { GatsbyImage } from 'gatsby-plugin-image'
 
-import Header from "../components/global/Header"
-import Footer from "../components/global/Footer"
+import Layout from "../components/global/Layout"
 
 const WpService = ({ data }) =>{
     
@@ -30,34 +29,34 @@ const WpService = ({ data }) =>{
   }
  
   return (
-    <>
-    <Header color={`white`}/>
-    <main id="mainContent" tabIndex={0} aria-label="Main Content">
-        <Section settings={settings}>
-          <Container>
-            {content.eyebrow &&
-              <h1 className={theme.text.H4 + 'block mb-4'}>
-                {content.eyebrow}
-              </h1>
-            }
-            {content.heading.green && content.heading.black && 
-              <h2 className={theme.text.HERO + 'mb-9'}>
-                  <span className="text-rm-green block">
-                    {content.heading.green}
-                  </span>
-                  <span className="text-rm-black block">
-                    {content.heading.black}
-                  </span>
-              </h2>
-            }
-            {content.bodyContent && content.bodyContent.map((key) =>{
-              const textSize = key.textSize === 'large' ? 'H4_LTE' : 'P_STD';  
-              return(
-                <p className={theme.text[textSize] + 'mb-9' } key={key.body}>
-                  {key.body} 
-                </p>
-              )
-            })}
+    <Layout>
+      <Section settings={settings}>
+        <Container>
+          {content.eyebrow &&
+            <h1 className={theme.text.H4 + 'block mb-4'}>
+              {content.eyebrow}
+            </h1>
+          }
+          {content.heading.green && content.heading.black && 
+            <h2 className={theme.text.HERO + 'mb-9'}>
+                <span className="text-rm-green">
+                  {content.heading.green}
+                </span>
+                <span className="text-rm-black">
+                  {content.heading.black}
+                </span>
+            </h2>
+          }
+          {content.bodyContent && content.bodyContent.map((key) =>{
+            const textSize = key.textSize === 'large' ? 'H4_LTE' : 'P_STD';  
+            return(
+                <> 
+                  <p className={theme.text[textSize] + 'mb-9' } key={key.body}>
+                    {key.body} 
+                  </p>
+                </>
+            )
+          })}
           
             <div className={visibility + ` lg:w-3/4`}>
               {floatP.map((key) => {
@@ -83,12 +82,10 @@ const WpService = ({ data }) =>{
               }
           </Container>
         </Section>
-        <div>
-            <FlexibleLayouts flexibleLayouts={data.wpService.flexibleLayouts} />
-        </div>
-      </main>
-      <Footer/>
-    </>
+        {data.wpService.flexibleLayouts &&
+          <FlexibleLayouts flexibleLayouts={data.wpService.flexibleLayouts} />
+        }
+    </Layout>
   )
 }
 export default WpService;

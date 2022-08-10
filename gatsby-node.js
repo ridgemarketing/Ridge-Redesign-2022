@@ -8,7 +8,7 @@ exports.createPages = async ({ graphql, actions }) => {
       allWpPost:    { nodes: allPosts },
       allWpPage:    { nodes: allPages },
       allWpService: { nodes: allServices },
-      allWpProject: { nodes: allProjects }
+      allWpProject: { edges: allProjects }
     },
   } = await graphql(`
     query {
@@ -31,9 +31,19 @@ exports.createPages = async ({ graphql, actions }) => {
         }
       }
       allWpProject {
-        nodes {
-          id
-          uri
+        edges {
+          node {
+            id
+            uri
+          }
+          next {
+            id
+            uri
+          }
+          previous {
+            id
+            uri
+          }
         }
       }
     }
@@ -97,7 +107,7 @@ exports.createPages = async ({ graphql, actions }) => {
   allProjects.forEach(project => {
     createPage({
       // will be the url for the page
-      path: project.uri,
+      path: project.node.uri,
 
       // specify the component template of your choice
       component: slash(projectTemplate),
@@ -106,7 +116,9 @@ exports.createPages = async ({ graphql, actions }) => {
       // In the ^template's GraphQL query, 'id' will be available
       // as a GraphQL variable to query for this post's data.
       context: {
-        id: project.id,
+        id: project.node.id,
+        previous: project.previous ? project.previous.uri : allProjects[allProjects.length - 1].node.uri,
+        next: project.next ? project.next.uri : allProjects[0].node.uri
       },
     })
   })

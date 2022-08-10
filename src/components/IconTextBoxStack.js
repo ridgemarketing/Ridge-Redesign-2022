@@ -27,9 +27,21 @@ const IconTextBoxStack = (props) => {
     if (iconType === 'number') {
         component = 
         <div className={"mb-5 text-center md:text-left lg:mx-0"}>
-            <span className={`${theme.text.CIRCLE_NUM} text-rm-green border-rm-green`}>{props.idx}</span>
+            <span className={`${theme.text.CIRCLE_NUM}  w-[65px] h-[65px] text-rm-green border-rm-green`}>{props.idx}</span>
         </div> 
-    }                   
+    }
+    
+    if (props.iconType === `icon-number`) {
+        component = 
+        <div className={`flex items-start`}>
+            <div className={`w-[75px]`}>
+                {image}
+            </div>
+            <div className={"text-center md:text-left ml-6"}>
+                <span className={`${theme.text.CIRCLE_NUM} h-[55px] w-[55px] ${props.textColor === `text-white` ? `text-white border-white` : `text-black border-black`}`}>{props.idx}</span>
+            </div> 
+        </div>
+    }
             return (
             <div className={'py-4'} key={`iconTextBoxFlex-item${Math.random()}`}>
                 {component}

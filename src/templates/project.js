@@ -2,32 +2,29 @@ import React from "react"
 import { graphql } from "gatsby"
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import ProjectHeader from "../layouts/page/ProjectHeader"
+import PostNav from "../components/PostNav"
+import Layout from "../components/global/Layout"
 
-import Header from "../components/global/Header"
-import Footer from "../components/global/Footer"
-
-const WpProject = ({ data }) =>{
+const WpProject = ({ data, pageContext }) => {
+  const project = pageContext
+  const links = {
+    prev: project.previous,
+    next: project.next
+  }
   return (
-    <>
-    <Header/>
-    <main id="mainContent" tabIndex={0} aria-label="Main Content">
-      {data.wpProject && 
-        <div>
-          <ProjectHeader content={data.wpProject.projectHeader} info={data.wpProject.projectInformation} />
-        </div>
-      }
-      {data.wpProject.flexibleLayouts && 
-        <div>
+    <Layout>
+        {data.wpProject.projectHeader && 
+            <ProjectHeader content={data.wpProject.projectHeader} info={data.wpProject.projectInformation} />
+        }
+        {data.wpProject.flexibleLayouts && 
             <FlexibleLayouts flexibleLayouts={data.wpProject.flexibleLayouts} />
-        </div>
-      }
-    </main>
-    <Footer/>
-    </>
+        }
+        <PostNav links={links} postType={`project`} />
+      <Footer/>
+    </Layout>
   )
 }
 export default WpProject;
-
 
 export const query = graphql`
   query ProjectById( $id: String ){

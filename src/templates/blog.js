@@ -4,8 +4,7 @@ import { theme } from '../static/theme'
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
-import Header from "../components/global/Header"
-import Footer from "../components/global/Footer"
+import Layout from "../components/global/Layout"
 
 const Blog = () => {
 
@@ -62,9 +61,7 @@ const Blog = () => {
   }
 
   return ( 
-   <>
-   <Header color={'white'}/>
-   <main id="mainContent" tabIndex={0} aria-label="Main Content">
+   <Layout>
    <div className="w-full bg-cover bg-center bg-no-repeat" style={{backgroundImage:'url("https://rm2022dev.wpengine.com/wp-content/uploads/2022/07/blog-hero.png")'}}>
       <hgroup className="container">
         <h1 className={theme.text.H1_STD + 'text-rm-white text-left py-12'}>
@@ -116,9 +113,7 @@ const Blog = () => {
 
       </div> 
     </section>
-    </main>
-    <Footer/>
-   </> 
+   </Layout> 
   )
 }
 export default Blog
