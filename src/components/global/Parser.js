@@ -17,7 +17,7 @@ const tagList = [
     },
     {
         tag: `[extra-slim]`,
-        replace: '<span style="max-width: 976px; display:block; margin: 0 auto;">'
+        replace: '<span style="max-width: 976px; display:block;">'
     },
     {
         tag: `[/extra-slim]`,
@@ -45,7 +45,7 @@ const Parser = string => {
     let output = string;
     output = output.replace(/\s*<script>.*?<\/script>\s*/g, ' ');
     tagList.map(data => {
-        output = output.replace(data.tag, data.replace);
+        output = output.replaceAll(data.tag, data.replace);
     });
     return output;
 }

@@ -7,17 +7,17 @@ import { theme } from '../../static/theme'
 const FullWidthImage = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    const desktopImage = getImage(content.componentFlexibleMedia.image.localFile);
-    //const mobileImage = getImage(content.responsiveImages.mobile);
-    const mobileImage = getImage(content.componentFlexibleMedia.image.localFile);
+    console.log(content);
+    const desktopImage = getImage(content.image.localFile);
+    const mobileImage = getImage(content.image.localFile);
     const image = mobileImage 
         ? 
             <>
-            <GatsbyImage className={`md:hidden`} image={mobileImage} alt={content.componentFlexibleMedia.imageAlt} />
-            <GatsbyImage className={`hidden md:block`} image={desktopImage} alt={content.componentFlexibleMedia.imageAlt} />
+            <GatsbyImage className={`md:hidden`} image={mobileImage} alt={content.image.altText} />
+            <GatsbyImage className={`hidden md:block`} image={desktopImage} alt={content.image.altText} />
             </>
         :
-            <GatsbyImage image={desktopImage} alt={content.componentFlexibleMedia.imageAlt} />;    
+            <GatsbyImage image={desktopImage} alt={content.imageAlt} />;    
     
     const overlap           = content.imageOverlap;
     const overlapImageClass = overlap === false ? ` ` : `z-10 relative `;
@@ -71,7 +71,6 @@ export const query = graphql`
           layoutContent {
             imageOverlap
             backgroundColor
-            componentFlexibleMedia {
               image {
                 localFile {
                   childImageSharp {
@@ -79,8 +78,6 @@ export const query = graphql`
                   }
                 }
               }
-              imageAlt
-            }
           }
           layoutSettings {
             containerWidth
@@ -105,7 +102,6 @@ export const serviceQuery = graphql`
           layoutContent {
             imageOverlap
             backgroundColor
-            componentFlexibleMedia {
               image {
                 localFile {
                   childImageSharp {
@@ -113,8 +109,6 @@ export const serviceQuery = graphql`
                   }
                 }
               }
-              imageAlt
-            }
           }
           layoutSettings {
             containerWidth
@@ -138,7 +132,6 @@ export const projectQuery = graphql`
         fieldGroupName
         layoutFullWidthImage {
           layoutContent {
-            componentFlexibleMedia {
               image {
                 localFile {
                   childImageSharp {
@@ -146,8 +139,6 @@ export const projectQuery = graphql`
                   }
                 }
               }
-              imageAlt
-            }
           }
           layoutSettings {
             containerWidth

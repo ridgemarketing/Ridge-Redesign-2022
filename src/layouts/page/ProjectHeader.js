@@ -8,11 +8,12 @@ import Parser from "../../components/global/Parser"
 const ProjectHeader = (props) => {
     const content       = props.content.projectHeader;
     const info          = props.info;
+    console.log(info);
 
-    const logo          = (info.logo.localFile.ext === `.svg`) 
-    ? <img className={''} src={info.logo.sourceUrl} />
+    const logo          = (info.logos.light.localFile.ext === `.svg`) 
+    ? <img className={''} src={info.logos.light.sourceUrl} />
     : <GatsbyImage 
-        image={info.logo.localFile.childImageSharp.gatsbyImageData} 
+        image={info.logos.light.localFile.childImageSharp.gatsbyImageData} 
         alt={''} 
         className={ `` } 
         objectFit={'contain'}/> ;
@@ -133,7 +134,8 @@ export const query = graphql`
         websites {
             url
         }
-        logo {
+        logos {
+            light {
             sourceUrl
             localFile {
                 ext
@@ -141,6 +143,7 @@ export const query = graphql`
                     gatsbyImageData
                 }
             }
+        }
         }
     }
   }

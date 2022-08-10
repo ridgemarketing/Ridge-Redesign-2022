@@ -81,10 +81,10 @@ export default ThreeColProjectBlocks;
 
 
 export const query = graphql`
-  fragment ThreeColProjectBlocksPage on WpPage_Flexiblelayouts_Layouts {
-    ... on WpPage_Flexiblelayouts_Layouts_ThreeColProjectBlocks {
+  fragment ProjectBlocksPage on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_ProjectBlocks {
         fieldGroupName
-        layoutThreeColProjectBlocks {
+        layoutProjectBlocks {
           layoutContent {
             topHeading
             bottomHeading
@@ -121,10 +121,10 @@ export const query = graphql`
   }
 `
 export const serviceQuery = graphql`
-  fragment ThreeColProjectBlocksService on WpService_Flexiblelayouts_Layouts {
-    ... on WpService_Flexiblelayouts_Layouts_ThreeColProjectBlocks {
+  fragment ProjectBlocksService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_ProjectBlocks {
         fieldGroupName
-        layoutThreeColProjectBlocks {
+        layoutProjectBlocks {
           layoutContent {
             topHeading
             bottomHeading
@@ -161,10 +161,10 @@ export const serviceQuery = graphql`
   }
 `
 export const projectQuery = graphql`
-  fragment ThreeColProjectBlocksProject on WpProject_Flexiblelayouts_Layouts {
-    ... on WpProject_Flexiblelayouts_Layouts_ThreeColProjectBlocks {
+  fragment ProjectBlocksProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_ProjectBlocks {
         fieldGroupName
-        layoutThreeColProjectBlocks {
+        layoutProjectBlocks {
           layoutContent {
             topHeading
             bottomHeading

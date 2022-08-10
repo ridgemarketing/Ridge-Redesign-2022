@@ -106,18 +106,6 @@ fragment ContactFourSquare on WpPage_Flexiblelayouts_Layouts {
 
           contactInfo {
             heading
-            iconsAndInfo {
-              info
-              icon {
-                sourceUrl
-                localFile {
-                  ext
-                  childImageSharp {
-                    gatsbyImageData
-                  }
-                }
-              }
-            }
           }
         }
       }

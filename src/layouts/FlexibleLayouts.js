@@ -7,7 +7,7 @@ const FlexibleLayouts = (props) => {
   let layouts = props.flexibleLayouts.layouts;
   const layoutsArray = [];
 
-  layouts.map((res) => {
+  layouts && layouts.map((res) => {
       if (Object.keys(res).length > 0) {
         let subString = res.fieldGroupName.split('_').pop();
         let layoutArrTitle = `layout${subString}`;
@@ -43,8 +43,7 @@ export const pageQuery = graphql`
         ...TwoColBreakoutImageTextPage
         ...TwoColBreakoutImageHeadingPage
         ...TwoColTextQuotePage
-        ...TwoColProjectsGridPage
-        ...ThreeColProjectBlocksPage
+        ...ProjectBlocksPage
         ...TextBlockPage
         ...VideoPlayerPage
         ...FullWidthImagePage
@@ -74,8 +73,7 @@ export const serviceQuery = graphql`
         ...TwoColBreakoutImageTextService
         ...TwoColBreakoutImageHeadingService 
         ...TwoColTextQuoteService
-        ...TwoColProjectsGridService
-        ...ThreeColProjectBlocksService
+        ...ProjectBlocksService
         ...TextBlockService
         ...VideoPlayerService
         ...FullWidthImageService
@@ -102,19 +100,27 @@ export const projectQuery = graphql`
     flexibleLayouts {
       layouts {
         ...TwoColImageTextProject
+        ...TwoColBreakoutImageTextProject
         ...TwoColBreakoutImageHeadingProject
         ...TwoColTextQuoteProject
-        ...TwoColProjectsGridProject
-        ...ThreeColProjectBlocksProject
-        ...TwoColBreakoutImageTextProject 
+        ...ProjectBlocksProject
+        ...VideoPlayerProject
+        ...FullWidthImageProject
+        ...FullWidthImageTextProject
+        ...IconTextBoxesProject
+        ...MediaBlocksProject
+        ...QuotesProject
+        ...ResultsProject
+        ...ResultsMixProject
+        ...LogoCloudProject
+        ...PostCardsProject
+        ...ProjectPortfolioProject
         ...TextBlockProject
         ...VideoPlayerProject
         ...FullWidthImageProject
         ...FullWidthImageTextProject
         ...IconTextBoxesProject
-        ...VerticalSliderProject
         ...MediaBlocksProject
-        ...FeaturedProjectsCarouselProject
         ...QuotesProject
         ...ResultsProject
         ...ResultsMixProject
@@ -126,4 +132,3 @@ export const projectQuery = graphql`
     }
   }
 `
-
