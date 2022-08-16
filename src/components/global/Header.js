@@ -196,11 +196,10 @@ const Header = (props) => {
                                                     <span className={`${classesString}`}>{navItem.label}</span>
                                                 </Link>  
                                                     <ul key={`submenu${navItem.label}${Math.random()}`} 
-                                                        className={` 
-                                                            my-6 lg:my-0 ${hidden} -lg:justify-between -lg:flex-wrap
+                                                        className={`my-6 lg:my-0 ${hidden} -lg:justify-between -lg:flex-wrap
                                                             transition-all duration-300 ease-out -z-10
-                                                            ${doubleMenu} lg:absolute lg:-ml-5 lg:p-7 lg:shadow-block lg:bg-rm-white lg:opacity-0 
-                                                            lg:group-hover:opacity-100 lg:group-hover:z-50 lg:group-focus:z-50 lg:group-focus-within:z-50 lg:group-focus:opacity-100 lg:group-focus-within:opacity-100 lg:w-max lg:left-[75%] lg:-translate-x-[50%] lg:group-hover:translate-y-5
+                                                            ${doubleMenu} lg:hidden lg:absolute lg:-ml-5 lg:p-7 lg:shadow-block lg:bg-rm-white lg:opacity-0 
+                                                            lg:group-hover:opacity-100 lg:group-hover:z-50 lg:group-focus:z-50 lg:group-focus-within:z-50 lg:group-focus:opacity-100 lg:group-focus-within:opacity-100 lg:w-max lg:left-[75%] lg:-translate-x-[50%] lg:group-hover:translate-y-5 lg:group-hover:flex
                                                             lg:after:bg-[url("../static/triangle.svg")] lg:after:-top-[15px] lg:after:left-0 after:h-[30px] lg:after:w-full lg:after:absolute lg:after:bg-no-repeat lg:after:bg-contain lg:after:bg-center`}>
                                                         {navItem.childItems.nodes.map((subNavItem) => {
                                                             let menuIcon     = ``;
