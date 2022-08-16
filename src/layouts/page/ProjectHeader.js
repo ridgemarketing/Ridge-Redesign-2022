@@ -41,7 +41,7 @@ const ProjectHeader = (props) => {
             context.updateAccentFunction(info.accentColor)
         }
       };
-    }, [info.accentColor]); 
+    }, [info.accentColor, context]); 
 
     return (
       <section className={`relative text-white`}>
@@ -87,7 +87,7 @@ const ProjectHeader = (props) => {
                               <p></p>
                               <ul>
                                   {info.services.map(service => {
-                                      return <li><a href=""></a></li>
+                                      return (<li><a href=""></a></li>)
                                   })}
                               </ul>
                           </div>

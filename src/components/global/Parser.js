@@ -41,11 +41,15 @@ const tagList = [
     }
 ];
 
-const Parser = string => {
+const Parser = (string) => {
+
     let output = string;
+    
     output = output.replace(/\s*<script>.*?<\/script>\s*/g, ' ');
     tagList.map(function(data) {
-        output = output.replaceAll(data.tag, data.replace);
+       return (
+            output = output.replaceAll(data.tag, data.replace)
+        );
     });
     return output;
 }

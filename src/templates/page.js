@@ -16,16 +16,16 @@ const WpPage = ({ data }) =>{
   } else {
     return (
       <Layout>
-        {data.wpPage.pageHeader && !data.wpPage.isFrontPage && data.wpPage.title != "404" && data.wpPage.title != "Terms and Conditions" &&
+        {data.wpPage.pageHeader && !data.wpPage.isFrontPage && data.wpPage.title !== "404" && data.wpPage.title !== "Terms and Conditions" &&
           <PageHeader layoutData={data.wpPage.pageHeader.pageHeader} />
         }
         {data.wpPage.isFrontPage &&
           <HomeHero layoutData={data.wpPage.homeHero.layoutHomeHero}/>
         }
-        {data.wpPage.title == "404" &&
+        {data.wpPage.title === "404" &&
         <div className={'page404'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
         }
-        {data.wpPage.title == "Terms and Conditions" &&
+        {data.wpPage.title === "Terms and Conditions" &&
         <div className={'terms'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
         }
         

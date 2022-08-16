@@ -26,10 +26,12 @@ const ProjectBlocks = (props) => {
                 }
                 <div className="flex w-full flex-wrap justify-between">
                     {content.projects.map(block => {
-                        let image = ''; 
+                        let image = '';
+                         
                         if(content.columns === 3){
                             if(block.projectInformation.images.servicesFeatureScreens){
                               image = block.projectInformation.images.servicesFeatureScreens.localFile.childImageSharp.gatsbyImageData;
+
                               return (
                                 <div key={`projectBlocks${Math.random()}`} className={`flex flex-col justify-center items-center w-full md:w-[48%] ${cols} mb-12`}>
                                     <GatsbyImage image={image} alt={block.projectInformation.images.servicesFeatureScreens.altText} className={`object-cover w-full`}/> 
@@ -38,11 +40,15 @@ const ProjectBlocks = (props) => {
                                     </Link>
                                 </div>
                               ) 
+                            } else {
+                              return false
                             }
                         }else{
                           if(block.projectInformation.images.projectIndexGrid){
+
                             image = block.projectInformation.images.projectIndexGrid.localFile.childImageSharp.gatsbyImageData;
                             let logo = '';
+
                             if(block.projectInformation.logos){
                               if (block.projectInformation.logos.dark.localFile.ext === `.svg`) {
                                 logo = <img className={`w-3/4 lg:w-1/5 mb-8 block h-auto -translate-y-5 group-hover:translate-y-0 focus-within:translate-y-0 focus:translate-y-0 opacity-0 group-hover:opacity-100 focus-within:opacity-100 cursor-pointer min-w-max z-20 transition-all duration-300 ease-out`} alt={block.projectInformation.logos.dark.altText} src={block.projectInformation.logos.dark.sourceUrl} />
@@ -63,8 +69,12 @@ const ProjectBlocks = (props) => {
                                   </Link>
                               </div>
                             ) 
+                          } else {
+                            return false
                           }
                         }
+
+
                     })}
                 </div> 
 
