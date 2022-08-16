@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect} from "react"
 import { Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme, ThemeContext } from "../../static/theme"
@@ -33,9 +33,15 @@ const ProjectHeader = (props) => {
 
     const context = useContext(ThemeContext)
 
-    if (info.accentColor) {
-        context.updateAccentFunction(info.accentColor)
-    }
+
+
+    useEffect(() => {    
+      return () => {
+        if (info.accentColor) {
+            context.updateAccentFunction(info.accentColor)
+        }
+      };
+    }, [info.accentColor]); 
 
     return (
       <section className={`relative text-white`}>
