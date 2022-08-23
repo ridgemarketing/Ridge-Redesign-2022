@@ -1,20 +1,62 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql } from "gatsby"
+import { Container, Section } from '../../components/global/Wrappers.js'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import Vimeo from '@u-wave/react-vimeo';
 
-const VideoPlayer = () => {
-    return (
-      <div>
-        <div style={{padding:'56.25% 0 0 0', position:'relative'}}>
-          <iframe
-            src="https://player.vimeo.com/video/388871350?h=fce888ab40&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479"
-            frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen
-            style="position:absolute;top:0;left:0;width:100%;height:100%;"
-            title="BRPC Workcamp 2019">
-          </iframe>
-        </div>
-        {/* <script src="https://player.vimeo.com/api/player.js"></script> */}
-      </div>
-    )
+const VideoPlayer = (props) => {
+  const content       = props.layoutData.layoutContent;
+  const settings      = props.layoutData.layoutSettings;
+
+  let videos          = content.videos;
+
+  const [player, setPlayer] = useState(videos[0]);
+
+  const swapVideos = (video, index) => {
+    const newThumbnail = player;
+    videos.splice(index, 1);
+    videos.push(newThumbnail);
+    setPlayer(video);
+  }
+
+  return (
+    <Section settings={settings}>
+      <Container>
+        {player &&
+          <div>
+            <div class={`relative pt-[56.25%]`}>
+              {player.placeholder &&
+                <GatsbyImage className={`absolute top-0 left-0 w-full h-full object-cover`} image={getImage(player.placeholder.localFile)} />
+              }
+              <Vimeo
+                video={player.source}
+                muted
+                responsive
+                className={`absolute top-0 left-0 w-full h-full object-cover`}
+              />
+            </div>
+          </div>
+        }
+        {videos &&
+          <div class={`grid grid-cols-3 mt-4 xl:mt-9 -mx-2 xl:-mx-5`}>
+            {videos.map((video, index) => {
+                if (index > 0) {
+                  return(
+                    <div class={`relative pt-[56.25%] mx-2 xl:mx-5`} onClick={() => swapVideos(video, index)}>
+                      {video.placeholder &&
+                        <GatsbyImage className={`absolute top-0 left-0 w-full h-full object-cover`} image={getImage(video.placeholder.localFile)} />
+                      }
+                    </div>
+                  )
+                } else {
+                  return false
+                }
+            })}
+          </div>
+        }
+      </Container>
+    </Section>
+  )
 }
 
 export default VideoPlayer
@@ -33,7 +75,16 @@ export const pageQuery = graphql`
                 }
               }
             }
-            video
+            videos {
+              placeholder {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              source
+            }
           }
           layoutSettings {
             padding {
@@ -63,7 +114,16 @@ export const serviceQuery = graphql`
                 }
               }
             }
-            video
+            videos {
+              placeholder {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              source
+            }
           }
           layoutSettings {
             padding {
@@ -93,7 +153,16 @@ export const projectQuery = graphql`
                 }
               }
             }
-            video
+            videos {
+              placeholder {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              source
+            }
           }
           layoutSettings {
             padding {
