@@ -2,8 +2,8 @@ import React from "react"
 import { graphql } from "gatsby"
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import Blog from "./blog"
-import HomeHero from "../layouts/page/HomeHero"
-import PageHeader from "../layouts/page/PageHeader"
+import HomeHero from "../layouts/layouts/HomeHero"
+import PageHeader from "../layouts/layouts/PageHeader"
 import Layout from "../components/global/Layout"
 
 const WpPage = ({ data }) =>{

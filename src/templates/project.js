@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql } from "gatsby"
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
-import ProjectHeader from "../layouts/page/ProjectHeader"
+import ProjectHeader from "../layouts/layouts/ProjectHeader"
 import PostNav from "../components/PostNav"
 import Layout from "../components/global/Layout"
 
