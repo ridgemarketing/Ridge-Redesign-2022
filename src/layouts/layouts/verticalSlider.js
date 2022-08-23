@@ -25,10 +25,13 @@ const VerticalSlider = (props) => {
 
   const vslides               = content.slides;
 
-  for (let i = 0; vslides.length > i; i++){
-    scrollPoints.push(totalHeight);
-    totalHeight = totalHeight + slideHeight;
+  if (vlsides.lenth > 0) {
+    for (let i = 0; vslides.length > i; i++){
+      scrollPoints.push(totalHeight);
+      totalHeight = totalHeight + slideHeight;
+    }
   }
+
   
   useEffect(() => {
     let current = 0;
