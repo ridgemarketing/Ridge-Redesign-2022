@@ -37,7 +37,7 @@ const VideoPlayer = (props) => {
             </div>
           </div>
         }
-        {videos &&
+        {videos && videos.length > 1 &&
           <div class={`grid grid-cols-3 mt-4 xl:mt-9 -mx-2 xl:-mx-5`}>
             {videos.map((video, index) => {
                 if (index > 0) {
