@@ -6,6 +6,9 @@
     html {
         @apply scroll-smooth;
     }
+    html, body{
+        @apply overflow-x-hidden;
+    }
     :focus-visible{
         @apply outline-rm-green;
     }

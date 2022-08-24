@@ -15,20 +15,38 @@ export default function Layout({ children }) {
         accent: theme.colors.primary.accent
       }
     )
-    
+
+    const updateHeaderBkg = (prop) => {
+        setBackgroundColor({
+            headerBkgcolor: prop,
+        })
+    }
+    const [backgroundColor, setBackgroundColor] = useState({
+        headerBkgcolor: 'white',
+    })
+
     const globalStyles = `
         .accent-text {
           color: ${colors.accent};
+        }
+        .header-color{
+            background:${backgroundColor.headerBkgcolor};
+            ${backgroundColor.headerBkgcolor === 'black' && 
+             `background-color:rgba(0,0,0,0.7);`
+            }
         }
     `
 
     return (
         <ThemeContext.Provider value={{
             accent: colors.accent,
-            updateAccentFunction: updateAccent
+            updateAccentFunction: updateAccent,
+            
+            backgroundColor: backgroundColor.headerBkgcolor,
+            updateHeaderBkgcolor: updateHeaderBkg,
         }}>
              <style>{globalStyles}</style>
-             <Header color={`white`}/>
+             <Header class={`header-color`} color={backgroundColor.headerBkgcolor}/>
              <main id="mainContent" tabIndex={0} aria-label="Main Content">
                 {children}
              </main>

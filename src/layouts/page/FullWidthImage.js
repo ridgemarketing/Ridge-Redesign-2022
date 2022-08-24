@@ -1,4 +1,4 @@
-import React, { useRef, useLayoutEffect } from "react"
+import React, { useRef, useEffect } from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { graphql } from "gatsby"
@@ -14,13 +14,13 @@ const FullWidthImage = (props) => {
        mobileImage   = content.mobileImage.localFile.childImageSharp.gatsbyImageData;
     }
     const image         = mobileImage 
-        ? 
-            <>
-            <GatsbyImage className={`md:hidden`} image={mobileImage} alt={content.mobileImage.altText} />
-            <GatsbyImage className={`hidden md:block`} image={desktopImage} alt={content.image.altText} />
-            </>
-        :
-            <GatsbyImage image={desktopImage} alt={content.image.altText} />;    
+      ? 
+          <>
+          <GatsbyImage className={`md:hidden`} image={mobileImage} alt={content.mobileImage.altText} />
+          <GatsbyImage className={`hidden md:block`} image={desktopImage} alt={content.image.altText} />
+          </>
+      :
+          <GatsbyImage image={desktopImage} alt={content.image.altText} />;    
     
     const overlap           = content.imageOverlap;
     const overlapImageClass = overlap === false ? ` ` : `z-10 relative `;
@@ -28,25 +28,20 @@ const FullWidthImage = (props) => {
     const overlapBkg        = content.backgroundColor;
     const overlapImage      = useRef(null);
     const overlapDiv        = useRef(null);
-
-    useLayoutEffect( () => {
-      if(overlap){
-        function windowLoads() {
-          overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
-          overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;
-        }
-        window.addEventListener('load', windowLoads);
-        windowLoads();
-
-        function windowResizes() {
-          overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
-          overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;
-        }
-        window.addEventListener('resize', windowResizes);
-        windowResizes();
-        return (window.removeEventListener('resize', windowResizes), window.removeEventListener('onload', windowResizes));
+    // window.location.reload(false);
+    
+    useEffect( () => {
+      const setBkg = () =>{
+        overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
+        overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;   
+      } 
+      setBkg()
+      
+      window.onresize = () =>{
+        overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
+        overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;
       }
-    });
+    }, []);
 
     return (
       <>
@@ -61,9 +56,7 @@ const FullWidthImage = (props) => {
       </> 
     )
 }
-
 export default FullWidthImage
-
 
 export const query = graphql`
   fragment FullWidthImagePage on WpPage_Flexiblelayouts_Layouts {

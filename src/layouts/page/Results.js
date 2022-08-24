@@ -10,28 +10,24 @@ const Results = (props) => {
     const content = props.layoutData.layoutContent || {};
     const settings = props.layoutData.layoutSettings || {};
 
-
     const body = Parser(content.body);
-
     let columns = content.columns === '1' ? '' : 'md:justify-between';
 
-
-    console.log(content.columns)
     return(
         <Section settings={settings}>
             <Container>
                 {content.heading &&
-                        <h2 className={'text-center mb-4 '}>
-                            <span 
-                                className={`${theme.text['H2']}`}> 
-                                { content.heading }
-                            </span>
-                        </h2>
+                  <h2 className={'text-center mb-4 '}>
+                      <span 
+                          className={`${theme.text['H2']}`}> 
+                          { content.heading }
+                      </span>
+                  </h2>
                 }
                 {content.body &&
-                        <p className={'mb-6 text-center'}>
-                            <span dangerouslySetInnerHTML={{__html: body}} className={`${theme.text['P_STD']}`}></span>
-                        </p>
+                  <p className={'mb-6 text-center'}>
+                      <span dangerouslySetInnerHTML={{__html: body}} className={`${theme.text['P_STD']}`}></span>
+                  </p>
                 }
                 <div className={`flex flex-wrap justify-center ${columns}`}>
                     { content.results && content.results.map(result => {

@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect} from "react"
 import { Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme, ThemeContext } from "../../static/theme"
@@ -22,22 +22,30 @@ const ProjectHeader = (props) => {
     const imageOverhang = content.imageOverhang   ? getImage(content.imageOverhang.localFile)   : false;
 
     const heading       = Parser(content.heading);
-    const body          = Parser(content.body);
-
+    let body            = '';
+    if(content.body){
+      body          = Parser(content.body);
+    }
     let top             = `top-0`
 
     if (featuredImage) {
-        top = `top-96`
+        top             = `top-96`
     }
 
-    const context = useContext(ThemeContext)
-
-    if (info.accentColor) {
+    const context = useContext(ThemeContext);
+    useEffect(() => {
+      if (info.accentColor) {
         context.updateAccentFunction(info.accentColor)
+      }
+    }, [])
+
+    let topColor  = false;
+    if(featuredImage){}else{
+      topColor    = true;
     }
 
     return (
-      <section className={`relative text-white`}>
+      <section className={`relative text-white`} style={{backgroundColor: topColor ? content.backgroundColor : 'transparent'}}>
           {content.backgroundColor &&
               <div className={`absolute ${top} bottom-80 left-0 w-full h-full max-h-[calc(100%-44rem)] object-cover`} style={{backgroundColor: content.backgroundColor}}></div>
           }
@@ -62,7 +70,7 @@ const ProjectHeader = (props) => {
               <div className={`lg:flex`}>
                   <div className={`lg:w-3/4`}>
                       <h1 dangerouslySetInnerHTML={{__html: heading}} className={`${theme.text.H1_STD}`}></h1>
-                      <p dangerouslySetInnerHTML={{__html:body}} className={`${theme.text.P_STD}`}></p>
+                      <p dangerouslySetInnerHTML={{__html:body}} className={`${theme.text.P_STD} mt-8`}></p>
                   </div>
                   <div className={``}>
                       {info.websites && 
@@ -94,7 +102,6 @@ const ProjectHeader = (props) => {
               }
           </Container>
       </section>
-
     )
 }
 

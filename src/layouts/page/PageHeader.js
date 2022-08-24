@@ -7,8 +7,7 @@ import { graphql } from "gatsby"
 const PageHeader = (props) => {
     const content       = props.layoutData.layoutContent;
     const image         = content.backgroundImage ? getImage(content.backgroundImage.localFile) : false;
-
-    console.log(content)
+    
     return (
         <section className={`relative`}>
           {image && 

@@ -150,7 +150,7 @@ const Footer = () =>{
                 <h2 className={`${theme.text.HERO} lg:w-3/4`}>{content.footertext.cta}</h2>
                 <Link to={content.footertext.link.url} className={`ml-auto mr-auto lg:ml-0 lg:mr-0 text-rm-green mt-12 lg:mt-16 w-max hover:text-rm-white hover:underline ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.LARGE} ${theme.text_links.ARW_FWD_GREEN}`}>{content.footertext.link.title}</Link>
                 <div className="mt-12 lg:w-[95%] lg:mt-28">
-                    <ul key={`footer${Math.random()}`} className="block lg:flex justify-between">
+                    <ul key={`footer-top`} className="block lg:flex justify-between">
                         <li className="lg:mt-4">
                             {logo}
                             <address className={`${theme.text.FOOTER} flex items-center lg:items-start flex-col my-9 not-italic`}>
@@ -162,7 +162,7 @@ const Footer = () =>{
                                 {socials.map( (social) =>{
                                     let icon = checkImg(social.icon);
                                     return(
-                                        <li key={`${social.link.url}`} className="mr-3 last-of-type:mr-0" >
+                                        <li key={`${social.link.url}footer-social-a`} className="mr-3 last-of-type:mr-0" >
                                             <a href={social.link.url} target={social.link.target}>
                                                 {icon}
                                             </a>
@@ -175,18 +175,18 @@ const Footer = () =>{
                         <div className="block mt-16 lg:mt-0 lg:flex">
                           {menuBreakpoints.map( (breakPoint)=>{
                             //let colWidth = Math.round((1/menuBreakpoints.length)*100);
-                            return(<div key={`breakpoint${Math.random()}`}>
+                            return(<div key={`breakpoint${ breakPoint.map((bp) =>{return(bp.label)} )}`}>
                                 {breakPoint.map( (menuItem) => {   
                                         if(menuItem.childItems.nodes.length > 0){
                                             return(
-                                                <li key={menuItem.url + Math.random()} className={`mt-4 lg:mr-12`}>
+                                                <li key={`${menuItem.url}footer-a`} className={`mt-4 lg:mr-12`}>
                                                     <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase`}>
                                                         {menuItem.label}
                                                     </Link>
-                                                    <ul key={menuItem.label + Math.random()}>
+                                                    <ul key={`${menuItem.label}footer`}>
                                                         {menuItem.childItems.nodes.map( (subMenuItem) => { 
                                                             return(
-                                                                <li key={subMenuItem.label + Math.random()} className={`${theme.text.FOOTER} normal-case mt-2`}>
+                                                                <li key={subMenuItem.label} className={`${theme.text.FOOTER} normal-case mt-2`}>
                                                                     <Link to={subMenuItem.url} className={`hover:text-rm-green hover:underline`}>                                                        
                                                                         {subMenuItem.label}
                                                                     </Link>
@@ -199,7 +199,7 @@ const Footer = () =>{
                                             )
                                         }else{
                                             return(
-                                                <li key={menuItem.url + Math.random()} className="mt-4 lg:mr-12">
+                                                <li key={`${menuItem.url}${menuItem.label}}footer-b`} className="mt-4 lg:mr-12">
                                                     <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase`}>
                                                         {menuItem.label}
                                                     </Link>

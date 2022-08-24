@@ -19,7 +19,6 @@ const VideoPlayer = () => {
 
 export default VideoPlayer
 
-
 export const pageQuery = graphql`
   fragment VideoPlayerPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_VideoPlayer {
@@ -33,7 +32,16 @@ export const pageQuery = graphql`
                 }
               }
             }
-            video
+            videos {
+              placeholder {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              source
+            }
           }
           layoutSettings {
             padding {
@@ -63,7 +71,16 @@ export const serviceQuery = graphql`
                 }
               }
             }
-            video
+            videos {
+              placeholder {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              source
+            }
           }
           layoutSettings {
             padding {
@@ -93,7 +110,16 @@ export const projectQuery = graphql`
                 }
               }
             }
-            video
+            videos {
+              placeholder {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              source
+            }
           }
           layoutSettings {
             padding {

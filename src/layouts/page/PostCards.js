@@ -23,6 +23,7 @@ const PostCards = (props) => {
                     gatsbyImageData
                   }
                 }
+                altText
               }
             }
             categories {
@@ -57,7 +58,6 @@ const PostCards = (props) => {
         }
       }
     }
-    console.log('postcards', taxonomy, posts, cards);
 return (
   <>
     <Section settings={settings}>
@@ -80,6 +80,7 @@ return (
                       heading = {card.title}
                       link    = {`/blog` + card.link || ` `}
                       image   = {card.featuredImage.node.localFile.childImageSharp.gatsbyImageData || ` `}
+                      alt     = {card.featuredImage.node.altText}
                   />
                 })
               }

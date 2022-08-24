@@ -7,17 +7,11 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 const Header = (props) => {
 
     const backgroundColor       = props.color;
-    let   customBkg             = ``;
     const textColor             = backgroundColor === `black` ? `text-rm-white` : `text-rm-black`; 
     const fillColor             = backgroundColor === `black` ? `fill-rm-white` : `fill-rm-black`;
     const hoverColor            = backgroundColor === `black` ? `hover:text-rm-green` : ``;
-    
-    if(backgroundColor === 'white'){
-        customBkg = 'rgb(255,255,255)';
-    }
-    if(backgroundColor === 'black'){
-        customBkg = 'rgba(0,0,0,0.7)';
-    }
+    const bkgClass              = props.class;
+    const headerPostion         = backgroundColor  ==='black' ? 'fixed' : 'sticky';
 
     const headerMenu = useStaticQuery(graphql`
         query GetHeaderMenu {
@@ -93,7 +87,7 @@ const Header = (props) => {
         }else{ 
             return(<GatsbyImage 
                 image={img.localFile.childImageSharp.gatsbyImageData} 
-                alt={img.altText} 
+                alt={`${img.altText}`} 
                 className={`flex self-start w-auto ${classes}`} 
                 objectFit={`contain`}/>)
         }
@@ -132,6 +126,10 @@ const Header = (props) => {
             // document.style.overflowY = 'scroll';
         }
     }
+
+    const HoverSubMenu = (e) => {
+        console.log(e.target.parentNode);
+    }
     
     let mobileArrows = [theme.text_links.FWD_BASE.split(' '), theme.text_links.ARW_FWD_BLACK.split(' ')]; 
     let classesString = ' ';
@@ -143,7 +141,7 @@ const Header = (props) => {
         }
     }
 
-    const focusMain = () =>{
+    const focusMain = (e) =>{
         if(document.getElementById('mainContent')){
             document.getElementById('mainContent').focus();
         }
@@ -151,15 +149,15 @@ const Header = (props) => {
 
     return(
         <>
-        <header className={`${textColor} w-full sticky h-[100px] z-50 top-0 flex items-center`} style={{background:customBkg}}>
+        <header className={`${textColor} ${bkgClass} ${headerPostion} w-full h-[100px] z-50 top-0 flex items-center`} >
             <button type="button" onClick={()=>focusMain()} onKeyDown={()=>focusMain()} className="bg-rm-white text-rm-black p-5 font-basic-sans text-18px absolute -top-96 -left-96 focus:left-0 focus:top-0 focus:underline z-50" title="skip main navigation">Skip Main Navigation</button>
             <section className="container">
                 <nav>
-                    <ul key={`MasterUL${Math.random()}`} className="flex items-center justify-between">
-                        <li key={`home${Math.random()}`}><Link to={`/`} className="h-min">{logo}</Link></li>
-                        <li key={`mobileMenu${Math.random()}`} className="w-[40px] h-[40px] flex lg:hidden lg:invisible" >
-                            <button ref={mobileMenuIcon} onClick={() => mobileMenuToggle()} onKeyDown={() => mobileMenuToggle() } type="button" aria-expanded="false" aria-label="Mobile Menu Container">
-                                <svg version="1.1" x="0px" y="0px" viewBox="0 0 33 19.5" className="w-full">
+                    <ul key={`header-MasterUL`} className="flex items-center justify-between">
+                        <li key={`header-home`}><Link to={`/`} className="h-min">{logo}</Link></li>
+                        <li key={`header-mobileMenu`} className="w-[40px] h-[40px] flex lg:hidden lg:invisible" >
+                            <button key={`header-button`} ref={mobileMenuIcon} onClick={() => mobileMenuToggle()} onKeyDown={() => mobileMenuToggle() } type="button" aria-expanded="false" aria-label="Mobile Menu Container">
+                                <svg key={`header-svg`} version="1.1" x="0px" y="0px" viewBox="0 0 33 19.5" className="w-full">
                                     <g className={`${fillColor} transition-all duration-300 ease-out`}>
                                         <path d="M0,0h33v4H0V0z"/>
                                         <path d="M0,15.6h33v4H0V15.6z"/>
@@ -169,7 +167,7 @@ const Header = (props) => {
                                 </svg>
                             </button>
                         </li>
-                        <div key={`container${Math.random()}`} style={{display:overlayState ? 'block': 'none', visibility:overlayState ? 'visible': 'hidden'}} className={`absolute top-full left-[50%] -translate-x-[50%] w-[95%] md:w-3/4 bg-rm-white text-rm-black mt-5 p-6 lg:p-0 lg:mt-0 lg:left-0 lg:translate-x-0 lg:w-max lg:relative ${textColor} lg:bg-transparent lg:h-min lg:!inline-flex lg:!visible`}>
+                        <div key={`header-container-mobileMenu`} style={{display:overlayState ? 'block': 'none', visibility:overlayState ? 'visible': 'hidden'}} className={`absolute top-full left-[50%] -translate-x-[50%] w-[95%] md:w-3/4 bg-rm-white text-rm-black mt-5 p-6 lg:p-0 lg:mt-0 lg:left-0 lg:translate-x-0 lg:w-max lg:relative ${textColor} lg:bg-transparent lg:h-min lg:!inline-flex lg:!visible`}>
                             {content.map ( (navItem) =>{
                             //detect current if nav item is current page 
                                 let currentItem = false;
@@ -188,28 +186,23 @@ const Header = (props) => {
                                         if(navItem.childItems.nodes.length > 4){
                                             doubleMenu  = 'lg:flex-wrap lg:max-w-[650px]';
                                             doubleLI    = 'w-full sm:w-1/2';
-                                            hidden      = '-lg:flex flex';
+                                            hidden      = '-lg:block flex';
                                         }
                                         return(
-                                            <li key={`itemA${navItem.label}${Math.random()}`} className={`h-min min-w-max mb-2 lg:mb-0 lg:mx-3 p-1 cursor-pointer group relative`}>
+                                            <li key={`header-itemA${navItem.label}`} className={`h-min min-w-max mb-2 lg:mb-0 lg:mx-3 p-1 cursor-pointer group relative hover:[&>*]:`} onMouseOver={HoverSubMenu}>
                                                 <Link to={navItem.url} className={`${currentItem && `!font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} hover:!font-bold text-18px`}> {/* hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green */}
                                                     <span className={`${classesString}`}>{navItem.label}</span>
                                                 </Link>  
-                                                    <ul key={`submenu${navItem.label}${Math.random()}`} 
-                                                        className={` 
-                                                            my-6 lg:my-0 ${hidden} -lg:justify-between -lg:flex-wrap
-                                                            transition-all duration-300 ease-out -z-10
-                                                            ${doubleMenu} lg:absolute lg:-ml-5 lg:p-7 lg:shadow-block lg:bg-rm-white lg:opacity-0 
-                                                            lg:group-hover:opacity-100 lg:group-hover:z-50 lg:group-focus:z-50 lg:group-focus-within:z-50 lg:group-focus:opacity-100 lg:group-focus-within:opacity-100 lg:w-max lg:left-[75%] lg:-translate-x-[50%] lg:group-hover:translate-y-5
-                                                            lg:after:bg-[url("../static/triangle.svg")] lg:after:-top-[15px] lg:after:left-0 after:h-[30px] lg:after:w-full lg:after:absolute lg:after:bg-no-repeat lg:after:bg-contain lg:after:bg-center`}>
+                                                    <ul key={`header-submenu${navItem.label}`} 
+                                                        className={`my-6 lg:my-0 ${hidden} -lg:justify-between -lg:flex-wrap transition-all duration-300 ease-out -z-10 ${doubleMenu} lg:absolute lg:-ml-5 lg:p-7 lg:shadow-block lg:bg-rm-white lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:z-50 lg:group-focus:z-50 lg:group-focus-within:z-50 lg:group-focus:opacity-100 lg:group-focus-within:opacity-100 lg:w-max lg:left-[75%] lg:-translate-x-[50%] lg:group-hover:translate-y-5 lg:after:bg-[url("../static/triangle.svg")] lg:after:-top-[15px] lg:after:left-0 after:h-[30px] lg:after:w-full lg:after:absolute lg:after:bg-no-repeat lg:after:bg-contain lg:after:bg-center`}>
                                                         {navItem.childItems.nodes.map((subNavItem) => {
-                                                            let menuIcon     = ``;
+                                                            let menuIcon = ``;
                                                             if(subNavItem.acfWpMenu.icon){
                                                                 menuIcon = checkImg(subNavItem.acfWpMenu.icon, 'h-[40px] w-[40px] mr-5');
                                                             }
                                                             return(
-                                                                <li key={`sub-submenu${subNavItem.label}${Math.random()}`} className={`${doubleLI} text-rm-black mb-4 last-of-type:mb-0 cursor-pointer`}>
-                                                                    <Link to={subNavItem.url} className={`${theme.text.P_STD} -lg:text-[0.875rem] -lg:leading-[1.31rem] text-18px flex hover:underline hover:text-rm-green cursor-pointer items-center`}>
+                                                                <li key={`header-sub-submenu${navItem.label}${subNavItem.label}`} className={`${doubleLI} text-rm-black mb-4 last-of-type:mb-0 cursor-pointer`}>
+                                                                    <Link to={subNavItem.url} className={`${theme.text.P_STD} -lg:w-max -lg:text-[0.875rem] -lg:leading-[1.31rem] text-18px flex hover:underline hover:text-rm-green cursor-pointer items-center`}>
                                                                         {menuIcon && menuIcon}
                                                                         {subNavItem.label}
                                                                     </Link>
@@ -221,8 +214,8 @@ const Header = (props) => {
                                         )
                                     }else{
                                         return(
-                                            <li key={`itemB${navItem.label}${Math.random()}`} className={`${classesString} h-min min-w-max w-1/2 mb-2 lg:mb-0 lg:mx-3 p-1 cursor-pointer`}>
-                                                <Link to={navItem.url}  className={`${currentItem && `!font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD}  ${hoverColor} text-18px hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green`}>
+                                            <li key={`header-itemB${navItem.label}`} className={`${classesString} h-min min-w-max w-1/2 mb-2 lg:mb-0 lg:mx-3 p-1 cursor-pointer`}>
+                                                <Link to={navItem.url} className={`${currentItem && `!font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} text-18px hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green`}>
                                                     {navItem.label}
                                                 </Link>
                                             </li>

@@ -7,7 +7,7 @@ const PostNav = (props) => {
     return(
         <div>
             <Container>
-                <div className={`md:flex py-8 border-t border-rm-green`}>
+                <div className={`md:flex py-8 border-t border-[#c5c5c5] border-solid`}>
                     <div className={`flex-1 text-left`}>
                         {props.links.prev &&
                             <GatsbyLink to={props.links.prev} className={`mb-8 md:mb-0 justify-center md:justify-start text-rm-green ${theme.text_links.BASE_STYLING} ${theme.text_links.BACK_BASE} ${theme.text_links.ARW_BACK_GREEN}`}>Previous {props.postType}</GatsbyLink>

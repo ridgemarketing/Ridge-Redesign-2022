@@ -19,7 +19,7 @@ const ResultCard = (props) => {
 
 
     return (
-            <div className={ `sm:px-4 text-center lg:text-left ${classes[props.columns]} my-6` }>
+            <div key={`${content.description}${content.stat}`} className={ `sm:px-4 text-center lg:text-left ${classes[props.columns]} my-6` }>
                 { content.stat && 
                     <p className={`accent-text ${statClass} font-bold`}>
                         { content.stat }
