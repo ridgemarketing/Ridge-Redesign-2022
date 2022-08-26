@@ -95,11 +95,16 @@ export const theme = {
     colors: {
         primary: {
             accent: `#A9CF38`
+        },
+        secondary: {
+            accent: `#000000`
         }
     }
 }
 
 export const ThemeContext = React.createContext({
     accent: theme.colors.primary.accent,
-    updateAccentFunction: () => {}
+    secondary: theme.colors.secondary.accent,
+    updateAccentFunction: () => {},
+    updateSecondaryFunction: () => {}
 });

@@ -33,7 +33,16 @@ export const pageQuery = graphql`
                 }
               }
             }
-            video
+            videos {
+              placeholder {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              source
+            }
           }
           layoutSettings {
             padding {
@@ -63,7 +72,16 @@ export const serviceQuery = graphql`
                 }
               }
             }
-            video
+            videos {
+              placeholder {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              source
+            }
           }
           layoutSettings {
             padding {
@@ -93,7 +111,16 @@ export const projectQuery = graphql`
                 }
               }
             }
-            video
+            videos {
+              placeholder {
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              source
+            }
           }
           layoutSettings {
             padding {

@@ -6,7 +6,7 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 
 const Footer = () =>{
     
-    const footerMenu = useStaticQuery( graphql`
+    const Menu = useStaticQuery( graphql`
     query GetMenus {
         allWpMenu(filter: {name: {eq: "Footer"}}) {
           nodes {
@@ -96,8 +96,8 @@ const Footer = () =>{
       }      
     `); 
 
-    const footerLinks   = footerMenu.allWpMenu.nodes[0].menuItems.nodes;
-    const content       = footerMenu.allWp.nodes[0].globalSettings.globalSettings;
+    const footerLinks   = Menu.allWpMenu.nodes[0].menuItems.nodes;
+    const content       = Menu.allWp.nodes[0].globalSettings.globalSettings;
 
     const checkImg = function(img){
         if (img.localFile.ext === `.svg`) {
@@ -154,7 +154,7 @@ const Footer = () =>{
                         <li className="lg:mt-4">
                             {logo}
                             <address className={`${theme.text.FOOTER} flex items-center lg:items-start flex-col my-9 not-italic`}>
-                                <span className="mb-9" dangerouslySetInnerHTML={ {__html:address} }></span>
+                                <span className="mb-9" dangerouslySetInnerHTML={{__html:address}}></span>
                                 <a href={content.contact.phone.phone.url} className="text-rm-green w-max">{content.contact.phone.phone.title}</a>
                                 <a href={content.contact.email.url} className="text-rm-green w-max">{content.contact.email.title}</a>
                             </address>

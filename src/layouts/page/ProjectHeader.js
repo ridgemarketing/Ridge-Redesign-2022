@@ -1,4 +1,4 @@
-import React, {useContext} from "react"
+import React, {useContext, useEffect} from "react"
 import { Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme, ThemeContext } from "../../static/theme"
@@ -8,7 +8,7 @@ import Parser from "../../components/global/Parser"
 const ProjectHeader = (props) => {
     const content       = props.content.projectHeader;
     const info          = props.info;
-    console.log(info);
+    console.log("INFO:", info);
 
     const logo          = (info.logos.light.localFile.ext === `.svg`) 
     ? <img className={''} src={info.logos.light.sourceUrl} alt={info.logos.light.altText} />
@@ -31,14 +31,19 @@ const ProjectHeader = (props) => {
         top = `top-96`
     }
 
-    const context = useContext(ThemeContext)
+    const context = useContext(ThemeContext);
 
-    if (info.accentColor) {
-        context.updateAccentFunction(info.accentColor)
-    }
+    useEffect(() => {
+      if (info.accentColor) {
+          context.updateAccentFunction(info.accentColor)
+      }
+      if (info.secondaryAccent) {
+        context.updateSecondaryFunction(info.secondaryAccent)
+      }
+    }, []);
 
     return (
-      <section className={`relative text-white`}>
+      <section className={`relative text-${content.textTheme}`}>
           {content.backgroundColor &&
               <div className={`absolute ${top} bottom-80 left-0 w-full h-full max-h-[calc(100%-44rem)] object-cover`} style={{backgroundColor: content.backgroundColor}}></div>
           }
@@ -106,6 +111,7 @@ export const query = graphql`
     projectHeader {
         projectHeader {
           backgroundColor
+          textTheme
           body
           heading
           backgroundImage {
@@ -139,6 +145,7 @@ export const query = graphql`
       }
     projectInformation {
         accentColor
+        secondaryAccent
         logos {
           light {
             localFile {

@@ -5,6 +5,8 @@ import Blog from "./blog"
 import HomeHero from "../layouts/page/HomeHero"
 import PageHeader from "../layouts/page/PageHeader"
 import Layout from "../components/global/Layout"
+import Menu from "../components/global/FooterMenu"
+import { Container } from "../components/global/Wrappers"
 
 const WpPage = ({ data }) =>{
 
@@ -23,7 +25,10 @@ const WpPage = ({ data }) =>{
           <HomeHero layoutData={data.wpPage.homeHero.layoutHomeHero}/>
         }
         {data.wpPage.title == "404" &&
-        <div className={'page404'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
+          <Container>
+            <div className={'page404'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
+            <Menu />
+          </Container>
         }
         {data.wpPage.title == "Terms and Conditions" &&
         <div className={'terms'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>

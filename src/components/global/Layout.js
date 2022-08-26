@@ -5,27 +5,41 @@ import Footer from "./Footer"
 
 export default function Layout({ children }) {
 
-    const updateAccent = (color) => {
-        setColors({
+    const updatePrimary = (color) => {
+        setPrimary({
+            accent: color
+        })
+    }
+    const updateSecondary = (color) => {
+        setSecondary({
             accent: color
         })
     }
 
-    const [colors, setColors] = useState({
+    const [primary, setPrimary] = useState({
+        accent: theme.colors.primary.accent
+      }
+    )
+    const [secondary, setSecondary] = useState({
         accent: theme.colors.primary.accent
       }
     )
     
     const globalStyles = `
         .accent-text {
-          color: ${colors.accent};
+          color: ${primary.accent};
+        }
+        .secondary-text {
+            color: ${secondary.accent}
         }
     `
 
     return (
         <ThemeContext.Provider value={{
-            accent: colors.accent,
-            updateAccentFunction: updateAccent
+            accent: primary.accent,
+            secondary: secondary.secondary,
+            updateAccentFunction: updatePrimary,
+            updateSecondaryFunction: updateSecondary
         }}>
              <style>{globalStyles}</style>
              <Header color={`white`}/>

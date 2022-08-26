@@ -38,6 +38,14 @@ const tagList = [
     {
         tag: `[/accent]`,
         replace: `</span>`
+    },
+    {
+        tag: `[secondary]`,
+        replace: `<span class="secondary-text">`
+    },
+    {
+        tag: `[/secondary]`,
+        replace: `</span>`
     }
 ];
 

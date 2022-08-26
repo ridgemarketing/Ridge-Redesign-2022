@@ -1,6 +1,7 @@
 import React from "react"
 import { Link } from "gatsby"
 import { theme } from "../static/theme"
+import Parser from "../components/global/Parser"
 
 const ResultCard = (props) => {
 
@@ -25,9 +26,7 @@ const ResultCard = (props) => {
                     </p>  
                 }
                 { content.description &&  
-                   <p className={`${theme.text.H3} ${descriptionClass}`}>
-                        { content.description }
-                    </p>  
+                   <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H3} ${descriptionClass}`}></p>  
                 }
                 { content.company &&  
                    <p className={`${theme.text.P_STD} mt-9`}>
