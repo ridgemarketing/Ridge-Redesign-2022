@@ -23,6 +23,7 @@ const PostCards = (props) => {
                     gatsbyImageData
                   }
                 }
+                altText
               }
             }
             categories {
@@ -79,6 +80,7 @@ return (
                       heading = {card.title}
                       link    = {`/blog` + card.link || ` `}
                       image   = {card.featuredImage.node.localFile.childImageSharp.gatsbyImageData || ` `}
+                      alt     = {card.featuredImage.node.altText}
                   />
                 })
               }

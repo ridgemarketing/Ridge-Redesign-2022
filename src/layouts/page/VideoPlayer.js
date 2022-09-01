@@ -19,7 +19,6 @@ const VideoPlayer = () => {
 
 export default VideoPlayer
 
-
 export const pageQuery = graphql`
   fragment VideoPlayerPage on WpPage_Flexiblelayouts_Layouts {
     ... on WpPage_Flexiblelayouts_Layouts_VideoPlayer {

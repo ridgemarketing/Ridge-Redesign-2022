@@ -1,6 +1,6 @@
 import React from "react"
-import {Section, Container } from "../../components/global/Wrappers"
-import  { theme } from "../../static/theme"
+import { Section, Container } from "../../components/global/Wrappers"
+import { theme } from "../../static/theme"
 import Link from "../../components/global/FlexibleLink"
 import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser";
@@ -16,18 +16,19 @@ const TextBlock = (props) => {
     } else if (content.alignment === 'right') {
       buttonAlignment = ' justify-end'
     }
-    const body = content.body && Parser(content.body);
-    const heading = content.heading && Parser(content.heading);
+    const body = Parser(content.body);
+    const heading = Parser(content.heading);
+    let headingStyle = content.headingStyle;
+    if (headingStyle === 'H1'){
+      headingStyle = 'H1_LTE';
+    }
 
     return (
         <Section settings={settings}>
             <Container classes={`${alignment}`}>
-                <h2 className={theme.text.H1_LTE + ' leading-[80px] pb-6'} dangerouslySetInnerHTML={{__html: heading}}>
-                </h2>
-                <p className={theme.text.P_STD + ' pb-8'} dangerouslySetInnerHTML={{__html: body}}>
-                </p>
-                {
-                    content.componentButton &&  
+                <h2 className={`${theme.text[headingStyle]} pb-6 lg:w-[95%]`} dangerouslySetInnerHTML={{__html: heading}}></h2>
+                <p className={`${theme.text.P_STD} pb-8 lg:w-[95%]`} dangerouslySetInnerHTML={{__html: body}}></p>
+                {content.componentButton &&  
                     <Link
                     link={content.componentButton.link}
                     classes={theme.button.BASE_STYLING + theme.button.GHOST_GREEN_HOVER_DARK + buttonAlignment}
@@ -48,6 +49,7 @@ export const query = graphql`
           layoutContent {
             alignment
             body
+            headingStyle
             componentButton {
                 colors {
                 resting
@@ -83,6 +85,7 @@ export const serviceQuery = graphql`
           layoutContent {
             alignment
             body
+            headingStyle
             componentButton {
                 colors {
                 resting
@@ -119,6 +122,7 @@ export const projectQuery = graphql`
           layoutContent {
             alignment
             body
+            headingStyle
             componentButton {
                 colors {
                 resting

@@ -7,18 +7,62 @@ import PageHeader from "../layouts/page/PageHeader"
 import Layout from "../components/global/Layout"
 import Menu from "../components/global/FooterMenu"
 import { Container } from "../components/global/Wrappers"
+import CustomHeader from "../components/global/headerColor"
+
+export const Head = ({data}) => (
+  <>
+    <title>{data.wpPage.seo.title}</title>
+    <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
+
+    <meta name="description" content={data.wpPage.metaDesc} />
+    <meta name="title" content={data.wpPage.seo.title}/>
+    <meta name="pageType" content={data.wpPage.seo.schema.pageType}/>
+    <meta name="keywords" content={data.wpPage.seo.metaKeywords}/>
+    <meta name="author" content={data.wpPage.seo.opengraphAuthor}/>
+
+    {data.wpPage.seo.metaRobotsNoindex &&
+      <>
+      <meta name="robots" content="noindex" />
+      <meta name="googlebot-news" content="noindex" />
+      </>
+    }
+    {data.wpPage.seo.metaRobotsNoFollow &&
+       <meta name="robots" content={data.wpPage.seo.metaRobotsNoFollow} />
+    }
+
+    <meta property="og:type" content={data.wpPage.seo.opengraphType}/>
+    <meta property="og:author" content={data.wpPage.seo.opengraphAuthor}/>
+    <meta property="og:url" content={data.wpPage.seo.opengraphUrl}/>
+    <meta property="og:title" content={data.wpPage.seo.opengraphTitle}/>
+    <meta property="og:description" content={data.wpPage.seo.opengraphDescription}/>
+    {data.wpPage.seo.opengraphImage &&
+      <meta property="og:image" content={data.wpPage.seo.opengraphImage.sourceUrl}/>
+    }
+
+    <meta property="twitter:card" content="summary_large_image"/>
+    <meta property="twitter:url" content={data.wpPage.seo.opengraphUrl}/>
+    <meta property="twitter:title" content={data.wpPage.seo.twitterTitle}/>
+    <meta property="twitter:description" content={data.wpPage.seo.twitterDescription}/>
+    {data.wpPage.seo.twitterImage &&
+      <meta property="twitter:image" content={data.wpPage.seo.twitterImage.sourceUrl}/>
+    }
+    {data.wpPage.seo.fullHead}
+  </>
+)
 
 const WpPage = ({ data }) =>{
-
-  //const content     = data.wpPage.pageHeader.pageHeader.layoutContent;
-  //const settings    = data.wpPage.pageHeader.pageHeader.layoutSettings;
+  let color = 'black';
+  if(data.wpPage.uri === '/contact/'){
+    color = 'white';
+  }
 
   if(data.wpPage.isPostsPage === true){
     return ( <Blog/> )
   } else {
     return (
       <Layout>
-        {data.wpPage.pageHeader && !data.wpPage.isFrontPage && data.wpPage.title != "404" && data.wpPage.title != "Terms and Conditions" &&
+        <CustomHeader color={color}/>
+        {data.wpPage.pageHeader.pageHeader.layoutContent.heading && !data.wpPage.isFrontPage &&
           <PageHeader layoutData={data.wpPage.pageHeader.pageHeader} />
         }
         {data.wpPage.isFrontPage &&
@@ -93,8 +137,54 @@ export const query = graphql`
           }
         }
       }
-    ...PageHeader
-    ...FlexibleLayoutsPage
+      ...PageHeader
+      ...FlexibleLayoutsPage
+      seo {
+        title
+        metaDesc
+        opengraphDescription
+        opengraphImage {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+          sourceUrl
+        }
+        twitterTitle
+        twitterDescription
+        twitterImage {
+          localFile {
+            childImageSharp {
+              gatsbyImageData
+            }
+          }
+          sourceUrl
+        }
+        schema {
+          pageType
+        }
+        opengraphTitle
+        opengraphType
+        opengraphUrl
+        metaKeywords
+        metaRobotsNofollow
+        opengraphAuthor
+        metaRobotsNoindex
+      }
+  }
+  allWp {
+    nodes {
+      globalSettings {
+        globalSettings {
+          logos {
+            favicon {
+              sourceUrl
+            }
+          }
+        }
+      }
+    }
   }
 }
 `

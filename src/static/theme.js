@@ -103,6 +103,9 @@ export const theme = {
 }
 
 export const ThemeContext = React.createContext({
+    backgroundColor: 'white',
+    updateHeaderBkgcolor: () => {},
+
     accent: theme.colors.primary.accent,
     secondary: theme.colors.secondary.accent,
     updateAccentFunction: () => {},

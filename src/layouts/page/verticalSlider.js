@@ -42,7 +42,7 @@ const VerticalSlider = (props) => {
                   for( let i = 0; scrollPoints.length > i; i++ ){
                     if ( firstSlide.current.offsetTop > scrollPoints[i] ){
 
-                      //console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
+                      // console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
 
                       setVslide(i);
                       current = i;

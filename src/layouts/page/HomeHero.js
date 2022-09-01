@@ -19,8 +19,6 @@ const HomeHero = (props) => {
         var video = <video src={content.video.sourcUrl} className={''}></video>
         isImage = false;
     }
-
-
     return (
         <Section classes={'relative'} settings={settings}>
             {!isImage && video}
@@ -28,10 +26,10 @@ const HomeHero = (props) => {
             <Container className={'relative'}>
                 <div className={'pt-[60px] md:pt-20 xl:pt-[330px] max-w-[520px] lg:max-w-[700px] xl:max-w-full ml-auto'}>
 
-                <div className={`max-w-full mx-auto bg-black text-white mt-[330px] md:mt-[260px] lg:mt-[200px] xl:mt-0 px-9 pt-11 pb-14 md:px-14 md:py-16 md:pt-16 md:mr-0 md:max-w-3/4 lg:px-[86px] lg:py-[86px] lg:max-w-[680px] xl:max-w-[710px]`}>
+                <div className={`relative z-10 max-w-full mx-auto bg-black text-white mt-[330px] md:mt-[260px] lg:mt-[200px] xl:mt-0 px-9 pt-11 pb-14 md:px-14 md:py-16 md:pt-16 md:mr-0 md:max-w-3/4 lg:px-[86px] lg:py-[86px] lg:max-w-[680px] xl:max-w-[710px]`}>
                     <h1>
                         <span dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={theme.text.HERO + ` block`}></span>
-                        <span dangerouslySetInnerHTML={{__html: Parser(content.subheading)}} className={`font-stratos font-light text-30px md:text-40px lg:text-50px`}></span>
+                        <span dangerouslySetInnerHTML={{__html: Parser(content.subheading)}} className={`font-stratos uppercase font-light text-30px md:text-40px lg:text-50px`}></span>
                     </h1>
                     <div className={'pt-10'}>
                         <Link

@@ -30,6 +30,7 @@ const Quotes = (props) => {
     const quoteRight         = useRef(null);
 
     useEffect(() => {
+      if(slides.length > 0){
 
       let topLeft              = 75;
       let topRight             = 125;
@@ -43,6 +44,7 @@ const Quotes = (props) => {
         
       }
       function inView(){
+        
         if (window.pageYOffset > prevDirection){
           topLeft   = topLeft - topCounter;
           topRight  = topRight + topCounter; 
@@ -56,6 +58,11 @@ const Quotes = (props) => {
           quoteRight.current.style.top  = topRight + '%';
         }
         prevDirection = window.pageYOffset;
+      }
+
+      function throttleinView(){
+        //setTimeout(inView, 0);
+        inView();
       }
 
       function reset(){
@@ -75,14 +82,15 @@ const Quotes = (props) => {
       let observer = new IntersectionObserver( (entries) => {
         entries.forEach ( entry => {
           if( entry.isIntersecting ){
-            window.addEventListener('scroll', inView, {passive: true});
+            window.addEventListener('scroll',  throttleinView, {passive: true});
           }else{
             reset();
-            window.removeEventListener('scroll', inView, {passive: true});
+            window.removeEventListener('scroll',  throttleinView, {passive: true});
           }
         })
       })
       observer.observe(parallaxContainer.current);
+    }
     }, [])
 
     //classes={`bg-[url('https://rm2022dev.wpengine.com/wp-content/uploads/2022/07/Group-24.png')] bg-cover bg-[center_50%]`}

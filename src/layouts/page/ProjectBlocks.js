@@ -5,22 +5,29 @@ import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { graphql } from "gatsby"
 import Buttons from "../../components/global/Buttons"
+import ShadowBox from "../../components/global/Shadowbox.js"
 
 const ProjectBlocks = (props) => {
 
-    const content       = props.layoutData.layoutContent;
-    const settings      = props.layoutData.layoutSettings;
+    const content         = props.layoutData.layoutContent;
+    const settings        = props.layoutData.layoutSettings;
 
-    let transparent     = 'transparent';
-    const textColor     = settings.backgroundColor === 'black' ? 'white' : 'black'; 
+    let transparent       = 'transparent';
+    const textColor       = settings.backgroundColor === 'black' ? 'white' : 'black'; 
 
     const cols = content.columns === 3 ? 'lg:w-[31%]' : 'md:h-[360px]';
 
+    const shadowboxToggle = content.shadowbox;
+
+    if(shadowboxToggle){
+      settings.position = ' ';
+    }
+
     return(
-        <Section settings={ settings } transparent = { transparent }>
+        <Section settings={ settings } transparent = { transparent } >
             <Container>
                 {content.topHeading &&
-                  <h2 className={`${theme.text.H2} text-center text-rm-white`} style={{marginTop: content.overlap ? '-20vh' : '0', paddingBottom: content.overlap ? '5vh' : '0'}}> 
+                  <h2 className={`${theme.text.H2} text-center ${textColor}`} style={{marginTop: content.overlap ? '-20vh' : '0', paddingBottom: content.overlap ? '5vh' : '5rem'}}> 
                       { content.topHeading }
                   </h2>
                 }
@@ -28,6 +35,14 @@ const ProjectBlocks = (props) => {
                     {content.projects.map(block => {
                         let image = ''; 
                         if(content.columns === 3){
+                          if(shadowboxToggle){
+                              if(block.projectInformation.images.shadowBoxImages){
+                                return(
+                                  <div key={`projectBlocks${Math.random()}`} className={`flex flex-col justify-center items-center w-full md:w-[48%] ${cols} mb-12`}>
+                                    <ShadowBox images={block.projectInformation.images.shadowBoxImages} />
+                                  </div>)
+                              }
+                          }else{
                             if(block.projectInformation.images.servicesFeatureScreens){
                               image = block.projectInformation.images.servicesFeatureScreens.localFile.childImageSharp.gatsbyImageData;
                               return (
@@ -39,6 +54,7 @@ const ProjectBlocks = (props) => {
                                 </div>
                               ) 
                             }
+                          }
                         }else{
                           if(block.projectInformation.images.projectIndexGrid){
                             image = block.projectInformation.images.projectIndexGrid.localFile.childImageSharp.gatsbyImageData;
@@ -94,6 +110,7 @@ export const query = graphql`
             overlap
             columns
             bottomHeading
+            shadowbox
             projects {
               ... on WpProject {
                 title
@@ -168,6 +185,7 @@ export const serviceQuery = graphql`
             bottomHeading
             overlap
             columns
+            shadowbox
             projects {
               ... on WpProject {
                 title
@@ -180,6 +198,13 @@ export const serviceQuery = graphql`
                         childImageSharp {
                           gatsbyImageData
                         }
+                      }
+                    }
+                    shadowBoxImages {
+                      shadowBoxText
+                      shadowBoxImage {
+                        sourceUrl
+                        altText
                       }
                     }
                   }

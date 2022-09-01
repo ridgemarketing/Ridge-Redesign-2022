@@ -5,10 +5,10 @@ import { theme } from '../static/theme'
 
 const BlogCard = (props) => {
     return (
-        <article className="w-full sm:w-[360px] md:w-[330px] lg:w-[300px] xl:w-[330px] flex flex-col mb-7 lg:mb-0 justify-between">
+        <article key={`blogCard${props.heading}`} className="w-full sm:w-[360px] md:w-[330px] lg:w-[300px] xl:w-[330px] flex flex-col mb-7 lg:mb-0 justify-between">
             <Link to={ props.link }>
                 <div className={`pt-[.367%] mb-4 bg-grey `}>
-                    <GatsbyImage image={ props.image } alt={``} className={ `object-cover h-[125px] w-full ` } />
+                    <GatsbyImage image={ props.image } alt={props.alt} className={ `object-cover h-[125px] w-full ` } />
                 </div>
                 <div className={`w-full flex flex-col flex-1`}>
                     <h3 className={theme.text['H4'] + `mb-7 flex-1`}>{props.heading}</h3>

@@ -1,3 +1,5 @@
+import { theme } from "../../static/theme";
+
 const tagList = [
     {
         tag: `[b]`,
@@ -49,12 +51,79 @@ const tagList = [
     }
 ];
 
-const Parser = string => {
+const tagListBlog = [
+    {
+        tag: `<p>`,
+        replace: `<p class="${theme.text.P_STD} mt-10">`
+    },
+    {
+        tag:`<h2>`,
+        replace:`<h2 class="${theme.text.H5} mt-10">`
+    },
+    {
+        tag:`<img`,
+        replace:`<img class="mt-10 w-full max-w-[850px] ml-auto mr-auto"`
+    },
+    {
+        tag:`<hr class="`,
+        replace:`<hr class="mt-10 `
+    }, 
+    {
+        tag:`<ul>`,
+        replace:`<ul> <style>main li{margin-top:1.25rem;}</style>`,
+    },
+    {
+        tag:`<a`,
+        replace:`<a class="underline"`
+    }, 
+    {
+        tag:`<br>`,
+        replace:` `,
+    }, 
+    {
+        tag:`<h3>`,
+        replace:`<h3 class="${theme.text.H4} mt-10">`
+    },
+    {
+        tag:`<h6>`, //intro text 
+        replace:`<span class="font-basic-sans text-[1.625rem] leading-[1.875rem] font-bold">`,
+    }, 
+    {
+        tag:`</h6>`,
+        replace:`</span>`,
+    },
+    {   //wordpress editor 50/50 columns
+        tag:`wp-block-columns`,
+        replace:`block md:flex justify-between`,
+    },
+    {
+        tag:`wp-block-column`,
+        replace:`w-full md:w-[48%]`
+    },
+    {
+        tag:`<blockquote class="wp-block-quote"><p`,
+        replace:`<blockquote class="wp-block-quote"><p class=" text-rm-green text-[1.875rem] leading-[2rem] italic font-basic-sans font-normal mt-10"`
+    },
+    {
+        tag:`<figcaption>`,
+        replace:`<figcaption class="text-center">`
+    }
+];
+
+const Parser = (string, type) => {
     let output = string;
     output = output.replace(/\s*<script>.*?<\/script>\s*/g, ' ');
-    tagList.map(function(data) {
-        output = output.replaceAll(data.tag, data.replace);
-    });
+    if(type === 'blog'){
+        output =  output.split('\n').filter(n => n);
+        output = output.join("");
+        tagListBlog.map(data =>(
+            output = output.replaceAll(data.tag, data.replace)
+        ))
+    }else{        
+        tagList.map(data => (
+            output = output.replaceAll(data.tag, data.replace)
+        ));
+    }
     return output;
 }
 
