@@ -49,7 +49,6 @@ export const Head = ({data}) => (
 )
 
 const WpPage = ({ data }) =>{
-  console.log(data.wpPage.seo);
   let color = 'black';
   if(data.wpPage.uri === '/contact/'){
     color = 'white';

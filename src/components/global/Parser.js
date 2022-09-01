@@ -54,7 +54,7 @@ const tagListBlog = [
     },
     {
         tag:`<img`,
-        replace:`<img class="mt-10 w-full"`
+        replace:`<img class="mt-10 w-full max-w-[850px] ml-auto mr-auto"`
     },
     {
         tag:`<hr class="`,
@@ -75,6 +75,30 @@ const tagListBlog = [
     {
         tag:`<h3>`,
         replace:`<h3 class="${theme.text.H4} mt-10">`
+    },
+    {
+        tag:`<h6>`, //intro text 
+        replace:`<span class="font-basic-sans text-[1.625rem] leading-[1.875rem] font-bold">`,
+    }, 
+    {
+        tag:`</h6>`,
+        replace:`</span>`,
+    },
+    {   //wordpress editor 50/50 columns
+        tag:`wp-block-columns`,
+        replace:`block md:flex justify-between`,
+    },
+    {
+        tag:`wp-block-column`,
+        replace:`w-full md:w-[48%]`
+    },
+    {
+        tag:`<blockquote class="wp-block-quote"><p`,
+        replace:`<blockquote class="wp-block-quote"><p class=" text-rm-green text-[1.875rem] leading-[2rem] italic font-basic-sans font-normal mt-10"`
+    },
+    {
+        tag:`<figcaption>`,
+        replace:`<figcaption class="text-center">`
     }
 ];
 

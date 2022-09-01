@@ -30,7 +30,7 @@ const Quotes = (props) => {
     const quoteRight         = useRef(null);
 
     useEffect(() => {
-      if(quoteLeft.current && quoteRight.current){
+      if(slides.length > 0){
 
       let topLeft              = 75;
       let topRight             = 125;
