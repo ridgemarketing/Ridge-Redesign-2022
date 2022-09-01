@@ -9,8 +9,6 @@ const ResultsMixed = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
 
-    console.log('results mixed', content);
-
     const textColor     = settings.backgroundColor === 'black' ? 'white' : 'black'; 
 
     return(

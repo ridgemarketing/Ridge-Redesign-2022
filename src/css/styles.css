@@ -76,7 +76,28 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 .translate-form .has-danger input, .translate-form .has-danger textarea {
     @apply border-[#ea0000];
 }
-
+.page404 h1, .terms h1 {
+    @apply font-stratos uppercase font-bold text-60px lg:text-100px leading-H1-m lg:leading-H1 mt-10 mb-14
+}
+.page404, .terms {
+    @apply container mt-20;
+    max-width: 1120px;
+}
+.page404 h4, .terms h4 {
+    @apply font-basic-sans font-semibold text-26px leading-30px
+}
+.terms h6 {
+    @apply font-basic-sans font-light text-21px leading-28px mb-16;
+}
+.terms h4 {
+    @apply mb-6 mt-14
+}
+.terms p {
+    @apply mb-5
+}
+.terms a {
+    @apply underline font-basic-sans font-light mb-16;
+}
 /* Frosted Effect */
 .frosted-glass{
     @apply drop-shadow-lg;

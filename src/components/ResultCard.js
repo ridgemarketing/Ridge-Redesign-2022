@@ -17,7 +17,6 @@ const ResultCard = (props) => {
         statClass += ' lg:text-[160px]';
     }
 
-
     return (
             <div key={`${content.description}${content.stat}`} className={ `sm:px-4 text-center lg:text-left ${classes[props.columns]} my-6` }>
                 { content.stat && 

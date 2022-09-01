@@ -10,7 +10,6 @@ const VerticalSlider = (props) => {
   const content               = props.layoutData.layoutContent;
   const settings              = props.layoutData.layoutSettings;
 
-  //console.log('vertical slider');
   const textColor             = settings.backgroundColor === 'black' ? 'text-rm-white' : 'text-rm-black'; 
   const backgroundColor       = settings.backgroundColor === 'black' ? 'bg-rm-black' : 'bg-rm-white';
 
@@ -197,7 +196,6 @@ export const serviceQuery = graphql`
       }
   }
 `
-
 export const projectQuery = graphql`
   fragment VerticalSliderProject on WpProject_Flexiblelayouts_Layouts {
     ... on WpProject_Flexiblelayouts_Layouts_VerticalSlider {

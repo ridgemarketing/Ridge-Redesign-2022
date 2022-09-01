@@ -66,6 +66,12 @@ const WpPage = ({ data }) =>{
         {data.wpPage.isFrontPage &&
           <HomeHero layoutData={data.wpPage.homeHero.layoutHomeHero}/>
         }
+        {data.wpPage.title == "404" &&
+        <div className={'page404'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
+        }
+        {data.wpPage.title == "Terms and Conditions" &&
+        <div className={'terms'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
+        }
         
         {data.wpPage.flexibleLayouts && 
         <FlexibleLayouts flexibleLayouts={data.wpPage.flexibleLayouts} />

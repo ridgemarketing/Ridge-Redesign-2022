@@ -65,7 +65,6 @@ export const serviceQuery = graphql`
       }
   }
 `
-
 export const projectQuery = graphql`
   fragment LineBreakProject on WpProject_Flexiblelayouts_Layouts {
     ... on WpProject_Flexiblelayouts_Layouts_LineBreak {

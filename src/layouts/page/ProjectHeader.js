@@ -8,6 +8,7 @@ import Parser from "../../components/global/Parser"
 const ProjectHeader = (props) => {
     const content       = props.content.projectHeader;
     const info          = props.info;
+    console.log(info);
 
     const logo          = (info.logos.light.localFile.ext === `.svg`) 
     ? <img className={''} src={info.logos.light.sourceUrl} alt={info.logos.light.altText} />
@@ -145,7 +146,6 @@ export const query = graphql`
       }
     projectInformation {
         accentColor
-
         logos {
           light {
             localFile {

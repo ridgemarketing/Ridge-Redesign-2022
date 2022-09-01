@@ -5,6 +5,8 @@ import { Container, Section } from '../components/global/Wrappers.js'
 import { theme } from '../static/theme'
 import Buttons from '../components/global/Buttons'
 import { GatsbyImage } from 'gatsby-plugin-image'
+import Parser from '../components/global/Parser'
+
 import Layout from "../components/global/Layout"
 
 export const Head = ({data}) => (
@@ -81,7 +83,7 @@ const WpService = ({ data }) =>{
           {content.heading.green && content.heading.black && 
             <h2 className={theme.text.HERO + 'mb-9'}>
                 <span className="text-rm-green">
-                  {content.heading.green}
+                  {content.heading.green + " "}
                 </span>
                 <span className="text-rm-black">
                   {content.heading.black}
@@ -92,9 +94,7 @@ const WpService = ({ data }) =>{
             const textSize = key.textSize === 'large' ? 'H4_LTE' : 'P_STD';  
             return(
                 <> 
-                  <p className={theme.text[textSize] + 'mb-9' } key={key.body}>
-                    {key.body} 
-                  </p>
+                  <p dangerouslySetInnerHTML={{__html: Parser(key.body)}} className={theme.text[textSize] + 'mb-9' } key={key.body}></p>
                 </>
             )
           })}

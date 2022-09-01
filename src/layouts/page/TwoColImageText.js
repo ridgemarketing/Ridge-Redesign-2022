@@ -3,6 +3,7 @@ import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import FlexibleMedia from "../../components/global/FlexibleMedia"
+import Parser from "../../components/global/Parser"
 
 const TwoColImageText = (props) => {
 
@@ -20,9 +21,7 @@ const TwoColImageText = (props) => {
                         <h3 className={theme.text.H2}>
                             {content.heading}
                         </h3>
-                        <p className={theme.text.P_STD + ' mt-8'}>
-                            {content.body}  
-                        </p>
+                        <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={theme.text.P_STD + ' mt-8'}></p>
                     </div>
 
                     <div className={"lg:text-left text-center"}>
