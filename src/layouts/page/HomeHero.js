@@ -9,6 +9,7 @@ const HomeHero = (props) => {
 
     const data      = props.layoutData;
     const content   = data.layoutContent;
+    console.log(content);
     const settings  = data.layoutSettings || {};
     const image = (content.backgroundImage) ? getImage(content.backgroundImage.localFile.childImageSharp.gatsbyImageData) : false;
     const mobileImage = (content.mobileImage) ? getImage(content.mobileImage.localFile.childImageSharp.gatsbyImageData) : false;
@@ -16,15 +17,15 @@ const HomeHero = (props) => {
 
     let isImage = true;
     if (content.video) {
-        var video = <video src={content.video.sourcUrl} className={''}></video>
+        var video = <video playsinline autoplay="1" muted loop="loop" src={content.video} className={'absolute'} type="video/mp4"></video>
         isImage = false;
     }
     return (
         <Section classes={'relative'} settings={settings}>
             {!isImage && video}
             {isImage && <BackgroundImage image={image} mobile={mobileImage} tablet={tabletImage} classes={`h-calc(100%-33px) lg:h-[calc(100%-55px)]`}/> }
-            <Container className={'relative'}>
-                <div className={'pt-[60px] md:pt-20 xl:pt-[330px] max-w-[520px] lg:max-w-[700px] xl:max-w-full ml-auto'}>
+            <Container classes={'xl:pt-[200px]'}>
+                <div className={'pt-[60px] md:pt-20 xl:pt-0 max-w-[520px] lg:max-w-[700px] xl:max-w-full ml-auto relative -bottom-10'}>
 
                 <div className={`relative z-10 max-w-full mx-auto bg-black text-white mt-[330px] md:mt-[260px] lg:mt-[200px] xl:mt-0 px-9 pt-11 pb-14 md:px-14 md:py-16 md:pt-16 md:mr-0 md:max-w-3/4 lg:px-[86px] lg:py-[86px] lg:max-w-[680px] xl:max-w-[710px]`}>
                     <h1>

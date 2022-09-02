@@ -112,6 +112,7 @@ export const query = graphql`
                 resting
               }
             }
+            video
             backgroundImage {
               sourceUrl
               localFile {
