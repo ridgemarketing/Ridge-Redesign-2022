@@ -22,6 +22,8 @@ const FlexibleLayouts = (props) => {
         
         const LayoutToRender = Layouts[subString]
         return(layoutsArray.push(<LayoutToRender layoutData={layoutProps} />));
+    } else {
+      return false
     }
   });
   return (

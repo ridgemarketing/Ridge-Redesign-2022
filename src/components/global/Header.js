@@ -193,8 +193,12 @@ const Header = (props) => {
                                                 <Link to={navItem.url} className={`${currentItem && `!font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} hover:!font-bold text-18px`}> {/* hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green */}
                                                     <span className={`${classesString}`}>{navItem.label}</span>
                                                 </Link>  
-                                                    <ul key={`header-submenu${navItem.label}`} 
-                                                        className={`my-6 lg:my-0 ${hidden} -lg:justify-between -lg:flex-wrap transition-all duration-300 ease-out -z-10 ${doubleMenu} lg:absolute lg:-ml-5 lg:p-7 lg:shadow-block lg:bg-rm-white lg:opacity-0 lg:group-hover:opacity-100 lg:group-hover:z-50 lg:group-focus:z-50 lg:group-focus-within:z-50 lg:group-focus:opacity-100 lg:group-focus-within:opacity-100 lg:w-max lg:left-[75%] lg:-translate-x-[50%] lg:group-hover:translate-y-5 lg:after:bg-[url("../static/triangle.svg")] lg:after:-top-[15px] lg:after:left-0 after:h-[30px] lg:after:w-full lg:after:absolute lg:after:bg-no-repeat lg:after:bg-contain lg:after:bg-center`}>
+                                                    <ul key={`submenu${navItem.label}${Math.random()}`} 
+                                                        className={`my-6 lg:my-0 ${hidden} -lg:justify-between -lg:flex-wrap
+                                                            transition-all duration-300 ease-out -z-10
+                                                            ${doubleMenu} lg:hidden lg:absolute lg:-ml-5 lg:p-7 lg:shadow-block lg:bg-rm-white lg:opacity-0 
+                                                            lg:group-hover:opacity-100 lg:group-hover:z-50 lg:group-focus:z-50 lg:group-focus-within:z-50 lg:group-focus:opacity-100 lg:group-focus-within:opacity-100 lg:w-max lg:left-[75%] lg:-translate-x-[50%] lg:group-hover:translate-y-5 lg:group-hover:flex
+                                                            lg:after:bg-[url("../static/triangle.svg")] lg:after:-top-[15px] lg:after:left-0 after:h-[30px] lg:after:w-full lg:after:absolute lg:after:bg-no-repeat lg:after:bg-contain lg:after:bg-center`}>
                                                         {navItem.childItems.nodes.map((subNavItem) => {
                                                             let menuIcon = ``;
                                                             if(subNavItem.acfWpMenu.icon){
@@ -228,7 +232,7 @@ const Header = (props) => {
                 </nav>
             </section>
         </header> 
-        <div ref={overlay} aria-hidden="true" style={{ height:overlayState ? '100%' : '0%', opacity:overlayState ? 0.7 : 0 } } className={`-lg:bg-rm-black w-full z-10 fixed top-0 left-0 transition-all ease-out duration-300 lg:!opacity-0 lg:hidden`}></div>
+        <div ref={overlay} aria-hidden="true" style={{ height:overlayState ? '100%' : '0%', opacity:overlayState ? '0.7' : '0' }} className={`-lg:bg-rm-black w-full z-10 fixed top-0 left-0 transition-all ease-out duration-300 lg:!opacity-0 lg:hidden`}></div>
         </>
     )
 }

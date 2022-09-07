@@ -98,7 +98,7 @@ const ProjectHeader = (props) => {
                               <p></p>
                               <ul>
                                   {info.services.map(service => {
-                                      return <li><a href=""></a></li>
+                                      return (<li><a href=""></a></li>)
                                   })}
                               </ul>
                           </div>
