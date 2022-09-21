@@ -60,16 +60,13 @@ const WpService = ({ data }) =>{
   let visibility  = 'hidden invisible';
 
   if(content.intextFloatedImage){
-    for(let i =0; headerBodyContent.length > i; i++){
+    for(let i =0; i < headerBodyContent.length; i++){
         if(headerBodyContent[i].textSize === "standard"){
           floatP.push(headerBodyContent[i]);
-          headerBodyContent.splice(i,1);
-          i--;
         }
     }
     visibility = 'inline-block';
   }
-  // console.log('service', content, floatP);
 
   return (
     <Layout>
@@ -92,11 +89,11 @@ const WpService = ({ data }) =>{
           }
           {content.bodyContent && content.bodyContent.map((key) =>{
             const textSize = key.textSize === 'large' ? 'H4_LTE' : 'P_STD';  
-            return(
-                <> 
-                  <p dangerouslySetInnerHTML={{__html: Parser(key.body)}} className={theme.text[textSize] + 'mb-9' } key={key.body}></p>
-                </>
-            )
+            if (key.textSize == "large") {
+              return(
+                    <p dangerouslySetInnerHTML={{__html: Parser(key.body)}} className={theme.text[textSize] + 'mb-9' } key={key.body}></p>
+              )
+            }
           })}
           
             <div className={visibility + ` lg:w-3/4`}>
@@ -104,7 +101,7 @@ const WpService = ({ data }) =>{
                 const textSize = 'P_STD';
                 return(
                     <p className={theme.text[textSize] + 'mb-9' } key={key.body}>
-                      {key.body} 
+                        {key.body}
                     </p>
                 )
               })}
