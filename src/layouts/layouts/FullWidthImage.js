@@ -36,11 +36,23 @@ const FullWidthImage = (props) => {
       } 
       setBkg()
       
-      window.onresize = () =>{
+      // window.onresize = () =>{
+      //   console.log(overlapDiv);
+      //   console.log(overlapDiv.current);
+      // overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
+      // overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;
+      // }
+    }, []);
+
+    useEffect(() => {
+      function handleResize() {
         overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
         overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;
       }
-    }, []);
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+    })
 
     return (
       <>
