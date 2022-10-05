@@ -23,7 +23,7 @@ const IconTextBoxes = (props) => {
           <Container container={settings.containerWidth}>
           <div>
             {content.heading &&
-              <h2 className={`text-center mb-14 ${textColor} ${theme.text.H1_STD}`} dangerouslySetInnerHTML={{__html: Parser(content.heading)}}>
+              <h2 className={`text-center mb-14 ${textColor} ${theme.text.H2}`} dangerouslySetInnerHTML={{__html: Parser(content.heading)}}>
               </h2>
             }
           {content.body &&
