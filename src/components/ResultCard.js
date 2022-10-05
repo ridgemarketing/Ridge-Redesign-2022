@@ -19,14 +19,14 @@ const ResultCard = (props) => {
     }
 
     return (
-            <div key={`${content.description}${content.stat}`} className={ `sm:px-4 text-center lg:text-left ${classes[props.columns]} my-6` }>
+            <div key={`${content.description}${content.stat}`} className={ `text-center lg:text-left ${classes[props.columns]} my-6` }>
                 { content.stat && 
                     <p className={`accent-text ${statClass} font-bold`}>
                         { content.stat }
                     </p>  
                 }
                 { content.description &&  
-                   <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H3} ${descriptionClass}`}></p>  
+                   <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H3 + 'pr-4'} ${descriptionClass}`}></p>  
                 }
                 { content.company &&  
                    <p className={`${theme.text.P_STD} mt-9`}>
