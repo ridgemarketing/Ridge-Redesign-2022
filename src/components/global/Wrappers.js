@@ -43,6 +43,7 @@ export const Container = (props) => {
     let size = {
         default: 'container',
         slim: 'container xl:max-w-[1120px] relative',
+        mini: 'container lg:max-w-[750px] xl:max-w-[930px] relative',
         none: ''
     }
     let container = (props.container) ? size[props.container] : size['slim'];
