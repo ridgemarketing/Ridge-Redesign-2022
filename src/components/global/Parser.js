@@ -6,48 +6,28 @@ const tagList = [
         replace: '<span style="font-weight: 700;">'
     },
     {
-        tag: `[/b]`,
-        replace: `</span>`
-    },
-    {
         tag: `[temp]`,
         replace: '<span style="font-weight: 600; font-size: 26px;">'
-    },
-    {
-        tag: `[/temp]`,
-        replace: '</span>'
     },
     {
         tag: `[extra-slim]`,
         replace: '<span style="max-width: 976px; display:block;">'
     },
     {
-        tag: `[/extra-slim]`,
-        replace: '</span>'
-    },
-    {
         tag: `[green]`,
         replace: `<span class="text-rm-green font-semibold">`
-    },
-    {
-        tag: `[/green]`,
-        replace: `</span>`
     },
     {
         tag: `[accent]`,
         replace: `<span class="accent-text">`
     },
     {
-        tag: `[/accent]`,
-        replace: `</span>`
-    },
-    {
         tag: `[secondary]`,
         replace: `<span class="secondary-text">`
     },
     {
-        tag: `[/secondary]`,
-        replace: `</span>`
+        tag: '[white]',
+        replace: `<span class="text-white">`
     }
 ];
 
@@ -119,7 +99,8 @@ const Parser = (string, type) => {
         tagListBlog.map(data =>(
             output = output.replaceAll(data.tag, data.replace)
         ))
-    }else{        
+    }else{      
+        output = output.replace(/(\[\/\w+\])/g, ''); // replaces any closing tag: `[/ + (any amount of letters) + ]` with </span>
         tagList.map(data => (
             output = output.replaceAll(data.tag, data.replace)
         ));
