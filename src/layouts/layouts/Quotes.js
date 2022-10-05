@@ -97,7 +97,7 @@ const Quotes = (props) => {
     return(
       <div ref={parallaxContainer} className={`block `}>
         <Section classes="overflow-hidden" settings={ settings } ref={parallaxContainer}>
-          <Container>
+          <Container container={settings.containerWidth}>
             {content.heading &&
               <h2 className={ theme.text['H2'] }>
                   { content.heading }
@@ -161,6 +161,7 @@ export const query = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
@@ -192,6 +193,7 @@ export const serviceQuery = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
@@ -224,6 +226,7 @@ export const projectQuery = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
