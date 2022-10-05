@@ -24,14 +24,14 @@ const ProjectBlocks = (props) => {
     }
 
     return(
-        <Section settings={ settings } transparent = { transparent } >
+        <Section settings={ settings } transparent = { transparent }>
             <Container>
                 {content.topHeading &&
                   <h2 className={`${theme.text.H2} text-center ${textColor}`} style={{marginTop: content.overlap ? '-20vh' : '0', paddingBottom: content.overlap ? '5vh' : '5rem'}}> 
                       { content.topHeading }
                   </h2>
                 }
-                <div className="flex w-full flex-wrap justify-between">
+                <div className="flex w-full flex-wrap justify-between" style={{marginTop: content.overlap ? '-20vh' : '0' }}>
                     {content.projects.map(block => {
                         let image = '';
                          
