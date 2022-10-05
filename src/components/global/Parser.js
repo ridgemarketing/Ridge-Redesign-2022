@@ -100,7 +100,7 @@ const Parser = (string, type) => {
             output = output.replaceAll(data.tag, data.replace)
         ))
     }else{      
-        output = output.replace(/(\[\/\w+\])/g, ''); // replaces any closing tag: `[/ + (any amount of letters) + ]` with </span>
+        output = output.replace(/(\[\/\w+-*\w*\])/g, '</span>'); // replaces any closing tag: `[/ + (any amount of letters) + ]` with </span>
         tagList.map(data => (
             output = output.replaceAll(data.tag, data.replace)
         ));
