@@ -6,6 +6,7 @@ import { Container, Section } from '../../components/global/Wrappers.js'
 import { graphql } from "gatsby"
 import Buttons from "../../components/global/Buttons"
 import ShadowBox from "../../components/global/Shadowbox.js"
+import Parser from "../../components/global/Parser"
 
 const ProjectBlocks = (props) => {
 
@@ -27,11 +28,9 @@ const ProjectBlocks = (props) => {
         <Section settings={ settings } transparent = { transparent }>
             <Container>
                 {content.topHeading &&
-                  <h2 className={`${theme.text.H2} text-center ${textColor}`} style={{marginTop: content.overlap ? '-20vh' : '0', paddingBottom: content.overlap ? '5vh' : '5rem'}}> 
-                      { content.topHeading }
-                  </h2>
+                  <h2 dangerouslySetInnerHTML={{__html: Parser(content.topHeading)}} className={`${theme.text.H2} text-center ${textColor}`} style={{marginTop: content.overlap ? '-20vh' : '0', paddingBottom: content.overlap ? '5vh' : '5rem'}}></h2>
                 }
-                <div className="flex w-full flex-wrap justify-between" style={{marginTop: content.overlap ? '-20vh' : '0' }}>
+                <div className="flex w-full flex-wrap justify-between" style={{marginTop: (!content.topHeading && content.overlap) ? '-20vh' : '0' }}>
                     {content.projects.map(block => {
                         let image = '';
                          
