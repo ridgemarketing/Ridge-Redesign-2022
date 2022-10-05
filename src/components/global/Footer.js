@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { theme } from '../../static/theme'
 import { Link } from "gatsby" 
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { Container } from "./Wrappers"
 
 const Footer = () =>{
     
@@ -145,8 +146,8 @@ const Footer = () =>{
     }
 
     return(
-        <footer className="text-center lg:text-left bg-rm-black text-rm-white py-12 lg:py-16">
-            <section className="container">
+        <footer className="-mt-px text-center lg:text-left bg-rm-black text-rm-white py-12 lg:py-16">
+            <Container container={"slim"}>
                 <h2 className={`${theme.text.HERO} lg:w-3/4`}>{content.footertext.cta}</h2>
                 <Link to={content.footertext.link.url} className={`ml-auto mr-auto lg:ml-0 lg:mr-0 text-rm-green mt-12 lg:mt-16 w-max hover:text-rm-white hover:underline ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.LARGE} ${theme.text_links.ARW_FWD_GREEN}`}>{content.footertext.link.title}</Link>
                 <div className="mt-12 lg:w-[95%] lg:mt-28">
@@ -213,7 +214,7 @@ const Footer = () =>{
                     </ul> 
                 </div>
                 <small className={`${theme.text.FOOTER} mt-16 lg:mt-32 text-[14px] block`}>{content.copyright}</small>
-            </section>
+            </Container>
         </footer>
     )
 } 
