@@ -14,9 +14,9 @@ const TwoColTextQuote = (props) => {
 
     return (
         <Section settings={settings}>
-            <Container>
-                <div className={'lg:grid grid-cols-2 gap-16 pt-16'}>
-                    <div className={'pb-12 xl:px-20 lg:pb-0 ' + order}>
+            <Container container={settings.containerWidth}>
+                <div className={'xl:grid grid-cols-2 gap-16 pt-16'}>
+                    <div className={'pb-12 xl:pb-0 ' + order}>
                         <h2 className={`${theme.text.H2} ${textColor}`}>
                             {content.textContent.heading}
                         </h2>
@@ -30,7 +30,7 @@ const TwoColTextQuote = (props) => {
 
                     <div className={"text-left"}>
                         { content.quoteContent.quote &&
-                          <q className={`${theme.text.Q} text-rm-green`}>
+                          <q className={`${theme.text.PULL_Q} text-rm-green`}>
                               {content.quoteContent.quote}
                           </q>
                         }
@@ -81,6 +81,7 @@ export const query = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
@@ -114,6 +115,7 @@ export const serviceQuery = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
@@ -147,6 +149,7 @@ export const projectQuery = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
