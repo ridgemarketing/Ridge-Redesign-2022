@@ -20,10 +20,10 @@ const IconTextBoxes = (props) => {
 
   return (
       <Section settings={settings}>
-          <Container>
+          <Container container={settings.containerWidth}>
           <div>
             {content.heading &&
-              <h2 className={`text-center mb-14 ${textColor} ${theme.text.H2}`} dangerouslySetInnerHTML={{__html: Parser(content.heading)}}>
+              <h2 className={`text-center mb-14 ${textColor} ${theme.text.H1_STD}`} dangerouslySetInnerHTML={{__html: Parser(content.heading)}}>
               </h2>
             }
           {content.body &&
@@ -37,7 +37,7 @@ const IconTextBoxes = (props) => {
           </div>
 
           <div className={wrapperClasses}>
-              {content.boxes.map((item, idx) => {
+              {content.boxes && content.boxes.map((item, idx) => {
                   return (content.settings.type === 'stack') ? <IconTextBoxStack key={`iconTextBoxStack${idx}${Math.random()}`} idx={idx+1} color={textColor} content={item} iconType={content.settings.feature}/> : <IconTextBoxFlex key={`iconTextBoxFlex${idx}${Math.random()}`} iconType={content.settings.feature} idx={idx+1} color={textColor} columns={content.settings.columns} content={item}/>;
               })}
           </div>
@@ -126,6 +126,7 @@ export const pageQuery = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
@@ -189,6 +190,7 @@ export const serviceQuery = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
@@ -255,6 +257,7 @@ export const projectQuery = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
