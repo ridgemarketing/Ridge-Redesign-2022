@@ -46,7 +46,7 @@ const IconTextBoxStack = (props) => {
             <div className={'py-4'} key={`iconTextBoxFlex-item${Math.random()}`}>
                 {component}
                 <h5 dangerouslySetInnerHTML={{__html: heading}} className={theme.text.H5 + ` text-center md:text-left ${props.color}`}></h5>        
-                <p dangerouslySetInnerHTML={{__html: body}} className={ theme.text.P_STD + `mt-4 text-center md:text-left ${props.color}`}></p>
+                <p dangerouslySetInnerHTML={{__html: body}} className={ theme.text.P_STD + `mt-4 text-left ${props.color}`}></p>
             </div>
             )
 }
