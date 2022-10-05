@@ -3,11 +3,13 @@ import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
+import Buttons from '../../components/global/Buttons'
 import Parser from '../../components/global/Parser'
 
 const LogoCloud = props => {
 
   const content   = props.layoutData.layoutContent;
+  console.log(content);
   const settings  = props.layoutData.layoutSettings;
 
   let heading     = '';
@@ -38,6 +40,13 @@ const LogoCloud = props => {
                       )
                     })}
                 </div> 
+                {content.componentButton && content.componentButton.link &&
+                <div className='text-center my-12'>
+                  <Buttons 
+                    content={content.componentButton} 
+                    sectionBackground={settings.backgroundColor}/>
+                </div>
+                }
             </Container>
         </Section>
     )
@@ -64,6 +73,19 @@ export const query = graphql`
                   }
                 }
               }
+            }
+            componentButton {
+              fieldGroupName
+              colors {
+                fieldGroupName
+                resting
+              }
+              link {
+                url
+                title
+                target
+              }
+              style
             }
           }
           layoutSettings {
@@ -100,6 +122,19 @@ export const serviceQuery = graphql`
                 }
               }
             }
+            componentButton {
+              fieldGroupName
+              colors {
+                fieldGroupName
+                resting
+              }
+              link {
+                url
+                title
+                target
+              }
+              style
+            }
           }
           layoutSettings {
             padding {
@@ -135,6 +170,19 @@ export const projectQuery = graphql`
                   }
                 }
               }
+            }
+            componentButton {
+              fieldGroupName
+              colors {
+                fieldGroupName
+                resting
+              }
+              link {
+                url
+                title
+                target
+              }
+              style
             }
           }
           layoutSettings {
