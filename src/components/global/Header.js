@@ -136,7 +136,7 @@ const Header = (props) => {
     for (let i = 0; mobileArrows.length > i; i++){
         for(let z =0; mobileArrows[i][z].length > z; z++){
             if(mobileArrows[i][z] !== '' && mobileArrows[i][z] !== " "){
-                classesString = classesString + '-lg:' + mobileArrows[i][z] + ' ';
+                classesString = classesString + ' ' + mobileArrows[i][z] + ' lg:after:hidden';
             }
         }
     }
