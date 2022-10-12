@@ -8,6 +8,7 @@ import Parser from "../../components/global/Parser"
 const ProjectHeader = (props) => {
     const content       = props.content.projectHeader;
     const info          = props.info;
+    console.log("INFO:", info);
 
     const logo          = (info.logos.light.localFile.ext === `.svg`) 
     ? <img className={''} src={info.logos.light.sourceUrl} alt={info.logos.light.altText} />
@@ -29,7 +30,7 @@ const ProjectHeader = (props) => {
     let top             = `top-0`
 
     if (featuredImage) {
-        top             = `top-96`
+        top             = `top-56 lg:top-96`
     }
 
     const context = useContext(ThemeContext);
@@ -64,7 +65,7 @@ const ProjectHeader = (props) => {
           }
           
           {featuredImage && 
-              <Container classes={``}>
+              <Container container={'none'} classes={'md:container'}>
                   <div className={`mt-8`}>
                       <GatsbyImage className={``} image={featuredImage} />
                   </div>
@@ -77,14 +78,14 @@ const ProjectHeader = (props) => {
                   {logo}
               </div>
 
-              <div className={`lg:flex`}>
-                  <div className={`lg:w-3/4`}>
+              <div className={`xl:flex`}>
+                  <div className={`xl:w-3/4`}>
                       <h1 dangerouslySetInnerHTML={{__html: heading}} className={`${theme.text.H1_STD}`}></h1>
                       <p dangerouslySetInnerHTML={{__html:body}} className={`${theme.text.P_STD} mt-8`}></p>
                   </div>
-                  <div className={``}>
+                  <div className={`mt-9 xl:pl-10 md:grid md:grid-cols-2 md:w-8/12 xl:block xl:w-auto`}>
                       {info.websites && 
-                          <div>
+                          <div className={'pb-8'}>
                               <p className={`${theme.text.P_BLD}`}>Website</p>
                               <ul>
                                   {info.websites.map(website => {
@@ -95,10 +96,10 @@ const ProjectHeader = (props) => {
                       }
                       {info.services && 
                           <div>
-                              <p></p>
+                              <p className={`${theme.text.P_BLD}`}>Services Provided</p>
                               <ul>
                                   {info.services.map(service => {
-                                      return (<li><a href=""></a></li>)
+                                      return (<li><a href={service.service.link}>{service.titleOverride}</a></li>)
                                   })}
                               </ul>
                           </div>
