@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from "react"
+import React, {useContext, useEffect, useState, useRef } from "react"
 import { Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme, ThemeContext } from "../../static/theme"
@@ -8,7 +8,9 @@ import Parser from "../../components/global/Parser"
 const ProjectHeader = (props) => {
     const content       = props.content.projectHeader;
     const info          = props.info;
-    console.log("INFO:", info);
+    const [imageHeight, setImageHeight] = useState(0);
+    const [maxHeight, setMaxHeight] = useState(0);
+    const ref = useRef();
 
     const logo          = (info.logos.light.localFile.ext === `.svg`) 
     ? <img className={''} src={info.logos.light.sourceUrl} alt={info.logos.light.altText} />
@@ -21,6 +23,24 @@ const ProjectHeader = (props) => {
     const bgImage       = content.backgroundImage ? getImage(content.backgroundImage.localFile) : false;
     const featuredImage = content.featuredImage   ? getImage(content.featuredImage.localFile)   : false;
     const imageOverhang = content.imageOverhang   ? getImage(content.imageOverhang.localFile)   : false;
+
+
+    useEffect(() => {
+      function handleResize() {
+          setImageHeight(ref.current.clientHeight);
+      }
+
+      setTimeout(function() {
+          setImageHeight(ref.current ? ref.current.clientHeight : 0 );
+      }, 0)
+
+      window.addEventListener('resize', handleResize);
+      return () => window.removeEventListener('resize', handleResize);
+  })
+
+  useEffect(() => {
+    setMaxHeight((imageHeight / 2) + 224);
+  }, [imageHeight]);
 
     const heading       = Parser(content.heading);
     let body            = '';
@@ -58,10 +78,10 @@ const ProjectHeader = (props) => {
     return (
       <section className={`relative text-${content.textTheme}`} style={{backgroundColor: topColor ? content.backgroundColor : 'transparent'}}>
           {content.backgroundColor &&
-              <div className={`absolute ${top} bottom-80 left-0 w-full h-full max-h-[calc(100%-44rem)] object-cover`} style={{backgroundColor: content.backgroundColor}}></div>
+              <div className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} style={{backgroundColor: content.backgroundColor, maxHeight: `calc(100% - ${maxHeight}px)`}}></div>
           }
           {bgImage && 
-              <GatsbyImage className={`absolute ${top} bottom-80 left-0 w-full h-full max-h-[calc(100%-44rem)] object-cover`} image={bgImage} />
+              <GatsbyImage style={{maxHeight: `calc(100% - ${maxHeight}px)`}} className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} image={bgImage} />
           }
           
           {featuredImage && 
@@ -72,8 +92,7 @@ const ProjectHeader = (props) => {
               </Container>
           }
 
-          
-          <Container size={`slim`} classes={`pt-20 pb-44`}>
+          <Container size={`slim`} classes={`pt-20 pb-14 md:pb-20 xl:pb-44`}>
               <div className={`max-w-[400px] mb-16`}>
                   {logo}
               </div>
@@ -107,9 +126,12 @@ const ProjectHeader = (props) => {
                   </div>
               </div>
           </Container>
-          <Container size={`slim`}>
+
+          <Container size={`slim`} classes={'helloClass'}> 
               {imageOverhang && 
-                      <GatsbyImage className={``} image={imageOverhang} />
+                      <div ref={ref}>
+                        <GatsbyImage className={``} image={imageOverhang} />
+                      </div>
               }
           </Container>
       </section>
