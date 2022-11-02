@@ -113,3 +113,9 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
         -webkit-backdrop-filter: saturate(150%) blur(1px);
     }
 }
+.gatsby-image-wrapper.gatsby-image-wrapper-constrained.absolute {
+    position: absolute !important;
+}
+.gatsby-image-wrapper.absolute {
+    position: absolute !important;
+}
