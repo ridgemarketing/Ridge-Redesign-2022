@@ -88,8 +88,8 @@ const WpService = ({ data }) =>{
             </h2>
           }
           {content.bodyContent && content.bodyContent.map((key) =>{
-            const textSize = key.textSize === 'large' ? 'H4_LTE' : 'P_STD';  
-            if (key.textSize == "large") {
+            if (floatP.length < 1 || key.textSize == "large") {
+              const textSize = key.textSize === 'large' ? 'H4_LTE' : 'P_STD';  
               return(
                     <p dangerouslySetInnerHTML={{__html: Parser(key.body)}} className={theme.text[textSize] + 'mb-9' } key={key.body}></p>
               )

@@ -4,8 +4,8 @@ import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import { GatsbyImage } from 'gatsby-plugin-image'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
 
 const FeaturedProjectsCarousel = (props) => {
 
@@ -40,7 +40,7 @@ const FeaturedProjectsCarousel = (props) => {
 
     return (
         <Section settings={settings}>
-            <Container>
+            <Container container={'none'} classes={'md:container xl:max-w-[1120px] relative'}>
                 <div className={`relative lg:flex`}>
                     <div class="lg:hidden">
                         <h2 className={theme.text.H2 + `hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{content.heading}</h2>
@@ -53,10 +53,10 @@ const FeaturedProjectsCarousel = (props) => {
                         className={ `` } 
                         objectFit={'contain'}/> }
                     </div>
-                    <div className={`absolute bottom-0 right-0 w-full lg:relative lg:flex`}>
+                    <div className={`absolute bottom-0 right-0 w-full lg:relative md:flex`}>
                         <h2 className={theme.text.H2 + `text-black hidden lg:block lg:absolute lg:mt-6 lg:ml-4`}>{headingArr[1]}</h2>
-                        <div className={`self-end flex flex-col items-end w-full mx-auto lg:-ml-1/2 xl:-ml-20`}>
-                            <div className={`px-8 pt-7 pb-10 bg-white w-full max-w-[548px] md:px-12 md:pt-9 shadow-block`}>
+                        <div className={`self-end flex flex-col w-full mx-auto md:w-auto md:ml-auto md:mr-0 lg:-ml-[50%] xl:-ml-36 max-w-[360px] md:max-w-[none]`}>
+                            <div className={`px-8 pt-7 pb-10 bg-white w-full md:max-w-[548px] md:px-12 md:pt-9 shadow-block`}>
                                 <span></span>
                                 <h3 className={`${theme.text.P_STD}`}>{data.project.title}</h3>
                                 <h5 className={`${theme.text.H5}`}>{data.caption}</h5>
@@ -66,10 +66,10 @@ const FeaturedProjectsCarousel = (props) => {
                             </div> 
                             <div className={`w-36 flex bg-rm-pale-grey`}>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={prevSlide}>
-                                   {/* <FontAwesomeIcon icon={faAngleLeft} /> */}
+                                   <FontAwesomeIcon icon={faAngleLeft} />
                                 </button>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={nextSlide}>
-                                    {/* <FontAwesomeIcon icon={faAngleRight} /> */}
+                                    <FontAwesomeIcon icon={faAngleRight} />
                                 </button>
                             </div>
                         </div>

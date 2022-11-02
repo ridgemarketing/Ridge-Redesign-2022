@@ -24,8 +24,9 @@ const VerticalSlider = (props) => {
   let scrollPoints            = [];
 
   const vslides               = content.slides;
+  // console.log(vslides);
 
-  if (vslides.lenth > 0) {
+  if (vslides.length > 0) {
     for (let i = 0; vslides.length > i; i++){
       scrollPoints.push(totalHeight);
       totalHeight = totalHeight + slideHeight;
@@ -34,6 +35,7 @@ const VerticalSlider = (props) => {
 
   
   useEffect(() => {
+    if(firstSlide.current){
     let current = 0;
     let observer = new IntersectionObserver( (entries) => {
         entries.forEach ( entry => {
@@ -45,7 +47,7 @@ const VerticalSlider = (props) => {
                   for( let i = 0; scrollPoints.length > i; i++ ){
                     if ( firstSlide.current.offsetTop > scrollPoints[i] ){
 
-                      // console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
+                      //console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
 
                       setVslide(i);
                       current = i;
@@ -76,7 +78,8 @@ const VerticalSlider = (props) => {
     );
     observer.observe(innerContainer.current);
     //observer.unobserve(outerContainer.current);
-  })
+  }
+  }, [])
  
     const skipTo = (location) => {
       window.scrollBy(0, (scrollPoints[location] + slideHeight) - firstSlide.current.offsetTop );

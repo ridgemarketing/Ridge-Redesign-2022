@@ -128,7 +128,7 @@ const Header = (props) => {
     }
 
     const HoverSubMenu = (e) => {
-        console.log(e.target.parentNode);
+        // console.log(e.target.parentNode);
     }
     
     let mobileArrows = [theme.text_links.FWD_BASE.split(' '), theme.text_links.ARW_FWD_BLACK.split(' ')]; 

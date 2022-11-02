@@ -11,6 +11,7 @@ const ProjectPortfolioImage = forwardRef((props, ref) => {
   const mobile = props.image.mobile ? getImage(props.image.mobile.localFile) : false
   const tablet = props.image.tablet ? getImage(props.image.tablet.localFile) : false
   const desktop = props.image.desktop ? getImage(props.image.desktop.localFile) : false
+  let padding = (props.image.padding);
 
   let desktopClassName  = `text-center `
   let tabletClassName   = `text-center `
@@ -46,7 +47,7 @@ const ProjectPortfolioImage = forwardRef((props, ref) => {
   }
 
   return (
-    <div className={`portfolio-image relative`}>
+    <div style={{paddingBottom: `${padding}px`}} className={`portfolio-image relative`}>
       
       {first &&
         <div ref={startRef} className={`portfolio-start absolute top-[12.5%]`}></div>
@@ -173,6 +174,7 @@ export const query = graphql`
                   }
                 }
               }
+              padding
             }
             settings {
               backgroundColor
@@ -231,6 +233,7 @@ export const serviceQuery = graphql`
                   }
                 }
               }
+              padding
             }
             settings {
               backgroundColor
@@ -289,6 +292,7 @@ export const projectQuery = graphql`
                   }
                 }
               }
+              padding
             }
             settings {
               backgroundColor

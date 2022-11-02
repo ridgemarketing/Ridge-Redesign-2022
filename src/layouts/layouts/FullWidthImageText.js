@@ -14,6 +14,7 @@ const FullWidthImageText = (props) => {
   let imageClasses ='';
   let mobile;
   let textColor;
+  // console.log(settings);
 
   if (settings.backgroundColor === 'black') {
     textColor = 'text-white';
@@ -30,7 +31,7 @@ const FullWidthImageText = (props) => {
     : <GatsbyImage 
         image={content.image.localFile.childImageSharp.gatsbyImageData} 
         alt={ ' ' } 
-        className={ `` } 
+        className={`${imageClasses}`} 
         objectFit={'contain'}/> ;
   }
 
@@ -44,7 +45,7 @@ const FullWidthImageText = (props) => {
 
     return (
       <Section settings={settings}>
-        <Container classes={'xl:max-w-[1120px]'}>
+        <Container container={settings.containerWidth}>
           <div class="text-center">
             { content.heading && 
               <h1 className={`${theme.text.H2} ${headerClasses} ${textColor}`}>{content.heading}</h1>
@@ -59,7 +60,10 @@ const FullWidthImageText = (props) => {
             </div>
 
             {
-            content.alignment === 'overlap' && content.body &&  <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`text-left mt-8 ${theme.text.H4_LTE} ${textColor}`}></p> 
+            content.alignment === 'overlap' && content.intro &&  <p dangerouslySetInnerHTML={{__html: Parser(content.intro)}} className={`text-left mt-8 ${theme.text.H4_LTE} ${textColor}`}></p> 
+            }
+            {
+            content.alignment === 'overlap' && content.body &&  <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`text-left mt-8 ${theme.text.P_STD} ${textColor}`}></p> 
             }
           </div>     
         </Container>
@@ -98,6 +102,7 @@ export const query = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
@@ -143,6 +148,7 @@ export const serviceQuery = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
@@ -189,6 +195,7 @@ export const projectQuery = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }

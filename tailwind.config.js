@@ -26,7 +26,9 @@ module.exports = {
     '-lg:hover:after:translate-x-2',
     '-lg:before:hidden', 
     '-lg:after:bg-[url("../static/arrow-right-black.svg")]',
-    'pb-40'
+    'pb-40',
+    'xl:ml-24',
+    'pb-16'
   ],
   theme: {
     screens:{
