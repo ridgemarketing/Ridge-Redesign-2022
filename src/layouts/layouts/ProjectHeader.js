@@ -11,14 +11,24 @@ const ProjectHeader = (props) => {
     const [imageHeight, setImageHeight] = useState(0);
     const [maxHeight, setMaxHeight] = useState(0);
     const ref = useRef();
+    let logo;
 
-    const logo          = (info.logos.light.localFile != null) && (info.logos.light.localFile.ext === `.svg`) 
-    ? <img className={''} src={info.logos.light.sourceUrl} alt={info.logos.light.altText} />
-    : <GatsbyImage 
-        image={info.logos.light.localFile.childImageSharp.gatsbyImageData} 
-        alt={info.logos.light.altText} 
-        className={``} 
-        objectFit={'contain'}/> ;
+    // const logo          = (info.logos.light.localFile != null) && (info.logos.light.localFile.ext === `.svg`) 
+    // ? <img className={''} src={info.logos.light.sourceUrl} alt={info.logos.light.altText} />
+    // : <GatsbyImage 
+    //     image={info.logos.light.localFile.childImageSharp.gatsbyImageData} 
+    //     alt={info.logos.light.altText} 
+    //     className={``} 
+    //     objectFit={'contain'}/> ;
+    if (info.logos.light.localFile != null) {
+      logo = (info.logos.light.localFile.ext === `.svg`) 
+      ? <img className={''} src={info.logos.light.sourceUrl} alt={info.logos.light.altText} />
+      : <GatsbyImage 
+      image={info.logos.light.localFile.childImageSharp.gatsbyImageData} 
+      alt={info.logos.light.altText} 
+      className={``} 
+      objectFit={'contain'}/>
+    }
 
     const bgImage       = content.backgroundImage ? getImage(content.backgroundImage.localFile) : false;
     const featuredImage = content.featuredImage   ? getImage(content.featuredImage.localFile)   : false;
