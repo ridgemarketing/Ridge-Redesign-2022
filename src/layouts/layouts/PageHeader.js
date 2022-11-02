@@ -16,7 +16,7 @@ const PageHeader = (props) => {
           }
           <div class={`absolute bottom-0 left-0 w-full h-16 bg-white`}></div>
           <div className={``}> 
-            <Container classes={`pt-[500px] xl:pt-96 ${settings.classes !== null ? settings.classes : ''}`}>
+            <Container classes={`pt-[500px] xl:pt-96 ${settings.classes && settings.classes !== null ? settings.classes : ''}`}>
               <div className={`bg-black text-white py-12 px-6 lg:px-12 xl:pt-14 xl:pb-12 xl:pl-20 xl:pr-16`} style={{maxWidth:content.maxWidth}}>
                 {content.eyebrow &&
                   <span className={`block mb-8 ${theme.text.H4}`}>
