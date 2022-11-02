@@ -12,7 +12,7 @@ const ProjectHeader = (props) => {
     const [maxHeight, setMaxHeight] = useState(0);
     const ref = useRef();
 
-    const logo          = (info.logos.light.localFile.ext === `.svg`) 
+    const logo          = (info.logos.light.localFile) && (info.logos.light.localFile.ext === `.svg`) 
     ? <img className={''} src={info.logos.light.sourceUrl} alt={info.logos.light.altText} />
     : <GatsbyImage 
         image={info.logos.light.localFile.childImageSharp.gatsbyImageData} 
