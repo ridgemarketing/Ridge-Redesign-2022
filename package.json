@@ -21,6 +21,7 @@
   },
   "homepage": "https://github.com/ridgemarketing/Ridge-Redesign-2022#readme",
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/pro-duotone-svg-icons": "^6.2.0",
     "@fortawesome/pro-light-svg-icons": "^6.2.0",
     "@fortawesome/pro-regular-svg-icons": "^6.2.0",
