@@ -7,7 +7,10 @@ import { theme } from '../../static/theme'
 const FullWidthImage = (props) => {
     const content       = props.layoutData.layoutContent;
     const settings      = props.layoutData.layoutSettings;
-    const desktopImage  = content.image.localFile.childImageSharp.gatsbyImageData;
+    let desktopImage;
+    if (content.image && content.image.localFile) {
+      desktopImage = content.image.localFile.childImageSharp.gatsbyImageData;
+    }
     let mobileImage     = ``;
     if(content.mobileImage){
        mobileImage   = content.mobileImage.localFile.childImageSharp.gatsbyImageData;
