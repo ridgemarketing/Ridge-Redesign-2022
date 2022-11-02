@@ -108,7 +108,8 @@ const ProjectPortfolio = (props) => {
       setTimeout(function() {
         handleResize();
       }, 0)
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
   })
 
     return(
