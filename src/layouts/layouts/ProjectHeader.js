@@ -20,7 +20,7 @@ const ProjectHeader = (props) => {
     //     alt={info.logos.light.altText} 
     //     className={``} 
     //     objectFit={'contain'}/> ;
-    if (info.logos.light.localFile != null) {
+    if (info.logos && info.logos.light && info.logos.light.localFile) {
       logo = (info.logos.light.localFile.ext === `.svg`) 
       ? <img className={''} src={info.logos.light.sourceUrl} alt={info.logos.light.altText} />
       : <GatsbyImage 
