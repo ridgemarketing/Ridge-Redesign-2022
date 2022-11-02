@@ -90,7 +90,7 @@ const tagListBlog = [
     }
 ];
 
-const Parser = (string, type) => {
+const Parser = (string, type = null) => {
     let output = string;
     output = output.replace(/\s*<script>.*?<\/script>\s*/g, ' ');
     if(type === 'blog'){
