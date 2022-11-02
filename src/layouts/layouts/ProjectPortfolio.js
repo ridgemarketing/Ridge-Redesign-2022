@@ -101,11 +101,13 @@ const ProjectPortfolio = (props) => {
 
   useEffect(() => {
     function handleResize() {
-      if (startRef.current && endRef.current) {
-        setBgHeight(endRef.current.getBoundingClientRect().top - startRef.current.getBoundingClientRect().top)
+        if (startRef.current && endRef.current) {
+          setBgHeight(endRef.current.getBoundingClientRect().top - startRef.current.getBoundingClientRect().top)
+        }
       }
-    }
-    handleResize()
+      setTimeout(function() {
+        handleResize();
+      }, 0)
     window.addEventListener('resize', handleResize)
   })
 
