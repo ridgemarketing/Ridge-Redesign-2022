@@ -109,9 +109,8 @@ const ProjectHeader = (props) => {
 
               <div className={`xl:flex`}>
                   <div className={`xl:w-3/4`}>
-                      {/* <h1 dangerouslySetInnerHTML={{__html: heading}} className={`${theme.text.H1_STD}`}>{heading}</h1> */}
-                      <h1 className={`${theme.text.H1_STD}`}>{heading}</h1>
-                      <p className={`${theme.text.P_STD} mt-8`}>{body}</p>
+                      <h1 dangerouslySetInnerHTML={{__html: heading}} className={`${theme.text.H1_STD}`}>{heading}</h1>
+                      <p dangerouslySetInnerHTML={{__html: body}} className={`${theme.text.P_STD} mt-8`}>{body}</p>
                   </div>
                   <div className={`mt-9 xl:pl-10 md:grid md:grid-cols-2 md:w-8/12 xl:block xl:w-auto`}>
                       {info.websites && 
