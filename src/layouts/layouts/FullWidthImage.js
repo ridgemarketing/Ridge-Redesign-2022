@@ -11,18 +11,18 @@ const FullWidthImage = (props) => {
     if (content.image && content.image.localFile) {
       desktopImage = content.image.localFile.childImageSharp.gatsbyImageData;
     }
-    let mobileImage     = ``;
+    let mobileImage     = false;
     if(content.mobileImage){
        mobileImage   = content.mobileImage.localFile.childImageSharp.gatsbyImageData;
     }
     const image         = mobileImage 
       ? 
           <>
-          <GatsbyImage className={`md:hidden`} image={mobileImage} alt={content.mobileImage.altText} />
-          <GatsbyImage className={`hidden md:block`} image={desktopImage} alt={content.image.altText} />
+          <GatsbyImage className={`md:hidden`} image={mobileImage} alt={content.mobileImage.altText || ""} />
+          <GatsbyImage className={`hidden md:block`} image={desktopImage} alt={content.image.altText || ""} />
           </>
       :
-          <GatsbyImage image={desktopImage} alt={content.image.altText} />;    
+          <GatsbyImage image={desktopImage} alt={(content.image && content.image.altText) || ""} />;    
     
     const overlap           = content.imageOverlap;
     const overlapImageClass = overlap === false ? ` ` : `z-10 relative `;
