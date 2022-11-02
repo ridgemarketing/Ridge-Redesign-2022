@@ -12,7 +12,7 @@ const PageHeader = (props) => {
     return (
         <section className={`relative`}>
           {image && 
-            <GatsbyImage className={`absolute top-0 left-0 w-full h-[580px] object-cover`} image={image} />
+            <GatsbyImage style={{position: "absolute"}} className={`absolute top-0 left-0 w-full h-[580px] object-cover`} image={image} />
           }
           <div class={`absolute bottom-0 left-0 w-full h-16 bg-white`}></div>
           <div className={``}> 
