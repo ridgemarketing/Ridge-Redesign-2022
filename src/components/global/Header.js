@@ -10,7 +10,7 @@ const Header = (props) => {
     const textColor             = backgroundColor === `black` ? `text-rm-white` : `text-rm-black`; 
     const fillColor             = backgroundColor === `black` ? `fill-rm-white` : `fill-rm-black`;
     const hoverColor            = backgroundColor === `black` ? `hover:text-rm-green` : ``;
-    const bkgClass              = props.class;
+    const bkgClass              = props.classes;
     const headerPostion         = backgroundColor  ==='black' ? 'fixed' : 'sticky';
 
     const headerMenu = useStaticQuery(graphql`
