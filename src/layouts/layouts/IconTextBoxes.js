@@ -38,7 +38,7 @@ const IconTextBoxes = (props) => {
 
           <div className={wrapperClasses}>
               {content.boxes && content.boxes.map((item, idx) => {
-                  return (content.settings.type === 'stack') ? <IconTextBoxStack key={`iconTextBoxStack${idx}${Math.random()}`} idx={idx+1} color={textColor} content={item} iconType={content.settings.feature}/> : <IconTextBoxFlex key={`iconTextBoxFlex${idx}${Math.random()}`} iconType={content.settings.feature} idx={idx+1} color={textColor} columns={content.settings.columns} content={item}/>;
+                  return (content.settings.type === 'stack') ? <IconTextBoxStack key={`iconTextBoxStack${idx}${Math.random()}`} idx={idx+1} textColor={textColor} content={item} iconType={content.settings.feature}/> : <IconTextBoxFlex key={`iconTextBoxFlex${idx}${Math.random()}`} iconType={content.settings.feature} idx={idx+1} textColor={textColor} columns={content.settings.columns} content={item}/>;
               })}
           </div>
 
