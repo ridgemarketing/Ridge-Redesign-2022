@@ -28,7 +28,8 @@ module.exports = {
     '-lg:after:bg-[url("../static/arrow-right-black.svg")]',
     'pb-40',
     'xl:ml-24',
-    'pb-16'
+    'pb-16',
+    'bg-rm-pale-teal'
   ],
   theme: {
     screens:{

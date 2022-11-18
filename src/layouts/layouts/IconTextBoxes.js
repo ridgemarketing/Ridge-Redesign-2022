@@ -11,12 +11,12 @@ const IconTextBoxes = (props) => {
   const settings = props.layoutData.layoutSettings;
   let textColor = 'text-black';
   const bottomHeadingMargin = (content.settings.type === 'stack') ? 'lg:mt-20' : '';
-
   if (settings.backgroundColor === 'black') {
     textColor = 'text-white';
   }
     const cols = content.settings.columns === 3 ? 'xl:grid-cols-3' : '';
-    const wrapperClasses = (content.settings.type === 'stack') ? `grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} gap-8 max-w-[1100px] mx-auto` : `flex w-full flex-wrap justify-between threeColIconsText`;
+    //added code to dynamically set mt on wrapper div depending on stack or flex (icon placement affects margin needed)
+    const wrapperClasses = (content.settings.type === 'stack') ? `mt-16 grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} gap-8 max-w-[1100px] mx-auto` : `mt-24 flex w-full flex-wrap justify-between threeColIconsText`;
 
   return (
       <Section settings={settings}>
@@ -27,7 +27,8 @@ const IconTextBoxes = (props) => {
               </h2>
             }
           {content.body &&
-          <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} max-w-[1120px] mx-auto text-center mb-10 ${textColor}`}></p>
+          //testing removal of mb from p below and adding to icon box wrapper class
+          <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} max-w-[1120px] mx-auto text-center ${textColor}`}></p>
           }
           {content.subheading &&
           <p className={`mt-10 text-center ${textColor}`}>

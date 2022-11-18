@@ -3,6 +3,7 @@ import { Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
+import Parser from "../../components/global/Parser"
 
 const PageHeader = (props) => {
     const content       = props.layoutData.layoutContent;
@@ -26,9 +27,7 @@ const PageHeader = (props) => {
                 {(content.heading || content.subheading) &&
                   <h1 className={`flex flex-col ${content.reverseHeading ? `flex-col-reverse` : ``}`}>
                     {content.heading && 
-                      <span className={`block ${theme.text.HERO}`}>
-                        {content.heading}
-                      </span>
+                      <span dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`block ${theme.text.HERO}`}></span>
                     }
                     {content.subheading && 
                       <span className={`block ${theme.text.H1_LTE}`} style={{fontSize: content.subheadingFontSize ? content.subheadingFontSize : ``}}>

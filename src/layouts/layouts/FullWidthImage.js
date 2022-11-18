@@ -25,8 +25,8 @@ const FullWidthImage = (props) => {
           <GatsbyImage image={desktopImage} alt={(content.image && content.image.altText) || ""} />;    
     
     const overlap           = content.imageOverlap;
-    const overlapImageClass = overlap === false ? ` ` : `z-10 relative `;
-    const overlapSection    = overlap === false ? `hidden invisible` : `block w-full relative`;
+    const overlapImageClass = overlap ? `z-10 relative ` : ` `;
+    const overlapSection    = overlap ? `block w-full relative` : `hidden invisible`;
     const overlapBkg        = content.backgroundColor;
     const overlapImage      = useRef(null);
     const overlapDiv        = useRef(null);
@@ -159,6 +159,7 @@ export const projectQuery = graphql`
         fieldGroupName
         layoutFullWidthImage {
           layoutContent {
+            imageOverlap
             image {
               localFile {
                 childImageSharp {

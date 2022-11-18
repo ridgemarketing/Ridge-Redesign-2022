@@ -3,6 +3,7 @@ import {Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
+import Parser from "../../components/global/Parser"
 
 const TwoColBreakoutImageText = (props) => {
     const content = props.layoutData.layoutContent;
@@ -43,9 +44,7 @@ const TwoColBreakoutImageText = (props) => {
                         }
 
                         {content.body &&
-                          <p className={`${theme.text.P_STD} mt-8 first-line:my-8 text-rm-grey`}>
-                              {content.body}
-                          </p>
+                          <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} mt-8 first-line:my-8 text-rm-grey`}></p>
                         }
                         {content.list && 
                           <ul className={`flex flex-wrap justify-between mt-10`}>

@@ -6,11 +6,23 @@ const Buttons = (props) => {
     const content           = props.content;
 
     let bkg                 = props.sectionBackground;
-    if( (bkg === `paleGrey`) || (bkg === `transparent`) ){
-        bkg = `white`;
+    // if( (bkg === `paleGrey`) || (bkg === `transparent`) ){
+    //     bkg = `white`;
+    // }
+    let background;
+    switch(bkg) {
+        case `white` || `paleGrey`:
+            background = `_HOVER_DARK`;
+            break;
+        case `transparent`:
+            background = (content.style === `solid`) ? `_HOVER_DARK` : `_TRANSPARENT`;
+            break;
+        default:
+            background = `_HOVER_LIGHT`;
+            break;
     }
 
-    const background        = bkg === `white` ? `_HOVER_DARK` : `_HOVER_LIGHT`;
+    // const background        = bkg === `white` ? `_HOVER_DARK` : `_HOVER_LIGHT`;
     const style             = content.style === `solid` ? `SOLID_` : `GHOST_`;
     const baseColor         = content.colors.resting;
 

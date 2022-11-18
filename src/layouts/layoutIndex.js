@@ -29,6 +29,9 @@ import LineBreak from "./layouts/LineBreak"
 import ProjectPortfolio from "./layouts/ProjectPortfolio"
 import VideoPlayer from "./layouts/VideoPlayer"
 import MediaBlocks from "./layouts/MediaBlocks"
+import TeamGrid from "./layouts/TeamGrid"
+import ResultsTextBlock from "./layouts/ResultsTextBlock"
+
 
 let Layouts = {}; 
 
@@ -64,6 +67,8 @@ Layouts['LineBreak']                        = LineBreak;
 Layouts['ProjectPortfolio']                 = ProjectPortfolio;
 Layouts['VideoPlayer']                      = VideoPlayer;
 Layouts['MediaBlocks']                      = MediaBlocks;
+Layouts['TeamGrid']                         = TeamGrid;
+Layouts['ResultsTextBlock']                 = ResultsTextBlock;
 
 
 export default Layouts

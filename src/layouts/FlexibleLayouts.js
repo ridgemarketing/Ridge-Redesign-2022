@@ -61,6 +61,8 @@ export const pageQuery = graphql`
         ...LineBreakPage
         ...ContactFourSquare
         ...QuarterImageTextPage
+        ...TeamGridPage
+        ...ResultsTextBlockPage
       }
     }
   }
@@ -90,6 +92,8 @@ export const serviceQuery = graphql`
         ...ProjectPortfolioService 
         ...CTAFormService
         ...LineBreakService
+        ...TeamGridService
+        ...ResultsTextBlockService
       }
     }
   }
@@ -128,6 +132,8 @@ export const projectQuery = graphql`
         ...PostCardsProject
         ...ProjectPortfolioProject 
         ...LineBreakProject
+        ...TeamGridProject
+        ...ResultsTextBlockProject
       }
     }
   }

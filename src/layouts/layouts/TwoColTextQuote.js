@@ -2,6 +2,7 @@ import React from "react"
 import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
+import Parser from "../../components/global/Parser"
 
 const TwoColTextQuote = (props) => {
 
@@ -20,12 +21,8 @@ const TwoColTextQuote = (props) => {
                         <h2 className={`${theme.text.H2} ${textColor}`}>
                             {content.textContent.heading}
                         </h2>
-                        <p className={`${theme.text.H4_LTE} ${textColor} mt-8`}>
-                            {content.textContent.intro}  
-                        </p>
-                        <p className={`${theme.text.P_STD} ${textColor} mt-8`}>
-                            {content.textContent.body}  
-                        </p>
+                        <p dangerouslySetInnerHTML={{__html: Parser(content.textContent.intro)}} className={`${theme.text.H4_LTE} ${textColor} mt-8`}></p>
+                        <p dangerouslySetInnerHTML={{__html: Parser(content.textContent.body)}} className={`${theme.text.P_STD} ${textColor} mt-8`}></p>
                     </div>
 
                     <div className={"text-left"}>
