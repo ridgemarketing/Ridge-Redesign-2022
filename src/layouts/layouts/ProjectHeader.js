@@ -12,6 +12,7 @@ const ProjectHeader = (props) => {
     const [maxHeight, setMaxHeight] = useState(0);
     const ref = useRef();
     let logo;
+    // if (content.videoOverhang) console.log(content.videoOverhang);
 
     // const logo          = (info.logos.light.localFile != null) && (info.logos.light.localFile.ext === `.svg`) 
     // ? <img className={''} src={info.logos.light.sourceUrl} alt={info.logos.light.altText} />
@@ -33,6 +34,7 @@ const ProjectHeader = (props) => {
     const bgImage       = content.backgroundImage ? getImage(content.backgroundImage.localFile) : false;
     const featuredImage = content.featuredImage   ? getImage(content.featuredImage.localFile)   : false;
     const imageOverhang = content.imageOverhang   ? getImage(content.imageOverhang.localFile)   : false;
+    const videoOverhang = content.videoOverhang        ? content.videoOverhang : false;
 
 
     useEffect(() => {
@@ -138,7 +140,12 @@ const ProjectHeader = (props) => {
           </Container>
 
           <Container size={`slim`} classes={'helloClass'}> 
-              {imageOverhang && 
+          {videoOverhang && 
+          <div ref={ref}>
+            <video controls src={videoOverhang} />
+          </div>
+          }
+              {!videoOverhang && imageOverhang && 
                       <div ref={ref}>
                         <GatsbyImage className={``} image={imageOverhang} />
                       </div>
@@ -185,6 +192,7 @@ export const query = graphql`
               }
             }
           }
+          videoOverhang
         }
       }
     projectInformation {

@@ -63,10 +63,12 @@ export const pageQuery = graphql`
         ...QuarterImageTextPage
         ...TeamGridPage
         ...ResultsTextBlockPage
+
       }
     }
   }
 `
+// ...FeaturedProjectsGridPage
 export const serviceQuery = graphql`
   fragment FlexibleLayoutsService on WpService {
     flexibleLayouts {
@@ -94,10 +96,12 @@ export const serviceQuery = graphql`
         ...LineBreakService
         ...TeamGridService
         ...ResultsTextBlockService
+
       }
     }
   }
 `
+// ...FeaturedProjectsGridService
 
 export const projectQuery = graphql`
   fragment FlexibleLayoutsProject on WpProject {
@@ -134,7 +138,9 @@ export const projectQuery = graphql`
         ...LineBreakProject
         ...TeamGridProject
         ...ResultsTextBlockProject
+
       }
     }
   }
 `
+// ...FeaturedProjectsGridProject

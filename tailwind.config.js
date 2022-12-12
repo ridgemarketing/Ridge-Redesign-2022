@@ -29,7 +29,8 @@ module.exports = {
     'pb-40',
     'xl:ml-24',
     'pb-16',
-    'bg-rm-pale-teal'
+    'bg-rm-pale-teal',
+    'pt-6'
   ],
   theme: {
     screens:{

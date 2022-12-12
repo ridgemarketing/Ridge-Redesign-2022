@@ -9,8 +9,6 @@ import Buttons from '../../components/global/Buttons'
 const ResultsTextBlock = (props) => {
     const content = props.layoutData.layoutContent || {};
     const settings = props.layoutData.layoutSettings || {};
-    console.log(content);
-    console.log(settings);
     const services = content.services;
 
     const body = Parser(content.body);

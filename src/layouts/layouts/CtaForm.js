@@ -37,28 +37,28 @@ const CtaForm = (props) => {
 
 export default CtaForm
 
-export const pageQuery = graphql`
-  fragment CTAFormPage on WpPage_Flexiblelayouts_Layouts {
-    ... on WpPage_Flexiblelayouts_Layouts_CtaForm {
-        fieldGroupName
-        layoutCtaForm {
-          layoutContent {
-            body
-            heading
-          }
-          layoutSettings {
-            padding {
-              bottom
-              top
-            }
-            anchorId
-            backgroundColor
-            classes
-            id
-          }
+export const query = graphql`
+fragment CTAFormPage on WpPage_Flexiblelayouts_Layouts {
+  ... on WpPage_Flexiblelayouts_Layouts_CtaForm {
+      fieldGroupName
+      layoutCtaForm {
+        layoutContent {
+          body
+          heading
         }
-    }
+        layoutSettings {
+          padding {
+            bottom
+            top
+          }
+          anchorId
+          backgroundColor
+          classes
+          id
+        }
+      }
   }
+}
 `
 
 export const serviceQuery = graphql`
