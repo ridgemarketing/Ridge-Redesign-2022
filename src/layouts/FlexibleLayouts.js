@@ -63,7 +63,7 @@ export const pageQuery = graphql`
         ...QuarterImageTextPage
         ...TeamGridPage
         ...ResultsTextBlockPage
-
+        ...TextVideoOverhangPage
       }
     }
   }
@@ -96,7 +96,7 @@ export const serviceQuery = graphql`
         ...LineBreakService
         ...TeamGridService
         ...ResultsTextBlockService
-
+        ...TextVideoOverhangService
       }
     }
   }
@@ -138,7 +138,7 @@ export const projectQuery = graphql`
         ...LineBreakProject
         ...TeamGridProject
         ...ResultsTextBlockProject
-
+        ...TextVideoOverhangProject
       }
     }
   }

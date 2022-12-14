@@ -6,7 +6,6 @@ const FlexibleMedia = (props) => {
     
     const data  = props.data
     const type  = data.type
-
     let image   = false
     let lottie  = false
     let video   = false

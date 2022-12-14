@@ -10,12 +10,13 @@ const TwoColImageText = (props) => {
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
+    // console.log(content);
     let order;
     order = (content.imagePosition) === 'left' ? 'lg:order-2' : '' ;
 
     return (
         <Section settings={settings}>
-            <Container>
+            <Container container={settings.containerWidth}>
                 <div className={'lg:grid grid-cols-2 gap-16 pt-16'}>
                     <div className={'pb-12 xl:pt-12 lg:pb-0 ' + order}>
                         <h3 className={theme.text.H2}>
