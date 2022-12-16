@@ -7,6 +7,9 @@ module.exports = {
     title: `Ridge Marketing`,
     siteUrl: `http://www.ridgemarketing.com`
   },
+  flags: {
+    DEV_SSR: true
+  },
   plugins: [
     {
       resolve: `gatsby-source-wordpress`,
@@ -14,8 +17,8 @@ module.exports = {
         url:
         // allows a fallback url if WPGRAPHQL_URL is not set in the env, this may be a local or remote WP instance.
           process.env.WPGRAPHQL_URL ||
-          // `https://rm2022dev.wpengine.com/graphql`,
-          `http://ridge-marketing-2022.local/graphql`,
+          `https://rm2022dev.wpengine.com/graphql`,
+          // `http://ridge-marketing-2022.local/graphql`,
         schema: {
           //Prefixes all WP Types with "Wp" so "Post and allPost" become "WpPost and allWpPost".
           typePrefix: `Wp`,
