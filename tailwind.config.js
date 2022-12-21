@@ -74,19 +74,19 @@ module.exports = {
           '21px'             : '1.3125rem',
           '26px'             : '1.625rem',
           '30px'             : '1.875rem',
-          '40px'             : '2.5rem',
+          '40px'             : '2rem',//2.5rem
           '45px'             : '2.8125rem',
-          '50px'             : '3.125rem',
+          '50px'             : '2.9rem',//3.125rem
           '55px'             : '3.4375rem', 
           '60px'             : '3.75rem',
-          '80px'             : '5rem',
-          '100px'            : '6.25rem',
+          '80px'             : '4.25rem',//5rem
+          '100px'            : '5.2rem',//6.25rem
           '120px'            : '7.5rem',
           '160px'            : '10rem',
       },
       lineHeight: {
           '26px'            : '1.625rem',
-          '28px'            : '1.75rem',
+          '28px'            : '2rem', //1.75rem
           '30px'            : '1.875rem',
           '32px'            : '2rem',
           //Q mobile
@@ -100,7 +100,7 @@ module.exports = {
           //H1 Mobile - 59.7px
           'H1-m'            : '3.73rem',
           // H1 - 79.6px
-          'H1'              : '5.25rem',
+          'H1'              : '4.75rem',//5.25rem
           //Stats M
           '120px'           : '7.5rem',
           //Stats D

@@ -61,6 +61,13 @@ const IconTextBoxFlex = (props) => {
         wrapperClasses += ` xl:w-[31%]`;
     }
 
+    let headingfont;
+    if(content.body){
+        headingfont = theme.text['H4'];
+    }else{
+        headingfont = theme.text['H5'];
+    }
+
 
     useEffect(() => {
         function handleResize() {
@@ -93,7 +100,7 @@ const IconTextBoxFlex = (props) => {
                         <div className={`mb-4`}>
                             <p ref={ref}
                                 style={{marginTop: customTop, marginBottom: customBottom, marginLeft: '24px'}}
-                                className={ `${theme.text['H4']} block items-center ${props.color}` }>
+                                className={ `${headingfont} block items-center ${props.color}` }>
                                 { content.heading }
                             </p>
                         </div>

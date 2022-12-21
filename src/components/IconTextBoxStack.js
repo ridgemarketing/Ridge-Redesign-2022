@@ -7,7 +7,7 @@ const IconTextBoxStack = (props) => {
     const content = props.content;
     const iconType = props.iconType;
     
-    let component =  <span className={'block w-[138px] border-t-2 border-t-rm-green mb-7'}></span>;
+    let component =  <span className={'block w-[138px] ml-auto mr-auto md:ml-0 md:mr-0 border-t-2 border-t-rm-green mb-7'}></span>;
 
     const body = content.body && Parser(content.body);
     const heading = content.heading && Parser(content.heading);

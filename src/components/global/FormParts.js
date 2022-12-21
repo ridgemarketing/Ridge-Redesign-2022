@@ -91,6 +91,42 @@ export const SelectInput = (props) => {
     )
 }
 
+export const FileUpload = (props) => {
+    let textColor;
+    if(props.color === 'white'){
+        textColor = 'black';
+    }else{
+        textColor = 'white';
+    }
+    return(
+        <div className={`${theme.forms['CONTAINER']} translate-form-global mb-24` }>
+        {props.inputID && props.inputName && 
+            <>
+                <label 
+                    htmlFor={'fileUpload' + props.inputID} 
+                    className={theme.text['P_STD'] + theme.forms['LABEL'] + 'text-' + props.color + ' fileLabel' }
+                    >
+                    { props.inputName }
+                </label>
+                <Field
+                    type={ 'file' }
+                    id={'fileUpload' + props.inputID } 
+                    className={`${theme.forms.INPUT} border-0 border-b-0 form-control text-${textColor} w-min`} 
+                    name={`${props.inputName}`} 
+                    data-pristine-required-message = { props.pristineM }
+                    pattern = { props.pristineP }
+                    data-pristine-pattern-message = { props.pristineI  }
+                    required={ props.required }
+                    placeholder=" "
+                    accept=".pdf, .doc"
+                > 
+                </Field>
+            </>
+        }
+        </div>
+    )
+}
+
 export const FormSubmit = (props) => {
 
     return(
