@@ -26,10 +26,10 @@ const ResultCard = (props) => {
                     </p>  
                 }
                 { content.description &&  
-                   <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H3 + 'pr-4'} ${descriptionClass}`}></p>  
+                   <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H5 + 'font-basic-sans normal-case pr-4'} ${descriptionClass}`}></p>  
                 }
                 { content.company &&  
-                   <p className={`${theme.text.P_STD} mt-9`}>
+                   <p className={`${theme.text.P_STD} mt-3`}>
                         { content.company }
                     </p>  
                 }

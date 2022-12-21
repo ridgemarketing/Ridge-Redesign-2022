@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useRef, useEffect, useState } from 'react'
 import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
@@ -9,21 +9,63 @@ import Parser from "../../components/global/Parser"
 const IconTextBoxes = (props) => {
   const content = props.layoutData.layoutContent;
   const settings = props.layoutData.layoutSettings;
+
   let textColor = 'text-black';
+
+  //unfinished, refactor for our process page, vertical numbering order 
+  //not working for resising page, working for desktop
+  //other issue isthe uneven height of text blocks, not standard division
+  const dataFetchedRef = useRef(false);
+  const iconContainer = useRef(null);
+  let columnOrder =  ``;
+  if(settings.classes){
+    if (settings.classes.includes(`columnOrder`)){
+      columnOrder =  `md:flex-col md:flex-wrap`;
+    }
+  }
+  const calcHeight = () =>{
+    if(settings.classes){
+      if (settings.classes.includes(`columnOrder`)){
+        //window.onresize = () => {
+          if(window.innerWidth > 767){
+            console.log(iconContainer.current.offsetHeight);
+            let iconContainerHeight = ((iconContainer.current.offsetHeight/2)+1);
+            iconContainer.current.setAttribute("style",`height:${iconContainerHeight}px`);
+          }else{
+            iconContainer.current.setAttribute("style",`height:100%;`);
+          }
+        //}
+      }
+    }
+  }
+  useEffect(() => {
+    if (dataFetchedRef.current) return;
+    dataFetchedRef.current = true;
+    calcHeight();
+  }, [])
+  //end unfinished 
+
+  let headingfont;
+  if(content.body){
+      headingfont = theme.text['H2'];
+  }else{
+      headingfont = theme.text['H1_STD'];
+  }
+
   const bottomHeadingMargin = (content.settings.type === 'stack') ? 'lg:mt-20' : '';
   if (settings.backgroundColor === 'black') {
     textColor = 'text-white';
   }
     const cols = content.settings.columns === 3 ? 'xl:grid-cols-3' : '';
     //added code to dynamically set mt on wrapper div depending on stack or flex (icon placement affects margin needed)
-    const wrapperClasses = (content.settings.type === 'stack') ? `mt-16 grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} gap-8 max-w-[1100px] mx-auto` : `mt-24 flex w-full flex-wrap justify-between threeColIconsText`;
+    const wrapperClasses = (content.settings.type === 'stack') ? `mt-16 grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} gap-8 max-w-[1100px] mx-auto` : `mt-24 flex w-full flex-wrap justify-between ${columnOrder} threeColIconsText`;
 
   return (
       <Section settings={settings}>
           <Container container={settings.containerWidth}>
           <div>
             {content.heading &&
-              <h2 className={`text-center mb-14 ${textColor} ${theme.text.H2}`} dangerouslySetInnerHTML={{__html: Parser(content.heading)}}>
+              <h2 className={`text-center mb-14 ${textColor} ${headingfont}`} dangerouslySetInnerHTML={{__html: Parser(content.heading)}}>
               </h2>
             }
           {content.body &&
@@ -37,7 +79,7 @@ const IconTextBoxes = (props) => {
           }
           </div>
 
-          <div className={wrapperClasses}>
+          <div ref={iconContainer} className={wrapperClasses}>
               {content.boxes && content.boxes.map((item, idx) => {
                   return (content.settings.type === 'stack') ? <IconTextBoxStack key={`iconTextBoxStack${idx}${Math.random()}`} idx={idx+1} textColor={textColor} content={item} iconType={content.settings.feature}/> : <IconTextBoxFlex key={`iconTextBoxFlex${idx}${Math.random()}`} iconType={content.settings.feature} idx={idx+1} textColor={textColor} columns={content.settings.columns} content={item}/>;
               })}
@@ -61,9 +103,9 @@ const IconTextBoxes = (props) => {
                     sectionBackground={settings.backgroundColor}/>
                 </div>
               }
-            </div>
-          </Container>
-      </Section>
+          </div>
+        </Container>
+    </Section>
   )
 }
 

@@ -213,7 +213,7 @@ const Footer = () =>{
                         </div>
                     </ul> 
                 </div>
-                <small className={`${theme.text.FOOTER} mt-16 lg:mt-32 text-[14px] block`}>{content.copyright}</small>
+                <small className={`${theme.text.FOOTER} mt-16 lg:mt-32 text-[14px] block`}  dangerouslySetInnerHTML={ {__html:content.copyright} }></small>
             </Container>
         </footer>
     )

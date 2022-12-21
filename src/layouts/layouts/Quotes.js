@@ -3,11 +3,11 @@ import { graphql } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import Parser from '../../components/global/Parser';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
+//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
 
 const Quotes = (props) => {
-
+  
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     const slides = content.quotes ? content.quotes : [];
@@ -117,11 +117,11 @@ const Quotes = (props) => {
                 </div>
                 <div className={`w-[175px] flex bg-rm-pale-grey lg:ml-10`}>
                     <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => prevSlide()}>
-                        <FontAwesomeIcon icon={faAngleLeft} />
+                        {/* <FontAwesomeIcon icon={faAngleLeft} /> */}
                     </button>
                     <span className={ theme.text.FOOTER + 'flex items-center font-basic-sans'}> {slide + 1} / {slides.length}</span>
                     <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => nextSlide()}>
-                        <FontAwesomeIcon icon={faAngleRight} />
+                        {/* <FontAwesomeIcon icon={faAngleRight} /> */}
                     </button>
                 </div>
             </div> 

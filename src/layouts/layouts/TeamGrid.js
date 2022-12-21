@@ -9,17 +9,17 @@ import { GatsbyImage } from "gatsby-plugin-image";
 const TeamGrid = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    console.log(settings);
+    //console.log(settings);
 
     return (
         <Section settings={settings}>
             <Container container={settings.containerWidth}>
                 {content.heading && 
-                <h3 className={theme.text.H1_STD + `text-white mb-20`}>{content.heading}</h3>
+                <h3 className={`${theme.text.H1_STD} text-white mb-20`} dangerouslySetInnerHTML={ {__html:  Parser(content.heading)} }></h3>
                 }
                 <div className={"md:grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16"}>
                     {content.teamMember && content.teamMember.map(tm => {
-                      console.log(tm);
+                      //console.log(tm);
                         return (
                             <div className={`text-center mb-16 md:mb-0`}>
                               <div className={`pt-[109%] relative mb-4`}>

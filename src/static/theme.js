@@ -64,6 +64,8 @@ export const theme = {
         HALF:               'form-one-col w-full xl:w-[45%] xl:ml-[5%] xl:mr-[5%] flex-col',
         HALF_PADDING:       'p-8 lg:p-16',
         FULL_DISPLAY:       'form-two-col mt-20 ml-auto mr-auto w-full lg:w-3/4 flex flex-row justify-around flex-wrap',
+        NO_WRAP:            'form-one-col w-full flex-col',
+        NO_WRAP_PADDING:    'py-8',
     },
     paddingTop:{
         standard: 'pt-20',

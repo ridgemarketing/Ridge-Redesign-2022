@@ -31,6 +31,7 @@ import VideoPlayer from "./layouts/VideoPlayer"
 import MediaBlocks from "./layouts/MediaBlocks"
 import TeamGrid from "./layouts/TeamGrid"
 import ResultsTextBlock from "./layouts/ResultsTextBlock"
+import CareersForm from "./layouts/CareersForm"
 import TextVideoOverhang from "./layouts/TextVideoOverhang"
 // import FeaturedProjectsGrid from "./layouts/FeaturedProjectsGrid"
 
@@ -65,6 +66,7 @@ Layouts['TwoColTextQuote']                  = TwoColTextQuote;
 Layouts['VennDiagram']                      = VennDiagram;
 Layouts['QuarterImageText']                 = QuarterImageText;
 Layouts['CtaForm']                          = CtaForm;
+Layouts['CareersForm']                      = CareersForm;
 Layouts['LineBreak']                        = LineBreak;
 Layouts['ProjectPortfolio']                 = ProjectPortfolio;
 Layouts['VideoPlayer']                      = VideoPlayer;

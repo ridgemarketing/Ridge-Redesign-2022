@@ -16,7 +16,7 @@ const LineBreak = (props) => {
 
     return (
         <Section settings={settings} role={'separator'} >
-            <Container>
+            <Container container={settings.containerWidth}>
                 <hr className={`${lineClasses} ${lineColor}`}/>
             </Container>
         </Section>
@@ -32,6 +32,7 @@ fragment LineBreakPage on WpPage_Flexiblelayouts_Layouts {
       fieldGroupName
       layoutLineBreak {
         layoutSettings {
+          containerWidth
           padding {
             bottom
             top
@@ -52,6 +53,7 @@ export const serviceQuery = graphql`
         fieldGroupName
         layoutLineBreak {
           layoutSettings {
+            containerWidth
             padding {
               bottom
               top
@@ -71,6 +73,7 @@ export const projectQuery = graphql`
         fieldGroupName
         layoutLineBreak {
           layoutSettings {
+            containerWidth
             padding {
               bottom
               top

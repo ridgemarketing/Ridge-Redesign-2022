@@ -26,8 +26,16 @@ const tagList = [
         replace: `<span class="secondary-text">`
     },
     {
-        tag: '[white]',
+        tag: `[white]`,
         replace: `<span class="text-white">`
+    }, 
+    {
+        tag: `[br]`,
+        replace:`<br>`
+    }, 
+    {
+        tag: `[i]`,
+        replace: `<span style="font-style:italic;">`
     }
 ];
 
