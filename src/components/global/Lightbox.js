@@ -3,25 +3,18 @@ import { theme } from "../../static/theme";
 import Link from "./FlexibleLink"
 
 const LightBox = (props) => {
-    const images            = props.images;
 
-    const [imgOpacity, setImgOpacity]   = useState(1);
+    const images            = props.images;
     const [image, setImage]             = useState(1);
-    const [previmage, setPrevimage]     = useState(1);
+    const [hoverState, setHoverState]   = useState("hidden");
+    const [imgBlur, setImgBlur]         = useState("");
+    const [overlay, setOverlay]         = useState(false);
+
     const loadNext = () =>{
-        setImgOpacity(1);
         if( (image + 1) > (images.length-1)){
             setImage(1);
-            //setImgOpacity(0);
-            // setTimeout(() => {
-            //     (setPrevimage(1));
-            // }, 500)
         }else{
             setImage(image + 1);
-            //setImgOpacity(0);
-            // setTimeout(() => {
-            //     (setPrevimage(previmage + 1));
-            // }, 500)
         }
     }
     const loadPrev = () =>{
@@ -32,13 +25,14 @@ const LightBox = (props) => {
         }
     }
 
-    const [overlay, setOverlay] = useState(false);
     const togglePopup = () =>{
         if(overlay === false){
             setOverlay(true);
+            document.body.classList.add("overflow-hidden");
         }
         if(overlay === true){
             setOverlay(false);
+            document.body.classList.remove("overflow-hidden");
         }
         console.log(overlay);
     }
@@ -47,17 +41,29 @@ const LightBox = (props) => {
         url: "https:/www.google.com/",
         title: "Visit Website"
     }
-    
+    const handleHoverState = (currentlyShowing) => {
+        setHoverState((currentlyShowing) ? "hidden" : "flex");
+        setImgBlur((currentlyShowing) ? "" : "blur(4px)");
+        return;
+    }
     return(<>
-    <div role="button" onClick={()=>togglePopup()}>
-        <img src={images[0].shadowBoxImage.sourceUrl} className={`cursor-pointer object-cover w-full`}/>
-        {/**  overlay here */}
+    <div role="button" onClick={()=>togglePopup()} onMouseEnter={() => handleHoverState(false)} onMouseLeave={() => handleHoverState(true)}>
+        <img src={images[0].shadowBoxImage.sourceUrl} className={`cursor-pointer object-cover w-full`} style={{filter: `${imgBlur}`}}/>
+        <div className={`shadow-lightbox absolute top-0 left-0 justify-center items-center ${hoverState} w-full h-full`} style={{backgroundColor: "rgba(255,255,255,0.8)"}} >
+            <div className={'text-center'}>
+                <p className={`${theme.text.H3} pb-4`}>Vignetic</p>
+                <p className={theme.text.H4_LTE}>Staffing - Consulting</p>
+                <div className={"w-[95px] text-center mx-auto pt-7"}>
+                    <img src={'https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/plus.png'} />
+                </div>
+            </div>
+        </div>
     </div>
     
     <div className={`fixed top-0 left-0 h-screen w-screen`} style={{display:overlay ? 'block':'none', visibility:overlay ? 'visible':'hidden', zIndex:overlay ? '50':'0'}} aria-label="lightbox" aria-expanded={overlay}>
         <div className={`relative z-10 w-full h-full flex flex-col items-center justify-center`}>
             <div className={`w-[95%] md:w-3/4 lg:w-[25%] h-max relative flex flex-col justify-center items-center`}>
-                <nav className={`absolute top-0 left-0 w-full h-full z-20 text-rm-white flex justify-between items-center ml-auto mr-auto`}> 
+                <nav className={`absolute top-0 left-0 w-full h-full z-50 text-rm-white flex justify-between items-center ml-auto mr-auto`}> 
                     <button className={`absolute z-50 text-rm-white p-2 -top-[50px] right-0`} aria-label="Close Lightbox" onClick={()=>togglePopup()}>
                         <svg width="26" height="24" viewBox="0 0 26 24" fill="none">
                             <path d="M2 2L23.1852 22" stroke="#F1F5F5" stroke-width="3" stroke-linecap="round"/>
@@ -75,13 +81,12 @@ const LightBox = (props) => {
                         </svg>
                     </button>
                 </nav>
-                {/* <img aria-hidden="true" style={{opacity:imgOpacity}} src={images[previmage].shadowBoxImage.sourceUrl} alt={``} className={`absolute w-full transition-all ease-out duration-300 z-10`} /> */}
                 <img aria-controls={`image-${image}`} src={images[image].shadowBoxImage.sourceUrl} alt={images[image].shadowBoxImage.altText} className={`w-full z-0`} />
                 <h3 className={`${theme.text.H3} pt-4 text-rm-white`}>{images[image].shadowBoxText}</h3>
                 <div className={'pt-10'}>
                         <Link
                             link={linkInfo}
-                            classes={theme.button.BASE_STYLING + theme.text_links.STD + theme.button.GHOST_GREEN_TRANSPARENT_W + ' relative z-20'}
+                            classes={theme.button.BASE_STYLING + theme.text_links.STD + theme.button.GHOST_GREEN_TRANSPARENT_W + ' relative z-50'}
                             />
                     </div>
             </div>

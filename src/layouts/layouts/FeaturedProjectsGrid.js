@@ -6,6 +6,7 @@ import ResultCard from '../../components/ResultCard.js'
 import Parser from "../../components/global/Parser";
 import Buttons from '../../components/global/Buttons'
 import LightBox from "../../components/global/Lightbox.js"
+import PortfolioNav from "../../components/PortfolioNav"
 
 const FeaturedProjectsGrid = (props) => {
     const content = props.layoutData.layoutContent;
@@ -15,12 +16,14 @@ const FeaturedProjectsGrid = (props) => {
     console.log(settings);
 
     return(
-        <Section settings={settings}>
+      <>
+        <PortfolioNav />
+        <Section settings={settings} classes={"bg-[#1C1C1C]/[0.9]"}>
           <Container container={'default'}>
                   <div className={'md:grid md:grid-cols-2 xl:grid-cols-3 xl:gap-x-4 xl:gap-y-8 py-16'}>
                     {content.projects.map(block => {
                         return (
-                            <div className={''}>
+                            <div className={'relative'}>
                                 <LightBox images={block.projectInformation.images.shadowBoxImages} />
                             </div>
                         )
@@ -28,6 +31,7 @@ const FeaturedProjectsGrid = (props) => {
                   </div>
           </Container>
         </Section>
+      </>
     )
 }
 

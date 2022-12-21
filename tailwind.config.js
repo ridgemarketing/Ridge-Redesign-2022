@@ -107,7 +107,8 @@ module.exports = {
           '160px'           : '10rem',
       },
       boxShadow: {
-        'block': '0px 0px 20px rgba(0, 0, 0, 0.2)'
+        'block': '0px 0px 20px rgba(0, 0, 0, 0.2)',
+        'lightbox': '0 4px 4px rgba(0, 0, 0, 0.8)'
       },
       gridTemplateColumns: {
         '75/25': '75% 25%'

@@ -15,19 +15,23 @@ const TextVideoOverhang = (props) => {
     return (
         <Section settings={settings}>
             <Container container={settings.containerWidth} classes={`text-center`}>
-                <div className={'w-full p-20'} style={{backgroundColor: content.bgColor}}>
+            <div className={'w-full pt-16 lg:p-20 pb-[180px] lg:pb-[360px]'} style={{backgroundColor: content.bgColor}}>
                 {content.heading && 
                     <p className={`${theme.text.H2} text-white pb-10`}>{content.heading}</p>
                 }
                 {content.body && 
                     <p className={`${theme.text.P_STD} text-white px-10`}>{content.body}</p>
                 }
+            </div>
+                <div className={'py-20 max-w-[1020px] mx-auto -mt-[180px] lg:-mt-[360px]'}> 
+                  <div className={'w-[84%] relative mx-auto'}> {/* bg-[#383737] */}
+                      <img className={'relative mx-auto z-10'} src={"https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/MacBookPro-Laptop-Topp.png"} />
+                      {video && <video className={'mx-auto absolute top-0 left-0 w-full h-full object-cover p-[1%]'} autoPlay loop muted playsInLine src={"https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/ansell_125_year_anniversary_quiz-540p.mp4"}></video> }
+                  </div>
+                  <div className={'-mt-px z-20 relative'}>
+                      <img src={"https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/MacBookPro-Laptop-Bottom.svg"} />
+                  </div>
                 </div>
-                {video && 
-                    <div ref={ref} className={'mx-auto'} style={{maxWidth: "800px"}}>
-                        <video controls src={video} />
-                    </div>
-                }
             </Container>
         </Section>
     )
