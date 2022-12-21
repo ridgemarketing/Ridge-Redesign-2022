@@ -34,15 +34,19 @@ const ProjectHeader = (props) => {
     const bgImage       = content.backgroundImage ? getImage(content.backgroundImage.localFile) : false;
     const featuredImage = content.featuredImage   ? getImage(content.featuredImage.localFile)   : false;
     const imageOverhang = content.imageOverhang   ? getImage(content.imageOverhang.localFile)   : false;
-    const videoOverhang = content.videoOverhang        ? content.videoOverhang : false;
+    const videoOverhang = content.videoOverhang   ? content.videoOverhang : false;
 
 
+    const setVideo = () => {
+      setImageHeight(ref.current.clientHeight);
+    }
     useEffect(() => {
       function handleResize() {
           setImageHeight(ref.current.clientHeight);
       }
 
       setTimeout(function() {
+        console.log(ref.current.clientHeight);
           setImageHeight(ref.current ? ref.current.clientHeight : 0 );
       }, 0)
 
@@ -140,16 +144,16 @@ const ProjectHeader = (props) => {
           </Container>
 
           <Container size={`slim`} classes={'helloClass'}> 
-          {videoOverhang && 
-          <div ref={ref}>
-            <video controls src={videoOverhang} />
-          </div>
-          }
-              {!videoOverhang && imageOverhang && 
-                      <div ref={ref}>
-                        <GatsbyImage className={``} image={imageOverhang} />
-                      </div>
-              }
+            {videoOverhang && 
+            <div ref={ref}>
+              <video preload="metadata" controls src={videoOverhang} onLoadedData={() => setVideo()} />
+            </div>
+            }
+            {!videoOverhang && imageOverhang && 
+                    <div ref={ref}>
+                      <GatsbyImage className={``} image={imageOverhang} />
+                    </div>
+            }
           </Container>
       </section>
     )

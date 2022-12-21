@@ -32,6 +32,7 @@ import MediaBlocks from "./layouts/MediaBlocks"
 import TeamGrid from "./layouts/TeamGrid"
 import ResultsTextBlock from "./layouts/ResultsTextBlock"
 import CareersForm from "./layouts/CareersForm"
+import TextVideoOverhang from "./layouts/TextVideoOverhang"
 
 
 let Layouts = {}; 
@@ -71,6 +72,7 @@ Layouts['VideoPlayer']                      = VideoPlayer;
 Layouts['MediaBlocks']                      = MediaBlocks;
 Layouts['TeamGrid']                         = TeamGrid;
 Layouts['ResultsTextBlock']                 = ResultsTextBlock;
+Layouts['TextVideoOverhang']                = TextVideoOverhang;
 
 
 export default Layouts

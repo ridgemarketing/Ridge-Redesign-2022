@@ -61,6 +61,9 @@ const FullWidthImage = (props) => {
       <>
         <Section settings={settings}>
             <Container container={settings.containerWidth}>
+                {content.heading && 
+                <p className={`${theme.text.H2} pb-8`}>{content.heading}</p>
+                }
                 <div ref={overlapImage} className={`mx-auto ${overlapImageClass}`}> 
                     {image}
                 </div>
@@ -78,6 +81,7 @@ export const query = graphql`
         fieldGroupName
         layoutFullWidthImage {
           layoutContent {
+            heading
             imageOverlap
             backgroundColor
             image {
@@ -118,6 +122,7 @@ export const serviceQuery = graphql`
         fieldGroupName
         layoutFullWidthImage {
           layoutContent {
+            heading
             imageOverlap
             backgroundColor
             image {
@@ -159,6 +164,7 @@ export const projectQuery = graphql`
         fieldGroupName
         layoutFullWidthImage {
           layoutContent {
+            heading
             imageOverlap
             image {
               localFile {
