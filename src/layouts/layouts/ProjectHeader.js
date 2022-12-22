@@ -52,7 +52,7 @@ const ProjectHeader = (props) => {
 
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);
-  })
+    })
 
   useEffect(() => {
     setMaxHeight((imageHeight / 2) + 224);
@@ -124,7 +124,7 @@ const ProjectHeader = (props) => {
                               <p className={`${theme.text.P_BLD}`}>Website</p>
                               <ul>
                                   {info.websites.map(website => {
-                                  return <li><a href={website.url}>{website.url.replace('https://', '')}</a></li>
+                                  return <li><a className={`underline`} href={website.url}>{website.url.replace('https://', '')}</a></li>
                                   })}
                               </ul>
                           </div>
@@ -134,7 +134,7 @@ const ProjectHeader = (props) => {
                               <p className={`${theme.text.P_BLD}`}>Services Provided</p>
                               <ul>
                                   {info.services.map(service => {
-                                      return (<li><a href={service.service.link}>{service.titleOverride}</a></li>)
+                                      return (<li><a className={`underline`} href={service.service.link}>{service.titleOverride}</a></li>)
                                   })}
                               </ul>
                           </div>

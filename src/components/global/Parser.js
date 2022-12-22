@@ -36,6 +36,10 @@ const tagList = [
     {
         tag: `[i]`,
         replace: `<span style="font-style:italic;">`
+    }, 
+    {
+        tag:`[h4]`,
+        replace:`<span style="display:block;" class="${theme.text.H4} mb-6 !normal-case">`
     }
 ];
 

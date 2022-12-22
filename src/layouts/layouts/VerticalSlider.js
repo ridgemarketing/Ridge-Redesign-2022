@@ -24,7 +24,6 @@ const VerticalSlider = (props) => {
   let scrollPoints            = [];
 
   const vslides               = content.slides;
-  // console.log(vslides);
 
   if (vslides.length > 0) {
     for (let i = 0; vslides.length > i; i++){
@@ -77,7 +76,7 @@ const VerticalSlider = (props) => {
       }
     );
     observer.observe(innerContainer.current);
-    //observer.unobserve(outerContainer.current);
+
   }
   }, [])
  

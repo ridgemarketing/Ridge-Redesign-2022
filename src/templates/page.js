@@ -23,8 +23,8 @@ export const Head = ({data}) => (
 
     {data.wpPage.seo.metaRobotsNoindex &&
       <>
-      <meta name="robots" content="noindex" />
-      <meta name="googlebot-news" content="noindex" />
+        <meta name="robots" content="noindex" />
+        <meta name="googlebot-news" content="noindex" />
       </>
     }
     {data.wpPage.seo.metaRobotsNoFollow &&
@@ -53,7 +53,7 @@ export const Head = ({data}) => (
 
 const WpPage = ({ data }) =>{
   let color = 'black';
-  if(data.wpPage.uri === '/contact/'){
+  if(data.wpPage.uri === '/contact/' || data.wpPage.uri === `/terms-and-conditions/`){
     color = 'white';
   }
 
@@ -79,7 +79,7 @@ const WpPage = ({ data }) =>{
           </Container>
         }
         {data.wpPage.title === "Terms and Conditions" &&
-        <div className={'terms'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
+          <div className={'terms pb-20'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
         }
         
         {data.wpPage.flexibleLayouts && 

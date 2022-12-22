@@ -30,24 +30,14 @@ const FullWidthImage = (props) => {
     const overlapBkg        = content.backgroundColor;
     const overlapImage      = useRef(null);
     const overlapDiv        = useRef(null);
-    // window.location.reload(false);
     
-    useEffect( () => {
-      const setBkg = () =>{
+    const splitMargins = () => {
+      function setBkg () {
         overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
         overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;   
       } 
       setBkg()
       
-      // window.onresize = () =>{
-      //   console.log(overlapDiv);
-      //   console.log(overlapDiv.current);
-      // overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
-      // overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;
-      // }
-    }, []);
-
-    useEffect(() => {
       function handleResize() {
         overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
         overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;
@@ -55,7 +45,14 @@ const FullWidthImage = (props) => {
 
       window.addEventListener('resize', handleResize);
       return () => window.removeEventListener('resize', handleResize);
-    })
+    }
+
+    const dataFetchedRef = useRef(false);
+    useEffect(() => {
+      if (dataFetchedRef.current) return;
+      dataFetchedRef.current = true;
+      splitMargins();
+    }, [])
 
     return (
       <>

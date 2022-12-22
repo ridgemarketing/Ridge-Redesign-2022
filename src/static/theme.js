@@ -37,6 +37,9 @@ export const theme = {
         SOLID_BLACK_HOVER_DARK:     'SOLID_BLACK_HOVER_LIGHT text-rm-white border-rm-black bg-rm-black hover:bg-rm-green hover:text-rm-black hover:border-rm-green ',
     
         GHOST_WHITE_HOVER_LIGHT:    'GHOST_WHITE_HOVER_LIGHT text-rm-white border-rm-white hover:bg-rm-green hover:text-rm-black hover:border-rm-green',
+        
+        GHOST_GREEN_GREY_HOVER_DARK:'GHOST_GREEN_HOVER_DARK text-rm-black border-rm-green bg-rm-pale-grey hover:bg-rm-green ',
+        GHOST_GREEN_GREY_HOVER_LIGHT:'GHOST_GREEN_HOVER_LIGHT text-rm-white border-rm-green bg-rm-pale-grey hover:bg-rm-green hover:text-rm-black ',  
     },
     
     text_links: {
