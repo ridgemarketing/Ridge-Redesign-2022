@@ -65,11 +65,11 @@ export const pageQuery = graphql`
         ...ResultsTextBlockPage
         ...CareersFormPage
         ...TextVideoOverhangPage
+        ...FeaturedProjectsGridPage
       }
     }
   }
 `
-// ...FeaturedProjectsGridPage
 export const serviceQuery = graphql`
   fragment FlexibleLayoutsService on WpService {
     flexibleLayouts {
@@ -98,11 +98,11 @@ export const serviceQuery = graphql`
         ...TeamGridService
         ...ResultsTextBlockService
         ...TextVideoOverhangService
+        ...FeaturedProjectsGridService
       }
     }
   }
 `
-// ...FeaturedProjectsGridService
 
 export const projectQuery = graphql`
   fragment FlexibleLayoutsProject on WpProject {
@@ -140,8 +140,8 @@ export const projectQuery = graphql`
         ...TeamGridProject
         ...ResultsTextBlockProject
         ...TextVideoOverhangProject
+        ...FeaturedProjectsGridProject
       }
     }
   }
 `
-// ...FeaturedProjectsGridProject

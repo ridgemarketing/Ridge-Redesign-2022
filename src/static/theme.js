@@ -30,6 +30,7 @@ export const theme = {
         GHOST_GREEN_HOVER_DARK:    'GHOST_GREEN_HOVER_DARK text-rm-black border-rm-green bg-white hover:bg-rm-green ',
         GHOST_GREEN_HOVER_LIGHT:   'GHOST_GREEN_HOVER_LIGHT text-rm-white border-rm-green bg-rm-black hover:bg-rm-green hover:text-rm-black ',
         GHOST_GREEN_TRANSPARENT:   'GHOST_GREEN_TRANSPARENT text-rm-black border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-black ',
+        GHOST_GREEN_TRANSPARENT_W:   'GHOST_GREEN_TRANSPARENT text-rm-white border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-white ',
         
         SOLID_GREEN_HOVER_LIGHT:    'SOLID_GREEN_HOVER_LIGHT text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
         SOLID_GREEN_HOVER_DARK:     'SOLID_GREEN_HOVER_DARK text-rm-black border-rm-green bg-rm-green hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
