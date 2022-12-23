@@ -12,9 +12,6 @@ const IconTextBoxes = (props) => {
 
   let textColor = 'text-black';
 
-  //unfinished, refactor for our process page, vertical numbering order 
-  //not working for resising page, working for desktop
-  //other issue isthe uneven height of text blocks, not standard division
   const dataFetchedRef = useRef(false);
   const iconContainer = useRef(null);
   let columnOrder =  ``;
@@ -26,15 +23,32 @@ const IconTextBoxes = (props) => {
   const calcHeight = () =>{
     if(settings.classes){
       if (settings.classes.includes(`columnOrder`)){
-        //window.onresize = () => {
+        
+        function setHeight(){
+          let colOneHeight =0, colTwoHeight =0;
           if(window.innerWidth > 767){
-            console.log(iconContainer.current.offsetHeight);
-            let iconContainerHeight = ((iconContainer.current.offsetHeight/2)+1);
-            iconContainer.current.setAttribute("style",`height:${iconContainerHeight}px`);
+            
+            for (var i =0; i < iconContainer.current.children.length; i++){
+              if(i >= iconContainer.current.children.length/2){
+                  colOneHeight = colOneHeight + iconContainer.current.children[i].clientHeight + 64;//mb-16 equivalent
+              }else{
+                  colTwoHeight = colTwoHeight + iconContainer.current.children[i].clientHeight +64;
+                }
+            }
+
+            if( colOneHeight >= colTwoHeight){}else{
+              colOneHeight = colTwoHeight;
+            }
+            iconContainer.current.setAttribute('style',`height:${colOneHeight}px`);
+          
           }else{
-            iconContainer.current.setAttribute("style",`height:100%;`);
+            iconContainer.current.setAttribute('style',`height:100%;`);
           }
-        //}
+        }
+        setHeight();
+        window.addEventListener('resize', setHeight);
+        return ()=>window.removeEventListener('resize', setHeight);
+
       }
     }
   }
@@ -43,7 +57,7 @@ const IconTextBoxes = (props) => {
     dataFetchedRef.current = true;
     calcHeight();
   }, [])
-  //end unfinished 
+
 
   let headingfont;
   if(content.body){
@@ -92,7 +106,7 @@ const IconTextBoxes = (props) => {
               </h3>
               }
               {content.bottomBody &&
-              <p className={ `mt-16 text-center ${textColor}`}>
+              <p className={ `mt-16 text-center ${textColor} lg:w-3/4 ml-auto mr-auto`}>
                   <span dangerouslySetInnerHTML={{__html: Parser(content.bottomBody)}} className={theme.text.P_STD}></span>
               </p>
               }

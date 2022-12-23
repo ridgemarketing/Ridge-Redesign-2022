@@ -190,7 +190,7 @@ const Header = (props) => {
                                         }
                                         return(
                                             <li key={`header-itemA${navItem.label}`} className={`h-min min-w-max mb-2 lg:mb-0 lg:mx-3 p-1 cursor-pointer group relative hover:[&>*]:`} onMouseOver={HoverSubMenu}>
-                                                <Link to={navItem.url} className={`${currentItem && `-lg:!text-rm-black !font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} hover:!font-bold text-18px`}> {/* hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green */}
+                                                <Link title={navItem.label} to={navItem.url} className={`${currentItem && `-lg:!text-rm-black !font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} hover:!font-bold text-18px`}> {/* hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green */}
                                                     <span className={`${classesString}`}>{navItem.label}</span>
                                                 </Link>  
                                                     <ul key={`submenu${navItem.label}${Math.random()}`} 
@@ -219,7 +219,7 @@ const Header = (props) => {
                                     }else{
                                         return(
                                             <li key={`header-itemB${navItem.label}`} className={`${classesString} h-min min-w-max w-1/2 mb-2 lg:mb-0 lg:mx-3 p-1 cursor-pointer`}>
-                                                <Link to={navItem.url} className={`${currentItem && `-lg:!text-rm-black !font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} text-18px hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green`}>
+                                                <Link title={navItem.label} to={navItem.url} className={`${currentItem && `-lg:!text-rm-black !font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} text-18px hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green`}>
                                                     {navItem.label}
                                                 </Link>
                                             </li>

@@ -23,7 +23,7 @@
         top: -0.25em;
     }
     q:before{
-        @apply content-['“'] -ml-3 absolute;
+        @apply content-['“'] -ml-3 lg:-ml-6 absolute;
     }
     q:after{
         @apply content-['”'];
@@ -34,6 +34,10 @@
 
     header nav a{
         @apply -lg:text-rm-black;
+    }
+    header nav a::before{
+        @apply block font-bold h-0 overflow-hidden invisible;
+        content: attr(title);
     }
 }
 
@@ -138,11 +142,13 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     @apply mb-6 mt-14
 }
 .terms p {
-    @apply mb-5
+    @apply font-basic-sans font-light text-21px leading-28px mb-5
 }
 .terms a {
     @apply underline font-basic-sans font-light mb-16;
 }
+
+
 /* Frosted Effect */
 .frosted-glass{
     @apply drop-shadow-lg;

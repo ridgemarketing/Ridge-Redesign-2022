@@ -3,8 +3,8 @@ import { graphql } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import Parser from '../../components/global/Parser';
-//import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faAngleLeft, faAngleRight } from '@fortawesome/pro-light-svg-icons'
+import { ArrowTallLeftBlack } from "../../static/arrow-tall-left-black.js";
+import { ArrowTallRightBlack } from "../../static/arrow-tall-right-black.js";
 
 const Quotes = (props) => {
   
@@ -29,7 +29,7 @@ const Quotes = (props) => {
     const quoteLeft          = useRef(null);
     const quoteRight         = useRef(null);
 
-    useEffect(() => {
+    const quoteFunc = () => {
       if(slides.length > 0){
 
       let topLeft              = 75;
@@ -61,7 +61,6 @@ const Quotes = (props) => {
       }
 
       function throttleinView(){
-        //setTimeout(inView, 0);
         inView();
       }
 
@@ -79,21 +78,31 @@ const Quotes = (props) => {
         }
       }
 
-      let observer = new IntersectionObserver( (entries) => {
-        entries.forEach ( entry => {
-          if( entry.isIntersecting ){
-            window.addEventListener('scroll',  throttleinView, {passive: true});
-          }else{
-            reset();
-            window.removeEventListener('scroll',  throttleinView, {passive: true});
-          }
+        let observer = new IntersectionObserver( (entries) => {
+          entries.forEach ( entry => {
+            if( entry.isIntersecting ){
+              window.addEventListener('scroll',  throttleinView, {passive: true});
+            }else{
+              reset();
+              window.removeEventListener('scroll',  throttleinView, {passive: true});
+            }
+          })
         })
-      })
-      observer.observe(parallaxContainer.current);
+        observer.observe(parallaxContainer.current);
+      }
     }
+
+    const dataFetchedRef = useRef(false);
+    useEffect(() => {
+      if (dataFetchedRef.current) return;
+      dataFetchedRef.current = true;
+      quoteFunc();
     }, [])
 
-    //classes={`bg-[url('https://rm2022dev.wpengine.com/wp-content/uploads/2022/07/Group-24.png')] bg-cover bg-[center_50%]`}
+    let arrows = false;
+    if(slides.length > 1){
+      arrows = true;
+    }
     return(
       <div ref={parallaxContainer} className={`block `}>
         <Section classes="overflow-hidden" settings={ settings } ref={parallaxContainer}>
@@ -115,15 +124,17 @@ const Quotes = (props) => {
                     </small>
                   </div>
                 </div>
+                {arrows &&
                 <div className={`w-[175px] flex bg-rm-pale-grey lg:ml-10`}>
                     <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => prevSlide()}>
-                        {/* <FontAwesomeIcon icon={faAngleLeft} /> */}
+                        <ArrowTallLeftBlack/>
                     </button>
                     <span className={ theme.text.FOOTER + 'flex items-center font-basic-sans'}> {slide + 1} / {slides.length}</span>
                     <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => nextSlide()}>
-                        {/* <FontAwesomeIcon icon={faAngleRight} /> */}
+                        <ArrowTallRightBlack/>
                     </button>
                 </div>
+                }
             </div> 
           </Container>
             <span ref={quoteLeft}  aria-hidden="true" className={`${theme.text.STATS} transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-[50%] lg:top-[75%] left-[30%] lg:left-[20%] -z-10`}> “</span>

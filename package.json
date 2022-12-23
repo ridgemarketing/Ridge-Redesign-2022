@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/ridgemarketing/Ridge-Redesign-2022#readme",
   "dependencies": {
-
     "@lottiefiles/react-lottie-player": "^3.4.7",
     "@u-wave/react-vimeo": "^0.9.8",
     "@upsetjs/react": "^1.11.0",
