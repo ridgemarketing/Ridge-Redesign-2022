@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState, useCallback } from "react"
 import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
@@ -11,22 +11,74 @@ import PortfolioNav from "../../components/PortfolioNav"
 const FeaturedProjectsGrid = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    const images= content.projects;
-    console.log(content);
-    console.log(settings);
+    const projects = content.projects;
+
+    const [toRender, setRendering] = useState(false);
+    const [websites, setWebsites] = useState([]);
+    const [brandings, setBrandings] = useState([]);
+    const [videos, setVideos] = useState([]);
+    const [interactives, setInteractives] = useState([]);
+
+    useEffect(() => {
+      if (toRender === false) {
+        projects.map(project => {
+          websites.push(project.portfolioProject.websites);
+          brandings.push(project.portfolioProject.branding);
+          videos.push(project.portfolioProject.video);
+          interactives.push(project.portfolioProject.interactive);
+        });
+      }
+
+      return () => handleRendering(websites);
+    }, []);
+
+    useEffect(() => {
+      if (toRender === false) {
+        handleRendering(websites);
+      }
+    });
+
+    const handleRendering = (filter) => {
+      setRendering(filter);
+      return;
+    }
+
+    const handleFilterChange = useCallback(filter => {
+      switch(filter) {
+        case "Websites":
+          setRendering(websites);
+          break;
+        case "Branding":
+          setRendering(brandings);
+          break;
+        case "Video":
+          setRendering(videos);
+          break;
+        case "Interactive":
+          setRendering(interactives);
+          break;
+        default:
+          setRendering(websites);
+          break;
+      }
+      return;
+    }, [toRender])
 
     return(
       <>
-        <PortfolioNav />
+        <PortfolioNav setFilter={handleFilterChange} />
+
         <Section settings={settings} classes={"bg-[#1C1C1C]/[0.9]"}>
           <Container container={'default'}>
                   <div className={'md:grid md:grid-cols-2 xl:grid-cols-3 xl:gap-x-4 xl:gap-y-8 py-16'}>
-                    {content.projects.map(block => {
+                    {toRender && toRender.map(block => {
+                      if (block.lightboxImages !== null) {
                         return (
                             <div className={'relative'}>
-                                <LightBox images={block.projectInformation.images.shadowBoxImages} />
+                                <LightBox images={block.lightboxImages} title={"Hello World"} caption={block.caption} link={block.websiteLink} />
                             </div>
                         )
+                      }
                     })}
                   </div>
           </Container>
@@ -45,19 +97,59 @@ export const pageQuery = graphql`
         layoutContent {
             heading
             projects{
-                ...on WpProject {
-                    projectInformation {
-                      images {
-                        shadowBoxImages {
-                          shadowBoxText
-                          shadowBoxImage {
-                            sourceUrl
-                            altText
-                          }
-                        }
+              ...on WpPortfolioProject {
+                title
+                portfolioProject {
+                  websites {
+                    title
+                    caption
+                    lightboxImages {
+                      fieldGroupName
+                      text
+                      image {
+                        publicUrl
                       }
                     }
+                    websiteLink
+                  }
+                  branding {
+                    title
+                    caption
+                    lightboxImages {
+                      fieldGroupName
+                      text
+                      image {
+                        publicUrl
+                      }
+                    }
+                    websiteLink
+                  }
+                  video {
+                    title
+                    caption
+                    lightboxImages {
+                      fieldGroupName
+                      text
+                      image {
+                        publicUrl
+                      }
+                    }
+                    websiteLink
+                  }
+                  interactive {
+                    title
+                    caption
+                    lightboxImages {
+                      fieldGroupName
+                      text
+                      image {
+                        publicUrl
+                      }
+                    }
+                    websiteLink
+                  }
                 }
+              }
             }
           }
         layoutSettings {
@@ -81,24 +173,64 @@ export const serviceQuery = graphql`
     ... on WpService_Flexiblelayouts_Layouts_FeaturedProjectsGrid {
         fieldGroupName
         layoutFeaturedProjectsGrid {
-            layoutContent {
-                heading
-                projects{
-                    ...on WpProject {
-                        projectInformation {
-                          images {
-                            shadowBoxImages {
-                              shadowBoxText
-                              shadowBoxImage {
-                                sourceUrl
-                                altText
-                              }
-                            }
-                          }
-                        }
+          layoutContent {
+            heading
+            projects{
+              ...on WpPortfolioProject {
+                title
+                portfolioProject {
+                  websites {
+                    title
+                    caption
+                    lightboxImages {
+                      fieldGroupName
+                      text
+                      image {
+                        publicUrl
+                      }
                     }
+                    websiteLink
+                  }
+                  branding {
+                    title
+                    caption
+                    lightboxImages {
+                      fieldGroupName
+                      text
+                      image {
+                        publicUrl
+                      }
+                    }
+                    websiteLink
+                  }
+                  video {
+                    title
+                    caption
+                    lightboxImages {
+                      fieldGroupName
+                      text
+                      image {
+                        publicUrl
+                      }
+                    }
+                    websiteLink
+                  }
+                  interactive {
+                    title
+                    caption
+                    lightboxImages {
+                      fieldGroupName
+                      text
+                      image {
+                        publicUrl
+                      }
+                    }
+                    websiteLink
+                  }
                 }
               }
+            }
+          }
           layoutSettings {
             padding {
               bottom
@@ -120,24 +252,64 @@ export const projectQuery = graphql`
     ... on WpProject_Flexiblelayouts_Layouts_FeaturedProjectsGrid {
         fieldGroupName
         layoutFeaturedProjectsGrid {
-            layoutContent {
-                heading
-                projects{
-                    ...on WpProject {
-                        projectInformation {
-                          images {
-                            shadowBoxImages {
-                              shadowBoxText
-                              shadowBoxImage {
-                                sourceUrl
-                                altText
-                              }
-                            }
-                          }
-                        }
+          layoutContent {
+            heading
+            projects{
+              ...on WpPortfolioProject {
+                title
+                portfolioProject {
+                  websites {
+                    title
+                    caption
+                    lightboxImages {
+                      fieldGroupName
+                      text
+                      image {
+                        publicUrl
+                      }
                     }
+                    websiteLink
+                  }
+                  branding {
+                    title
+                    caption
+                    lightboxImages {
+                      fieldGroupName
+                      text
+                      image {
+                        publicUrl
+                      }
+                    }
+                    websiteLink
+                  }
+                  video {
+                    title
+                    caption
+                    lightboxImages {
+                      fieldGroupName
+                      text
+                      image {
+                        publicUrl
+                      }
+                    }
+                    websiteLink
+                  }
+                  interactive {
+                    title
+                    caption
+                    lightboxImages {
+                      fieldGroupName
+                      text
+                      image {
+                        publicUrl
+                      }
+                    }
+                    websiteLink
+                  }
                 }
               }
+            }
+          }
           layoutSettings {
             padding {
               bottom

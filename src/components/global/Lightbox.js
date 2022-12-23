@@ -38,7 +38,7 @@ const LightBox = (props) => {
     }
     const linkInfo = {
         target: "_blank",
-        url: "https:/www.google.com/",
+        url: props.link,
         title: "Visit Website"
     }
     const handleHoverState = (currentlyShowing) => {
@@ -48,11 +48,11 @@ const LightBox = (props) => {
     }
     return(<>
     <div role="button" onClick={()=>togglePopup()} onMouseEnter={() => handleHoverState(false)} onMouseLeave={() => handleHoverState(true)}>
-        <img src={images[0].shadowBoxImage.sourceUrl} className={`cursor-pointer object-cover w-full`} style={{filter: `${imgBlur}`}}/>
+        <img src={images[0].image.publicUrl} className={`cursor-pointer object-cover w-full`} style={{filter: `${imgBlur}`}}/>
         <div className={`shadow-lightbox absolute top-0 left-0 justify-center items-center ${hoverState} w-full h-full`} style={{backgroundColor: "rgba(255,255,255,0.8)"}} >
             <div className={'text-center'}>
-                <p className={`${theme.text.H3} pb-4`}>Vignetic</p>
-                <p className={theme.text.H4_LTE}>Staffing - Consulting</p>
+                <p className={`${theme.text.H3} pb-4`}>{props.title}</p>
+                <p className={theme.text.H4_LTE}>{props.caption}</p>
                 <div className={"w-[95px] text-center mx-auto pt-7"}>
                     <img src={'https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/plus.png'} />
                 </div>
@@ -81,8 +81,8 @@ const LightBox = (props) => {
                         </svg>
                     </button>
                 </nav>
-                <img aria-controls={`image-${image}`} src={images[image].shadowBoxImage.sourceUrl} alt={images[image].shadowBoxImage.altText} className={`w-full z-0`} />
-                <h3 className={`${theme.text.H3} pt-4 text-rm-white`}>{images[image].shadowBoxText}</h3>
+                <img aria-controls={`image-${image}`} src={images[image].image.publicUrl} alt={"NEEDS ALT TEXT ADDED"} className={`w-full z-0`} />
+                <h3 className={`${theme.text.H3} pt-4 text-rm-white`}>{images[image].text}</h3>
                 <div className={'pt-10'}>
                         <Link
                             link={linkInfo}

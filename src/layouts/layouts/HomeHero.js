@@ -17,7 +17,7 @@ const HomeHero = (props) => {
 
     let isImage = true;
     if (content.video) {
-        var video = <video playsinline autoplay="1" muted loop="loop" src={content.video} className={'absolute object-cover object-center w-full h-full'} type="video/mp4"></video>
+        var video = <video playsInline autoPlay="1" muted loop="loop" src={content.video} className={'absolute object-cover object-center w-full h-full'} type="video/mp4"></video>
         isImage = false;
     }
     return (

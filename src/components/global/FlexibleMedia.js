@@ -39,7 +39,7 @@ const FlexibleMedia = (props) => {
             {lottie &&
                 <div>
                     <Player
-                        autoplay
+                        autoPlay
                         loop
                         src={lottie}
                         style={{ height: 'auto', width: '100%' }}
