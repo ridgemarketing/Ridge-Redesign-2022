@@ -75,7 +75,7 @@ const FeaturedProjectsGrid = (props) => {
                       if (block.lightboxImages !== null) {
                         return (
                             <div className={'relative'}>
-                                <LightBox images={block.lightboxImages} title={"Hello World"} caption={block.caption} link={block.websiteLink} />
+                                <LightBox images={block.lightboxImages} title={block.title} caption={block.caption} link={block.websiteLink} />
                             </div>
                         )
                       }
