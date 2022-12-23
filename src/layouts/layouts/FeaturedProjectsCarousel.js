@@ -15,11 +15,11 @@ const FeaturedProjectsCarousel = (props) => {
     let headingArr = content.heading.split(' ');
     const [slide, setSlide] = useState(0);
     const [data, setData] = useState(slides[0]);
-    let dataTwo = slide + 1;
+    //let dataTwo = slide + 1;
 
     const nextSlide = () => {
         let i = slide;
-        dataTwo = slide + 1;
+        //dataTwo = slide + 1;
         if (i === slides.length - 1) {
             setSlide(0);
             setData(slides[slide]);
@@ -40,22 +40,22 @@ const FeaturedProjectsCarousel = (props) => {
         }
     }
 
-    //dataTwo = dataTwo - slide;
-    if(dataTwo > slides.length -1){
-      dataTwo = 0;
-    }
-    console.log( slide, dataTwo,);
+    // dataTwo = dataTwo - slide;
+    // if(dataTwo > slides.length -1){
+    //   dataTwo = 0;
+    // }
+    // console.log( slide, dataTwo,);
 
-    const css = `
-      .homeSlider{
-        background: linear-gradient(to top right, rgba(255,255,255,0), 50%, white),
-        url("${data.project.projectInformation.images.carouselFeature.publicUrl}");
-      }
-      .homeSlider-2{
-        background: linear-gradient(to bottom left, rgba(255,255,255,0), 50%, white),
-        url("${slides[dataTwo].project.projectInformation.images.carouselFeature.publicUrl}");
-      }
-    `;
+    // const css = `
+    //   .homeSlider{
+    //     background: linear-gradient(to top right, rgba(255,255,255,0), 50%, white),
+    //     url("${data.project.projectInformation.images.carouselFeature.publicUrl}");
+    //   }
+    //   .homeSlider-2{
+    //     background: linear-gradient(to bottom left, rgba(255,255,255,0), 50%, white),
+    //     url("${slides[dataTwo].project.projectInformation.images.carouselFeature.publicUrl}");
+    //   }
+    // `;
 
     return (
         <Section settings={settings}>
@@ -68,15 +68,15 @@ const FeaturedProjectsCarousel = (props) => {
                         <h2 className={theme.text.H2 + `z-20 text-white hidden lg:block lg:absolute lg:top-6 lg:right-4`}>{headingArr[0]}</h2>
                         {data.project.projectInformation.images.carouselFeature && 
                           <>
-                          <style>{css}</style>
+                          {/* <style>{css}</style> */}
                           <div className="homeSlider absolute overflow-hidden w-full h-full">
-                              <div className="homeSlider absolute overflow-hidden w-full h-full"></div>
-                              <div className="homeSlider-2 absolute overflow-hidden w-full h-full"></div>
-                             {/* <GatsbyImage 
-                                image={slides[dataTwo].project.projectInformation.images.carouselFeature.localFile.childImageSharp.gatsbyImageData} 
+                              {/* <div className="homeSlider absolute overflow-hidden w-full h-full"></div>
+                              <div className="homeSlider-2 absolute overflow-hidden w-full h-full"></div> */}
+                             <GatsbyImage 
+                                image={data.project.projectInformation.images.carouselFeature.localFile.childImageSharp.gatsbyImageData} 
                                 alt={ ' ' } 
                                 className={ `` } 
-                                objectFit={'contain'}/> */}
+                                objectFit={'contain'}/>
                             {/*
                             <GatsbyImage
                                 image={slides[dataTwo].project.projectInformation.images.carouselFeature.localFile.childImageSharp.gatsbyImageData} 

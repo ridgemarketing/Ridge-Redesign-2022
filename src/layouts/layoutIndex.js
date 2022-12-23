@@ -14,7 +14,7 @@ import Results from "./layouts/Results"
 import ResultsMixed from "./layouts/ResultsMixed"
 import TextBlock from "./layouts/TextBlock"
 // import ThreeColIconsText from "./layouts/_ThreeColIconsText"
-import ProjectBlocks from "./layouts/ProjectBlocks"
+//import ProjectBlocks from "./layouts/ProjectBlocks"
 import TwoColBreakoutImageText from "./layouts/TwoColBreakoutImageText"
 import TwoColBreakoutImageHeading from "./layouts/TwoColBreakoutImageHeading"
 // import TwoColIconsText from "./layouts/TwoColIconsText"
@@ -33,6 +33,7 @@ import TeamGrid from "./layouts/TeamGrid"
 import ResultsTextBlock from "./layouts/ResultsTextBlock"
 import CareersForm from "./layouts/CareersForm"
 import TextVideoOverhang from "./layouts/TextVideoOverhang"
+import ButtonRow from "./layouts/ButtonRow" 
 // import FeaturedProjectsGrid from "./layouts/FeaturedProjectsGrid"
 
 
@@ -56,7 +57,7 @@ Layouts['Results']                          = Results;
 Layouts['ResultsMix']                       = ResultsMixed; //component name is different in backend, causing this change to be necessary to match up
 Layouts['TextBlock']                        = TextBlock;
 // Layouts['ThreeColIconsText']             = ThreeColIconsText;
-Layouts['ProjectBlocks']                    = ProjectBlocks;
+//Layouts['ProjectBlocks']                    = ProjectBlocks;
 Layouts['TwoColBreakoutImageText']          = TwoColBreakoutImageText;
 Layouts['TwoColBreakoutImageHeading']       = TwoColBreakoutImageHeading;
 // Layouts['TwoColIconsText']               = TwoColIconsText;
@@ -75,6 +76,7 @@ Layouts['TeamGrid']                         = TeamGrid;
 Layouts['ResultsTextBlock']                 = ResultsTextBlock;
 Layouts['TextVideoOverhang']                = TextVideoOverhang;
 Layouts['FeaturedProjectsGrid']             = FeaturedProjectsGrid;
+Layouts['ButtonRow']                        = ButtonRow;
 
 
 export default Layouts
