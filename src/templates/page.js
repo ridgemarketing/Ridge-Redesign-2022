@@ -8,7 +8,7 @@ import Layout from "../components/global/Layout"
 import Menu from "../components/global/FooterMenu"
 import { Container } from "../components/global/Wrappers"
 import CustomHeader from "../components/global/headerColor"
-// import PortfolioHeader from "../layouts/layouts/PortfolioHeader"
+import PortfolioHeader from "../layouts/layouts/PortfolioHeader"
 
 export const Head = ({data}) => (
   <>
@@ -57,18 +57,23 @@ const WpPage = ({ data }) =>{
     color = 'white';
   }
 
+  const blackList = ["404", "Terms and Conditions", "Portfolio"];
+
   if(data.wpPage.isPostsPage === true){
     return ( <Blog/> )
   } else {
     return (
       <Layout>
         <CustomHeader color={color}/>
-        {data.wpPage.pageHeader && !data.wpPage.isFrontPage && data.wpPage.title !== "404" && data.wpPage.title !== "Terms and Conditions" &&
+        {data.wpPage.pageHeader && !data.wpPage.isFrontPage && !blackList.includes(data.wpPage.title) &&
           <PageHeader layoutData={data.wpPage.pageHeader.pageHeader} />
         }
-        {/* {data.wpPage.title == "Portfolio" &&
-          <PortfolioHeader layoutData={''} />
-        } */}
+        {data.wpPage.title == "Portfolio" &&
+          <>
+            <div className={"pt-16"}></div>
+            <PortfolioHeader layoutData={data.wpPage.portfolioHeader.portfolioHeader} />
+          </>
+        }
         {data.wpPage.isFrontPage &&
           <HomeHero layoutData={data.wpPage.homeHero.layoutHomeHero}/>
         }
@@ -143,6 +148,7 @@ export const query = graphql`
         }
       }
       ...PageHeader
+      ...PortfolioHeader
 
       ...FlexibleLayoutsPage
       seo {
