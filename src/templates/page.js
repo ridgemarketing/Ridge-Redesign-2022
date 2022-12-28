@@ -4,7 +4,6 @@ import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import Blog from "./blog"
 import HomeHero from "../layouts/layouts/HomeHero"
 import PageHeader from "../layouts/layouts/PageHeader"
-import Layout from "../components/global/Layout"
 import Menu from "../components/global/FooterMenu"
 import { Container } from "../components/global/Wrappers"
 import CustomHeader from "../components/global/headerColor"
@@ -63,7 +62,7 @@ const WpPage = ({ data }) =>{
     return ( <Blog/> )
   } else {
     return (
-      <Layout>
+      <>
         <CustomHeader color={color}/>
         {data.wpPage.pageHeader && !data.wpPage.isFrontPage && !blackList.includes(data.wpPage.title) &&
           <PageHeader layoutData={data.wpPage.pageHeader.pageHeader} />
@@ -90,7 +89,7 @@ const WpPage = ({ data }) =>{
         {data.wpPage.flexibleLayouts && 
         <FlexibleLayouts flexibleLayouts={data.wpPage.flexibleLayouts} />
         }
-      </Layout>
+        </>
     )
   }
 }
