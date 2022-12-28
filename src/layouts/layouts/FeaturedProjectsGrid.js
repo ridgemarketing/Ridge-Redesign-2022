@@ -1,6 +1,6 @@
-import React, { useEffect, useState, useCallback } from "react"
+import React, { useEffect, useState, useCallback, useContext } from "react"
 import { Section, Container } from "../../components/global/Wrappers"
-import { theme } from "../../static/theme"
+import { theme, ThemeContext } from "../../static/theme"
 import { graphql } from "gatsby"
 import ResultCard from '../../components/ResultCard.js'
 import Parser from "../../components/global/Parser";
@@ -12,6 +12,8 @@ const FeaturedProjectsGrid = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     const projects = content.projects;
+
+    const context = useContext(ThemeContext);
 
     const [toRender, setRendering] = useState(false);
     const [websites, setWebsites] = useState([]);
@@ -29,21 +31,38 @@ const FeaturedProjectsGrid = (props) => {
         });
       }
 
-      return () => handleRendering(websites);
+      return () => handleRendering(context.filterState);
     }, []);
 
     useEffect(() => {
       if (toRender === false) {
-        handleRendering(websites);
+        handleRendering(context.filterState);
       }
     });
 
     const handleRendering = (filter) => {
-      setRendering(filter);
+      switch(filter) {
+        case "Websites":
+          setRendering(websites);
+          break;
+        case "Branding":
+          setRendering(brandings);
+          break;
+        case "Video":
+          setRendering(videos);
+          break;
+        case "Interactive":
+          setRendering(interactives);
+          break;
+        default:
+          setRendering(websites);
+          break;
+      }
       return;
     }
 
     const handleFilterChange = useCallback(filter => {
+      context.updateFilterState(filter);
       switch(filter) {
         case "Websites":
           setRendering(websites);

@@ -116,5 +116,9 @@ export const ThemeContext = React.createContext({
     accent: theme.colors.primary.accent,
     secondary: theme.colors.secondary.accent,
     updateAccentFunction: () => {},
-    updateSecondaryFunction: () => {}
+    updateSecondaryFunction: () => {},
+
+    //context for portfolio page
+    filterState: "Websites",
+    updateFilterState: () => {}
 });
