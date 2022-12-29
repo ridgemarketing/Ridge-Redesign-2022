@@ -86,11 +86,11 @@ const FeaturedProjectsGrid = (props) => {
 
         <Section settings={settings} classes={"bg-[#1C1C1C]/[0.9]"}>
           <Container container={'default'}>
-                  <div className={'md:grid md:grid-cols-2 xl:grid-cols-3 xl:gap-x-4 xl:gap-y-8 py-16'}>
+                  <div className={'md:grid md:grid-cols-2 md:gap-6 xl:grid-cols-3 xl:gap-x-4 xl:gap-y-8 py-16'}>
                     {toRender && toRender.map(block => {
                       if (block.lightboxImages !== null) {
                         return (
-                            <div className={'relative'}>
+                            <div className={'relative my-10 md:my-0'}>
                                 <LightBox images={block.lightboxImages} title={block.title} caption={block.caption} link={block.websiteLink} />
                             </div>
                         )
