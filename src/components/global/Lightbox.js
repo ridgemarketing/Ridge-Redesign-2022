@@ -62,7 +62,7 @@ const LightBox = (props) => {
     
     <div className={`fixed top-0 left-0 h-screen w-screen`} style={{display:overlay ? 'block':'none', visibility:overlay ? 'visible':'hidden', zIndex:overlay ? '50':'0'}} aria-label="lightbox" aria-expanded={overlay}>
         <div className={`relative z-10 w-full h-full flex flex-col items-center justify-center`}>
-            <div className={`w-[95%] md:w-3/4 lg:w-[25%] h-max relative flex flex-col justify-center items-center`}>
+            <div className={`w-[95%] md:w-3/4 lg:w-[40%] h-max relative flex flex-col justify-center items-center`}>
                 <nav className={`absolute top-0 left-0 w-full h-full z-50 text-rm-white flex justify-between items-center ml-auto mr-auto`}> 
                     <button className={`absolute z-50 text-rm-white p-2 -top-[50px] right-0`} aria-label="Close Lightbox" onClick={()=>togglePopup()}>
                         <svg width="26" height="24" viewBox="0 0 26 24" fill="none">
@@ -83,12 +83,12 @@ const LightBox = (props) => {
                 </nav>
                 <img aria-controls={`image-${image}`} src={images[image].image.publicUrl} alt={"NEEDS ALT TEXT ADDED"} className={`w-full z-0`} />
                 <h3 className={`${theme.text.H3} pt-4 text-rm-white`}>{images[image].text}</h3>
-                <div className={'pt-10'}>
+                {linkInfo.url !== null && <div className={'pt-10'}>
                         <Link
                             link={linkInfo}
                             classes={theme.button.BASE_STYLING + theme.text_links.STD + theme.button.GHOST_GREEN_TRANSPARENT_W + ' relative z-50'}
                             />
-                    </div>
+                </div>}
             </div>
         </div>
         <div className={`absolute top-0 left-0 w-full z-0 h-full bg-rm-black bg-opacity-80`} aria-hidden="true"></div>
