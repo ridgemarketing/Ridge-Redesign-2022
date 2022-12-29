@@ -4,7 +4,7 @@ import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import FlexibleMedia from "../../components/global/FlexibleMedia"
 import Parser from "../../components/global/Parser"
-import Buttons from "../../components/global/buttons"
+import Buttons from "../../components/global/Buttons"
 
 const TwoColImageText = (props) => {
 

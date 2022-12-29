@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { Section, Container } from "../../components/global/Wrappers"
 import { theme, ThemeContext } from "../../static/theme"
 import { graphql } from "gatsby"
-import Buttons from "../../components/global/buttons"
+import Buttons from "../../components/global/Buttons"
 
 const ButtonRow = (props) => {
 
@@ -23,11 +23,12 @@ const ButtonRow = (props) => {
                         return(
                           <div className='w-1/2 lg:w-1/4 my-8 text-center'>
                               <Buttons 
+                                onClick={() => context.updateFilterState("Video")}
                                 content={button.componentButton} 
                                 sectionBackground={settings.backgroundColor}/>
 
                                 <div className={"py-10"}>
-                                  <a href="/portfolio" onClick={() => context.updateFilterState("Websites")}>Go to Websites</a>
+                                  <a href="/portfolio" onClick={() => context.updateFilterState("Video")}>Go to Websites</a>
                                 </div>
                           </div>
           
