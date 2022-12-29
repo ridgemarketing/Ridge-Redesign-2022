@@ -7,8 +7,6 @@ import Buttons from '../components/global/Buttons'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Parser from '../components/global/Parser'
 
-import Layout from "../components/global/Layout"
-
 export const Head = ({data}) => (
   <>
     <title>{data.wpService.seo.title}</title>
@@ -69,7 +67,7 @@ const WpService = ({ data }) =>{
   }
 
   return (
-    <Layout>
+    <>
       <Section settings={settings}>
         <Container>
           {content.eyebrow &&
@@ -79,7 +77,7 @@ const WpService = ({ data }) =>{
           }
           {content.heading.green && content.heading.black && 
             <h2 className={theme.text.HERO + 'mb-9'}>
-                <span className="text-rm-green">
+                <span className="text-rm-green lg:block">
                   {content.heading.green + " "}
                 </span>
                 <span className="text-rm-black">
@@ -123,7 +121,7 @@ const WpService = ({ data }) =>{
         {data.wpService.flexibleLayouts &&
           <FlexibleLayouts flexibleLayouts={data.wpService.flexibleLayouts} />
         }
-    </Layout>
+    </>
   )
 }
 export default WpService;

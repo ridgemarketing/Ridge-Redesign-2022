@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import ProjectHeader from "../layouts/layouts/ProjectHeader"
 import PostNav from "../components/PostNav"
-import Layout from "../components/global/Layout"
 
 export const Head = ({data}) => (
   <>
@@ -53,7 +52,7 @@ const WpProject = ({ data, pageContext }) => {
     next: project.next
   }
   return (
-    <Layout>
+    <>
         {data.wpProject.projectHeader && 
             <ProjectHeader content={data.wpProject.projectHeader} info={data.wpProject.projectInformation} />
         }
@@ -61,7 +60,7 @@ const WpProject = ({ data, pageContext }) => {
             <FlexibleLayouts flexibleLayouts={data.wpProject.flexibleLayouts} />
         }
         <PostNav links={links} postType={`project`} />
-    </Layout>
+    </>
   )
 }
 export default WpProject;

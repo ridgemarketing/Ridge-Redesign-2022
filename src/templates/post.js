@@ -3,7 +3,6 @@ import { graphql } from "gatsby"
 import { theme } from "../static/theme"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link }from "gatsby"
-import Layout from "../components/global/Layout"
 import Parser from "../components/global/Parser"
 
 export const Head = ({data}) => (
@@ -57,7 +56,7 @@ const WpPost = ({ data, pageContext }) =>{
     content.date = new Date(content.date).toLocaleDateString('default', { month: 'long', year: 'numeric', day:'numeric' });
     
   return (
-    <Layout>
+    <>
       <hgroup className="container mt-20">
         <h1 className={theme.text.H1_STD + 'mb-9'}> {content.title} </h1>
         <div className="flex items-center">
@@ -99,7 +98,7 @@ const WpPost = ({ data, pageContext }) =>{
             </div>
         </div>
       </nav>
-    </Layout>
+    </>
   )
 }
 export default WpPost;

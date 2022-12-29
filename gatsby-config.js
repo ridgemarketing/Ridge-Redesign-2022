@@ -7,9 +7,13 @@ module.exports = {
     title: `Ridge Marketing`,
     siteUrl: `http://www.ridgemarketing.com`
   },
+  flags: {
+    DEV_SSR: true
+  },
   plugins: [
     {
       resolve: `gatsby-source-wordpress`,
+      
       options: {
         production: {
           allow404Images: true,

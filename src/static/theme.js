@@ -30,6 +30,7 @@ export const theme = {
         GHOST_GREEN_HOVER_DARK:    'GHOST_GREEN_HOVER_DARK text-rm-black border-rm-green bg-white hover:bg-rm-green ',
         GHOST_GREEN_HOVER_LIGHT:   'GHOST_GREEN_HOVER_LIGHT text-rm-white border-rm-green bg-rm-black hover:bg-rm-green hover:text-rm-black ',
         GHOST_GREEN_TRANSPARENT:   'GHOST_GREEN_TRANSPARENT text-rm-black border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-black ',
+        GHOST_GREEN_TRANSPARENT_W:   'GHOST_GREEN_TRANSPARENT text-rm-white border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-white ',
         
         SOLID_GREEN_HOVER_LIGHT:    'SOLID_GREEN_HOVER_LIGHT text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
         SOLID_GREEN_HOVER_DARK:     'SOLID_GREEN_HOVER_DARK text-rm-black border-rm-green bg-rm-green hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
@@ -37,6 +38,9 @@ export const theme = {
         SOLID_BLACK_HOVER_DARK:     'SOLID_BLACK_HOVER_LIGHT text-rm-white border-rm-black bg-rm-black hover:bg-rm-green hover:text-rm-black hover:border-rm-green ',
     
         GHOST_WHITE_HOVER_LIGHT:    'GHOST_WHITE_HOVER_LIGHT text-rm-white border-rm-white hover:bg-rm-green hover:text-rm-black hover:border-rm-green',
+        
+        GHOST_GREEN_GREY_HOVER_DARK:'GHOST_GREEN_HOVER_DARK text-rm-black border-rm-green bg-rm-pale-grey hover:bg-rm-green ',
+        GHOST_GREEN_GREY_HOVER_LIGHT:'GHOST_GREEN_HOVER_LIGHT text-rm-white border-rm-green bg-rm-pale-grey hover:bg-rm-green hover:text-rm-black ',  
     },
     
     text_links: {
@@ -63,6 +67,8 @@ export const theme = {
         HALF:               'form-one-col w-full xl:w-[45%] xl:ml-[5%] xl:mr-[5%] flex-col',
         HALF_PADDING:       'p-8 lg:p-16',
         FULL_DISPLAY:       'form-two-col mt-20 ml-auto mr-auto w-full lg:w-3/4 flex flex-row justify-around flex-wrap',
+        NO_WRAP:            'form-one-col w-full flex-col',
+        NO_WRAP_PADDING:    'py-8',
     },
     paddingTop:{
         standard: 'pt-20',
@@ -110,5 +116,9 @@ export const ThemeContext = React.createContext({
     accent: theme.colors.primary.accent,
     secondary: theme.colors.secondary.accent,
     updateAccentFunction: () => {},
-    updateSecondaryFunction: () => {}
+    updateSecondaryFunction: () => {},
+
+    //context for portfolio page
+    filterState: "Websites",
+    updateFilterState: () => {}
 });

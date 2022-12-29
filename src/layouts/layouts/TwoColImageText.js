@@ -4,9 +4,9 @@ import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import FlexibleMedia from "../../components/global/FlexibleMedia"
 import Parser from "../../components/global/Parser"
+import Buttons from "../../components/global/buttons"
 
 const TwoColImageText = (props) => {
-
 
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
@@ -18,11 +18,18 @@ const TwoColImageText = (props) => {
         <Section settings={settings}>
             <Container container={settings.containerWidth}>
                 <div className={'lg:grid grid-cols-2 gap-16 pt-16'}>
-                    <div className={'pb-12 xl:pt-12 lg:pb-0 ' + order}>
+                    <div className={'pb-12 lg:pb-0 ' + order}>
                         <h3 className={theme.text.H2}>
                             {content.heading}
                         </h3>
                         <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={theme.text.P_STD + ' mt-8'}></p>
+                        {content.componentButton && content.componentButton.link &&
+                          <div className='text-left my-8'>
+                            <Buttons 
+                              content={content.componentButton} 
+                              sectionBackground={settings.backgroundColor}/>
+                          </div>
+                        }
                     </div>
 
                     <div className={"lg:text-left text-center"}>

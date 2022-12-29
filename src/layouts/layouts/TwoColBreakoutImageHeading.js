@@ -21,7 +21,7 @@ const TwoColBreakoutImageHeading = (props) => {
     const bgColor = settings.backgroundColor ? settings.backgroundColor : `white`;
 
     return (
-        <Section settings={settings} classes={`overflow-hidden relative bg-transparent`}>
+        <Section settings={settings} classes={`relative bg-transparent`}>
           <div className={`bg-${theme.backgroundColor[bgColor]} absolute top-32 left-0 right-0 bottom-0 w-full h-full`}></div>
           <Container size={`slim`}>
             <div className={`relative`}>

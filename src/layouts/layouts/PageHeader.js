@@ -9,16 +9,25 @@ const PageHeader = (props) => {
     const content       = props.layoutData.layoutContent;
     const settings      = props.layoutData.layoutSettings;
     const image         = content.backgroundImage ? getImage(content.backgroundImage.localFile) : false;
+    let noBox, noSpace;
+    if (content.heading || content.subheading || content.eyebrow){
+      noBox             = `absolute`;
+      noSpace           = ``;
+    }else{
+      noBox             = `relative`;
+      noSpace           = `hidden`; 
+    }
 
     return (
         <section className={`relative`}>
           {image && 
-            <GatsbyImage className={`absolute top-0 left-0 w-full h-[580px] object-cover`} image={image} />
+            <GatsbyImage className={`${noBox} top-0 left-0 w-full h-[580px] object-cover`} image={image} />
           }
-          <div className={`absolute bottom-0 left-0 w-full h-16 bg-white`}></div>
+          <div className={`absolute bottom-0 left-0 w-full h-16 bg-white ${noSpace}`}></div>
           <div className={``}> 
-            <Container classes={`pt-[500px] xl:pt-96 ${settings.classes && settings.classes !== null ? settings.classes : ''}`}>
-              <div className={`bg-black text-white py-12 px-6 lg:px-12 xl:pt-14 xl:pb-12 xl:pl-20 xl:pr-16`} style={{maxWidth:content.maxWidth}}>
+            <Container classes={`${noSpace} pt-[500px] xl:pt-96 ${settings.classes && settings.classes !== null ? settings.classes : ''}`}>
+            {content.heading &&
+              <div className={`bg-black text-white py-12 px-6 lg:px-12 xl:pt-14 xl:pb-12 xl:pl-20 xl:pr-16 lg:w-4/5`} style={{maxWidth:content.maxWidth}}>
                 {content.eyebrow &&
                   <span className={`block mb-8 ${theme.text.H4}`}>
                     {content.eyebrow}
@@ -37,6 +46,7 @@ const PageHeader = (props) => {
                   </h1>
                 }
               </div>
+            } 
             </Container>
           </div>
         </section>

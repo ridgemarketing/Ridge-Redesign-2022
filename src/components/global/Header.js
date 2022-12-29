@@ -95,7 +95,7 @@ const Header = (props) => {
 
     let logo    = ``;
     if(headerMenu.allWp.nodes[0].globalSettings.globalSettings.logos){
-        logo    = backgroundColor === `black` ? checkImg(headerMenu.allWp.nodes[0].globalSettings.globalSettings.logos.dark, 'w-[175px] sm:w-[250px], lg:w-[350px]') : checkImg(headerMenu.allWp.nodes[0].globalSettings.globalSettings.logos.light,  'w-[175px] sm:w-[250px] lg:w-[350px]');
+        logo    = backgroundColor === `black` ? checkImg(headerMenu.allWp.nodes[0].globalSettings.globalSettings.logos.dark, 'w-[250px] sm:w-[275px], lg:w-[300px]') : checkImg(headerMenu.allWp.nodes[0].globalSettings.globalSettings.logos.light,  'w-[175px] sm:w-[250px] lg:w-[350px]');
     }
 
     let noParents   = 0;
@@ -167,7 +167,7 @@ const Header = (props) => {
                                 </svg>
                             </button>
                         </li>
-                        <div key={`header-container-mobileMenu`} style={{display:overlayState ? 'block': 'none', visibility:overlayState ? 'visible': 'hidden'}} className={`absolute top-full left-[50%] -translate-x-[50%] w-[95%] md:w-3/4 bg-rm-white text-rm-black mt-5 p-6 lg:p-0 lg:mt-0 lg:left-0 lg:translate-x-0 lg:w-max lg:relative ${textColor} lg:bg-transparent lg:h-min lg:!inline-flex lg:!visible`}>
+                        <div key={`header-container-mobileMenu`} style={{display:overlayState ? 'block': 'none', visibility:overlayState ? 'visible': 'hidden'}} className={`absolute top-full left-[50%] -translate-x-[50%] w-[95%] md:w-3/4 bg-rm-white text-rm-black mt-5 p-6 lg:p-0 lg:mt-0 lg:left-0 lg:translate-x-0 lg:w-max lg:relative ${textColor} lg:bg-transparent lg:h-min lg:!inline-flex lg:!visible -lg:overflow-y-scroll moblileMenuHeight`}>
                             {content.map ( (navItem) =>{
                             //detect current if nav item is current page 
                                 let currentItem = false;
@@ -190,7 +190,7 @@ const Header = (props) => {
                                         }
                                         return(
                                             <li key={`header-itemA${navItem.label}`} className={`h-min min-w-max mb-2 lg:mb-0 lg:mx-3 p-1 cursor-pointer group relative hover:[&>*]:`} onMouseOver={HoverSubMenu}>
-                                                <Link to={navItem.url} className={`${currentItem && `!font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} hover:!font-bold text-18px`}> {/* hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green */}
+                                                <Link title={navItem.label} to={navItem.url} className={`${currentItem && `-lg:!text-rm-black !font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} hover:!font-bold text-18px`}> {/* hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green */}
                                                     <span className={`${classesString}`}>{navItem.label}</span>
                                                 </Link>  
                                                     <ul key={`submenu${navItem.label}${Math.random()}`} 
@@ -206,7 +206,7 @@ const Header = (props) => {
                                                             }
                                                             return(
                                                                 <li key={`header-sub-submenu${navItem.label}${subNavItem.label}`} className={`${doubleLI} text-rm-black mb-4 last-of-type:mb-0 cursor-pointer`}>
-                                                                    <Link to={subNavItem.url} className={`${theme.text.P_STD} -lg:w-max -lg:text-[0.875rem] -lg:leading-[1.31rem] text-18px flex hover:underline hover:text-rm-green cursor-pointer items-center`}>
+                                                                    <Link to={subNavItem.url} className={`${theme.text.P_STD} -lg:!text-rm-black -lg:w-max -lg:text-[0.875rem] -lg:leading-[1.31rem] text-18px flex hover:underline hover:text-rm-green cursor-pointer items-center`}>
                                                                         {menuIcon && menuIcon}
                                                                         {subNavItem.label}
                                                                     </Link>
@@ -219,7 +219,7 @@ const Header = (props) => {
                                     }else{
                                         return(
                                             <li key={`header-itemB${navItem.label}`} className={`${classesString} h-min min-w-max w-1/2 mb-2 lg:mb-0 lg:mx-3 p-1 cursor-pointer`}>
-                                                <Link to={navItem.url} className={`${currentItem && `!font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} text-18px hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green`}>
+                                                <Link title={navItem.label} to={navItem.url} className={`${currentItem && `-lg:!text-rm-black !font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} text-18px hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green`}>
                                                     {navItem.label}
                                                 </Link>
                                             </li>

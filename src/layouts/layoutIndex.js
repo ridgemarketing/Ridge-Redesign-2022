@@ -31,7 +31,10 @@ import VideoPlayer from "./layouts/VideoPlayer"
 import MediaBlocks from "./layouts/MediaBlocks"
 import TeamGrid from "./layouts/TeamGrid"
 import ResultsTextBlock from "./layouts/ResultsTextBlock"
+import CareersForm from "./layouts/CareersForm"
 import TextVideoOverhang from "./layouts/TextVideoOverhang"
+import ButtonRow from "./layouts/ButtonRow" 
+// import FeaturedProjectsGrid from "./layouts/FeaturedProjectsGrid"
 
 
 let Layouts = {}; 
@@ -64,6 +67,7 @@ Layouts['TwoColTextQuote']                  = TwoColTextQuote;
 Layouts['VennDiagram']                      = VennDiagram;
 Layouts['QuarterImageText']                 = QuarterImageText;
 Layouts['CtaForm']                          = CtaForm;
+Layouts['CareersForm']                      = CareersForm;
 Layouts['LineBreak']                        = LineBreak;
 Layouts['ProjectPortfolio']                 = ProjectPortfolio;
 Layouts['VideoPlayer']                      = VideoPlayer;
@@ -71,6 +75,8 @@ Layouts['MediaBlocks']                      = MediaBlocks;
 Layouts['TeamGrid']                         = TeamGrid;
 Layouts['ResultsTextBlock']                 = ResultsTextBlock;
 Layouts['TextVideoOverhang']                = TextVideoOverhang;
+Layouts['FeaturedProjectsGrid']             = FeaturedProjectsGrid;
+Layouts['ButtonRow']                        = ButtonRow;
 
 
 export default Layouts

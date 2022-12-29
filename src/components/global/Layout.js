@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { theme, ThemeContext } from "../../static/theme"
 import Header from "./Header"
 import Footer from "./Footer"
+import "../../css/styles.css"
 
 export default function Layout({ children }) {
 
@@ -15,6 +16,9 @@ export default function Layout({ children }) {
             accent: color
         })
     }
+    const updateFilter = (filter) => {
+        setFilter(filter);
+    }
 
     const [primary, setPrimary] = useState({
         accent: theme.colors.primary.accent
@@ -24,6 +28,7 @@ export default function Layout({ children }) {
         accent: theme.colors.primary.accent
       }
     )
+    const [filter, setFilter] = useState("Websites");
 
     const updateHeaderBkg = (prop) => {
         setBackgroundColor({
@@ -59,6 +64,9 @@ export default function Layout({ children }) {
                       
             backgroundColor: backgroundColor.headerBkgcolor,
             updateHeaderBkgcolor: updateHeaderBkg,
+
+            filterState: filter,
+            updateFilterState: updateFilter
         }}>
              <style>{globalStyles}</style>
              <Header classes={`header-color`} color={backgroundColor.headerBkgcolor}/>

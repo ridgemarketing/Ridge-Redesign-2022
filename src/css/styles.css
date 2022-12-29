@@ -9,6 +9,9 @@
     html, body{
         /* @apply overflow-x-hidden; */
     }
+    main{
+        @apply overflow-x-hidden; 
+    }
     :focus-visible{
         @apply outline-rm-green;
     }
@@ -20,7 +23,7 @@
         top: -0.25em;
     }
     q:before{
-        @apply content-['“'] -ml-3 absolute;
+        @apply content-['“'] -ml-3 lg:-ml-6 absolute;
     }
     q:after{
         @apply content-['”'];
@@ -28,17 +31,53 @@
     strong{
         @apply font-bold;
     }
+
+    header nav a{
+        @apply -lg:text-rm-black;
+    }
+    header nav a::before{
+        @apply block font-bold h-0 overflow-hidden invisible;
+        content: attr(title);
+    }
 }
 
 @layer components 
 {
-.container {
-    @apply px-6 md:px-0 xl:px-0;
+    .container {
+        @apply px-6 md:px-0 xl:px-0;
+    }
+
+    .h-inherit{
+        height:inherit;
+    }
 }
 
-.h-inherit{
-    height:inherit;
+@media screen and (max-width:1024px) {
+    .moblileMenuHeight{
+        height: 85vh;
+    }
 }
+
+.homeHero{
+    @apply w-full;
+}
+@media screen and (min-width:0px) {
+    .homeHero{
+        height: 65vh;
+    }  
+}
+@media screen and (min-width:768px) {
+    .homeHero{
+        height: 70vh;
+    }  
+}
+@media screen and (min-width:1200px) {
+    .homeHero{
+        height: 80vh;
+    }  
+}
+.belowHomeHero{
+    @apply !pt-10 lg:!pt-16;
 }
 
 .lf-player-container{
@@ -57,6 +96,10 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     background-color: rgba(0,0,0,0)!important;
     @apply text-21px;
 }
+.form-group input[type=file]{
+    background-color: rgba(255,255,255,1) !important;
+    @apply text-rm-black p-3 mt-2 !h-min;
+}
 
 /* Form label transitions */
 .translate-form .form-group input:focus + label, .translate-form .form-group input:valid + label, .translate-form .form-group input:not(:placeholder-shown) + label {
@@ -67,6 +110,12 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 } 
 .translate-form .form-group select + label{
     @apply -translate-y-14 text-18px;
+}
+.translate-form .fileLabel{
+    @apply -translate-y-0;
+}
+.translate-form-global{
+    @apply -mt-6;
 }
 
 .pristine-error {
@@ -93,11 +142,13 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     @apply mb-6 mt-14
 }
 .terms p {
-    @apply mb-5
+    @apply font-basic-sans font-light text-21px leading-28px mb-5
 }
 .terms a {
     @apply underline font-basic-sans font-light mb-16;
 }
+
+
 /* Frosted Effect */
 .frosted-glass{
     @apply drop-shadow-lg;

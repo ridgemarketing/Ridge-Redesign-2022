@@ -22,10 +22,11 @@ const TextBlock = (props) => {
     if (headingStyle === 'H1'){
       headingStyle = 'H1_LTE';
     }
+    console.log(settings);
 
     return (
         <Section settings={settings}>
-            <Container classes={`${alignment}`}>
+            <Container classes={`${alignment} ${settings.classes}`} container={settings.containerWidth}>
                 <h2 className={`${theme.text[headingStyle]} pb-6 lg:w-[95%]`} dangerouslySetInnerHTML={{__html: heading}}></h2>
                 <p className={`${theme.text.P_STD} pb-8 lg:w-[95%]`} dangerouslySetInnerHTML={{__html: body}}></p>
                 {content.componentButton &&  
@@ -64,6 +65,7 @@ export const query = graphql`
             heading
           }
           layoutSettings {
+            containerWidth
             padding {
               bottom
               top
@@ -100,6 +102,7 @@ export const serviceQuery = graphql`
             heading
           }
           layoutSettings {
+            containerWidth
             padding {
               bottom
               top
@@ -137,6 +140,7 @@ export const projectQuery = graphql`
             heading
           }
           layoutSettings {
+            containerWidth
             padding {
               bottom
               top

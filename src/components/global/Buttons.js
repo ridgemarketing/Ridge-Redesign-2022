@@ -11,8 +11,11 @@ const Buttons = (props) => {
     // }
     let background;
     switch(bkg) {
-        case `white` || `paleGrey`:
+        case `white`:
             background = `_HOVER_DARK`;
+            break;
+        case `paleGrey`:
+            background = `_GREY_HOVER_DARK`;
             break;
         case `transparent`:
             background = (content.style === `solid`) ? `_HOVER_DARK` : `_TRANSPARENT`;

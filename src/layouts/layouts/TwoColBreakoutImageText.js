@@ -18,21 +18,22 @@ const TwoColBreakoutImageText = (props) => {
     let textCss         = `xl:mr-9 xl:mr-14`;
 
     if (content.imagePosition && content.imagePosition === `left`) {
-      imgWrapperCss   = `xl:left-[calc(-40%+2.25rem)]`;
+      // imgWrapperCss   = `xl:left-[calc(-40%+2.25rem)]`;
+      imgWrapperCss   = `xl:left-[-50%]`;
       FlexWrapperCss  = `xl:flex lg:flex-row-reverse`;
       textCss         = `xl:ml-9 xl:ml-14`;
     }
 
     if (content.imageOverflow && content.imageOverflow === `overflow`) {
-      imageWidth      = `xl:w-auto xl:h-full`;
+      imageWidth      = `xl:w-auto xl:h-[90%] 2xl:`;
       imageCss        = `object-contain h-full w-auto overflow-visible`;
       imageStyle      = {height: `100%`, width: `auto`, objectFit: `contain`};
     } 
 
     return (
-        <Section settings={settings} classes={`2xl:max-w-[1920px] 2xl:mx-auto overflow-hidden`}>
+        <Section settings={settings} classes={`2xl:max-w-[1920px]  2xl:mx-auto overflow-hidden`}>
             <Container classes={`relative`}>
-                <div className={`justify-start ${FlexWrapperCss}`}>
+                <div className={` justify-start ${FlexWrapperCss}`}>
                     <div className={`text-center xl:text-left xl:w-3/5 w-full flex-1 ${textCss}`}>
                         {content.eyebrow && 
                           <span className={`block text-50px font-stratos font-normal uppercase`}>{content.eyebrow}</span>
