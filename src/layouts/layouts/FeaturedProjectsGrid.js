@@ -2,9 +2,6 @@ import React, { useEffect, useState, useCallback, useContext } from "react"
 import { Section, Container } from "../../components/global/Wrappers"
 import { theme, ThemeContext } from "../../static/theme"
 import { graphql } from "gatsby"
-import ResultCard from '../../components/ResultCard.js'
-import Parser from "../../components/global/Parser";
-import Buttons from '../../components/global/Buttons'
 import LightBox from "../../components/global/Lightbox.js"
 import PortfolioNav from "../../components/PortfolioNav"
 
@@ -114,7 +111,6 @@ export const pageQuery = graphql`
       fieldGroupName
       layoutFeaturedProjectsGrid {
         layoutContent {
-            heading
             projects{
               ...on WpPortfolioProject {
                 title
@@ -193,7 +189,6 @@ export const serviceQuery = graphql`
         fieldGroupName
         layoutFeaturedProjectsGrid {
           layoutContent {
-            heading
             projects{
               ...on WpPortfolioProject {
                 title
@@ -272,7 +267,6 @@ export const projectQuery = graphql`
         fieldGroupName
         layoutFeaturedProjectsGrid {
           layoutContent {
-            heading
             projects{
               ...on WpPortfolioProject {
                 title
