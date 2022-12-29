@@ -2,7 +2,7 @@ import React, { useContext } from "react"
 import { Section, Container } from "../../components/global/Wrappers"
 import { theme, ThemeContext } from "../../static/theme"
 import { graphql } from "gatsby"
-import Buttons from "../../components/global/buttons"
+import Buttons from "../../components/global/Buttons"
 
 const ButtonRow = (props) => {
 
