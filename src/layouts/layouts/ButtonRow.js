@@ -10,6 +10,13 @@ const ButtonRow = (props) => {
     const settings = props.layoutData.layoutSettings;
 
     const context= useContext(ThemeContext);
+
+    const filterType = {
+      "websites": "Websites",
+      "branding": "Branding",
+      "video": "Video",
+      "interactive": "Interactive"
+    }
     
     return (
         <Section settings={settings}>
@@ -20,14 +27,11 @@ const ButtonRow = (props) => {
                     </h3>
                     <div className={`flex justify-between flex-wrap`}>
                       {content.buttons.map((button) => {
+                        const linkInfo = button.componentButton.link;
                         return(
                           <div className='w-1/2 lg:w-1/4 my-8 text-center'>
-                              <Buttons 
-                                content={button.componentButton} 
-                                sectionBackground={settings.backgroundColor}/>
-
                                 <div className={"py-10"}>
-                                  <a href="/portfolio" onClick={() => context.updateFilterState("Websites")}>Go to Websites</a>
+                                  <a href={linkInfo.url} onClick={() => context.updateFilterState(filterType[linkInfo.title.toLowerCase()])} className={`${theme.button.BASE_STYLING} ${theme.button.GHOST_GREEN_HOVER_DARK}`}>{linkInfo.title}</a>
                                 </div>
                           </div>
           
