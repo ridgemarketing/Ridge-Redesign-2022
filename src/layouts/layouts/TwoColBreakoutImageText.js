@@ -17,16 +17,18 @@ const TwoColBreakoutImageText = (props) => {
     let FlexWrapperCss  = `xl:flex`;
     let textCss         = `xl:mr-9 xl:mr-14`;
 
+    //
+
     if (content.imagePosition && content.imagePosition === `left`) {
       // imgWrapperCss   = `xl:left-[calc(-40%+2.25rem)]`;
-      imgWrapperCss   = `xl:left-[-50%]`;
+      imgWrapperCss   = `xl:right-[60%]`;
       FlexWrapperCss  = `xl:flex lg:flex-row-reverse`;
       textCss         = `xl:ml-9 xl:ml-14`;
     }
 
     if (content.imageOverflow && content.imageOverflow === `overflow`) {
-      imageWidth      = `xl:w-auto xl:h-[90%] 2xl:`;
-      imageCss        = `object-contain h-full w-auto overflow-visible`;
+      imageWidth      = `xl:w-full xl:h-[90%] 2xl:`;
+      imageCss        = `object-contain h-full w-auto overflow-visible flex`;
       imageStyle      = {height: `100%`, width: `auto`, objectFit: `contain`};
     } 
 
@@ -63,7 +65,7 @@ const TwoColBreakoutImageText = (props) => {
 
                 </div>
                 {image && 
-                <div className={`mt-10 xl:mt-0 mx-auto xl:absolute xl:top-0 ${imageWidth} ${imgWrapperCss}`}>
+                <div className={`flex justify-end h-full mt-10 xl:mt-0 mx-auto xl:absolute xl:top-0 ${imageWidth} ${imgWrapperCss}`}>
                   <GatsbyImage image={image} className={imageCss} imgClassName={imageCss} imgStyle={imageStyle} />
                 </div>
                 }

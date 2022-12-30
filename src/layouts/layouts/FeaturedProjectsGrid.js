@@ -88,10 +88,12 @@ const FeaturedProjectsGrid = (props) => {
           <Container container={'default'}>
                   <div className={'md:grid md:grid-cols-2 md:gap-6 xl:grid-cols-3 xl:gap-x-4 xl:gap-y-8 py-16'}>
                     {toRender && toRender.map(block => {
-                      if (block.lightboxImages !== null) {
+                      const video = (block.videoUrl && block.videoUrl !== null) ? block.videoUrl : false;
+                      const images = (block.videoUrl && block.videoUrl !== null) ? block.thumbnailImage : block.lightboxImages;
+                      if (block.videoUrl !== null && block.lightboxImages !== null) {
                         return (
                             <div className={'relative my-10 md:my-0'}>
-                                <LightBox images={block.lightboxImages} title={block.title} caption={block.caption} link={block.websiteLink} />
+                                <LightBox images={images} title={block.title} caption={block.caption} link={block.websiteLink} video={video} />
                             </div>
                         )
                       }
@@ -142,14 +144,11 @@ export const pageQuery = graphql`
                   video {
                     title
                     caption
-                    lightboxImages {
-                      fieldGroupName
-                      text
-                      image {
-                        publicUrl
-                      }
+                    thumbnailImage {
+                      sourceUrl
                     }
                     websiteLink
+                    videoUrl
                   }
                   interactive {
                     title
@@ -220,14 +219,11 @@ export const serviceQuery = graphql`
                   video {
                     title
                     caption
-                    lightboxImages {
-                      fieldGroupName
-                      text
-                      image {
-                        publicUrl
-                      }
+                    thumbnailImage {
+                      sourceUrl
                     }
                     websiteLink
+                    videoUrl
                   }
                   interactive {
                     title
@@ -298,14 +294,11 @@ export const projectQuery = graphql`
                   video {
                     title
                     caption
-                    lightboxImages {
-                      fieldGroupName
-                      text
-                      image {
-                        publicUrl
-                      }
+                    thumbnailImage {
+                      sourceUrl
                     }
                     websiteLink
+                    videoUrl
                   }
                   interactive {
                     title

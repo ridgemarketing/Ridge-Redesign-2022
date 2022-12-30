@@ -4,7 +4,10 @@ import Link from "./FlexibleLink"
 
 const LightBox = (props) => {
 
-    const images            = props.images;
+    const images    = props.images;
+    const video     = props.video;
+    const thumbnail = (video) ? images.sourceUrl : images[0].image.publicUrl;
+
     const [image, setImage]             = useState(1);
     const [hoverState, setHoverState]   = useState("hidden");
     const [imgBlur, setImgBlur]         = useState("");
@@ -34,7 +37,7 @@ const LightBox = (props) => {
             setOverlay(false);
             document.body.classList.remove("overflow-hidden");
         }
-        console.log(overlay);
+        // console.log(overlay);
     }
     const linkInfo = {
         target: "_blank",
@@ -48,7 +51,7 @@ const LightBox = (props) => {
     }
     return(<>
     <div role="button" onClick={()=>togglePopup()} onMouseEnter={() => handleHoverState(false)} onMouseLeave={() => handleHoverState(true)}>
-        <img src={images[0].image.publicUrl} className={`cursor-pointer object-cover w-full`} style={{filter: `${imgBlur}`}}/>
+        <img src={thumbnail} className={`cursor-pointer object-cover w-full`} style={{filter: `${imgBlur}`}}/>
         <div className={`shadow-lightbox absolute top-0 left-0 justify-center items-center ${hoverState} w-full h-full`} style={{backgroundColor: "rgba(255,255,255,0.8)"}} >
             <div className={'text-center'}>
                 <p className={`${theme.text.H3} pb-4`}>{props.title}</p>
@@ -71,6 +74,7 @@ const LightBox = (props) => {
                         </svg>
                     </button>
                 </nav>
+                {!video && 
                     <div className={'relative'}>
                         <img aria-controls={`image-${image}`} src={images[image].image.publicUrl} alt={"NEEDS ALT TEXT ADDED"} className={`w-full z-0`} />
                         <button className={`absolute top-1/2 ml-2 z-50 text-rm-grey`} onClick={()=>loadPrev()} aria-label="Next Image">
@@ -84,7 +88,14 @@ const LightBox = (props) => {
                             </svg>
                         </button>
                     </div>
-                <h3 className={`${theme.text.H3} pt-4 text-rm-white`}>{images[image].text}</h3>
+                }
+                {video &&
+                    // <video preload="metadata" controls src={video} type="video/mp4" className={`w-full z-0`} />
+                    <div className={'pt-[56.25%] w-full relative'}>
+                        <iframe className={`w-full h-full z-50 absolute object-cover left-0 top-0`} src={video} width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                }
+                <h3 className={`${theme.text.H3} pt-4 text-rm-white`}>{(!video) ? images[image].text : props.title}</h3>
                 {linkInfo.url !== null && <div className={'pt-10'}>
                         <Link
                             link={linkInfo}

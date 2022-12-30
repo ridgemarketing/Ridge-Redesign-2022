@@ -10,7 +10,7 @@
         /* @apply overflow-x-hidden; */
     }
     main{
-        @apply overflow-x-hidden; 
+        /* @apply overflow-x-hidden;  */
     }
     :focus-visible{
         @apply outline-rm-green;
