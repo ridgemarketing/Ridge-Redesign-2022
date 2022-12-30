@@ -80,12 +80,6 @@ const ProjectHeader = (props) => {
       }
     }, []);
 
-    useEffect(() => {
-      if (info.accentColor) {
-        context.updateAccentFunction(info.accentColor)
-      }
-    }, [])
-
     let topColor  = false;
     if(featuredImage){}else{
       topColor    = true;

@@ -153,14 +153,11 @@ export const pageQuery = graphql`
                   interactive {
                     title
                     caption
-                    lightboxImages {
-                      fieldGroupName
-                      text
-                      image {
-                        publicUrl
-                      }
+                    thumbnailImage {
+                      sourceUrl
                     }
                     websiteLink
+                    videoUrl
                   }
                 }
               }
@@ -228,14 +225,11 @@ export const serviceQuery = graphql`
                   interactive {
                     title
                     caption
-                    lightboxImages {
-                      fieldGroupName
-                      text
-                      image {
-                        publicUrl
-                      }
+                    thumbnailImage {
+                      sourceUrl
                     }
                     websiteLink
+                    videoUrl
                   }
                 }
               }
@@ -303,14 +297,11 @@ export const projectQuery = graphql`
                   interactive {
                     title
                     caption
-                    lightboxImages {
-                      fieldGroupName
-                      text
-                      image {
-                        publicUrl
-                      }
+                    thumbnailImage {
+                      sourceUrl
                     }
                     websiteLink
+                    videoUrl
                   }
                 }
               }

@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useContext, useEffect } from "react"
 import { graphql } from "gatsby"
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import Blog from "./blog"
@@ -8,6 +8,7 @@ import Menu from "../components/global/FooterMenu"
 import { Container } from "../components/global/Wrappers"
 import CustomHeader from "../components/global/headerColor"
 import PortfolioHeader from "../layouts/layouts/PortfolioHeader"
+import { theme, ThemeContext } from "../static/theme"
 
 export const Head = ({data}) => (
   <>
@@ -57,6 +58,12 @@ const WpPage = ({ data }) =>{
   }
 
   const blackList = ["404", "Terms and Conditions", "Portfolio"];
+  const context = useContext(ThemeContext);
+
+  useEffect(() => {
+    context.updateAccentFunction(theme.colors.primary.accent);
+    context.updateSecondaryFunction(theme.colors.secondary.accent);
+  }, []);
 
   if(data.wpPage.isPostsPage === true){
     return ( <Blog/> )
