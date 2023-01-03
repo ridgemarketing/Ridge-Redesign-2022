@@ -75,9 +75,10 @@ const IconTextBoxFlex = (props) => {
         }
 
         setTimeout(function() {
-
             setHeight(ref.current ? ref.current.clientHeight : 0 );
-            setIconHeight(iconElement.current.clientHeight);
+            if (iconElement.current && iconElement.current.clientHeight) {
+                setIconHeight(iconElement.current.clientHeight);
+            }
         }, 0)
 
         window.addEventListener('resize', handleResize);
