@@ -2,12 +2,16 @@ import React from "react"
 import { Link } from "gatsby"
 import { theme } from "../static/theme"
 import Parser from "../components/global/Parser"
+import CountUp from "react-countup"
 
 const ResultCard = (props) => {
 
     const content = props.content;
     let statClass= 'text-[120px]';
     let descriptionClass= props.columns === '1' ? 'md:max-w-[60%]' : '';
+    const statNumber = content.stat.split(/\D+/)[0];
+    const suffixString = content.stat.split(/\d+/)[1];
+
 
     const classes = {
         1: 'md:flex items-center gap-8 max-w-[900px]',
@@ -22,7 +26,15 @@ const ResultCard = (props) => {
             <div key={`${content.description}${content.stat}`} className={ `text-center lg:text-left ${classes[props.columns]} my-6` }>
                 { content.stat && 
                     <p className={`accent-text ${statClass} font-bold`}>
-                        { content.stat }
+                        <CountUp
+                            delay={1}
+                            end={statNumber}
+                            duration={7}
+                            suffix={suffixString}
+                            enableScrollSpy={true}
+                            scrollSpyOnce={true}
+                            useEasing={true}
+                            />
                     </p>  
                 }
                 { content.description &&  

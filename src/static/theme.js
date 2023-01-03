@@ -73,6 +73,7 @@ export const theme = {
     paddingTop:{
         standard: 'pt-20',
         none: 'pt-0',
+        header: 'pt-20',
         custom: ''
     },
     paddingBottom:{

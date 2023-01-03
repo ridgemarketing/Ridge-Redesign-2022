@@ -1,8 +1,8 @@
-import React from "react"
+import React, { useContext } from "react"
 import { graphql } from "gatsby"
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import { Container, Section } from '../components/global/Wrappers.js'
-import { theme } from '../static/theme'
+import { theme, ThemeContext } from '../static/theme'
 import Buttons from '../components/global/Buttons'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Parser from '../components/global/Parser'
@@ -52,6 +52,9 @@ const WpService = ({ data }) =>{
   
   const settings  = data.wpService.servicesHeader.serviceHeader.layoutSettings;
   const content   = data.wpService.servicesHeader.serviceHeader.layoutContent;
+  const context   = useContext(ThemeContext);
+
+  context.updateHeaderBkgcolor('white');
  
   let headerBodyContent = content.bodyContent;
   let floatP = [];

@@ -72,6 +72,7 @@ const ProjectHeader = (props) => {
     const context = useContext(ThemeContext);
 
     useEffect(() => {
+      context.updateHeaderBkgcolor('white');
       if (info.accentColor) {
           context.updateAccentFunction(info.accentColor)
       }

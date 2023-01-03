@@ -11,7 +11,10 @@ const Header = (props) => {
     const fillColor             = backgroundColor === `black` ? `fill-rm-white` : `fill-rm-black`;
     const hoverColor            = backgroundColor === `black` ? `hover:text-rm-green` : ``;
     const bkgClass              = props.classes;
-    const headerPostion         = backgroundColor  ==='black' ? 'fixed' : 'sticky';
+    const headerPostion         = backgroundColor  === 'black' ? 'sticky' : 'sticky';   
+    //if bckgcolor white -> change padding 
+    //fixed and sticky doesn't work here, needs refactor
+    // if header has background image -> fixed/padding 
 
     const headerMenu = useStaticQuery(graphql`
         query GetHeaderMenu {

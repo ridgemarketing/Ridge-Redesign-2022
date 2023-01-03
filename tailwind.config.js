@@ -38,6 +38,7 @@ module.exports = {
       'md'                 : '768px',
       'lg'                 : '1024px',
       'xl'                 : '1280px',
+      'xlz'                : '1366px',
       '2xl'                : '1920px',
     },
     container: {
@@ -47,6 +48,7 @@ module.exports = {
         'md'                 : '700px',
         'lg'                 : '930px',
         'xl'                 : '1280px',
+        'xlz'                : '1366px',
         '2xl'                : '1280px',      
       }
     },
