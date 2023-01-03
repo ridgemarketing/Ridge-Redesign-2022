@@ -11,10 +11,7 @@ const Header = (props) => {
     const fillColor             = backgroundColor === `black` ? `fill-rm-white` : `fill-rm-black`;
     const hoverColor            = backgroundColor === `black` ? `hover:text-rm-green` : ``;
     const bkgClass              = props.classes;
-    const headerPostion         = backgroundColor  === 'black' ? 'sticky' : 'sticky';   
-    //if bckgcolor white -> change padding 
-    //fixed and sticky doesn't work here, needs refactor
-    // if header has background image -> fixed/padding 
+    const headerPadding         = backgroundColor  === 'black' ? 'hidden' : 'h-[100px]';
 
     const headerMenu = useStaticQuery(graphql`
         query GetHeaderMenu {
@@ -152,7 +149,7 @@ const Header = (props) => {
 
     return(
         <>
-        <header className={`${textColor} ${bkgClass} ${headerPostion} w-full h-[100px] z-50 top-0 flex items-center`} >
+        <header className={`${textColor} ${bkgClass} fixed w-full h-[100px] z-50 top-0 flex items-center`} >
             <button type="button" onClick={()=>focusMain()} onKeyDown={()=>focusMain()} className="bg-rm-white text-rm-black p-5 font-basic-sans text-18px absolute -top-96 -left-96 focus:left-0 focus:top-0 focus:underline z-50" title="skip main navigation">Skip Main Navigation</button>
             <section className="container">
                 <nav>
@@ -235,6 +232,7 @@ const Header = (props) => {
                 </nav>
             </section>
         </header> 
+        <div className={headerPadding}></div>
         <div ref={overlay} aria-hidden="true" style={{ height:overlayState ? '100%' : '0%', opacity:overlayState ? '0.7' : '0' }} className={`-lg:bg-rm-black w-full z-10 fixed top-0 left-0 transition-all ease-out duration-300 lg:!opacity-0 lg:hidden`}></div>
         </>
     )

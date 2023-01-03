@@ -18,6 +18,7 @@ const PortfolioHeader = (props) => {
     });
 
     useEffect(() => {
+      context.updateHeaderBkgcolor('white');
       handleRendering(context.filterState);
     }, []);
 

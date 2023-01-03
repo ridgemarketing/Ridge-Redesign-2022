@@ -1,4 +1,4 @@
-import React, { useContext } from "react"
+import React, { useContext, useEffect } from "react"
 import { graphql } from "gatsby"
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import { Container, Section } from '../components/global/Wrappers.js'
@@ -54,7 +54,10 @@ const WpService = ({ data }) =>{
   const content   = data.wpService.servicesHeader.serviceHeader.layoutContent;
   const context   = useContext(ThemeContext);
 
-  context.updateHeaderBkgcolor('white');
+  useEffect(() => {
+    context.updateHeaderBkgcolor('white');
+  },[])
+
  
   let headerBodyContent = content.bodyContent;
   let floatP = [];

@@ -75,10 +75,7 @@ const WpPage = ({ data }) =>{
           <PageHeader layoutData={data.wpPage.pageHeader.pageHeader} />
         }
         {data.wpPage.title == "Portfolio" &&
-          <>
-            <div className={"pt-16"}></div>
             <PortfolioHeader layoutData={data.wpPage.portfolioHeader.portfolioHeader} />
-          </>
         }
         {data.wpPage.isFrontPage &&
           <HomeHero layoutData={data.wpPage.homeHero.layoutHomeHero}/>
