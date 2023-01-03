@@ -50,7 +50,7 @@ const ProjectBlocks = (props) => {
                               return (
                                 <div key={`projectBlocks${Math.random()}`} className={`flex flex-col justify-center items-center w-full md:w-[48%] ${cols} mb-12`}>
                                     <GatsbyImage image={image} alt={block.projectInformation.images.servicesFeatureScreens.altText} className={`object-cover w-full`}/> 
-                                    <Link className={ theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + 'mt-3'} to={block.uri}>
+                                    <Link className={ theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + theme.text_links.HOVER_GREEN + theme.text_links.HOVER_ARW_FWD_GREEN + ' mt-3'} to={block.uri}>
                                         { block.title }
                                     </Link>
                                 </div>

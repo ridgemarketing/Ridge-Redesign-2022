@@ -19,7 +19,9 @@ const BlogCard = (props) => {
                                 theme.text_links['STD'] + 
                                 theme.text_links['FWD_BASE'] + 
                                 theme.text_links['ARW_FWD_BLACK'] +
-                                `w-max` }>
+                                theme.text_links['HOVER_ARW_FWD_GREEN'] +
+                                theme.text_links['HOVER_GREEN'] +
+                                ` w-max` }>
                             READ ARTICLE
                         </span>
                     </div>

@@ -17,7 +17,7 @@ const ResultsTextBlock = (props) => {
     return(
         <Section settings={settings}>
             <Container container={settings.containerWidth} classes={`bg-rm-${content.backgroundColor}`}>
-              <Container classes={'px-8 py-16 xl:px-0 xl:py-20 '}>
+              <Container classes={'px-8 py-16 xlz:px-0 xl:py-20 '}>
               <div className={`lg:flex`}>
                     <div className={`lg:w-3/4 xl:pr-24`}>
                         <h1 dangerouslySetInnerHTML={{__html: content.heading}} className={`${theme.text.H2} `}></h1>
@@ -34,7 +34,7 @@ const ResultsTextBlock = (props) => {
                                 <p className={`${theme.text.H4} mb-3`}>Services Provided</p>
                                 <ul>
                                     {services.map(service => {
-                                        return (<li className={'mb-1'}><a className={`${theme.text.LINK}`} href={service.service.link}>{service.titleOverride}</a></li>)
+                                        return (<li className={'mb-1'}><a className={`${theme.text.LINK} ${theme.text_links.HOVER_GREEN}`} href={service.service.link}>{service.titleOverride}</a></li>)
                                     })}
                                 </ul>
                             </div>

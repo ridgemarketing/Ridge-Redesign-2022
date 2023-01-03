@@ -40,7 +40,7 @@ const HomeHero = (props) => {
                     <div className={'pt-10 w-max'}>
                         <Link
                             link={content.componentButton.link}
-                            classes={theme.text_links.BASE_STYLING + theme.text_links.FWD_BASE + theme.text_links.STD + theme.text_links.ARW_FWD_WHITE}
+                            classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.HOVER_GREEN} ${theme.text_links.STD} ${theme.text_links.ARW_FWD_WHITE} ${theme.text_links.HOVER_ARW_FWD_GREEN}`}
                             />
                     </div>
                 </div>

@@ -149,7 +149,7 @@ const Footer = () =>{
         <footer className="-mt-px text-center lg:text-left bg-rm-black text-rm-white py-12 lg:py-16">
             <Container container={"slim"}>
                 <h2 className={`${theme.text.HERO} lg:w-3/4`}>{content.footertext.cta}</h2>
-                <Link to={content.footertext.link.url} className={`ml-auto mr-auto lg:ml-0 lg:mr-0 text-rm-green mt-12 lg:mt-16 w-max hover:text-rm-white hover:underline ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.LARGE} ${theme.text_links.ARW_FWD_GREEN}`}>{content.footertext.link.title}</Link>
+                <Link to={content.footertext.link.url} className={`ml-auto mr-auto lg:ml-0 lg:mr-0 text-rm-green mt-12 lg:mt-16 w-max hover:text-rm-white hover:underline ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.LARGE} ${theme.text_links.ARW_FWD_GREEN} ${theme.text_links.HOVER_ARW_FWD_WHITE}`}>{content.footertext.link.title}</Link>
                 <div className="mt-12 lg:w-[95%] lg:mt-28">
                     <ul key={`footer-top`} className="block lg:flex justify-between">
                         <li className="lg:mt-4">

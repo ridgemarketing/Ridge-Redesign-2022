@@ -47,6 +47,8 @@ const ResultsMixed = (props) => {
                                         theme.text_links.FWD_BASE + 
                                         theme.text_links.STD + 
                                         theme.text_links.ARW_FWD_BLACK +
+                                        theme.text_links.HOVER_GREEN +
+                                        theme.text_links.HOVER_ARW_FWD_GREEN +
                                         'mt-12'}>
                                     {result.link.title}
                                 </Link>

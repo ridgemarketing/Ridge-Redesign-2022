@@ -110,7 +110,7 @@ const IconTextBoxFlex = (props) => {
                         <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={ `${theme.text['FOOTER']}  ${props.color}` }></p>
                     </div>
                     <div className={ marginClasses + `mt-4`}>
-                        <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} text-[#A9CF38]`} />
+                        <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links.HOVER_ARW_FWD_WHITE} ${theme.text_links.HOVER_WHITE} text-[#A9CF38]`} />
                     </div>
                 </div>
             </div>
