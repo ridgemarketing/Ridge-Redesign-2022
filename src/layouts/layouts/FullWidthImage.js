@@ -33,14 +33,18 @@ const FullWidthImage = (props) => {
     
     const splitMargins = () => {
       function setBkg () {
-        overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
-        overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;   
+        if (overlapDiv.current) {
+          overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
+          overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;   
+        }
       } 
       setBkg()
       
       function handleResize() {
-        overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
-        overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;
+        if (overlapDiv.current) {
+          overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
+          overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;
+        }
       }
 
       window.addEventListener('resize', handleResize);
