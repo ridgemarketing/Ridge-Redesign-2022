@@ -95,7 +95,7 @@ const Header = (props) => {
 
     let logo    = ``;
     if(headerMenu.allWp.nodes[0].globalSettings.globalSettings.logos){
-        logo    = backgroundColor === `black` ? checkImg(headerMenu.allWp.nodes[0].globalSettings.globalSettings.logos.dark, 'w-[250px] sm:w-[275px], lg:w-[300px]') : checkImg(headerMenu.allWp.nodes[0].globalSettings.globalSettings.logos.light,  'w-[175px] sm:w-[250px] lg:w-[350px]');
+        logo    = backgroundColor === `black` ? checkImg(headerMenu.allWp.nodes[0].globalSettings.globalSettings.logos.dark, 'w-[250px] sm:w-[275px], lg:w-[300px]') : checkImg(headerMenu.allWp.nodes[0].globalSettings.globalSettings.logos.light,  'w-[175px] sm:w-[250px] lg:w-[300px]');
     }
 
     let noParents   = 0;
