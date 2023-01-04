@@ -19,13 +19,25 @@ const FeaturedProjectsGrid = (props) => {
     const [interactives, setInteractives] = useState([]);
 
     useEffect(() => {
-      if (toRender === false) {
-        projects.map(project => {
+      { content.websiteProjects && 
+        content.websiteProjects.map(project => {
           websites.push(project.portfolioProject.websites);
+        })
+      }
+      { content.brandingProjects &&
+        content.brandingProjects.map(project => {
           brandings.push(project.portfolioProject.branding);
+        })
+      }
+      { content.videoProjects &&
+        content.videoProjects.map(project => {
           videos.push(project.portfolioProject.video);
+        })
+      }
+      {content.interactiveProjects && 
+        content.interactiveProjects.map(project => {
           interactives.push(project.portfolioProject.interactive);
-        });
+        })
       }
 
       return () => handleRendering(context.filterState);
@@ -113,7 +125,7 @@ export const pageQuery = graphql`
       fieldGroupName
       layoutFeaturedProjectsGrid {
         layoutContent {
-            projects{
+            websiteProjects{
               ...on WpPortfolioProject {
                 title
                 portfolioProject {
@@ -128,7 +140,14 @@ export const pageQuery = graphql`
                       }
                     }
                     websiteLink
-                  }
+                  }                   
+                }
+              }
+            }
+            brandingProjects{
+              ...on WpPortfolioProject {
+                title
+                portfolioProject {
                   branding {
                     title
                     caption
@@ -140,7 +159,14 @@ export const pageQuery = graphql`
                       }
                     }
                     websiteLink
-                  }
+                  }                   
+                }
+              }
+            }
+            videoProjects{
+              ...on WpPortfolioProject {
+                title
+                portfolioProject {
                   video {
                     title
                     caption
@@ -149,7 +175,14 @@ export const pageQuery = graphql`
                     }
                     websiteLink
                     videoUrl
-                  }
+                  }                   
+                }
+              }
+            }
+            interactiveProjects{
+              ...on WpPortfolioProject {
+                title
+                portfolioProject {
                   interactive {
                     title
                     caption
@@ -158,7 +191,7 @@ export const pageQuery = graphql`
                     }
                     websiteLink
                     videoUrl
-                  }
+                  }                   
                 }
               }
             }
@@ -182,10 +215,10 @@ export const pageQuery = graphql`
 export const serviceQuery = graphql`
   fragment FeaturedProjectsGridService on WpService_Flexiblelayouts_Layouts {
     ... on WpService_Flexiblelayouts_Layouts_FeaturedProjectsGrid {
-        fieldGroupName
-        layoutFeaturedProjectsGrid {
-          layoutContent {
-            projects{
+      fieldGroupName
+      layoutFeaturedProjectsGrid {
+        layoutContent {
+            websiteProjects{
               ...on WpPortfolioProject {
                 title
                 portfolioProject {
@@ -200,7 +233,14 @@ export const serviceQuery = graphql`
                       }
                     }
                     websiteLink
-                  }
+                  }                   
+                }
+              }
+            }
+            brandingProjects{
+              ...on WpPortfolioProject {
+                title
+                portfolioProject {
                   branding {
                     title
                     caption
@@ -212,7 +252,14 @@ export const serviceQuery = graphql`
                       }
                     }
                     websiteLink
-                  }
+                  }                   
+                }
+              }
+            }
+            videoProjects{
+              ...on WpPortfolioProject {
+                title
+                portfolioProject {
                   video {
                     title
                     caption
@@ -221,7 +268,14 @@ export const serviceQuery = graphql`
                     }
                     websiteLink
                     videoUrl
-                  }
+                  }                   
+                }
+              }
+            }
+            interactiveProjects{
+              ...on WpPortfolioProject {
+                title
+                portfolioProject {
                   interactive {
                     title
                     caption
@@ -230,23 +284,23 @@ export const serviceQuery = graphql`
                     }
                     websiteLink
                     videoUrl
-                  }
+                  }                   
                 }
               }
             }
           }
-          layoutSettings {
-            padding {
-              bottom
-              top
-            }
-            anchorId
-            backgroundColor
-            classes
-            id
-            containerWidth
+        layoutSettings {
+          padding {
+            bottom
+            top
           }
+          anchorId
+          backgroundColor
+          classes
+          id
+          containerWidth
         }
+      }  
       }
   }
 `
@@ -254,10 +308,10 @@ export const serviceQuery = graphql`
 export const projectQuery = graphql`
   fragment FeaturedProjectsGridProject on WpProject_Flexiblelayouts_Layouts {
     ... on WpProject_Flexiblelayouts_Layouts_FeaturedProjectsGrid {
-        fieldGroupName
-        layoutFeaturedProjectsGrid {
-          layoutContent {
-            projects{
+      fieldGroupName
+      layoutFeaturedProjectsGrid {
+        layoutContent {
+            websiteProjects{
               ...on WpPortfolioProject {
                 title
                 portfolioProject {
@@ -272,7 +326,14 @@ export const projectQuery = graphql`
                       }
                     }
                     websiteLink
-                  }
+                  }                   
+                }
+              }
+            }
+            brandingProjects{
+              ...on WpPortfolioProject {
+                title
+                portfolioProject {
                   branding {
                     title
                     caption
@@ -284,7 +345,14 @@ export const projectQuery = graphql`
                       }
                     }
                     websiteLink
-                  }
+                  }                   
+                }
+              }
+            }
+            videoProjects{
+              ...on WpPortfolioProject {
+                title
+                portfolioProject {
                   video {
                     title
                     caption
@@ -293,7 +361,14 @@ export const projectQuery = graphql`
                     }
                     websiteLink
                     videoUrl
-                  }
+                  }                   
+                }
+              }
+            }
+            interactiveProjects{
+              ...on WpPortfolioProject {
+                title
+                portfolioProject {
                   interactive {
                     title
                     caption
@@ -302,23 +377,23 @@ export const projectQuery = graphql`
                     }
                     websiteLink
                     videoUrl
-                  }
+                  }                   
                 }
               }
             }
           }
-          layoutSettings {
-            padding {
-              bottom
-              top
-            }
-            anchorId
-            backgroundColor
-            classes
-            id
-            containerWidth
+        layoutSettings {
+          padding {
+            bottom
+            top
           }
+          anchorId
+          backgroundColor
+          classes
+          id
+          containerWidth
         }
+      }  
       }
   }
 `
