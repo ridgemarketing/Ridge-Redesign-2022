@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import { theme } from '../../static/theme'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { Link } from "gatsby"
+import CountUp from "react-countup"
 
 const ResultsMixed = (props) => {
 
@@ -31,14 +32,32 @@ const ResultsMixed = (props) => {
                             <div key={`resultsMixed ${Math.random()}`} className={ 'flex flex-col w-full small lg:w-[31%] justify-between' }>
                                 <p>
                                 {result.content.map((text) => {
-                                    const fontSize  = text.style === 'stat' ? 'H2' :'H4';
-                                    const color     = text.style === 'stat' ? ' text-rm-green' : ' text-rm-black';
-                                    const padding   = text.style === 'stat' ? ' mb-1' : ' mb-1';
-                                
+                                    const fontSize      = text.style === 'stat' ? 'H2' :'H4';
+                                    const color         = text.style === 'stat' ? ' text-rm-green' : ' text-rm-black';
+                                    const padding       = text.style === 'stat' ? ' mb-1' : ' mb-1';
+                                    const statNumber    = text.text.split(/\D+/)[0];
+                                    const suffixString  = text.text.split(/\d+/)[1];
+                                    const output        = (text.style === 'stat' && statNumber)                           
+                                    ?
+                                      <CountUp
+                                      delay={1}
+                                      end={statNumber}
+                                      duration={7}
+                                      suffix={suffixString}
+                                      enableScrollSpy={true}
+                                      scrollSpyOnce={true}
+                                      useEasing={true}
+                                      className={`${theme.text[fontSize]} ${color} ${padding} block`}
+                                      />
+                                    :                                         
+                                    <span key={`resultsMixed${text.text}${Math.random()}`} className={`${theme.text[fontSize]} ${color} ${padding} block`}>
+                                        { text.text }
+                                    </span>
+                                    ;
                                     return (
-                                        <span key={`resultsMixed${text.text}${Math.random()}`} className={`${theme.text[fontSize]} ${color} ${padding} block`}>
-                                            { text.text }
-                                        </span>
+                                      <>
+                                        {output}
+                                      </>
                                     )
                                 })}
                                 </p>
