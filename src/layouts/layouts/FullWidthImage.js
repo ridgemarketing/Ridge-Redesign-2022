@@ -11,7 +11,7 @@ const FullWidthImage = (props) => {
     if (content.image && content.image.localFile) {
       desktopImage = content.image.localFile.childImageSharp.gatsbyImageData;
     }
-    const mobileImage = (content.mobileImage) ? content.mobileImgae : false;
+    const mobileImage = (content.mobileImage) ? content.mobileImage.localFile.childImageSharp.gatsbyImageData : false;
     const image         = (mobileImage) 
       ? 
           <>
