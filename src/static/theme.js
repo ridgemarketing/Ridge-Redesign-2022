@@ -65,7 +65,7 @@ export const theme = {
     },
 
     forms:{
-        INPUT:              'font-basic-sans border-b border-solid h-[30px] ',
+        INPUT:              'font-basic-sans border-b border-solid min-h-[30px] ',
         LABEL:              '-translate-y-10 transition-all ease-out ',
         CONTAINER:          'form-group w-full lg:w-[48%] font-basic-san w-full flex flex-col mb-12 ',
         

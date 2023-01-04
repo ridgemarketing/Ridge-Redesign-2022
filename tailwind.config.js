@@ -34,7 +34,7 @@ module.exports = {
   ],
   theme: {
     screens:{
-      'sm'                 : '414px',
+      'sm'                 : '640px',
       'md'                 : '768px',
       'lg'                 : '1024px',
       'xl'                 : '1280px',
@@ -48,9 +48,17 @@ module.exports = {
         'md'                 : '700px',
         'lg'                 : '930px',
         'xl'                 : '1280px',
-        'xlz'                : '1366px',
+        'xlz'                : '1280px',
         '2xl'                : '1280px',      
-      }
+      },
+      padding: {
+        DEFAULT: '1.5rem',
+        md: '0',
+        lg: '0',
+        xl: '3rem',
+        'xlz': '0',
+        '2xl': '0',
+      },
     },
     extend: {
       screens:{
