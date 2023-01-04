@@ -15,8 +15,12 @@ const FullWidthImage = (props) => {
     const image         = (mobileImage) 
       ? 
           <>
-          <GatsbyImage className={`md:hidden`} image={mobileImage} alt={content.mobileImage.altText || ""} />
-          <GatsbyImage className={`hidden md:block`} image={desktopImage} alt={content.image.altText || ""} />
+            <div className={`md:hidden`}>
+              <GatsbyImage  image={mobileImage} alt={content.mobileImage.altText || ""} />
+            </div>
+            <div className={`hidden md:block`}>
+              <GatsbyImage  image={desktopImage} alt={content.image.altText || ""} />
+            </div>
           </>
       :
           <GatsbyImage image={desktopImage} alt={(content.image && content.image.altText) || ""} />;    
