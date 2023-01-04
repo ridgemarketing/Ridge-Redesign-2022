@@ -115,7 +115,7 @@ const Quotes = (props) => {
             <div className={` mt-12 flex w-full flex-wrap justify-between relative`}>
                 <div className={ `frosted-glass p-8 lg:p-14 w-full` }>
                   <div key={Math.random()} className={`animate-quote`}>
-                    <p dangerouslySetInnerHTML={{__html: Parser(data.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out' }></p>
+                    <div dangerouslySetInnerHTML={{__html: Parser(data.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out' }></div>
                     <p className={ theme.text.P_BLD +  `pt-8 pb-2` }>
                         { data.title }
                     </p>

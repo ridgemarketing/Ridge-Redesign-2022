@@ -69,11 +69,11 @@ export default function Layout({ children }) {
             updateFilterState: updateFilter
         }}>
              <style>{globalStyles}</style>
-             <Header classes={`header-color`} color={backgroundColor.headerBkgcolor}/>
+             <Header classes={`header-color`} color={backgroundColor.headerBkgcolor} />
              <main id="mainContent" tabIndex={0} aria-label="Main Content">
                 {children}
              </main>
-             <Footer/>
+             <Footer />
         </ThemeContext.Provider>
     )
   }
