@@ -105,7 +105,7 @@ const Quotes = (props) => {
     }
     return(
       <div ref={parallaxContainer} className={`block `}>
-        <Section classes="overflow-hidden" settings={ settings } ref={parallaxContainer}>
+        <Section classes="overflow-hidden" settings={ settings }>
           <Container container={settings.containerWidth}>
             {content.heading &&
               <h2 className={ theme.text['H2'] }>
