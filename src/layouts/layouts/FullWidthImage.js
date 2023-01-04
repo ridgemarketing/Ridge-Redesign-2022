@@ -11,11 +11,8 @@ const FullWidthImage = (props) => {
     if (content.image && content.image.localFile) {
       desktopImage = content.image.localFile.childImageSharp.gatsbyImageData;
     }
-    let mobileImage     = false;
-    if(content.mobileImage){
-       mobileImage   = content.mobileImage.localFile.childImageSharp.gatsbyImageData;
-    }
-    const image         = mobileImage 
+    const mobileImage = (content.mobileImage) ? content.mobileImgae : false;
+    const image         = (mobileImage) 
       ? 
           <>
           <GatsbyImage className={`md:hidden`} image={mobileImage} alt={content.mobileImage.altText || ""} />
