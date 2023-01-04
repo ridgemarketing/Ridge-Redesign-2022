@@ -54,7 +54,13 @@ export const query = graphql`
             heading
             imagePosition
             componentFlexibleMedia {
-              video
+              videoSource
+              video {
+                videoUrl
+                thumbnailImage {
+                  publicUrl
+                }
+              }
               type
               lottie
               image {
@@ -101,7 +107,13 @@ export const serviceQuery = graphql`
             heading
             imagePosition
             componentFlexibleMedia {
-              video
+              videoSource
+              video {
+                videoUrl
+                thumbnailImage {
+                  publicUrl
+                }
+              }
               type
               lottie
               image {
@@ -149,7 +161,13 @@ export const projectQuery = graphql`
             heading
             imagePosition
             componentFlexibleMedia {
-              video
+              videoSource
+              video {
+                videoUrl
+                thumbnailImage {
+                  publicUrl
+                }
+              }
               type
               lottie
               image {

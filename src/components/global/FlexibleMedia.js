@@ -7,8 +7,9 @@ const FlexibleMedia = (props) => {
     const data  = props.data
     const type  = data.type
     let image   = false
-    let lottie  = false
-    let video   = false
+    const lottie  = (type === `lottie`) ? data.lottie : false;
+    const video   = (type === `video`) ? data.video : false;
+    const videoType = (type === 'video') ? data.videoSource : null;
 
     if (type === `image`) {
         image = (data.image.localFile.ext === `.svg`) 
@@ -19,14 +20,6 @@ const FlexibleMedia = (props) => {
                 alt={data.image_alt}
                 className={props.className} 
                 objectFit={props.objectFit}/> 
-    }
-
-    if (type === `lottie`) {
-        lottie = data.lottie
-    }
-
-    if (type === `video`) {
-        video = data.video
     }
 
     return (
@@ -47,8 +40,15 @@ const FlexibleMedia = (props) => {
                     </Player>
                 </div>
             }
-            {video &&
-                <div dangerouslySetInnerHTML={{__html: video}}></div>
+            {video && videoType == 'file' &&
+                <div>
+                    <video preload="metadata" controls src={video.videoUrl} type="video/mp4" className={`w-full z-0`} />
+                </div>
+            }
+            {video && videoType == 'vimeo' && 
+                <div className={'pt-[56.25%] w-full relative'}>
+                    <iframe className={`w-full h-full z-40 absolute object-cover left-0 top-0`} src={video.videoUrl} width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                </div>            
             }
         </div>
     )

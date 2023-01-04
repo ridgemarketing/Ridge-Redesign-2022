@@ -59,7 +59,12 @@ export const query = graphql`
             body
             imagePosition
             componentFlexibleMedia {
-              video
+              video {
+                videoUrl
+                thumbnailImage {
+                  publicUrl
+                }
+              }
               type
               lottie
               image {

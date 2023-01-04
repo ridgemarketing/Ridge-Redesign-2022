@@ -45,7 +45,12 @@ export const query = graphql`
               componentFlexibleMedia {
                 lottie
                 type
-                video
+                video {
+                  videoUrl
+                  thumbnailImage {
+                    publicUrl
+                  }
+                }
                 image {
                   localFile {
                     childImageSharp {
@@ -83,7 +88,12 @@ export const serviceQuery = graphql`
               componentFlexibleMedia {
                 lottie
                 type
-                video
+                video {
+                  videoUrl
+                  thumbnailImage {
+                    publicUrl
+                  }
+                }
                 image {
                   localFile {
                     childImageSharp {
@@ -122,7 +132,12 @@ export const projectQuery = graphql`
               componentFlexibleMedia {
                 lottie
                 type
-                video
+                video {
+                  videoUrl
+                  thumbnailImage {
+                    publicUrl
+                  }
+                }
                 image {
                   localFile {
                     childImageSharp {
