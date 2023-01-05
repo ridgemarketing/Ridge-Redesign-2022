@@ -34,6 +34,7 @@ import ResultsTextBlock from "./layouts/ResultsTextBlock"
 import CareersForm from "./layouts/CareersForm"
 import TextVideoOverhang from "./layouts/TextVideoOverhang"
 import ButtonRow from "./layouts/ButtonRow" 
+import BrandingCards from "./layouts/BrandingCards"
 // import FeaturedProjectsGrid from "./layouts/FeaturedProjectsGrid"
 
 
@@ -77,6 +78,7 @@ Layouts['ResultsTextBlock']                 = ResultsTextBlock;
 Layouts['TextVideoOverhang']                = TextVideoOverhang;
 Layouts['FeaturedProjectsGrid']             = FeaturedProjectsGrid;
 Layouts['ButtonRow']                        = ButtonRow;
+Layouts['BrandingCards']                    = BrandingCards;
 
 
 export default Layouts

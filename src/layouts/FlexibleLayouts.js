@@ -67,6 +67,7 @@ export const pageQuery = graphql`
         ...TextVideoOverhangPage
         ...FeaturedProjectsGridPage
         ...ButtonRowPage
+        ...BrandingCardsPage
       }
     }
   }
@@ -100,6 +101,7 @@ export const serviceQuery = graphql`
         ...ResultsTextBlockService
         ...TextVideoOverhangService
         ...FeaturedProjectsGridService
+        ...BrandingCardsService
       }
     }
   }
@@ -142,6 +144,7 @@ export const projectQuery = graphql`
         ...ResultsTextBlockProject
         ...TextVideoOverhangProject
         ...FeaturedProjectsGridProject
+        ...BrandingCardsProject
       }
     }
   }
