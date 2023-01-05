@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { theme } from '../../static/theme'
 import { Link } from "gatsby" 
@@ -27,6 +27,13 @@ const Header = (props) => {
                         url
                         label
                         parentId
+                        childItems {
+                            nodes {
+                                url
+                                label
+                                parentId
+                            }
+                        }
                         acfWpMenu {
                             icon {
                                 sourceUrl
@@ -80,6 +87,7 @@ const Header = (props) => {
 
         }
     `);
+    
     const content = headerMenu.allWpMenu.nodes[0].menuItems.nodes;
     const checkImg = function(img, classes){
         if (img.localFile.ext === `.svg`) {
@@ -147,13 +155,28 @@ const Header = (props) => {
         }
     }
 
+    const navRef = useRef([]); 
+    const workFunc = (index) =>{
+        //console.log(index, navState);
+        //console.log(navRef.current, navRef.current.length);
+        if(index === 0){
+            navRef.current[0].style.display=`flex`;
+            navRef.current[1].style.display=`none`;
+        }
+        if(index === 1){
+            navRef.current[1].style.display=`flex`;
+            navRef.current[0].style.display=`none`;
+        }
+        //console.log(navState);
+    }
+
     return(
         <>
         <header className={`${textColor} ${bkgClass} fixed w-full h-[100px] z-50 top-0 flex items-center`} >
             <button type="button" onClick={()=>focusMain()} onKeyDown={()=>focusMain()} className="bg-rm-white text-rm-black p-5 font-basic-sans text-18px absolute -top-96 -left-96 focus:left-0 focus:top-0 focus:underline z-50" title="skip main navigation">Skip Main Navigation</button>
-            <section className="container">
-                <nav>
-                    <ul key={`header-MasterUL`} className="flex items-center justify-between">
+            <section className="container h-full">
+                <nav className="h-full">
+                    <ul key={`header-MasterUL`} className="flex items-center justify-between h-full">
                         <li key={`header-home`}><Link to={`/`} className="h-min">{logo}</Link></li>
                         <li key={`header-mobileMenu`} className="w-[40px] h-[40px] flex lg:hidden lg:invisible" >
                             <button key={`header-button`} ref={mobileMenuIcon} onClick={() => mobileMenuToggle()} onKeyDown={() => mobileMenuToggle() } type="button" aria-expanded="false" aria-label="Mobile Menu Container">
@@ -167,9 +190,9 @@ const Header = (props) => {
                                 </svg>
                             </button>
                         </li>
-                        <div key={`header-container-mobileMenu`} style={{display:overlayState ? 'block': 'none', visibility:overlayState ? 'visible': 'hidden'}} className={`absolute top-full left-[50%] -translate-x-[50%] w-[95%] md:w-3/4 bg-rm-white text-rm-black mt-5 p-6 lg:p-0 lg:mt-0 lg:left-0 lg:translate-x-0 lg:w-max lg:relative ${textColor} lg:bg-transparent lg:h-min lg:!inline-flex lg:!visible -lg:overflow-y-scroll moblileMenuHeight`}>
+                        <div key={`header-container-mobileMenu`} style={{display:overlayState ? 'block': 'none', visibility:overlayState ? 'visible': 'hidden'}} className={`absolute top-0 h-full left-[50%] -translate-x-[50%] w-[95%] md:w-3/4 bg-rm-white text-rm-black mt-5 p-6 lg:p-0 lg:mt-0 lg:left-0 lg:translate-x-0 lg:w-max lg:relative ${textColor} lg:bg-transparent lg:-mb-[20px] lg:h-full lg:!inline-flex lg:items-center lg:!visible -lg:overflow-y-scroll moblileMenuHeight`}>
                             {content.map ( (navItem) =>{
-                            //detect current if nav item is current page 
+                                //detect current if nav item is current page 
                                 let currentItem = false;
                                 // let currentURL = (window.location.pathname.split('/')).filter(element => { return element !== ''; });
                                 // for(let i = 0; currentURL.length > i; i++ ){
@@ -188,37 +211,88 @@ const Header = (props) => {
                                             doubleLI    = 'w-full sm:w-1/2';
                                             hidden      = '-lg:block flex';
                                         }
+
+                                        for(let a = 0; a < navItem.childItems.nodes.length; a++){
+                                            if(navItem.childItems.nodes[a].childItems.nodes.length > 0){
+                                                return(
+                                                    <>
+                                                        <li key={`header-itemA${navItem.label}`} className={`lg:h-full flex items-center min-w-max mb-2 lg:mb-0 lg:mx-3 p-1 cursor-pointer group relative lg:pb-[20px] hover:[&>*]:`} onMouseOver={HoverSubMenu}>
+                                                            <Link title={navItem.label} to={navItem.url} className={`${currentItem && `-lg:!text-rm-black !font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} hover:!font-bold text-18px`}> {/* hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green */}
+                                                                <span className={`${classesString}`}>{navItem.label}</span>
+                                                            </Link> 
+                                                                <div key={`submenu${navItem.label}}`} 
+                                                                    className={`my-6 lg:my-0 ${hidden} -lg:justify-between 
+                                                                        transition-all duration-300 ease-out -z-10 top-[calc(100%+5px)] min-w-[430px]
+                                                                        flex lg:flex-wrap lg:hidden lg:absolute lg:-ml-5 lg:shadow-block lg:bg-rm-white lg:opacity-0 
+                                                                        lg:group-hover:opacity-100 lg:group-hover:z-50 lg:group-focus:z-50 lg:group-focus-within:z-50 lg:group-focus:opacity-100 lg:group-focus-within:opacity-100 lg:w-max lg:left-[75%] lg:-translate-x-[50%] lg:group-hover:flex`}>
+                                                                    
+                                                                    <div key={`bg-div`} aria-hidden="true" className={`lg:-top-[15px] lg:z-[51] lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus:opacity-100 lg:group-focus-within:opacity-100 lg:bg-[url("../static/triangle.svg")] lg:left-0 h-[30px] lg:w-full lg:absolute lg:bg-no-repeat lg:bg-contain lg:bg-center`}></div>     
+                                                                    <div className={`text-rm-black bg-rm-pale-grey mb-0 cursor-pointer flex-col lg:p-7`}>
+                                                                    {navItem.childItems.nodes.map((subNavItem, index) => {
+                                                                        let menuIcon = ``;
+                                                                        if(subNavItem.acfWpMenu.icon){
+                                                                            menuIcon = checkImg(subNavItem.acfWpMenu.icon, 'h-[40px] w-[40px] mr-5');
+                                                                        }
+                                                                        return(
+                                                                            <a onMouseOver={()=> workFunc(index)} href="" className={`${theme.text.P_STD} -lg:!text-rm-black -lg:w-max -lg:text-[0.875rem] -lg:leading-[1.31rem] text-18px hover:underline hover:text-rm-green cursor-pointer block first-of-type:mb-6`}>
+                                                                                {menuIcon && menuIcon}
+                                                                                {subNavItem.label}
+                                                                            </a>
+                                                                        );
+                                                                    })}
+                                                                    </div>
+                                                                    {navItem.childItems.nodes.map((subNavItem, i) => {
+                                                                        return(
+                                                                            <div ref={el => navRef.current[i] = el} className="last-of-type:hidden flex flex-row justify-end flex-wrap lg:py-7 lg:max-w-[375px]">
+                                                                                {subNavItem.childItems.nodes.map( (sub_SubNavItem) =>{
+                                                                                    return(
+                                                                                        <Link to={sub_SubNavItem.url} className={`${theme.text.P_STD} w-[42%] text-rm-black -lg:w-max text-[0.875rem] mb-3 flex hover:underline hover:text-rm-green cursor-pointer items-center`}>
+                                                                                            {sub_SubNavItem.label}
+                                                                                        </Link>
+                                                                                    )
+                                                                                })}
+                                                                            </div>
+                                                                        )
+                                                                    })}
+                                                                </div>
+                                                        </li>
+                                                    </>
+                                                )
+                                            }
+                                        }
                                         return(
-                                            <li key={`header-itemA${navItem.label}`} className={`h-min min-w-max mb-2 lg:mb-0 lg:mx-3 p-1 cursor-pointer group relative hover:[&>*]:`} onMouseOver={HoverSubMenu}>
+                                            <li key={`header-itemA${navItem.label}`} className={`lg:h-full flex items-center min-w-max mb-2 lg:mb-0 lg:mx-3 p-1 cursor-pointer group relative lg:pb-[20px] hover:[&>*]:`} onMouseOver={HoverSubMenu}>
                                                 <Link title={navItem.label} to={navItem.url} className={`${currentItem && `-lg:!text-rm-black !font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} hover:!font-bold text-18px`}> {/* hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green */}
                                                     <span className={`${classesString}`}>{navItem.label}</span>
-                                                </Link>  
-                                                    <ul key={`submenu${navItem.label}${Math.random()}`} 
-                                                        className={`my-6 lg:my-0 ${hidden} -lg:justify-between -lg:flex-wrap
-                                                            transition-all duration-300 ease-out -z-10
+                                                </Link>
+                                                    <div className={`my-6 lg:my-0 ${hidden} -lg:justify-between -lg:flex-wrap
+                                                            transition-all duration-300 ease-out -z-10 top-[calc(100%+5px)]
                                                             ${doubleMenu} lg:hidden lg:absolute lg:-ml-5 lg:p-7 lg:shadow-block lg:bg-rm-white lg:opacity-0 
-                                                            lg:group-hover:opacity-100 lg:group-hover:z-50 lg:group-focus:z-50 lg:group-focus-within:z-50 lg:group-focus:opacity-100 lg:group-focus-within:opacity-100 lg:w-max lg:left-[75%] lg:-translate-x-[50%] lg:group-hover:translate-y-5 lg:group-hover:flex
-                                                            lg:after:bg-[url("../static/triangle.svg")] lg:after:-top-[15px] lg:after:left-0 after:h-[30px] lg:after:w-full lg:after:absolute lg:after:bg-no-repeat lg:after:bg-contain lg:after:bg-center`}>
-                                                        {navItem.childItems.nodes.map((subNavItem) => {
-                                                            let menuIcon = ``;
-                                                            if(subNavItem.acfWpMenu.icon){
-                                                                menuIcon = checkImg(subNavItem.acfWpMenu.icon, 'h-[40px] w-[40px] mr-5');
-                                                            }
-                                                            return(
-                                                                <li key={`header-sub-submenu${navItem.label}${subNavItem.label}`} className={`${doubleLI} text-rm-black mb-4 last-of-type:mb-0 cursor-pointer`}>
-                                                                    <Link to={subNavItem.url} className={`${theme.text.P_STD} -lg:!text-rm-black -lg:w-max -lg:text-[0.875rem] -lg:leading-[1.31rem] text-18px flex hover:underline hover:text-rm-green cursor-pointer items-center`}>
-                                                                        {menuIcon && menuIcon}
-                                                                        {subNavItem.label}
-                                                                    </Link>
-                                                                </li>
-                                                            );
-                                                        })}
-                                                    </ul>
+                                                            lg:group-hover:opacity-100 lg:group-hover:z-50 lg:group-focus:z-50 lg:group-focus-within:z-50 lg:group-focus:opacity-100 lg:group-focus-within:opacity-100 lg:w-max lg:left-[75%] lg:-translate-x-[50%] lg:group-hover:flex`}>
+                                                        <div key={`bg-div`} aria-hidden="true" className={`lg:-top-[15px] lg:z-[51] lg:opacity-0 lg:group-hover:opacity-100 lg:group-focus:opacity-100 lg:group-focus-within:opacity-100 lg:bg-[url("../static/triangle.svg")] lg:left-0 h-[30px] lg:w-full lg:absolute lg:bg-no-repeat lg:bg-contain lg:bg-center`}></div>     
+                                                        <ul key={`submenu${navItem.label}}`} 
+                                                            className={`flex ${doubleMenu}`}>
+                                                            {navItem.childItems.nodes.map((subNavItem) => {
+                                                                let menuIcon = ``;
+                                                                if(subNavItem.acfWpMenu.icon){
+                                                                    menuIcon = checkImg(subNavItem.acfWpMenu.icon, 'h-[40px] w-[40px] mr-5');
+                                                                }
+                                                                return(
+                                                                    <li key={`header-sub-submenu${navItem.label}${subNavItem.label}`} className={`${doubleLI} text-rm-black mb-4 last-of-type:mb-0 cursor-pointer`}>
+                                                                        <Link to={subNavItem.url} className={`${theme.text.P_STD} -lg:!text-rm-black -lg:w-max -lg:text-[0.875rem] -lg:leading-[1.31rem] text-18px flex hover:underline hover:text-rm-green cursor-pointer items-center`}>
+                                                                            {menuIcon && menuIcon}
+                                                                            {subNavItem.label}
+                                                                        </Link>
+                                                                    </li>
+                                                                );
+                                                            })}
+                                                        </ul>
+                                                    </div>
                                             </li>
                                         )
                                     }else{
                                         return(
-                                            <li key={`header-itemB${navItem.label}`} className={`${classesString} h-min min-w-max w-1/2 mb-2 lg:mb-0 lg:mx-3 p-1 cursor-pointer`}>
+                                            <li key={`header-itemB${navItem.label}`} className={`${classesString} h-min min-w-max w-1/2 mb-2 lg:mb-0 lg:mx-3 p-1 lg:pb-[20px] cursor-pointer`}>
                                                 <Link title={navItem.label} to={navItem.url} className={`${currentItem && `-lg:!text-rm-black !font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} text-18px hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green`}>
                                                     {navItem.label}
                                                 </Link>
