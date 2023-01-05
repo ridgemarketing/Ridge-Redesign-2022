@@ -6,11 +6,3 @@ exports.wrapPageElement = ({ element, props }) => {
   // including location, data, etc - you don't need to pass it
   return <Layout {...props}>{element}</Layout>
 }
-
-exports.onRouteUpdate = () => {
-  if (typeof window !== `undefined`) { window.scrollTo(0, 0)}
-}
-
-exports.shouldUpdateScroll = args => {
-   return false;
-};
