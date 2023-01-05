@@ -158,8 +158,6 @@ const Header = (props) => {
 
     const navRef = useRef([]); 
     const workFunc = (index) =>{
-        //console.log(index, navState);
-        //console.log(navRef.current, navRef.current.length);
         if(index === 0){
             navRef.current[0].style.display=`flex`;
             navRef.current[1].style.display=`none`;
@@ -168,7 +166,6 @@ const Header = (props) => {
             navRef.current[1].style.display=`flex`;
             navRef.current[0].style.display=`none`;
         }
-        //console.log(navState);
     }
 
     return(
