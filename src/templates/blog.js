@@ -4,8 +4,6 @@ import { theme, ThemeContext } from '../static/theme'
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
-import Layout from "../components/global/Layout"
-
 const Blog = () => {
 
   const getThePosts = useStaticQuery(graphql`
