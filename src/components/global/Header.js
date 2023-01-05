@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState } from "react"
+import React, { useEffect, useRef, useState, useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { theme } from '../../static/theme'
+import { theme, ThemeContext } from '../../static/theme'
 import { Link } from "gatsby" 
 import { GatsbyImage } from 'gatsby-plugin-image'
 
@@ -118,6 +118,7 @@ const Header = (props) => {
     const overlay                               = useRef([]);
     const [overlayState, setoverlayState]       = useState(false);
     const [mobileMenuState, setMobileMenuState] = useState(true);
+    const context                               = useContext(ThemeContext);
     //const [rotateState, setRotateState]         = useState(0);
     const mobileMenuToggle = () =>{
         if(mobileMenuState){
@@ -234,17 +235,25 @@ const Header = (props) => {
                                                                             menuIcon = checkImg(subNavItem.acfWpMenu.icon, 'h-[40px] w-[40px] mr-5');
                                                                         }
                                                                         return(
-                                                                            <a onMouseOver={()=> workFunc(index)} href="" className={`${theme.text.P_STD} -lg:!text-rm-black -lg:w-max -lg:text-[0.875rem] -lg:leading-[1.31rem] text-18px hover:underline hover:text-rm-green cursor-pointer block first-of-type:mb-6`}>
+                                                                            <Link onMouseOver={()=> workFunc(index)} to={subNavItem.url} className={`${theme.text.P_STD} -lg:!text-rm-black -lg:w-max -lg:text-[0.875rem] -lg:leading-[1.31rem] text-18px hover:underline hover:text-rm-green cursor-pointer block first-of-type:mb-6`}>
                                                                                 {menuIcon && menuIcon}
                                                                                 {subNavItem.label}
-                                                                            </a>
+                                                                            </Link>
                                                                         );
                                                                     })}
                                                                     </div>
                                                                     {navItem.childItems.nodes.map((subNavItem, i) => {
                                                                         return(
-                                                                            <div ref={el => navRef.current[i] = el} className="last-of-type:hidden flex flex-row justify-end flex-wrap lg:py-7 lg:max-w-[375px]">
-                                                                                {subNavItem.childItems.nodes.map( (sub_SubNavItem) =>{
+                                                                            <div ref={el => navRef.current[i] = el} className="last-of-type:hidden flex flex-row justify-end flex-wrap lg:py-7 lg:w-[320px] lg:max-w-[320px]">
+                                                                                {subNavItem.childItems.nodes.map( (sub_SubNavItem) =>{                                                                             
+                                                                                    if (sub_SubNavItem.url === '/portfolio/') {
+                                                                                        return(
+                                                                                            <Link onClick={() => context.updateFilterState(sub_SubNavItem.label)} to={sub_SubNavItem.url} className={`${theme.text.P_STD} w-[42%] text-rm-black -lg:w-max text-[0.875rem] mb-3 flex hover:underline hover:text-rm-green cursor-pointer items-center`}>
+                                                                                                {sub_SubNavItem.label}
+                                                                                            </Link>
+                                                                                        )
+                                                                                    }
+
                                                                                     return(
                                                                                         <Link to={sub_SubNavItem.url} className={`${theme.text.P_STD} w-[42%] text-rm-black -lg:w-max text-[0.875rem] mb-3 flex hover:underline hover:text-rm-green cursor-pointer items-center`}>
                                                                                             {sub_SubNavItem.label}
