@@ -41,7 +41,7 @@ const IconTextBoxes = (props) => {
             }
             iconContainer.current.setAttribute('style',`height:${colOneHeight}px`);
           
-          }else{
+          }else if (iconContainer) {
             iconContainer.current.setAttribute('style',`height:100%;`);
           }
         }
