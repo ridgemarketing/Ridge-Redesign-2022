@@ -55,7 +55,7 @@ const WpPage = ({ data }) =>{
   let color = 'black';
   if(data.wpPage.uri === '/contact/' || data.wpPage.uri === `/terms-and-conditions/`){
     color = 'white';
-  }
+  } 
 
   const blackList = ["404", "Terms and Conditions", "Portfolio"];
   const context = useContext(ThemeContext);
