@@ -44,18 +44,19 @@ const Quotes = (props) => {
         
       }
       function inView(){
-        
-        if (window.pageYOffset > prevDirection){
-          topLeft   = topLeft - topCounter;
-          topRight  = topRight + topCounter; 
-          quoteLeft.current.style.top   = topLeft + '%';
-          quoteRight.current.style.top  = topRight + '%';
-        }
-        if (window.pageYOffset < prevDirection){
-          topLeft   = topLeft + topCounter;
-          topRight  = topRight - topCounter; 
-          quoteLeft.current.style.top   = topLeft + '%';
-          quoteRight.current.style.top  = topRight + '%';
+        if (quoteLeft.current !== null && quoteRight.current !== null) {
+          if (window.pageYOffset > prevDirection){
+            topLeft   = topLeft - topCounter;
+            topRight  = topRight + topCounter; 
+            quoteLeft.current.style.top   = topLeft + '%';
+            quoteRight.current.style.top  = topRight + '%';
+          }
+          if (window.pageYOffset < prevDirection){
+            topLeft   = topLeft + topCounter;
+            topRight  = topRight - topCounter; 
+            quoteLeft.current.style.top   = topLeft + '%';
+            quoteRight.current.style.top  = topRight + '%';
+          }
         }
         prevDirection = window.pageYOffset;
       }
@@ -65,16 +66,18 @@ const Quotes = (props) => {
       }
 
       function reset(){
-        if(window.innerWidth < 1024){
-          topLeft                       = 50;
-          topRight                      = 75;
-          quoteLeft.current.style.top   = `${topLeft}%`;
-          quoteRight.current.style.top  = `${topRight}%`;
-        }else{
-          topLeft                       = 75;
-          topRight                      = 125;
-          quoteLeft.current.style.top   = `${topLeft}%`;
-          quoteRight.current.style.top  = `${topRight}%`;
+        if (quoteLeft.current !== null && quoteRight.current !== null) {
+          if(window.innerWidth < 1024){
+            topLeft                       = 50;
+            topRight                      = 75;
+            quoteLeft.current.style.top   = `${topLeft}%`;
+            quoteRight.current.style.top  = `${topRight}%`;
+          }else{
+            topLeft                       = 75;
+            topRight                      = 125;
+            quoteLeft.current.style.top   = `${topLeft}%`;
+            quoteRight.current.style.top  = `${topRight}%`;
+          }
         }
       }
 
