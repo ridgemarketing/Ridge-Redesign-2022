@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react"
+import React, { useRef, useEffect, useMemo } from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { graphql } from "gatsby"
@@ -38,8 +38,10 @@ const FullWidthImage = (props) => {
           overlapDiv.current.style.marginTop  = `-${overlapImage.current.clientHeight/2}px`;
           overlapDiv.current.style.height     = `${overlapImage.current.clientHeight/1.5}px`;   
         }
-      } 
+      }
       setBkg()
+
+      console.log('running')
       
       function handleResize() {
         if (overlapDiv.current) {
@@ -48,17 +50,15 @@ const FullWidthImage = (props) => {
         }
       }
 
-      window.addEventListener('resize', handleResize);
-      return () => window.removeEventListener('resize', handleResize);
+      if (typeof window !== 'undefined') {
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+      }
+      
     }
 
-    const dataFetchedRef = useRef(false);
-    useEffect(() => {
-      if (dataFetchedRef.current) return;
-      dataFetchedRef.current = true;
-      splitMargins();
-    }, [])
-
+    splitMargins()
+    
     return (
       <>
         <Section settings={settings}>
