@@ -40,8 +40,6 @@ const FullWidthImage = (props) => {
         }
       }
       setBkg()
-
-      console.log('running')
       
       function handleResize() {
         if (overlapDiv.current) {
@@ -58,7 +56,7 @@ const FullWidthImage = (props) => {
     }
 
     splitMargins()
-    
+
     return (
       <>
         <Section settings={settings}>
