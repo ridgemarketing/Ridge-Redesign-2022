@@ -32,12 +32,11 @@ const FlexibleMedia = (props) => {
             {lottie &&
                 <div>
                     <Player
-                        autoPlay
-                        loop
+                        autoplay={true} controls={false}
+                        loop={true}
                         src={lottie}
                         style={{ height: 'auto', width: '100%' }}
-                    >
-                    </Player>
+                    />
                 </div>
             }
             {video && videoType == 'file' &&

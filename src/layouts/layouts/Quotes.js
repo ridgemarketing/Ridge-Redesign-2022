@@ -44,18 +44,19 @@ const Quotes = (props) => {
         
       }
       function inView(){
-        
-        if (window.pageYOffset > prevDirection){
-          topLeft   = topLeft - topCounter;
-          topRight  = topRight + topCounter; 
-          quoteLeft.current.style.top   = topLeft + '%';
-          quoteRight.current.style.top  = topRight + '%';
-        }
-        if (window.pageYOffset < prevDirection){
-          topLeft   = topLeft + topCounter;
-          topRight  = topRight - topCounter; 
-          quoteLeft.current.style.top   = topLeft + '%';
-          quoteRight.current.style.top  = topRight + '%';
+        if (quoteLeft.current !== null && quoteRight.current !== null) {
+          if (window.pageYOffset > prevDirection){
+            topLeft   = topLeft - topCounter;
+            topRight  = topRight + topCounter; 
+            quoteLeft.current.style.top   = topLeft + '%';
+            quoteRight.current.style.top  = topRight + '%';
+          }
+          if (window.pageYOffset < prevDirection){
+            topLeft   = topLeft + topCounter;
+            topRight  = topRight - topCounter; 
+            quoteLeft.current.style.top   = topLeft + '%';
+            quoteRight.current.style.top  = topRight + '%';
+          }
         }
         prevDirection = window.pageYOffset;
       }
@@ -65,16 +66,18 @@ const Quotes = (props) => {
       }
 
       function reset(){
-        if(window.innerWidth < 1024){
-          topLeft                       = 50;
-          topRight                      = 75;
-          quoteLeft.current.style.top   = `${topLeft}%`;
-          quoteRight.current.style.top  = `${topRight}%`;
-        }else{
-          topLeft                       = 75;
-          topRight                      = 125;
-          quoteLeft.current.style.top   = `${topLeft}%`;
-          quoteRight.current.style.top  = `${topRight}%`;
+        if (quoteLeft.current !== null && quoteRight.current !== null) {
+          if(window.innerWidth < 1024){
+            topLeft                       = 50;
+            topRight                      = 75;
+            quoteLeft.current.style.top   = `${topLeft}%`;
+            quoteRight.current.style.top  = `${topRight}%`;
+          }else{
+            topLeft                       = 75;
+            topRight                      = 125;
+            quoteLeft.current.style.top   = `${topLeft}%`;
+            quoteRight.current.style.top  = `${topRight}%`;
+          }
         }
       }
 
@@ -105,7 +108,7 @@ const Quotes = (props) => {
     }
     return(
       <div ref={parallaxContainer} className={`block `}>
-        <Section classes="overflow-hidden" settings={ settings } ref={parallaxContainer}>
+        <Section classes="overflow-hidden" settings={ settings }>
           <Container container={settings.containerWidth}>
             {content.heading &&
               <h2 className={ theme.text['H2'] }>
@@ -115,7 +118,7 @@ const Quotes = (props) => {
             <div className={` mt-12 flex w-full flex-wrap justify-between relative`}>
                 <div className={ `frosted-glass p-8 lg:p-14 w-full` }>
                   <div key={Math.random()} className={`animate-quote`}>
-                    <p dangerouslySetInnerHTML={{__html: Parser(data.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out' }></p>
+                    <div dangerouslySetInnerHTML={{__html: Parser(data.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out' }></div>
                     <p className={ theme.text.P_BLD +  `pt-8 pb-2` }>
                         { data.title }
                     </p>

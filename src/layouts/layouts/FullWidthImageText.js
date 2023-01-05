@@ -46,7 +46,7 @@ const FullWidthImageText = (props) => {
     return (
       <Section settings={settings}>
         <Container container={settings.containerWidth}>
-          <div class="text-center">
+          <div className={`text-center`}>
             { content.heading && 
               <h1 className={`${theme.text.H2} ${headerClasses} ${textColor}`}>{content.heading}</h1>
             }

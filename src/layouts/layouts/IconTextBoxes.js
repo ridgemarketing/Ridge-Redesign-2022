@@ -26,7 +26,7 @@ const IconTextBoxes = (props) => {
         
         function setHeight(){
           let colOneHeight =0, colTwoHeight =0;
-          if(window.innerWidth > 767){
+          if(window.innerWidth > 767 && iconContainer.current !== null){
             
             for (var i =0; i < iconContainer.current.children.length; i++){
               if(i >= iconContainer.current.children.length/2){

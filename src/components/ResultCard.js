@@ -25,7 +25,7 @@ const ResultCard = (props) => {
     return (
             <div key={`${content.description}${content.stat}`} className={ `text-center lg:text-left ${classes[props.columns]} my-6` }>
                 { content.stat && 
-                    <p className={`accent-text ${statClass} font-bold`}>
+                    <p className={`accent-text ${statClass} font-semibold font-stratos`}>
                         <CountUp
                             delay={1}
                             end={statNumber}

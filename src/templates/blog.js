@@ -1,6 +1,6 @@
-import React, {useRef, useState} from "react"
+import React, {useRef, useState, useEffect, useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { theme } from '../static/theme'
+import { theme, ThemeContext } from '../static/theme'
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 
@@ -44,14 +44,20 @@ const Blog = () => {
     }
   `)
 
+  const context               = useContext(ThemeContext);
   const posts                 = getThePosts.allWpPost.nodes;
   const featured              = posts[0];
-  const postsToAdd            = 2;
-  const [counter, setCounter] = useState(postsToAdd);
+  const initialCount          = 5;
+  const postsToAdd            = 4;
+  const [counter, setCounter] = useState(initialCount);
 
   let button                  = useRef(null);
   let buttonDisplay           = '';
 
+  useEffect(() => {
+    context.updateHeaderBkgcolor('white');
+  }, []);
+  
   const loadMore = () =>{
       setCounter(counter + postsToAdd);
   }
