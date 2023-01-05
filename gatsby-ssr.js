@@ -5,11 +5,3 @@ const Layout = require("./src/components/global/Layout").default
 exports.wrapPageElement = ({ element, props }) => {
   return <Layout {...props}>{element}</Layout>
 }
-
-exports.onRouteUpdate = () => {
-  if (typeof window !== `undefined`) { window.scrollTo(0, 0)}
-}
-
-exports.shouldUpdateScroll = args => {
-    return false;
-};
