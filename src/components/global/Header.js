@@ -185,6 +185,7 @@ const Header = (props) => {
             navRef.current[0].style.display=`none`;
         }
     }
+    const css= `@media screen and (max-width:1200px){.menuMobileScroll{height:80vh;}}`
 
     return(
         <>
@@ -206,7 +207,8 @@ const Header = (props) => {
                                 </svg>
                             </button>
                         </li>
-                        <div key={`header-container-mobileMenu`} style={{display:overlayState ? 'block': 'none', visibility:overlayState ? 'visible': 'hidden'}} className={`absolute top-0 h-full -xl:mt-[110px] -xl:left-[50%] -xl:-translate-x-[50%] w-[95%] md:w-3/4 bg-rm-white text-rm-black mt-5 p-6 -xl:h-min xl:p-0 xl:mt-0 xl:left-0 xl:translate-x-0 xl:w-max xl:relative ${textColor} xl:bg-transparent xl:-mb-[20px] xl:h-full xl:!inline-flex xl:items-center xl:!visible -xl:overflow-y-scroll moblileMenuHeight`}>
+                        <style>{css}</style>
+                        <div key={`header-container-mobileMenu`} style={{display:overlayState ? 'block': 'none', visibility:overlayState ? 'visible': 'hidden'}} className={`absolute menuMobileScroll top-0 -xl:mt-[110px] -xl:left-[50%] -xl:-translate-x-[50%] w-[95%] md:w-3/4 bg-rm-white text-rm-black mt-5 p-6 -xl:h-min xl:p-0 xl:mt-0 xl:left-0 xl:translate-x-0 xl:w-max xl:relative ${textColor} xl:bg-transparent xl:-mb-[20px] xl:h-full xl:!inline-flex xl:items-center xl:!visible -xl:overflow-y-scroll moblileMenuHeight`}>
                             {content.map ( (navItem) =>{
                                 //detect current if nav item is current page 
                                 let currentItem = false;
