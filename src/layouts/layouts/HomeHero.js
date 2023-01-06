@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect, useState } from "react"
 import Link from "../../components/global/FlexibleLink"
 import { Section, Container, BackgroundImage } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
@@ -9,11 +9,30 @@ const HomeHero = (props) => {
 
     const data      = props.layoutData;
     const content   = data.layoutContent;
-    console.log(content);
     const settings  = data.layoutSettings || {};
     const image = (content.backgroundImage) ? getImage(content.backgroundImage.localFile.childImageSharp.gatsbyImageData) : false;
     const mobileImage = (content.mobileImage) ? getImage(content.mobileImage.localFile.childImageSharp.gatsbyImageData) : false;
     const tabletImage = (content.tabletImage) ? getImage(content.tabletImage.localFile.childImageSharp.gatsbyImageData) : false;
+
+    const headingsList = content.headingCycle;
+    const LENGTH = headingsList.length;
+    const animationTimer = 4000;
+    let aniIdx = 1
+    
+    useEffect(() => {
+        const interval = setInterval(() => {
+            let idxToChange = (aniIdx === LENGTH) ? 1 : aniIdx + 1;
+            console.log(`running! new index: ${aniIdx}`);
+            document.getElementById(`heading${aniIdx}`).classList.remove('animate-textFadeIn');
+            document.getElementById(`heading${aniIdx}`).classList.add('animate-textFadeOut');
+            document.getElementById(`heading${idxToChange}`).classList.remove('hidden', 'animate-textFadeOut');
+            document.getElementById(`heading${idxToChange}`).classList.add('animate-textFadeIn');
+            aniIdx = idxToChange;
+        }, animationTimer);
+
+          return () => clearInterval(interval);
+    }, [])
+ 
 
     let isImage = true;
     if (content.video) {
@@ -34,8 +53,15 @@ const HomeHero = (props) => {
             <div className="w-full ml-auto mr-auto lg:max-w-[930px] xl:max-w-[1280px]">
                 <div className={`relative z-10 max-w-full mx-auto bg-black text-white px-9 pt-11 pb-14 md:px-14 md:py-16 md:pt-16 md:ml-0 w-[99%] sm:w-full xl:w-min xl:max-w-min `}>
                     <h1 className={`w-min`}>
-                        <span dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`font-stratos uppercase text-80px leading-[75px] font-bold block w-[99%] md:w-max`}></span>
-                        <span dangerouslySetInnerHTML={{__html: Parser(content.subheading)}} className={`font-stratos uppercase font-light text-30px lg:text-40px w-min`}></span>
+                        <ul className={"h-min overflow-hidden relative"}>
+                            {headingsList.map((data, idx) => {
+                                return (
+                                    <li id={`heading${idx+1}`} className={`${(idx === 0) ? 'animate-textFadeIn' : 'hidden absolute top-0 left-0'} font-stratos uppercase text-80px leading-[75px] font-bold block w-[99%] md:w-max`}>{data.heading}</li>
+                                )
+                            })}
+                            {/* add blank li here thats ignored by loop and stays relative to maintain width if necessary */}
+                        </ul>
+                        <span dangerouslySetInnerHTML={{__html: Parser(content.subheading)}} className={`relative font-stratos uppercase font-light text-30px lg:text-40px w-min`}></span>
                     </h1>
                     <div className={'pt-10 w-max'}>
                         <Link

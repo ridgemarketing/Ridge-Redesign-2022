@@ -111,7 +111,9 @@ export const query = graphql`
       homeHero {
         layoutHomeHero {
           layoutContent {
-            heading
+            headingCycle {
+              heading
+            }
             subheading
             componentButton {
               style

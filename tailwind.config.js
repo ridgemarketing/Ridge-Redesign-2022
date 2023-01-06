@@ -137,10 +137,34 @@ module.exports = {
               opacity: '1',
               transform: 'translateX(0px)'
           }
+        },
+        cycleOut: {
+          '0%': {
+            opacity: '1',
+            transform: 'translateY(0px)'
+          },
+          '100%': {
+            opacity: '0',
+            transform: 'translateY(-100%)',
+            display: 'none'
+          }
+        },
+        cycleIn: {
+          '0%': {
+            opacity: '0',
+            transform: 'translateY(100%)',
+            display: 'block'
+          },
+          '100%': {
+            opacity: '1',
+            transform: 'translateY(0)'
+          }
         }
       },
       animation: {
-        quote: 'quoteSlide .75s ease-out forwards'
+        quote: 'quoteSlide .75s ease-out forwards',
+        textFadeIn: 'cycleIn 1s ease-out forwards',
+        textFadeOut: 'cycleOut 1s ease-out forwards'
       },
       backgroundImage: {
         'white-black': 'linear-gradient( to bottom, #ffffff 0%, #ffffff 60%, #000000 60%, #000000 100%)'

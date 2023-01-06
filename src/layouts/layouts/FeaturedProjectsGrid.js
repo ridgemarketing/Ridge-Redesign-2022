@@ -49,6 +49,10 @@ const FeaturedProjectsGrid = (props) => {
       }
     });
 
+    useEffect(() => {
+      handleRendering(context.filterState);
+    }, [context.filterState])
+
     const handleRendering = (filter) => {
       switch(filter) {
         case "Websites":
