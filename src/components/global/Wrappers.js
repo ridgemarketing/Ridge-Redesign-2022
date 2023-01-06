@@ -21,6 +21,7 @@ export const Section = (props) => {
     let bg              =  props.settings && props.settings.backgroundColor ? props.settings.backgroundColor : defaults.bgColor;
     let position        =  props.settings && props.settings.position ? props.settings.position : defaults.position;
     let id              =  props.settings && props.settings.id ? props.settings.id : defaults.id;
+    let anchorId        =  props.settings && props.settings.anchorId ? props.settings.anchorId : defaults.id;
     let classes         =  props.settings && props.settings.classes ? props.settings.classes : defaults.classes;
     let classes_temp    =  props.classes ? props.classes : ''; //used for testing until we pull class data from props
     let role            =  props.role ? props.role : defaults.role;
@@ -30,12 +31,18 @@ export const Section = (props) => {
     }
 
     return (
-        <section 
-        id={id} 
-        className={`-mt-px ${pt} ${pb} bg-${theme.backgroundColor[bg]} ${position} ${classes} ${classes_temp}`}
-        role={role}> 
-            {props.children}
-        </section>
+        <>
+            {anchorId !== `` &&
+                <div id={anchorId} className={`relative -top-[100px]`}></div>
+            }
+            <section 
+                id={id} 
+                className={`-mt-px ${pt} ${pb} bg-${theme.backgroundColor[bg]} ${position} ${classes} ${classes_temp}`}
+                role={role}> 
+                    {props.children}
+            </section>
+        </>
+
     )
 }
 

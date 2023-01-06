@@ -7,6 +7,7 @@ const LightBox = (props) => {
     const images    = props.images;
     const video     = props.video;
     const thumbnail = (video) ? images.sourceUrl : images[0].image.publicUrl;
+    //const thumbnail = (video) ? (images ? images.sourceUrl : `https://images.pexels.com/photos/9553447/pexels-photo-9553447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`) : images[0].image.publicUrl;
 
     const [image, setImage]             = useState(0);
     const [hoverState, setHoverState]   = useState("hidden");
@@ -76,7 +77,10 @@ const LightBox = (props) => {
                 </nav>
                 {!video && 
                     <div className={'relative'}>
-                        <img aria-controls={`image-${image}`} src={images[image].image.publicUrl} alt={"NEEDS ALT TEXT ADDED"} className={`w-full z-0`} />
+                        {images[0] &&
+                         <img aria-controls={`image-${image}`} src={images[image].image.publicUrl} alt={``} className={`w-full z-0`} />
+                        }
+                       
                         <button className={`absolute top-1/2 ml-2 z-50 text-rm-grey ${images.length < 3 ? 'hidden' : ''}`} onClick={()=>loadPrev()} aria-label="Next Image">
                             <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M11.9531 22.9375L13.5156 21.375C13.8281 20.9844 13.8281 20.4375 13.4375 20.0469L7.1875 14.0312L34.0625 14.0312C34.6094 14.0312 35 13.5625 35 13.0938V10.9062C35 10.3594 34.6094 9.96875 34.0625 9.96875L7.1875 9.96875L13.4375 3.875C13.8281 3.48437 13.8281 2.9375 13.5156 2.54687L11.9531 0.984375C11.5625 0.671875 11.0156 0.671875 10.625 0.984375L0.3125 11.2969C0 11.6875 0 12.2344 0.3125 12.625L10.625 22.9375C11.0156 23.25 11.5625 23.25 11.9531 22.9375Z" fill="currentColor"/>

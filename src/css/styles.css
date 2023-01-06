@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base{
+
     html, body{
         /* @apply overflow-x-hidden; */
     }
@@ -30,7 +31,7 @@
     }
 
     header nav a{
-        @apply -lg:text-rm-black;
+        @apply -xl:text-rm-black;
     }
     header nav a::before{
         @apply block font-bold h-0 overflow-hidden invisible;
