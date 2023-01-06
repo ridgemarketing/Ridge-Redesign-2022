@@ -15,7 +15,7 @@ const Header = (props) => {
 
     const headerMenu = useStaticQuery(graphql`
         query GetHeaderMenu {
-            allWpMenu(filter: {name: {eq: "Primary"}}) {
+            allWpMenu(filter: {name: {in: ["Primary","Mobile"] }}) {
             nodes {
                 menuItems {
                 nodes {
@@ -88,7 +88,31 @@ const Header = (props) => {
         }
     `);
     
-    const content = headerMenu.allWpMenu.nodes[0].menuItems.nodes;
+    console.log(headerMenu);
+    let [menuCounter, setMenuCounter] = useState(1);
+    let content = headerMenu.allWpMenu.nodes[menuCounter].menuItems.nodes;
+    
+    const menuFunc = () =>{
+        
+        function windowResizing (){
+            if(window.innerWidth > 1280){
+                setMenuCounter(1);
+            }else{
+                setMenuCounter(0);
+            }
+            content = headerMenu.allWpMenu.nodes[menuCounter].menuItems.nodes;
+        }
+        
+        window.addEventListener('resize', windowResizing, true);
+    }
+
+    const dataFetchedRef = useRef(false);
+    useEffect(() => {
+      if (dataFetchedRef.current) return;
+      dataFetchedRef.current = true;
+      menuFunc();
+    }, [])
+    
     const checkImg = function(img, classes){
         if (img.localFile.ext === `.svg`) {
             return(<img className={`${classes} block`} alt={img.altText} src={img.sourceUrl} />)
@@ -125,20 +149,14 @@ const Header = (props) => {
             setoverlayState(true);
             setMobileMenuState(false);
             mobileMenuIcon.current.setAttribute('aria-expanded', true);
-            //setRotateState(30);
-            // document.style.overflowY = 'hidden';
         }else{
             setoverlayState(false);
             setMobileMenuState(true);
             mobileMenuIcon.current.setAttribute('aria-expanded', false);
-            //setRotateState(0);
-            // document.style.overflowY = 'scroll';
         }
     }
 
-    const HoverSubMenu = (e) => {
-        // console.log(e.target.parentNode);
-    }
+    const HoverSubMenu = (e) => {}
     
     let mobileArrows = [theme.text_links.FWD_BASE.split(' '), theme.text_links.ARW_FWD_BLACK.split(' ')]; 
     let classesString = ' ';
@@ -188,7 +206,7 @@ const Header = (props) => {
                                 </svg>
                             </button>
                         </li>
-                        <div key={`header-container-mobileMenu`} style={{display:overlayState ? 'block': 'none', visibility:overlayState ? 'visible': 'hidden'}} className={`absolute top-0 h-full left-[50%] -translate-x-[50%] w-[95%] md:w-3/4 bg-rm-white text-rm-black mt-5 p-6 xl:p-0 xl:mt-0 xl:left-0 xl:translate-x-0 xl:w-max xl:relative ${textColor} xl:bg-transparent xl:-mb-[20px] xl:h-full xl:!inline-flex xl:items-center xl:!visible -xl:overflow-y-scroll moblileMenuHeight`}>
+                        <div key={`header-container-mobileMenu`} style={{display:overlayState ? 'block': 'none', visibility:overlayState ? 'visible': 'hidden'}} className={`absolute top-0 h-full -xl:mt-[110px] -xl:left-[50%] -xl:-translate-x-[50%] w-[95%] md:w-3/4 bg-rm-white text-rm-black mt-5 p-6 -xl:h-min xl:p-0 xl:mt-0 xl:left-0 xl:translate-x-0 xl:w-max xl:relative ${textColor} xl:bg-transparent xl:-mb-[20px] xl:h-full xl:!inline-flex xl:items-center xl:!visible -xl:overflow-y-scroll moblileMenuHeight`}>
                             {content.map ( (navItem) =>{
                                 //detect current if nav item is current page 
                                 let currentItem = false;
@@ -267,7 +285,7 @@ const Header = (props) => {
                                             }
                                         }
                                         return(
-                                            <li key={`header-itemA${navItem.label}`} className={`xl:h-full flex items-center min-w-max mb-2 xl:mb-0 xl:mx-3 p-1 cursor-pointer group relative xl:pb-[20px] hover:[&>*]:`} onMouseOver={HoverSubMenu}>
+                                            <li key={`header-itemA${navItem.label}`} className={`xl:h-full flex -xl:flex-col items-baseline xl:items-center md:min-w-[75%] xl:min-w-max mb-2 xl:mb-0 xl:mx-3 p-1 cursor-pointer group relative xl:pb-[20px] hover:[&>*]:`} onMouseOver={HoverSubMenu}>
                                                 <Link title={navItem.label} to={navItem.url} className={`${currentItem && `-xl:!text-rm-black !font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} hover:!font-bold text-18px`}> {/* hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green */}
                                                     <span className={`${classesString}`}>{navItem.label}</span>
                                                 </Link>
@@ -275,9 +293,9 @@ const Header = (props) => {
                                                             transition-all duration-300 ease-out -z-10 top-[calc(100%+5px)]
                                                             ${doubleMenu} xl:hidden xl:absolute xl:-ml-5 xl:p-7 xl:shadow-block xl:bg-rm-white xl:opacity-0 
                                                             xl:group-hover:opacity-100 xl:group-hover:z-50 xl:group-focus:z-50 xl:group-focus-within:z-50 xl:group-focus:opacity-100 xl:group-focus-within:opacity-100 xl:w-max xl:left-[75%] xl:-translate-x-[50%] xl:group-hover:flex`}>
-                                                        <div key={`bg-div`} aria-hidden="true" className={`xl:-top-[15px] xl:z-[51] xl:opacity-0 xl:group-hover:opacity-100 xl:group-focus:opacity-100 xl:group-focus-within:opacity-100 xl:bg-[url("../static/triangle.svg")] xl:left-0 h-[30px] xl:w-full xl:absolute xl:bg-no-repeat xl:bg-contain xl:bg-center`}></div>     
+                                                        <div key={`bg-div`} aria-hidden="true" className={`-xl:hidden xl:-top-[15px] xl:z-[51] xl:opacity-0 xl:group-hover:opacity-100 xl:group-focus:opacity-100 xl:group-focus-within:opacity-100 xl:bg-[url("../static/triangle.svg")] xl:left-0 h-[30px] xl:w-full xl:absolute xl:bg-no-repeat xl:bg-contain xl:bg-center`}></div>     
                                                         <ul key={`submenu${navItem.label}}`} 
-                                                            className={`flex ${doubleMenu}`}>
+                                                            className={`flex ${doubleMenu} -xl:flex-wrap`}>
                                                             {navItem.childItems.nodes.map((subNavItem) => {
                                                                 let menuIcon = ``;
                                                                 if(subNavItem.acfWpMenu.icon){
