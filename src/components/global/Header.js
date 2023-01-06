@@ -241,7 +241,7 @@ const Header = (props) => {
                                                             </Link> 
                                                                 <div key={`submenu${navItem.label}}`} 
                                                                     className={`my-6 xl:my-0 ${hidden} -xl:justify-between 
-                                                                        transition-all duration-300 ease-out -z-10 top-[calc(100%+5px)] min-w-[430px]
+                                                                        transition-all duration-300 ease-out xl:-z-10 top-[calc(100%+5px)] min-w-[430px]
                                                                         flex xl:flex-wrap xl:hidden xl:absolute xl:-ml-5 xl:shadow-block xl:bg-rm-white xl:opacity-0 
                                                                         xl:group-hover:opacity-100 xl:group-hover:z-50 xl:group-focus:z-50 xl:group-focus-within:z-50 xl:group-focus:opacity-100 xl:group-focus-within:opacity-100 xl:w-max xl:left-[75%] xl:-translate-x-[50%] xl:group-hover:flex`}>
                                                                     
@@ -293,7 +293,7 @@ const Header = (props) => {
                                                     <span className={`${classesString}`}>{navItem.label}</span>
                                                 </Link>
                                                     <div className={`my-6 xl:my-0 ${hidden} -xl:justify-between -xl:flex-wrap
-                                                            transition-all duration-300 ease-out -z-10 top-[calc(100%+5px)]
+                                                            transition-all duration-300 ease-out xl:-z-10 top-[calc(100%+5px)]
                                                             ${doubleMenu} xl:hidden xl:absolute xl:-ml-5 xl:p-7 xl:shadow-block xl:bg-rm-white xl:opacity-0 
                                                             xl:group-hover:opacity-100 xl:group-hover:z-50 xl:group-focus:z-50 xl:group-focus-within:z-50 xl:group-focus:opacity-100 xl:group-focus-within:opacity-100 xl:w-max xl:left-[75%] xl:-translate-x-[50%] xl:group-hover:flex`}>
                                                         <div key={`bg-div`} aria-hidden="true" className={`-xl:hidden xl:-top-[15px] xl:z-[51] xl:opacity-0 xl:group-hover:opacity-100 xl:group-focus:opacity-100 xl:group-focus-within:opacity-100 xl:bg-[url("../static/triangle.svg")] xl:left-0 h-[30px] xl:w-full xl:absolute xl:bg-no-repeat xl:bg-contain xl:bg-center`}></div>     
