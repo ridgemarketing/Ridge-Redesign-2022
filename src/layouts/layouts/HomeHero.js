@@ -22,7 +22,6 @@ const HomeHero = (props) => {
     useEffect(() => {
         const interval = setInterval(() => {
             let idxToChange = (aniIdx === LENGTH) ? 1 : aniIdx + 1;
-            console.log(`running! new index: ${aniIdx}`);
             document.getElementById(`heading${aniIdx}`).classList.remove('animate-textFadeIn');
             document.getElementById(`heading${aniIdx}`).classList.add('animate-textFadeOut');
             document.getElementById(`heading${idxToChange}`).classList.remove('hidden', 'animate-textFadeOut');

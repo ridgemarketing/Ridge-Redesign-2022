@@ -89,21 +89,22 @@ const Header = (props) => {
     `);
     
     console.log(headerMenu);
-    let [menuCounter, setMenuCounter] = useState(1);
+    let [menuCounter, setMenuCounter] = useState(0);
     let content = headerMenu.allWpMenu.nodes[menuCounter].menuItems.nodes;
     
     const menuFunc = () =>{
         
         function windowResizing (){
             if(window.innerWidth > 1280){
-                setMenuCounter(1);
-            }else{
                 setMenuCounter(0);
+            }else{
+                setMenuCounter(1);
             }
             content = headerMenu.allWpMenu.nodes[menuCounter].menuItems.nodes;
         }
         
         window.addEventListener('resize', windowResizing, true);
+        return () => window.removeEventListener('resize', windowResizing);
     }
 
     const dataFetchedRef = useRef(false);
@@ -287,7 +288,7 @@ const Header = (props) => {
                                             }
                                         }
                                         return(
-                                            <li key={`header-itemA${navItem.label}`} className={`xl:h-full flex -xl:flex-col items-baseline xl:items-center md:min-w-[75%] xl:min-w-max mb-2 xl:mb-0 xl:mx-3 p-1 cursor-pointer group relative xl:pb-[20px] hover:[&>*]:`} onMouseOver={HoverSubMenu}>
+                                            <li onClick={() => mobileMenuToggle()} key={`header-itemA${navItem.label}`} className={`xl:h-full flex -xl:flex-col items-baseline xl:items-center md:min-w-[75%] xl:min-w-max mb-2 xl:mb-0 xl:mx-3 p-1 cursor-pointer group relative xl:pb-[20px] hover:[&>*]:`} onMouseOver={HoverSubMenu}>
                                                 <Link title={navItem.label} to={navItem.url} className={`${currentItem && `-xl:!text-rm-black !font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} hover:!font-bold text-18px`}> {/* hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green */}
                                                     <span className={`${classesString}`}>{navItem.label}</span>
                                                 </Link>
@@ -318,7 +319,7 @@ const Header = (props) => {
                                         )
                                     }else{
                                         return(
-                                            <li key={`header-itemB${navItem.label}`} className={`${classesString} h-min min-w-max w-1/2 mb-2 xl:mb-0 xl:mx-3 p-1 xl:pb-[20px] cursor-pointer`}>
+                                            <li onClick={() => mobileMenuToggle()} key={`header-itemB${navItem.label}`} className={`${classesString} h-min min-w-max w-1/2 mb-2 xl:mb-0 xl:mx-3 p-1 xl:pb-[20px] cursor-pointer`}>
                                                 <Link title={navItem.label} to={navItem.url} className={`${currentItem && `-xl:!text-rm-black !font-bold pb-2 border-b-[1px] border-b-rm-green`} ${theme.text.P_STD} ${hoverColor} text-18px hover:!font-bold hover:pb-2 hover:border-b-[1px] hover:border-b-rm-green`}>
                                                     {navItem.label}
                                                 </Link>
