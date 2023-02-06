@@ -2,6 +2,7 @@ import React from "react"
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { theme } from "../static/theme"
 import Parser from "./global/Parser"
+import { motion } from "framer-motion"
 
 const IconTextBoxStack = (props) => {
     const content = props.content;

@@ -63,7 +63,7 @@ const WpPost = ({ data, pageContext }) =>{
           {content.author.node.users.avatar && 
             <GatsbyImage className="w-[70px] h-[70px] mr-5 rounded-full object-center object-cover" image={content.author.node.users.avatar.localFile.childImageSharp.gatsbyImageData} alt={content.author.node.users.avatar.altText} />
           }
-          <span className={theme.text.P_STD + 'inline'}>By <address className={theme.text.P_BLD + 'inline not-italic'}>{content.author.node.name}</address> on <time pubdate dateTime={content.date} className="inline not-italic">{content.date}</time></span>
+          <span className={theme.text.P_STD + 'inline'}>By <address className={theme.text.P_BLD + 'inline not-italic'}>{content.author.node.name}</address> on <time pubdate="pubdate" dateTime={content.date} className="inline not-italic">{content.date}</time></span>
         </div>
         <GatsbyImage className="w-full mt-9" image={content.featuredImage.node.localFile.childImageSharp.gatsbyImageData || ` `} />    
       </hgroup>

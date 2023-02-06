@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme, ThemeContext } from "../../static/theme"
 import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser"
+import FlexibleMedia from "../../components/global/FlexibleMedia"
 
 const ProjectHeader = (props) => {
     const content       = props.content.projectHeader;
@@ -35,6 +36,16 @@ const ProjectHeader = (props) => {
     const featuredImage = content.featuredImage   ? getImage(content.featuredImage.localFile)   : false;
     const imageOverhang = content.imageOverhang   ? getImage(content.imageOverhang.localFile)   : false;
     const videoOverhang = content.videoOverhang   ? content.videoOverhang : false;
+
+    const videoSource = (videoOverhang && videoOverhang.includes("vimeo")) ? "vimeo" : "video";
+
+    const data = {
+      type: 'video',
+      videoSource: videoSource,
+      video: {
+        videoUrl: videoOverhang
+      }
+    }
 
 
     const setVideo = () => {
@@ -141,7 +152,8 @@ const ProjectHeader = (props) => {
           <Container size={`slim`} classes={'helloClass'}> 
             {videoOverhang && 
             <div ref={ref}>
-              <video preload="metadata" controls src={videoOverhang} onLoadedData={() => setVideo()} />
+              {/* <video preload="metadata" controls src={videoOverhang} onLoadedData={() => setVideo()} /> */}
+              <FlexibleMedia data={data} onLoadedData={() => setVideo()} />
             </div>
             }
             {!videoOverhang && imageOverhang && 

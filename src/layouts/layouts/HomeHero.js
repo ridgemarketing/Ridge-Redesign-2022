@@ -43,19 +43,19 @@ const HomeHero = (props) => {
         <Section classes={'relative'} settings={settings}>
             {!isImage && video}
             {isImage && <BackgroundImage image={image} mobile={mobileImage} tablet={tabletImage} classes={`h-calc(100%-33px) lg:h-[calc(100%-55px)]`}/> }
-            <Container classes={'homeHero'}>
+            <Container classes={'homeHero'} containerWidth={'slim'}>
                 <div className={'pt-[60px] md:pt-20 xl:pt-0 max-w-[520px] lg:max-w-[700px] xl:max-w-full ml-auto relative -bottom-[100px]'}>
                 </div>
             </Container>
         </Section>
         <div className={`w-full lg:-mt-44`}>
-            <div className="w-full ml-auto mr-auto lg:max-w-[930px] xl:max-w-[1280px]">
-                <div className={`relative z-10 max-w-full mx-auto bg-black text-white px-9 pt-11 pb-14 md:px-14 md:py-16 md:pt-16 md:ml-0 w-[99%] sm:w-full xl:w-min xl:max-w-min `}>
+            <div className="w-full ml-auto mr-auto lg:max-w-[930px] xl:max-w-[1120px] xl:pl-12">
+                <div className={`relative z-10 max-w-full mx-auto bg-black text-white px-9 pt-11 pb-14 md:px-14 md:py-16 md:pt-16 md:ml-0 w-full sm:w-full xl:w-min xl:max-w-min `}>
                     <h1 className={`w-min`}>
                         <ul className={"h-min overflow-hidden relative"}>
                             {headingsList.map((data, idx) => {
                                 return (
-                                    <li id={`heading${idx+1}`} className={`${(idx === 0) ? 'animate-textFadeIn' : 'hidden absolute top-0 left-0'} font-stratos uppercase text-80px leading-[75px] font-bold block w-[99%] md:w-max`}>{data.heading}</li>
+                                    <li id={`heading${idx+1}`} className={`${(idx === 0) ? 'animate-textFadeIn' : 'hidden absolute top-0 left-0'} font-stratos uppercase text-80px xl:text-[83px] leading-[75px] font-bold block w-full md:w-max`}>{data.heading}</li>
                                 )
                             })}
                             {/* add blank li here thats ignored by loop and stays relative to maintain width if necessary */}

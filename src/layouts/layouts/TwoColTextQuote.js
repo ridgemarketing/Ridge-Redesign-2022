@@ -3,6 +3,7 @@ import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser"
+import { motion } from "framer-motion"
 
 const TwoColTextQuote = (props) => {
 
@@ -12,20 +13,31 @@ const TwoColTextQuote = (props) => {
     
     let order;
     (content.imageLeft) ? order= 'order-2' : order = '';
+    
 
     return (
         <Section settings={settings}>
             <Container container={settings.containerWidth}>
-                <div className={'xl:grid grid-cols-2 gap-16 pt-16'}>
-                    <div className={'pb-12 xl:pb-0 ' + order}>
+                {content && <div className={'xl:grid grid-cols-2 gap-16 pt-16'}>
+                  <motion.div
+                  className={'pb-12 xl:pb-0 ' + order}
+                  initial={{x: "-100vw"}}
+                  animate={{ x: 0 }}
+                  transition={{ ease: "easeOut", duration: 1 }}
+                  >
                         <h2 className={`${theme.text.H2} ${textColor}`}>
                             {content.textContent.heading}
                         </h2>
                         <p dangerouslySetInnerHTML={{__html: Parser(content.textContent.intro)}} className={`${theme.text.H4_LTE} ${textColor} mt-8`}></p>
                         <p dangerouslySetInnerHTML={{__html: Parser(content.textContent.body)}} className={`${theme.text.P_STD} ${textColor} mt-8`}></p>
-                    </div>
+                  </motion.div>
 
-                    <div className={"text-left"}>
+                    <motion.div
+                      className={"text-left"}
+                      initial={{x: "100vw"}}
+                      animate={{ x: 0 }}
+                      transition={{ ease: "easeOut", duration: 1 }}
+                    >
                         { content.quoteContent.quote &&
                           <q className={`${theme.text.PULL_Q} text-rm-green`}>
                               {content.quoteContent.quote}
@@ -41,8 +53,8 @@ const TwoColTextQuote = (props) => {
                               { content.quoteContent.title }
                           </small>
                         }
-                    </div>
-                </div>
+                    </motion.div> 
+                </div> }
             </Container>
         </Section>
     )

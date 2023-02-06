@@ -11,7 +11,7 @@ const BlogCard = (props) => {
                     <GatsbyImage image={ props.image } alt={props.alt} className={ `object-cover h-[125px] w-full ` } />
                 </div>
                 <div className={`w-full flex flex-col flex-1`}>
-                    <h3 className={theme.text['H4'] + `mb-7 flex-1`}>{props.heading}</h3>
+                    <h3 className={theme.text['H4'] + `mb-14 lg:mb-7 flex-1`}>{props.heading}</h3>
                     <div>
                         <span 
                             className={ 

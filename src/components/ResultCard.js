@@ -24,6 +24,7 @@ const ResultCard = (props) => {
 
     return (
             <div key={`${content.description}${content.stat}`} className={ `text-center lg:text-left ${classes[props.columns]} my-6` }>
+                <div className={'w-fit mx-auto'}>
                 { content.stat && 
                     <p className={`accent-text ${statClass} font-semibold font-stratos`}>
                         <CountUp
@@ -41,7 +42,7 @@ const ResultCard = (props) => {
                    <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H5 + 'font-basic-sans normal-case pr-4'} ${descriptionClass}`}></p>  
                 }
                 { content.company &&  
-                   <p className={`${theme.text.P_STD} mt-3`}>
+                   <p className={`${theme.text.P_STD}`}>
                         { content.company }
                     </p>  
                 }
@@ -56,6 +57,7 @@ const ResultCard = (props) => {
                         VIEW CASE STUDY
                     </Link>
                 }
+                </div>
             </div>
     )
 }

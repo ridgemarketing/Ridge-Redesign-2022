@@ -192,7 +192,7 @@ const Header = (props) => {
         <>
         <header className={`${textColor} ${bkgClass} fixed w-full h-[100px] z-50 top-0 flex items-center`} >
             <button type="button" onClick={()=>focusMain()} onKeyDown={()=>focusMain()} className="bg-rm-white text-rm-black p-5 font-basic-sans text-18px absolute -top-96 -left-96 focus:left-0 focus:top-0 focus:underline z-50" title="skip main navigation">Skip Main Navigation</button>
-            <section className="container h-full">
+            <section className="container xl:max-w-[1120px] h-full">
                 <nav className="h-full">
                     <ul key={`header-MasterUL`} className="flex items-center justify-between h-full">
                         <li key={`header-home`}><Link to={`/`} className="h-min">{logo}</Link></li>

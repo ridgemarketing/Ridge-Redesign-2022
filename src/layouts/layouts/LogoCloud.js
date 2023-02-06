@@ -5,6 +5,7 @@ import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import Buttons from '../../components/global/Buttons'
 import Parser from '../../components/global/Parser'
+import { motion } from "framer-motion"
 
 const LogoCloud = props => {
 
@@ -21,6 +22,29 @@ const LogoCloud = props => {
     body = Parser(content.body);
   }
 
+  const containerVariant = {
+    hidden: {
+      opacity: 0
+    },
+    visible: {
+      opacity: 1,
+      transition: {
+        delayChildren: 0.1,
+        staggerChildren: 0.4
+      }
+    }
+  };
+  const variantItems = {
+    hidden: {
+      opacity: 0,
+      scale: 0.3
+    },
+    visible: {
+      opacity: 1,
+      scale: [0.3, 1]
+    }
+  };
+
     return(
         <Section settings={ settings }>
             <Container>
@@ -30,16 +54,23 @@ const LogoCloud = props => {
                 {content.body &&
                     <p className={`${theme.text.P_STD} text-center my-4`} dangerouslySetInnerHTML={{__html: body}}></p>
                 }
-                <div className="mt-12 flex w-full flex-wrap justify-center lg:justify-around gap-y-10 md:gap-y-16 gap-x-10 sm:gap-x-12 md:gap-x-20 lg:gap-x-6">
+                  <motion.div 
+                  className={"mt-12 flex w-full flex-wrap justify-center items-center lg:justify-around gap-y-10 md:gap-y-16 gap-x-10 sm:gap-x-12 md:gap-x-20 lg:gap-x-6"}
+                  variants={containerVariant}
+                  initial="hidden"
+                  whileInView="visible"
+                  >
                     {content.logos.map(logo => {
                       const image = (logo.image.localFile.ext === ".svg") 
-                      ? <img key={logo.image.sourceUrl} className={`w-[24%] lg:w-[14%] object-contain`} src={logo.image.sourceUrl} alt={logo.image.altText}/>
-                      : <GatsbyImage key={logo.image.sourceUrl} className={`w-[24%] lg:w-[14%]`} objectFit="contain" image={logo.image.localFile.childImageSharp.gatsbyImageData} alt={logo.image.altText} /> ;
+                      ? <img key={logo.image.sourceUrl} className={`w-full object-contain`} src={logo.image.sourceUrl} alt={logo.image.altText}/>
+                      : <GatsbyImage key={logo.image.sourceUrl} className={`w-full`} objectFit="contain" image={logo.image.localFile.childImageSharp.gatsbyImageData} alt={logo.image.altText} /> ;
                       return(
-                        image
+                        <motion.div variants={variantItems} className={"w-[24%] lg:w-[14%] h-full"}>
+                          {image}                        
+                        </motion.div>
                       )
                     })}
-                </div> 
+                  </motion.div>
                 {content.componentButton && content.componentButton.link &&
                 <div className='text-center my-12'>
                   <Buttons 
