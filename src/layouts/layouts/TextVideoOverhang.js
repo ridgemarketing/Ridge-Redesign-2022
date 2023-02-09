@@ -8,9 +8,7 @@ import Parser from "../../components/global/Parser"
 const TextVideoOverhang = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    console.log(content);
     const video = content.video ? content.video : false;
-    console.log(video);
     const ref = useRef();
 
     return (

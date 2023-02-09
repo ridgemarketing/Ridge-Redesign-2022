@@ -12,7 +12,6 @@ const ProjectBlocks = (props) => {
 
     const content         = props.layoutData.layoutContent;
     const settings        = props.layoutData.layoutSettings;
-    console.log(content.projects);
 
     let transparent       = 'transparent';
     const textColor       = settings.backgroundColor === 'black' ? 'white' : 'black'; 

@@ -22,7 +22,6 @@ const TextBlock = (props) => {
     if (headingStyle === 'H1'){
       headingStyle = 'H1_LTE';
     }
-    console.log(settings);
 
     return (
         <Section settings={settings}>

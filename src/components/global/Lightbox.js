@@ -9,7 +9,7 @@ const LightBox = (props) => {
     const thumbnail = (video) ? images.sourceUrl : images[0].image.publicUrl;
     //const thumbnail = (video) ? (images ? images.sourceUrl : `https://images.pexels.com/photos/9553447/pexels-photo-9553447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`) : images[0].image.publicUrl;
 
-    const [image, setImage]             = useState(0);
+    const [image, setImage]             = useState(1);
     const [hoverState, setHoverState]   = useState("hidden");
     const [imgBlur, setImgBlur]         = useState("");
     const [overlay, setOverlay]         = useState(false);

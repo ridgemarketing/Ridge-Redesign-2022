@@ -80,7 +80,6 @@ const ProjectPortfolio = (props) => {
 
   const content   = props.layoutData.layoutContent;
   const settings  = props.layoutData.layoutSettings;
-  console.log(content);
 
   const bgImage   = content.settings.backgroundImage ? getImage(content.settings.backgroundImage.localFile) : false
   const images    = content.images

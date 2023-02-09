@@ -10,7 +10,6 @@ import { motion } from "framer-motion"
 const LogoCloud = props => {
 
   const content   = props.layoutData.layoutContent;
-  console.log(content);
   const settings  = props.layoutData.layoutSettings;
 
   let heading     = '';

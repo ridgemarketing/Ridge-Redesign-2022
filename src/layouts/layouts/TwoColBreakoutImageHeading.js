@@ -25,7 +25,7 @@ const TwoColBreakoutImageHeading = (props) => {
           <div className={`bg-${theme.backgroundColor[bgColor]} absolute top-32 left-0 right-0 bottom-0 w-full h-full`}></div>
           <Container size={`slim`}>
             <div className={`relative`}>
-              <div className={`lg:absolute lg:top-0 max-w-[810px] lg:w-[calc(50%+50vw-465px-2.25rem)] xl:w-[calc(100%-655px+3.5rem+50vw-640px)] ${imgWrapperCss}`}>
+              <div className={`relative overflow-hidden lg:absolute lg:top-0 max-w-[810px] lg:w-[calc(50%+50vw-465px-2.25rem)] xl:w-[calc(100%-655px+3.5rem+50vw-640px)] ${imgWrapperCss}`}>
                 <div className={`pt-[54.64%] w-full h-0`}>
                   <GatsbyImage className={`absolute top-0 left-0 w-full h-full object-cover object-top`} image={image} />
                 </div>

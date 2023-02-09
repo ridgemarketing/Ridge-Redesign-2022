@@ -88,7 +88,6 @@ const Header = (props) => {
         }
     `);
     
-    console.log(headerMenu);
     let [menuCounter, setMenuCounter] = useState(0);
     let content = headerMenu.allWpMenu.nodes[menuCounter].menuItems.nodes;
     

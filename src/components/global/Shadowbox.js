@@ -39,7 +39,7 @@ const ShadowBox = (props) => {
         if(overlay === true){
             setOverlay(false);
         }
-        console.log(overlay);
+        // console.log(overlay);
     }
     
     return(<>

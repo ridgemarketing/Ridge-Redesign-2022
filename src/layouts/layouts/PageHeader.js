@@ -8,7 +8,6 @@ import Parser from "../../components/global/Parser"
 const PageHeader = (props) => {
     const content       = props.layoutData.layoutContent;
     const settings      = props.layoutData.layoutSettings;
-    console.log(settings);
     const image         = content.backgroundImage ? getImage(content.backgroundImage.localFile) : false;
     let noBox, noSpace;
     if (content.heading || content.subheading || content.eyebrow){
