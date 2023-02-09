@@ -15,7 +15,7 @@ const Header = (props) => {
 
     const headerMenu = useStaticQuery(graphql`
         query GetHeaderMenu {
-            allWpMenu(filter: {name: {in: ["Primary","Mobile"] }}) {
+            allWpMenu(filter: {name: {in: ["Primary","Mobile"] }}, sort: {fields: name, order: DESC}) {
             nodes {
                 menuItems {
                 nodes {
@@ -96,9 +96,9 @@ const Header = (props) => {
         
         function windowResizing (){
             if(window.innerWidth > 1280){
-                setMenuCounter(1);
-            }else{
                 setMenuCounter(0);
+            }else{
+                setMenuCounter(1);
             }
             content = headerMenu.allWpMenu.nodes[menuCounter].menuItems.nodes;
         }
