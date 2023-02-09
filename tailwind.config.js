@@ -3,6 +3,10 @@ module.exports = {
     "./src/**/*.{js,jsx,ts,tsx}",
   ],
   safelist:[
+    {
+      pattern: /p(\w?)-[0-9]+/g,
+      variants: ['sm', 'md', 'lg', 'xl', 'xlz', '2xl'],
+    },
     'text-rm-green', 
     'bg-rm-green',
     'bg-rm-pale-grey',
@@ -29,8 +33,22 @@ module.exports = {
     'pb-40',
     'xl:ml-24',
     'pb-16',
+    'pt-16',
     'bg-rm-pale-teal',
-    'pt-6'
+    'pt-6',
+    'pt-7',
+    'pt-8',
+    'pt-12',
+    'pt-44',
+    'xl:pt-40',
+    'xl:pt-44',
+    'pt-5',
+    'md:pt-0',
+    'lg:pt-0',
+    'xl:pt-0',
+    'md:pt-20',
+    'lg:pt-20',
+    'xl:pt-20'
   ],
   theme: {
     screens:{
@@ -85,7 +103,7 @@ module.exports = {
           '21px'             : '1.3125rem',
           '26px'             : '1.625rem',
           '30px'             : '1.875rem',
-          '40px'             : '2rem',//2.5rem
+          '40px'             : '2.5rem',//2.5rem
           '45px'             : '2.8125rem',
           '50px'             : '2.9rem',//3.125rem
           '55px'             : '3.4375rem', 

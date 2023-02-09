@@ -163,7 +163,7 @@ const Footer = () =>{
                                 {socials.map( (social) =>{
                                     let icon = checkImg(social.icon);
                                     return(
-                                        <li key={`${social.link.url}footer-social-a`} className="mr-3 last-of-type:mr-0" >
+                                        <li key={`${social.link.url}footer-social-a`} className="mr-3 last-of-type:mr-0 hover:text-rm-green" >
                                             <a href={social.link.url} target={social.link.target}>
                                                 {icon}
                                             </a>

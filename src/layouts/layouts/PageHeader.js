@@ -8,6 +8,7 @@ import Parser from "../../components/global/Parser"
 const PageHeader = (props) => {
     const content       = props.layoutData.layoutContent;
     const settings      = props.layoutData.layoutSettings;
+    console.log(settings);
     const image         = content.backgroundImage ? getImage(content.backgroundImage.localFile) : false;
     let noBox, noSpace;
     if (content.heading || content.subheading || content.eyebrow){
@@ -17,6 +18,7 @@ const PageHeader = (props) => {
       noBox             = `relative`;
       noSpace           = `hidden`; 
     }
+    const width = (settings.containerWidth === "default") ? 'lg:w-4/6' : 'lg:w-4/5';
 
     return (
         <section className={`relative`}>
@@ -25,9 +27,9 @@ const PageHeader = (props) => {
           }
           <div className={`absolute bottom-0 left-0 w-full h-16 bg-white ${noSpace}`}></div>
           <div className={``}> 
-            <Container classes={`${noSpace} pt-[500px] xl:pt-96 ${settings.classes && settings.classes !== null ? settings.classes : ''}`}>
+            <Container container={settings.containerWidth} classes={`${noSpace} pt-[500px] xl:pt-96 ${settings.classes && settings.classes !== null ? settings.classes : ''}`}>
             {content.heading &&
-              <div className={`bg-black text-white py-12 px-6 lg:px-12 xl:pt-14 xl:pb-12 xl:pl-20 xl:pr-16 lg:w-4/5`} style={{maxWidth:content.maxWidth}}>
+              <div className={`bg-black text-white py-12 px-6 lg:px-12 xl:pt-14 xl:pb-12 xl:pl-20 xl:pr-16 ${width}`} style={{maxWidth:content.maxWidth}}>
                 {content.eyebrow &&
                   <span className={`block mb-8 ${theme.text.H4}`}>
                     {content.eyebrow}
@@ -85,6 +87,7 @@ export const query = graphql`
             bottom
             top
           }
+          containerWidth
         }
       }
     }

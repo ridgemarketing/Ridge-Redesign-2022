@@ -18,10 +18,10 @@ const TwoColTextQuote = (props) => {
     return (
         <Section settings={settings}>
             <Container container={settings.containerWidth}>
-                {content && <div className={'xl:grid grid-cols-2 gap-16 pt-16'}>
+                {content && <div className={'xl:grid grid-cols-2 gap-16'}> {/* pt-16 */}
                   <motion.div
                   className={'pb-12 xl:pb-0 ' + order}
-                  initial={{x: "-100vw"}}
+                  initial={{x: 0}}
                   animate={{ x: 0 }}
                   transition={{ ease: "easeOut", duration: 1 }}
                   >
@@ -34,12 +34,12 @@ const TwoColTextQuote = (props) => {
 
                     <motion.div
                       className={"text-left"}
-                      initial={{x: "100vw"}}
+                      initial={{x: 0}}
                       animate={{ x: 0 }}
                       transition={{ ease: "easeOut", duration: 1 }}
                     >
                         { content.quoteContent.quote &&
-                          <q className={`${theme.text.PULL_Q} text-rm-green`}>
+                          <q className={`font-basic-sans italic font-semibold text-30px md:text-55px leading-36px md:leading-PULL-Q  text-rm-green text-rm-green`}>
                               {content.quoteContent.quote}
                           </q>
                         }

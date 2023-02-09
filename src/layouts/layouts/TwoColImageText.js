@@ -17,19 +17,21 @@ const TwoColImageText = (props) => {
     return (
         <Section settings={settings}>
             <Container container={settings.containerWidth}>
-                <div className={'lg:grid grid-cols-2 gap-16 pt-16'}>
-                    <div className={'pb-12 lg:pb-0 ' + order}>
-                        <h3 className={theme.text.H2}>
-                            {content.heading}
-                        </h3>
-                        <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={theme.text.P_STD + ' mt-8'}></p>
-                        {content.componentButton && content.componentButton.link &&
-                          <div className='text-left my-8'>
-                            <Buttons 
-                              content={content.componentButton} 
-                              sectionBackground={settings.backgroundColor}/>
-                          </div>
-                        }
+                <div className={'lg:grid grid-cols-2 gap-16 '}> {/* pt-16 */}
+                    <div className={'pb-12 lg:pb-0 flex items-center ' + order}>
+                      <div>
+                          <h3 className={theme.text.H2 + 'text-center lg:text-left'}>
+                              {content.heading}
+                          </h3>
+                          <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={theme.text.P_STD + ' mt-8 text-center lg:text-left'}></p>
+                          {content.componentButton && content.componentButton.link &&
+                            <div className='text-left my-8'>
+                              <Buttons 
+                                content={content.componentButton} 
+                                sectionBackground={settings.backgroundColor}/>
+                            </div>
+                          }
+                      </div>
                     </div>
 
                     <div className={"lg:text-left text-center"}>

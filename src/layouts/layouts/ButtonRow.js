@@ -60,9 +60,9 @@ const ButtonRow = (props) => {
                         const linkInfo = button.componentButton.link;
                         return (
                           <motion.div
-                          className={'w-full md:w-[240px] lg:w-1/3 xl:w-1/4 my-4 lg:my-8 text-center'} 
+                          className={'w-full md:w-[240px] lg:w-1/3 xl:w-1/4 my-4 lg:mt-8 lg:mb-5 text-center'} 
                           variants={variantItems}>
-                            <div className={"xl:py-10"}>
+                            <div className={"xl:pt-10"}>
                               <a href={linkInfo.url} onClick={() => context.updateFilterState(filterType[linkInfo.title.toLowerCase()])} className={`${theme.button.BASE_STYLING} ${theme.button.GHOST_GREEN_HOVER_DARK} w-[240px]`}>{linkInfo.title}</a>
                             </div>
                           </motion.div>

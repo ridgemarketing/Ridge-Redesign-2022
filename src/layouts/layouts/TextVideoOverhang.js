@@ -18,7 +18,7 @@ const TextVideoOverhang = (props) => {
             <Container container={settings.containerWidth} classes={`text-center`}>
             <div className={'w-full pt-16 lg:p-20 pb-[180px] lg:pb-[360px]'} style={{backgroundColor: content.bgColor}}>
                 {content.heading && 
-                    <p className={`${theme.text.H2} text-white pb-10`}>{content.heading}</p>
+                    <p className={`${theme.text.H2} text-white pb-10 px-4`}>{content.heading}</p>
                 }
                 {content.body && 
                     <p className={`${theme.text.P_STD} text-white px-10`}>{content.body}</p>

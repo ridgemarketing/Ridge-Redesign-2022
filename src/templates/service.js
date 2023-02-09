@@ -82,7 +82,7 @@ const WpService = ({ data }) =>{
             </h1>
           }
           {content.heading.green && content.heading.black && 
-            <h2 className={theme.text.HERO + 'mb-9'}>
+            <h2 className={"font-stratos uppercase font-bold text-50px sm:text-60px lg:text-100px leading-[3rem] lg:leading-H1 mb-9"}>
                 <span className="text-rm-green lg:block">
                   {content.heading.green + " "}
                 </span>

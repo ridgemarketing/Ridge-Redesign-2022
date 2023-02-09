@@ -38,7 +38,7 @@ const TwoColBreakoutImageText = (props) => {
                 <div className={` justify-start ${FlexWrapperCss}`}>
                     <div className={`text-center xl:text-left xl:w-3/5 w-full flex-1 ${textCss}`}>
                         {content.eyebrow && 
-                          <span className={`block text-50px font-stratos font-normal uppercase`}>{content.eyebrow}</span>
+                          <span className={`block text-50px leading-none font-stratos font-normal uppercase`}>{content.eyebrow}</span>
                         }
                         {content.heading &&
                           <h2 className={theme.text.H1_STD}>
@@ -50,10 +50,10 @@ const TwoColBreakoutImageText = (props) => {
                           <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} mt-8 first-line:my-8 text-rm-grey`}></p>
                         }
                         {content.list && 
-                          <ul className={`flex flex-wrap justify-between mt-10`}>
+                          <ul className={`md:flex md:flex-wrap md:justify-between mt-10`}>
                               {content.list.map(data => {
                                 return (
-                                  <li className={`${theme.text.P_STD} font-normal w-[48%] mb-4 text-rm-grey text-21px`}>
+                                  <li className={`${theme.text.P_STD} text-left font-normal md:w-[48%] mb-4 text-rm-grey text-21px`}>
                                       {data.item}
                                   </li>                                       
                                 )

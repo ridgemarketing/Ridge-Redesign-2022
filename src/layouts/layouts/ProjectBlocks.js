@@ -99,7 +99,7 @@ const ProjectBlocks = (props) => {
                       { content.bottomHeading }
                   </h2>
                 }
-                {content.componentButton &&
+                {content.componentButton && content.componentButton.link &&
                   <div className="text-center mt-10">
                     <Buttons content={content.componentButton} sectionBackground={settings.backgroundColor}/>
                   </div>

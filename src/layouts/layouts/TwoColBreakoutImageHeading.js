@@ -30,7 +30,7 @@ const TwoColBreakoutImageHeading = (props) => {
                   <GatsbyImage className={`absolute top-0 left-0 w-full h-full object-cover object-top`} image={image} />
                 </div>
               </div>
-              <div className={`py-16 lg:pt-48 2xl:pt-64 ${FlexWrapperCss}`}>
+              <div className={`pt-16 lg:pt-48 2xl:pt-64 ${FlexWrapperCss}`}>
                   <div className={`lg:w-1/2 xl:w-[655px] ${headingCss}`}>
                       <h2 className={theme.text.H1_STD}>
                           {content.heading}

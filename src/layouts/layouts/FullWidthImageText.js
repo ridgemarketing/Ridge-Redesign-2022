@@ -55,7 +55,7 @@ const FullWidthImageText = (props) => {
             }
 
             <div className={`mx-auto ${imageWrapperClasses}`}>
-              {image}
+              <div className={imageClasses}>{image}</div>
               {mobile}
             </div>
 

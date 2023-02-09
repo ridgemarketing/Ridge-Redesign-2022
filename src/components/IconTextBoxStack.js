@@ -28,7 +28,7 @@ const IconTextBoxStack = (props) => {
     if (iconType === 'number') {
         component = 
         <div className={"mb-5 text-center md:text-left lg:mx-0"}>
-            <span className={`${theme.text.CIRCLE_NUM}  w-[65px] h-[65px] text-rm-green border-rm-green`}>{props.idx}</span>
+            <span className={`${theme.text.CIRCLE_NUM}  w-[65px] h-[65px] text-rm-green border-rm-green mx-auto sm:mr-auto sm:ml-0`}>{props.idx}</span>
         </div> 
     }
     
@@ -47,7 +47,7 @@ const IconTextBoxStack = (props) => {
             <div className={'py-4'} key={`iconTextBoxFlex-item${Math.random()}`}>
                 {component}
                 <h5 dangerouslySetInnerHTML={{__html: heading}} className={theme.text.H5 + ` text-center md:text-left ${props.color}`}></h5>        
-                <p dangerouslySetInnerHTML={{__html: body}} className={ theme.text.P_STD + `mt-4 text-left ${props.color}`}></p>
+                <p dangerouslySetInnerHTML={{__html: body}} className={ theme.text.P_STD + `text-center md:text-left mt-4 text-left ${props.color}`}></p>
             </div>
             )
 }

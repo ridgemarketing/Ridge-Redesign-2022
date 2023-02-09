@@ -28,9 +28,10 @@ const ResultCard = (props) => {
                 { content.stat && 
                     <p className={`accent-text ${statClass} font-semibold font-stratos`}>
                         <CountUp
-                            delay={1}
+                            delay={2}
+                            start={0}
                             end={statNumber}
-                            duration={7}
+                            duration={8}
                             suffix={suffixString}
                             enableScrollSpy={true}
                             scrollSpyOnce={true}

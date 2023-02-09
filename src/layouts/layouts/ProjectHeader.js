@@ -77,7 +77,7 @@ const ProjectHeader = (props) => {
     let top             = `top-0`
 
     if (featuredImage) {
-        top             = `top-56 lg:top-96`
+        top             = `top-52 lg:top-96`
     }
 
     const context = useContext(ThemeContext);
@@ -103,18 +103,18 @@ const ProjectHeader = (props) => {
               <div className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} style={{backgroundColor: content.backgroundColor, maxHeight: `calc(100% - ${maxHeight}px)`}}></div>
           }
           {bgImage && 
-              <GatsbyImage style={{maxHeight: `calc(100% - ${maxHeight}px)`}} className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} image={bgImage} />
+              <GatsbyImage fadeIn={false} durationFadeIn={0} style={{maxHeight: `calc(100% - ${maxHeight}px)`}} className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} image={bgImage} />
           }
           
           {featuredImage && 
               <Container container={'none'} classes={'md:container'}>
-                  <div className={`mt-8`}>
+                  <div className={`md:mt-8`}>
                       <GatsbyImage className={``} image={featuredImage} />
                   </div>
               </Container>
           }
 
-          <Container size={`slim`} classes={`pt-20 pb-14 md:pb-20 xl:pb-44`}>
+          <Container size={`slim`} classes={`pt-20 pb-14 md:pb-16`}> {/* md:pb-20 xl:pb-44 */}
               <div className={`max-w-[400px] mb-16`}>
                   {logo}
               </div>

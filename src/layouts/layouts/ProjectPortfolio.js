@@ -7,7 +7,7 @@ import { theme } from "../../static/theme"
 
 const ProjectPortfolioImage = forwardRef((props, ref) => {
 
-  const { startRef, endRef } = ref.current
+  const { startRef, endRef } = ref.current;
   const mobile = props.image.mobile ? getImage(props.image.mobile.localFile) : false
   const tablet = props.image.tablet ? getImage(props.image.tablet.localFile) : false
   const desktop = props.image.desktop ? getImage(props.image.desktop.localFile) : false
@@ -47,7 +47,7 @@ const ProjectPortfolioImage = forwardRef((props, ref) => {
   }
 
   return (
-    <div style={{paddingBottom: `${padding}px`}} className={`portfolio-image relative`}>
+    <div className={`portfolio-image relative ${padding}`}>
       
       {first &&
         <div ref={startRef} className={`portfolio-start absolute top-[12.5%]`}></div>
@@ -59,17 +59,17 @@ const ProjectPortfolioImage = forwardRef((props, ref) => {
 
       {mobile &&
         <div className={`${mobileClassName}`}>
-          <GatsbyImage image={mobile} />
+          <GatsbyImage fadeIn={false} durationFadeIn={0} image={mobile} />
         </div>
       }
       {tablet &&
         <div className={`${tabletClassName}`}>
-          <GatsbyImage image={tablet} />
+          <GatsbyImage fadeIn={false} durationFadeIn={0} image={tablet} />
         </div>
       }
       {desktop &&
         <div className={`${desktopClassName}`}>
-          <GatsbyImage image={desktop} />
+          <GatsbyImage fadeIn={false} durationFadeIn={0} image={desktop} />
         </div>
       }
   </div>
@@ -80,21 +80,22 @@ const ProjectPortfolio = (props) => {
 
   const content   = props.layoutData.layoutContent;
   const settings  = props.layoutData.layoutSettings;
+  console.log(content);
 
   const bgImage   = content.settings.backgroundImage ? getImage(content.settings.backgroundImage.localFile) : false
   const images    = content.images
-  let textAlign   = `text-left`
+  let textAlign   = `lg:text-left`
 
   const startRef  = useRef(null)
   const endRef    = useRef(null)
   const ref       = useRef({startRef, endRef})
 
   if (content.settings.textAlign === `center`) {
-    textAlign = `text-center`
+    textAlign = ``
   }
 
   if (content.settings.textAlign === `right`) {
-    textAlign = `text-right`
+    textAlign = `lg:text-right`
   }
 
   const [bgHeight, setBgHeight] = useState(null)
@@ -116,10 +117,10 @@ const ProjectPortfolio = (props) => {
       <Section classes={`relative`} settings={settings}>
         <Container>
             {content.heading &&
-              <h2 className={`mb-8 ${textAlign} ${theme.text.H2}`}>{content.heading}</h2>
+              <h2 className={`mb-8 text-center ${textAlign} ${theme.text.H2}`}>{content.heading}</h2>
             }
             {content.body && 
-              <p className={`mb-12 ${theme.text.P_STD}`}>{content.body}</p>
+              <p className={`mb-12 text-center lg:text-left ${theme.text.P_STD}`}>{content.body}</p>
             }
         </Container>
         <div className={`relative`}>
@@ -279,21 +280,27 @@ export const projectQuery = graphql`
                   childImageSharp {
                     gatsbyImageData (quality: 99, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                   }
+                  ext
                 }
+                sourceUrl
               }
               mobile {
                 localFile {
                   childImageSharp { 
                     gatsbyImageData (quality: 95, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                   }
+                  ext
                 }
+                sourceUrl
               }
               tablet {
                 localFile {
                   childImageSharp {
                     gatsbyImageData (quality: 95, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
                   }
+                  ext
                 }
+                sourceUrl
               }
               padding
             }

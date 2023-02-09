@@ -73,6 +73,8 @@ const FeaturedProjectsCarousel = (props) => {
                               {/* <div className="homeSlider absolute overflow-hidden w-full h-full"></div>
                               <div className="homeSlider-2 absolute overflow-hidden w-full h-full"></div> */}
                              <GatsbyImage 
+                                fadeIn={false}
+                                durationFadeIn={0}
                                 image={data.project.projectInformation.images.carouselFeature.localFile.childImageSharp.gatsbyImageData} 
                                 alt={ ' ' } 
                                 className={ `` } 
@@ -93,7 +95,7 @@ const FeaturedProjectsCarousel = (props) => {
                             <div className={`px-8 pt-7 pb-10 bg-white w-full md:max-w-[548px] md:px-12 md:pt-9 shadow-block`}>
                                 <span></span>
                                 <h3 className={`${theme.text.P_STD}`}>{data.project.title}</h3>
-                                <h5 className={`${theme.text.H5}`}>{data.caption}</h5>
+                                <h5 className={`font-stratos uppercase font-bold text-[32px] md:text-40px leading-44px  `}>{data.caption}</h5>
                                 <div className={'mt-6'}>
                                     <Link className={`${theme.button.BASE_STYLING} ${theme.button.GHOST_GREEN_HOVER_DARK}`} to={data.project.link}>View Project</Link>
                                 </div>

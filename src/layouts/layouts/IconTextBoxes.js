@@ -14,15 +14,18 @@ const IconTextBoxes = (props) => {
 
   const dataFetchedRef = useRef(false);
   const iconContainer = useRef(null);
-  let columnOrder =  ``;
+  let flexDirection =  ``;
   if(settings.classes){
     if (settings.classes.includes(`columnOrder`)){
-      columnOrder =  `md:flex-col md:flex-wrap`;
+      flexDirection =  `md:flex-col md:flex-wrap`;
+    }
+    else if (settings.classes.includes('rowOrder')) {
+      flexDirection = 'md:flex-row md:flex-wrap';
     }
   }
   const calcHeight = () =>{
     if(settings.classes){
-      if (settings.classes.includes(`columnOrder`)){
+      if (settings.classes.includes(`flexDirection`)){
         
         function setHeight(){
           let colOneHeight =0, colTwoHeight =0;
@@ -39,7 +42,7 @@ const IconTextBoxes = (props) => {
             if( colOneHeight >= colTwoHeight){}else{
               colOneHeight = colTwoHeight;
             }
-            iconContainer.current.setAttribute('style',`height:${colOneHeight}px`);
+            // iconContainer.current.setAttribute('style',`height:${colOneHeight}px`);
           
           }else if (iconContainer) {
             iconContainer.current.setAttribute('style',`height:100%;`);
@@ -72,7 +75,7 @@ const IconTextBoxes = (props) => {
   }
     const cols = content.settings.columns === 3 ? 'xl:grid-cols-3' : '';
     //added code to dynamically set mt on wrapper div depending on stack or flex (icon placement affects margin needed)
-    const wrapperClasses = (content.settings.type === 'stack') ? `mt-16 grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} gap-8 max-w-[1100px] mx-auto` : `mt-24 flex w-full flex-wrap justify-between ${columnOrder} threeColIconsText`;
+    const wrapperClasses = (content.settings.type === 'stack') ? `mt-16 grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} gap-8 max-w-[1100px] mx-auto` : `mt-24 flex w-full flex-wrap justify-between ${flexDirection} threeColIconsText`;
 
   return (
       <Section settings={settings}>

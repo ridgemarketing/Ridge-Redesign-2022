@@ -62,7 +62,7 @@ const FullWidthImage = (props) => {
         <Section settings={settings}>
             <Container container={settings.containerWidth}>
                 {content.heading && 
-                <p className={`${theme.text.H2} pb-8`}>{content.heading}</p>
+                <p className={`${theme.text.H2} pb-8 text-center lg:text-left`}>{content.heading}</p>
                 }
                 <div ref={overlapImage} className={`mx-auto ${overlapImageClass}`}> 
                     {image}
