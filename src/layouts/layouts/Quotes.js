@@ -24,6 +24,33 @@ const Quotes = (props) => {
         setData(slides[i]);
         setSlide(i);
     }
+    function useIsVisible(ref) {
+      const [isIntersecting, setIntersecting] = useState(false);
+    
+      useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) =>
+          setIntersecting(entry.isIntersecting)
+        );
+    
+        observer.observe(ref.current);
+        return () => {
+          observer.disconnect();
+        };
+      }, [ref]);
+    
+      return isIntersecting;
+    }
+
+    const sliderRef = useRef();
+    const isVisible = useIsVisible(sliderRef);
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        if (isVisible) nextSlide();
+      }, 4000);
+    
+      return () => clearInterval(interval);
+    });
 
     const parallaxContainer  = useRef(null);
     const quoteLeft          = useRef(null);
@@ -115,7 +142,7 @@ const Quotes = (props) => {
                   { content.heading }
               </h2>
             }
-            <div className={` mt-12 flex w-full flex-wrap justify-between relative`}>
+            <div ref={sliderRef} className={` mt-12 flex w-full flex-wrap justify-between relative`}>
                 <div className={ `frosted-glass p-8 lg:p-14 w-full` }>
                   <div key={Math.random()} className={`animate-quote`}>
                     <div dangerouslySetInnerHTML={{__html: Parser(data.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out' }></div>
