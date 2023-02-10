@@ -64,7 +64,7 @@ const LogoCloud = props => {
                       ? <img key={logo.image.sourceUrl} className={`w-full object-contain`} src={logo.image.sourceUrl} alt={logo.image.altText}/>
                       : <GatsbyImage key={logo.image.sourceUrl} className={`w-full`} objectFit="contain" image={logo.image.localFile.childImageSharp.gatsbyImageData} alt={logo.image.altText} /> ;
                       return(
-                        <motion.div variants={variantItems} className={"w-[24%] lg:w-[14%] h-full"}>
+                        <motion.div variants={variantItems} className={"w-[24%] lg:w-[15%] h-full"}>
                           {image}                        
                         </motion.div>
                       )
