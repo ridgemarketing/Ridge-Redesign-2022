@@ -51,7 +51,7 @@ const ButtonRow = (props) => {
                         {content.topHeading}
                     </h3>                
                       <motion.div
-                        className={`flex justify-center xl:justify-between gap-x-8 lg:gap-x-1 xl:gap-0 flex-wrap`}
+                        className={`flex justify-center gap-x-8 lg:gap-x-1 xl:gap-0 flex-wrap`}
                         variants={containerVariant}
                         initial="hidden"
                         whileInView="visible"

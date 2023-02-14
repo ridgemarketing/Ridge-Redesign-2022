@@ -27,10 +27,11 @@ const ProjectBlocks = (props) => {
     return(
         <Section settings={ settings } transparent = { transparent }>
             <Container>
-                {content.topHeading &&
+              <div className={`relative ${(!content.topHeading && content.overlap) && `-top-8 -mb-8`}`}>
+              {content.topHeading &&
                   <h2 dangerouslySetInnerHTML={{__html: Parser(content.topHeading)}} className={`${theme.text.H2} text-center ${textColor}`} style={{marginTop: content.overlap ? '-20vh' : '0', paddingBottom: content.overlap ? '5vh' : '5rem'}}></h2>
                 }
-                <div className="flex w-full flex-wrap justify-between" style={{marginTop: (!content.topHeading && content.overlap) ? '-20vh' : '0' }}>
+                <div className={`flex w-full flex-wrap justify-between`}>
                     {content.projects.map(block => {
                         let image = '';
                          
@@ -103,6 +104,7 @@ const ProjectBlocks = (props) => {
                     <Buttons content={content.componentButton} sectionBackground={settings.backgroundColor}/>
                   </div>
                 }
+              </div>
             </Container>
         </Section>
     )

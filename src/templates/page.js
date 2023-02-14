@@ -74,13 +74,13 @@ const WpPage = ({ data }) =>{
         {data.wpPage.pageHeader && !data.wpPage.isFrontPage && !blackList.includes(data.wpPage.title) &&
           <PageHeader layoutData={data.wpPage.pageHeader.pageHeader} />
         }
-        {data.wpPage.title == "Portfolio" &&
+        {data.wpPage.title === "Portfolio" &&
             <PortfolioHeader layoutData={data.wpPage.portfolioHeader.portfolioHeader} />
         }
         {data.wpPage.isFrontPage &&
           <HomeHero layoutData={data.wpPage.homeHero.layoutHomeHero}/>
         }
-        {data.wpPage.title == "404" &&
+        {data.wpPage.title === "404" &&
           <Container>
             <div className={'page404'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
             <Menu />
