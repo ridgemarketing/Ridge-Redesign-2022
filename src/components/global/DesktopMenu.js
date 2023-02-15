@@ -71,7 +71,7 @@ const DesktopMenu = ({}) => {
                                 <div key={``} className={`hidden group-hover:block absolute top-full min-w-max left-1/2 right-1/2 -translate-x-1/2`}>
                                     <span className={`w-[44px] mx-auto block text-white`}><Triangle /></span>
                                     {navItem.childItems.nodes.length <= 6 &&
-                                        <div className={`bg-white pt-6 pb-8 px-5 text-rm-black flex flex-col gap-6`}>
+                                        <div className={`bg-white pt-6 pb-8 px-5 text-rm-black flex flex-col gap-6 shadow-block`}>
                                             {navItem.childItems.nodes.map((subNavItem, index) => {
                                                 let menuIcon = false;
 
@@ -88,7 +88,7 @@ const DesktopMenu = ({}) => {
                                         </div>
                                     }
                                     {navItem.childItems.nodes.length > 6 &&
-                                        <div className={`bg-white pt-6 pb-8 px-5 text-rm-black grid grid-cols-2 gap-y-4 gap-x-6`}>
+                                        <div className={`bg-white pt-6 pb-8 px-5 text-rm-black grid grid-cols-2 gap-y-4 gap-x-6 shadow-block`}>
                                             {navItem.childItems.nodes.map((subNavItem, index) => {
                                                 let menuIcon = false;
 

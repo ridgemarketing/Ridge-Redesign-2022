@@ -59,21 +59,6 @@ const FormWrapper = (props) => {
         <Formik
             initialValues={{}}
             onSubmit={ async (values, actions) => {
-                const file = values['Resume'];
-                const reader = new FileReader();
-
-                reader.addEventListener("load", () => {
-                    if (file) {
-                        reader.readAsDataURL(file);
-                        console.log(reader.result)
-                        console.log(`file???`)
-                    }
-                  }, false);
-
-
-
-                console.log(file)
-                
 
                 const res = await fetch("/api/sendgrid", {
                     body: JSON.stringify({
@@ -97,6 +82,39 @@ const FormWrapper = (props) => {
                   }
 
                   setStatus('success')
+                
+
+                
+
+                // if( valid ){
+                //     console.log(JSON.stringify(values, null, 2));
+                //     actions.resetForm({
+                //         values: { }
+                //     });
+                //         const response = await fetch (sendGridURL, {
+                //             method: 'POST',
+                //             headers: {
+                //                 'Authorization' : 'Bearer ' + sendGridKey,
+                //                 "Access-Control-Allow-Origin": "http://localhost:8000",
+                //                 'Content-Type'  : 'application/json'
+                //             },
+                //             data: {"personalizations": 
+                //                     [{"to": [{"email": "dev@ridgemarketing.com"}]}],
+                //                     "from": {"email": "dev@ridgemarketing.com"},
+                //                     "subject": JSON.stringify(values, null, 2),
+                //                     "content": 
+                //                         [{"type": "text/plain", 
+                //                         "value": JSON.stringify(values, null, 2)}]},
+                //         }); 
+
+                //         if( response.status == 200 ) {
+                //             alert("Thank you for your submission. We will be in touch with you soon about how we can help with your marketing goals.");
+                //             actions.resetForm();
+                //         } else {
+                //             alert("uh, oh ");
+                //         }
+
+                // }else{}
         }}>
         {({ isSubmitting }) => (
             <>
@@ -200,80 +218,74 @@ const FormWrapper = (props) => {
                     </div>
                 }
                 {careers &&
-                    <div className={`xl:max-w-[${theme.containers.slim['lg']}] ml-auto mr-auto mt-10 relative`}>
-                        {status === `success` && 
-                            <div className={`absolute top-0 left-0 w-full text-center ${theme.forms[formSize]} h-full z-[2]`}>
-                                <h3 className={`${theme.text.H5} text-rm-green text-26px mb-6`}>Thank you for your submission.</h3>
-                                <p className={`${theme.text.P_STD} ${textColor}`}>We will be in touch with you soon about how we can help with your marketing goals.</p>
-                            </div>
-                        }
-                        <div className={`${theme.forms.BASE_STYLING} ${theme.forms[formSize]} ${theme.forms[formSize + `_DISPLAY`]} ${status === `success` ? `opacity-0` : `opacity-100`}`}>
-                            <Form 
-                                ref={formRef} 
-                                className={`${formBkg} ${dropShadow} ${theme.forms[formSize + `_PADDING`]} ${theme.forms[formSize + `_DISPLAY`]}`} 
-                                autoComplete="on">
-                                    <BasicInputs 
-                                        type        = { 'text' }
-                                        color       = { textColor }
-                                        inputID     = { `form-part-0` } 
-                                        inputName   = { `Name` }
-                                        required    = { true }
-                                        pristineM   = { 'Please complete the required field' }
-                                    />
-                                    <BasicInputs 
-                                        type        = { 'email' }
-                                        color       = { textColor }
-                                        inputID     = { 'form-part-1' }
-                                        inputName   = { 'Email' }
-                                        required    = { true }
-                                        pristineM   = { 'Please complete the required field' }
-                                    />
-                                    <BasicInputs 
-                                        type        = { 'tel' }
-                                        color       = { textColor}
-                                        inputID     = { 'form-part-2' }
-                                        inputName   = { 'Phone' }
-                                        required    = { true }
-                                        pristineM   = { 'Please complete the required field' }
-                                    />
-                                    <BasicInputs 
-                                        type        = { 'text' }
-                                        color       = { textColor }
-                                        inputID     = { `form-part-3` } 
-                                        inputName   = { `Positon Sought` }
-                                        required    = { true }
-                                        pristineM   = { 'Please complete the required field' }
-                                    />
-                                    <BasicInputs 
-                                        type        = { 'text' }
-                                        color       = { textColor }
-                                        inputID     = { `form-part-4` } 
-                                        inputName   = { `Portfolio/Resume Link` }
-                                        required    = { true }
-                                        pristineM   = { 'Please complete the required field' }
-                                    />
-                                    <MultiLineText
-                                        inputID     = { 'form-part-5' }
-                                        color       = { textColor }
-                                        inputName   = { 'What would bring you to the barn?' }
-                                        required    = { true }
-                                        pristineM   = { 'Please complete the required field' }
-                                    />
-                                    {/* <FileUpload 
-                                        color       = { textColor }
-                                        inputID     = { `form-part-6` } 
-                                        inputName   = { `Resume` }
-                                        required    = { true }
-                                        pristineM   = { 'Please complete the required field' }
-                                    /> */}
-                                    <FormSubmit 
-                                        inputID     = { 'form-part-7' }
-                                        value       = { "SUBMIT" }
-                                        submit      = { isSubmitting }
-                                        buttonColor = { buttonColor }
-                                    />
-                            </Form>
-                        </div>
+                    <div className={`xl:max-w-[${theme.containers.slim['lg']}] ml-auto mr-auto mt-10`}>
+                    <div className={`${theme.forms.BASE_STYLING} ${theme.forms[formSize]}`}>
+                    <Form 
+                        ref={formRef} 
+                        className={`${formBkg} ${dropShadow} ${theme.forms[formSize + `_PADDING`]} ${theme.forms[formSize + `_DISPLAY`]}`} 
+                        autoComplete="on">
+                            <BasicInputs 
+                                type        = { 'text' }
+                                color       = { textColor }
+                                inputID     = { `form-part-0` } 
+                                inputName   = { `Name` }
+                                required    = { true }
+                                pristineM   = { 'Please complete the required field' }
+                            />
+                            <BasicInputs 
+                                type        = { 'email' }
+                                color       = { textColor }
+                                inputID     = { 'form-part-1' }
+                                inputName   = { 'Email' }
+                                required    = { true }
+                                pristineM   = { 'Please complete the required field' }
+                            />
+                            <BasicInputs 
+                                type        = { 'tel' }
+                                color       = { textColor}
+                                inputID     = { 'form-part-2' }
+                                inputName   = { 'Phone' }
+                                required    = { true }
+                                pristineM   = { 'Please complete the required field' }
+                            />
+                            <BasicInputs 
+                                type        = { 'text' }
+                                color       = { textColor }
+                                inputID     = { `form-part-3` } 
+                                inputName   = { `Positon Sought` }
+                                required    = { true }
+                                pristineM   = { 'Please complete the required field' }
+                            />
+                            <BasicInputs 
+                                type        = { 'text' }
+                                color       = { textColor }
+                                inputID     = { `form-part-4` } 
+                                inputName   = { `Portfolio Link` }
+                                required    = { true }
+                                pristineM   = { 'Please complete the required field' }
+                            />
+                            <MultiLineText
+                                inputID     = { 'form-part-5' }
+                                color       = { textColor }
+                                inputName   = { 'What would bring you to the barn?' }
+                                required    = { true }
+                                pristineM   = { 'Please complete the required field' }
+                            />
+                            <FileUpload 
+                                color       = { textColor }
+                                inputID     = { `form-part-6` } 
+                                inputName   = { `Upload Resume` }
+                                required    = { true }
+                                pristineM   = { 'Please complete the required field' }
+                            />
+                            <FormSubmit 
+                                inputID     = { 'form-part-7' }
+                                value       = { "SUBMIT" }
+                                submit      = { isSubmitting }
+                                buttonColor = { buttonColor }
+                            />
+                    </Form>
+                    </div>
                     </div>
                 }
             </>

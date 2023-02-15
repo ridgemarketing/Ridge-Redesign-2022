@@ -27,7 +27,7 @@ const CtaForm = (props) => {
                 }
               <FormWrapper
                 formSize    = {`FULL`}
-                formBkg     = {'black'}
+                formBkg     = {settings.backgroundColor}
                 dropShadow  = {false}
               />
         </Container>
