@@ -61,11 +61,11 @@ const WpPost = ({ data, pageContext }) =>{
         <h1 className={theme.text.H1_STD + 'mb-9'}> {content.title} </h1>
         <div className="flex items-center">
           {content.author.node.users.avatar && 
-            <GatsbyImage className="w-[70px] h-[70px] mr-5 rounded-full object-center object-cover" image={content.author.node.users.avatar.localFile.childImageSharp.gatsbyImageData} alt={content.author.node.users.avatar.altText} />
+            <GatsbyImage className="w-[70px] h-[70px] mr-5 rounded-full object-center object-cover" image={content.author.node.users.avatar.localFile.childImageSharp.gatsbyImageData} alt={content.author.node.name} />
           }
           <span className={theme.text.P_STD + 'inline'}>By <address className={theme.text.P_BLD + 'inline not-italic'}>{content.author.node.name}</address> on <time pubdate="pubdate" dateTime={content.date} className="inline not-italic">{content.date}</time></span>
         </div>
-        <GatsbyImage className="w-full mt-9" image={content.featuredImage.node.localFile.childImageSharp.gatsbyImageData || ` `} />    
+        <GatsbyImage className="w-full mt-9" image={content.featuredImage.node.localFile.childImageSharp.gatsbyImageData || ` `} alt={`featured image`} />    
       </hgroup>
       <article className="container blog-container my-9 font-basic-sans">
         <div dangerouslySetInnerHTML={ {__html:  Parser(content.content, 'blog')} }></div>
