@@ -55,7 +55,7 @@ const Header = (props) => {
             window.addEventListener('scroll', onScroll, { passive: true });
             return () => window.removeEventListener('scroll', onScroll);
         }
-    }, [window])
+    }, [])
 
 
     const headerSettings = useStaticQuery(graphql`
