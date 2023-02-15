@@ -13,6 +13,7 @@ const Quotes = (props) => {
     const slides = content.quotes ? content.quotes : [];
     const [slide, setSlide] = useState(0);
     const [data, setData] = useState(content.quotes[0]);
+    const [slideInteraction, setInteraction] = useState(false);
 
     const nextSlide = () => {
         let i = (slide === slides.length - 1) ? 0 : slide + 1;
@@ -24,6 +25,12 @@ const Quotes = (props) => {
         setData(slides[i]);
         setSlide(i);
     }
+    const handleClick = (next) => {
+      setInteraction(true);
+      (next) ? nextSlide() : prevSlide();
+      return;
+    }
+
     function useIsVisible(ref) {
       const [isIntersecting, setIntersecting] = useState(false);
     
@@ -46,7 +53,7 @@ const Quotes = (props) => {
 
     useEffect(() => {
       const interval = setInterval(() => {
-        if (isVisible) nextSlide();
+        if (isVisible && !slideInteraction) nextSlide();
       }, 6000);
     
       return () => clearInterval(interval);
@@ -156,11 +163,11 @@ const Quotes = (props) => {
                 </div>
                 {arrows &&
                 <div className={`w-[175px] flex bg-rm-pale-grey lg:ml-10`}>
-                    <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => prevSlide()}>
+                    <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(false)}>
                         <ArrowTallLeftBlack/>
                     </button>
                     <span className={ theme.text.FOOTER + 'flex items-center font-basic-sans'}> {slide + 1} / {slides.length}</span>
-                    <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => nextSlide()}>
+                    <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(true)}>
                         <ArrowTallRightBlack/>
                     </button>
                 </div>
