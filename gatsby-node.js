@@ -32,6 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
         nodes {
           id
           uri
+          isPostsPage
         }
       }
       allWpService {
@@ -65,6 +66,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const projectTemplate = path.resolve(`./src/templates/project.js`)
 
   allPosts.forEach(post => {
+
     createPage({
       // will be the url for the page
       path: `blog` + post.node.uri,
@@ -83,6 +85,11 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   allPages.forEach(page => {
+
+    if (page.isPostsPage) {
+      page.uri = `/blog/`
+    }
+
     createPage({
       // will be the url for the page
       path: page.uri,

@@ -20,24 +20,28 @@ const FeaturedProjectsCarousel = (props) => {
     const nextSlide = () => {
         let i = slide;
         //dataTwo = slide + 1;
-        if (i === slides.length - 1) {
+        if (i === (slides.length - 1)) {
             setSlide(0);
-            setData(slides[slide]);
+            setData(slides[slides.length - 1]);
         } else {
             setSlide(i + 1);
-            setData(slides[slide]);
+            setData(slides[i + 1]);
         }
+
+        console.log(slide)
     }
 
     const prevSlide = () => {
         let i = slide
         if (i === 0) { 
             setSlide(slides.length - 1);
-            setData(slides[slide]);            
+            setData(slides[slides.length - 1]);            
         } else {
             setSlide(i - 1);
-            setData(slides[slide]);
+            setData(slides[i - 1]);
         }
+
+        console.log(slide)
     }
 
     // dataTwo = dataTwo - slide;
