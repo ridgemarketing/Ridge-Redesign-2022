@@ -4,6 +4,8 @@ import GatsbyLink from "gatsby-link"
 import { Container } from "./global/Wrappers"
 
 const PostNav = (props) => {
+    // const links = props.links.filter(() => links.id !== "cG9zdDoxNDY3")
+    console.log(props.links);
     return(
         <div>
             <Container>

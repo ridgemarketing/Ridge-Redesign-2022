@@ -7,8 +7,9 @@ export const theme = {
     
     text:{
         HERO:               'font-stratos uppercase font-bold text-50px sm:text-60px lg:text-100px leading-H1-m lg:leading-H1 ',
+        PAGE_HEADER:        'font-stratos uppercase font-bold text-80px leading-[74px] xl:text-100px xl:leading-[100px] ',
         H1_STD:             'font-stratos uppercase font-bold text-60px lg:text-80px leading-H1-m lg:leading-H1 ',
-        H1_LTE:             'font-stratos-lights uppercase text-60px lg:text-80px leading-H1 ',
+        H1_LTE:             'font-stratos-lights uppercase text-60px lg:text-80px leading-H1-m lg:leading-H1 ',
         H2:                 'font-stratos uppercase font-bold text-50px leading-H2-H3 ',
         H3:                 'font-basic-sans font-semibold text-50px leading-H2-H3 ',
         H4:                 'font-basic-sans font-semibold text-26px leading-30px ',

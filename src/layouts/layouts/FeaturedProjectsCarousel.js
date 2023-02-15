@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect} from "react"
 import { Link } from "gatsby"
 import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
@@ -15,6 +15,7 @@ const FeaturedProjectsCarousel = (props) => {
     let headingArr = content.heading.split(' ');
     const [slide, setSlide] = useState(0);
     const [data, setData] = useState(slides[0]);
+    const [slideInteraction, setInteraction] = useState(false);
     //let dataTwo = slide + 1;
 
     const nextSlide = () => {
@@ -43,6 +44,39 @@ const FeaturedProjectsCarousel = (props) => {
 
         console.log(slide)
     }
+    const handleClick = (next) => {
+      setInteraction(true);
+      (next) ? nextSlide() : prevSlide();
+      return;
+    }
+
+    function useIsVisible(ref) {
+      const [isIntersecting, setIntersecting] = useState(false);
+    
+      useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) =>
+          setIntersecting(entry.isIntersecting)
+        );
+    
+        observer.observe(ref.current);
+        return () => {
+          observer.disconnect();
+        };
+      }, [ref]);
+    
+      return isIntersecting;
+    }
+
+    const carouselRef = useRef();
+    const isVisible = useIsVisible(carouselRef);
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        if (isVisible && !slideInteraction) nextSlide();
+      }, 6000);
+    
+      return () => clearInterval(interval);
+    });
 
     // dataTwo = dataTwo - slide;
     // if(dataTwo > slides.length -1){
@@ -73,7 +107,7 @@ const FeaturedProjectsCarousel = (props) => {
                         {data.project.projectInformation.images.carouselFeature && 
                           <>
                           {/* <style>{css}</style> */}
-                          <div className="homeSlider absolute overflow-hidden w-full h-full">
+                          <div ref={carouselRef} className="homeSlider absolute overflow-hidden w-full h-full">
                               {/* <div className="homeSlider absolute overflow-hidden w-full h-full"></div>
                               <div className="homeSlider-2 absolute overflow-hidden w-full h-full"></div> */}
                              <GatsbyImage 
@@ -105,10 +139,10 @@ const FeaturedProjectsCarousel = (props) => {
                                 </div>
                             </div> 
                             <div className={`w-36 flex bg-rm-pale-grey`}>
-                                <button className={`flex-1 px-5 py-3 text-40px`} onClick={prevSlide}>
+                                <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(false)}>
                                    <ArrowTallLeftBlack/>
                                 </button>
-                                <button className={`flex-1 px-5 py-3 text-40px`} onClick={nextSlide}>
+                                <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(true)}>
                                   <ArrowTallRightBlack/>
                                 </button>
                             </div>

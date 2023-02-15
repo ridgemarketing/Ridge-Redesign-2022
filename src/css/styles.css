@@ -52,7 +52,7 @@
 }
 
 .homeHero {
-    @apply w-full h-[45vh] xl:h-[80vh];
+    @apply w-full h-[40vh] xl:h-[80vh];
 }
 
 .belowHomeHero{

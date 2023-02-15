@@ -1,6 +1,7 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
 import { Container, Section } from '../../components/global/Wrappers.js'
+import { theme } from "../../static/theme"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Vimeo from '@u-wave/react-vimeo';
 
@@ -12,16 +13,17 @@ const VideoPlayer = (props) => {
 
   const [player, setPlayer] = useState(videos[0]);
 
-  const swapVideos = (video, index) => {
-    const newThumbnail = player;
-    videos.splice(index, 1);
-    videos.push(newThumbnail);
-    setPlayer(video);
-  }
+  // const swapVideos = (video, index) => {
+  //   const newThumbnail = player;
+  //   videos.splice(index, 1);
+  //   videos.push(newThumbnail);
+  //   setPlayer(video);
+  // }
 
   return (
     <Section settings={settings}>
       <Container>
+        <h2 className={`${theme.text.H2} text-center mb-8`}>Videos</h2>
         {player &&
           <div>
             <div class={`relative pt-[56.25%]`}>
@@ -38,11 +40,11 @@ const VideoPlayer = (props) => {
           </div>
         }
         {videos && videos.length > 1 &&
-          <div class={`grid grid-cols-3 mt-4 xl:mt-9 -mx-2 xl:-mx-5`}>
+          <div className={`grid grid-cols-3 mt-4 xl:mt-9 -mx-2 xl:-mx-5`}>
             {videos.map((video, index) => {
-                if (index > 0) {
+                if (index < 3) {
                   return(
-                    <div class={`relative pt-[56.25%] mx-2 xl:mx-5`} onClick={() => swapVideos(video, index)}>
+                    <div class={`relative pt-[56.25%] mx-2 xl:mx-5`} onClick={() => setPlayer(video)}>
                       {video.placeholder &&
                         <GatsbyImage className={`absolute top-0 left-0 w-full h-full object-cover`} image={getImage(video.placeholder.localFile)} />
                       }

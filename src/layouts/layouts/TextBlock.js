@@ -27,11 +27,11 @@ const TextBlock = (props) => {
         <Section settings={settings}>
             <Container classes={`${alignment} ${settings.classes}`} container={settings.containerWidth}>
                 <h2 className={`${theme.text[headingStyle]} pb-6 lg:w-[95%]`} dangerouslySetInnerHTML={{__html: heading}}></h2>
-                <p className={`${theme.text.P_STD} pb-8 lg:w-[95%]`} dangerouslySetInnerHTML={{__html: body}}></p>
+                <p className={`${theme.text.P_STD} lg:w-[95%]`} dangerouslySetInnerHTML={{__html: body}}></p>
                 {content.componentButton &&  
                     <Link
                     link={content.componentButton.link}
-                    classes={theme.button.BASE_STYLING + theme.button.GHOST_GREEN_HOVER_DARK + buttonAlignment}
+                    classes={theme.button.BASE_STYLING + theme.button.GHOST_GREEN_HOVER_DARK + buttonAlignment + " mt-8"}
                     />
                 }
             </Container>

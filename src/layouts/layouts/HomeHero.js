@@ -48,7 +48,7 @@ const HomeHero = (props) => {
                 </div>
             </Container>
         </Section>
-        <div className={`w-full lg:-mt-44`}>
+        <div className={`-mt-px w-full lg:-mt-44`}>
             <div className="w-full ml-auto mr-auto lg:max-w-[930px] xl:max-w-[1120px] xl:pl-12">
                 <div className={`relative z-10 max-w-full mx-auto bg-black text-white px-9 pt-11 pb-14 md:px-14 md:py-16 md:pt-16 md:ml-0 w-full sm:w-full xl:w-min xl:max-w-min `}>
                     <h1 className={`w-min`}>
