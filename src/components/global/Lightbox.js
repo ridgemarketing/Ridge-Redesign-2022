@@ -7,7 +7,6 @@ const LightBox = (props) => {
     const images    = props.images;
     const video     = props.video;
     const thumbnail = (video) ? images.sourceUrl : images[0].image.publicUrl;
-    //const thumbnail = (video) ? (images ? images.sourceUrl : `https://images.pexels.com/photos/9553447/pexels-photo-9553447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1`) : images[0].image.publicUrl;
 
     const [image, setImage]             = useState(1);
     const [hoverState, setHoverState]   = useState("hidden");
@@ -38,7 +37,6 @@ const LightBox = (props) => {
             setOverlay(false);
             document.body.classList.remove("overflow-hidden");
         }
-        // console.log(overlay);
     }
     const linkInfo = {
         target: "_blank",
@@ -93,7 +91,6 @@ const LightBox = (props) => {
                     </div>
                 }
                 {video &&
-                    // <video preload="metadata" controls src={video} type="video/mp4" className={`w-full z-0`} />
                     <div className={'pt-[56.25%] w-full relative'}>
                         <iframe className={`w-full h-full z-50 absolute object-cover left-0 top-0`} src={video} width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                     </div>
