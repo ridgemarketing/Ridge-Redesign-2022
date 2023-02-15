@@ -7,7 +7,7 @@ import CountUp from "react-countup"
 const ResultCard = (props) => {
 
     const content = props.content;
-    let statClass= 'text-[120px]';
+    let statClass= 'text-[100px] xl:text-[120px]';
     let descriptionClass= props.columns === '1' ? 'md:max-w-[60%]' : '';
     const statNumber = content.stat.split(/\D+/)[0];
     const suffixString = content.stat.split(/\d+/)[1];
