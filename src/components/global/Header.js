@@ -55,7 +55,7 @@ const Header = (props) => {
             window.addEventListener('scroll', onScroll, { passive: true });
             return () => window.removeEventListener('scroll', onScroll);
         }
-    }, [])
+    }, [window])
 
 
     const headerSettings = useStaticQuery(graphql`
@@ -98,7 +98,7 @@ const Header = (props) => {
 
     return(
         <>
-            <header style={{transition: "height 300ms"}} ref={nav} className={`${textColor} ${bkgClass} fixed w-full h-[100px] z-50 top-0 flex items-center`} >
+            <header className={`${textColor} ${bkgClass} fixed w-full h-[100px] z-50 top-0 flex items-center`} >
             <button type="button" onClick={()=>focusMain()} onKeyDown={()=>focusMain()} className="bg-rm-white text-rm-black p-5 font-basic-sans text-18px absolute -top-96 -left-96 focus:left-0 focus:top-0 focus:underline z-50" title="skip main navigation">Skip Main Navigation</button>
             <section className="container h-full">
                 <nav className="h-full">

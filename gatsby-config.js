@@ -8,7 +8,7 @@ module.exports = {
     siteUrl: `http://www.ridgemarketing.com`
   },
   flags: {
-    DEV_SSR: false
+    DEV_SSR: true
   },
   plugins: [
     {
