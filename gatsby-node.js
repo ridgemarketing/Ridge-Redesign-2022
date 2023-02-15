@@ -32,6 +32,7 @@ exports.createPages = async ({ graphql, actions }) => {
         nodes {
           id
           uri
+          isPostsPage
         }
       }
       allWpService {
@@ -45,14 +46,9 @@ exports.createPages = async ({ graphql, actions }) => {
           node {
             id
             uri
-          }
-          next {
-            id
-            uri
-          }
-          previous {
-            id
-            uri
+            template {
+              templateName
+            }
           }
         }
       }
@@ -83,6 +79,9 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   allPages.forEach(page => {
+    if (page.isPostsPage) {
+      page.uri = `/blog/`
+    }
     createPage({
       // will be the url for the page
       path: page.uri,
@@ -115,8 +114,14 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-
-  allProjects.forEach(project => {
+  
+  const filteredProjects = allProjects.filter(project => {
+    if (project.node.template && project.node.template.templateName !== "Hidden") {
+      return project;
+    }
+  })
+  
+  filteredProjects.forEach((project, idx) => {
       createPage({
         // will be the url for the page
         path: project.node.uri,
@@ -129,8 +134,8 @@ exports.createPages = async ({ graphql, actions }) => {
         // as a GraphQL variable to query for this post's data.
         context: {
           id: project.node.id,
-          previous: project.previous ? project.previous.uri : allProjects[allProjects.length - 1].node.uri,
-          next: project.next ? project.next.uri : allProjects[0].node.uri
+          previous: idx === 0 ? filteredProjects[filteredProjects.length - 1].node.uri : filteredProjects[idx - 1].node.uri,
+          next: idx === filteredProjects.length - 1 ? filteredProjects[0].node.uri : filteredProjects[idx + 1].node.uri
         },
       })
   })
