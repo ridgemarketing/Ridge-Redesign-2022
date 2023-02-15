@@ -47,7 +47,7 @@ const Quotes = (props) => {
     useEffect(() => {
       const interval = setInterval(() => {
         if (isVisible) nextSlide();
-      }, 4000);
+      }, 6000);
     
       return () => clearInterval(interval);
     });

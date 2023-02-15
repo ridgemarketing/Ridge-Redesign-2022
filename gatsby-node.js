@@ -117,21 +117,21 @@ exports.createPages = async ({ graphql, actions }) => {
   })
 
   allProjects.forEach(project => {
-    createPage({
-      // will be the url for the page
-      path: project.node.uri,
-
-      // specify the component template of your choice
-      component: slash(projectTemplate),
-      // component: slash(flexTemplate),
-
-      // In the ^template's GraphQL query, 'id' will be available
-      // as a GraphQL variable to query for this post's data.
-      context: {
-        id: project.node.id,
-        previous: project.previous ? project.previous.uri : allProjects[allProjects.length - 1].node.uri,
-        next: project.next ? project.next.uri : allProjects[0].node.uri
-      },
-    })
+      createPage({
+        // will be the url for the page
+        path: project.node.uri,
+  
+        // specify the component template of your choice
+        component: slash(projectTemplate),
+        // component: slash(flexTemplate),
+  
+        // In the ^template's GraphQL query, 'id' will be available
+        // as a GraphQL variable to query for this post's data.
+        context: {
+          id: project.node.id,
+          previous: project.previous ? project.previous.uri : allProjects[allProjects.length - 1].node.uri,
+          next: project.next ? project.next.uri : allProjects[0].node.uri
+        },
+      })
   })
 }

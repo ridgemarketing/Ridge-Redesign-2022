@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { theme, ThemeContext } from '../../static/theme'
 import { Link } from "gatsby" 
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { motion } from "framer-motion"
 
 const Header = (props) => {
 
@@ -90,6 +91,33 @@ const Header = (props) => {
     
     let [menuCounter, setMenuCounter] = useState(0);
     let content = headerMenu.allWpMenu.nodes[menuCounter].menuItems.nodes;
+
+
+    const nav = useRef();
+    const [scrollPosition, setScrollPosition] = useState(0);
+    const [transitionOut, setTransition] = useState(0);
+    const handleScroll = () => {
+        const position = window.pageYOffset;
+        setScrollPosition(position);
+    };
+
+    useEffect(() => {
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (scrollPosition > 90) {
+            setTransition('-100%');
+            nav.current.style.height = '75px';
+        } else {
+            setTransition(0);
+            nav.current.style.height = '100px';
+        }
+    }, [scrollPosition, setScrollPosition]);
     
     const menuFunc = () =>{
         
@@ -189,12 +217,19 @@ const Header = (props) => {
 
     return(
         <>
-        <header className={`${textColor} ${bkgClass} fixed w-full h-[100px] z-50 top-0 flex items-center`} >
+            <header style={{transition: "height 300ms"}} ref={nav} className={`${textColor} ${bkgClass} fixed w-full h-[100px] z-50 top-0 flex items-center`} >
             <button type="button" onClick={()=>focusMain()} onKeyDown={()=>focusMain()} className="bg-rm-white text-rm-black p-5 font-basic-sans text-18px absolute -top-96 -left-96 focus:left-0 focus:top-0 focus:underline z-50" title="skip main navigation">Skip Main Navigation</button>
             <section className="container h-full">
                 <nav className="h-full">
                     <ul key={`header-MasterUL`} className="flex items-center justify-between h-full">
-                        <li key={`header-home`}><Link to={`/`} className="h-min">{logo}</Link></li>
+                        <li key={`header-home`}>
+                            {/* <Link to={`/`} className="h-min">
+                                {logoTwo}
+                            </Link> */}
+                            <motion.div animate={{x: transitionOut}}>
+                                <Link to={`/`} className="h-min">{logo}</Link>
+                            </motion.div>
+                        </li>
                         <li key={`header-mobileMenu`} className="w-[40px] h-[40px] flex xl:hidden xl:invisible" >
                             <button key={`header-button`} ref={mobileMenuIcon} onClick={() => mobileMenuToggle()} onKeyDown={() => mobileMenuToggle() } type="button" aria-expanded="false" aria-label="Mobile Menu Container">
                                 <svg key={`header-svg`} version="1.1" x="0px" y="0px" viewBox="0 0 33 19.5" className="w-full">
@@ -331,7 +366,7 @@ const Header = (props) => {
                     </ul>
                 </nav>
             </section>
-        </header> 
+        </header>
         <div className={headerPadding}></div>
         <div ref={overlay} aria-hidden="true" style={{ height:overlayState ? '100%' : '0%', opacity:overlayState ? '0.7' : '0' }} className={`-xl:bg-rm-black w-full z-10 fixed top-0 left-0 transition-all ease-out duration-300 xl:!opacity-0 xl:hidden`}></div>
         </>

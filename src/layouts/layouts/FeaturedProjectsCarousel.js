@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect} from "react"
 import { Link } from "gatsby"
 import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
@@ -40,6 +40,35 @@ const FeaturedProjectsCarousel = (props) => {
         }
     }
 
+    function useIsVisible(ref) {
+      const [isIntersecting, setIntersecting] = useState(false);
+    
+      useEffect(() => {
+        const observer = new IntersectionObserver(([entry]) =>
+          setIntersecting(entry.isIntersecting)
+        );
+    
+        observer.observe(ref.current);
+        return () => {
+          observer.disconnect();
+        };
+      }, [ref]);
+    
+      return isIntersecting;
+    }
+
+    const sliderRef = useRef();
+    const isVisible = useIsVisible(sliderRef);
+
+    useEffect(() => {
+      const interval = setInterval(() => {
+        if (isVisible) nextSlide();
+        nextSlide();
+      }, 6000);
+    
+      return () => clearInterval(interval);
+    });
+
     // dataTwo = dataTwo - slide;
     // if(dataTwo > slides.length -1){
     //   dataTwo = 0;
@@ -69,7 +98,7 @@ const FeaturedProjectsCarousel = (props) => {
                         {data.project.projectInformation.images.carouselFeature && 
                           <>
                           {/* <style>{css}</style> */}
-                          <div className="homeSlider absolute overflow-hidden w-full h-full">
+                          <div ref={sliderRef} className="homeSlider absolute overflow-hidden w-full h-full">
                               {/* <div className="homeSlider absolute overflow-hidden w-full h-full"></div>
                               <div className="homeSlider-2 absolute overflow-hidden w-full h-full"></div> */}
                              <GatsbyImage 

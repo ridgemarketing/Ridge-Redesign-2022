@@ -55,15 +55,14 @@ const LightBox = (props) => {
         <img src={thumbnail} className={`cursor-pointer object-cover w-full`} style={{filter: `${imgBlur}`}}/>
         <div className={`shadow-lightbox absolute top-0 left-0 justify-center items-center ${hoverState} w-full h-full`} style={{backgroundColor: "rgba(255,255,255,0.8)"}} >
             <div className={'text-center'}>
-                <p className={`${theme.text.H3} pb-4`}>{props.title}</p>
-                <p className={theme.text.H4_LTE}>{props.caption}</p>
+                <p className={`${theme.text.H4} pb-4`}>{props.title}</p>
+                <p className={theme.text.P_STD}>{props.caption}</p>
                 <div className={"w-[95px] text-center mx-auto pt-7"}>
                     <img src={'https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/plus.png'} />
                 </div>
             </div>
         </div>
     </div>
-    
     <div className={`fixed top-0 left-0 h-screen w-screen`} style={{display:overlay ? 'block':'none', visibility:overlay ? 'visible':'hidden', zIndex:overlay ? '50':'0'}} aria-label="lightbox" aria-expanded={overlay}>
         <div className={`relative z-10 w-full h-full flex flex-col items-center justify-center`}>
             <div className={`w-[95%] md:w-3/4 lg:w-[40%] h-max relative flex flex-col justify-center items-center`}>
@@ -99,7 +98,7 @@ const LightBox = (props) => {
                         <iframe className={`w-full h-full z-50 absolute object-cover left-0 top-0`} src={video} width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 }
-                <h3 className={`${theme.text.H3} pt-4 text-rm-white`}>{(!video) ? images[image].text : props.title}</h3>
+                <h3 className={`${theme.text.H4} pt-4 text-rm-white`}>{(!video) ? images[image].text : props.title}</h3>
                 {linkInfo.url !== null && <div className={'pt-10'}>
                         <Link
                             link={linkInfo}
