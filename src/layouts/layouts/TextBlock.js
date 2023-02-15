@@ -31,7 +31,7 @@ const TextBlock = (props) => {
                 {content.componentButton &&  
                     <Link
                     link={content.componentButton.link}
-                    classes={theme.button.BASE_STYLING + theme.button.GHOST_GREEN_HOVER_DARK + buttonAlignment}
+                    classes={theme.button.BASE_STYLING + theme.button.GHOST_GREEN_HOVER_DARK + buttonAlignment + " mt-8"}
                     />
                 }
             </Container>
