@@ -48,7 +48,7 @@ const FullWidthImageText = (props) => {
         <Container container={settings.containerWidth}>
           <div className={`text-center`}>
             { content.heading && 
-              <h1 className={`${theme.text.H2} ${headerClasses} ${textColor}`}>{content.heading}</h1>
+                <h1 className={`${theme.text.H2} ${headerClasses} ${textColor} px-3`}>{content.heading}</h1>
             }
             {
             content.alignment === 'standard' && content.body && <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`mt-6 ${theme.text.P_STD} max-w-[1120px] mx-auto ${textColor}`}></p> 

@@ -14,7 +14,7 @@ const ResultCard = (props) => {
 
 
     const classes = {
-        1: 'md:flex items-center gap-8 max-w-[900px]',
+        1: 'md:flex items-center gap-8 max-w-[800px] justify-center',
         2: 'md:flex-[45%] lg:flex-[50%]',
         3: 'md:w-[45%] lg:w-[30%]'
     }
@@ -23,8 +23,8 @@ const ResultCard = (props) => {
     }
 
     return (
-            <div key={`${content.description}${content.stat}`} className={ `text-center lg:text-left ${classes[props.columns]} my-6` }>
-                <div className={'w-fit mx-auto'}>
+            <div key={`${content.description}${content.stat}`} className={ `text-center md:text-left ${props.columns !== "1" && classes[props.columns]} my-6` }>
+                <div className={`w-fit mx-auto ${props.columns === "1" && classes[props.columns]}`}>
                 { content.stat && 
                     <p className={`accent-text ${statClass} font-semibold font-stratos`}>
                         <CountUp
