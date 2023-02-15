@@ -22,11 +22,11 @@ const PageHeader = (props) => {
     return (
         <section className={`relative`}>
           {image && 
-            <GatsbyImage className={`${noBox} top-0 left-0 w-full h-[580px] object-cover`} image={image} />
+            <GatsbyImage className={`${noBox} top-0 left-0 w-full h-[400px] lg:h-[580px] object-cover`} image={image} />
           }
           <div className={`absolute bottom-0 left-0 w-full h-16 bg-white ${noSpace}`}></div>
           <div className={``}> 
-            <Container container={settings.containerWidth} classes={`${noSpace} pt-[500px] xl:pt-96 ${settings.classes && settings.classes !== null ? settings.classes : ''}`}>
+            <Container container={settings.containerWidth} classes={`${noSpace} pt-[320px] lg:pt-[500px] xl:pt-96 ${settings.classes && settings.classes !== null ? settings.classes : ''}`}>
             {content.heading &&
               <div className={`bg-black text-white py-12 px-6 lg:px-12 xl:pt-14 xl:pb-12 xl:pl-20 xl:pr-16 ${width}`} style={{maxWidth:content.maxWidth}}>
                 {content.eyebrow &&

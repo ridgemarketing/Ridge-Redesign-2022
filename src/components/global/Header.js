@@ -226,9 +226,9 @@ const Header = (props) => {
                             {/* <Link to={`/`} className="h-min">
                                 {logoTwo}
                             </Link> */}
-                            <motion.div animate={{x: transitionOut}}>
+                            {/* <motion.div animate={{x: transitionOut}}> */}
                                 <Link to={`/`} className="h-min">{logo}</Link>
-                            </motion.div>
+                            {/* </motion.div> */}
                         </li>
                         <li key={`header-mobileMenu`} className="w-[40px] h-[40px] flex xl:hidden xl:invisible" >
                             <button key={`header-button`} ref={mobileMenuIcon} onClick={() => mobileMenuToggle()} onKeyDown={() => mobileMenuToggle() } type="button" aria-expanded="false" aria-label="Mobile Menu Container">

@@ -39,7 +39,7 @@ const TwoColTextQuote = (props) => {
                       transition={{ ease: "easeOut", duration: 1 }}
                     >
                         { content.quoteContent.quote &&
-                          <q className={`font-basic-sans italic font-semibold text-30px md:text-55px leading-36px md:leading-PULL-Q  text-rm-green text-rm-green`}>
+                          <q className={`font-basic-sans italic font-semibold text-30px md:text-45px leading-36px md:leading-[50px] text-rm-green text-rm-green`}>
                               {content.quoteContent.quote}
                           </q>
                         }
