@@ -43,7 +43,8 @@ const ProjectHeader = (props) => {
       type: 'video',
       videoSource: videoSource,
       video: {
-        videoUrl: videoOverhang
+        videoUrl: videoOverhang,
+        thumbnailImage: imageOverhang
       }
     }
 
@@ -152,10 +153,10 @@ const ProjectHeader = (props) => {
 
           <Container size={`slim`} classes={'helloClass'}> 
             {videoOverhang && 
-            <div ref={ref}>
-              {/* <video preload="metadata" controls src={videoOverhang} onLoadedData={() => setVideo()} /> */}
-              <FlexibleMedia data={data} onLoadedData={() => setVideo()} />
-            </div>
+              <div ref={ref}>
+                {/* <video preload="metadata" controls src={videoOverhang} onLoadedData={() => setVideo()} /> */}
+                <FlexibleMedia data={data} onLoadedData={() => setVideo()} />
+              </div>
             }
             {!videoOverhang && imageOverhang && 
                     <div ref={ref}>
