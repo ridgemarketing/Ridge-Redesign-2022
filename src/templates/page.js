@@ -70,7 +70,7 @@ const WpPage = ({ data }) =>{
   } else {
     return (
       <>
-        <CustomHeader color={color}/>
+        <CustomHeader color={color} />
         {data.wpPage.pageHeader && !data.wpPage.isFrontPage && !blackList.includes(data.wpPage.title) &&
           <PageHeader layoutData={data.wpPage.pageHeader.pageHeader} />
         }

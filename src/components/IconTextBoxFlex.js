@@ -22,7 +22,7 @@ const IconTextBoxFlex = (props) => {
 
     let marginClasses   = `ml-6 `;
 
-    if (props.iconType === `icon` || props.iconType === `icon-number`) {
+    if ((props.iconType === `icon` || props.iconType === `icon-number`) && content.image) {
         var image = (content.image.localFile.ext === `.svg`) 
         ? <img className={''} src={content.image.sourceUrl} alt={content.image.altText} />
         : <GatsbyImage 

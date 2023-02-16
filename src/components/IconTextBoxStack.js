@@ -13,7 +13,7 @@ const IconTextBoxStack = (props) => {
     const body = content.body && Parser(content.body);
     const heading = content.heading && Parser(content.heading);
 
-    if (iconType === 'icon') {
+    if (iconType === 'icon' && content.image) {
             var image = (content.image.localFile.ext === ".svg") 
             ? <img className={`h-full w-auto`} src={content.image.sourceUrl} alt={content.image.altText} />
             : <GatsbyImage objectFit={`contain`} className={`h-full w-auto`} image={content.image.localFile.childImageSharp.gatsbyImageData} alt={content.image.altText} /> ;
@@ -47,7 +47,7 @@ const IconTextBoxStack = (props) => {
             <div className={'py-4'} key={`iconTextBoxFlex-item${Math.random()}`}>
                 {component}
                 <h5 dangerouslySetInnerHTML={{__html: heading}} className={theme.text.H5 + ` text-center md:text-left ${props.color}`}></h5>        
-                <p dangerouslySetInnerHTML={{__html: body}} className={ theme.text.P_STD + `text-center md:text-left mt-4 text-left ${props.color}`}></p>
+                <p dangerouslySetInnerHTML={{__html: body}} className={ theme.text.P_STD + `text-center md:text-left mt-4 ${props.color}`}></p>
             </div>
             )
 }
