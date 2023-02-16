@@ -65,7 +65,7 @@ const WpPost = ({ data, pageContext }) =>{
           }
           <span className={theme.text.P_STD + 'inline'}>By <address className={theme.text.P_BLD + 'inline not-italic'}>{content.author.node.name}</address> on <time pubdate="pubdate" dateTime={content.date} className="inline not-italic">{content.date}</time></span>
         </div>
-        <GatsbyImage className="w-full mt-9" image={content.featuredImage.node.localFile.childImageSharp.gatsbyImageData || ` `} alt={`featured image`} />    
+        <GatsbyImage className="w-full mt-9" image={content.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={`featured image`} />    
       </hgroup>
       <article className="container blog-container my-9 font-basic-sans">
         <div dangerouslySetInnerHTML={ {__html:  Parser(content.content, 'blog')} }></div>
