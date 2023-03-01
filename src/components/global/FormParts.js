@@ -8,6 +8,13 @@ export const BasicInputs = (props) => {
         <div className={ theme.forms.CONTAINER }>
             {props.inputID && props.inputName && props.type &&
                 <>
+                    <label 
+                        htmlFor={'basicInputs' + props.inputID} 
+                        className={ theme.text['P_STD'] + theme.forms['LABEL'] + 'text-' + props.color }
+                        >
+                        
+                        { props.inputName }
+                    </label>
                     <Field 
                         type={ props.type }
                         id={'basicInputs' + props.inputID } 
@@ -19,13 +26,6 @@ export const BasicInputs = (props) => {
                         required={ props.required }
                         placeholder=" "
                         />
-                     <label 
-                        htmlFor={'basicInputs' + props.inputID} 
-                        className={ theme.text['P_STD'] + theme.forms['LABEL'] + 'text-' + props.color }
-                        >
-                        
-                        { props.inputName }
-                    </label>
                 </>
             }
         </div>
@@ -37,6 +37,13 @@ export const MultiLineText = (props) => {
         <div className={ theme.forms['CONTAINER'] }>
             {props.inputID && props.inputName &&
                 <>  
+                    <label 
+                        htmlFor={ 'textarea' + props.inputID } 
+                        className={` ${theme.text.P_STD} ${theme.forms.LABEL} text-${props.color }`}
+                        placeholder=" "
+                        > 
+                        { props.inputName } 
+                    </label>
                     <Field 
                         component="textarea"
                         id={`textarea${props.inputID}`} 
@@ -46,13 +53,6 @@ export const MultiLineText = (props) => {
                         spellCheck
                         placeholder=" "
                     />
-                    <label 
-                        htmlFor={ 'textarea' + props.inputID } 
-                        className={` ${theme.text.P_STD} ${theme.forms.LABEL} text-${props.color }`}
-                        placeholder=" "
-                        > 
-                        { props.inputName } 
-                    </label>
                 </>
             }
         </div>
@@ -64,6 +64,13 @@ export const SelectInput = (props) => {
         <div className={ theme.forms['CONTAINER'] }>
             {props.inputID && props.inputName && props.type &&
                 <>
+                    <label 
+                        htmlFor={'basicInputs' + props.inputID} 
+                        className={ theme.text['P_STD'] + theme.forms['LABEL'] + 'text-' + props.color }
+                        >
+                        
+                        { props.inputName }
+                    </label>
                     <Field 
                         as={ props.type }
                         id={'selectInput' + props.inputID } 
@@ -78,13 +85,6 @@ export const SelectInput = (props) => {
                             <option value={props.option1} > { props.option1 } </option>
                             <option value={props.option2} > { props.option2 }  </option>
                     </Field>
-                     <label 
-                        htmlFor={'basicInputs' + props.inputID} 
-                        className={ theme.text['P_STD'] + theme.forms['LABEL'] + 'text-' + props.color }
-                        >
-                        
-                        { props.inputName }
-                    </label>
                 </>
             }
         </div>
@@ -135,7 +135,7 @@ export const FormSubmit = (props) => {
                 <Field 
                     type='submit'
                     id={'formSubmit' + props.inputID } 
-                    className={ theme.button['BASE_STYLING'] + ' ' + theme.button[props.buttonColor] + ' cursor-pointer w-[210px] h-min -mt-6'}
+                    className={ `${theme.button['BASE_STYLING']} ${theme.button[props.buttonColor]} cursor-pointer w-[210px]`}
                     value={props.value}
                     disabled={props.submit}
                 />

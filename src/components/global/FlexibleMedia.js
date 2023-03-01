@@ -1,6 +1,7 @@
-import React from "react"
+import React, { useState } from "react"
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Player } from '@lottiefiles/react-lottie-player'
+import { Play } from "../svg"
 
 const FlexibleMedia = (props) => {
     
@@ -10,6 +11,8 @@ const FlexibleMedia = (props) => {
     const lottie  = (type === `lottie`) ? data.lottie : false;
     const video   = (type === `video`) ? data.video : false;
     const videoType = (type === 'video') ? data.videoSource : null;
+
+    const [showVideo, setShowVideo] = useState(false)
 
     if (type === `image`) {
         image = (data.image.localFile.ext === `.svg`) 
@@ -46,7 +49,13 @@ const FlexibleMedia = (props) => {
             }
             {video && videoType == 'vimeo' && 
                 <div className={'pt-[56.25%] w-full relative'}>
-                    <iframe className={`w-full h-full z-40 absolute object-cover left-0 top-0`} src={video.videoUrl} width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    {video.thumbnailImage && !showVideo &&
+                        <div className={`absolute top-0 left-0 w-full h-full object-cover z-30 flex flex-col items-center justify-center text-rm-white`}>
+                            <GatsbyImage className={`absolute top-0 left-0 w-full h-full object-cover`} image={video.thumbnailImage} alt={``} loading={`eager`} />
+                            <button onClick={() => setShowVideo(true)} className={`relative shadow-none transition-shadow hover:shadow-block`}><Play /></button>
+                        </div>
+                    }
+                    <iframe className={`w-full h-full z-20 absolute object-cover left-0 top-0`} src={video.videoUrl} width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                 </div>            
             }
         </div>

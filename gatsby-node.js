@@ -61,6 +61,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const projectTemplate = path.resolve(`./src/templates/project.js`)
 
   allPosts.forEach(post => {
+
     createPage({
       // will be the url for the page
       path: `blog` + post.node.uri,

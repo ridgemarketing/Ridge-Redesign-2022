@@ -67,10 +67,10 @@ export const theme = {
 
     forms:{
         INPUT:              'font-basic-sans border-b border-solid min-h-[30px] ',
-        LABEL:              '-translate-y-10 transition-all ease-out ',
-        CONTAINER:          'form-group w-full lg:w-[48%] font-basic-san w-full flex flex-col mb-12 ',
+        LABEL:              '',
+        CONTAINER:          'form-group w-full lg:w-[48%] font-basic-san w-full flex flex-col mb-6 ',
         
-        BASE_STYLING:       'translate-form ',
+        BASE_STYLING:       '',
         HALF:               'form-one-col w-full xl:w-[45%] xl:ml-[5%] xl:mr-[5%] flex-col',
         HALF_PADDING:       'p-8 lg:p-16',
         FULL_DISPLAY:       'form-two-col mt-20 ml-auto mr-auto w-full lg:w-3/4 flex flex-row justify-around flex-wrap',

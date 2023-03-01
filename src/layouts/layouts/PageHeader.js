@@ -22,7 +22,7 @@ const PageHeader = (props) => {
     return (
         <section className={`relative`}>
           {image && 
-            <GatsbyImage imgStyle={{objectPosition: `${content.objectPosition} center`}} className={`${noBox} top-0 left-0 w-full h-[400px] lg:h-[580px] object-cover`} image={image} />
+            <GatsbyImage imgStyle={{objectPosition: `${content.objectPosition} center`}} className={`${noBox} top-0 left-0 w-full h-[400px] lg:h-[580px] object-cover`} image={image} alt={``} />
           }
           <div className={`absolute bottom-0 left-0 w-full h-16 bg-white ${noSpace}`}></div>
           <div className={``}> 
@@ -65,7 +65,11 @@ export const query = graphql`
             title
             localFile {
               childImageSharp {
-                gatsbyImageData
+                gatsbyImageData (
+                  quality: 100
+                  placeholder: DOMINANT_COLOR
+                  layout: FULL_WIDTH
+                )
               }
             }
             sourceUrl

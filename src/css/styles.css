@@ -30,17 +30,16 @@
         @apply font-bold;
     }
 
-    header nav a{
+    /* header nav a{
         @apply -xl:text-rm-black;
-    }
-    header nav a::before{
+    } */
+    /* header nav a::before{
         @apply block font-bold h-0 overflow-hidden invisible;
         content: attr(title);
-    }
+    } */
 }
 
-@layer components 
-{
+@layer components {
     .h-inherit{
         height:inherit;
     }
@@ -52,24 +51,10 @@
     }
 }
 
-.homeHero{
-    @apply w-full;
+.homeHero {
+    @apply w-full h-[40vh] xl:h-[80vh];
 }
-@media screen and (min-width:0px) {
-    .homeHero{
-        height: 40vh;
-    }  
-}
-@media screen and (min-width:768px) {
-    .homeHero{
-        height: 70vh;
-    }  
-}
-@media screen and (min-width:1200px) {
-    .homeHero{
-        height: 80vh;
-    }  
-}
+
 .belowHomeHero{
     @apply !pt-10 lg:!pt-16;
 }

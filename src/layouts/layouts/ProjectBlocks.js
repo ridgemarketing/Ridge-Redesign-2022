@@ -27,10 +27,11 @@ const ProjectBlocks = (props) => {
     return(
         <Section settings={ settings } transparent = { transparent }>
             <Container>
-                {content.topHeading &&
+              <div className={`relative ${(!content.topHeading && content.overlap) && `-top-8 -mb-8`}`}>
+              {content.topHeading &&
                   <h2 dangerouslySetInnerHTML={{__html: Parser(content.topHeading)}} className={`${theme.text.H2} text-center ${textColor}`} style={{marginTop: content.overlap ? '-20vh' : '0', paddingBottom: content.overlap ? '5vh' : '5rem'}}></h2>
                 }
-                <div className="flex w-full flex-wrap justify-between" style={{marginTop: (!content.topHeading && content.overlap) ? '-20vh' : '0' }}>
+                <div className={`flex w-full flex-wrap justify-between`}>
                     {content.projects.map(block => {
                         let image = '';
                          
@@ -48,7 +49,7 @@ const ProjectBlocks = (props) => {
 
                               return (
                                 <div key={`projectBlocks${Math.random()}`} className={`flex flex-col justify-center items-center w-full md:w-[48%] ${cols} mb-12`}>
-                                    <GatsbyImage image={image} alt={block.projectInformation.images.servicesFeatureScreens.altText} className={`object-cover w-full`}/> 
+                                    <GatsbyImage image={image} alt={block.title} className={`object-cover w-full`}/> 
                                     <Link className={ theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + theme.text_links.HOVER_GREEN + theme.text_links.HOVER_ARW_FWD_GREEN + ' mt-3'} to={block.uri}>
                                         { block.title }
                                     </Link>
@@ -65,11 +66,13 @@ const ProjectBlocks = (props) => {
                             let logo = '';
 
                             if(block.projectInformation.logos){
+
                               if (block.projectInformation.logos.dark.localFile.ext === `.svg`) {
-                                logo = <img className={`w-3/4 xl:w-4/5 mb-8 block h-auto -translate-y-5 group-hover:translate-y-0 focus-within:translate-y-0 focus:translate-y-0 opacity-0 group-hover:opacity-100 focus-within:opacity-100 cursor-pointer z-20 transition-all duration-300 ease-out`} alt={block.projectInformation.logos.dark.altText} src={block.projectInformation.logos.dark.sourceUrl} />
+                                logo = <img className={`w-3/4 xl:w-4/5 mb-8 block h-auto -translate-y-5 group-hover:translate-y-0 focus-within:translate-y-0 focus:translate-y-0 opacity-0 group-hover:opacity-100 focus-within:opacity-100 cursor-pointer z-20 transition-all duration-300 ease-out`} alt={`${block.title} logo`} src={block.projectInformation.logos.dark.sourceUrl} />
                               }else{
-                                logo = <GatsbyImage image={block.projectInformation.logos.dark.localFile.childImageSharp} alt={block.projectInformation.logos.dark.altText} className={`object-contain w-3/4`} />
+                                logo = <GatsbyImage image={image} alt={`${block.title} logo`} className={`object-contain w-3/4`} />
                               }
+
                             }
                             
                             return (
@@ -80,7 +83,7 @@ const ProjectBlocks = (props) => {
                                         <a href={block.uri} className={`${theme.button.BASE_STYLING} ${theme.button.SOLID_GREEN_HOVER_LIGHT} -translate-y-5 group-hover:translate-y-0 focus-within:translate-y-0 focus:translate-y-0 opacity-0 group-hover:opacity-100 focus-within:opacity-100 cursor-pointer min-w-max h-min z-20 transition-all duration-300 ease-out `}>VIEW WORK</a>
                                         <div className="w-full h-[0%] bg-rm-black opacity-80 z-10 absolute top-0 left-0 group-hover:h-[100%] focus-within:h-[100%] transition-all duration-300 ease-out"></div>
                                     </div>
-                                    <GatsbyImage image={image} alt={block.projectInformation.images.projectIndexGrid.altText} className={`object-cover w-full h-full`}/> 
+                                    <GatsbyImage image={image} alt={``} className={`object-cover w-full h-full`}/> 
                                   </div>
                               </div>
                             ) 
@@ -103,6 +106,7 @@ const ProjectBlocks = (props) => {
                     <Buttons content={content.componentButton} sectionBackground={settings.backgroundColor}/>
                   </div>
                 }
+              </div>
             </Container>
         </Section>
     )

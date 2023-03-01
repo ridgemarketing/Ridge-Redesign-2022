@@ -24,64 +24,71 @@ const VerticalSlider = (props) => {
   let scrollPoints            = [];
 
   const vslides               = content.slides;
-
-  if (vslides.length > 0) {
-    for (let i = 0; vslides.length > i; i++){
-      scrollPoints.push(totalHeight);
-      totalHeight = totalHeight + slideHeight;
-    }
-  }
-
   
   useEffect(() => {
+
+    if (vslides.length > 0) {
+      for (let i = 0; vslides.length > i; i++){
+        scrollPoints.push(totalHeight);
+        totalHeight = totalHeight + slideHeight;
+      }
+    }
+
     if(firstSlide.current){
-    let current = 0;
-    let observer = new IntersectionObserver( (entries) => {
-        entries.forEach ( entry => {
-            //console.log(entry);
-            if( entry.isIntersecting ){
-              if(firstSlide.current.offsetTop < totalHeight ){
-  
-                onscroll = () => {
-                  for( let i = 0; scrollPoints.length > i; i++ ){
-                    if ( firstSlide.current.offsetTop > scrollPoints[i] ){
+      let current = 0;
+      let observer = new IntersectionObserver( (entries) => {
+          entries.forEach ( (entry) => {
 
-                      //console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
+              //if screen loads past the vslider
+              if (entry.boundingClientRect.top < (-1 * totalHeight)) {
+                setVslide(vslides.length - 1)
+              }
+              
+              if( entry.isIntersecting ){
+                
+                if(firstSlide.current.offsetTop < totalHeight ){
+    
+                  onscroll = () => {
+                    for( let i = 0; scrollPoints.length > i; i++ ){
+                      if ( firstSlide.current.offsetTop > scrollPoints[i] ){
 
-                      setVslide(i);
-                      current = i;
-  
-                      progressBar.current[i].style.height = 200 / ( vslides.length  + 1 ) + '%';
-                      progressBar.current[i].style.backgroundColor = '#FFFFFF';
-                      progressBar.current[i].children[0].style.backgroundColor = '#A9CF38';
-                      progressBar.current[i].children[0].style.height = ( ( firstSlide.current.offsetTop - scrollPoints[i] ) / slideHeight ) * 100 + '%';
-                      progressBar.current[i].parentElement.setAttribute('aria-valuenow', Math.round( (firstSlide.current.offsetTop / totalHeight) * 100 ) );
+                        //console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
+
+                        setVslide(i);
+                        current = i;
+    
+                        progressBar.current[i].style.height = 200 / ( vslides.length  + 1 ) + '%';
+                        progressBar.current[i].style.backgroundColor = '#FFFFFF';
+                        progressBar.current[i].children[0].style.backgroundColor = '#A9CF38';
+                        progressBar.current[i].children[0].style.height = ( ( firstSlide.current.offsetTop - scrollPoints[i] ) / slideHeight ) * 100 + '%';
+                        progressBar.current[i].parentElement.setAttribute('aria-valuenow', Math.round( (firstSlide.current.offsetTop / totalHeight) * 100 ) );
+                      }
                     }
-                  }
-                  for( let z = 0; scrollPoints.length > z; z++){
-                    if( z === current ){}else{
-                      progressBar.current[z].style.height = 100 / ( vslides.length  + 1 ) + '%';
-                      progressBar.current[z].children[0].style.backgroundColor = '#FFFFFF';
-                      progressBar.current[z].style.backgroundColor = '#FFFFFF';
+                    for( let z = 0; scrollPoints.length > z; z++){
+                      if( z === current ){}else{
+                        progressBar.current[z].style.height = 100 / ( vslides.length  + 1 ) + '%';
+                        progressBar.current[z].children[0].style.backgroundColor = '#FFFFFF';
+                        progressBar.current[z].style.backgroundColor = '#FFFFFF';
+                      }
                     }
                   }
                 }
+                //observer.unobserve(innerContainer.current);
               }
-              observer.unobserve(innerContainer.current);
-            }
-          }) 
-        },
-      {
-        threshold: [0.1, 1] 
-      }
-    );
-    observer.observe(innerContainer.current);
 
-  }
+            }) 
+          },
+        {
+          threshold: [0.1, 1]
+        }
+      );
+      observer.observe(innerContainer.current);
+    }
   }, [])
  
+    const offSetTop =  firstSlide.current ?  firstSlide.current.offsetTop : 0
     const skipTo = (location) => {
-      window.scrollBy(0, (scrollPoints[location] + slideHeight) - firstSlide.current.offsetTop );
+      window.scrollBy(0, (scrollPoints[location] + slideHeight) - offSetTop );
     }
 
     return(
@@ -128,7 +135,7 @@ const VerticalSlider = (props) => {
               </div>
                 
               <div className={`w-full h-[45%] mt-[5%] md:mt-0 md:h-auto md:w-[50%] lg:h-full block object-cover`}>
-                <Player className={`"w-full h-full block`} src={ vslides[vslide].lottieJsonUrl } loop={false} autoplay={true} controls={false}/>
+                <Player className={`"w-full h-full block`} src={ vslides[vslide].lottieJsonUrl } loop={true} autoplay={true} controls={false}/>
               </div>
               <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `md:hidden text-left w-full mt-[5%] h-[3%] transition-all ease-out ${theme.text.H4_LTE} ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.ARW_FWD_GREY} flex items-center text-rm-grey hover:text-rm-white capitalize`}>Skip </AnchorLink>
             </div>

@@ -43,7 +43,8 @@ const ProjectHeader = (props) => {
       type: 'video',
       videoSource: videoSource,
       video: {
-        videoUrl: videoOverhang
+        videoUrl: videoOverhang,
+        thumbnailImage: imageOverhang
       }
     }
 
@@ -66,7 +67,8 @@ const ProjectHeader = (props) => {
     })
 
   useEffect(() => {
-    setMaxHeight((imageHeight / 2) + 224);
+    const maxHeightVar = featuredImage ? 224 : 100;
+    setMaxHeight((imageHeight / 2) + maxHeightVar);
   }, [imageHeight]);
 
     const heading       = Parser(content.heading);
@@ -93,9 +95,9 @@ const ProjectHeader = (props) => {
     }, []);
 
     let topColor  = false;
-    if(featuredImage){}else{
-      topColor    = true;
-    }
+    // if(!featuredImage){
+    //   topColor    = true;
+    // }
 
     return (
       <section className={`relative text-${content.textTheme}`} style={{backgroundColor: topColor ? content.backgroundColor : 'transparent'}}>
@@ -103,19 +105,19 @@ const ProjectHeader = (props) => {
               <div className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} style={{backgroundColor: content.backgroundColor, maxHeight: `calc(100% - ${maxHeight}px)`}}></div>
           }
           {bgImage && 
-              <GatsbyImage fadeIn={false} durationFadeIn={0} style={{maxHeight: `calc(100% - ${maxHeight}px)`}} className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} image={bgImage} />
+              <GatsbyImage loading={`eager`} alt={``} fadeIn={false} durationFadeIn={0} style={{maxHeight: `calc(100% - ${maxHeight}px)`}} className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} image={bgImage} />
           }
           
           {featuredImage && 
               <Container container={'none'} classes={'md:container'}>
                   <div className={`md:mt-8`}>
-                      <GatsbyImage className={``} image={featuredImage} />
+                      <GatsbyImage className={``} alt={`featured image`} loading={`eager`} image={featuredImage} />
                   </div>
               </Container>
           }
 
           <Container size={`slim`} classes={`pt-20 pb-14 md:pb-16`}> {/* md:pb-20 xl:pb-44 */}
-              <div className={`max-w-[400px] mb-16`}>
+              <div className={`max-w-[300px] lg:max-w-[400px] mb-16`}>
                   {logo}
               </div>
 
@@ -130,7 +132,7 @@ const ProjectHeader = (props) => {
                               <p className={`${theme.text.P_BLD}`}>Website</p>
                               <ul>
                                   {info.websites.map(website => {
-                                  return <li><a className={`underline`} href={website.url}>{website.url.replace('https://', '')}</a></li>
+                                  return <li><a className={`underline`} href={website.url} target="_blank">{website.url.replace('https://', '')}</a></li>
                                   })}
                               </ul>
                           </div>
@@ -151,10 +153,10 @@ const ProjectHeader = (props) => {
 
           <Container size={`slim`} classes={'helloClass'}> 
             {videoOverhang && 
-            <div ref={ref}>
-              {/* <video preload="metadata" controls src={videoOverhang} onLoadedData={() => setVideo()} /> */}
-              <FlexibleMedia data={data} onLoadedData={() => setVideo()} />
-            </div>
+              <div ref={ref}>
+                {/* <video preload="metadata" controls src={videoOverhang} onLoadedData={() => setVideo()} /> */}
+                <FlexibleMedia data={data} onLoadedData={() => setVideo()} />
+              </div>
             }
             {!videoOverhang && imageOverhang && 
                     <div ref={ref}>
