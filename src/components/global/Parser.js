@@ -62,11 +62,11 @@ const tagListBlog = [
     }, 
     {
         tag:`<ul>`,
-        replace:`<ul> <style>main li{margin-top:1.25rem;}</style>`,
+        replace:`<ul style="list-style: disc; padding-left: 20px;"> <style>main li{margin-top:0.75rem;}</style>`,
     },
     {
         tag:`<a`,
-        replace:`<a class="underline"`
+        replace:`<a class="underline text-rm-blog-blue font-semibold"`
     }, 
     {
         tag:`<br>`,

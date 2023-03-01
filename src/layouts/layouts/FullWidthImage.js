@@ -19,7 +19,7 @@ const FullWidthImage = (props) => {
               <GatsbyImage  image={mobileImage} alt={content.mobileImage.altText || ""} />
             </div>
             <div className={`hidden md:block`}>
-              <GatsbyImage  image={desktopImage} alt={content.image.altText || ""} />
+              <GatsbyImage imgClass={"max-960px"} image={desktopImage} alt={content.image.altText || ""} />
             </div>
           </>
       :
@@ -83,6 +83,7 @@ export const query = graphql`
           layoutContent {
             heading
             imageOverlap
+            imageClasses
             backgroundColor
             image {
               localFile {
@@ -124,6 +125,7 @@ export const serviceQuery = graphql`
           layoutContent {
             heading
             imageOverlap
+            imageClasses
             backgroundColor
             image {
               localFile {
@@ -166,6 +168,7 @@ export const projectQuery = graphql`
           layoutContent {
             heading
             imageOverlap
+            imageClasses
             image {
               localFile {
                 childImageSharp {

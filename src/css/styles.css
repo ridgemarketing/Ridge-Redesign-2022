@@ -190,3 +190,6 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     padding-left: 14px;
     margin: 1rem 0;
 }
+.max-960px {
+    max-width: 960px;
+}

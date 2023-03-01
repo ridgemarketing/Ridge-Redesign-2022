@@ -96,7 +96,8 @@ module.exports = {
         'rm-carbon'          : '#1F1F1F',
         'rm-grey'            : '#474848',
         'rm-pale-grey'       : '#F1F5F5',
-        'rm-pale-teal'       : '#F3F9F9'
+        'rm-pale-teal'       : '#F3F9F9',
+        'rm-blog-blue'       : '#1f9da5'
       },
       fontSize: {
           '18px'             : '1.125rem',

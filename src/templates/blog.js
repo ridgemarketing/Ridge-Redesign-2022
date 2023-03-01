@@ -8,7 +8,7 @@ const Blog = () => {
 
   const getThePosts = useStaticQuery(graphql`
     query GetBlogPosts {
-        allWpPost {
+        allWpPost(sort: {fields: date, order: DESC}) {
         nodes {
             id
             title
