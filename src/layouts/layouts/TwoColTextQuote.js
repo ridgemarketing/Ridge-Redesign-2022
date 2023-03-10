@@ -8,8 +8,10 @@ import { motion } from "framer-motion"
 const TwoColTextQuote = (props) => {
 
     const content     = props.layoutData.layoutContent;
+    console.log(content);
     const settings    = props.layoutData.layoutSettings;
     const textColor   = settings.backgroundColor === 'black' ? 'text-rm-white' : 'text-rm-black'; 
+    const quotations  = content.quoteContent.quotations;
     
     let order;
     (content.imageLeft) ? order= 'order-2' : order = '';
@@ -38,10 +40,15 @@ const TwoColTextQuote = (props) => {
                       animate={{ x: 0 }}
                       transition={{ ease: "easeOut", duration: 1 }}
                     >
-                        { content.quoteContent.quote &&
+                        { content.quoteContent.quote && quotations && 
                           <q className={`font-basic-sans italic font-semibold text-30px md:text-45px leading-36px md:leading-[50px] text-rm-green text-rm-green`}>
                               {content.quoteContent.quote}
                           </q>
+                        }
+                        { content.quoteContent.quote && !quotations && 
+                          <p className={`font-basic-sans italic font-semibold text-30px md:text-45px leading-36px md:leading-[50px] text-rm-green text-rm-green`}>
+                              {content.quoteContent.quote}
+                          </p>
                         }
                         { content.quoteContent.author &&
                           <p className={`${theme.text.P_BLD} mt-14`}>
@@ -73,6 +80,7 @@ export const query = graphql`
                 author
                 quote
                 title
+                quotations
               }
               quotePosition
               textContent {
@@ -107,6 +115,7 @@ export const serviceQuery = graphql`
                 author
                 quote
                 title
+                quotations
               }
               quotePosition
               textContent {
@@ -141,6 +150,7 @@ export const projectQuery = graphql`
                 author
                 quote
                 title
+                quotations
               }
               quotePosition
               textContent {

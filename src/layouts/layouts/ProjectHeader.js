@@ -44,7 +44,9 @@ const ProjectHeader = (props) => {
       videoSource: videoSource,
       video: {
         videoUrl: videoOverhang,
-        thumbnailImage: imageOverhang
+        thumbnailImage: {
+          localFile: imageOverhang
+        }
       }
     }
 
@@ -58,7 +60,7 @@ const ProjectHeader = (props) => {
       }
 
       setTimeout(function() {
-        console.log(ref.current.clientHeight);
+        // console.log(ref.current.clientHeight);
           setImageHeight(ref.current ? ref.current.clientHeight : 0 );
       }, 0)
 
@@ -142,7 +144,17 @@ const ProjectHeader = (props) => {
                               <p className={`${theme.text.P_BLD}`}>Services Provided</p>
                               <ul>
                                   {info.services.map(service => {
-                                      return (<li><a className={`underline`} href={service.service.link}>{service.titleOverride}</a></li>)
+                                      let hasLink = service.serviceLink;
+                                      return (
+                                        <>
+                                        {hasLink && 
+                                          <li><a className={`underline`} href={service.service.link}>{service.titleOverride}</a></li>
+                                        }
+                                        {!hasLink && 
+                                          <li>{service.titleOverride}</li>
+                                        }
+                                        </>
+                                        )
                                   })}
                               </ul>
                           </div>
@@ -151,7 +163,7 @@ const ProjectHeader = (props) => {
               </div>
           </Container>
 
-          <Container size={`slim`} classes={'helloClass'}> 
+          <Container size={`slim`} className={'helloClass'}> 
             {videoOverhang && 
               <div ref={ref}>
                 {/* <video preload="metadata" controls src={videoOverhang} onLoadedData={() => setVideo()} /> */}
@@ -231,6 +243,7 @@ export const query = graphql`
                 }
             }
             titleOverride
+            serviceLink
         }
         
         websites {

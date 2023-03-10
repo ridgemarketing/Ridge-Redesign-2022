@@ -48,7 +48,10 @@ module.exports = {
     'xl:pt-0',
     'md:pt-20',
     'lg:pt-20',
-    'xl:pt-20'
+    'xl:pt-20',
+    'pt-[56.25%',
+    'pt-[100%]',
+    'xl:p-24'
   ],
   theme: {
     screens:{

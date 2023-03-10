@@ -144,7 +144,7 @@ export const projectQuery = graphql`
         ...ResultsTextBlockProject
         ...TextVideoOverhangProject
         ...FeaturedProjectsGridProject
-        ...BrandingCardsProject
+        ...BrandingCardsProject 
       }
     }
   }

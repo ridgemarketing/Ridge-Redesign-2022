@@ -3,6 +3,7 @@ import { graphql, useStaticQuery } from "gatsby"
 import { theme, ThemeContext } from '../static/theme'
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
+import Parser from "../components/global/Parser"
 
 const Blog = () => {
 
@@ -63,6 +64,7 @@ const Blog = () => {
   if(counter >= posts.length){
     buttonDisplay ='hidden invsibile';
   }
+  const blurb = (featured.excerpt.replace(/(<([^>]+)>)/gi, "")).substring(0,200) + '...';
 
   return ( 
    <>
@@ -80,7 +82,7 @@ const Blog = () => {
           <GatsbyImage className="w-full md:w-3/5" alt={featured.featuredImage.node.altText} image={featured.featuredImage.node.localFile.childImageSharp.gatsbyImageData || ` `} />
           <div className="w-full md:ml-[5%] md:w-[35%]">
             <h2 className={theme.text.H5 + 'mb-6'}>{featured.title}</h2>
-            <p className={theme.text.P_STD + 'mb-6'}>{ (featured.excerpt.replace(/(<([^>]+)>)/gi, "")).substring(0,200) + '...'}</p>
+            <p className={theme.text.P_STD + 'mb-6'} dangerouslySetInnerHTML={{__html: Parser(blurb)}}></p> {/* { ((featured.excerpt.replace(/(<([^>]+)>)/gi, "")).substring(0,200) + '...')} */}
             <Link to={`/blog` + featured.link} className={theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + theme.text_links.HOVER_ARW_FWD_GREEN + theme.text_links.HOVER_GREEN + `w-max` }>
               READ ARTICLE
             </Link>
@@ -91,11 +93,12 @@ const Blog = () => {
         
         <div className="flex flex-wrap flex-row mt-7 md:mt-20 lg:w-[90%] justify-between">
           {posts.slice(1,counter).map((post) => {
+            const innerBlurb = (post.excerpt.replace(/(<([^>]+)>)/gi, "")).substring(0,200) + '...';
               return(
                 <article key={post.id} className="w-full md:w-[45%] lg:mx-[2.5%] flex flex-col mb-7 lg:mb-20">
                     <GatsbyImage className={`object-cover h-[200px] w-full `} alt={post.featuredImage.node.altText} image={post.featuredImage.node.localFile.childImageSharp.gatsbyImageData || ` `} />
                     <h3 className={theme.text.H4 + 'mt-6'}>{post.title}</h3>
-                    <p className={theme.text.P_STD + 'mt-2 mb-6'}>{ (post.excerpt.replace(/(<([^>]+)>)/gi, "")).substring(0,200) + '...'}</p>
+                    <p className={theme.text.P_STD + 'mt-2 mb-6'} dangerouslySetInnerHTML={{__html: Parser(innerBlurb)}}></p>
                     <Link to={`/blog` + post.link} className={ theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + theme.text_links.HOVER_ARW_FWD_GREEN + theme.text_links.HOVER_GREEN + `w-max` }>
                       READ ARTICLE
                     </Link>
