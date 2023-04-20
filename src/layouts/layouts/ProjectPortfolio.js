@@ -59,17 +59,17 @@ const ProjectPortfolioImage = forwardRef((props, ref) => {
 
       {mobile &&
         <div className={`${mobileClassName}`}>
-          <GatsbyImage fadeIn={false} durationFadeIn={0} image={mobile} />
+          <GatsbyImage image={mobile} />
         </div>
       }
       {tablet &&
         <div className={`${tabletClassName}`}>
-          <GatsbyImage fadeIn={false} durationFadeIn={0} image={tablet} />
+          <GatsbyImage image={tablet} />
         </div>
       }
       {desktop &&
         <div className={`${desktopClassName}`}>
-          <GatsbyImage fadeIn={false} durationFadeIn={0} image={desktop} />
+          <GatsbyImage image={desktop} />
         </div>
       }
   </div>

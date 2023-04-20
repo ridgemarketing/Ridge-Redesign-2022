@@ -34,7 +34,7 @@ const VerticalSlider = (props) => {
       }
     }
 
-    if(firstSlide.current){
+    if(firstSlide.current && firstSlide.current !== null){
       let current = 0;
       let observer = new IntersectionObserver( (entries) => {
           entries.forEach ( (entry) => {
