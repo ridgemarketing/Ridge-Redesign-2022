@@ -181,3 +181,7 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 .max-960px {
     max-width: 960px;
 }
+
+.bg-allshifts {
+    @apply !bg-[#f3faff];
+}
