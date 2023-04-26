@@ -3,8 +3,10 @@ import { theme } from '../../static/theme'
 
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { graphql } from "gatsby"
-import FormWrapper from "../../components/global/FormWrapper"
-import Parser from "../../components/global/Parser";
+import FormWrapper from "../../components/global/___FormWrapper"
+import Parser from "../../components/global/Parser"
+import { FormSpreeForm } from "../../components/global/FormSpreeForm"
+import { Input } from "../../components/global/FormFields"
 
 const CareersForm = (props) => {
 
@@ -25,12 +27,21 @@ const CareersForm = (props) => {
                 {content.body &&
                   <p className={`${theme.text.P_STD} ${textColor} text-center mt-6`} dangerouslySetInnerHTML={ {__html:p} }></p>
                 }
-              <FormWrapper
-                formSize    = {`NO_WRAP`}
-                formBkg     = {'black'}
-                dropShadow  = {false}
-                careers     = {true}
-              />
+              <div>
+                <FormSpreeForm
+                  formId={`myyaljvo`}
+                  classes={``}
+                  submitLabel={`Submit`}
+                >
+                  <span className={`block mb-2`}><Input type={`text`} name={`name`} label={`Name`} textColor={`white`} bgColor={`black`} /></span>
+                  <span className={`block mb-2`}><Input type={`email`} name={`email`} label={`Email`} textColor={`white`} bgColor={`black`} /></span>
+                  <span className={`block mb-2`}><Input type={`tel`} name={`phone`} label={`Phone`} textColor={`white`} bgColor={`black`} /></span>
+                  <span className={`block mb-2`}><Input type={`text`} name={`position`} label={`Position Sought`} textColor={`white`} bgColor={`black`} /></span>
+                  <span className={`block mb-2`}><Input type={`url`} name={`portfolio`} label={`Portfolio Link`} textColor={`white`} bgColor={`black`} /></span>
+                  <span className={`block`}><Input type={`file`} name={`resume`} label={`Upload Resume`} textColor={`white`} bgColor={`black`} /></span>
+
+                </FormSpreeForm>
+              </div>
         </Container>
     </Section>
     )

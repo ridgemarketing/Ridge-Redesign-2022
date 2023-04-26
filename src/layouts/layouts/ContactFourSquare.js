@@ -1,11 +1,11 @@
-import React from "react"
+import React, { useState } from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import Parser from "../../components/global/Parser.js"
-import FormWrapper from "../../components/global/FormWrapper"
 import { GatsbyImage } from "gatsby-plugin-image"
-import { Link } from "gatsby"
+import { FormSpreeForm } from "../../components/global/FormSpreeForm.js"
+import { TextArea, Input } from "../../components/global/FormFields.js"
 
 const ContactFourSquare = (props) => {
   const content       = props.layoutData.layoutContent;
@@ -55,6 +55,7 @@ const ContactFourSquare = (props) => {
   `);
   const globalContent = globalContact.allWp.nodes[0].globalSettings.globalSettings.contact;
   const iconsHeader   = content.contactInfo.heading;
+  const [formState, setFormState] = useState({})
 
   const checkImg = function(img){
     if (img.localFile.ext === `.svg`) {
@@ -79,12 +80,18 @@ const ContactFourSquare = (props) => {
                 <p className={`${theme.text.P_STD} mt-5`}>{content.body}</p>
               }
             </div>
-            <FormWrapper
-                heading     = {content.formHeading}
-                formSize    = {`HALF`}
-                formBkg     = {'white'}
-                dropShadow  = {true}
-              />
+            <div className={`shadow-block pt-10 px-10 pb-12 bg-white mt-10 xl:mt-0 xl:ml-4`}>
+              <h2 className={`${theme.text.H5} mb-6`}>{content.formHeading}</h2>
+              <div>
+                  <FormSpreeForm formId={`mdovyzbl`} classes={`bg-white text-rm-black`} submitLabel={`Submit`} setFormState={setFormState}>
+                    <span className={`mb-6 block`}><Input state={formState} type={`text`} name={`name`} label={`Name`} bgColor={`white`} textColor={`black`} /></span>
+                    <span className={`mb-6 block`}><Input state={formState} type={`text`} name={`company`} label={`Company`} bgColor={`white`} textColor={`black`} /></span>
+                    <span className={`mb-6 block`}><Input state={formState} type={`email`} name={`email`} label={`Email`} bgColor={`white`} textColor={`black`} /></span>
+                    <span className={`mb-6 block`}><Input state={formState} type={`tel`} name={`phone`} label={`Phone`} bgColor={`white`} textColor={`black`} /></span>
+                    <span className={`mb-6 block`}><TextArea state={formState} name={`message`} label={`What are your marketing goals?`} bgColor={`white`} textColor={`black`} /></span>
+                  </FormSpreeForm>
+              </div>
+            </div>
           </Container>
         </Section>
         <div className="flex flex-col xl:flex-row">
@@ -103,7 +110,7 @@ const ContactFourSquare = (props) => {
                     </div>
                     <div className={`flex mb-10 last-of-type:mb-0`}>
                       {phoneIcon}
-                      <Link to={globalContent.phone.phone.url} className={`${theme.text.H4} text-rm-white`}>{globalContent.phone.phone.title}</Link>
+                      <a href={globalContent.phone.phone.url} className={`${theme.text.H4} text-rm-white`}>{globalContent.phone.phone.title}</a>
                     </div>
               </address>
             </div>
