@@ -23,7 +23,7 @@ const TeamGrid = (props) => {
                         return (
                             <div className={`text-center mb-16 md:mb-0`}>
                               <div className={`pt-[109%] relative mb-4`}>
-                                <img className={`absolute h-full w-full top-0 left-0 object-cover`} src={tm.image.publicUrl} />
+                                <img className={`absolute h-full w-full top-0 left-0 object-cover`} src={tm.image.publicUrl} alt={`photo of ${tm.name}`} />
                                 {/* <GatsbyImage imgClassName={`absolute h-full w-full top-0 left-0 object-cover`} image={tm.image.publicUrl}/> */}
                               </div>
                               <p className={theme.text.H5 + 'mb-1'}>{tm.name}</p>
