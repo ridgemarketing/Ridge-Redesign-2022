@@ -107,7 +107,7 @@ const ProjectHeader = (props) => {
               <div className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} style={{backgroundColor: content.backgroundColor, maxHeight: `calc(100% - ${maxHeight}px)`}}></div>
           }
           {bgImage && 
-              <GatsbyImage loading={`eager`} alt={``} fadeIn={false} durationFadeIn={0} style={{maxHeight: `calc(100% - ${maxHeight}px)`}} className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} image={bgImage} />
+              <GatsbyImage loading={`eager`} alt={``} style={{maxHeight: `calc(100% - ${maxHeight}px)`}} className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} image={bgImage} />
           }
           
           {featuredImage && 

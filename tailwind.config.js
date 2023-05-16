@@ -7,6 +7,7 @@ module.exports = {
       pattern: /p(\w?)-[0-9]+/g,
       variants: ['sm', 'md', 'lg', 'xl', 'xlz', '2xl'],
     },
+    'bg-allshifts',
     'text-rm-green', 
     'bg-rm-green',
     'bg-rm-pale-grey',

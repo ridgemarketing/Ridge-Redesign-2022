@@ -111,8 +111,6 @@ const FeaturedProjectsCarousel = (props) => {
                               {/* <div className="homeSlider absolute overflow-hidden w-full h-full"></div>
                               <div className="homeSlider-2 absolute overflow-hidden w-full h-full"></div> */}
                              <GatsbyImage 
-                                fadeIn={false}
-                                durationFadeIn={0}
                                 image={data.project.projectInformation.images.carouselFeature.localFile.childImageSharp.gatsbyImageData} 
                                 alt={ ' ' } 
                                 className={ `` } 

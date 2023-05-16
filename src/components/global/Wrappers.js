@@ -49,7 +49,7 @@ export const Section = (props) => {
 export const Container = (props) => {
     let size = {
         default: 'container',
-        slim: 'container xl:max-w-[1120px]',
+        slim: 'container xl:max-w-[1224px]',
         mini: 'container lg:max-w-[750px] xl:max-w-[930px]',
         none: ''
     }

@@ -3,7 +3,7 @@ import { theme } from '../../static/theme'
 import { Formik, Form  } from 'formik'
 
 //import Pristine from 'pristinejs'
-import { BasicInputs, MultiLineText, SelectInput, FormSubmit, FileUpload}  from './FormParts'
+import { BasicInputs, MultiLineText, SelectInput, FormSubmit, FileUpload}  from './__FormParts'
 import { useState } from "react";
  
 const phoneNumberPattern = /^\(?(\d{3})\)?[- ]?(\d{3})[- ]?(\d{4})$/;

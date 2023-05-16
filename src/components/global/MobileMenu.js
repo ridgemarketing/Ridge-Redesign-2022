@@ -34,7 +34,7 @@ const MenuItem = ({navItem, setShowMenu}) => {
             {navItem.childItems.nodes.length > 0 &&
                 <div key={``} className={`transition-all duration-300 ${subMenuOpen ? `h-auto` : `h-0 overflow-hidden`}`}>
                     {navItem.childItems.nodes.length <= 6 &&
-                        <div className={`bg-white pt-6 pb-8 text-rm-black flex flex-col gap-6`}>
+                        <div className={`bg-white py-2 text-rm-black flex flex-col gap-6 pl-4 border-l border-rm-grey border-opacity-10`}>
                             {navItem.childItems.nodes.map((subNavItem) => {
                                 let menuIcon = false;
 
@@ -51,7 +51,7 @@ const MenuItem = ({navItem, setShowMenu}) => {
                         </div>
                     }
                     {navItem.childItems.nodes.length > 6 &&
-                        <div className={`bg-white pt-6 pb-8 text-rm-black grid lg:grid-cols-2 gap-y-4 gap-x-6`}>
+                        <div className={`bg-white pt-6 pb-8 text-rm-black grid md:grid-cols-2 gap-y-4 gap-x-6`}>
                             {navItem.childItems.nodes.map((subNavItem) => {
                                 let menuIcon = false;
 
@@ -114,7 +114,7 @@ const MobileMenu = ({setShowMenu}) => {
     `);
 
     return(
-        <div className={`absolute top-full left-0 flex flex-col pt-6 min-h-screen`}>
+        <div className={`absolute top-full left-0 flex flex-col pt-6 min-h-screen md:w-full`}>
             <div className={`absolute top-0 left-0 w-full h-full bg-black bg-opacity-70`}></div>
             <div className={`container`}>
                 <div className={`relative py-4 px-6 bg-white text-black max-h-[80vh] overflow-scroll`}>
