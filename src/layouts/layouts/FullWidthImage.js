@@ -18,8 +18,8 @@ const FullWidthImage = (props) => {
             <div className={`md:hidden`}>
               <GatsbyImage  image={mobileImage} alt={content.mobileImage.altText || ""} />
             </div>
-            <div className={`hidden md:block`}>
-              <GatsbyImage imgClassName={"max-960px"} image={desktopImage} alt={content.image.altText || ""} />
+            <div className={`hidden md:block text-center`}>
+              <GatsbyImage className={content.imageClasses} image={desktopImage} alt={content.image.altText || ""} />
             </div>
           </>
       :
