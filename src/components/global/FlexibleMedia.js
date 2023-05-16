@@ -44,12 +44,12 @@ const FlexibleMedia = (props) => {
                     />
                 </div>
             }
-            {video && videoType == 'file' &&
+            {video && videoType === 'file' &&
                 <div>
                     <video preload="metadata" controls src={video.videoUrl} type="video/mp4" className={`w-full z-0`} />
                 </div>
             }
-            {video && videoType == 'vimeo' && 
+            {video && videoType === 'vimeo' && 
                 <div className={`pt-[${ratio}] w-full relative`}>
                     {video.thumbnailImage && !showVideo &&
                         <div className={`absolute top-0 left-0 w-full h-full object-cover z-30 flex flex-col items-center justify-center text-rm-white`}>
