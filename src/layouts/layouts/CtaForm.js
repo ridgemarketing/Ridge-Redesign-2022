@@ -1,9 +1,9 @@
-import React from "react"
+import React, { useState } from "react"
 import { theme } from '../../static/theme'
 
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { graphql } from "gatsby"
-import { FormSpreeForm } from "../../components/global/FormSpreeForm"
+import { FormSpreeForm, useForm } from "../../components/global/FormSpreeForm"
 import { Input } from "../../components/global/FormFields"
 
 const CtaForm = (props) => {
@@ -12,11 +12,14 @@ const CtaForm = (props) => {
     const settings  = props.layoutData.layoutSettings;
     let textColor   = `rm-white`
     let btnStyle    = `SOLID_GREEN_HOVER_LIGHT`
+    
     if (settings.backgroundColor === `white`) {
       textColor = `black`
       btnStyle = `SOLID_GREEN_HOVER_DARK`
     }
     
+    const formId                = `xnqyroyz`
+    const [formState, setFormState] = useState({})
 
     return(
         <Section settings={ settings }>
@@ -32,13 +35,13 @@ const CtaForm = (props) => {
                   </p>
                 }
                 <div className={`mt-10`}>
-                  <FormSpreeForm formId={`mdovyzbl`} classes={`md:grid md:grid-cols-2 gap-4`} submitLabel={`Submit`} btnContainerClasses={`md:col-span-2 text-center`} btnStyle={btnStyle}>
-                    <span className={`mb-6 block md:col-span-1`}><Input type={`text`} name={`name`} label={`Name`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
-                    <span className={`mb-6 block md:col-span-1`}><Input type={`text`} name={`company`} label={`Company`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
-                    <span className={`mb-6 block md:col-span-1`}><Input type={`email`} name={`email`} label={`Email`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
-                    <span className={`mb-6 block md:col-span-1`}><Input type={`tel`} name={`phone`} label={`Phone`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
-                    <span className={`block md:col-span-1`}> <Input type={`text`} name={`budget`} label={`Budget Range`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
-                    <span className={`block md:col-span-1`}><Input type={`text`} name={`timing`} label={`Timing for Start`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
+                  <FormSpreeForm formId={formId} classes={`md:grid md:grid-cols-2 gap-4`} submitLabel={`Submit`} btnContainerClasses={`md:col-span-2 text-center`} btnStyle={btnStyle} setFormState={setFormState}>
+                    <span className={`mb-6 block md:col-span-1`}><Input state={formState} type={`text`} name={`name`} label={`Name`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
+                    <span className={`mb-6 block md:col-span-1`}><Input state={formState} type={`text`} name={`company`} label={`Company`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
+                    <span className={`mb-6 block md:col-span-1`}><Input state={formState} type={`email`} name={`email`} label={`Email`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
+                    <span className={`mb-6 block md:col-span-1`}><Input state={formState} type={`tel`} name={`phone`} label={`Phone`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
+                    <span className={`block md:col-span-1`}> <Input state={formState} type={`text`} name={`budget`} label={`Budget Range`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
+                    <span className={`block md:col-span-1`}><Input state={formState} type={`text`} name={`timing`} label={`Timing for Start`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
                   </FormSpreeForm>
                 </div>
         </Container>

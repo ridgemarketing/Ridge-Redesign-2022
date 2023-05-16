@@ -11,6 +11,9 @@ const ContactFourSquare = (props) => {
   const content       = props.layoutData.layoutContent;
   const settings      = props.layoutData.layoutSettings;
 
+  const formId                = `mdovyzbl`
+
+
   const globalContact = useStaticQuery( graphql`
   query GetGlobalContact {
       allWp{
@@ -83,7 +86,7 @@ const ContactFourSquare = (props) => {
             <div className={`shadow-block pt-10 px-10 pb-12 bg-white mt-10 xl:mt-0 xl:ml-4`}>
               <h2 className={`${theme.text.H5} mb-6`}>{content.formHeading}</h2>
               <div>
-                  <FormSpreeForm formId={`mdovyzbl`} classes={`bg-white text-rm-black`} submitLabel={`Submit`} setFormState={setFormState}>
+                  <FormSpreeForm formId={formId} classes={`bg-white text-rm-black`} submitLabel={`Submit`} setFormState={setFormState}>
                     <span className={`mb-6 block`}><Input state={formState} type={`text`} name={`name`} label={`Name`} bgColor={`white`} textColor={`black`} /></span>
                     <span className={`mb-6 block`}><Input state={formState} type={`text`} name={`company`} label={`Company`} bgColor={`white`} textColor={`black`} /></span>
                     <span className={`mb-6 block`}><Input state={formState} type={`email`} name={`email`} label={`Email`} bgColor={`white`} textColor={`black`} /></span>
