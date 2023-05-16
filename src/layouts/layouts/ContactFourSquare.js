@@ -6,6 +6,7 @@ import Parser from "../../components/global/Parser.js"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { FormSpreeForm } from "../../components/global/FormSpreeForm.js"
 import { TextArea, Input } from "../../components/global/FormFields.js"
+import { FormContacPage } from "../../components/global/Forms.js"
 
 const ContactFourSquare = (props) => {
   const content       = props.layoutData.layoutContent;
@@ -86,13 +87,7 @@ const ContactFourSquare = (props) => {
             <div className={`shadow-block pt-10 px-10 pb-12 bg-white mt-10 xl:mt-0 xl:ml-4`}>
               <h2 className={`${theme.text.H5} mb-6`}>{content.formHeading}</h2>
               <div>
-                  <FormSpreeForm formId={formId} classes={`bg-white text-rm-black`} submitLabel={`Submit`} setFormState={setFormState}>
-                    <span className={`mb-6 block`}><Input state={formState} type={`text`} name={`name`} label={`Name`} bgColor={`white`} textColor={`black`} /></span>
-                    <span className={`mb-6 block`}><Input state={formState} type={`text`} name={`company`} label={`Company`} bgColor={`white`} textColor={`black`} /></span>
-                    <span className={`mb-6 block`}><Input state={formState} type={`email`} name={`email`} label={`Email`} bgColor={`white`} textColor={`black`} /></span>
-                    <span className={`mb-6 block`}><Input state={formState} type={`tel`} name={`phone`} label={`Phone`} bgColor={`white`} textColor={`black`} /></span>
-                    <span className={`mb-6 block`}><TextArea state={formState} name={`message`} label={`What are your marketing goals?`} bgColor={`white`} textColor={`black`} /></span>
-                  </FormSpreeForm>
+                  <FormContacPage formId={formId} classes={`bg-white text-rm-black`} submitLabel={`Submit`} />
               </div>
             </div>
           </Container>

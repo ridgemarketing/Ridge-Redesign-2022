@@ -4,6 +4,7 @@ import { theme } from '../../static/theme.js'
 
 export const FormSpreeForm = ({formId, classes, children, submitLabel, btnContainerClasses, btnStyle, setFormState}) => {
     const [state, handleSubmit] = useForm(formId)
+    
     const handleState = () => {
         setFormState(state)
         handleSubmit()
