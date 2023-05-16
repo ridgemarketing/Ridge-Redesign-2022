@@ -1,15 +1,12 @@
 import React from "react"
 import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
-import Link from "../../components/global/FlexibleLink"
 import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser";
-import { GatsbyImage } from "gatsby-plugin-image";
 
 const TeamGrid = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    //console.log(settings);
 
     return (
         <Section settings={settings}>
@@ -19,11 +16,10 @@ const TeamGrid = (props) => {
                 }
                 <div className={"md:grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-16"}>
                     {content.teamMember && content.teamMember.map(tm => {
-                      //console.log(tm);
                         return (
                             <div className={`text-center mb-16 md:mb-0`}>
                               <div className={`pt-[109%] relative mb-4`}>
-                                <img className={`absolute h-full w-full top-0 left-0 object-cover`} src={tm.image.publicUrl} />
+                                <img className={`absolute h-full w-full top-0 left-0 object-cover`} src={tm.image.publicUrl} alt={`Photo of ${tm.name}`} />
                                 {/* <GatsbyImage imgClassName={`absolute h-full w-full top-0 left-0 object-cover`} image={tm.image.publicUrl}/> */}
                               </div>
                               <p className={theme.text.H5 + 'mb-1'}>{tm.name}</p>
