@@ -2,12 +2,12 @@ import React from "react"
 import { Link } from "gatsby"
 import { theme } from "../static/theme"
 import Parser from "../components/global/Parser"
-import CountUp from "react-countup"
+import Counter from "./Counter"
 
 const ResultCard = (props) => {
 
     const content = props.content;
-    let statClass= 'text-[100px] xl:text-[120px]';
+    let statClass= 'accent-text text-[100px] xl:text-[120px] font-semibold font-stratos';
     let descriptionClass= props.columns === '1' ? 'md:max-w-[60%]' : '';
     const statNumber = content.stat.split(/\D+/)[0];
     const suffixString = content.stat.split(/\d+/)[1];
@@ -26,18 +26,7 @@ const ResultCard = (props) => {
             <div key={`${content.description}${content.stat}`} className={ `text-center md:text-left ${props.columns !== "1" && classes[props.columns]} my-6` }>
                 <div className={`w-fit mx-auto ${props.columns === "1" && classes[props.columns]}`}>
                 { content.stat && 
-                    <p className={`accent-text ${statClass} font-semibold font-stratos`}>
-                        <CountUp
-                            delay={2}
-                            start={0}
-                            end={statNumber}
-                            duration={8}
-                            suffix={suffixString}
-                            enableScrollSpy={true}
-                            scrollSpyOnce={true}
-                            useEasing={true}
-                            />
-                    </p>  
+                    <Counter number={statNumber} title={suffixString} classes={statClass} />   
                 }
                 { content.description &&  
                    <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H5 + 'font-basic-sans normal-case pr-4'} ${descriptionClass}`}></p>  

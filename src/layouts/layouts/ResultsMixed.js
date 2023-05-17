@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { theme } from '../../static/theme'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { Link } from "gatsby"
-import CountUp from "react-countup"
+import Counter from "../../components/Counter"
 
 const ResultsMixed = (props) => {
 
@@ -39,16 +39,7 @@ const ResultsMixed = (props) => {
                                     const suffixString  = text.text.split(/\d+/)[1];
                                     const output        = (text.style === 'stat' && statNumber)                           
                                     ?
-                                      <CountUp
-                                      delay={1}
-                                      end={statNumber}
-                                      duration={7}
-                                      suffix={suffixString}
-                                      enableScrollSpy={true}
-                                      scrollSpyOnce={true}
-                                      useEasing={true}
-                                      className={`${theme.text[fontSize]} ${color} ${padding} block`}
-                                      />
+                                    <Counter number={statNumber} title={suffixString} classes={`${theme.text[fontSize]} ${color} ${padding} block`} />
                                     :                                         
                                     <span key={`resultsMixed${text.text}${Math.random()}`} className={`${theme.text[fontSize]} ${color} ${padding} block`}>
                                         { text.text }
