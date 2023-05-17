@@ -11,7 +11,8 @@ const Counter = (props) => {
   const ref = useRef(null);
   const SPEED = 6; // animation speed
 
-  const isVisible = useOnScreen(ref); // intersection observer function to check if ref is in view
+  // intersection observer function I built (components/OnScreen.js) to check if ref is in view
+  const isVisible = useOnScreen(ref); 
 
   //change state if visible
   useEffect(() => {
