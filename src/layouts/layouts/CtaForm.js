@@ -3,8 +3,9 @@ import { theme } from '../../static/theme'
 
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { graphql } from "gatsby"
-import { FormSpreeForm, useForm } from "../../components/global/FormSpreeForm"
+import { FormSpreeForm } from "../../components/global/FormSpreeForm"
 import { Input } from "../../components/global/FormFields"
+import { FormCTALayout } from "../../components/global/Forms"
 
 const CtaForm = (props) => {
 
@@ -35,14 +36,7 @@ const CtaForm = (props) => {
                   </p>
                 }
                 <div className={`mt-10`}>
-                  <FormSpreeForm formId={formId} classes={`md:grid md:grid-cols-2 gap-4`} submitLabel={`Submit`} btnContainerClasses={`md:col-span-2 text-center`} btnStyle={btnStyle} setFormState={setFormState}>
-                    <span className={`mb-6 block md:col-span-1`}><Input state={formState} type={`text`} name={`name`} label={`Name`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
-                    <span className={`mb-6 block md:col-span-1`}><Input state={formState} type={`text`} name={`company`} label={`Company`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
-                    <span className={`mb-6 block md:col-span-1`}><Input state={formState} type={`email`} name={`email`} label={`Email`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
-                    <span className={`mb-6 block md:col-span-1`}><Input state={formState} type={`tel`} name={`phone`} label={`Phone`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
-                    <span className={`block md:col-span-1`}> <Input state={formState} type={`text`} name={`budget`} label={`Budget Range`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
-                    <span className={`block md:col-span-1`}><Input state={formState} type={`text`} name={`timing`} label={`Timing for Start`} textColor={textColor} bgColor={settings.backgroundColor} /></span>
-                  </FormSpreeForm>
+                  <FormCTALayout formId={formId} classes={`md:grid md:grid-cols-2 gap-4`} submitLabel={`Submit`} btnContainerClasses={`md:col-span-2 text-center`} btnStyle={btnStyle} textColor={textColor} bgColor={settings.backgroundColor} />
                 </div>
         </Container>
     </Section>
