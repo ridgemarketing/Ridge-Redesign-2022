@@ -84,9 +84,9 @@ const ContactFourSquare = (props) => {
                 <p className={`${theme.text.P_STD} mt-5`}>{content.body}</p>
               }
             </div>
-            <div className={`shadow-block pt-10 px-10 pb-12 bg-white mt-10 xl:mt-0 xl:ml-4`}>
+            <div className={` mt-10 xl:mt-0 xl:ml-4 xl:w-[50%] xl:max-w-[800px]`}>
               <h2 className={`${theme.text.H5} mb-6`}>{content.formHeading}</h2>
-              <div>
+              <div className={`shadow-block pt-10 px-10 pb-12 bg-white`}>
                   <FormContacPage formId={formId} classes={`bg-white text-rm-black`} submitLabel={`Submit`} />
               </div>
             </div>

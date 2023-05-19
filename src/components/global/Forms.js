@@ -20,8 +20,8 @@ export const FormCareers = ({formId, classes, submitLabel, btnContainerClasses, 
             }
 
             {state.succeeded &&
-                <div className={`text-center text-rm-green`}>
-                    <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch.</p>
+                <div className={`bg-rm-aqua text-white py-3 px-6 mt-3 mb-6`}>
+                    <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch with you soon.</p>
                 </div>
             }
 
@@ -59,8 +59,8 @@ export const FormContacPage = ({formId, classes, submitLabel, btnContainerClasse
             }
 
             {state.succeeded &&
-                <div className={`text-center text-rm-green`}>
-                    <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch.</p>
+                <div className={`bg-rm-aqua text-white py-3 px-6 mt-3 mb-6`}>
+                    <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch with you soon about how we can help with your marketing goals.</p>
                 </div>
             }
 
@@ -96,8 +96,8 @@ export const FormCTALayout = ({formId, classes, submitLabel, btnContainerClasses
             }
 
             {state.succeeded &&
-                <div className={`text-center text-rm-green`}>
-                    <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch.</p>
+                <div className={`bg-rm-aqua text-white py-3 px-6 mt-3 mb-6`}>
+                    <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch with you soon about how we can help with your marketing goals.</p>
                 </div>
             }
 
