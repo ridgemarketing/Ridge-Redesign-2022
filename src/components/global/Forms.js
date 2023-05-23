@@ -29,8 +29,8 @@ export const FormCareers = ({formId, classes, submitLabel, btnContainerClasses, 
             <span className={`block mb-2`}><Input state={state} type={`email`} name={`email`} label={`Email`} textColor={`white`} bgColor={`black`} /></span>
             <span className={`block mb-2`}><Input state={state} type={`tel`} name={`phone`} label={`Phone`} textColor={`white`} bgColor={`black`} /></span>
             <span className={`block mb-2`}><Input state={state} type={`text`} name={`position`} label={`Position Sought`} textColor={`white`} bgColor={`black`} /></span>
-            <span className={`block mb-2`}><Input state={state} type={`url`} name={`portfolio`} label={`Portfolio Link`} textColor={`white`} bgColor={`black`} /></span>
-            <span className={`block`}><Input state={state} type={`file`} name={`resume`} label={`Upload Resume`} textColor={`white`} bgColor={`black`} /></span>
+            <span className={`block`}><Input state={state} type={`url`} name={`portfolio`} label={`Portfolio Link`} textColor={`white`} bgColor={`black`} /></span>
+            {/* <span className={`block`}><Input state={state} type={`file`} name={`resume`} label={`Upload Resume`} textColor={`white`} bgColor={`black`} /></span> */}
 
             <div className={`mt-6 ${btnContainerClasses ? btnContainerClasses : ``}`}>
                 <button
