@@ -59,7 +59,9 @@ const WpProject = ({ data, pageContext }) => {
         {data.wpProject.flexibleLayouts && 
             <FlexibleLayouts flexibleLayouts={data.wpProject.flexibleLayouts} />
         }
-        <PostNav links={links} postType={`project`} />
+        {links &&
+          <PostNav links={links} postType={`project`} />
+        }
     </>
   )
 }
