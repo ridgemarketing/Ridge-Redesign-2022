@@ -29,9 +29,9 @@ const QuarterImageText = (props) => {
                 <div className={`lg:flex ${order}`}>
                       <motion.div
                       className={`lg:text-left text-center mb-12 lg:w-1/4 lg:mr-12 lg:flex-grow-1 lg:flex-shrink-0`}
-                      initial={{ scale: 0.75}}
-                      whileInView={{ scale: [0.75, 1.2, 1] }}
-                      transition={{ease: "easeOut", duration: 1.5}}
+                      initial={{ /** scale: 0.75 **/ }}
+                      whileInView={{ /** scale: [0.75, 1.2, 1] **/ }}
+                      transition={{ /** ease: "easeOut", duration: 1.5 **/ }}
                       >
                         <GatsbyImage image={image} />
                       </motion.div>
