@@ -19,26 +19,23 @@ const FeaturedProjectsGrid = (props) => {
     const [interactives, setInteractives] = useState([]);
 
     useEffect(() => {
-      { content.websiteProjects && 
+      
         content.websiteProjects.forEach(project => {
           websites.push(project.portfolioProject.websites);
         })
-      }
-      { content.brandingProjects &&
+     
         content.brandingProjects.forEach(project => {
           brandings.push(project.portfolioProject.branding);
         })
-      }
-      { content.videoProjects &&
+      
         content.videoProjects.forEach(project => {
           videos.push(project.portfolioProject.video);
         })
-      }
-      {content.interactiveProjects && 
+      
         content.interactiveProjects.forEach(project => {
           interactives.push(project.portfolioProject.interactive);
         })
-      }
+      
 
       return () => handleRendering(context.filterState);
     }, []);
@@ -109,7 +106,7 @@ const FeaturedProjectsGrid = (props) => {
                       if (block.videoUrl !== null && block.lightboxImages !== null) {
                         return (
                             <div className={'relative my-10 md:my-0'}>
-                                <LightBox key={`featured_project_${index}`} images={images} title={block.title} caption={block.caption} link={block.websiteLink} video={video} />
+                                <LightBox key={`FeaturedProjectItem__${block.guid}__${index}`} images={images} title={block.title} caption={block.caption} link={block.websiteLink} video={video} />
                             </div>
                         )
                       }
@@ -132,6 +129,7 @@ export const pageQuery = graphql`
         layoutContent {
             websiteProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   websites {
@@ -151,6 +149,7 @@ export const pageQuery = graphql`
             }
             brandingProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   branding {
@@ -170,6 +169,7 @@ export const pageQuery = graphql`
             }
             videoProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   video {
@@ -186,6 +186,7 @@ export const pageQuery = graphql`
             }
             interactiveProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   interactive {
@@ -225,6 +226,7 @@ export const serviceQuery = graphql`
         layoutContent {
             websiteProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   websites {
@@ -244,6 +246,7 @@ export const serviceQuery = graphql`
             }
             brandingProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   branding {
@@ -263,6 +266,7 @@ export const serviceQuery = graphql`
             }
             videoProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   video {
@@ -279,6 +283,7 @@ export const serviceQuery = graphql`
             }
             interactiveProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   interactive {
@@ -318,6 +323,7 @@ export const projectQuery = graphql`
         layoutContent {
             websiteProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   websites {
@@ -337,6 +343,7 @@ export const projectQuery = graphql`
             }
             brandingProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   branding {
@@ -356,6 +363,7 @@ export const projectQuery = graphql`
             }
             videoProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   video {
@@ -372,6 +380,7 @@ export const projectQuery = graphql`
             }
             interactiveProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   interactive {

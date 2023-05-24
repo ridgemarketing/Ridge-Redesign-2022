@@ -1,5 +1,5 @@
 import React, { useEffect } from "react"
-import { useForm, ValidationError } from '@formspree/react'
+import { useForm } from '@formspree/react'
 import { theme } from '../../static/theme.js'
 
 export const FormSpreeForm = ({formId, classes, children, submitLabel, btnContainerClasses, btnStyle, setFormState}) => {

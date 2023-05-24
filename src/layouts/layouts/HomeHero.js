@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { useEffect } from "react"
 import Link from "../../components/global/FlexibleLink"
 import { Section, Container, BackgroundImage } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"

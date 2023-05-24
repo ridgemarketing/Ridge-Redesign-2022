@@ -6,7 +6,7 @@ const ShadowBox = (props) => {
 
     const [imgOpacity, setImgOpacity]   = useState(1);
     const [image, setImage]             = useState(1);
-    const [previmage, setPrevimage]     = useState(1);
+    //const [previmage, setPrevimage]     = useState(1);
     const loadNext = () =>{
         setImgOpacity(1);
         if( (image + 1) > (images.length-1)){

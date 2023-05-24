@@ -1,10 +1,10 @@
-import React, { useEffect, useRef, useState, useContext } from "react"
+import React from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
-import { theme, ThemeContext } from '../../static/theme'
+import { theme } from '../../static/theme'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Triangle } from "../svg"
 
-const DesktopMenu = ({}) => {
+const DesktopMenu = () => {
 
     const checkImg = function(img, classes){
         if (img.localFile.ext === `.svg`) {
@@ -60,7 +60,7 @@ const DesktopMenu = ({}) => {
     return(
         <div className={`flex justify-end h-full items-center gap-10`}>
             {desktopWpMenuContent && desktopWpMenuContent.wpMenu.menuItems.nodes.map( (navItem, index) => {
-                let currentItem = false;
+                //let currentItem = false;
                 const uid       = navItem.label.replace(' ', '_')
                 if (!navItem.parentId) {
                     return(

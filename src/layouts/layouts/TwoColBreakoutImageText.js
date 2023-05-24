@@ -51,9 +51,10 @@ const TwoColBreakoutImageText = (props) => {
                         }
                         {content.list && 
                           <ul className={`md:flex md:flex-wrap md:justify-between mt-10`}>
-                              {content.list.map(data => {
+                              {content.list.map((data, index) => {
+                                const uid  = data.item.replace(' ', '_')
                                 return (
-                                  <li className={`${theme.text.P_STD} text-left font-normal md:w-[48%] mb-4 text-rm-grey text-21px`}>
+                                  <li key={`TCBITListItem__${uid}__${index}`} className={`${theme.text.P_STD} text-left font-normal md:w-[48%] mb-4 text-rm-grey text-21px`}>
                                       {data.item}
                                   </li>                                       
                                 )
@@ -62,12 +63,11 @@ const TwoColBreakoutImageText = (props) => {
                         }
                     </div>
                     <div className={`max-w-[40%] w-full flex-1`}></div>
-
                 </div>
                 {image && 
-                <div className={`flex justify-end h-full mt-10 xl:mt-0 mx-auto xl:absolute xl:top-0 ${imageWidth} ${imgWrapperCss}`}>
-                  <GatsbyImage alt={content.image.altText} image={image} className={imageCss} imgClassName={imageCss} imgStyle={imageStyle} />
-                </div>
+                  <div className={`flex justify-end h-full mt-10 xl:mt-0 mx-auto xl:absolute xl:top-0 ${imageWidth} ${imgWrapperCss}`}>
+                    <GatsbyImage alt={content.image.altText} image={image} className={imageCss} imgClassName={imageCss} imgStyle={imageStyle} />
+                  </div>
                 }
             </Container>
         </Section>

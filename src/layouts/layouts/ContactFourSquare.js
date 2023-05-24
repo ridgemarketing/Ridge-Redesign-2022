@@ -4,8 +4,8 @@ import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import Parser from "../../components/global/Parser.js"
 import { GatsbyImage } from "gatsby-plugin-image"
-import { FormSpreeForm } from "../../components/global/FormSpreeForm.js"
-import { TextArea, Input } from "../../components/global/FormFields.js"
+// import { FormSpreeForm } from "../../components/global/FormSpreeForm.js"
+// import { TextArea, Input } from "../../components/global/FormFields.js"
 import { FormContacPage } from "../../components/global/Forms.js"
 
 const ContactFourSquare = (props) => {
@@ -59,7 +59,7 @@ const ContactFourSquare = (props) => {
   `);
   const globalContent = globalContact.allWp.nodes[0].globalSettings.globalSettings.contact;
   const iconsHeader   = content.contactInfo.heading;
-  const [formState, setFormState] = useState({})
+  //const [formState, setFormState] = useState({})
 
   const checkImg = function(img){
     if (img.localFile.ext === `.svg`) {

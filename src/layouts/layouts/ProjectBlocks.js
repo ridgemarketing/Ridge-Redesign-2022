@@ -32,14 +32,14 @@ const ProjectBlocks = (props) => {
                   <h2 dangerouslySetInnerHTML={{__html: Parser(content.topHeading)}} className={`${theme.text.H2} text-center ${textColor}`} style={{marginTop: content.overlap ? '-20vh' : '0', paddingBottom: content.overlap ? '5vh' : '5rem'}}></h2>
                 }
                 <div className={`flex w-full flex-wrap justify-between`}>
-                    {content.projects.map(block => {
+                    {content.projects.map((block, index) => {
                         let image = '';
                          
                         if(content.columns === 3){
                           if(shadowboxToggle){
                               if(block.projectInformation.images.shadowBoxImages){
                                 return(
-                                  <div key={`projectBlocks${Math.random()}`} className={`flex flex-col justify-center items-center w-full md:w-[48%] ${cols} mb-12`}>
+                                  <div key={`ProjectBlocksItem_Shadow__${block.guid}__${index}`} className={`flex flex-col justify-center items-center w-full md:w-[48%] ${cols} mb-12`}>
                                     <ShadowBox images={block.projectInformation.images.shadowBoxImages} />
                                   </div>)
                               }
@@ -50,7 +50,7 @@ const ProjectBlocks = (props) => {
                               image = block.projectInformation.images.servicesFeatureScreens.localFile.childImageSharp.gatsbyImageData;
 
                               return (
-                                <div key={`projectBlocks${Math.random()}`} className={`flex flex-col justify-center items-center w-full md:w-[48%] ${cols} mb-12`}>
+                                <div key={`ProjectBlocksItem_Features__${block.guid}__${index}`} className={`flex flex-col justify-center items-center w-full md:w-[48%] ${cols} mb-12`}>
                                     <GatsbyImage image={image} alt={block.title} className={`object-cover w-full`}/> 
                                     <Link className={ theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + theme.text_links.HOVER_GREEN + theme.text_links.HOVER_ARW_FWD_GREEN + ' mt-3'} to={block.uri}>
                                         { block.title }
@@ -78,7 +78,7 @@ const ProjectBlocks = (props) => {
                             }
                             
                             return (
-                              <div key={`projectBlocks${Math.random()}`} className={`flex flex-col justify-center items-center w-full md:w-[49%] ${cols} mb-12`}>
+                              <div key={`ProjectBlocksItem_Grid__${block.guid}__${index}`} className={`flex flex-col justify-center items-center w-full md:w-[49%] ${cols} mb-12`}>
                                   <div className={`mt-3 h-full w-full relative group`}>
                                     <div className="w-full h-full flex flex-col justify-center items-center absolute top-0 left-0">
                                         {logo && logo}
@@ -126,6 +126,7 @@ export const query = graphql`
             shadowbox
             projects {
               ... on WpProject {
+                guid
                 title
                 uri
                 projectInformation {
@@ -208,6 +209,7 @@ export const serviceQuery = graphql`
             shadowbox
             projects {
               ... on WpProject {
+                guid
                 title
                 uri
                 projectInformation {
@@ -269,6 +271,7 @@ export const projectQuery = graphql`
             columns
             projects {
               ... on WpProject {
+                guid
                 title
                 uri
                 projectInformation {

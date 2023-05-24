@@ -1,6 +1,6 @@
-import React, { useEffect, useRef, useState, useContext } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
-import { theme, ThemeContext } from '../../static/theme'
+//import { theme, ThemeContext } from '../../static/theme'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import DesktopMenu from "./DesktopMenu"
 import MobileMenu from "./MobileMenu"
@@ -10,13 +10,13 @@ const Header = (props) => {
 
     const backgroundColor                       = props.color;
     const textColor                             = backgroundColor === `black` ? `text-rm-white` : `text-rm-black`; 
-    const fillColor                             = backgroundColor === `black` ? `fill-rm-white` : `fill-rm-black`;
-    const hoverColor                            = backgroundColor === `black` ? `hover:text-rm-green` : ``;
+    //const fillColor                             = backgroundColor === `black` ? `fill-rm-white` : `fill-rm-black`;
+    //const hoverColor                            = backgroundColor === `black` ? `hover:text-rm-green` : ``;
     const bkgClass                              = props.classes;
     const headerPadding                         = backgroundColor  === 'black' ? 'hidden' : 'h-[100px]';
-    const mobileMenuIcon                        = useRef([]);
-    const [mobileMenuState, setMobileMenuState] = useState(false);
-    const [overlayState, setOverlayState]       = useState(false);
+    //const mobileMenuIcon                        = useRef([]);
+    //const [mobileMenuState, setMobileMenuState] = useState(false);
+    //const [overlayState, setOverlayState]       = useState(false);
     // const context                               = useContext(ThemeContext);
     let logo                                    = ``;
     // const [headerBg, setHeaderBg]               = useState(false)
