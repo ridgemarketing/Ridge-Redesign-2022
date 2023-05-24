@@ -55,7 +55,7 @@ const HomeHero = (props) => {
                         <ul className={"h-min overflow-hidden relative"}>
                             {headingsList.map((data, idx) => {
                                 return (
-                                    <li id={`heading${idx+1}`} className={`${(idx === 0) ? 'animate-textFadeIn' : 'hidden absolute top-0 left-0'} font-stratos uppercase text-80px xl:text-[83px] leading-[75px] font-bold block w-full md:w-max`}>{data.heading}</li>
+                                    <li key={`headingListItem__${idx+1}`} id={`heading${idx+1}`} className={`${(idx === 0) ? 'animate-textFadeIn' : 'hidden absolute top-0 left-0'} font-stratos uppercase text-80px xl:text-[83px] leading-[75px] font-bold block w-full md:w-max`}>{data.heading}</li>
                                 )
                             })}
                             {/* add blank li here thats ignored by loop and stays relative to maintain width if necessary */}

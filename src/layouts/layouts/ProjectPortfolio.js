@@ -59,17 +59,17 @@ const ProjectPortfolioImage = forwardRef((props, ref) => {
 
       {mobile &&
         <div className={`${mobileClassName}`}>
-          <GatsbyImage image={mobile} />
+          <GatsbyImage image={mobile} alt={props.image.mobile.altText ? props.image.mobile.altText : ``} />
         </div>
       }
       {tablet &&
         <div className={`${tabletClassName}`}>
-          <GatsbyImage image={tablet} />
+          <GatsbyImage image={tablet} alt={props.image.tablet.altText ? props.image.tablet.altText : ``} />
         </div>
       }
       {desktop &&
         <div className={`${desktopClassName}`}>
-          <GatsbyImage image={desktop} />
+          <GatsbyImage image={desktop} alt={props.image.desktop.altText ? props.image.desktop.altText : ``} />
         </div>
       }
   </div>
@@ -127,7 +127,7 @@ const ProjectPortfolio = (props) => {
             <div className={`absolute w-full`} style={{backgroundColor: content.settings.backgroundColor, height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }}></div>
           }
           {bgImage && 
-            <GatsbyImage image={bgImage} objectFit={`cover`} className={`absolute w-full`} style={{height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }} />
+            <GatsbyImage image={bgImage} objectFit={`cover`} className={`absolute w-full`} style={{height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }} alt={``} />
           }
 
           <Container>
@@ -135,7 +135,7 @@ const ProjectPortfolio = (props) => {
             <div className={`relative`}>
               {images &&
                 images.map((image, index) => {
-                  return <ProjectPortfolioImage ref={ref} image={image} key={index} index={index} length={images.length} />
+                  return <ProjectPortfolioImage ref={ref} image={image} key={`ProjectPortfolioItem__${image.desktop.guid}__${index}`} index={index} length={images.length} />
                 })
               }
             </div>
@@ -157,6 +157,8 @@ export const query = graphql`
             heading
             images {
               desktop {
+                guid
+                altText
                 localFile {
                   childImageSharp {
                     gatsbyImageData
@@ -164,6 +166,7 @@ export const query = graphql`
                 }
               }
               mobile {
+                altText
                 localFile {
                   childImageSharp {
                     gatsbyImageData
@@ -171,6 +174,7 @@ export const query = graphql`
                 }
               }
               tablet {
+                altText
                 localFile {
                   childImageSharp {
                     gatsbyImageData
@@ -216,6 +220,8 @@ export const serviceQuery = graphql`
             body
             images {
               desktop {
+                guid
+                altText
                 localFile {
                   childImageSharp {
                     gatsbyImageData
@@ -223,6 +229,7 @@ export const serviceQuery = graphql`
                 }
               }
               mobile {
+                altText
                 localFile {
                   childImageSharp {
                     gatsbyImageData
@@ -230,6 +237,7 @@ export const serviceQuery = graphql`
                 }
               }
               tablet {
+                altText
                 localFile {
                   childImageSharp {
                     gatsbyImageData
@@ -275,6 +283,8 @@ export const projectQuery = graphql`
             body
             images {
               desktop {
+                guid
+                altText
                 localFile {
                   childImageSharp {
                     gatsbyImageData (quality: 99, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
@@ -284,6 +294,7 @@ export const projectQuery = graphql`
                 sourceUrl
               }
               mobile {
+                altText
                 localFile {
                   childImageSharp { 
                     gatsbyImageData (quality: 95, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])
@@ -293,6 +304,7 @@ export const projectQuery = graphql`
                 sourceUrl
               }
               tablet {
+                altText
                 localFile {
                   childImageSharp {
                     gatsbyImageData (quality: 95, placeholder: BLURRED, formats: [AUTO, WEBP, AVIF])

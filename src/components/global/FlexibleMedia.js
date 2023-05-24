@@ -22,7 +22,7 @@ const FlexibleMedia = (props) => {
 
             : <GatsbyImage 
                 image={data.image.localFile.childImageSharp.gatsbyImageData} 
-                alt={data.image_alt}
+                alt={data.image_alt ? data.image_alt : ``}
                 className={props.className} 
                 objectFit={props.objectFit}/> 
     }

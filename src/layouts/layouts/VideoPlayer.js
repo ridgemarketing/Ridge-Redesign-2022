@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { graphql } from "gatsby"
-import { Container, Section } from '../../components/global/Wrappers.js'
+import { Container, Section } from '../../components/global/Wrappers'
 import { theme } from "../../static/theme"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import Vimeo from '@u-wave/react-vimeo';
@@ -44,7 +44,7 @@ const VideoPlayer = (props) => {
             {videos.map((video, index) => {
                 if (index < 3) {
                   return(
-                    <div class={`relative pt-[56.25%] mx-2 xl:mx-5`} onClick={() => setPlayer(video)}>
+                    <div role={`button`} tabIndex={0} class={`relative pt-[56.25%] mx-2 xl:mx-5`} onClick={() => setPlayer(video)} onKeyDown={() => setPlayer(video)}>
                       {video.placeholder &&
                         <GatsbyImage className={`absolute top-0 left-0 w-full h-full object-cover`} image={getImage(video.placeholder.localFile)} />
                       }

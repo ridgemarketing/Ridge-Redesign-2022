@@ -67,8 +67,8 @@ const LightBox = (props) => {
                 <nav className={`absolute top-0 left-0 w-full h-full z-50 text-rm-white flex justify-between items-center ml-auto mr-auto`}> 
                     <button className={`absolute z-50 text-rm-white p-2 -top-[50px] right-0`} aria-label="Close Lightbox" onClick={()=>togglePopup()}>
                         <svg width="26" height="24" viewBox="0 0 26 24" fill="none">
-                            <path d="M2 2L23.1852 22" stroke="#F1F5F5" stroke-width="3" stroke-linecap="round"/>
-                            <path d="M24 2L2.81482 22" stroke="#F1F5F5" stroke-width="3" stroke-linecap="round"/>
+                            <path d="M2 2L23.1852 22" stroke="#F1F5F5" strokeWidth="3" strokeLinecap="round"/>
+                            <path d="M24 2L2.81482 22" stroke="#F1F5F5" strokeWidth="3" strokeLinecap="round"/>
                         </svg>
                     </button>
                 </nav>

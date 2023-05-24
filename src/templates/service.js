@@ -1,10 +1,10 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import { graphql } from "gatsby"
+import { GatsbyImage } from 'gatsby-plugin-image'
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
-import { Container, Section } from '../components/global/Wrappers.js'
+import { Container, Section } from '../components/global/Wrappers'
 import { theme, ThemeContext } from '../static/theme'
 import Buttons from '../components/global/Buttons'
-import { GatsbyImage } from 'gatsby-plugin-image'
 import Parser from '../components/global/Parser'
 
 export const Head = ({data}) => (
@@ -52,10 +52,10 @@ const WpService = ({ data }) =>{
   
   const settings  = data.wpService.servicesHeader.serviceHeader.layoutSettings;
   const content   = data.wpService.servicesHeader.serviceHeader.layoutContent;
-  const context   = useContext(ThemeContext);
+  const context   = useRef(useContext(ThemeContext));
 
   useEffect(() => {
-    context.updateHeaderBkgcolor('white');
+    context.current.updateHeaderBkgcolor('white');
   },[])
 
  
@@ -91,13 +91,14 @@ const WpService = ({ data }) =>{
                 </span>
             </h2>
           }
-          {content.bodyContent && content.bodyContent.map((key) =>{
-            if (floatP.length < 1 || key.textSize == "large") {
+          {content.bodyContent && content.bodyContent.map((key) => {
+            if (floatP.length < 1 || key.textSize === "large") {
               const textSize = key.textSize === 'large' ? 'H4_LTE' : 'P_STD';  
               return(
                     <p dangerouslySetInnerHTML={{__html: Parser(key.body)}} className={theme.text[textSize] + 'mb-9' } key={key.body}></p>
               )
             }
+            return (<></>)
           })}
           
             <div className={visibility + ` lg:w-3/4`}>

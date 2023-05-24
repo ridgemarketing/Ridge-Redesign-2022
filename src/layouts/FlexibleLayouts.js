@@ -4,10 +4,10 @@ import Layouts from './layoutIndex';
 
 const FlexibleLayouts = (props) => {
 
-  let layouts = props.flexibleLayouts.layouts;
+  let flexLayouts = props.flexibleLayouts.layouts;
   const layoutsArray = [];
 
-  layouts && layouts.map((res) => {
+  flexLayouts && flexLayouts.map((res, index) => {
       if (Object.keys(res).length > 0) {
         let subString = res.fieldGroupName.split('_').pop();
         let layoutArrTitle = `layout${subString}`;
@@ -21,9 +21,9 @@ const FlexibleLayouts = (props) => {
         }
         
         const LayoutToRender = Layouts[subString]
-        return(layoutsArray.push(<LayoutToRender layoutData={layoutProps} />));
+        return(layoutsArray.push(<LayoutToRender key={layoutArrTitle + '_' + index} layoutData={layoutProps} />));
     } else {
-      return false
+      return (<></>)
     }
   });
   return (

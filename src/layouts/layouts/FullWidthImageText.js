@@ -30,7 +30,7 @@ const FullWidthImageText = (props) => {
     ? <img className={`mx-auto ${imageClasses}`} src={content.image.sourceUrl} alt={content.image.altText}/>
     : <GatsbyImage 
         image={content.image.localFile.childImageSharp.gatsbyImageData} 
-        alt={ ' ' } 
+        alt={content.image.altText} 
         className={`${imageClasses}`} 
         objectFit={'contain'}/> ;
   }

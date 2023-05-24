@@ -33,7 +33,7 @@ const QuarterImageText = (props) => {
                       whileInView={{ /** scale: [0.75, 1.2, 1] **/ }}
                       transition={{ /** ease: "easeOut", duration: 1.5 **/ }}
                       >
-                        <GatsbyImage image={image} />
+                        <GatsbyImage image={image} alt={content.componentFlexibleMedia.image.altText} />
                       </motion.div>
                     <div className={``}>
                         <p dangerouslySetInnerHTML={{__html:body}} className={`${theme.text.P_STD}`}>
@@ -74,6 +74,7 @@ export const query = graphql`
               type
               lottie
               image {
+                altText
                 localFile {
                   childImageSharp {
                     gatsbyImageData

@@ -66,7 +66,7 @@ const TwoColBreakoutImageText = (props) => {
                 </div>
                 {image && 
                 <div className={`flex justify-end h-full mt-10 xl:mt-0 mx-auto xl:absolute xl:top-0 ${imageWidth} ${imgWrapperCss}`}>
-                  <GatsbyImage image={image} className={imageCss} imgClassName={imageCss} imgStyle={imageStyle} />
+                  <GatsbyImage alt={content.image.altText} image={image} className={imageCss} imgClassName={imageCss} imgStyle={imageStyle} />
                 </div>
                 }
             </Container>
@@ -89,6 +89,7 @@ export const query = graphql`
             imagePosition
             imageOverflow
             image {
+              altText
               localFile {
                   childImageSharp {
                     gatsbyImageData
@@ -125,7 +126,8 @@ export const serviceQuery = graphql`
             imagePosition
             imageOverflow
             image {
-                                localFile {
+              altText
+              localFile {
                   childImageSharp {
                     gatsbyImageData
                   }
@@ -162,6 +164,7 @@ export const projectQuery = graphql`
             imagePosition
             imageOverflow
             image {
+              altText
               localFile {
                   childImageSharp {
                     gatsbyImageData

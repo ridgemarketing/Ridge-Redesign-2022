@@ -44,7 +44,7 @@ const Counter = (props) => {
   }, [inView]);
 
     return (
-      <p ref={ref} className={props.classes}>{`${count}${suffix}`}</p>  
+      <span ref={ref} className={props.classes}>{`${count}${suffix}`}</span>  
     );
   }
 

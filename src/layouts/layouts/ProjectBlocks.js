@@ -2,10 +2,10 @@ import React from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { theme } from '../../static/theme.js'
-import { Container, Section } from '../../components/global/Wrappers.js'
+import { Container, Section } from '../../components/global/Wrappers'
 import { graphql } from "gatsby"
 import Buttons from "../../components/global/Buttons"
-import ShadowBox from "../../components/global/Shadowbox.js"
+import ShadowBox from "../../components/global/Shadowbox"
 import Parser from "../../components/global/Parser"
 
 const ProjectBlocks = (props) => {
@@ -43,6 +43,8 @@ const ProjectBlocks = (props) => {
                                     <ShadowBox images={block.projectInformation.images.shadowBoxImages} />
                                   </div>)
                               }
+
+                              return (<></>)
                           }else{
                             if(block.projectInformation.images.servicesFeatureScreens){
                               image = block.projectInformation.images.servicesFeatureScreens.localFile.childImageSharp.gatsbyImageData;
@@ -56,7 +58,7 @@ const ProjectBlocks = (props) => {
                                 </div>
                               ) 
                             } else {
-                              return false
+                              return (<></>)
                             }
                           }
                         }else{
@@ -88,11 +90,9 @@ const ProjectBlocks = (props) => {
                               </div>
                             ) 
                           } else {
-                            return false
+                            return (<></>)
                           }
                         }
-
-
                     })}
                 </div> 
 

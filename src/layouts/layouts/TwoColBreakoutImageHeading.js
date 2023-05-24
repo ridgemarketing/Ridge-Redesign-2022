@@ -27,7 +27,7 @@ const TwoColBreakoutImageHeading = (props) => {
             <div className={`relative`}>
               <div className={`relative overflow-hidden lg:absolute lg:top-0 max-w-[810px] lg:w-[calc(50%+50vw-465px-2.25rem)] xl:w-[calc(100%-655px+3.5rem+50vw-640px)] ${imgWrapperCss}`}>
                 <div className={`pt-[54.64%] w-full h-0`}>
-                  <GatsbyImage className={`absolute top-0 left-0 w-full h-full object-cover object-top`} image={image} />
+                  <GatsbyImage alt={content.image.altText} className={`absolute top-0 left-0 w-full h-full object-cover object-top`} image={image} />
                 </div>
               </div>
               <div className={`pt-16 lg:pt-48 2xl:pt-64 ${FlexWrapperCss}`}>
@@ -55,6 +55,7 @@ export const pageQuery = graphql`
           layoutContent {
             heading
             image {
+              altText
               localFile {
                 childImageSharp {
                   gatsbyImageData
@@ -86,6 +87,7 @@ export const serivceQuery = graphql`
           layoutContent {
             heading
             image {
+              altText
               localFile {
                 childImageSharp {
                   gatsbyImageData
@@ -117,6 +119,7 @@ export const projectQuery = graphql`
           layoutContent {
             heading
             image {
+              altText
               localFile {
                 childImageSharp {
                   gatsbyImageData
