@@ -2,6 +2,7 @@ import React, { useState } from "react"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { Player } from '@lottiefiles/react-lottie-player'
 import { Play } from "../svg"
+import Vimeo from "@u-wave/react-vimeo"
 
 const FlexibleMedia = (props) => {
     
@@ -14,6 +15,12 @@ const FlexibleMedia = (props) => {
     const thumbnail = (type === 'video') ? getImage(video.thumbnailImage.localFile) : false;
     const ratio = props.paddingRatio ? props.paddingRatio : '56.25%';
 
+    const playVideo = () => {
+        setPauseVideo(false)
+        setShowVideo(true)
+    }
+
+    const [pauseVideo, setPauseVideo] = useState(true)
     const [showVideo, setShowVideo] = useState(false)
 
     if (type === `image`) {
@@ -50,14 +57,25 @@ const FlexibleMedia = (props) => {
                 </div>
             }
             {video && videoType === 'vimeo' && 
-                <div className={`pt-[${ratio}] w-full relative`}>
+                <div className={`pt-[${ratio}] w-full relative media-video`}>
                     {video.thumbnailImage && !showVideo &&
-                        <div className={`absolute top-0 left-0 w-full h-full object-cover z-30 flex flex-col items-center justify-center text-rm-white`}>
+                        <div className={`absolute top-0 left-0 w-full h-full object-cover z-30 flex flex-col items-center justify-center`}>
                             <GatsbyImage className={`absolute top-0 left-0 w-full h-full object-cover`} image={thumbnail} alt={``} loading={`eager`} />
-                            <button onClick={() => setShowVideo(true)} className={`relative shadow-none transition-shadow hover:shadow-block`}><Play /></button>
                         </div>
                     }
-                    <iframe title={`Video`} className={`w-full h-full z-20 absolute object-cover left-0 top-0`} src={video.videoUrl} width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                        <Vimeo
+                            video={video.videoUrl}
+                            paused={pauseVideo}
+                            muted
+                            responsive
+                            className={`absolute top-0 left-0 w-full h-full object-cover`}
+                            onPause={() => setPauseVideo(true)}
+                        />
+                        {pauseVideo &&
+                            <div className={`absolute top-0 left-0 w-full h-full object-cover z-30 flex flex-col items-center justify-center text-rm-white`}>
+                                <button onClick={() => playVideo()} className={`relative rounded-full shadow-none transition-shadow hover:shadow-block`}><Play /></button>
+                            </div>
+                        }
                 </div>            
             }
         </div>
