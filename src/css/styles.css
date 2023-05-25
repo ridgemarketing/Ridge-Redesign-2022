@@ -189,3 +189,11 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 .bg-allshifts {
     @apply !bg-[#f3faff];
 }
+
+.add-shadow-to-blocks .media-video {
+    @apply shadow-[0_0_20px_0_rgba(0,0,0,0.2)];
+}
+
+.dark-play-buttons .media-video {
+    @apply !text-black;
+}
