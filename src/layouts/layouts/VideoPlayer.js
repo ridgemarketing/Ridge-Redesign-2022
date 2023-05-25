@@ -23,7 +23,9 @@ const VideoPlayer = (props) => {
   return (
     <Section settings={settings}>
       <Container>
-        <h2 className={`${theme.text.H2} text-center mb-8`}>Videos</h2>
+        {content.heading &&
+          <h2 className={`${theme.text.H2} text-center mb-8`}>{content.heading}</h2>
+        }
         {player &&
           <div>
             <div class={`relative pt-[56.25%]`}>
@@ -34,6 +36,8 @@ const VideoPlayer = (props) => {
                 video={player.source}
                 muted
                 responsive
+                autoplay={player.autoplay || false}
+                loop={player.autoplay || false}
                 className={`absolute top-0 left-0 w-full h-full object-cover`}
               />
             </div>
@@ -70,6 +74,7 @@ export const pageQuery = graphql`
         fieldGroupName
         layoutVideoPlayer {
           layoutContent {
+            heading
             sideImage {
               localFile {
                 childImageSharp {
@@ -86,6 +91,7 @@ export const pageQuery = graphql`
                 }
               }
               source
+              autoplay
             }
           }
           layoutSettings {
@@ -109,6 +115,7 @@ export const serviceQuery = graphql`
         fieldGroupName
         layoutVideoPlayer {
           layoutContent {
+            heading
             sideImage {
               localFile {
                 childImageSharp {
@@ -125,6 +132,7 @@ export const serviceQuery = graphql`
                 }
               }
               source
+              autoplay
             }
           }
           layoutSettings {
@@ -148,6 +156,7 @@ export const projectQuery = graphql`
         fieldGroupName
         layoutVideoPlayer {
           layoutContent {
+            heading
             sideImage {
               localFile {
                 childImageSharp {
@@ -164,6 +173,7 @@ export const projectQuery = graphql`
                 }
               }
               source
+              autoplay
             }
           }
           layoutSettings {
