@@ -34,57 +34,62 @@ const VerticalSlider = (props) => {
       }
     }
 
-    if(firstSlide && firstSlide.current && firstSlide.current !== null){
-      let current = 0;
-      let observer = new IntersectionObserver( (entries) => {
-          entries.forEach ( (entry) => {
+    let current = 0;
+    let observer = new IntersectionObserver( (entries) => {
+        entries.forEach ( (entry) => {
 
-              //if screen loads past the vslider
-              if (entry.boundingClientRect.top < (-1 * totalHeight)) {
-                setVslide(vslides.length - 1)
-              }
+            //if screen loads past the vslider
+            if (entry.boundingClientRect.top < (-1 * totalHeight)) {
+              setVslide(vslides.length - 1)
+            }
+            
+            if( entry.isIntersecting ){
               
-              if( entry.isIntersecting ){
-                
-                if(firstSlide.current.offsetTop < totalHeight ){
-    
-                  onscroll = () => {
-                    for( let i = 0; scrollPoints.length > i; i++ ){
-                      if ( firstSlide.current.offsetTop > scrollPoints[i] ){
+              if(firstSlide.current.offsetTop < totalHeight ){
+  
+                onscroll = () => {
+                  for( let i = 0; scrollPoints.length > i; i++ ){
+                    if ( firstSlide.current.offsetTop > scrollPoints[i] ){
 
-                        //console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
+                      //console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
 
-                        setVslide(i);
-                        current = i;
-    
-                        progressBar.current[i].style.height = 200 / ( vslides.length  + 1 ) + '%';
-                        progressBar.current[i].style.backgroundColor = '#FFFFFF';
-                        progressBar.current[i].children[0].style.backgroundColor = '#A9CF38';
-                        progressBar.current[i].children[0].style.height = ( ( firstSlide.current.offsetTop - scrollPoints[i] ) / slideHeight ) * 100 + '%';
-                        progressBar.current[i].parentElement.setAttribute('aria-valuenow', Math.round( (firstSlide.current.offsetTop / totalHeight) * 100 ) );
-                      }
+                      setVslide(i);
+                      current = i;
+  
+                      progressBar.current[i].style.height = 200 / ( vslides.length  + 1 ) + '%';
+                      progressBar.current[i].style.backgroundColor = '#FFFFFF';
+                      progressBar.current[i].children[0].style.backgroundColor = '#A9CF38';
+                      progressBar.current[i].children[0].style.height = ( ( firstSlide.current.offsetTop - scrollPoints[i] ) / slideHeight ) * 100 + '%';
+                      progressBar.current[i].parentElement.setAttribute('aria-valuenow', Math.round( (firstSlide.current.offsetTop / totalHeight) * 100 ) );
                     }
-                    for( let z = 0; scrollPoints.length > z; z++){
-                      if( z === current ){}else{
-                        progressBar.current[z].style.height = 100 / ( vslides.length  + 1 ) + '%';
-                        progressBar.current[z].children[0].style.backgroundColor = '#FFFFFF';
-                        progressBar.current[z].style.backgroundColor = '#FFFFFF';
-                      }
+                  }
+                  for( let z = 0; scrollPoints.length > z; z++){
+                    if( z === current ){}else{
+                      progressBar.current[z].style.height = 100 / ( vslides.length  + 1 ) + '%';
+                      progressBar.current[z].children[0].style.backgroundColor = '#FFFFFF';
+                      progressBar.current[z].style.backgroundColor = '#FFFFFF';
                     }
                   }
                 }
-                //observer.unobserve(innerContainer.current);
               }
+              //observer.unobserve(innerContainer.current);
+            }
 
-            }) 
-          },
-        {
-          threshold: [0.1, 1]
-        }
-      );
+          }) 
+        },
+      {
+        threshold: [0.1, 1]
+      }
+    );
+
+    if(vslides.length > 0 && firstSlide && firstSlide.current && firstSlide.current !== null){
       observer.observe(innerContainer.current);
     }
-  }, [])
+
+    return () => {
+      observer.unobserve(innerContainer.current);
+    }
+  }, [vslides])
  
     const offSetTop =  firstSlide.current ?  firstSlide.current.offsetTop : 0
     const skipTo = (location) => {
