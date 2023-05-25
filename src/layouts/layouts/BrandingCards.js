@@ -16,10 +16,10 @@ const BrandingCards = (props) => {
              <Container container={settings.containerWidth}>
                <p className={`${theme.text.H2} text-center text-white`}>{content.heading}</p>
                 <div className={"flex flex-wrap gap-x-7 gap-y-16 py-24 justify-center"}>
-                    {cards.map(card => {
+                    {cards.map((card, index) => {
                         return (
-                            <div className={"bg-white max-w-[320px] w-full shadow-brandcard flex justify-center align-center h-[200px]"}>
-                                <img className={'py-12 px-10 object-contain'} src={card.image.sourceUrl} />
+                            <div key={`BrandingCard__${card.image.guid}__${index}`} className={"bg-white max-w-[320px] w-full shadow-brandcard flex justify-center align-center h-[200px]"}>
+                                <img className={'py-12 px-10 object-contain'} src={card.image.sourceUrl} alt={card.image.altText} />
                             </div>
                         )
                     })}
@@ -45,6 +45,8 @@ export const query = graphql`
             heading
             cards {
                 image {
+                    altText
+                    guid
                     sourceUrl
                 }
             }
@@ -86,6 +88,8 @@ export const serviceQuery = graphql`
             heading
             cards {
                 image {
+                    altText
+                    guid
                     sourceUrl
                 }
             }
@@ -127,6 +131,8 @@ export const projectQuery = graphql`
             heading
             cards {
                 image {
+                    altText
+                    guid
                     sourceUrl
                 }
             }

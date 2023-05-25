@@ -1,14 +1,14 @@
 import React, { useEffect, useState, useCallback, useContext } from "react"
 import { Section, Container } from "../../components/global/Wrappers"
-import { theme, ThemeContext } from "../../static/theme"
+import { ThemeContext } from "../../static/theme"
 import { graphql } from "gatsby"
-import LightBox from "../../components/global/Lightbox.js"
+import LightBox from "../../components/global/Lightbox"
 import PortfolioNav from "../../components/PortfolioNav"
 
 const FeaturedProjectsGrid = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    const projects = content.projects;
+    //const projects = content.projects;
 
     const context = useContext(ThemeContext);
 
@@ -19,26 +19,23 @@ const FeaturedProjectsGrid = (props) => {
     const [interactives, setInteractives] = useState([]);
 
     useEffect(() => {
-      { content.websiteProjects && 
-        content.websiteProjects.map(project => {
+      
+        content.websiteProjects.forEach(project => {
           websites.push(project.portfolioProject.websites);
         })
-      }
-      { content.brandingProjects &&
-        content.brandingProjects.map(project => {
+     
+        content.brandingProjects.forEach(project => {
           brandings.push(project.portfolioProject.branding);
         })
-      }
-      { content.videoProjects &&
-        content.videoProjects.map(project => {
+      
+        content.videoProjects.forEach(project => {
           videos.push(project.portfolioProject.video);
         })
-      }
-      {content.interactiveProjects && 
-        content.interactiveProjects.map(project => {
+      
+        content.interactiveProjects.forEach(project => {
           interactives.push(project.portfolioProject.interactive);
         })
-      }
+      
 
       return () => handleRendering(context.filterState);
     }, []);
@@ -103,16 +100,17 @@ const FeaturedProjectsGrid = (props) => {
         <Section settings={settings} classes={"bg-[#1C1C1C]/[0.9]"}>
           <Container container={'default'}>
                   <div className={'md:grid md:grid-cols-2 md:gap-6 xl:grid-cols-3 xl:gap-x-4 xl:gap-y-8 py-16'}>
-                    {toRender && toRender.map(block => {
+                    {toRender && toRender.map((block, index) => {
                       const video = (block.videoUrl && block.videoUrl !== null) ? block.videoUrl : false;
                       const images = (block.videoUrl && block.videoUrl !== null) ? block.thumbnailImage : block.lightboxImages;
                       if (block.videoUrl !== null && block.lightboxImages !== null) {
                         return (
                             <div className={'relative my-10 md:my-0'}>
-                                <LightBox images={images} title={block.title} caption={block.caption} link={block.websiteLink} video={video} />
+                                <LightBox key={`FeaturedProjectItem__${block.guid}__${index}`} images={images} title={block.title} caption={block.caption} link={block.websiteLink} video={video} />
                             </div>
                         )
                       }
+                      return(<></>)
                     })}
                   </div>
           </Container>
@@ -131,6 +129,7 @@ export const pageQuery = graphql`
         layoutContent {
             websiteProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   websites {
@@ -150,6 +149,7 @@ export const pageQuery = graphql`
             }
             brandingProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   branding {
@@ -169,6 +169,7 @@ export const pageQuery = graphql`
             }
             videoProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   video {
@@ -185,6 +186,7 @@ export const pageQuery = graphql`
             }
             interactiveProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   interactive {
@@ -224,6 +226,7 @@ export const serviceQuery = graphql`
         layoutContent {
             websiteProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   websites {
@@ -243,6 +246,7 @@ export const serviceQuery = graphql`
             }
             brandingProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   branding {
@@ -262,6 +266,7 @@ export const serviceQuery = graphql`
             }
             videoProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   video {
@@ -278,6 +283,7 @@ export const serviceQuery = graphql`
             }
             interactiveProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   interactive {
@@ -317,6 +323,7 @@ export const projectQuery = graphql`
         layoutContent {
             websiteProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   websites {
@@ -336,6 +343,7 @@ export const projectQuery = graphql`
             }
             brandingProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   branding {
@@ -355,6 +363,7 @@ export const projectQuery = graphql`
             }
             videoProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   video {
@@ -371,6 +380,7 @@ export const projectQuery = graphql`
             }
             interactiveProjects{
               ...on WpPortfolioProject {
+                guid
                 title
                 portfolioProject {
                   interactive {

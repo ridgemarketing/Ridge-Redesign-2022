@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react" 
 import { graphql } from "gatsby"
 import { theme } from '../../static/theme.js'
-import { Container, Section } from '../../components/global/Wrappers.js'
+import { Container, Section } from '../../components/global/Wrappers'
 import Parser from '../../components/global/Parser';
 import { ArrowTallLeftBlack } from "../../static/arrow-tall-left-black.js";
 import { ArrowTallRightBlack } from "../../static/arrow-tall-right-black.js";

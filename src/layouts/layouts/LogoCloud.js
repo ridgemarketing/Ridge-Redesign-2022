@@ -2,7 +2,7 @@ import React from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { theme } from '../../static/theme.js'
-import { Container, Section } from '../../components/global/Wrappers.js'
+import { Container, Section } from '../../components/global/Wrappers'
 import Buttons from '../../components/global/Buttons'
 import Parser from '../../components/global/Parser'
 import { motion } from "framer-motion"
@@ -59,12 +59,12 @@ const LogoCloud = props => {
                   initial="hidden"
                   whileInView="visible"
                   >
-                    {content.logos.map(logo => {
+                    {content.logos.map((logo, index) => {
                       const image = (logo.image.localFile.ext === ".svg") 
                       ? <img key={logo.image.sourceUrl} className={`w-full object-contain`} src={logo.image.sourceUrl} alt={logo.image.altText}/>
                       : <GatsbyImage key={logo.image.sourceUrl} className={`w-full`} objectFit="contain" image={logo.image.localFile.childImageSharp.gatsbyImageData} alt={logo.image.altText} /> ;
                       return(
-                        <motion.div variants={variantItems} className={"w-[24%] lg:w-[15%] h-full"}>
+                        <motion.div key={`LogoCloudItem__${image.id}__${index}`} variants={variantItems} className={"w-[24%] lg:w-[15%] h-full"}>
                           {image}                        
                         </motion.div>
                       )
@@ -94,6 +94,7 @@ export const query = graphql`
             heading
             logos {
               image {
+                id
                 sourceUrl
                 altText
                 localFile {
@@ -142,6 +143,7 @@ export const serviceQuery = graphql`
             heading
             logos {
               image {
+                id
                 sourceUrl
                 altText
                 localFile {
@@ -191,6 +193,7 @@ export const projectQuery = graphql`
             heading
             logos {
               image {
+                id
                 sourceUrl
                 altText
                 localFile {

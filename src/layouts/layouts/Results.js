@@ -1,7 +1,7 @@
 import React from "react" 
 import { theme } from '../../static/theme.js'
-import { Container, Section } from '../../components/global/Wrappers.js'
-import ResultCard from '../../components/ResultCard.js'
+import { Container, Section } from '../../components/global/Wrappers'
+import ResultCard from '../../components/ResultCard'
 import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser";
 
@@ -30,8 +30,8 @@ const Results = (props) => {
                   </p>
                 }
                 <div className={`flex flex-wrap justify-center ${columns}`}>
-                    { content.results && content.results.map(result => {
-                      return <ResultCard content ={result} columns={content.columns}/>
+                    { content.results && content.results.map((result, index) => {
+                      return <ResultCard key={`ResultCard__${result.stat}__${index}`} content ={result} columns={content.columns}/>
                     })           
                     }
                 </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState, useContext } from "react"
+import React from "react"
 
 export const Triangle = ({className}) => {
     return(

@@ -3,10 +3,7 @@ import { theme } from '../../static/theme'
 
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { graphql } from "gatsby"
-import FormWrapper from "../../components/global/___FormWrapper"
 import Parser from "../../components/global/Parser"
-import { FormSpreeForm} from "../../components/global/FormSpreeForm"
-import { Input } from "../../components/global/FormFields"
 import { FormCareers } from "../../components/global/Forms"
 
 const CareersForm = (props) => {
@@ -18,7 +15,7 @@ const CareersForm = (props) => {
     const p         = Parser(content.body);
 
     const formId                = `myyaljvo`
-    const [formState, setFormState] = useState({})
+    //const [formState, setFormState] = useState({})
 
 
     return(

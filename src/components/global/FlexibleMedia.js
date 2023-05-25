@@ -22,7 +22,7 @@ const FlexibleMedia = (props) => {
 
             : <GatsbyImage 
                 image={data.image.localFile.childImageSharp.gatsbyImageData} 
-                alt={data.image_alt}
+                alt={data.image_alt ? data.image_alt : ``}
                 className={props.className} 
                 objectFit={props.objectFit}/> 
     }
@@ -57,7 +57,7 @@ const FlexibleMedia = (props) => {
                             <button onClick={() => setShowVideo(true)} className={`relative shadow-none transition-shadow hover:shadow-block`}><Play /></button>
                         </div>
                     }
-                    <iframe className={`w-full h-full z-20 absolute object-cover left-0 top-0`} src={video.videoUrl} width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                    <iframe title={`Video`} className={`w-full h-full z-20 absolute object-cover left-0 top-0`} src={video.videoUrl} width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                 </div>            
             }
         </div>

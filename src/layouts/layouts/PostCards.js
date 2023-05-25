@@ -1,8 +1,8 @@
 import React from "react" 
 import { graphql, useStaticQuery } from "gatsby"
 import { theme } from '../../static/theme.js'
-import { Container, Section } from '../../components/global/Wrappers.js'
-import BlogCard from '../../components/BlogCard.js'
+import { Container, Section } from '../../components/global/Wrappers'
+import BlogCard from '../../components/BlogCard'
 
 const PostCards = (props) => {
 
@@ -13,6 +13,7 @@ const PostCards = (props) => {
       query GetPosts {
         allWpPost(limit: 4) {
           nodes {
+            guid
             title
             content
             link
@@ -75,8 +76,9 @@ return (
           <div>    
             <div className="mt-12 flex w-full flex-col items-center lg:items-stretch justify-between lg:flex-row lg:flex-wrap lg:justify-between">
               {
-                cards.map((card) => {
+                cards.map((card, index) => {
                   return <BlogCard
+                      key     = {`BlogCardItem__${card.guid}__${index}`}
                       heading = {card.title}
                       link    = {`/blog` + card.link || ` `}
                       image   = {card.featuredImage.node.localFile.childImageSharp.gatsbyImageData || ` `}

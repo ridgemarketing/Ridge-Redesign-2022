@@ -13,10 +13,10 @@ const PortfolioNav = (props) => {
     return(
         <div className={"h-[92px] bg-black flex justify-center"}>
             <div className={"flex items-center"}>
-                <p onClick={() => handleClick("Websites")} className={fontClass + (context.filterState == "Websites" ? active : ' ')}>Websites</p>
-                <p onClick={() => handleClick("Branding")} className={fontClass + (context.filterState == "Branding" ? active : ' ')}>Branding</p>
-                <p onClick={() => handleClick("Video")} className={fontClass + (context.filterState == "Video" ? active : ' ')}>Video</p>
-                <p onClick={() => handleClick("Interactive")} className={fontClass + (context.filterState == "Interactive" ? active : ' ')}>Interactive</p>
+                <p role={`button`} tabIndex={0} onClick={() => handleClick("Websites")} onKeyDown={() => handleClick("Websites")} className={fontClass + (context.filterState === "Websites" ? active : ' ')}>Websites</p>
+                <p role={`button`} tabIndex={0} onClick={() => handleClick("Branding")} onKeyDown={() => handleClick("Branding")} className={fontClass + (context.filterState === "Branding" ? active : ' ')}>Branding</p>
+                <p role={`button`} tabIndex={0} onClick={() => handleClick("Video")} onKeyDown={() => handleClick("Video")} className={fontClass + (context.filterState === "Video" ? active : ' ')}>Video</p>
+                <p role={`button`} tabIndex={0} onClick={() => handleClick("Interactive")} onKeyDown={() => handleClick("Interactive")} className={fontClass + (context.filterState === "Interactive" ? active : ' ')}>Interactive</p>
             </div>
         </div>
     )

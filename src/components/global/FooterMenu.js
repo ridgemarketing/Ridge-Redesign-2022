@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { theme } from '../../static/theme'
-import { Container } from "../../components/global/Wrappers"
+//import { Container } from "../../components/global/Wrappers"
 import { Link } from "gatsby" 
 
 const FooterMenu = () =>{

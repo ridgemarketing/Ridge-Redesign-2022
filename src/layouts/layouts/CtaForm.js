@@ -3,8 +3,8 @@ import { theme } from '../../static/theme'
 
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { graphql } from "gatsby"
-import { FormSpreeForm } from "../../components/global/FormSpreeForm"
-import { Input } from "../../components/global/FormFields"
+// import { FormSpreeForm } from "../../components/global/FormSpreeForm"
+// import { Input } from "../../components/global/FormFields"
 import { FormCTALayout } from "../../components/global/Forms"
 
 const CtaForm = (props) => {
@@ -20,7 +20,7 @@ const CtaForm = (props) => {
     }
     
     const formId                = `xnqyroyz`
-    const [formState, setFormState] = useState({})
+    //const [formState, setFormState] = useState({})
 
     return(
         <Section settings={ settings }>

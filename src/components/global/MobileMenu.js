@@ -1,8 +1,8 @@
-import React, { useEffect, useRef, useState, useContext } from "react"
+import React, { useState } from "react"
 import { graphql, useStaticQuery, Link } from "gatsby"
-import { theme, ThemeContext } from '../../static/theme'
+import { theme } from '../../static/theme'
 import { GatsbyImage } from 'gatsby-plugin-image'
-import { ChevronRight, Triangle } from "../svg"
+import { ChevronRight} from "../svg"
 
 const MenuItem = ({navItem, setShowMenu}) => {
     const [subMenuOpen, setSubMenuOpen]     = useState (navItem.childItems.nodes.length > 6);
@@ -37,7 +37,6 @@ const MenuItem = ({navItem, setShowMenu}) => {
                         <div className={`bg-white py-2 text-rm-black flex flex-col gap-6 pl-4 border-l border-rm-grey border-opacity-10`}>
                             {navItem.childItems.nodes.map((subNavItem) => {
                                 let menuIcon = false;
-
                                 if(subNavItem.acfWpMenu.icon){
                                     menuIcon = checkImg(subNavItem.acfWpMenu.icon, 'h-[40px] w-[40px] mr-5');
                                 }

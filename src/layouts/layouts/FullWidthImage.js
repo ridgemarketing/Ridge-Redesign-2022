@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useMemo } from "react"
+import React, { useRef } from "react"
 import {Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { graphql } from "gatsby"

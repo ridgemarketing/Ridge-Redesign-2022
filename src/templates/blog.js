@@ -9,7 +9,7 @@ const Blog = () => {
 
   const getThePosts = useStaticQuery(graphql`
     query GetBlogPosts {
-        allWpPost(sort: {fields: date, order: DESC}) {
+        allWpPost(sort: {date: DESC}) {
         nodes {
             id
             title
@@ -43,7 +43,7 @@ const Blog = () => {
     }
   `)
 
-  const context               = useContext(ThemeContext);
+  const context               = useRef(useContext(ThemeContext));
   const posts                 = getThePosts.allWpPost.nodes;
   const featured              = posts[0];
   const initialCount          = 5;
@@ -54,7 +54,7 @@ const Blog = () => {
   let buttonDisplay           = '';
 
   useEffect(() => {
-    context.updateHeaderBkgcolor('white');
+    context.current.updateHeaderBkgcolor('white');
   }, []);
   
   const loadMore = () =>{

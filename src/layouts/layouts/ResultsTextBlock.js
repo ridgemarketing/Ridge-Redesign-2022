@@ -2,8 +2,8 @@ import React from "react"
 import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
-import ResultCard from '../../components/ResultCard.js'
-import Parser from "../../components/global/Parser";
+import ResultCard from '../../components/ResultCard'
+//import Parser from "../../components/global/Parser";
 import Buttons from '../../components/global/Buttons'
 
 const ResultsTextBlock = (props) => {
@@ -11,7 +11,7 @@ const ResultsTextBlock = (props) => {
     const settings = props.layoutData.layoutSettings || {};
     const services = content.services;
 
-    const body = Parser(content.body);
+    //const body = Parser(content.body);
     let columns = content.columns === '1' ? '' : 'lg:justify-between';
 
     return(
@@ -42,8 +42,8 @@ const ResultsTextBlock = (props) => {
                     </div>
                 </div>
                 <div className={`flex flex-wrap justify-center ${columns}`}>
-                    { content.results && content.results.map(result => {
-                      return <ResultCard content ={result} columns={content.columns}/>
+                    { content.results && content.results.map((result, index) => {
+                      return <ResultCard key={`ResultsTextBlock_CardsItem__${result.description.replace(' ', '_')}__${index}`} content ={result} columns={content.columns}/>
                     })           
                     }
                 </div>

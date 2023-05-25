@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import { graphql } from "gatsby"
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import Blog from "./blog"
@@ -58,11 +58,11 @@ const WpPage = ({ data }) =>{
   } 
 
   const blackList = ["404", "Terms and Conditions", "Portfolio"];
-  const context = useContext(ThemeContext);
+  const context = useRef(useContext(ThemeContext));
 
   useEffect(() => {
-    context.updateAccentFunction(theme.colors.primary.accent);
-    context.updateSecondaryFunction(theme.colors.secondary.accent);
+    context.current.updateAccentFunction(theme.colors.primary.accent);
+    context.current.updateSecondaryFunction(theme.colors.secondary.accent);
   }, []);
 
   if(data.wpPage.isPostsPage === true){

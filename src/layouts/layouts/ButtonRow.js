@@ -56,10 +56,12 @@ const ButtonRow = (props) => {
                         initial="hidden"
                         whileInView="visible"
                       >                      
-                      {content.buttons.map(button => {
-                        const linkInfo = button.componentButton.link;
+                      {content.buttons.map((button, index) => {
+                        const linkInfo  = button.componentButton.link;
+                        const uid       = linkInfo.title.replace(' ', '_')
                         return (
                           <motion.div
+                          key={`ButtonRowItem__${uid}__${index}`}
                           className={'w-full md:w-[240px] lg:w-1/3 xl:w-1/4 my-4 lg:mt-8 lg:mb-5 text-center'} 
                           variants={variantItems}>
                             <div className={"xl:pt-10"}>

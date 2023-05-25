@@ -1,7 +1,7 @@
 import React, { useRef, useEffect, useState } from "react"
 import { graphql } from "gatsby"
 import { theme } from '../../static/theme.js'
-import { Container, Section } from '../../components/global/Wrappers.js'
+import { Container, Section } from '../../components/global/Wrappers'
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 import { Player } from '@lottiefiles/react-lottie-player';
 
@@ -34,7 +34,7 @@ const VerticalSlider = (props) => {
       }
     }
 
-    if(firstSlide.current && firstSlide.current !== null){
+    if(firstSlide && firstSlide.current && firstSlide.current !== null){
       let current = 0;
       let observer = new IntersectionObserver( (entries) => {
           entries.forEach ( (entry) => {
@@ -116,7 +116,7 @@ const VerticalSlider = (props) => {
                 <div className={`h-[100%] md:h-[70%]`}>
                   <div role={`progressbar`} aria-valuenow={0} aria-labelledby={`slides-main`} className={`h-full w-[7px]`}>
                     { vslides.map( (key, index)  => (
-                        <div ref={ el => progressBar.current[ index ] = el } aria-label="slider tabs" role="navigation" tabIndex={0} className="w-[5px] cursor-pointer overflow-hidden border-b-8 last:border-b-0 border-rm-black bg-rm-white transition-all ease-out"  key={ 'slides' + index } style={ { height: 100 / ( vslides.length  + 1 )  + '%' } }  onClick={() => skipTo(index)} onKeyDown={() => skipTo(index)}>
+                        <div ref={ el => progressBar.current[ index ] = el } aria-label={`go to slide ${index}`} role={`button`} tabIndex={0} className="w-[5px] cursor-pointer overflow-hidden border-b-8 last:border-b-0 border-rm-black bg-rm-white transition-all ease-out"  key={ 'slides' + index } style={ { height: 100 / ( vslides.length  + 1 )  + '%' } }  onClick={() => skipTo(index)} onKeyDown={() => skipTo(index)}>
                             <div className="w-full h-0 transition-all ease-out"></div>
                         </div>
                     ) ) } 

@@ -1,7 +1,7 @@
-import React, { useContext } from "react"
+import React from "react"
 import { graphql } from "gatsby"
 import { Section, Container } from "../../components/global/Wrappers"
-import { theme, ThemeContext } from "../../static/theme"
+import { theme } from "../../static/theme"
 import FlexibleMedia from "../../components/global/FlexibleMedia"
 
 const MediaBlocks = (props) => {
@@ -21,10 +21,10 @@ const MediaBlocks = (props) => {
           {media && mediaExists &&
             <div className={columns}> 
             {/* <div className={`lg:flex flex-wrap items-center lg:-mx-10 mt-14`}> */}
-              {media.map(block => {
+              {media.map((block, index) => {
                 return (
                   <div className={`w-full mb-20`}>
-                    <FlexibleMedia paddingRatio={content.ratio} data={block.componentFlexibleMedia} />
+                    <FlexibleMedia key={`MediaBlocksItem__${index}`} paddingRatio={content.ratio} data={block.componentFlexibleMedia} />
                   </div>
                 )
               })}

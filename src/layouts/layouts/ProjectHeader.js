@@ -133,8 +133,8 @@ const ProjectHeader = (props) => {
                           <div className={'pb-8'}>
                               <p className={`${theme.text.P_BLD}`}>Website</p>
                               <ul>
-                                  {info.websites.map(website => {
-                                  return <li><a className={`underline`} href={website.url} target="_blank">{website.url.replace('https://', '')}</a></li>
+                                  {info.websites.map((website, index) => {
+                                    return <li key={`WebsiteItem__${index}`}><a className={`underline`} href={website.url} target="_blank">{website.url.replace('https://', '')}</a></li>
                                   })}
                               </ul>
                           </div>
@@ -143,15 +143,15 @@ const ProjectHeader = (props) => {
                           <div>
                               <p className={`${theme.text.P_BLD}`}>Services Provided</p>
                               <ul>
-                                  {info.services.map(service => {
+                                  {info.services.map((service, index) => {
                                       let hasLink = service.serviceLink;
                                       return (
                                         <>
                                         {hasLink && 
-                                          <li><a className={`underline`} href={service.service.link}>{service.titleOverride}</a></li>
+                                          <li key={`ServiceItem__${index}`}><a className={`underline`} href={service.service.link}>{service.titleOverride}</a></li>
                                         }
                                         {!hasLink && 
-                                          <li>{service.titleOverride}</li>
+                                          <li key={`ServiceItem__${index}`}>{service.titleOverride}</li>
                                         }
                                         </>
                                         )
@@ -172,7 +172,7 @@ const ProjectHeader = (props) => {
             }
             {!videoOverhang && imageOverhang && 
                     <div ref={ref}>
-                      <GatsbyImage className={``} image={imageOverhang} />
+                      <GatsbyImage className={``} image={imageOverhang} alt={``} />
                     </div>
             }
           </Container>
