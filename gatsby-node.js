@@ -1,8 +1,17 @@
 const path = require(`path`)
+const redirects = require("./src/static/redirects.json")
 const { slash } = require(`gatsby-core-utils`)
 exports.createPages = async ({ graphql, actions }) => {
-  const { createPage } = actions
+  const { createPage, createRedirect } = actions
   // query content for WordPress posts
+
+  redirects.forEach(redirect => 
+    createRedirect({
+      fromPath: redirect.fromPath,
+      toPath: redirect.toPath,
+    })
+  )
+
   const {
     data: {
       allWpPost:    { edges: allPosts },
