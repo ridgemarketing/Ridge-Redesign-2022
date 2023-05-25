@@ -57,6 +57,10 @@ const tagListBlog = [
         replace:`<img class="mt-10 w-full max-w-[850px] ml-auto mr-auto"`
     },
     {
+        tag:`<figure class="alignright`,
+        replace:`<figure class="md:float-right clearfix md:ml-6 md:max-w-[40%]"`
+    },
+    {
         tag:`<hr class="`,
         replace:`<hr class="mt-10 `
     }, 

@@ -197,3 +197,9 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 .dark-play-buttons .media-video {
     @apply !text-black;
 }
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
