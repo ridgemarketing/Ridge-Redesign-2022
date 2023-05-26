@@ -82,7 +82,7 @@ module.exports = {
           }
         }
       `,
-        resolveSiteUrl: () => siteUrl,
+        resolveSiteUrl: () => `http://www.ridgemarketing.com`,
         resolvePages: ({
           allSitePage: { nodes: allPages },
           allWpContentNode: { nodes: allWpNodes },
