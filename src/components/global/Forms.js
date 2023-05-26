@@ -105,8 +105,9 @@ export const FormCTALayout = ({formId, classes, submitLabel, btnContainerClasses
             <span className={`mb-6 block md:col-span-1`}><Input state={state} type={`text`} name={`company`} label={`Company`} textColor={textColor} bgColor={bgColor} /></span>
             <span className={`mb-6 block md:col-span-1`}><Input state={state} type={`email`} name={`email`} label={`Email`} textColor={textColor} bgColor={bgColor} /></span>
             <span className={`mb-6 block md:col-span-1`}><Input state={state} type={`tel`} name={`phone`} label={`Phone`} textColor={textColor} bgColor={bgColor} /></span>
-            <span className={`block md:col-span-1`}> <Input state={state} type={`text`} name={`budget`} label={`Budget Range`} textColor={textColor} bgColor={bgColor} /></span>
-            <span className={`block md:col-span-1`}><Input state={state} type={`text`} name={`timing`} label={`Timing for Start`} textColor={textColor} bgColor={bgColor} /></span>
+            <span className={`mb-6 block md:col-span-1`}> <Input state={state} type={`text`} name={`budget`} label={`Budget Range`} textColor={textColor} bgColor={bgColor} /></span>
+            <span className={`mb-6 block md:col-span-1`}><Input state={state} type={`text`} name={`timing`} label={`Timing for Start`} textColor={textColor} bgColor={bgColor} /></span>
+            <span className={`block md:col-span-2`}><TextArea state={state} name={`message`} label={`What are your goals?`} textColor={textColor} bgColor={bgColor} /></span>
 
             <div className={`mt-6 ${btnContainerClasses ? btnContainerClasses : ``}`}>
                 <button
