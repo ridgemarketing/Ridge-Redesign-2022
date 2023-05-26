@@ -21,13 +21,13 @@ export const Head = ({data}) => (
     <meta name="keywords" content={data.wpPage.seo.metaKeywords}/>
     <meta name="author" content={data.wpPage.seo.opengraphAuthor}/>
 
-    {data.wpPage.seo.metaRobotsNoindex &&
+    {data.wpPage.seo.metaRobotsNoindex === 'noindex' &&
       <>
         <meta name="robots" content="noindex" />
         <meta name="googlebot-news" content="noindex" />
       </>
     }
-    {data.wpPage.seo.metaRobotsNoFollow &&
+    {data.wpPage.seo.metaRobotsNoFollow === 'nofollow' &&
        <meta name="robots" content={data.wpPage.seo.metaRobotsNoFollow} />
     }
 
