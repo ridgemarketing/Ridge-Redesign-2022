@@ -8,11 +8,8 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
     const [status, setStatus] = useState(false)
 
     const onSubmit = async (data) => {
-        console.log(data)
 
-        const message = JSON.stringify(data, null, " ")
-
-        console.log(message)
+        const message = JSON.stringify(data, null, 2)
 
         const res = await fetch("/api/sendgrid", {
             body: JSON.stringify({
@@ -39,7 +36,6 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
 
     return(
         <form onSubmit={handleSubmit(onSubmit)} className={classes}>
-
             {errors[0] && 
                 <div className={`bg-[#E10000] text-white py-3 px-6 mt-3 mb-6`}>
                     {errors.map((error) => {
@@ -85,11 +81,8 @@ export const FormContacPage = ({classes, submitLabel, btnContainerClasses, btnSt
     const [status, setStatus] = useState(false)
 
     const onSubmit = async (data) => {
-        console.log(data)
 
-        const message = JSON.stringify(data, null, " ")
-
-        console.log(message)
+        const message = JSON.stringify(data, null, 2)
 
         const res = await fetch("/api/sendgrid", {
             body: JSON.stringify({
@@ -160,11 +153,8 @@ export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnSty
     const [status, setStatus] = useState(false)
 
     const onSubmit = async (data) => {
-        console.log(data)
 
-        const message = JSON.stringify(data, null, " ")
-
-        console.log(message)
+        const message = JSON.stringify(data, null, 2)
 
         const res = await fetch("/api/sendgrid", {
             body: JSON.stringify({
