@@ -6,24 +6,14 @@ async function sendEmail(req, res) {
   try {
     // console.log("REQ.BODY", req.body);
     const sendGridRequest = {
-      to: req.body.emailTo, // Your email where you'll receive emails
+      to: [{email: "aquincy@ridgemarketing.com", name: "Andrea Quincy"}], // Your email where you'll receive emails
       replyTo: req.body.email,
+      cc: [{email:"rquincy@ridgemarketing.com", name:"Rob Quincy"}, {email:"dev@ridgemarketing.com", name:"Ridge Marketing"}],
       from: "noreply@ridgemarketing.com", // your website email address here
       subject: req.body.subject,
       html: `${req.body.message}`
     }
 
-    if (req.body.attachment) {
-      sendGridRequest = {
-        ...sendGridRequest,
-        attachments:[{
-          content: req.body.attachment,
-          filename: req.body.attachmentName,
-          type: "application/pdf",
-          disposition: "attachment"
-        }]
-      }
-    }
     await sendgrid.send(sendGridRequest);
 
   } catch (error) {
