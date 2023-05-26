@@ -18,16 +18,6 @@ export const Head = ({data}) => (
     <meta name="keywords" content={data.wpService.seo.metaKeywords}/>
     <meta name="author" content={data.wpService.seo.opengraphAuthor}/>
 
-    {data.wpService.seo.metaRobotsNoindex === 'noindex' &&
-      <>
-      <meta name="robots" content="noindex" />
-      <meta name="googlebot-news" content="noindex" />
-      </>
-    }
-    {data.wpService.seo.metaRobotsNoFollow === 'nofollow' &&
-       <meta name="robots" content={data.wpService.seo.metaRobotsNoFollow} />
-    }
-
     <meta property="og:type" content={data.wpService.seo.opengraphType}/>
     <meta property="og:author" content={data.wpService.seo.opengraphAuthor}/>
     <meta property="og:url" content={data.wpService.seo.opengraphUrl}/>
