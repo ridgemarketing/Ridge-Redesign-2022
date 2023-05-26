@@ -160,10 +160,10 @@ const Footer = () =>{
                             {logo}
                             <address className={`${theme.text.FOOTER} flex items-center lg:items-start flex-col my-9 not-italic`}>
                                 <span className="mb-9" dangerouslySetInnerHTML={{__html:address}}></span>
-                                {content.contact.phone.phone.url && content.contact.phone.phone.title &&
+                                {content.contact.phone && content.contact.phone.phone.url && content.contact.phone.phone.title &&
                                   <a href={content.contact.phone.phone.url} className="text-rm-green w-max">{content.contact.phone.phone.title}</a>
                                 }
-                                {content.contact.email.url && content.contact.email.title &&
+                                {content.contact.email && content.contact.email.url && content.contact.email.title &&
                                   <a href={content.contact.email.url} className="text-rm-green w-max">{content.contact.email.title}</a>
                                 }
                             </address>
