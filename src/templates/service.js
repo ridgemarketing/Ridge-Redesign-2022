@@ -101,24 +101,33 @@ const WpService = ({ data }) =>{
             return (<></>)
           })}
           
-            <div className={visibility + ` lg:w-3/4`}>
+          <div className={visibility + ` lg:w-3/4`}>
               {floatP.map((key) => {
                 const textSize = 'P_STD';
                 return(
-                    <p className={theme.text[textSize] + 'mb-9' } key={key.body}>
-                        {key.body}
-                    </p>
+                    <>
+                      <p className={theme.text[textSize] + 'mb-9' } key={key.body}>
+                          {key.body}
+                      </p>
+                    </>
                 )
               })}
+              {content.componentButton && 
+                <div className='text-left'>
+                  <Buttons 
+                    content={content.componentButton} 
+                    sectionBackground={settings.backgroundColor}/>
+                </div>
+              }
+            </div>
 
-            {content.componentButton && 
+            {content.componentButton && visibility === 'hidden invisible' && 
               <div className='text-left'>
                 <Buttons 
                   content={content.componentButton} 
                   sectionBackground={settings.backgroundColor}/>
               </div>
-              }
-            </div>
+            }
 
             {content.intextFloatedImage &&
               <GatsbyImage className="mb-9 lg:mb-0 lg:w-1/5 lg:ml-[5%]" objectFit="contain" imgStyle="objectFit:contain" image={content.intextFloatedImage.localFile.childImageSharp.gatsbyImageData} alt={` `} />  
