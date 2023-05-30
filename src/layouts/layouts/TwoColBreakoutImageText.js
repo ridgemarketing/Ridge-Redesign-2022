@@ -10,10 +10,10 @@ const TwoColBreakoutImageText = (props) => {
     const settings = props.layoutData.layoutSettings;
     const image = getImage(content.image.localFile.childImageSharp.gatsbyImageData);
 
-    let imageWidth      = `xl:w-[calc(40%+2.25rem+(50vw-50%))]`;
+    let imageWidth      = `xl:w-[calc(60%+2.25rem+(50vw-50%))]`;
     let imageCss        = ``;
     let imageStyle      = {};
-    let imgWrapperCss   = `xl:left-[60%]`;
+    let imgWrapperCss   = `xl:left-[40%]`;
     let FlexWrapperCss  = `xl:flex`;
     let textCss         = `xl:mr-9 xl:mr-14`;
 
@@ -21,7 +21,7 @@ const TwoColBreakoutImageText = (props) => {
 
     if (content.imagePosition && content.imagePosition === `left`) {
       // imgWrapperCss   = `xl:left-[calc(-40%+2.25rem)]`;
-      imgWrapperCss   = `xl:right-[60%]`;
+      imgWrapperCss   = `xl:right-[40%]`;
       FlexWrapperCss  = `xl:flex lg:flex-row-reverse`;
       textCss         = `xl:ml-9 xl:ml-14`;
     }
@@ -33,7 +33,7 @@ const TwoColBreakoutImageText = (props) => {
     } 
 
     return (
-        <Section settings={settings} classes={`2xl:max-w-[1920px]  2xl:mx-auto overflow-hidden`}>
+        <Section settings={settings} classes={`2xl:max-w-[1920px] 2xl:mx-auto overflow-hidden`}>
             <Container classes={`relative`}>
                 <div className={` justify-start ${FlexWrapperCss}`}>
                     <div className={`text-center xl:text-left xl:w-3/5 w-full flex-1 ${textCss}`}>
