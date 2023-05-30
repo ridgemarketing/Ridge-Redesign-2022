@@ -9,7 +9,7 @@ const Counter = (props) => {
 
   const suffix = props.title;
   const ref = useRef(null);
-  const SPEED = props.number < 100 ? 3 : 6; // animation speed
+  const SPEED = props.number < 100 ? 2 : 4; // animation speed
 
   // intersection observer function I built (components/OnScreen.js) to check if ref is in view
   const isVisible = useOnScreen(ref); 
