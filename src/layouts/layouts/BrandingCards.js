@@ -25,10 +25,14 @@ const BrandingCards = (props) => {
                     })}
                 </div>
 
-                <p className={`${theme.text.H5} text-center`}>{content.bottomHeading}</p>
-                <div className={'text-center pt-4'}>
-                    <Buttons content={content.componentButton} sectionBackground={settings.backgroundColor}/>  
-                </div>
+                {content.bottomHeading &&
+                  <p className={`${theme.text.H5} text-center`}>{content.bottomHeading}</p>
+                }
+                {content.componentButton &&
+                  <div className={`text-center pt-4 ${content.bottomHeading && `mt-10`}`}>
+                      <Buttons content={content.componentButton} sectionBackground={settings.backgroundColor}/>  
+                  </div>
+                }
             </Container>
         </Section>
     )
