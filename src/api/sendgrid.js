@@ -24,7 +24,7 @@ async function sendEmail(req, res) {
       replyTo: req.body.email,
       cc: [{email:"rquincy@ridgemarketing.com", name:"Rob Quincy"}, {email:"dev@ridgemarketing.com", name:"Ridge Marketing"}],
       from: "noreply@ridgemarketing.com", // your website email address here
-      subject: `TEST: ${req.body.subject}`,
+      subject: `${req.body.subject}`,
       html: `<div>${stringHTML}</div>`
     }
 
