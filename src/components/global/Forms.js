@@ -210,28 +210,29 @@ export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnSty
 
     return(
         <form onSubmit={handleSubmit(onSubmit)} className={classes}>
-            {errors[0] && 
-                <div className={`bg-[#E10000] text-white py-3 px-6 mt-3 mb-6`}>
-                    {errors.map((error) => {
-                        return(
-                            <p className={`${theme.text.P_BLD}`}>{error.message}</p>
-                        )
-                    })}
-                </div>
-            }
+            <div class="md:col-span-2">
+                {errors[0] && 
+                    <div className={`bg-[#E10000] text-white py-3 px-6 mt-3 mb-6`}>
+                        {errors.map((error) => {
+                            return(
+                                <p className={`${theme.text.P_BLD}`}>{error.message}</p>
+                            )
+                        })}
+                    </div>
+                }
 
-            {status === `fail-email` &&
-                <div className={`bg-[#E10000] text-white py-3 px-6 mt-3 mb-6`}>
-                    <p className={`${theme.text.P_BLD}`}>There was an error when emailing your submission. Please try again. If the issue persist, let us know at <a href="tel:908-340-4480">908-340-4480</a>.</p>
-                </div>
-            }
+                {status === `fail-email` &&
+                    <div className={`bg-[#E10000] text-white py-3 px-6 mt-3 mb-6`}>
+                        <p className={`${theme.text.P_BLD}`}>There was an error when emailing your submission. Please try again. If the issue persist, let us know at <a href="tel:908-340-4480">908-340-4480</a>.</p>
+                    </div>
+                }
 
-            {status === `success` &&
-                <div className={`bg-rm-aqua text-white py-3 px-6 mt-3 mb-6`}>
-                    <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch with you soon.</p>
-                </div>
-            }
-            
+                {status === `success` &&
+                    <div className={`bg-rm-aqua text-white py-3 px-6 mt-3 mb-6`}>
+                        <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch with you soon.</p>
+                    </div>
+                }
+            </div>
             <span className={`mb-6 block md:col-span-1`}><Input errors={errors} register={register} required={true} type={`text`} name={`name`} label={`Name`} textColor={textColor} bgColor={bgColor} /></span>
             <span className={`mb-6 block md:col-span-1`}><Input errors={errors} register={register} required={true} type={`text`} name={`company`} label={`Company`} textColor={textColor} bgColor={bgColor} /></span>
             <span className={`mb-6 block md:col-span-1`}><Input errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Email`} textColor={textColor} bgColor={bgColor} /></span>
