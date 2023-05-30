@@ -1,15 +1,16 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { Input, TextArea } from "./FormFields"
 import { theme } from "../../static/theme"
 import { useForm } from "react-hook-form";
 
 export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle}) => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm()
+    const { register, handleSubmit, watch, reset, formState, formState: { errors, isSubmitSuccessful } } = useForm()
     const [status, setStatus] = useState(false)
+    const [submittedData, setSubmittedData] = useState({})
 
     const onSubmit = async (data) => {
 
-        const message = JSON.stringify(data, null, 2)
+        const message = JSON.stringify(data)
 
         const res = await fetch("/api/sendgrid", {
             body: JSON.stringify({
@@ -31,8 +32,17 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
           return
         }
 
+        setSubmittedData(data)
         setStatus(`success`)
     }
+
+    useEffect(() => {
+        if (formState.isSubmitSuccessful && status !== `fail-email`) {
+            setStatus(`success`)
+            reset()
+          }
+      
+    }, [formState, submittedData, reset])
 
     return(
         <form onSubmit={handleSubmit(onSubmit)} className={classes}>
@@ -77,12 +87,13 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
 }
 
 export const FormContacPage = ({classes, submitLabel, btnContainerClasses, btnStyle}) => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm()
+    const { register, handleSubmit, watch, reset, formState, formState: { errors, isSubmitSuccessful } } = useForm()
     const [status, setStatus] = useState(false)
+    const [submittedData, setSubmittedData] = useState({});
 
     const onSubmit = async (data) => {
 
-        const message = JSON.stringify(data, null, 2)
+        const message = JSON.stringify(data)
 
         const res = await fetch("/api/sendgrid", {
             body: JSON.stringify({
@@ -104,8 +115,16 @@ export const FormContacPage = ({classes, submitLabel, btnContainerClasses, btnSt
           return
         }
 
-        setStatus(`success`)
+        setSubmittedData(data)
     }
+
+    useEffect(() => {
+        if (formState.isSubmitSuccessful && status !== `fail-email`) {
+            setStatus(`success`)
+            reset()
+          }
+      
+    }, [formState, submittedData, reset])
 
     return(
         <form onSubmit={handleSubmit(onSubmit)} className={classes}>
@@ -149,12 +168,13 @@ export const FormContacPage = ({classes, submitLabel, btnContainerClasses, btnSt
 }
 
 export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnStyle, textColor, bgColor}) => {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm()
+    const { register, handleSubmit, watch, reset, formState, formState: { errors, isSubmitSuccessful } } = useForm()
     const [status, setStatus] = useState(false)
+    const [submittedData, setSubmittedData] = useState({});
 
     const onSubmit = async (data) => {
 
-        const message = JSON.stringify(data, null, 2)
+        const message = JSON.stringify(data)
 
         const res = await fetch("/api/sendgrid", {
             body: JSON.stringify({
@@ -176,8 +196,18 @@ export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnSty
           return
         }
 
+        setSubmittedData(data)
         setStatus(`success`)
     }
+
+    useEffect(() => {
+        if (formState.isSubmitSuccessful && status !== `fail-email`) {
+            setStatus(`success`)
+            reset()
+        }
+      
+    }, [formState, submittedData, reset])
+
     return(
         <form onSubmit={handleSubmit(onSubmit)} className={classes}>
             {errors[0] && 

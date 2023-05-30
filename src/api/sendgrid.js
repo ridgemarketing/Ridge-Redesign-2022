@@ -5,13 +5,27 @@ sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 async function sendEmail(req, res) {
   try {
     // console.log("REQ.BODY", req.body);
+
+    const message = JSON.parse(req.body.message)
+    let html = ``
+    
+    for (const [key, value] of Object.entries(message)) {
+      html = html.concat(
+        `<p><strong>${key}:</strong> ${value}</p>`
+      )
+    }
+
+    console.log(html)
+
+    const stringHTML = JSON.stringify(html);
+
     const sendGridRequest = {
       to: [{email: "aquincy@ridgemarketing.com", name: "Andrea Quincy"}], // Your email where you'll receive emails
       replyTo: req.body.email,
       cc: [{email:"rquincy@ridgemarketing.com", name:"Rob Quincy"}, {email:"dev@ridgemarketing.com", name:"Ridge Marketing"}],
       from: "noreply@ridgemarketing.com", // your website email address here
-      subject: req.body.subject,
-      html: `${req.body.message}`
+      subject: `TEST: ${req.body.subject}`,
+      html: `<div>${stringHTML}</div>`
     }
 
     await sendgrid.send(sendGridRequest);
