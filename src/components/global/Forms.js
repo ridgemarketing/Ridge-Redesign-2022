@@ -72,8 +72,9 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
             <span className={`block mb-2`}><Input errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Email`} textColor={`white`} bgColor={`black`} /></span>
             <span className={`block mb-2`}><Input errors={errors} register={register} required={true} type={`tel`} name={`phone`} label={`Phone`} textColor={`white`} bgColor={`black`} /></span>
             <span className={`block mb-2`}><Input errors={errors} register={register} required={true} type={`text`} name={`position`} label={`Position Sought`} textColor={`white`} bgColor={`black`} /></span>
-            <span className={`block`}><Input errors={errors} register={register} required={true} type={`url`} name={`portfolio`} label={`Portfolio Link`} textColor={`white`} bgColor={`black`} /></span>
-            {/* <span className={`block`}><Input errors={errors} register={register} required={true} type={`file`} name={`resume`} label={`Upload Resume`} textColor={`white`} bgColor={`black`} /></span> */}
+            <span className={`block mb-2`}><Input errors={errors} register={register} required={false} type={`text`} name={`portfolio`} label={`Portfolio or LinkedIn`} textColor={`white`} bgColor={`black`} /></span>
+            <span className={`block`}><TextArea errors={errors} register={register} required={true} name={`message`} label={`What would you bring to the Barn of Brands`} textColor={`white`} bgColor={`black`} /></span>
+            
 
             <div className={`mt-6 ${btnContainerClasses ? btnContainerClasses : ``}`}>
                 <button

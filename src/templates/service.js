@@ -110,12 +110,7 @@ const WpService = ({ data }) =>{
                     </p>
                 )
               })}
-            </div>
 
-            {content.intextFloatedImage &&
-              <GatsbyImage className="mb-9 lg:mb-0 lg:w-1/5 lg:ml-[5%]" objectFit="contain" imgStyle="objectFit:contain" image={content.intextFloatedImage.localFile.childImageSharp.gatsbyImageData} alt={` `} />  
-            }
-            
             {content.componentButton && 
               <div className='text-left'>
                 <Buttons 
@@ -123,6 +118,11 @@ const WpService = ({ data }) =>{
                   sectionBackground={settings.backgroundColor}/>
               </div>
               }
+            </div>
+
+            {content.intextFloatedImage &&
+              <GatsbyImage className="mb-9 lg:mb-0 lg:w-1/5 lg:ml-[5%]" objectFit="contain" imgStyle="objectFit:contain" image={content.intextFloatedImage.localFile.childImageSharp.gatsbyImageData} alt={` `} />  
+            }
           </Container>
         </Section>
         {data.wpService.flexibleLayouts &&
