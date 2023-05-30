@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { theme } from '../../static/theme'
 import { Container, Section } from '../../components/global/Wrappers.js'
 import { Link } from "gatsby"
-import Counter from "../../components/Counter"
+//import Counter from "../../components/Counter"
 
 const ResultsMixed = (props) => {
 
@@ -37,14 +37,16 @@ const ResultsMixed = (props) => {
                                     const padding       = text.style === 'stat' ? ' mb-1' : ' mb-1';
                                     const statNumber    = text.text.split(/\D+/)[0];
                                     const suffixString  = text.text.split(/\d+/)[1];
-                                    const output        = (text.style === 'stat' && statNumber)                           
-                                    ?
-                                    <Counter number={statNumber} title={suffixString} classes={`${theme.text[fontSize]} ${color} ${padding} block`} />
-                                    :                                         
-                                    <span key={`resultsMixed${text.text}${Math.random()}`} className={`${theme.text[fontSize]} ${color} ${padding} block`}>
+                                    const output        = 
+                                      <span key={`resultsMixed${text.text}${Math.random()}`} className={`${theme.text[fontSize]} ${color} ${padding} block`}>
                                         { text.text }
-                                    </span>
-                                    ;
+                                      </span>
+                                    
+                                    // (text.style === 'stat' && statNumber && statNumber > 10)                        
+                                    // ?
+                                    // <Counter number={statNumber} title={suffixString} classes={`${theme.text[fontSize]} ${color} ${padding} block`} />
+                                    // :                                         
+                                  
                                     return (
                                       <>
                                         {output}
