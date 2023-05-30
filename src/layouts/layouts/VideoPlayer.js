@@ -28,7 +28,7 @@ const VideoPlayer = (props) => {
         }
         {player &&
           <div>
-            <div class={`relative pt-[56.25%]`}>
+            <div className={`relative pt-[56.25%]`}>
               {player.placeholder &&
                 <GatsbyImage className={`absolute top-0 left-0 w-full h-full object-cover`} image={getImage(player.placeholder.localFile)} />
               }
@@ -48,7 +48,7 @@ const VideoPlayer = (props) => {
             {videos.map((video, index) => {
                 if (index < 3) {
                   return(
-                    <div role={`button`} tabIndex={0} class={`relative pt-[56.25%] mx-2 xl:mx-5`} onClick={() => setPlayer(video)} onKeyDown={() => setPlayer(video)}>
+                    <div role={`button`} tabIndex={0} className={`relative pt-[56.25%] mx-2 xl:mx-5`} onClick={() => setPlayer(video)} onKeyDown={() => setPlayer(video)}>
                       {video.placeholder &&
                         <GatsbyImage className={`absolute top-0 left-0 w-full h-full object-cover`} image={getImage(video.placeholder.localFile)} />
                       }
