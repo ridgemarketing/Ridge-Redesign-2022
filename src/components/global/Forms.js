@@ -211,7 +211,7 @@ export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnSty
 
     return(
         <form onSubmit={handleSubmit(onSubmit)} className={classes}>
-            <div class="md:col-span-2">
+            <div className="md:col-span-2">
                 {errors[0] && 
                     <div className={`bg-[#E10000] text-white py-3 px-6 mt-3 mb-6`}>
                         {errors.map((error) => {

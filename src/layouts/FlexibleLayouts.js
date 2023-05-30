@@ -44,6 +44,7 @@ export const pageQuery = graphql`
         ...TwoColBreakoutImageHeadingPage
         ...TwoColTextQuotePage
         ...ProjectBlocksPage
+        ...FlexibleProjectBlocksPage
         ...TextBlockPage
         ...VideoPlayerPage
         ...FullWidthImagePage
@@ -81,6 +82,7 @@ export const serviceQuery = graphql`
         ...TwoColBreakoutImageHeadingService 
         ...TwoColTextQuoteService
         ...ProjectBlocksService
+        ...FlexibleProjectBlocksService
         ...TextBlockService
         ...VideoPlayerService
         ...FullWidthImageService
@@ -116,6 +118,7 @@ export const projectQuery = graphql`
         ...TwoColBreakoutImageHeadingProject
         ...TwoColTextQuoteProject
         ...ProjectBlocksProject
+        ...FlexibleProjectBlocksProject
         ...VideoPlayerProject
         ...FullWidthImageProject
         ...FullWidthImageTextProject

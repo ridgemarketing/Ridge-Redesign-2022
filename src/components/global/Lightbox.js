@@ -14,7 +14,7 @@ const LightBox = (props) => {
     const [overlay, setOverlay]         = useState(false);
 
     const loadNext = () =>{
-        if( (image + 1) > (images.length-1)){
+        if( (image + 1) > (images.length - 1)){
             setImage(1);
         }else{
             setImage(image + 1);
