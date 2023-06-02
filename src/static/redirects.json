@@ -51,7 +51,7 @@
         "fromPath": "/newsletter-signup", "toPath": "/contact"
     },
     {
-        "fromPath": "/terms-and-conditions", "toPath": "/terms-and-conditions"
+        "fromPath": "/ppc-marketing-agency to", "toPath": "/service/sem-ppc"
     },
     {
         "fromPath": "/tingley", "toPath": "/project/tingley-rubber"
