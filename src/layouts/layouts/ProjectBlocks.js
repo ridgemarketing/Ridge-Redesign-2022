@@ -112,213 +112,178 @@ const ProjectBlocks = (props) => {
         </Section>
     )
 }
-//export default ProjectBlocks;
+export default ProjectBlocks;
 
-// export const query = graphql`
-//   fragment ProjectBlocksPage on WpPage_Flexiblelayouts_Layouts {
-//     ... on WpPage_Flexiblelayouts_Layouts_ProjectBlocks {
-//         fieldGroupName
-//         layoutProjectBlocks {
-//           layoutContent {
-//             topHeading
-//             overlap
-//             columns
-//             bottomHeading
-//             shadowbox
-//             projects {
-//               ... on WpProject {
-//                 guid
-//                 title
-//                 uri
-//                 projectInformation {
-//                   logos {
-//                     dark {
-//                       localFile {
-//                         ext
-//                         childImageSharp {
-//                           gatsbyImageData
-//                         }
-//                       }
-//                       sourceUrl
-//                       altText
-//                     }
-//                   }
-//                   images {
-//                     projectIndexGrid {
-//                       altText
-//                       localFile {
-//                         childImageSharp {
-//                           gatsbyImageData
-//                         }
-//                       }
-//                     }
-//                     servicesFeatureScreens {
-//                       altText
-//                       localFile {
-//                         childImageSharp {
-//                           gatsbyImageData
-//                         }
-//                       }
-//                     }
-//                     shadowBoxImages {
-//                       shadowBoxText
-//                       shadowBoxImage {
-//                         sourceUrl
-//                         altText
-//                       }
-//                     }
-//                   }
-//                 }
-//               }
-//             }
-//             componentButton {
-//               colors {
-//                 resting
-//               }
-//               link {
-//                 target
-//                 title
-//                 url
-//               }
-//               style
-//             }
-//           }
-//           layoutSettings {
-//             padding {
-//               bottom
-//               top
-//             }
-//             anchorId
-//             backgroundColor
-//             classes
-//             id
-//           }
-//         }
-//       }
-//   }
-// `
-// export const serviceQuery = graphql`
-//   fragment ProjectBlocksService on WpService_Flexiblelayouts_Layouts {
-//     ... on WpService_Flexiblelayouts_Layouts_ProjectBlocks {
-//         fieldGroupName
-//         layoutProjectBlocks {
-//           layoutContent {
-//             topHeading
-//             bottomHeading
-//             overlap
-//             columns
-//             shadowbox
-//             projects {
-//               ... on WpProject {
-//                 guid
-//                 title
-//                 uri
-//                 projectInformation {
-//                   images {
-//                     servicesFeatureScreens {
-//                       altText
-//                       localFile {
-//                         childImageSharp {
-//                           gatsbyImageData
-//                         }
-//                       }
-//                     }
-//                     shadowBoxImages {
-//                       shadowBoxText
-//                       shadowBoxImage {
-//                         sourceUrl
-//                         altText
-//                       }
-//                     }
-//                   }
-//                 }
-//               }
-//             }
-//             componentButton {
-//               colors {
-//                 resting
-//               }
-//               link {
-//                 target
-//                 title
-//                 url
-//               }
-//               style
-//             }
-//           }
-//           layoutSettings {
-//             padding {
-//               bottom
-//               top
-//             }
-//             anchorId
-//             backgroundColor
-//             classes
-//             id
-//           }
-//         }
-//       }
-//   }
-// `
-// export const projectQuery = graphql`
-//   fragment ProjectBlocksProject on WpProject_Flexiblelayouts_Layouts {
-//     ... on WpProject_Flexiblelayouts_Layouts_ProjectBlocks {
-//         fieldGroupName
-//         layoutProjectBlocks {
-//           layoutContent {
-//             topHeading
-//             bottomHeading
-//             overlap
-//             columns
-//             projects {
-//               ... on WpProject {
-//                 guid
-//                 title
-//                 uri
-//                 projectInformation {
-//                   images {
-//                     servicesFeatureScreens {
-//                       altText
-//                       localFile {
-//                         childImageSharp {
-//                           gatsbyImageData
-//                         }
-//                       }
-//                     }
-//                     shadowBoxImages {
-//                       shadowBoxText
-//                       shadowBoxImage {
-//                         sourceUrl
-//                         altText
-//                       }
-//                     }
-//                   }
-//                 }
-//               }
-//             } 
-//             componentButton {
-//               colors {
-//                 resting
-//               }
-//               link {
-//                 target
-//                 title
-//                 url
-//               }
-//               style
-//             }
-//           }
-//           layoutSettings {
-//             padding {
-//               bottom
-//               top
-//             }
-//             anchorId
-//             backgroundColor
-//             classes
-//             id
-//           }
-//         }
-//       }
-//   }
-// `
+export const query = graphql`
+  fragment ProjectBlocksPage on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_ProjectBlocks {
+        fieldGroupName
+        layoutProjectBlocks {
+          layoutContent {
+            topHeading
+            overlap
+            columns
+            bottomHeading
+            projects {
+              ... on WpProject {
+                guid
+                title
+                uri
+                projectInformation {
+                  logos {
+                    dark {
+                      localFile {
+                        ext
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
+                      sourceUrl
+                      altText
+                    }
+                  }
+                  images {
+                    projectIndexGrid {
+                      altText
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
+                    }
+                    servicesFeatureScreens {
+                      altText
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
+                    }
+                    shadowBoxImages {
+                      shadowBoxText
+                      shadowBoxImage {
+                        sourceUrl
+                        altText
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+export const serviceQuery = graphql`
+  fragment ProjectBlocksService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_ProjectBlocks {
+        fieldGroupName
+        layoutProjectBlocks {
+          layoutContent {
+            topHeading
+            bottomHeading
+            overlap
+            columns
+            projects {
+              ... on WpProject {
+                guid
+                title
+                uri
+                projectInformation {
+                  images {
+                    servicesFeatureScreens {
+                      altText
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
+                    }
+                    shadowBoxImages {
+                      shadowBoxText
+                      shadowBoxImage {
+                        sourceUrl
+                        altText
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+export const projectQuery = graphql`
+  fragment ProjectBlocksProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_ProjectBlocks {
+        fieldGroupName
+        layoutProjectBlocks {
+          layoutContent {
+            topHeading
+            bottomHeading
+            overlap
+            columns
+            projects {
+              ... on WpProject {
+                guid
+                title
+                uri
+                projectInformation {
+                  images {
+                    servicesFeatureScreens {
+                      altText
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
+                    }
+                    shadowBoxImages {
+                      shadowBoxText
+                      shadowBoxImage {
+                        sourceUrl
+                        altText
+                      }
+                    }
+                  }
+                }
+              }
+            } 
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

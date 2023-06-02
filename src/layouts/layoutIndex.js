@@ -14,7 +14,7 @@ import Results from "./layouts/Results"
 import ResultsMixed from "./layouts/ResultsMixed"
 import TextBlock from "./layouts/TextBlock"
 // import ThreeColIconsText from "./layouts/_ThreeColIconsText"
-// import ProjectBlocks from "./layouts/ProjectBlocks"
+import ProjectBlocks from "./layouts/ProjectBlocks"
 import TwoColBreakoutImageText from "./layouts/TwoColBreakoutImageText"
 import TwoColBreakoutImageHeading from "./layouts/TwoColBreakoutImageHeading"
 // import TwoColIconsText from "./layouts/TwoColIconsText"
@@ -59,7 +59,7 @@ Layouts['Results']                          = Results;
 Layouts['ResultsMix']                       = ResultsMixed; //component name is different in backend, causing this change to be necessary to match up
 Layouts['TextBlock']                        = TextBlock;
 // Layouts['ThreeColIconsText']             = ThreeColIconsText;
-// Layouts['ProjectBlocks']                 = ProjectBlocks;
+Layouts['ProjectBlocks']                    = ProjectBlocks;
 Layouts['TwoColBreakoutImageText']          = TwoColBreakoutImageText;
 Layouts['TwoColBreakoutImageHeading']       = TwoColBreakoutImageHeading;
 // Layouts['TwoColIconsText']               = TwoColIconsText;
