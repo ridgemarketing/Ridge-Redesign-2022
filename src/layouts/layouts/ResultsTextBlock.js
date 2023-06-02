@@ -34,7 +34,7 @@ const ResultsTextBlock = (props) => {
                                 <p className={`${theme.text.H4} mb-3`}>Services Provided</p>
                                 <ul>
                                     {services.map(service => {
-                                        return (<li className={'mb-1'}><a className={`${theme.text.LINK} ${theme.text_links.HOVER_GREEN}`} href={service.service.link}>{service.titleOverride}</a></li>)
+                                        return (<li className={'mb-1'}><a className={`${theme.text.LINK} ${theme.text_links.HOVER_GREEN}`} href={service.service ? service.service.link : `#`}>{service.titleOverride}</a></li>)
                                     })}
                                 </ul>
                             </div>
