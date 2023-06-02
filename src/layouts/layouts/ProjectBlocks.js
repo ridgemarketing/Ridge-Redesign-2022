@@ -112,7 +112,7 @@ const ProjectBlocks = (props) => {
         </Section>
     )
 }
-export default ProjectBlocks;
+//export default ProjectBlocks;
 
 // export const query = graphql`
 //   fragment ProjectBlocksPage on WpPage_Flexiblelayouts_Layouts {
