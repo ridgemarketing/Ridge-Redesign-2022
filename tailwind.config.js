@@ -101,7 +101,8 @@ module.exports = {
         'rm-grey'            : '#474848',
         'rm-pale-grey'       : '#F1F5F5',
         'rm-pale-teal'       : '#F3F9F9',
-        'rm-blog-blue'       : '#1f9da5'
+        'rm-blog-blue'       : '#1f9da5',
+        'rm-dark-grey'       : '#1C1C1C'
       },
       fontSize: {
           '18px'             : '1.125rem',
@@ -142,7 +143,7 @@ module.exports = {
       },
       boxShadow: {
         'block': '0px 0px 20px rgba(0, 0, 0, 0.2)',
-        'lightbox': '0 4px 4px rgba(0, 0, 0, 0.8)',
+        'lightbox': '0 4px 4px rgba(0, 0, 0, 0.25)',
         'brandcard': '0 4px 4px rgba(0, 0, 0, 0.25)'
       },
       gridTemplateColumns: {

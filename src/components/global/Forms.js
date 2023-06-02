@@ -10,6 +10,8 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
 
     const onSubmit = async (data) => {
 
+        setStatus(`processing`)
+
         const message = JSON.stringify(data)
 
         const res = await fetch("/api/sendgrid", {
@@ -78,9 +80,9 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
 
             <div className={`mt-6 ${btnContainerClasses ? btnContainerClasses : ``}`}>
                 <button
-                    className={`${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} cursor-pointer min-w-[210px]`}
-                    type="submit">
-                        {submitLabel}
+                    className={`${status === `processing` ? `opacity-80` : `` } ${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} cursor-pointer min-w-[210px]`}
+                    type="submit" disabled={status === `processing` ? true : false }>
+                        { status === `processing` ? `Sending...` : submitLabel}
                 </button>
             </div>
         </form>
@@ -93,6 +95,8 @@ export const FormContacPage = ({classes, submitLabel, btnContainerClasses, btnSt
     const [submittedData, setSubmittedData] = useState({});
 
     const onSubmit = async (data) => {
+
+        setStatus(`processing`)
 
         const message = JSON.stringify(data)
 
@@ -159,9 +163,9 @@ export const FormContacPage = ({classes, submitLabel, btnContainerClasses, btnSt
             
             <div className={`mt-6 ${btnContainerClasses ? btnContainerClasses : ``}`}>
                 <button
-                    className={`${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} cursor-pointer min-w-[210px]`}
-                    type="submit">
-                        {submitLabel}
+                    className={`${status === `processing` ? `opacity-80` : `` } ${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} cursor-pointer min-w-[210px]`}
+                    type="submit" disabled={status === `processing` ? true : false }>
+                        { status === `processing` ? `Sending...` : submitLabel}
                 </button>
             </div>
         </form>
@@ -174,6 +178,8 @@ export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnSty
     const [submittedData, setSubmittedData] = useState({});
 
     const onSubmit = async (data) => {
+
+        setStatus(`processing`)
 
         const message = JSON.stringify(data)
 
@@ -238,15 +244,15 @@ export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnSty
             <span className={`mb-6 block md:col-span-1`}><Input errors={errors} register={register} required={true} type={`text`} name={`company`} label={`Company`} textColor={textColor} bgColor={bgColor} /></span>
             <span className={`mb-6 block md:col-span-1`}><Input errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Email`} textColor={textColor} bgColor={bgColor} /></span>
             <span className={`mb-6 block md:col-span-1`}><Input errors={errors} register={register} required={true} type={`tel`} name={`phone`} label={`Phone`} textColor={textColor} bgColor={bgColor} /></span>
-            <span className={`mb-6 block md:col-span-1`}> <Input errors={errors} register={register} required={true} type={`text`} name={`budget`} label={`Budget Range`} textColor={textColor} bgColor={bgColor} /></span>
+            <span className={`mb-6 block md:col-span-1`}> <Input errors={errors} register={register} required={true} type={`text`} name={`companySize`} label={`Company Size`} textColor={textColor} bgColor={bgColor} /></span>
             <span className={`mb-6 block md:col-span-1`}><Input errors={errors} register={register} required={true} type={`text`} name={`timing`} label={`Timing for Start`} textColor={textColor} bgColor={bgColor} /></span>
-            <span className={`block md:col-span-2`}><TextArea errors={errors} register={register} required={true} name={`message`} label={`What are your goals?`} textColor={textColor} bgColor={bgColor} /></span>
+            <span className={`block md:col-span-2`}><TextArea errors={errors} register={register} required={true} name={`message`} label={`Tell us about your marketing needs`} textColor={textColor} bgColor={bgColor} /></span>
             
             <div className={`mt-6 ${btnContainerClasses ? btnContainerClasses : ``}`}>
                 <button
-                    className={`${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} cursor-pointer min-w-[210px]`}
-                    type="submit">
-                        {submitLabel}
+                    className={`${status === `processing` ? `opacity-50` : `` } ${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} cursor-pointer min-w-[210px]`}
+                    type="submit" disabled={status === `processing` ? true : false }>
+                        { status === `processing` ? `Sending...` : submitLabel}
                 </button>
             </div>
         </form>

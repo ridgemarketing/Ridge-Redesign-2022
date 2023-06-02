@@ -25,7 +25,7 @@ const TwoColImageText = (props) => {
                           </h3>
                           <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={theme.text.P_STD + ' mt-8 text-center lg:text-left'}></p>
                           {content.componentButton && content.componentButton.link &&
-                            <div className='text-left my-8'>
+                            <div className='lg:text-left text-center my-8'>
                               <Buttons 
                                 content={content.componentButton} 
                                 sectionBackground={settings.backgroundColor}/>
