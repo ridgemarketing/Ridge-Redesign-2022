@@ -4,11 +4,12 @@ import { GatsbyImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser"
+import Buttons from "../../components/global/Buttons"
 
 const FullWidthImageText = (props) => {
 
-  const content = props.layoutData.layoutContent;
-  const settings = props.layoutData.layoutSettings;
+  const content = props.layoutData.layoutContent || {};
+  const settings = props.layoutData.layoutSettings || {};
   let headerClasses;
   let imageWrapperClasses;
   let imageClasses ='';
@@ -48,16 +49,18 @@ const FullWidthImageText = (props) => {
         <Container container={settings.containerWidth}>
           <div className={`text-center`}>
             { content.heading && 
-                <h1 className={`${theme.text.H2} ${headerClasses} ${textColor} px-3`}>{content.heading}</h1>
+                <h2 dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`${theme.text.H2} ${headerClasses} ${textColor} px-3`}></h2>
             }
             {
             content.alignment === 'standard' && content.body && <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`mt-6 ${theme.text.P_STD} max-w-[1120px] mx-auto ${textColor}`}></p> 
             }
 
-            <div className={`mx-auto ${imageWrapperClasses}`}>
-              <div className={imageClasses}>{image}</div>
-              {mobile}
-            </div>
+            {image &&
+              <div className={`mx-auto ${imageWrapperClasses}`}>
+                <div className={imageClasses}>{image}</div>
+                {mobile}
+              </div>
+            }
 
             {
             content.alignment === 'overlap' && content.intro &&  <p dangerouslySetInnerHTML={{__html: Parser(content.intro)}} className={`text-left mt-8 ${theme.text.H4_LTE} ${textColor}`}></p> 
@@ -65,6 +68,11 @@ const FullWidthImageText = (props) => {
             {
             content.alignment === 'overlap' && content.body &&  <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`text-left mt-8 ${theme.text.P_STD} ${textColor}`}></p> 
             }
+            {content.componentButton &&
+                <div className={`text-center pt-4 mt-10`}>
+                    <Buttons content={content.componentButton} sectionBackground={settings.backgroundColor}/>  
+                </div>
+              }
           </div>     
         </Container>
       </Section>
@@ -84,6 +92,17 @@ export const query = graphql`
             body
             heading
             intro
+            componentButton {
+              link {
+                target
+                title
+                url
+              }
+              colors {
+                resting
+              }
+              style
+            }
             image {
               localFile {
                 ext
@@ -119,6 +138,17 @@ export const serviceQuery = graphql`
             body
             heading
             intro
+            componentButton {
+              link {
+                target
+                title
+                url
+              }
+              colors {
+                resting
+              }
+              style
+            }
             image {
               localFile {
                 ext
@@ -166,6 +196,17 @@ export const projectQuery = graphql`
             body
             heading
             intro
+            componentButton {
+              link {
+                target
+                title
+                url
+              }
+              colors {
+                resting
+              }
+              style
+            }
             image {
               localFile {
                 ext

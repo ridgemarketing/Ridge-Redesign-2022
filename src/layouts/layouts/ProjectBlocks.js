@@ -31,10 +31,11 @@ const ProjectBlocks = (props) => {
               {content.topHeading &&
                   <h2 dangerouslySetInnerHTML={{__html: Parser(content.topHeading)}} className={`${theme.text.H2} text-center ${textColor}`} style={{marginTop: content.overlap ? '-20vh' : '0', paddingBottom: content.overlap ? '5vh' : '5rem'}}></h2>
                 }
-                <div className={`flex w-full flex-wrap justify-between`}>
+                {content.projects &&
+                  <div className={`flex w-full flex-wrap justify-between`}>
                     {content.projects.map((block, index) => {
                         let image = '';
-                         
+                          
                         if(content.columns === 3){
                           if(shadowboxToggle){
                               if(block.projectInformation.images.shadowBoxImages){
@@ -95,7 +96,7 @@ const ProjectBlocks = (props) => {
                         }
                     })}
                 </div> 
-
+                }
                 {content.bottomHeading &&
                   <h2 className={`${theme.text.H5} text-center text-rm-${textColor}`}> 
                       { content.bottomHeading }

@@ -1,112 +1,115 @@
-import React from "react" 
+import React, { useState } from "react" 
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers'
 import { graphql } from "gatsby"
 import Buttons from "../../components/global/Buttons"
-import ShadowBox from "../../components/global/Shadowbox"
 import Parser from "../../components/global/Parser"
+import Vimeo from '@u-wave/react-vimeo'
 
 const FlexibleProjectBlocks = (props) => {
 
     const content         = props.layoutData.layoutContent;
     const settings        = props.layoutData.layoutSettings;
 
-    let transparent       = 'transparent';
-    const textColor       = settings.backgroundColor === 'black' ? 'white' : 'black'; 
+    let transparent                     = 'transparent';
+    const textColor                     = settings.backgroundColor === 'black' ? 'white' : 'black';
+    const [overlay, setOverlay]         = useState(false);
 
-    const cols = content.columns === 3 ? 'lg:w-[31%]' : 'md:h-[360px]';
-
-    const shadowboxToggle = content.shadowbox;
-
-    if(shadowboxToggle){
-      settings.position = ' ';
+    const togglePopup = () =>{
+        if(overlay === false){
+            setOverlay(true);
+            document.body.classList.add("overflow-hidden");
+        }
+        if(overlay === true){
+            setOverlay(false);
+            document.body.classList.remove("overflow-hidden");
+        }
     }
 
     return(
         <Section settings={ settings } transparent = { transparent }>
+            {content.overlapEffect === `top-black` &&
+              <div className={`absolute top-0 left-0 w-full bg-black ${theme.paddingTop[settings.padding.top]} ${content.heading ? `pb-[14rem]` : `pb-[10rem]`}`}></div>
+            }
+
+            {content.overlapEffect === `top-pale-grey` &&
+              <div className={`absolute top-0 left-0 w-full bg-rm-pale-grey ${theme.paddingTop[settings.padding.top]} ${content.heading ? `pb-[14rem]` : `pb-[10rem]`}`}></div>
+            }
             <Container>
-              <div className={`relative ${(!content.topHeading && content.overlap) && `-top-8 -mb-8`}`}>
-              {content.topHeading &&
-                  <h2 dangerouslySetInnerHTML={{__html: Parser(content.topHeading)}} className={`${theme.text.H2} text-center ${textColor}`} style={{marginTop: content.overlap ? '-20vh' : '0', paddingBottom: content.overlap ? '5vh' : '5rem'}}></h2>
+                {content.heading &&
+                  <h2 dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`${theme.text.H2} mb-20 text-center ${textColor}`}></h2>
                 }
-                <div className={`flex w-full flex-wrap justify-between`}>
-                    {content.projects.map((block, index) => {
-                        let image = '';
-                         
-                        if(content.columns === 3){
-                          if(shadowboxToggle){
-                              if(block.projectInformation.images.shadowBoxImages){
-                                return(
-                                  <div key={`FlexibleProjectBlocksItem_Shadow__${block.guid}__${index}`} className={`flex flex-col justify-center items-center w-full md:w-[48%] ${cols} mb-12`}>
-                                    <ShadowBox images={block.projectInformation.images.shadowBoxImages} />
-                                  </div>)
-                              }
-
-                              return (<></>)
-                          }else{
-                            if(block.projectInformation.images.servicesFeatureScreens){
-                              image = block.projectInformation.images.servicesFeatureScreens.localFile.childImageSharp.gatsbyImageData;
-
-                              return (
-                                <div key={`FlexibleProjectBlocksItem_Features__${block.guid}__${index}`} className={`flex flex-col justify-center items-center w-full md:w-[48%] ${cols} mb-12`}>
-                                    <GatsbyImage image={image} alt={block.title} className={`object-cover w-full`}/> 
-                                    <Link className={ theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + theme.text_links.HOVER_GREEN + theme.text_links.HOVER_ARW_FWD_GREEN + ' mt-3'} to={block.uri}>
-                                        { block.title }
-                                    </Link>
-                                </div>
-                              ) 
-                            } else {
-                              return (<></>)
-                            }
-                          }
-                        }else{
-                          if(block.projectInformation.images.projectIndexGrid){
-
-                            image = block.projectInformation.images.projectIndexGrid.localFile.childImageSharp.gatsbyImageData;
-                            let logo = '';
-
-                            if(block.projectInformation.logos){
-
-                              if (block.projectInformation.logos.dark.localFile.ext === `.svg`) {
-                                logo = <img className={`w-3/4 xl:w-3/5 mb-8 block h-auto -translate-y-5 group-hover:translate-y-0 focus-within:translate-y-0 focus:translate-y-0 opacity-0 group-hover:opacity-100 focus-within:opacity-100 cursor-pointer z-20 transition-all duration-300 ease-out`} alt={`${block.title} logo`} src={block.projectInformation.logos.dark.sourceUrl} />
-                              }else{
-                                logo = <GatsbyImage image={image} alt={`${block.title} logo`} className={`object-contain w-3/4`} />
-                              }
-
-                            }
-                            
-                            return (
-                              <div key={`FlexibleProjectBlocksItem_Grid__${block.guid}__${index}`} className={`flex flex-col justify-center items-center w-full md:w-[49%] ${cols} mb-12`}>
+                {content.blocks &&
+                  <div className={`md:grid md:grid-cols-3 gap-12`}>
+                      {content.blocks.map((block, index) => {
+                        return(
+                          <>
+                              <div key={`FlexibleProjectItem__${block.featuredImage.guid}__${index}`} className={`flex flex-col justify-center items-center w-full`}>
                                   <div className={`mt-3 h-full w-full relative group`}>
-                                    <div className="w-full h-full flex flex-col justify-center items-center absolute top-0 left-0">
-                                        {logo && logo}
-                                        <a href={block.uri} className={`${theme.button.BASE_STYLING} ${theme.button.SOLID_GREEN_HOVER_LIGHT} -translate-y-5 group-hover:translate-y-0 focus-within:translate-y-0 focus:translate-y-0 opacity-0 group-hover:opacity-100 focus-within:opacity-100 cursor-pointer min-w-max h-min z-20 transition-all duration-300 ease-out `}>VIEW WORK</a>
-                                        <div className="w-full h-[0%] bg-rm-black opacity-80 z-10 absolute top-0 left-0 group-hover:h-[100%] focus-within:h-[100%] transition-all duration-300 ease-out"></div>
+                                    <div className={`w-full h-full flex flex-col justify-center items-center`}>
+                                        {content.type === `project` &&
+                                            <Link to={block.link ? block.link.url : `#`} className={`h-full flex flex-col justify-center items-center`}>
+                                              <div className={`w-3/4 mx-auto block`}>
+                                                <GatsbyImage image={block.featuredImage.localFile.childImageSharp.gatsbyImageData} alt={`${block.title} logo`} className={`object-contain`} />
+                                              </div>
+                                              <div class="flex-1 flex flex-col justify-end">
+                                                <span className={ theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + theme.text_links.HOVER_GREEN + theme.text_links.HOVER_ARW_FWD_GREEN + ' mt-3 justify-center'}>
+                                                  { block.heading }
+                                                </span>
+                                              </div>
+                                            </Link>
+                                          }
+
+                                        {content.type ===  `video` && 
+                                          <div role="button" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()}>
+                                            <div className={`mx-auto block`}>
+                                              <GatsbyImage image={block.featuredImage.localFile.childImageSharp.gatsbyImageData} alt={`${block.title} logo`} className={`object-contain`} />
+                                            </div>
+                                            <div class="flex-1 flex flex-col justify-end">
+                                              <span className={ theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + theme.text_links.HOVER_GREEN + theme.text_links.HOVER_ARW_FWD_GREEN + ' mt-3 justify-center'}>
+                                                { block.heading }
+                                              </span>
+                                            </div>
+                                          </div>
+                                        }
                                     </div>
-                                    <GatsbyImage image={image} alt={``} className={`object-cover w-full h-full`}/> 
+                                    <GatsbyImage image={block.image} alt={``} className={`object-cover w-full h-full`}/> 
                                   </div>
                               </div>
-                            ) 
-                          } else {
-                            return (<></>)
-                          }
-                        }
-                    })}
-                </div> 
-
-                {content.bottomHeading &&
-                  <h2 className={`${theme.text.H5} text-center text-rm-${textColor}`}> 
-                      { content.bottomHeading }
-                  </h2>
-                }
-                {content.componentButton && content.componentButton.link &&
-                  <div className="text-center mt-10">
-                    <Buttons content={content.componentButton} sectionBackground={settings.backgroundColor}/>
+                            {content.type === `video` &&
+                              <div className={`fixed top-0 left-0 h-screen w-screen`} style={{display: overlay ? 'block':'none', visibility: overlay ? 'visible':'hidden', zIndex:overlay ? '50':'0'}} aria-label="lightbox" aria-expanded={overlay}>
+                                <div className={`relative z-10 w-full h-full flex flex-col items-center justify-center`}>
+                                  <div className={`w-[95%] md:w-3/4 lg:w-[40%] h-max relative flex flex-col justify-center items-center`}>
+                                    <nav className={`absolute top-0 left-0 w-full h-full z-50 text-rm-white flex justify-between items-center ml-auto mr-auto`}> 
+                                        <button className={`absolute z-50 text-rm-white p-2 -top-[50px] right-0`} aria-label="Close Lightbox" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} tabIndex={0}>
+                                            <svg width="26" height="24" viewBox="0 0 26 24" fill="none">
+                                                <path d="M2 2L23.1852 22" stroke="#F1F5F5" strokeWidth="3" strokeLinecap="round"/>
+                                                <path d="M24 2L2.81482 22" stroke="#F1F5F5" strokeWidth="3" strokeLinecap="round"/>
+                                            </svg>
+                                        </button>
+                                    </nav>
+                                    <div className={'pt-[56.25%] w-full relative'}>
+                                      <Vimeo
+                                          video={block.videoSource}
+                                          muted
+                                          responsive
+                                          autoplay={false}
+                                          loop={false}
+                                          className={`absolute top-0 left-0 w-full h-full object-cover`}
+                                        />
+                                    </div>
+                                  </div>
+                                </div>
+                                <div className={`absolute top-0 left-0 w-full z-0 h-full bg-rm-black opacity-30`} aria-hidden="true"></div>
+                              </div>  
+                            }
+                          </>
+                        )
+                      })}
                   </div>
                 }
-              </div>
             </Container>
         </Section>
     )
@@ -119,7 +122,24 @@ export const query = graphql`
         fieldGroupName
         layoutFlexibleProjectBlocks {
           layoutContent {
+            type
+            overlapEffect
             heading
+            blocks {
+              featuredImage {
+                guid
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              heading
+              videoSource
+              link {
+                url
+              }
+            }
           }
           layoutSettings {
             padding {
@@ -141,7 +161,24 @@ export const serviceQuery = graphql`
         fieldGroupName
         layoutFlexibleProjectBlocks {
           layoutContent {
+            type
+            overlapEffect
             heading
+            blocks {
+              featuredImage {
+                guid
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              heading
+              videoSource
+              link {
+                url
+              }
+            }
           }
           layoutSettings {
             padding {
@@ -163,7 +200,24 @@ export const projectQuery = graphql`
         fieldGroupName
         layoutFlexibleProjectBlocks {
           layoutContent {
+            type
+            overlapEffect
             heading
+            blocks {
+              featuredImage {
+                guid
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+              heading
+              videoSource
+              link {
+                url
+              }
+            }
           }
           layoutSettings {
             padding {

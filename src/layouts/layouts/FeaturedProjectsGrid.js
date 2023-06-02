@@ -101,7 +101,7 @@ const FeaturedProjectsGrid = (props) => {
           <Container container={'default'}>
                   <div className={'md:grid md:grid-cols-2 md:gap-6 xl:grid-cols-3 xl:gap-x-4 xl:gap-y-8 py-16'}>
                     {toRender && toRender.map((block, index) => {
-                      const video = (block.videoUrl && block.videoUrl !== null) ? block.videoUrl : false;
+                      const video = (block.videoUrl && block.videoUrl !== null) ? block.videoUrl : false ;
                       const images = (block.videoUrl && block.videoUrl !== null) ? block.thumbnailImage : block.lightboxImages;
                       if (block.videoUrl !== null && block.lightboxImages !== null) {
                         return (
@@ -140,6 +140,11 @@ export const pageQuery = graphql`
                       text
                       image {
                         publicUrl
+                        localFile {
+                          childImageSharp {
+                            gatsbyImageData
+                          }
+                        }
                       }
                     }
                     websiteLink
@@ -160,6 +165,11 @@ export const pageQuery = graphql`
                       text
                       image {
                         publicUrl
+                        localFile {
+                          childImageSharp {
+                            gatsbyImageData
+                          }
+                        }
                       }
                     }
                     websiteLink
@@ -176,6 +186,11 @@ export const pageQuery = graphql`
                     title
                     caption
                     thumbnailImage {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
                       sourceUrl
                     }
                     websiteLink
@@ -193,6 +208,11 @@ export const pageQuery = graphql`
                     title
                     caption
                     thumbnailImage {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
                       sourceUrl
                     }
                     websiteLink
@@ -237,6 +257,11 @@ export const serviceQuery = graphql`
                       text
                       image {
                         publicUrl
+                        localFile {
+                          childImageSharp {
+                            gatsbyImageData
+                          }
+                        }
                       }
                     }
                     websiteLink
@@ -257,6 +282,11 @@ export const serviceQuery = graphql`
                       text
                       image {
                         publicUrl
+                        localFile {
+                          childImageSharp {
+                            gatsbyImageData
+                          }
+                        }
                       }
                     }
                     websiteLink
@@ -273,6 +303,11 @@ export const serviceQuery = graphql`
                     title
                     caption
                     thumbnailImage {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
                       sourceUrl
                     }
                     websiteLink
@@ -290,6 +325,11 @@ export const serviceQuery = graphql`
                     title
                     caption
                     thumbnailImage {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
                       sourceUrl
                     }
                     websiteLink
@@ -334,6 +374,11 @@ export const projectQuery = graphql`
                       text
                       image {
                         publicUrl
+                        localFile {
+                          childImageSharp {
+                            gatsbyImageData
+                          }
+                        }
                       }
                     }
                     websiteLink
@@ -354,6 +399,11 @@ export const projectQuery = graphql`
                       text
                       image {
                         publicUrl
+                        localFile {
+                          childImageSharp {
+                            gatsbyImageData
+                          }
+                        }
                       }
                     }
                     websiteLink
@@ -370,6 +420,11 @@ export const projectQuery = graphql`
                     title
                     caption
                     thumbnailImage {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
                       sourceUrl
                     }
                     websiteLink
@@ -387,6 +442,11 @@ export const projectQuery = graphql`
                     title
                     caption
                     thumbnailImage {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
                       sourceUrl
                     }
                     websiteLink

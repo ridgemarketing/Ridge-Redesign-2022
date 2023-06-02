@@ -1,5 +1,6 @@
 import React, {useState} from "react";
 import { theme } from "../../static/theme";
+import { GatsbyImage } from "gatsby-plugin-image";
 
 const ShadowBox = (props) => {
     const images            = props.images;
@@ -42,7 +43,9 @@ const ShadowBox = (props) => {
         // console.log(overlay);
     }
     
-    return(<>
+    return(
+    <>
+    <GatsbyImage />
     <img src={images[0].shadowBoxImage.sourceUrl} className={`cursor-pointer object-cover w-full`} onClick={()=>togglePopup()}/>
     <button className={theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + 'mt-3'} onClick={()=>togglePopup()}>{images[0].shadowBoxText}</button>
     <div className={`fixed top-0 left-0 h-screen w-screen`} style={{display:overlay ? 'block':'none', visibility:overlay ? 'visible':'hidden', zIndex:overlay ? '50':'0'}} aria-label="lightbox" aria-expanded={overlay}>
@@ -73,6 +76,7 @@ const ShadowBox = (props) => {
         </div>
         <div className={`absolute top-0 left-0 w-full z-0 h-full bg-rm-black bg-opacity-80`} aria-hidden="true"></div>
     </div>        
-    </>)
+    </>
+    )
 }
 export default ShadowBox

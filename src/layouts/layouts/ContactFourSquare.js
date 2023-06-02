@@ -78,7 +78,7 @@ const ContactFourSquare = (props) => {
           <Container classes={`flex flex-col xl:flex-row`}>
             <div className={`w-full xl:w-1/2`}>
               {content.heading &&
-                <h1 className={`${theme.text.H1_STD}`} dangerouslySetInnerHTML={{__html: Parser(content.heading)}}></h1>
+                <h2 className={`${theme.text.H1_STD}`} dangerouslySetInnerHTML={{__html: Parser(content.heading)}}></h2>
               }
               {content.body &&
                 <p className={`${theme.text.P_STD} mt-5`}>{content.body}</p>
