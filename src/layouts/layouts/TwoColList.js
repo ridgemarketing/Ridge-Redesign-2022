@@ -8,9 +8,9 @@ const TwoColList = (props) => {
  
     return (
         <Section settings={settings}>
-            <h1>
+            <h2>
                 <span className={theme.text.P_STD}>This is from the Two Col List Layout</span>
-                </h1>
+            </h2>
 
             <ul className={'mt-5'}>
                 {content.list.map(item => {

@@ -38,7 +38,7 @@ const Buttons = (props) => {
         }
     }
 
-    if ( (baseColor.toUpperCase() === props.sectionBackground.toUpperCase())  || !(theme.button[buttonClass]) ){
+    if ( (baseColor.toUpperCase() === background.toUpperCase())  || !(theme.button[buttonClass]) ){
         check();
     }
     

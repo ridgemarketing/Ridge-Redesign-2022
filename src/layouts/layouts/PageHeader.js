@@ -35,7 +35,7 @@ const PageHeader = (props) => {
                   </span>
                 }
                 {(content.heading || content.subheading) &&
-                  <h1 className={`flex flex-col ${content.reverseHeading ? `flex-col-reverse` : ``}`}>
+                  <h2 className={`flex flex-col ${content.reverseHeading ? `flex-col-reverse` : ``}`}>
                     {content.heading && 
                       <span dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`block ${theme.text.PAGE_HEADER}`}></span>
                     }
@@ -44,7 +44,7 @@ const PageHeader = (props) => {
                         {content.subheading}
                       </span>
                     }
-                  </h1>
+                  </h2>
                 }
               </div>
             } 
