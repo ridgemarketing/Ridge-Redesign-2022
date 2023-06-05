@@ -130,7 +130,7 @@ const tagListBlog = [
     }
     ,
     {
-        tag:`[sup]`,
+        tag:`[/sup]`,
         replace:`</sup>`
     }
 ];
