@@ -89,9 +89,17 @@ const tagListBlog = [
         replace:` `,
     }, 
     {
+        tag:`<h3 class="wp-block-heading">`,
+        replace:`<h3 class="${theme.text.H4} mt-10">`
+    },
+    {
         tag:`<h3>`,
         replace:`<h3 class="${theme.text.H4} mt-10">`
     },
+    {
+        tag:`<h6 class="wp-block-heading">`, //intro text 
+        replace:`<span class="font-basic-sans text-[1.625rem] leading-[1.875rem] font-bold">`,
+    }, 
     {
         tag:`<h6>`, //intro text 
         replace:`<span class="font-basic-sans text-[1.625rem] leading-[1.875rem] font-bold">`,
