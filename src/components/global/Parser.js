@@ -61,6 +61,10 @@ const tagListBlog = [
         replace:`<h2 class="${theme.text.H5} mt-10">`
     },
     {
+        tag:`<h2 class="wp-block-heading">`,
+        replace:`<h2 class="${theme.text.H5} mt-10">`
+    },
+    {
         tag:`<img`,
         replace:`<img class="mt-10 w-full max-w-[850px] ml-auto mr-auto"`
     },
