@@ -15,7 +15,7 @@ export const Head = ({data}) => (
     <title>{data.wpPage.seo.title}</title>
     <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
 
-    <meta name="description" content={data.wpPage.metaDesc} />
+    <meta name="description" content={data.wpPage.seo.opengraphDescription} />
     <meta name="title" content={data.wpPage.seo.title}/>
     <meta name="pageType" content={data.wpPage.seo.schema.pageType}/>
     <meta name="keywords" content={data.wpPage.seo.metaKeywords}/>

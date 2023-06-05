@@ -10,7 +10,7 @@ export const Head = ({data}) => (
     <title>{data.wpPost.seo.title}</title>
     <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
 
-    <meta name="description" content={data.wpPost.metaDesc} />
+    <meta name="description" content={data.wpPost.seo.opengraphDescription} />
     <meta name="title" content={data.wpPost.seo.title}/>
     <meta name="pageType" content={data.wpPost.seo.schema.pageType}/>
     <meta name="keywords" content={data.wpPost.seo.metaKeywords}/>
