@@ -123,6 +123,15 @@ const tagListBlog = [
     {
         tag:`<figcaption>`,
         replace:`<figcaption class="text-center">`
+    },
+    {
+        tag:`[sup]`,
+        replace:`<sup>`
+    }
+    ,
+    {
+        tag:`[sup]`,
+        replace:`</sup>`
     }
 ];
 
