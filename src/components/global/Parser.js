@@ -53,80 +53,12 @@ const tagList = [
 
 const tagListBlog = [
     {
-        tag: `<p>`,
-        replace: `<p class="${theme.text.P_STD} mt-10">`
-    },
-    {
-        tag:`<h2>`,
-        replace:`<h2 class="${theme.text.H5} mt-10">`
-    },
-    {
-        tag:`<h2 class="wp-block-heading">`,
-        replace:`<h2 class="${theme.text.H5} mt-10">`
-    },
-    {
-        tag:`<img`,
-        replace:`<img class="mt-10 w-full max-w-[850px] ml-auto mr-auto"`
-    },
-    {
-        tag:`<figure class="alignright`,
-        replace:`<figure class="md:float-right clearfix md:ml-6 md:max-w-[40%]`
-    },
-    {
-        tag:`<figure class="alignleft`,
-        replace:`<figure class="md:float-left clearfix md:mr-6 md:max-w-[40%]`
-    },
-    {
         tag:`<hr class="`,
         replace:`<hr class="mt-10 `
     }, 
     {
-        tag:`<ul>`,
-        replace:`<ul style="list-style: disc; padding-left: 20px;"> <style>main li{margin-top:0.75rem;}</style>`,
-    },
-    {
-        tag:`<a`,
-        replace:`<a class="underline text-rm-blog-blue font-semibold"`
-    }, 
-    {
         tag:`<br>`,
         replace:` `,
-    }, 
-    {
-        tag:`<h3 class="wp-block-heading">`,
-        replace:`<h3 class="${theme.text.H4} mt-10">`
-    },
-    {
-        tag:`<h3>`,
-        replace:`<h3 class="${theme.text.H4} mt-10">`
-    },
-    {
-        tag:`<h6 class="wp-block-heading">`, //intro text 
-        replace:`<span class="font-basic-sans text-[1.625rem] leading-[1.875rem] font-bold">`,
-    }, 
-    {
-        tag:`<h6>`, //intro text 
-        replace:`<span class="font-basic-sans text-[1.625rem] leading-[1.875rem] font-bold">`,
-    }, 
-    {
-        tag:`</h6>`,
-        replace:`</span>`,
-    },
-    {   //wordpress editor 50/50 columns
-        tag:`wp-block-columns`,
-        replace:`block md:flex justify-between`,
-    },
-    {
-        tag:`wp-block-column`,
-        replace:`w-full md:w-[48%]`
-    },
-    {
-        tag:`<blockquote class="wp-block-quote"><p`,
-        replace:`<blockquote class="wp-block-quote"><p class=" text-rm-green text-[1.875rem] leading-[2rem] italic font-basic-sans font-normal mt-10"`
-    },
-    {
-        tag:`<figcaption>`,
-        replace:`<figcaption class="text-center">`
     },
     {
         tag:`[sup]`,

@@ -156,34 +156,83 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 .gatsby-image-wrapper.absolute {
     position: absolute !important;
 }
+
+.blog-container h2 {
+    @apply font-stratos uppercase font-bold text-40px leading-44px mt-10 mb-6;
+}
+
+.blog-container h3 {
+    @apply font-basic-sans font-semibold text-26px leading-30px mb-6;
+}
+
+.blog-container h6 {
+    @apply font-basic-sans text-[1.625rem] leading-[1.875rem] font-bold mb-3;
+}
+
+.blog-container p, .blog-container li {
+    @apply font-basic-sans font-light text-21px leading-28px;
+}
+
+.blog-container p {
+    @apply mb-10;
+}
+
 .blog-container a {
-    @apply hover:underline hover:text-rm-green
+    @apply underline text-rm-blog-blue font-semibold hover:underline hover:text-rm-green;
 }
+
+.blog-container ul {
+    @apply list-disc pl-5 mb-10;
+}
+
+.blog-container img {
+    @apply mb-10 w-full max-w-[850px] mx-auto;
+}
+
+.blog-container figure.alignright {
+    @apply md:float-right md:ml-6 md:max-w-[40%];
+}
+
+.blog-container figure.alignleft {
+    @apply md:float-left md:mr-6 md:max-w-[40%];
+}
+
+.blog-container .has-text-align-center {
+    @apply text-center;
+}
+
+.blog-container figure.alignright::after, .blog-container figure.alignleft::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
 .blog-container figcaption {
-    font-size: .9rem;
-    font-style: italic;
-    text-align: center;
-    margin-top: 10px!important;
-    opacity: 0.6;
-    font-weight: 300;
-    max-width: 800px;
-    margin: 0 auto;
+    @apply text-center text-[0.9rem] italic mt-[10px] opacity-60 font-light max-w-[800px] mx-auto;
 }
+
 .blog-container .blog-dotted {
-    list-style: disc;
-    padding-left: 20px;
-    margin: 1rem 0;
+    @apply list-disc pl-[20px] my-4 mx-0;
 }
+
 .blog-container .blog-dotted li, .blog-container .blog-decimal li {
     @apply py-2
 }
+
 .blog-container .blog-decimal {
-    list-style: decimal;
-    padding-left: 14px;
-    margin: 1rem 0;
+    @apply list-decimal pl-[14px] my-4;
 }
+
+.blog-container .wp-block-columns {
+    @apply block md:flex justify-between;
+}
+
+.blog-container .wp-block-column {
+    @apply w-full md:w-[48%];
+}
+
 .max-960px {
-    max-width: 960px;
+    @apply max-w-[960px];
 }
 
 .bg-allshifts {
@@ -202,4 +251,4 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     content: "";
     clear: both;
     display: table;
-  }
+}
