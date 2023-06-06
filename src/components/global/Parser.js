@@ -70,11 +70,11 @@ const tagListBlog = [
     },
     {
         tag:`<figure class="alignright`,
-        replace:`<figure class="md:float-right clearfix md:ml-6 md:max-w-[40%]"`
+        replace:`<figure class="md:float-right clearfix md:ml-6 md:max-w-[40%]`
     },
     {
         tag:`<figure class="alignleft`,
-        replace:`<figure class="md:float-left clearfix md:mr-6 md:max-w-[40%]"`
+        replace:`<figure class="md:float-left clearfix md:mr-6 md:max-w-[40%]`
     },
     {
         tag:`<hr class="`,
