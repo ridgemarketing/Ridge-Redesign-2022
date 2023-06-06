@@ -1,9 +1,10 @@
-import React from "react"
+import React, { useEffect, useContext } from "react"
 import { graphql } from "gatsby"
 import { theme } from "../static/theme"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link }from "gatsby"
 import Parser from "../components/global/Parser"
+import { ThemeContext } from "../static/theme"
 
 export const Head = ({data}) => (
   <>
@@ -47,13 +48,19 @@ export const Head = ({data}) => (
 )
 
 const WpPost = ({ data, pageContext }) =>{
-    const content     = data.wpPost;
-    const context     = pageContext;
+    const content       = data.wpPost;
+    const context       = pageContext;
+    const themeContext  = useContext(ThemeContext);
+
     const links = {
       prev: context.previous,
       next: context.next
     }
     content.date = new Date(content.date).toLocaleDateString('default', { month: 'long', year: 'numeric', day:'numeric' });
+
+    useEffect(() => {
+      themeContext.updateHeaderBkgcolor('white');
+    }, []);
     
   return (
     <>
