@@ -35,13 +35,15 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
         }
 
         setSubmittedData(data)
-        setStatus(`success`)
     }
 
     useEffect(() => {
         if (formState.isSubmitSuccessful && status !== `fail-email`) {
             setStatus(`success`)
             reset()
+            
+            window.dataLayer.push({event: 'Careers Form Submission'});
+            
           }
       
     }, [formState, submittedData, reset])
@@ -121,12 +123,17 @@ export const FormContacPage = ({classes, submitLabel, btnContainerClasses, btnSt
         }
 
         setSubmittedData(data)
+
+
     }
 
     useEffect(() => {
         if (formState.isSubmitSuccessful && status !== `fail-email`) {
             setStatus(`success`)
             reset()
+            
+            window.dataLayer.push({event: 'Contact Form Submission'});
+            
           }
       
     }, [formState, submittedData, reset])
@@ -211,6 +218,9 @@ export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnSty
         if (formState.isSubmitSuccessful && status !== `fail-email`) {
             setStatus(`success`)
             reset()
+            
+            window.dataLayer.push({event: 'CTA Form Submission'});
+            
         }
       
     }, [formState, submittedData, reset])
