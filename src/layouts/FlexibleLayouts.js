@@ -16,7 +16,8 @@ const FlexibleLayouts = (props) => {
         if (Layouts[subString]) {
             layoutProps = {
                 layoutContent: res[layoutArrTitle].layoutContent || {},
-                layoutSettings: res[layoutArrTitle].layoutSettings  || {}
+                layoutSettings: res[layoutArrTitle].layoutSettings  || {},
+                location: props.location
             }
         }
         

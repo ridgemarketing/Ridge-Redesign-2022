@@ -18,6 +18,11 @@ const FeaturedProjectsGrid = (props) => {
     const [videos, setVideos] = useState([]);
     const [interactives, setInteractives] = useState([]);
 
+    const url = new URLSearchParams(props.layoutData.location.search);
+    const parameter1 = url.get("type");
+    // console.log(props.layoutData.location, parameter1);
+
+
     useEffect(() => {
       
         content.websiteProjects.forEach(project => {
@@ -92,6 +97,25 @@ const FeaturedProjectsGrid = (props) => {
       }
       return;
     }, [toRender])
+
+
+    useEffect(() => {
+      if(parameter1){
+        if(parameter1 == 'video'){
+          handleFilterChange('Video');
+        }
+        if(parameter1 == 'websites'){
+          handleFilterChange('Websites');
+        }
+        if(parameter1 == 'branding'){
+          handleFilterChange('Branding');
+        }
+        if(parameter1 == 'interactive'){
+          handleFilterChange('Interactive');
+        }
+      }
+    }, [])
+
 
     return(
       <>
