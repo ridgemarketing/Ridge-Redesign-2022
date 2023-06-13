@@ -8,7 +8,6 @@ import PortfolioNav from "../../components/PortfolioNav"
 const FeaturedProjectsGrid = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
-    //const projects = content.projects;
 
     const context = useContext(ThemeContext);
 
@@ -20,8 +19,6 @@ const FeaturedProjectsGrid = (props) => {
 
     const url = new URLSearchParams(props.layoutData.location.search);
     const parameter1 = url.get("type");
-    // console.log(props.layoutData.location, parameter1);
-
 
     useEffect(() => {
       
@@ -56,6 +53,7 @@ const FeaturedProjectsGrid = (props) => {
     }, [context.filterState])
 
     const handleRendering = (filter) => {
+      // console.log(filter, context.filterState);
       switch(filter) {
         case "Websites":
           setRendering(websites);
@@ -77,6 +75,7 @@ const FeaturedProjectsGrid = (props) => {
     }
 
     const handleFilterChange = useCallback(filter => {
+      // console.log(filter, context.filterState);
       context.updateFilterState(filter);
       switch(filter) {
         case "Websites":
@@ -116,7 +115,6 @@ const FeaturedProjectsGrid = (props) => {
       }
     }, [])
 
-
     return(
       <>
         <PortfolioNav setFilter={handleFilterChange} />
@@ -129,8 +127,8 @@ const FeaturedProjectsGrid = (props) => {
                       const images = (block.videoUrl && block.videoUrl !== null) ? block.thumbnailImage : block.lightboxImages;
                       if (block.videoUrl !== null && block.lightboxImages !== null) {
                         return (
-                            <div className={'relative my-10 md:my-0'}>
-                                <LightBox key={`FeaturedProjectItem__${block.guid}__${index}`} images={images} title={block.title} caption={block.caption} link={block.websiteLink} video={video} />
+                            <div className={`relative my-10 md:my-0 ${context.filterState == 'Video'&& 'h-min'}`}>
+                                <LightBox key={`FeaturedProjectItem__${block.guid}__${index}`} images={images} title={block.title} typeOfProject={context.filterState} caption={block.caption} link={block.websiteLink} video={video} />
                             </div>
                         )
                       }

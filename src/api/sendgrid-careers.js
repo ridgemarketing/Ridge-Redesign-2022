@@ -14,21 +14,21 @@ async function sendEmail(req, res) {
         {
           to: [
               {
-                email: "dev@ridgemarketing.com", 
-                //email: "aquincy@ridgemarketing.com", 
+                // email: "dev@ridgemarketing.com", 
+                email: "aquincy@ridgemarketing.com", 
                 name: "Andrea Quincy"
               }
             ], 
-          // cc: [
-          //   {
-          //     email:"rquincy@ridgemarketing.com", 
-          //     name:"Rob Quincy"
-          //   }, 
-          //   {
-          //     email:"dev@ridgemarketing.com", 
-          //     name:"Developers"
-          //   }
-          // ],
+          cc: [
+            {
+              email:"rquincy@ridgemarketing.com", 
+              name:"Rob Quincy"
+            }, 
+            {
+              email:"dev@ridgemarketing.com", 
+              name:"Developers"
+            }
+          ],
           dynamic_template_data:{
             name:`${message['name']}`,
             email:`${message['email']}`,
