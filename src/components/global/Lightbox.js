@@ -47,7 +47,7 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject}) =>
         setImgBlur((currentlyShowing) ? "" : "blur(4px)");
         return;
     }
-    // console.log(typeOfProject);
+    console.log(typeOfProject);
     return(<>
     <div onMouseEnter={() => handleHoverState(false)} onMouseLeave={() => handleHoverState(true)} className={`${typeOfProject == 'Video'&& 'pt-[56.25%]'}`}>
         
