@@ -27,6 +27,10 @@ const FeaturedProjectsGridDev = (props) => {
 
     useEffect(() => {
 
+      
+        // content.websiteProjects.forEach(project => {
+        //   websites.push(project.websiteProject);
+        // })
 
         for( var i =0; i < content.websiteProjects.length; i++){
           websites.push(content.websiteProjects[i]);
@@ -143,52 +147,52 @@ const FeaturedProjectsGridDev = (props) => {
                         {websites && websites.map((block, index) => {
                             //console.log(block);
                             return( 
-                                <div className={`flex flex-col lg:flex-row lg:even:flex-row-reverse w-full lg:min-h-[1080px] lg:max-h-[1080px] items-center overflow-hidden max-w-[1920px] ml-auto mr-auto `} >
-                                     <div className={`relative flex w-full lg:w-2/3 lg:min-h-[1080px] lg:max-h-[1080px]`}>
+                                <div className={`flex flex-col lg:flex-row lg:even:flex-row-reverse w-full lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px] items-center overflow-hidden max-w-[1920px] ml-auto mr-auto `} >
+                                     <div className={`relative flex w-full lg:w-2/3 lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px]`}>
                                       {block.group.largeImage.image &&
                                         <GatsbyImage 
                                             image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
                                             alt={``} 
                                             className={`w-full z-0`} />
                                       }
-                                      <div className="bg-black p-8 absolute bottom-4 left-4 w-min">
+                                      <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
                                         <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.largeImage.title}</h2>
                                         {block.group.largeImage.link.url &&
                                           <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max`} link={block.group.largeImage.link} />
                                         }
                                       </div>
                                     </div>
-                                    <div className={`relative flex flex-col w-full lg:w-1/3 lg:min-h-[1080px] lg:max-h-[1080px]`}>
-                                    {block.group.smallImageTop.image &&
-                                        <div className="relative">
-                                          <GatsbyImage 
-                                              image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
-                                              alt={``} 
-                                              className={`w-full lg:h-[540px] z-0`} />
-                                          <div className="bg-black p-8 absolute bottom-4 left-4 w-min">
-                                              <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageTop.title}</h2>
-                                              {block.group.smallImageTop.link.url &&
-                                                <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max`} link={block.group.smallImageTop.link} />
-                                              }
-                                          </div>
-                                        </div>
-                                      }
-                                      {block.group.smallImageBottom.image &&
-                                        <div className="relative">
-                                          <GatsbyImage 
-                                              image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
-                                              alt={``} 
-                                              className={`w-full lg:h-[540px] z-0`} />
-                                              <div className="bg-black p-8 absolute bottom-4 left-4 w-min">
-                                                <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageTop.title}</h2>
-                                                {block.group.smallImageBottom.link.url &&
-                                                 <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max`} link={block.group.smallImageBottom.link} />
-                                                }
+                                    <div className={`relative flex flex-col w-full lg:w-1/3 lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px]`}>
+                                        {block.group.smallImageTop.image &&
+                                            <div className="relative">
+                                              <GatsbyImage 
+                                                  image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
+                                                  alt={``} 
+                                                  className={`w-full lg:h-[375px] 2xl:h-[540px] z-0`} />
+                                                  {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
+                                                    <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
+                                                        <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageTop.title}</h2>
+                                                          <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max`} link={block.group.smallImageTop.link} />
+                                                    </div>
+                                                  }
                                             </div>
-                                        </div>    
-                                      }
-                                    </div> 
-                                  </div>
+                                          }
+                                          {block.group.smallImageBottom.image &&
+                                            <div className="relative">
+                                              <GatsbyImage 
+                                                  image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
+                                                  alt={``} 
+                                                  className={`w-full lg:h-[375px] 2xl:h-[540px] z-0`} />
+                                                  {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
+                                                    <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
+                                                      <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageBottom.title}</h2>
+                                                      <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max`} link={block.group.smallImageBottom.link} />
+                                                  </div>
+                                                  }
+                                            </div>    
+                                          }
+                                      </div> 
+                                </div>
                               )
                         })}
                   </div>
