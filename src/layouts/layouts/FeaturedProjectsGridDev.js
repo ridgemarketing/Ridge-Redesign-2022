@@ -6,12 +6,13 @@ import LightBox from "../../components/global/Lightbox"
 import PortfolioNav from "../../components/PortfolioNav"
 import { GatsbyImage } from "gatsby-plugin-image"
 import FlexibleLink from "../../components/global/FlexibleLink"
+import { theme } from "../../static/theme"
 
 const FeaturedProjectsGridDev = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
 
-    // console.log(content);
+    //console.log(content);
 
     const context = useContext(ThemeContext);
 
@@ -28,27 +29,23 @@ const FeaturedProjectsGridDev = (props) => {
     useEffect(() => {
 
       
-        // content.websiteProjects.forEach(project => {
-        //   websites.push(project.websiteProject);
-        // })
+        content.websiteProjects.forEach(project => {
+          websites.push(project);
+        })
 
-        for( var i =0; i < content.websiteProjects.length; i++){
-          websites.push(content.websiteProjects[i]);
-        }
-        // console.log(websites);
+        content.brandingProjects.forEach(project => {
+          brandings.push(project);
+        })
 
+        content.videoProjects.forEach(project => {
+          videos.push(project);
+        })
 
-        // content.brandingProjects.forEach(project => {
-        //   brandings.push(project.portfolioProject.branding);
-        // })
+        // console.log(videos);
       
-        // content.videoProjects.forEach(project => {
-        //   videos.push(project.portfolioProject.video);
-        // })
-      
-        // content.interactiveProjects.forEach(project => {
-        //   interactives.push(project.portfolioProject.interactive);
-        // })
+        content.interactiveProjects.forEach(project => {
+          interactives.push(project);
+        })
       
 
       return () => handleRendering(context.filterState);
@@ -129,7 +126,7 @@ const FeaturedProjectsGridDev = (props) => {
 
 
     let containerGrid = 'default';
-    if(context.filterState == 'Websites' || context.filterState == 'websites'){
+    if(context.filterState == 'Websites' || context.filterState == 'Branding'){
         containerGrid = 'none';
     }
 
@@ -138,66 +135,197 @@ const FeaturedProjectsGridDev = (props) => {
       <>
         <PortfolioNav setFilter={handleFilterChange} />
 
-        <Section settings={settings} classes={`${context.filterState === 'Websites' && `bg-black`} ${context.filterState !== 'Websites' && `bg-[#1C1C1C]/[0.9]`} overflow-hidden`}>
+        <Section settings={settings} classes={`${context.filterState === 'Websites' && `bg-black`} ${context.filterState !== 'Websites' &&  `bg-[#1C1C1C]/[0.9]`} overflow-hidden`}>
           <Container container={containerGrid}>
             <>
-              {context.filterState === 'Websites' &&
-              
-                  <div className={``}>
-                        {websites && websites.map((block, index) => {
-                            //console.log(block);
-                            return( 
-                                <div className={`flex flex-col lg:flex-row lg:even:flex-row-reverse w-full lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px] items-center overflow-hidden max-w-[1920px] ml-auto mr-auto `} >
-                                     <div className={`relative flex w-full lg:w-2/3 lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px]`}>
-                                      {block.group.largeImage.image &&
-                                        <GatsbyImage 
-                                            image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
-                                            alt={``} 
-                                            className={`w-full z-0`} />
-                                      }
-                                      <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
-                                        <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.largeImage.title}</h2>
-                                        {block.group.largeImage.link.url &&
-                                          <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max`} link={block.group.largeImage.link} />
+                  {context.filterState === 'Websites' &&
+                      <div className={``}>
+                          {websites && websites.map((block, index) => {
+                              //console.log(block);
+                              return( 
+                                  <div className={`flex flex-col lg:flex-row lg:even:flex-row-reverse w-full lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px] items-center overflow-hidden max-w-[1920px] ml-auto mr-auto `} >
+                                      <div className={`relative flex w-full lg:w-2/3 lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px]`}>
+                                        {block.group.largeImage.image &&
+                                          <GatsbyImage 
+                                              image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
+                                              alt={``} 
+                                              className={`w-full z-0`} />
                                         }
+                                        <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
+                                          <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.largeImage.title}</h2>
+                                          {block.group.largeImage.link.url &&
+                                          <>
+                                              <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `} link={block.group.largeImage.link}/>
+                                          </>
+                                          }
+                                        </div>
                                       </div>
-                                    </div>
-                                    <div className={`relative flex flex-col w-full lg:w-1/3 lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px]`}>
-                                        {block.group.smallImageTop.image &&
-                                            <div className="relative">
-                                              <GatsbyImage 
-                                                  image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
-                                                  alt={``} 
-                                                  className={`w-full lg:h-[375px] 2xl:h-[540px] z-0`} />
-                                                  {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
-                                                    <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
-                                                        <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageTop.title}</h2>
-                                                          <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max`} link={block.group.smallImageTop.link} />
+                                      <div className={`relative flex flex-col w-full lg:w-1/3 lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px]`}>
+                                          {block.group.smallImageTop.image &&
+                                              <div className="relative">
+                                                <GatsbyImage 
+                                                    image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
+                                                    alt={``} 
+                                                    className={`w-full lg:h-[375px] 2xl:h-[540px] z-0`} />
+                                                    {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
+                                                      <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
+                                                          <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageTop.title}</h2>
+                                                            <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageTop.link} />
+                                                      </div>
+                                                    }
+                                              </div>
+                                            }
+                                            {block.group.smallImageBottom.image &&
+                                              <div className="relative">
+                                                <GatsbyImage 
+                                                    image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
+                                                    alt={``} 
+                                                    className={`w-full lg:h-[375px] 2xl:h-[540px] z-0`} />
+                                                    {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
+                                                      <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
+                                                        <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageBottom.title}</h2>
+                                                        <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageBottom.link} />
                                                     </div>
-                                                  }
-                                            </div>
-                                          }
-                                          {block.group.smallImageBottom.image &&
-                                            <div className="relative">
-                                              <GatsbyImage 
-                                                  image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
-                                                  alt={``} 
-                                                  className={`w-full lg:h-[375px] 2xl:h-[540px] z-0`} />
-                                                  {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
-                                                    <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
-                                                      <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageBottom.title}</h2>
-                                                      <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max`} link={block.group.smallImageBottom.link} />
-                                                  </div>
-                                                  }
-                                            </div>    
-                                          }
-                                      </div> 
-                                </div>
-                              )
-                        })}
-                  </div>
+                                                    }
+                                              </div>    
+                                            }
+                                        </div> 
+                                  </div>
+                                )
+                          })}
+                    </div>
               }
-              {context.filterState !== 'Websites' &&
+              {context.filterState === 'Branding' &&
+                      <div className={``}>
+                          {brandings && brandings.map((block, index) => {
+                              //console.log(block);
+                              return( 
+                                  <div className={`flex flex-col lg:flex-row lg:even:flex-row-reverse w-full lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px] items-center overflow-hidden max-w-[1920px] ml-auto mr-auto `} >
+                                      <div className={`relative flex w-full lg:w-2/3 lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px]`}>
+                                        {block.group.largeImage.image &&
+                                          <GatsbyImage 
+                                              image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
+                                              alt={``} 
+                                              className={`w-full z-0`} />
+                                        }
+                                        <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
+                                          <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.largeImage.title}</h2>
+                                          {block.group.largeImage.link.url &&
+                                            <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.largeImage.link} />
+                                          }
+                                        </div>
+                                      </div>
+                                      <div className={`relative flex flex-col w-full lg:w-1/3 lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px]`}>
+                                          {block.group.smallImageTop.image &&
+                                              <div className="relative">
+                                                <GatsbyImage 
+                                                    image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
+                                                    alt={``} 
+                                                    className={`w-full lg:h-[375px] 2xl:h-[540px] z-0`} />
+                                                    {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
+                                                      <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
+                                                          <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageTop.title}</h2>
+                                                            <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageTop.link} />
+                                                      </div>
+                                                    }
+                                              </div>
+                                            }
+                                            {block.group.smallImageBottom.image &&
+                                              <div className="relative">
+                                                <GatsbyImage 
+                                                    image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
+                                                    alt={``} 
+                                                    className={`w-full lg:h-[375px] 2xl:h-[540px] z-0`} />
+                                                    {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
+                                                      <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
+                                                        <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageBottom.title}</h2>
+                                                        <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageBottom.link} />
+                                                    </div>
+                                                    }
+                                              </div>    
+                                            }
+                                        </div> 
+                                  </div>
+                                )
+                          })}
+                    </div>
+              }
+              {context.filterState == 'Video' &&
+                <div>
+                    {videos && videos.map( (block) => {
+                      var videoContent = block.category;
+                        
+                        return(
+                          <div className="py-16">
+                            {videoContent.title &&
+                                <h2 className={`${theme.text.H2} text-center pb-4 lg:pb-8`}>
+                                  {videoContent.title}
+                                </h2>
+                            }
+
+                            <div className={`md:grid md:grid-cols-2 md:gap-6`}>
+                              {videoContent.videos.map( (vidGrid, index) =>{
+                                 if (vidGrid.group.videoUrl !== null && vidGrid.group.image !== null) {
+                                  return(
+                                    <div className={`relative my-10 md:my-0 ${context.filterState == 'Video'&& 'h-min'}`}>
+                                        <LightBox 
+                                            key={`FeaturedProjectItem__${context.filterState}__${index}`} 
+                                            images={vidGrid.group.image} 
+                                            title={vidGrid.group.title} 
+                                            typeOfProject={context.filterState} 
+                                            video={vidGrid.group.videoUrl}
+                                            />
+                                    </div>
+                                  )
+                                }
+                              })}
+                            </div>
+                          </div>
+                        )
+                    
+                    })}
+                </div>
+              }
+              {context.filterState == 'Interactive' &&
+                <div>
+                    {interactives && interactives.map( (block) => {
+                      var interactiveContent = block.category;
+                        
+                        return(
+                          <div className="py-16">
+                            {interactiveContent.title &&
+                                <h2 className={`${theme.text.H2} text-center pb-4 lg:pb-8`}>
+                                  {interactiveContent.title}
+                                </h2>
+                            }
+
+                            <div className={`md:grid md:grid-cols-2 md:gap-6`}>
+                              {interactiveContent.videos.map( (interactiveGrid, index) =>{
+                                console.log(interactiveGrid.group);
+                                 if (interactiveGrid.group.videoUrl !== null && interactiveGrid.group.image !== null) {
+                                  return(
+                                    <div className={`relative my-10 md:my-0 ${context.filterState == 'Video'&& 'h-min'}`}>
+                                        <LightBox 
+                                            key={`FeaturedProjectItem__${context.filterState}__${index}`} 
+                                            images={interactiveGrid.group.image} 
+                                            title={interactiveGrid.group.title} 
+                                            typeOfProject={context.filterState} 
+                                            video={interactiveGrid.group.videoUrl}
+                                            />
+                                    </div>
+                                  )
+                                }
+                              })}
+                            </div>
+                          </div>
+                        )
+                    
+                    })}
+                </div>
+              }
+
+
+              {context.filterState !== 'Websites' && context.filterState !== 'Branding' && context.filterState !== 'Video' && context.filterState !== 'Interactive' &&
                 <div className={`md:grid md:grid-cols-2 md:gap-6 xl:grid-cols-3 xl:gap-x-4 xl:gap-y-8 py-16`}>
                     {toRender && toRender.map((block, index) => {
                       const video = (block.videoUrl && block.videoUrl !== null) ? block.videoUrl : false ;
@@ -215,6 +343,8 @@ const FeaturedProjectsGridDev = (props) => {
                     })} 
                   </div>
               }
+
+
             </>
           </Container>
         </Section>
@@ -280,74 +410,96 @@ export const pageQuery = graphql`
               }
             }
             brandingProjects{
-              ...on WpPortfolioProject {
-                guid
-                title
-                portfolioProject {
-                  branding {
-                    title
-                    caption
-                    lightboxImages {
-                      fieldGroupName
-                      text
-                      image {
-                        publicUrl
-                        localFile {
-                          childImageSharp {
-                            gatsbyImageData
-                          }
-                        }
+              group {
+                largeImage {
+                  image {
+                    localFile {
+                      childImageSharp {
+                        gatsbyImageData
                       }
                     }
-                    websiteLink
-                  }                   
+                  }
+                  title
+                  link {
+                    url
+                    title
+                    target
+                  }
+                }
+                smallImageBottom {
+                  title
+                  link {
+                    target
+                    title
+                    url
+                  }
+                  image {
+                    localFile {
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+                  }
+                }
+                smallImageTop {
+                  title
+                  link {
+                    target
+                    title
+                    url
+                  }
+                  image {
+                    localFile {
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+                  }
                 }
               }
             }
-            videoProjects{
-              ...on WpPortfolioProject {
-                guid
+
+
+            videoProjects {
+              category {
                 title
-                portfolioProject {
-                  video {
+                videos {
+                  group {
                     title
-                    caption
-                    thumbnailImage {
+                    subtitle
+                    videoUrl
+                    image {
                       localFile {
                         childImageSharp {
                           gatsbyImageData
                         }
                       }
-                      sourceUrl
                     }
-                    websiteLink
-                    videoUrl
-                  }                   
+                  }
                 }
               }
             }
+
             interactiveProjects{
-              ...on WpPortfolioProject {
-                guid
+              category {
                 title
-                portfolioProject {
-                  interactive {
+                videos {
+                  group {
                     title
-                    caption
-                    thumbnailImage {
+                    subtitle
+                    videoUrl
+                    image {
                       localFile {
                         childImageSharp {
                           gatsbyImageData
                         }
                       }
-                      sourceUrl
                     }
-                    websiteLink
-                    videoUrl
-                  }                   
+                  }
                 }
               }
             }
+
           }
         layoutSettings {
           padding {

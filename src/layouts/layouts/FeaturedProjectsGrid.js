@@ -139,7 +139,7 @@ const FeaturedProjectsGrid = (props) => {
               
                   <div className={``}>
                         {websitesArray && websitesArray.map((block, index) => {
-                            console.log(block);
+                            //console.log(block);
                             return( 
                                 <div className={`flex flex-col lg:flex-row lg:even:flex-row-reverse w-full lg:min-h-[1080px] lg:max-h-[1080px] items-center overflow-hidden max-w-[1920px] ml-auto mr-auto `} >
                                     <div className={`relative flex w-full lg:w-2/3 lg:min-h-[1080px] lg:max-h-[1080px]`}>

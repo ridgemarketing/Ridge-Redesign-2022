@@ -4,7 +4,7 @@ import Link from "./FlexibleLink"
 import { GatsbyImage } from "gatsby-plugin-image";
 
 const LightBox = ({type, images, video, title, link, caption, typeOfProject}) => {
-    const thumbnail                     = (video) ? images.localFile.childImageSharp.gatsbyImageData : images[0].image.localFile.childImageSharp.gatsbyImageData;
+    const thumbnail                     = (video) ? images.localFile.childImageSharp.gatsbyImageData : images.localFile.childImageSharp.gatsbyImageData;
     const gallery                       = images.length > 1 ? images.slice(1) : video ? thumbnail : images[0]
     const [image, setImage]             = useState(0);
     const [hoverState, setHoverState]   = useState("hidden");
@@ -61,7 +61,7 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject}) =>
         
         <div className={`shadow-lightbox absolute top-0 left-0 justify-center items-center ${hoverState} w-full h-full`} style={{backgroundColor: "rgba(255,255,255,0.8)"}} >
             <div className={'text-center'}>
-                <p className={`${theme.text.H4} pb-4`}>{title}</p>
+                <p className={`${theme.text.H4} text-rm-black pb-4`}>{title}</p>
                 <p className={theme.text.P_STD}>{caption}</p>
                 <div role="button" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={"w-[95px] text-center mx-auto pt-7"}>
                     {typeOfProject == 'Video'&&
@@ -113,7 +113,7 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject}) =>
                     </div>
                 }
 
-                <h3 className={`${theme.text.H4} pt-4 text-rm-white text-center`}>{(!video) ? gallery[image].text ? gallery[image].text : title : title}</h3>
+                <h3 className={`${theme.text.H4} pt-4 text-rm-black text-center`}>{(!video) ? gallery[image].text ? gallery[image].text : title : title}</h3>
                 
                 <div className={"flex justify-between pt-6 md:hidden w-full"}>
                     <button className={`relative text-white ml-2 z-50 ${gallery.length < 3 ? 'hidden' : ''}`} onClick={()=>loadPrev()} onKeyDown={()=>loadPrev()} aria-label="Next Image" tabIndex={0}>
