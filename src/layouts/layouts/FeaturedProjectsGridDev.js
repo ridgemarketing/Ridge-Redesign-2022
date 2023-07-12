@@ -268,11 +268,14 @@ const FeaturedProjectsGridDev = (props) => {
                                  if (vidGrid.group.videoUrl !== null && vidGrid.group.image !== null) {
                                   return(
                                     <div className={`relative my-10 md:my-0 ${context.filterState == 'Video'&& 'h-min'}`}>
+                                      
                                         <LightBox 
                                             key={`FeaturedProjectItem__${context.filterState}__${index}`} 
                                             images={vidGrid.group.image} 
                                             title={vidGrid.group.title} 
+                                            caption={vidGrid.group.subtitle}
                                             typeOfProject={context.filterState} 
+                                            link={vidGrid.group.website}
                                             video={vidGrid.group.videoUrl}
                                             />
                                     </div>
@@ -310,6 +313,7 @@ const FeaturedProjectsGridDev = (props) => {
                                             images={interactiveGrid.group.image} 
                                             title={interactiveGrid.group.title} 
                                             typeOfProject={context.filterState} 
+                                            link={interactiveGrid.group.website}
                                             video={interactiveGrid.group.videoUrl}
                                             />
                                     </div>
@@ -468,6 +472,7 @@ export const pageQuery = graphql`
                     title
                     subtitle
                     videoUrl
+                    website
                     image {
                       localFile {
                         childImageSharp {
@@ -488,6 +493,7 @@ export const pageQuery = graphql`
                     title
                     subtitle
                     videoUrl
+                    website
                     image {
                       localFile {
                         childImageSharp {

@@ -47,7 +47,7 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject}) =>
         setImgBlur((currentlyShowing) ? "" : "blur(4px)");
         return;
     }
-    console.log(typeOfProject);
+    //console.log(typeOfProject);
     return(<>
     <div onMouseEnter={() => handleHoverState(false)} onMouseLeave={() => handleHoverState(true)} className={`${typeOfProject == 'Video'&& 'pt-[56.25%]'}`}>
         
@@ -61,8 +61,8 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject}) =>
         
         <div className={`shadow-lightbox absolute top-0 left-0 justify-center items-center ${hoverState} w-full h-full`} style={{backgroundColor: "rgba(255,255,255,0.8)"}} >
             <div className={'text-center'}>
+                <p className={`${theme.text.P_STD} pb-2 text-rm-black font-bold`}>{caption}</p>
                 <p className={`${theme.text.H4} text-rm-black pb-4`}>{title}</p>
-                <p className={theme.text.P_STD}>{caption}</p>
                 <div role="button" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={"w-[95px] text-center mx-auto pt-7"}>
                     {typeOfProject == 'Video'&&
                         <img src={'https://rm2022stage.wpengine.com/wp-content/uploads/2023/06/circle-play-solid-1.svg'} alt={`play button`} />
