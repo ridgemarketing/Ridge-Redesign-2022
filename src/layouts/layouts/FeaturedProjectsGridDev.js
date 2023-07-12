@@ -109,7 +109,7 @@ const FeaturedProjectsGridDev = (props) => {
 
     useEffect(() => {
       if(parameter1){
-        if(parameter1 == 'video'){
+        if(parameter1 == 'video' || parameter1 == 'videos'){
           handleFilterChange('Video');
         }
         if(parameter1 == 'websites'){
