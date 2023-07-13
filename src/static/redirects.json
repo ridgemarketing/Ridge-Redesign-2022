@@ -616,5 +616,26 @@
     },
     {
         "fromPath": "/social-media-influencers", "toPath": "/blog/social-media-influencers"
+    },
+    {
+        "fromPath": "/should-you-be-using-a-pre-made-website-template-the-pros-and-cons", "toPath": "/blog/should-you-be-using-a-pre-made-website-template-the-pros-and-cons"
+    },
+    {
+        "fromPath": "/how-pantone-mastered-the-science-and-business-of-color", "toPath": "/blog/how-pantone-mastered-the-science-and-business-of-color"
+    },
+    {
+        "fromPath": "/shopify-ga4-integration-explained", "toPath": "/blog/shopify-ga4-integration-explained"
+    },
+    {
+        "fromPath": "/3-key-metrics-for-tracking-successful-meta-ad-campaigns", "toPath": "/blog/3-key-metrics-for-tracking-successful-meta-ad-campaigns"
+    },
+    {
+        "fromPath": "/5-ways-to-make-a-big-impact-at-your-next-trade-show", "toPath": "/blog/5-ways-to-make-a-big-impact-at-your-next-trade-show"
+    },
+    {
+        "fromPath": "/5-things-adobe-photoshop-ai-can-do-and-2-that-it-cant", "toPath": "/blog/5-things-adobe-photoshop-ai-can-do-and-2-that-it-cant"
+    },
+    {
+        "fromPath": "/adjusting-focus-the-effects-of-social-media-on-photography-art", "toPath": "/blog/adjusting-focus-the-effects-of-social-media-on-photography-art"
     }
 ]
