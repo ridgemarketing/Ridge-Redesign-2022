@@ -14,11 +14,11 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
 
         const message = JSON.stringify(data)
 
-        const res = await fetch("/api/sendgrid", {
+        const res = await fetch("/api/sendgrid-careers", {
             body: JSON.stringify({
             email: data.email,
             subject: `New Careers Form Submission`,
-            message: message
+            message: message,
         }),
             headers: {
             "Content-Type": "application/json",
@@ -41,8 +41,10 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
         if (formState.isSubmitSuccessful && status !== `fail-email`) {
             setStatus(`success`)
             reset()
-            
-            window.dataLayer.push({event: 'Careers Form Submission'});
+
+            if (window.dataLayer && typeof window.dataLayer.push === "function") {
+                window.dataLayer.push({event: 'Careers Form Submission'});
+            }
             
           }
       
@@ -102,11 +104,11 @@ export const FormContacPage = ({classes, submitLabel, btnContainerClasses, btnSt
 
         const message = JSON.stringify(data)
 
-        const res = await fetch("/api/sendgrid", {
+        const res = await fetch("/api/sendgrid-basic-contact", {
             body: JSON.stringify({
             email: data.email,
             subject: `New Contact Form Submission`,
-            message: message
+            message: message,
         }),
             headers: {
             "Content-Type": "application/json",
@@ -132,7 +134,9 @@ export const FormContacPage = ({classes, submitLabel, btnContainerClasses, btnSt
             setStatus(`success`)
             reset()
             
-            window.dataLayer.push({event: 'Contact Form Submission'});
+            if (window.dataLayer && typeof window.dataLayer.push === "function") {
+             window.dataLayer.push({event: 'Contact Form Submission'});
+            }
             
           }
       
@@ -190,11 +194,11 @@ export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnSty
 
         const message = JSON.stringify(data)
 
-        const res = await fetch("/api/sendgrid", {
+        const res = await fetch("/api/sendgrid-cta-contact", {
             body: JSON.stringify({
             email: data.email,
             subject: `New CTA Form Submission`,
-            message: message
+            message: message,
         }),
             headers: {
             "Content-Type": "application/json",
@@ -219,7 +223,9 @@ export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnSty
             setStatus(`success`)
             reset()
             
-            window.dataLayer.push({event: 'CTA Form Submission'});
+            if (window.dataLayer && typeof window.dataLayer.push === "function") {
+                window.dataLayer.push({event: 'CTA Form Submission'});
+            }
             
         }
       
