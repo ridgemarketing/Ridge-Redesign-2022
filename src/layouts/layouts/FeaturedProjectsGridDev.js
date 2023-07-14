@@ -155,9 +155,6 @@ const FeaturedProjectsGridDev = (props) => {
                                 if (Math.floor(number / 2) * 2 !== number ){
                                   rowReverse = true;
                                 }
-                                // if ( Math.floor(number / 2) * 2 === number ){
-                                  
-                                // }
                               }
                               isEvenOrOdd(index);
 
@@ -170,14 +167,12 @@ const FeaturedProjectsGridDev = (props) => {
                                             <GatsbyImage 
                                                 image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
                                                 alt={``} objectPosition={`${sidePin}`}
-                                                className={`w-full z-0 h-[414px] sm:h-[650px] xl:h-[1080px]`} />
+                                                className={`w-full h-[100vw] xl:h-[1080px] z-0`} />
                                           }
                                           <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
                                             <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.largeImage.title}</h2>
                                             {block.group.largeImage.link.url &&
-                                            <>
                                                 <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `} link={block.group.largeImage.link}/>
-                                            </>
                                             }
                                           </div>
                                         </div>
@@ -187,7 +182,7 @@ const FeaturedProjectsGridDev = (props) => {
                                                   <GatsbyImage 
                                                       image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
                                                       alt={``} 
-                                                      className={`w-full h-[414px] sm:h-[650px] xl:h-[540px] xl:w-[540px] z-0`} />
+                                                      className={`w-full h-[100vw] xl:h-[540px] xl:w-[540px] z-0`} />
                                                       {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
                                                         <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
                                                             <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageTop.title}</h2>
@@ -201,7 +196,7 @@ const FeaturedProjectsGridDev = (props) => {
                                                   <GatsbyImage 
                                                       image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
                                                       alt={``} 
-                                                      className={`w-full h-[414px] sm:h-[650px] xl:h-[540px] xl:w-[540px] z-0`} />
+                                                      className={`w-full h-[100vw] xl:h-[540px] xl:w-[540px] z-0`} />
                                                       {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
                                                         <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
                                                           <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageBottom.title}</h2>
