@@ -22,6 +22,11 @@ const FeaturedProjectsGridDev = (props) => {
 
     const url = new URLSearchParams(props.layoutData.location.search);
     const parameter1 = url.get("type");
+    const contactLink = {
+      target: "",
+      title: "Let's Talk",
+      url: "/contact/"
+    }
     //?type=video
 
     useEffect(() => {
@@ -30,6 +35,7 @@ const FeaturedProjectsGridDev = (props) => {
         content.websiteProjects.forEach(project => {
           websites.push(project);
         })
+        console.log(websites);
 
         content.brandingProjects.forEach(project => {
           brandings.push(project);
@@ -38,8 +44,6 @@ const FeaturedProjectsGridDev = (props) => {
         content.videoProjects.forEach(project => {
           videos.push(project);
         })
-
-        // console.log(videos);
       
         content.interactiveProjects.forEach(project => {
           interactives.push(project);
@@ -205,7 +209,17 @@ const FeaturedProjectsGridDev = (props) => {
                                                       }
                                                 </div>    
                                               }
-                                          </div> 
+                                              {!block.group.smallImageBottom.image &&
+
+                                                <div className="relative hidden xl:flex flex-col items-center justify-center bg-[#24B6BF] xl:h-[540px]">
+                                                  <h2 className="text-white text-center font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">Want to See your new site here?</h2>
+                                                  <FlexibleLink
+                                                      link={contactLink}
+                                                      classes={theme.button.BASE_STYLING + theme.text_links.STD + theme.button.SOLID_BLACK_HOVER_DARK + ' relative z-0'}
+                                                      />
+                                                </div>    
+                                              }
+                                        </div> 
                                   </div>
                                   {/* Two Col */}
                                     {block.group.largeImage.image &&
