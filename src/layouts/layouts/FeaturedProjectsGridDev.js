@@ -12,8 +12,6 @@ const FeaturedProjectsGridDev = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
 
-    //console.log(content);
-
     const context = useContext(ThemeContext);
 
     const [toRender, setRendering] = useState(false);
@@ -24,6 +22,11 @@ const FeaturedProjectsGridDev = (props) => {
 
     const url = new URLSearchParams(props.layoutData.location.search);
     const parameter1 = url.get("type");
+    const contactLink = {
+      target: "",
+      title: "Let's Talk",
+      url: "/contact/"
+    }
     //?type=video
 
     useEffect(() => {
@@ -32,6 +35,7 @@ const FeaturedProjectsGridDev = (props) => {
         content.websiteProjects.forEach(project => {
           websites.push(project);
         })
+        console.log(websites);
 
         content.brandingProjects.forEach(project => {
           brandings.push(project);
@@ -40,8 +44,6 @@ const FeaturedProjectsGridDev = (props) => {
         content.videoProjects.forEach(project => {
           videos.push(project);
         })
-
-        // console.log(videos);
       
         content.interactiveProjects.forEach(project => {
           interactives.push(project);
@@ -139,58 +141,130 @@ const FeaturedProjectsGridDev = (props) => {
           <Container container={containerGrid}>
             <>
                   {context.filterState === 'Websites' &&
-                      <div className={``}>
+                      <div className={`md:flex flex-wrap`}>
                           {websites && websites.map((block, index) => {
-                              //console.log(block);
+                              let sidePin = 'center';
+                              if(block.group.largeImage.desktopImageSidePin == 'Center'){
+                                  sidePin = 'center'
+                              }
+                              if(block.group.largeImage.desktopImageSidePin == 'Left'){
+                                sidePin = 'left'
+                              }
+                              if(block.group.largeImage.desktopImageSidePin == 'Right'){
+                                sidePin = 'right'
+                              }
+
+                              let rowReverse = false;
+                              function isEvenOrOdd (number) {
+                                if (Math.floor(number / 2) * 2 !== number ){
+                                  rowReverse = true;
+                                }
+                              }
+                              isEvenOrOdd(index);
+
                               return( 
-                                  <div className={`flex flex-col lg:flex-row lg:even:flex-row-reverse w-full lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px] items-center overflow-hidden max-w-[1920px] ml-auto mr-auto `} >
-                                      <div className={`relative flex w-full lg:w-2/3 lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px]`}>
-                                        {block.group.largeImage.image &&
-                                          <GatsbyImage 
-                                              image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
-                                              alt={``} 
-                                              className={`w-full z-0`} />
-                                        }
-                                        <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
-                                          <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.largeImage.title}</h2>
-                                          {block.group.largeImage.link.url &&
-                                          <>
-                                              <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `} link={block.group.largeImage.link}/>
-                                          </>
+                                <>
+                                    <div className={`flex md:hidden xl:flex flex-col md:flex-row ${rowReverse == true && 'xl:flex-row-reverse'} w-full h-min xl:h-[1080px] overflow-hidden max-w-[1920px] ml-auto mr-auto `} >
+                                        <div className={`relative flex flex-col w-full md:w-1/3 xl:flex-row xl:w-[calc(100%-540px)] xl:h-[1080px]`}>
+
+                                          {block.group.largeImage.image &&
+                                            <GatsbyImage 
+                                                image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
+                                                alt={``} objectPosition={`${sidePin}`}
+                                                className={`w-full h-[100vw] xl:h-[1080px] z-0`} />
                                           }
+                                          <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
+                                            <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.largeImage.title}</h2>
+                                            {block.group.largeImage.link.url &&
+                                                <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `} link={block.group.largeImage.link}/>
+                                            }
+                                          </div>
                                         </div>
-                                      </div>
-                                      <div className={`relative flex flex-col w-full lg:w-1/3 lg:min-h-[750px] lg:max-h-[750px] 2xl:min-h-[1080px] 2xl:max-h-[1080px]`}>
-                                          {block.group.smallImageTop.image &&
-                                              <div className="relative">
-                                                <GatsbyImage 
-                                                    image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
-                                                    alt={``} 
-                                                    className={`w-full lg:h-[375px] 2xl:h-[540px] z-0`} />
-                                                    {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
-                                                      <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
-                                                          <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageTop.title}</h2>
-                                                            <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageTop.link} />
+                                        <div className={`relative flex flex-col md:flex-row xl:flex-col w-full md:w-2/3 xl:w-[540px] xl:h-[1080px]`}>
+                                            {block.group.smallImageTop.image &&
+                                                <div className="relative">
+                                                  <GatsbyImage 
+                                                      image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
+                                                      alt={``} 
+                                                      className={`w-full h-[100vw] xl:h-[540px] xl:w-[540px] z-0`} />
+                                                      {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
+                                                        <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
+                                                            <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageTop.title}</h2>
+                                                              <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageTop.link} />
+                                                        </div>
+                                                      }
+                                                </div>
+                                              }
+                                              {block.group.smallImageBottom.image &&
+                                                <div className="relative">
+                                                  <GatsbyImage 
+                                                      image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
+                                                      alt={``} 
+                                                      className={`w-full h-[100vw] xl:h-[540px] xl:w-[540px] z-0`} />
+                                                      {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
+                                                        <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
+                                                          <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageBottom.title}</h2>
+                                                          <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageBottom.link} />
                                                       </div>
-                                                    }
-                                              </div>
-                                            }
-                                            {block.group.smallImageBottom.image &&
-                                              <div className="relative">
-                                                <GatsbyImage 
-                                                    image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
-                                                    alt={``} 
-                                                    className={`w-full lg:h-[375px] 2xl:h-[540px] z-0`} />
-                                                    {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
-                                                      <div className="bg-black p-8 absolute bottom-4 left-4 lg:max-w-[350px]">
-                                                        <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageBottom.title}</h2>
-                                                        <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageBottom.link} />
-                                                    </div>
-                                                    }
-                                              </div>    
-                                            }
+                                                      }
+                                                </div>    
+                                              }
+                                              {!block.group.smallImageBottom.image &&
+
+                                                <div className="relative hidden xl:flex flex-col items-center justify-center bg-[#24B6BF] xl:h-[540px]">
+                                                  <h2 className="text-white text-center font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">Want to See your new site here?</h2>
+                                                  <FlexibleLink
+                                                      link={contactLink}
+                                                      classes={theme.button.BASE_STYLING + theme.text_links.STD + theme.button.SOLID_BLACK_HOVER_DARK + ' relative z-0'}
+                                                      />
+                                                </div>    
+                                              }
                                         </div> 
                                   </div>
+                                  {/* Two Col */}
+                                    {block.group.largeImage.image &&
+                                      <div className={`relative hidden md:block xl:hidden max-w-[50%]`}>
+                                        <GatsbyImage 
+                                            image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
+                                            alt={``} objectPosition={`${sidePin}`}
+                                            className={`w-full z-0 h-[calc(50vw)]`} />
+                                            {block.group.largeImage.link.url &&
+                                                <div className="bg-black p-8">
+                                                  <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.largeImage.title}</h2>
+                                                  <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.largeImage.link} />
+                                                </div>
+                                            }
+                                      </div>
+                                    }
+                                    {block.group.smallImageTop.image &&
+                                      <div className="relative hidden md:block xl:hidden max-w-[50%]">
+                                        <GatsbyImage 
+                                            image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
+                                            alt={``} 
+                                            className={`w-full h-[calc(50vw)] z-0`} />
+                                            {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
+                                              <div className="bg-black p-8">
+                                                  <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageTop.title}</h2>
+                                                    <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageTop.link} />
+                                              </div>
+                                            }
+                                      </div>
+                                    }
+                                    {block.group.smallImageBottom.image &&
+                                      <div className="relative hidden md:block xl:hidden max-w-[50%]">
+                                        <GatsbyImage 
+                                            image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
+                                            alt={``} 
+                                            className={`w-full h-[calc(50vw)] z-0`} />
+                                            {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
+                                              <div className="bg-black p-8">
+                                                <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageBottom.title}</h2>
+                                                <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageBottom.link} />
+                                            </div>
+                                            }
+                                      </div>    
+                                    }
+                                </>
                                 )
                           })}
                     </div>
@@ -380,6 +454,7 @@ export const pageQuery = graphql`
                     title
                     target
                   }
+                  desktopImageSidePin
                 }
                 smallImageBottom {
                   title
