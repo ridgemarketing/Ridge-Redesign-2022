@@ -51,7 +51,7 @@ export const Head = ({data}) => (
   </>
 )
 
-const WpPage = ({ data }) =>{
+const WpPage = ({ data, location }) =>{
   let color = 'black';
   if(data.wpPage.uri === '/contact/' || data.wpPage.uri === `/terms-and-conditions/`){
     color = 'white';
@@ -91,7 +91,7 @@ const WpPage = ({ data }) =>{
         }
         
         {data.wpPage.flexibleLayouts && 
-        <FlexibleLayouts flexibleLayouts={data.wpPage.flexibleLayouts} />
+          <FlexibleLayouts location={location} flexibleLayouts={data.wpPage.flexibleLayouts} />
         }
         </>
     )

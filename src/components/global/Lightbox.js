@@ -3,7 +3,7 @@ import { theme } from "../../static/theme";
 import Link from "./FlexibleLink"
 import { GatsbyImage } from "gatsby-plugin-image";
 
-const LightBox = ({type, images, video, title, link, caption}) => {
+const LightBox = ({type, images, video, title, link, caption, typeOfProject}) => {
     const thumbnail                     = (video) ? images.localFile.childImageSharp.gatsbyImageData : images[0].image.localFile.childImageSharp.gatsbyImageData;
     const gallery                       = images.length > 1 ? images.slice(1) : video ? thumbnail : images[0]
     const [image, setImage]             = useState(0);
@@ -47,15 +47,29 @@ const LightBox = ({type, images, video, title, link, caption}) => {
         setImgBlur((currentlyShowing) ? "" : "blur(4px)");
         return;
     }
+    // console.log(typeOfProject);
     return(<>
-    <div onMouseEnter={() => handleHoverState(false)} onMouseLeave={() => handleHoverState(true)}>
-        <GatsbyImage image={thumbnail} alt={`${title}`} className={`cursor-pointer object-cover w-full`} style={{filter: `${imgBlur}`}}/>
+    <div onMouseEnter={() => handleHoverState(false)} onMouseLeave={() => handleHoverState(true)} className={`${typeOfProject == 'Video'&& 'pt-[56.25%]'}`}>
+        
+        {typeOfProject == 'Video'&&
+            <GatsbyImage image={thumbnail} alt={`${title}`} className={`absolute top-0 left-0 h-full cursor-pointer object-contain w-full`} style={{filter: `${imgBlur}`}}/>
+        }
+        
+        {typeOfProject !== 'Video'&& 
+            <GatsbyImage image={thumbnail} alt={`${title}`} className={`cursor-pointer object-cover w-full`} style={{filter: `${imgBlur}`}}/>
+        }
+        
         <div className={`shadow-lightbox absolute top-0 left-0 justify-center items-center ${hoverState} w-full h-full`} style={{backgroundColor: "rgba(255,255,255,0.8)"}} >
             <div className={'text-center'}>
                 <p className={`${theme.text.H4} pb-4`}>{title}</p>
                 <p className={theme.text.P_STD}>{caption}</p>
                 <div role="button" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={"w-[95px] text-center mx-auto pt-7"}>
-                    <img src={'https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/plus.png'} alt={`plus`} />
+                    {typeOfProject == 'Video'&&
+                        <img src={'https://rm2022stage.wpengine.com/wp-content/uploads/2023/06/circle-play-solid-1.svg'} alt={`play button`} />
+                    }
+                    {typeOfProject !== 'Video'&& 
+                        <img src={'https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/plus.png'} alt={`plus`} />
+                    }
                 </div>
             </div>
         </div>
