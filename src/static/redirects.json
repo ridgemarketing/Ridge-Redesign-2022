@@ -505,5 +505,137 @@
     },
     {
         "fromPath": "/the-importance-of-design", "toPath": "/blog"
+    },
+    {
+        "fromPath": "/marketing-lessons-and-activities-for-quarantined-kids", "toPath": "/blog/marketing-lessons-and-activities-for-quarantined-kids"
+    },
+    {
+        "fromPath": "/why-dont-my-colors-match-why-printed-colors-dont-match-up-with-your-screen", "toPath": "/blog/why-dont-my-colors-match-why-printed-colors-dont-match-up-with-your-screen"
+    },
+    {
+        "fromPath": "/ultimate-guide-to-google-analytics-4", "toPath": "/blog/ultimate-guide-to-google-analytics-4"
+    },
+    {
+        "fromPath": "/the-pros-and-cons-of-custom-fonts", "toPath": "/blog/the-pros-and-cons-of-custom-fonts"
+    },
+    {
+        "fromPath": "/is-the-rotating-hero-good-for-web-design", "toPath": "/blog/is-the-rotating-hero-good-for-web-design"
+    },
+    {
+        "fromPath": "/why-isometric-illustrations-continue-to-boom", "toPath": "/blog/why-isometric-illustrations-continue-to-boom"
+    },
+    {
+        "fromPath": "/designing-covid-19", "toPath": "/blog/designing-covid-19"
+    },
+    {
+        "fromPath": "/4-steps-better-tradeshow-pictures", "toPath": "/blog/4-steps-better-tradeshow-pictures"
+    },
+    {
+        "fromPath": "/time-for-email-list-cleaning", "toPath": "/blog/time-for-email-list-cleaning"
+    },
+    {
+        "fromPath": "/benefits-of-infographics", "toPath": "/blog/benefits-of-infographics"
+    },
+    {
+        "fromPath": "/custom-brand-illustrations-an-unexpected-trend", "toPath": "/blog/custom-brand-illustrations-an-unexpected-trend"
+    },
+    {
+        "fromPath": "/get-to-know-your-customers-day", "toPath": "/blog/get-to-know-your-customers-day"
+    },
+    {
+        "fromPath": "/5-reasons-to-update-your-ecommerce-platform-now", "toPath": "/blog/5-reasons-to-update-your-ecommerce-platform-now"
+    },
+    {
+        "fromPath": "/the-impact-of-impact", "toPath": "/blog/the-impact-of-impact"
+    },
+    {
+        "fromPath": "/logo-crimes-and-misdemeanors", "toPath": "/blog/logo-crimes-and-misdemeanors"
+    },
+    {
+        "fromPath": "/why-i-hear-designing-with-grids-web-design-marketing", "toPath": "/blog/why-i-hear-designing-with-grids-web-design-marketing"
+    },
+    {
+        "fromPath": "/the-importance-of-knowing-your-audience", "toPath": "/blog/the-importance-of-knowing-your-audience"
+    },
+    {
+        "fromPath": "/how-much-copy-is-too-much-copy", "toPath": "/blog/how-much-copy-is-too-much-copy"
+    },
+    {
+        "fromPath": "/branded-house-vs-house-of-brands", "toPath": "/blog/branded-house-vs-house-of-brands"
+    },
+    {
+        "fromPath": "/april-fools-marketing-strategies", "toPath": "/blog/april-fools-marketing-strategies"
+    },
+    {
+        "fromPath": "/seeing-is-believing", "toPath": "/blog/seeing-is-believing"
+    },
+    {
+        "fromPath": "/why-qr-codes-are-making-a-comeback", "toPath": "/blog/why-qr-codes-are-making-a-comeback"
+    },
+    {
+        "fromPath": "/repurposing-content-doesnt-mean-copy-and-paste", "toPath": "/blog/repurposing-content-doesnt-mean-copy-and-paste"
+    },
+    {
+        "fromPath": "/success-stories-content-marketing", "toPath": "/blog/success-stories-content-marketing"
+    },
+    {
+        "fromPath": "/website-post-launch-essentials", "toPath": "/blog/website-post-launch-essentials"
+    },
+    {
+        "fromPath": "/beginners-guide-to-accessible-website-design", "toPath": "/blog/beginners-guide-to-accessible-website-design"
+    },
+    {
+        "fromPath": "/staying-productive-and-sane-while-working-from-home", "toPath": "/blog/staying-productive-and-sane-while-working-from-home"
+    },
+    {
+        "fromPath": "/color-ideas-in-web-and-graphic-design", "toPath": "/blog/color-ideas-in-web-and-graphic-design"
+    },
+    {
+        "fromPath": "/email-list-cleaning-part-2-see-the-sparkling-results", "toPath": "/blog/email-list-cleaning-part-2-see-the-sparkling-results"
+    },
+    {
+        "fromPath": "/technical-writing-for-non-technical-audience", "toPath": "/blog/technical-writing-for-non-technical-audience"
+    },
+    {
+        "fromPath": "/lets-talk-design-systems", "toPath": "/blog/lets-talk-design-systems"
+    },
+    {
+        "fromPath": "/how-apples-ios-15-update-will-change-email-marketing", "toPath": "/blog/how-apples-ios-15-update-will-change-email-marketing"
+    },
+    {
+        "fromPath": "/smells-like-advertising", "toPath": "/blog/smells-like-advertising"
+    },
+    {
+        "fromPath": "/wwe-marketing-branding", "toPath": "/blog/wwe-marketing-branding"
+    },
+    {
+        "fromPath": "/content-marketing-strategy-guide", "toPath": "/blog/content-marketing-strategy-guide"
+    },
+    {
+        "fromPath": "/marketing-value-misconceptions-is-your-strategy-a-tragedy", "toPath": "/blog/marketing-value-misconceptions-is-your-strategy-a-tragedy"
+    },
+    {
+        "fromPath": "/social-media-influencers", "toPath": "/blog/social-media-influencers"
+    },
+    {
+        "fromPath": "/should-you-be-using-a-pre-made-website-template-the-pros-and-cons", "toPath": "/blog/should-you-be-using-a-pre-made-website-template-the-pros-and-cons"
+    },
+    {
+        "fromPath": "/how-pantone-mastered-the-science-and-business-of-color", "toPath": "/blog/how-pantone-mastered-the-science-and-business-of-color"
+    },
+    {
+        "fromPath": "/shopify-ga4-integration-explained", "toPath": "/blog/shopify-ga4-integration-explained"
+    },
+    {
+        "fromPath": "/3-key-metrics-for-tracking-successful-meta-ad-campaigns", "toPath": "/blog/3-key-metrics-for-tracking-successful-meta-ad-campaigns"
+    },
+    {
+        "fromPath": "/5-ways-to-make-a-big-impact-at-your-next-trade-show", "toPath": "/blog/5-ways-to-make-a-big-impact-at-your-next-trade-show"
+    },
+    {
+        "fromPath": "/5-things-adobe-photoshop-ai-can-do-and-2-that-it-cant", "toPath": "/blog/5-things-adobe-photoshop-ai-can-do-and-2-that-it-cant"
+    },
+    {
+        "fromPath": "/adjusting-focus-the-effects-of-social-media-on-photography-art", "toPath": "/blog/adjusting-focus-the-effects-of-social-media-on-photography-art"
     }
 ]

@@ -64,7 +64,7 @@ const WpPost = ({ data, pageContext }) =>{
     
   return (
     <>
-      <hgroup className="container mt-20">
+      <hgroup className="container pt-20">
         <h1 className={theme.text.H1_STD + 'mb-9'}> {content.title} </h1>
         <div className="flex items-center">
           {content.author.node.users.avatar && 
