@@ -68,6 +68,7 @@ export const pageQuery = graphql`
         ...CareersFormPage
         ...TextVideoOverhangPage
         ...FeaturedProjectsGridPage
+        ...FeaturedProjectsGridPageDev
         ...ButtonRowPage
         ...BrandingCardsPage
       }

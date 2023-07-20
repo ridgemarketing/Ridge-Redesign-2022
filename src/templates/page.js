@@ -74,7 +74,7 @@ const WpPage = ({ data, location }) =>{
         {data.wpPage.pageHeader && !data.wpPage.isFrontPage && !blackList.includes(data.wpPage.title) &&
           <PageHeader layoutData={data.wpPage.pageHeader.pageHeader} />
         }
-        {data.wpPage.title === "Portfolio" &&
+        {data.wpPage.title === "Portfolio" || data.wpPage.title === 'PortfolioDev' &&
             <PortfolioHeader layoutData={data.wpPage.portfolioHeader.portfolioHeader} />
         }
         {data.wpPage.isFrontPage &&
@@ -89,11 +89,10 @@ const WpPage = ({ data, location }) =>{
         {data.wpPage.title === "Terms and Conditions" &&
           <div className={'terms pb-20'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
         }
-        
         {data.wpPage.flexibleLayouts && 
           <FlexibleLayouts location={location} flexibleLayouts={data.wpPage.flexibleLayouts} />
         }
-        </>
+      </>
     )
   }
 }
