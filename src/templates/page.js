@@ -89,11 +89,10 @@ const WpPage = ({ data, location }) =>{
         {data.wpPage.title === "Terms and Conditions" &&
           <div className={'terms pb-20'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
         }
-        
         {data.wpPage.flexibleLayouts && 
           <FlexibleLayouts location={location} flexibleLayouts={data.wpPage.flexibleLayouts} />
         }
-        </>
+      </>
     )
   }
 }
