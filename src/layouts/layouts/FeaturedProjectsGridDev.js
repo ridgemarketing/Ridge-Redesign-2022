@@ -49,6 +49,13 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
         <div className={`flex md:hidden xl:flex flex-col md:flex-row ${rowReverse == true && 'xl:flex-row-reverse'} w-full h-min xl:h-[1080px] overflow-hidden max-w-[1920px] ml-auto mr-auto `} >
             <div className={`relative flex flex-col w-full md:w-1/3 xl:flex-row xl:w-[calc(100%-540px)] xl:h-[1080px]`}>
 
+              {block.group.largeImage.image &&
+                <GatsbyImage 
+                    image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
+                    alt={``} objectPosition={`${sidePin}`}
+                    className={`w-full h-[100vw] xl:h-[1080px] z-0`} />
+              }
+
               {currentContext === 'Branding' && largeImageLightbox &&
                   <LightBox 
                       key={`FeaturedProjectItem__${currentContext}__${index}`} 
@@ -60,13 +67,6 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                       video={video}
                       noThumb={true}
                     />  
-              }
-
-              {block.group.largeImage.image &&
-                <GatsbyImage 
-                    image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
-                    alt={``} objectPosition={`${sidePin}`}
-                    className={`w-full h-[100vw] xl:h-[1080px] z-0`} />
               }
 
               {currentContext !== 'Branding' && 
@@ -83,6 +83,11 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                 {block.group.smallImageTop.image &&
                     <div className="relative">
 
+                        <GatsbyImage 
+                          image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
+                          alt={``} 
+                          className={`w-full h-[100vw] xl:h-[540px] xl:w-[540px] z-0`} />
+
                         {currentContext === 'Branding' && smallImageTopLightbox &&
                             <LightBox 
                                 key={`FeaturedProjectItem__${currentContext}__${index}`} 
@@ -94,11 +99,6 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                                 video={video}
                               />  
                         }
-
-                        <GatsbyImage 
-                          image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
-                          alt={``} 
-                          className={`w-full h-[100vw] xl:h-[540px] xl:w-[540px] z-0`} />
 
                         {currentContext !== 'Branding' && 
                           <>
@@ -116,7 +116,12 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                   {block.group.smallImageBottom.image &&
                     <div className="relative">
 
-                          {currentContext === 'Branding' && smallImageBottomLightbox &&
+                        <GatsbyImage 
+                          image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
+                          alt={``} 
+                          className={`w-full h-[100vw] xl:h-[540px] xl:w-[540px] z-0`} />
+
+                        {currentContext === 'Branding' && smallImageBottomLightbox &&
                             <LightBox 
                                 key={`FeaturedProjectItem__${currentContext}__${index}`} 
                                 images={smallImageBottomLightbox} 
@@ -127,11 +132,6 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                                 video={video}
                               />  
                           }
-
-                        <GatsbyImage 
-                          image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
-                          alt={``} 
-                          className={`w-full h-[100vw] xl:h-[540px] xl:w-[540px] z-0`} />
 
                         {currentContext !== 'Branding' && 
                           <>
