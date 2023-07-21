@@ -8,7 +8,23 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import FlexibleLink from "../../components/global/FlexibleLink"
 import { theme } from "../../static/theme"
 
-const WebsiteBrandingBlock = ({block, index, contactLink}) => {
+const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
+
+  let largeImageLightbox;
+  let smallImageTopLightbox;
+  let smallImageBottomLightbox;
+  const video = false;
+
+  if(block.group.largeImage.lightboxImages){
+    largeImageLightbox = block.group.largeImage.lightboxImages;
+  }
+  if(block.group.smallImageTop.lightboxImages){
+    smallImageTopLightbox = block.group.smallImageTop.lightboxImages;
+  }
+  if(block.group.smallImageBottom.lightboxImages){
+    smallImageBottomLightbox = block.group.smallImageBottom.lightboxImages;
+  }
+
   let sidePin = 'center';
   if(block.group.largeImage.desktopImageSidePin == 'Center'){
       sidePin = 'center'
@@ -29,9 +45,22 @@ const WebsiteBrandingBlock = ({block, index, contactLink}) => {
   isEvenOrOdd(index);
 
   return( 
-    <>
+    <>                                                                            
         <div className={`flex md:hidden xl:flex flex-col md:flex-row ${rowReverse == true && 'xl:flex-row-reverse'} w-full h-min xl:h-[1080px] overflow-hidden max-w-[1920px] ml-auto mr-auto `} >
             <div className={`relative flex flex-col w-full md:w-1/3 xl:flex-row xl:w-[calc(100%-540px)] xl:h-[1080px]`}>
+
+              {currentContext === 'Branding' && largeImageLightbox &&
+                  <LightBox 
+                      key={`FeaturedProjectItem__${currentContext}__${index}`} 
+                      images={largeImageLightbox} 
+                      title={block.group.largeImage.title} 
+                      // caption={block.group.title}
+                      typeOfProject={currentContext}
+                      //link={block.group.title}
+                      video={video}
+                      noThumb={true}
+                    />  
+              }
 
               {block.group.largeImage.image &&
                 <GatsbyImage 
@@ -39,40 +68,83 @@ const WebsiteBrandingBlock = ({block, index, contactLink}) => {
                     alt={``} objectPosition={`${sidePin}`}
                     className={`w-full h-[100vw] xl:h-[1080px] z-0`} />
               }
-              <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
-                <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.largeImage.title}</h2>
-                {block.group.largeImage.link.url &&
-                    <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `} link={block.group.largeImage.link}/>
-                }
-              </div>
+
+              {currentContext !== 'Branding' && 
+                <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
+                  <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.largeImage.title}</h2>
+                  {block.group.largeImage.link.url &&
+                      <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `} link={block.group.largeImage.link}/>
+                  }
+                </div>
+              } 
+
             </div>
             <div className={`relative flex flex-col md:flex-row xl:flex-col w-full md:w-2/3 xl:w-[540px] xl:h-[1080px]`}>
                 {block.group.smallImageTop.image &&
                     <div className="relative">
-                      <GatsbyImage 
+
+                        {currentContext === 'Branding' && smallImageTopLightbox &&
+                            <LightBox 
+                                key={`FeaturedProjectItem__${currentContext}__${index}`} 
+                                images={smallImageTopLightbox} 
+                                title={block.group.smallImageTop.title} 
+                                //caption={block.group.smallImageTop.title}
+                                typeOfProject={currentContext}
+                                //link={block.group.title}
+                                video={video}
+                              />  
+                        }
+
+                        <GatsbyImage 
                           image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
                           alt={``} 
                           className={`w-full h-[100vw] xl:h-[540px] xl:w-[540px] z-0`} />
-                          {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
-                            <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
-                                <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageTop.title}</h2>
-                                  <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageTop.link} />
-                            </div>
-                          }
+
+                        {currentContext !== 'Branding' && 
+                          <>
+                            {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
+                              <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
+                                  <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageTop.title}</h2>
+                                    <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} 
+                                    link={block.group.smallImageTop.link} />
+                              </div>
+                            }
+                          </>
+                        }
                     </div>
                   }
                   {block.group.smallImageBottom.image &&
                     <div className="relative">
-                      <GatsbyImage 
+
+                          {currentContext === 'Branding' && smallImageBottomLightbox &&
+                            <LightBox 
+                                key={`FeaturedProjectItem__${currentContext}__${index}`} 
+                                images={smallImageBottomLightbox} 
+                                title={block.group.smallImageBottom.title} 
+                                //caption={block.group.smallImageTop.title}
+                                typeOfProject={currentContext}
+                                //link={block.group.title}
+                                video={video}
+                              />  
+                          }
+
+                        <GatsbyImage 
                           image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
                           alt={``} 
                           className={`w-full h-[100vw] xl:h-[540px] xl:w-[540px] z-0`} />
-                          {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
-                            <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
-                              <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageBottom.title}</h2>
-                              <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageBottom.link} />
-                          </div>
-                          }
+
+                        {currentContext !== 'Branding' && 
+                          <>
+                            {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
+                              <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
+                                <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageBottom.title}</h2>
+                                <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} 
+                                link={block.group.smallImageBottom.link} />
+                            </div>
+                            }
+                          </>
+                        }
+
                     </div>    
                   }
                   {!block.group.smallImageBottom.image &&
@@ -90,44 +162,103 @@ const WebsiteBrandingBlock = ({block, index, contactLink}) => {
       {/* Two Col */}
         {block.group.largeImage.image &&
           <div className={`relative hidden md:block xl:hidden max-w-[50%]`}>
-            <GatsbyImage 
+
+              <GatsbyImage 
                 image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
                 alt={``} objectPosition={`${sidePin}`}
                 className={`w-full z-0 h-[calc(50vw)]`} />
-                {block.group.largeImage.link.url &&
-                    <div className="bg-black p-8">
-                      <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.largeImage.title}</h2>
-                      <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.largeImage.link} />
-                    </div>
-                }
+
+              {currentContext === 'Branding' && largeImageLightbox &&
+                <LightBox 
+                    key={`FeaturedProjectItem__${currentContext}__${index}`} 
+                    images={largeImageLightbox} 
+                    title={block.group.largeImage.title} 
+                    // caption={block.group.title}
+                    typeOfProject={currentContext}
+                    //link={block.group.title}
+                    video={video}
+                    noThumb={true}
+                  />  
+              }
+
+              {currentContext !== 'Branding' && 
+                <>
+                  {block.group.largeImage.link.url &&
+                      <div className="bg-black p-8">
+                        <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.largeImage.title}</h2>
+                        <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.largeImage.link} />
+                      </div>
+                  }
+                </>
+              }
+
           </div>
         }
         {block.group.smallImageTop.image &&
           <div className="relative hidden md:block xl:hidden max-w-[50%]">
+
             <GatsbyImage 
                 image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
                 alt={``} 
                 className={`w-full h-[calc(50vw)] z-0`} />
+
+            {currentContext === 'Branding' && smallImageTopLightbox &&
+                <LightBox 
+                    key={`FeaturedProjectItem__${currentContext}__${index}`} 
+                    images={smallImageTopLightbox} 
+                    title={block.group.smallImageTop.title} 
+                    //caption={block.group.smallImageTop.title}
+                    typeOfProject={currentContext}
+                    //link={block.group.title}
+                    video={video}
+                  />  
+              }
+
+            {currentContext !== 'Branding' && 
+              <>
                 {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
                   <div className="bg-black p-8">
                       <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageTop.title}</h2>
                         <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageTop.link} />
                   </div>
                 }
+                </>
+            }
+
           </div>
         }
         {block.group.smallImageBottom.image &&
           <div className="relative hidden md:block xl:hidden max-w-[50%]">
-            <GatsbyImage 
-                image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
-                alt={``} 
-                className={`w-full h-[calc(50vw)] z-0`} />
-                {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
-                  <div className="bg-black p-8">
-                    <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageBottom.title}</h2>
-                    <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageBottom.link} />
-                </div>
-                }
+
+              <GatsbyImage 
+                  image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
+                  alt={``} 
+                  className={`w-full h-[calc(50vw)] z-0`} />
+
+
+              {currentContext === 'Branding' && smallImageBottomLightbox &&
+                <LightBox 
+                    key={`FeaturedProjectItem__${currentContext}__${index}`} 
+                    images={smallImageBottomLightbox} 
+                    title={block.group.smallImageBottom.title} 
+                    //caption={block.group.smallImageTop.title}
+                    typeOfProject={currentContext}
+                    //link={block.group.title}
+                    video={video}
+                  />  
+              }
+
+              {currentContext !== 'Branding' && 
+                <>
+                  {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
+                    <div className="bg-black p-8">
+                      <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{block.group.smallImageBottom.title}</h2>
+                      <FlexibleLink classes={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageBottom.link} />
+                  </div>
+                  }
+                </>
+              }
+
           </div>    
         }
     </>
@@ -161,7 +292,6 @@ const FeaturedProjectsGridDev = (props) => {
         content.websiteProjects.forEach(project => {
           websites.push(project);
         })
-        console.log(websites);
 
         content.brandingProjects.forEach(project => {
           brandings.push(project);
@@ -278,9 +408,8 @@ const FeaturedProjectsGridDev = (props) => {
               {context.filterState === 'Branding' &&
                       <div className={`md:flex flex-wrap`}>
                           {brandings && brandings.map((block, index) => {
-                              //console.log(block);
                               return( 
-                                <WebsiteBrandingBlock contactLink={contactLink} block={block} index={index} />
+                                <WebsiteBrandingBlock contactLink={contactLink} block={block} index={index} currentContext={context.filterState} />
                                 )
                           })}
                     </div>
@@ -289,7 +418,6 @@ const FeaturedProjectsGridDev = (props) => {
                 <div>
                     {videos && videos.map( (block) => {
                       var videoContent = block.category;
-                        
                         return(
                           <div className="py-16">
                             {videoContent.title &&
@@ -339,7 +467,6 @@ const FeaturedProjectsGridDev = (props) => {
 
                             <div className={`md:grid md:grid-cols-2 md:gap-6`}>
                               {interactiveContent.videos.map( (interactiveGrid, index) =>{
-                                console.log(interactiveGrid.group);
                                  if (interactiveGrid.group.videoUrl !== null && interactiveGrid.group.image !== null) {
                                   return(
                                     <div className={`relative my-10 md:my-0 ${context.filterState == 'Video'&& 'h-min'}`}>
@@ -364,7 +491,7 @@ const FeaturedProjectsGridDev = (props) => {
               }
 
 
-              {context.filterState !== 'Websites' && context.filterState !== 'Branding' && context.filterState !== 'Video' && context.filterState !== 'Interactive' &&
+              {/* {context.filterState !== 'Websites' && context.filterState !== 'Branding' && context.filterState !== 'Video' && context.filterState !== 'Interactive' &&
                 <div className={`md:grid md:grid-cols-2 md:gap-6 xl:grid-cols-3 xl:gap-x-4 xl:gap-y-8 py-16`}>
                     {toRender && toRender.map((block, index) => {
                       const video = (block.videoUrl && block.videoUrl !== null) ? block.videoUrl : false ;
@@ -381,7 +508,7 @@ const FeaturedProjectsGridDev = (props) => {
                       return(<></>)
                     })} 
                   </div>
-              }
+              } */}
 
 
             </>
@@ -465,6 +592,17 @@ export const pageQuery = graphql`
                     title
                     target
                   }
+
+                  lightboxImages {
+                    image {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
+                    }
+                  }
+
                 }
                 smallImageBottom {
                   title
@@ -480,6 +618,16 @@ export const pageQuery = graphql`
                       }
                     }
                   }
+                  lightboxImages {
+                    image {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
+                    }
+                  }
+
                 }
                 smallImageTop {
                   title
@@ -495,7 +643,17 @@ export const pageQuery = graphql`
                       }
                     }
                   }
+                  lightboxImages {
+                    image {
+                      localFile {
+                        childImageSharp {
+                          gatsbyImageData
+                        }
+                      }
+                    }
+                  }
                 }
+
               }
             }
 

@@ -3,8 +3,9 @@ import { theme } from "../../static/theme";
 import Link from "./FlexibleLink"
 import { GatsbyImage } from "gatsby-plugin-image";
 
-const LightBox = ({type, images, video, title, link, caption, typeOfProject}) => {
-    const thumbnail                     = (video) ? images.localFile.childImageSharp.gatsbyImageData : images.localFile.childImageSharp.gatsbyImageData;
+const LightBox = ({type, images, video, title, link, caption, typeOfProject, noThumb}) => {
+    // const noThumbnail                   = noThumb;
+    const thumbnail                     = (video) ? images.localFile.childImageSharp.gatsbyImageData : images[0].image.localFile.childImageSharp.gatsbyImageData;
     const gallery                       = images.length > 1 ? images.slice(1) : video ? thumbnail : images[0]
     const [image, setImage]             = useState(0);
     const [hoverState, setHoverState]   = useState("hidden");
@@ -47,7 +48,6 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject}) =>
         setImgBlur((currentlyShowing) ? "" : "blur(4px)");
         return;
     }
-    //console.log(typeOfProject);
     return(<>
     <div onMouseEnter={() => handleHoverState(false)} onMouseLeave={() => handleHoverState(true)} className={`${typeOfProject == 'Video'&& 'pt-[56.25%]'}`}>
         
@@ -55,24 +55,35 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject}) =>
             <GatsbyImage image={thumbnail} alt={`${title}`} className={`absolute top-0 left-0 h-full cursor-pointer object-contain w-full`} style={{filter: `${imgBlur}`}}/>
         }
         
-        {typeOfProject !== 'Video'&& 
+        {typeOfProject !== 'Video'&& typeOfProject !== 'Branding'&&
             <GatsbyImage image={thumbnail} alt={`${title}`} className={`cursor-pointer object-cover w-full`} style={{filter: `${imgBlur}`}}/>
         }
+
+        {typeOfProject == 'Branding'&&
+            <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px] z-10">
+                <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{title}</h2>
+                <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `}>
+                    VIEW WORK
+                </button>
+            </div>
+        }
         
-        <div className={`shadow-lightbox absolute top-0 left-0 justify-center items-center ${hoverState} w-full h-full`} style={{backgroundColor: "rgba(255,255,255,0.8)"}} >
-            <div className={'text-center'}>
-                <p className={`${theme.text.P_STD} pb-2 text-rm-black font-bold`}>{caption}</p>
-                <p className={`${theme.text.H4} text-rm-black pb-4`}>{title}</p>
-                <div role="button" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={"w-[95px] text-center mx-auto pt-7"}>
-                    {typeOfProject == 'Video'&&
-                        <img src={'https://rm2022stage.wpengine.com/wp-content/uploads/2023/06/circle-play-solid-1.svg'} alt={`play button`} />
-                    }
-                    {typeOfProject !== 'Video'&& 
-                        <img src={'https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/plus.png'} alt={`plus`} />
-                    }
+        {typeOfProject !== 'Branding'&&
+            <div className={`shadow-lightbox absolute top-0 left-0 justify-center items-center ${hoverState} w-full h-full`} style={{backgroundColor: "rgba(255,255,255,0.8)"}} >
+                <div className={'text-center'}>
+                    <p className={`${theme.text.P_STD} pb-2 text-rm-black font-bold`}>{caption}</p>
+                    <p className={`${theme.text.H4} text-rm-black pb-4`}>{title}</p>
+                    <div role="button" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={"w-[95px] text-center mx-auto pt-7"}>
+                        {typeOfProject == 'Video'&&
+                            <img src={'https://rm2022stage.wpengine.com/wp-content/uploads/2023/06/circle-play-solid-1.svg'} alt={`play button`} />
+                        }
+                        {typeOfProject !== 'Video'&& 
+                            <img src={'https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/plus.png'} alt={`plus`} />
+                        }
+                    </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
     <div className={`fixed top-0 left-0 h-screen w-screen`} style={{display:overlay ? 'block':'none', visibility:overlay ? 'visible':'hidden', zIndex:overlay ? '50':'0'}} aria-label="lightbox" aria-expanded={overlay}>
         <div className={`relative z-10 w-full h-full flex flex-col items-center justify-center`}>
@@ -113,7 +124,7 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject}) =>
                     </div>
                 }
 
-                <h3 className={`${theme.text.H4} pt-4 text-rm-black text-center`}>{(!video) ? gallery[image].text ? gallery[image].text : title : title}</h3>
+                <h3 className={`${theme.text.H4} pt-4 text-rm-white text-center`}>{(!video) ? gallery[image].text ? gallery[image].text : title : title}</h3>
                 
                 <div className={"flex justify-between pt-6 md:hidden w-full"}>
                     <button className={`relative text-white ml-2 z-50 ${gallery.length < 3 ? 'hidden' : ''}`} onClick={()=>loadPrev()} onKeyDown={()=>loadPrev()} aria-label="Next Image" tabIndex={0}>
@@ -127,13 +138,16 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject}) =>
                                 </svg>
                     </button>
                 </div>
-               
-                {linkInfo.url !== null && <div className={'pt-10'}>
-                        <Link
-                            link={linkInfo}
-                            classes={theme.button.BASE_STYLING + theme.text_links.STD + theme.button.GHOST_GREEN_TRANSPARENT_W + ' relative z-50'}
-                            />
-                </div>}
+                {typeOfProject !== 'Branding'&&
+                    <>
+                        {linkInfo.url !== null && <div className={'pt-10'}>
+                                <Link
+                                    link={linkInfo}
+                                    classes={theme.button.BASE_STYLING + theme.text_links.STD + theme.button.GHOST_GREEN_TRANSPARENT_W + ' relative z-50'}
+                                    />
+                        </div>}
+                    </>
+                }
             </div>
         </div>
         <div className={`absolute top-0 left-0 w-full z-0 h-full bg-rm-black bg-opacity-80`} aria-hidden="true"></div>
