@@ -15,6 +15,8 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
   let smallImageBottomLightbox;
   const video = false;
 
+  console.log(block);
+
   if(block.group.largeImage.lightboxImages){
     largeImageLightbox = block.group.largeImage.lightboxImages;
   }
@@ -49,7 +51,24 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
         <div className={`flex md:hidden xl:flex flex-col md:flex-row ${rowReverse == true && 'xl:flex-row-reverse'} w-full h-min xl:h-[700px] overflow-hidden max-w-[1250px] ml-auto mr-auto `} >
             <div className={`relative flex flex-col w-full md:w-1/3 xl:flex-row xl:w-[calc(100%-350px)] xl:h-[700px]`}>
 
-              {block.group.largeImage.image &&
+              {block.group.largeImage.mobileImage&& 
+                <>
+                <div className="block xl:hidden">
+                  <GatsbyImage 
+                        image={block.group.largeImage.mobileImage.localFile.childImageSharp.gatsbyImageData} 
+                        alt={``} objectPosition={`${sidePin}`}
+                        className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-8`} />
+                </div>
+                <div className="hidden xl:block">
+                  <GatsbyImage 
+                        image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
+                        alt={``} objectPosition={`${sidePin}`}
+                        className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-8`} />
+                </div>
+                </>  
+              }
+
+              {block.group.largeImage.image && !block.group.largeImage.mobileImage&& 
                 <GatsbyImage 
                     image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
                     alt={``} objectPosition={`${sidePin}`}
@@ -83,10 +102,18 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                 {block.group.smallImageTop.image &&
                     <div className="relative">
 
-                        <GatsbyImage 
-                          image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
-                          alt={``} 
-                          className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-8`} />
+                        {block.group.smallImageTop.mobileImage&& 
+                            <GatsbyImage 
+                                image={block.group.smallImageTop.mobileImage.localFile.childImageSharp.gatsbyImageData} 
+                                alt={``} 
+                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-8`} />
+                        }
+                        {!block.group.smallImageTop.mobileImage&& 
+                            <GatsbyImage 
+                                image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
+                                alt={``} 
+                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-8`} />
+                        }
 
                         {currentContext === 'Branding' && smallImageTopLightbox &&
                             <LightBox 
@@ -116,10 +143,18 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                   {block.group.smallImageBottom.image &&
                     <div className="relative">
 
-                        <GatsbyImage 
-                          image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
-                          alt={``} 
-                          className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-8`} />
+                        {block.group.smallImageBottom.mobileImage&& 
+                            <GatsbyImage 
+                              image={block.group.smallImageBottom.mobileImage.localFile.childImageSharp.gatsbyImageData} 
+                              alt={``} 
+                              className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-8`} />
+                        }
+                        {!block.group.smallImageBottom.mobileImage&& 
+                            <GatsbyImage 
+                                image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
+                                alt={``} 
+                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-8`} />
+                        }
 
                         {currentContext === 'Branding' && smallImageBottomLightbox &&
                             <LightBox 
@@ -129,7 +164,7 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                                 typeOfProject={currentContext}
                                 video={video}
                               />  
-                          }
+                        }
 
                         {currentContext !== 'Branding' && 
                           <>
@@ -158,8 +193,8 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
             </div> 
       </div>
       {/* Two Col */}
-        {block.group.largeImage.image &&
-          <div className={`relative hidden md:block xl:hidden max-w-[50%]`}>
+        {block.group.largeImage.image && !block.group.largeImage.mobileImage &&
+          <div className={`relative hidden md:block xl:hidden max-w-[50%] no-mobile-image`}>
 
               <GatsbyImage 
                 image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
@@ -171,9 +206,7 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                     key={`FeaturedProjectItem__${currentContext}__${index}`} 
                     images={largeImageLightbox} 
                     title={block.group.largeImage.title} 
-                    // caption={block.group.title}
                     typeOfProject={currentContext}
-                    //link={block.group.title}
                     video={video}
                     noThumb={true}
                   />  
@@ -192,8 +225,40 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
 
           </div>
         }
-        {block.group.smallImageTop.image &&
-          <div className="relative hidden md:block xl:hidden max-w-[50%]">
+        {block.group.largeImage.mobileImage &&
+          <div className={`relative hidden md:block xl:hidden max-w-[50%] mobile-image`}>
+
+              <GatsbyImage 
+                image={block.group.largeImage.mobileImage.localFile.childImageSharp.gatsbyImageData} 
+                alt={``} objectPosition={`${sidePin}`}
+                className={`w-full z-0 h-[calc(50vw)]`} />
+
+              {currentContext === 'Branding' && largeImageLightbox &&
+                <LightBox 
+                    key={`FeaturedProjectItem__${currentContext}__${index}`} 
+                    images={largeImageLightbox} 
+                    title={block.group.largeImage.title} 
+                    typeOfProject={currentContext}
+                    video={video}
+                    noThumb={true}
+                  />  
+              }
+
+              {currentContext !== 'Branding' && 
+                <>
+                  {block.group.largeImage.link.url &&
+                      <div className="bg-black p-6">
+                        <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{block.group.largeImage.title}</h2>
+                        <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.largeImage.link} />
+                      </div>
+                  }
+                </>
+              }
+
+          </div>
+        }
+        {block.group.smallImageTop.image && !block.group.smallImageTop.mobileImage &&
+          <div className="relative hidden md:block xl:hidden max-w-[50%]"> 
 
             <GatsbyImage 
                 image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
@@ -205,9 +270,7 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                     key={`FeaturedProjectItem__${currentContext}__${index}`} 
                     images={smallImageTopLightbox} 
                     title={block.group.smallImageTop.title} 
-                    //caption={block.group.smallImageTop.title}
                     typeOfProject={currentContext}
-                    //link={block.group.title}
                     video={video}
                   />  
               }
@@ -225,11 +288,76 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
 
           </div>
         }
-        {block.group.smallImageBottom.image &&
+        {block.group.smallImageTop.mobileImage &&
+          <div className="relative hidden md:block xl:hidden max-w-[50%]"> 
+
+            <GatsbyImage 
+                image={block.group.smallImageTop.mobileImage.localFile.childImageSharp.gatsbyImageData} 
+                alt={``} 
+                className={`w-full h-[calc(50vw)] z-0`} />
+
+            {currentContext === 'Branding' && smallImageTopLightbox &&
+                <LightBox 
+                    key={`FeaturedProjectItem__${currentContext}__${index}`} 
+                    images={smallImageTopLightbox} 
+                    title={block.group.smallImageTop.title} 
+                    typeOfProject={currentContext}
+                    video={video}
+                  />  
+              }
+
+            {currentContext !== 'Branding' && 
+              <>
+                {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
+                  <div className="bg-black p-6">
+                      <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{block.group.smallImageTop.title}</h2>
+                        <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageTop.link} />
+                  </div>
+                }
+                </>
+            }
+
+          </div>
+        }
+        {block.group.smallImageBottom.image && !block.group.smallImageBottom.mobileImage &&
           <div className="relative hidden md:block xl:hidden max-w-[50%]">
 
               <GatsbyImage 
                   image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
+                  alt={``} 
+                  className={`w-full h-[calc(50vw)] z-0`} />
+
+
+              {currentContext === 'Branding' && smallImageBottomLightbox &&
+                <LightBox 
+                    key={`FeaturedProjectItem__${currentContext}__${index}`} 
+                    images={smallImageBottomLightbox} 
+                    title={block.group.smallImageBottom.title} 
+                    //caption={block.group.smallImageTop.title}
+                    typeOfProject={currentContext}
+                    //link={block.group.title}
+                    video={video}
+                  />  
+              }
+
+              {currentContext !== 'Branding' && 
+                <>
+                  {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
+                    <div className="bg-black p-6">
+                      <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{block.group.smallImageBottom.title}</h2>
+                      <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.smallImageBottom.link} />
+                  </div>
+                  }
+                </>
+              }
+
+          </div>    
+        }
+        {block.group.smallImageBottom.mobileImage&&
+          <div className="relative hidden md:block xl:hidden max-w-[50%]">
+
+              <GatsbyImage 
+                  image={block.group.smallImageBottom.mobileImage.localFile.childImageSharp.gatsbyImageData} 
                   alt={``} 
                   className={`w-full h-[calc(50vw)] z-0`} />
 
@@ -318,7 +446,6 @@ const FeaturedProjectsGridDev = (props) => {
     }, [context.filterState])
 
     const handleRendering = (filter) => {
-      // console.log(filter, context.filterState);
       switch(filter) {
         case "Websites":
           setRendering(websites);
@@ -340,7 +467,6 @@ const FeaturedProjectsGridDev = (props) => {
     }
 
     const handleFilterChange = useCallback(filter => {
-      // console.log(filter, context.filterState);
       context.updateFilterState(filter);
       switch(filter) {
         case "Websites":
@@ -534,6 +660,13 @@ export const pageQuery = graphql`
                       }
                     }
                   }
+                  mobileImage {
+                    localFile {
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+                  }
                   title
                   link {
                     url
@@ -578,6 +711,13 @@ export const pageQuery = graphql`
               group {
                 largeImage {
                   image {
+                    localFile {
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+                  }
+                  mobileImage {
                     localFile {
                       childImageSharp {
                         gatsbyImageData
