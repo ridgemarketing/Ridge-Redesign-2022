@@ -57,13 +57,13 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                   <GatsbyImage 
                         image={block.group.largeImage.mobileImage.localFile.childImageSharp.gatsbyImageData} 
                         alt={``} objectPosition={`${sidePin}`}
-                        className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-8`} />
+                        className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-2`} />
                 </div>
                 <div className="hidden xl:block">
                   <GatsbyImage 
                         image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
                         alt={``} objectPosition={`${sidePin}`}
-                        className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-8`} />
+                        className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-2`} />
                 </div>
                 </>  
               }
@@ -72,7 +72,7 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                 <GatsbyImage 
                     image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
                     alt={``} objectPosition={`${sidePin}`}
-                    className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-8`} />
+                    className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-2`} />
               }
 
               {currentContext === 'Branding' && largeImageLightbox &&
@@ -106,13 +106,13 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                             <GatsbyImage 
                                 image={block.group.smallImageTop.mobileImage.localFile.childImageSharp.gatsbyImageData} 
                                 alt={``} 
-                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-8`} />
+                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-2`} />
                         }
                         {!block.group.smallImageTop.mobileImage&& 
                             <GatsbyImage 
                                 image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
                                 alt={``} 
-                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-8`} />
+                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-2`} />
                         }
 
                         {currentContext === 'Branding' && smallImageTopLightbox &&
@@ -147,13 +147,13 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                             <GatsbyImage 
                               image={block.group.smallImageBottom.mobileImage.localFile.childImageSharp.gatsbyImageData} 
                               alt={``} 
-                              className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-8`} />
+                              className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-2`} />
                         }
                         {!block.group.smallImageBottom.mobileImage&& 
                             <GatsbyImage 
                                 image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
                                 alt={``} 
-                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-8`} />
+                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-2`} />
                         }
 
                         {currentContext === 'Branding' && smallImageBottomLightbox &&
@@ -182,7 +182,7 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                   }
                   {!block.group.smallImageBottom.image &&
 
-                    <div className="relative hidden xl:flex flex-col items-center justify-center bg-[#24B6BF] xl:h-[350px] border-solid border-black border-8">
+                    <div className="relative hidden xl:flex flex-col items-center justify-center bg-[#24B6BF] xl:h-[350px] border-solid border-black border-2">
                       <h2 className="text-white text-center font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">Want to See your new site here?</h2>
                       <FlexibleLink
                           link={contactLink}
