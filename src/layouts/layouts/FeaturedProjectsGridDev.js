@@ -15,8 +15,6 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
   let smallImageBottomLightbox;
   const video = false;
 
-  console.log(block);
-
   if(block.group.largeImage.lightboxImages){
     largeImageLightbox = block.group.largeImage.lightboxImages;
   }
@@ -538,7 +536,7 @@ const FeaturedProjectsGridDev = (props) => {
                           })}
                     </div>
               }
-              {context.filterState == 'Video' &&
+              {context.filterState == 'Video'  && 
                 <div>
                     {videos && videos.map( (block) => {
                       var videoContent = block.category;
@@ -591,6 +589,7 @@ const FeaturedProjectsGridDev = (props) => {
 
                             <div className={`md:grid md:grid-cols-2 md:gap-6`}>
                               {interactiveContent.videos.map( (interactiveGrid, index) =>{
+                                console.log(interactiveGrid);
                                  if (interactiveGrid.group.videoUrl !== null && interactiveGrid.group.image !== null) {
                                   return(
                                     <div className={`relative my-10 md:my-0 ${context.filterState == 'Video'&& 'h-min'}`}>
@@ -598,7 +597,8 @@ const FeaturedProjectsGridDev = (props) => {
                                             key={`FeaturedProjectItem__${context.filterState}__${index}`} 
                                             images={interactiveGrid.group.image} 
                                             title={interactiveGrid.group.title} 
-                                            typeOfProject={context.filterState} 
+                                            caption={interactiveGrid.group.subtitle}
+                                            typeOfProject={'Video'} //switches to 16:9, bc video tab was set to 16:9 first
                                             link={interactiveGrid.group.website}
                                             video={interactiveGrid.group.videoUrl}
                                             />
