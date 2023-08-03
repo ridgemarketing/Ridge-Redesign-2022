@@ -589,7 +589,6 @@ const FeaturedProjectsGridDev = (props) => {
 
                             <div className={`md:grid md:grid-cols-2 md:gap-6`}>
                               {interactiveContent.videos.map( (interactiveGrid, index) =>{
-                                console.log(interactiveGrid);
                                  if (interactiveGrid.group.videoUrl !== null && interactiveGrid.group.image !== null) {
                                   return(
                                     <div className={`relative my-10 md:my-0 ${context.filterState == 'Video'&& 'h-min'}`}>
