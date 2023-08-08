@@ -51,26 +51,26 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
 
               {block.group.largeImage.mobileImage&& 
                 <>
-                <div className="block xl:hidden">
-                  <GatsbyImage 
-                        image={block.group.largeImage.mobileImage.localFile.childImageSharp.gatsbyImageData} 
-                        alt={``} objectPosition={`${sidePin}`}
-                        className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-2`} />
-                </div>
-                <div className="hidden xl:block">
-                  <GatsbyImage 
-                        image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
-                        alt={``} objectPosition={`${sidePin}`}
-                        className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-2`} />
-                </div>
+                  <div className="block xl:hidden">
+                    <GatsbyImage 
+                          image={block.group.largeImage.mobileImage.localFile.childImageSharp.gatsbyImageData} 
+                          alt={``} objectPosition={`${sidePin}`}
+                          className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-[9px]`} />
+                  </div>
+                  <div className="hidden xl:block">
+                    <GatsbyImage 
+                          image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
+                          alt={``} objectPosition={`${sidePin}`}
+                          className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-[9px]`} />
+                  </div>
                 </>  
               }
 
-              {block.group.largeImage.image && !block.group.largeImage.mobileImage&& 
+              {block.group.largeImage.image && !block.group.largeImage.mobileImage && 
                 <GatsbyImage 
                     image={block.group.largeImage.image.localFile.childImageSharp.gatsbyImageData} 
                     alt={``} objectPosition={`${sidePin}`}
-                    className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-2`} />
+                    className={`w-full h-[100vw] xl:h-[700px] z-0 border-solid border-black border-[9px]`} />
               }
 
               {currentContext === 'Branding' && largeImageLightbox &&
@@ -87,12 +87,23 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
               }
 
               {currentContext !== 'Branding' && 
-                <div className="bg-black p-6 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
-                  <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{block.group.largeImage.title}</h2>
-                  {block.group.largeImage.link.url &&
-                      <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `} link={block.group.largeImage.link}/>
-                  }
-                </div>
+                <>
+                  {/* rollover desktop */}
+                  <div className="hidden lg:flex flex-col justify-center items-center absolute opacity-0 hover:opacity-100 bg-opacity-80 backdrop-blur-sm bg-white w-[calc(100%-18px)] h-[calc(100%-18px)] top-[9px] left-[9px] transition-opacity duration-500">
+                    <h2 className="text-rm-black font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-[45px]">{block.group.largeImage.title}</h2>
+                    {block.group.largeImage.link.url &&
+                        <FlexibleLink classes={`${theme.button['BASE_STYLING']} ${theme.button['SOLID_GREEN_HOVER_DARK']} `} link={block.group.largeImage.link}/>
+                    }
+                  </div>
+
+                  {/* text link mobile */}
+                  <div className="block lg:hidden bg-black p-6 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
+                    <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{block.group.largeImage.title}</h2>
+                    {block.group.largeImage.link.url &&
+                        <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={block.group.largeImage.link}/>
+                    }
+                  </div>
+                </>
               } 
 
             </div>
@@ -104,13 +115,13 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                             <GatsbyImage 
                                 image={block.group.smallImageTop.mobileImage.localFile.childImageSharp.gatsbyImageData} 
                                 alt={``} 
-                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-2`} />
+                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-[9px]`} />
                         }
                         {!block.group.smallImageTop.mobileImage&& 
                             <GatsbyImage 
                                 image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} 
                                 alt={``} 
-                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-2`} />
+                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-[9px]`} />
                         }
 
                         {currentContext === 'Branding' && smallImageTopLightbox &&
@@ -128,11 +139,22 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                         {currentContext !== 'Branding' && 
                           <>
                             {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
-                              <div className="bg-black p-6 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
-                                  <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{block.group.smallImageTop.title}</h2>
-                                    <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} 
-                                    link={block.group.smallImageTop.link} />
-                              </div>
+                              <>
+                                {/* rollover desktop */}
+                                <div className="hidden lg:flex flex-col justify-center items-center absolute opacity-0 hover:opacity-100 bg-opacity-80 backdrop-blur-sm bg-white w-[calc(100%-18px)] h-[calc(100%-18px)] top-[9px] left-[9px] transition-opacity duration-500">
+                                  <h2 className="text-rm-black font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-[45px]">{block.group.smallImageTop.title}</h2>
+                                    {block.group.smallImageTop.link &&
+                                        <FlexibleLink classes={`${theme.button['BASE_STYLING']} ${theme.button['SOLID_GREEN_HOVER_DARK']} `} link={block.group.smallImageTop.link}/>
+                                    }
+                                </div>
+                                
+                                {/* text link mobile */}
+                                <div className="block lg:hidden bg-black p-6 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
+                                    <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{block.group.smallImageTop.title}</h2>
+                                      <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} 
+                                      link={block.group.smallImageTop.link} />
+                                </div>
+                              </>
                             }
                           </>
                         }
@@ -145,13 +167,13 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                             <GatsbyImage 
                               image={block.group.smallImageBottom.mobileImage.localFile.childImageSharp.gatsbyImageData} 
                               alt={``} 
-                              className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-2`} />
+                              className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-[9px]`} />
                         }
                         {!block.group.smallImageBottom.mobileImage&& 
                             <GatsbyImage 
                                 image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} 
                                 alt={``} 
-                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-2`} />
+                                className={`w-full h-[100vw] xl:h-[350px] xl:w-[350px] z-0 border-solid border-black border-[9px]`} />
                         }
 
                         {currentContext === 'Branding' && smallImageBottomLightbox &&
@@ -167,11 +189,22 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                         {currentContext !== 'Branding' && 
                           <>
                             {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
-                              <div className="bg-black p-6 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
-                                <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{block.group.smallImageBottom.title}</h2>
-                                <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} 
-                                link={block.group.smallImageBottom.link} />
-                            </div>
+                              <>
+                                {/* rollover desktop */}
+                                <div className="hidden lg:flex flex-col justify-center items-center absolute opacity-0 hover:opacity-100 bg-opacity-80 backdrop-blur-sm bg-white w-[calc(100%-18px)] h-[calc(100%-18px)] top-[9px] left-[9px] transition-opacity duration-500">
+                                  <h2 className="text-rm-black font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-[45px]">{block.group.smallImageBottom.title}</h2>
+                                    {block.group.smallImageBottom.link &&
+                                        <FlexibleLink classes={`${theme.button['BASE_STYLING']} ${theme.button['SOLID_GREEN_HOVER_DARK']} `} link={block.group.smallImageBottom.link}/>
+                                    }
+                                </div>
+                                
+                                {/* text link mobile */}
+                                <div className="block lg:hidden bg-black p-6 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
+                                    <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{block.group.smallImageBottom.title}</h2>
+                                      <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} 
+                                      link={block.group.smallImageBottom.link} />
+                                </div>
+                              </>
                             }
                           </>
                         }
@@ -180,7 +213,7 @@ const WebsiteBrandingBlock = ({block, index, contactLink, currentContext}) => {
                   }
                   {!block.group.smallImageBottom.image &&
 
-                    <div className="relative hidden xl:flex flex-col items-center justify-center bg-[#24B6BF] xl:h-[350px] border-solid border-black border-2">
+                    <div className="relative hidden xl:flex flex-col items-center justify-center bg-[#24B6BF] xl:h-[350px] border-solid border-black border-[9px]">
                       <h2 className="text-white text-center font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">Want to See your new site here?</h2>
                       <FlexibleLink
                           link={contactLink}
