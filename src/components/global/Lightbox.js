@@ -79,7 +79,7 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
         }
         
         {typeOfProject !== 'Branding'&&
-            <div className={`shadow-lightbox absolute top-0 left-0 justify-center items-center ${hoverState} w-full h-full`} style={{backgroundColor: "rgba(255,255,255,0.8)"}} >
+            <div className={`shadow-lightbox absolute top-0 left-0 flex justify-center items-center w-full h-full  opacity-0 hover:opacity-100 bg-opacity-80 backdrop-blur-sm transition-opacity duration-500 bg-white`} style={{backgroundColor: "rgba(255,255,255,0.8)"}} >
                 <div className={'text-center'}>
                     <p className={`${theme.text.P_STD} pb-2 text-rm-black font-bold`}>{caption}</p>
                     <p className={`${theme.text.H4} text-rm-black pb-4`}>{title}</p>
