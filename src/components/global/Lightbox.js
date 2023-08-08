@@ -60,12 +60,22 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
         }
 
         {typeOfProject == 'Branding'&&
-            <div className="bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px] z-10">
-                <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{title}</h2>
-                <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `}>
-                    VIEW WORK
-                </button>
-            </div>
+            <>
+                {/* rollover desktop */}
+                <div className="hidden lg:flex flex-col justify-center items-center absolute opacity-0 hover:opacity-100 bg-opacity-80 backdrop-blur-sm bg-white w-[calc(100%-18px)] h-[calc(100%-18px)] top-[9px] left-[9px] transition-opacity duration-500">
+                    <h2 className="text-rm-black font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-[45px]">{title}</h2>
+                        <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`${theme.button['BASE_STYLING']} ${theme.button['SOLID_GREEN_HOVER_DARK']}`}>
+                            VIEW WORK
+                        </button>
+                </div>
+                {/* text link mobile */}
+                <div className="block lg:hidden bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px] z-10">
+                    <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{title}</h2>
+                    <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `}>
+                        VIEW WORK
+                    </button>
+                </div>
+            </>
         }
         
         {typeOfProject !== 'Branding'&&
