@@ -188,6 +188,9 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 .blog-container img {
     @apply mb-10 w-full max-w-[850px] mx-auto;
 }
+.blog-container .wp-block-columns img{
+    @apply max-w-[350px]
+}
 
 .blog-container figure.alignright {
     @apply md:float-right md:ml-6 md:max-w-[40%];

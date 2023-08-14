@@ -162,7 +162,7 @@ const WebsiteTwoCol = ({block, sidePin}) =>{
 
 const WebsiteBlock = ({block, index, contactLink, currentContext}) => {
 
-  console.log(block);
+  // console.log(block);
 
   let largeImageLightbox;
   let smallImageTopLightbox;
@@ -292,7 +292,7 @@ const BrandingBlock = ({block, index, contactLink, currentContext}) => {
     smallImageBottomLightbox = block.group.smallImageBottom.lightboxImages;
   }
 
-  console.log(smallImageBottomLightbox, smallImageTopLightbox, largeImageLightbox);
+  // console.log(smallImageBottomLightbox, smallImageTopLightbox, largeImageLightbox);
 
   let sidePin = 'center';
   if(block.group.largeImage.desktopImageSidePin == 'Center'){
