@@ -26,10 +26,9 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
         if(playerRef.current){
             playerRef.current = new Vimeo(playerRef.current);
 
-            return () => {
-                // Clean up the player when the component unmounts
-                playerRef.current.destroy();
-            };
+            // return () => {
+            //     //playerRef.current.destroy();
+            // };
         }
     },[])
 
@@ -147,7 +146,6 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
                 }
                 {video &&
                     <div className={'pt-[56.25%] w-full relative'}>
-                        {/* <script src="https://player.vimeo.com/api/player.js"></script> */}
                         <iframe ref={playerRef} title={`video`} className={`w-full h-full z-50 absolute object-cover left-0 top-0`} src={video} width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 }
