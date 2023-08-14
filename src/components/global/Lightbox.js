@@ -1,7 +1,8 @@
-import React, {useState} from "react";
+import React, {useRef, useState, useEffect} from "react";
 import { theme } from "../../static/theme";
 import Link from "./FlexibleLink"
 import { GatsbyImage } from "gatsby-plugin-image";
+import Vimeo from '@vimeo/player';
 
 const LightBox = ({type, images, video, title, link, caption, typeOfProject, noThumb, brandingImgLinkLarge, brandingImgLinkMobile }) => {
     // const noThumbnail                   = noThumb;
@@ -12,12 +13,25 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
     // const [imgBlur, setImgBlur]         = useState("");
     const [overlay, setOverlay]         = useState(false);
 
+    const playerRef = useRef(null);
+
     let galleryLength;
     if(gallery.length){
         galleryLength = true;
     }else{
         galleryLength = false;
     }
+
+    useEffect(() =>{
+        if(playerRef.current){
+            playerRef.current = new Vimeo(playerRef.current);
+
+            return () => {
+                // Clean up the player when the component unmounts
+                playerRef.current.destroy();
+            };
+        }
+    },[])
 
     const loadNext = () =>{
         if( (image) === (gallery.length - 1)){
@@ -43,6 +57,12 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
             setOverlay(false);
             document.body.classList.remove("overflow-hidden");
             setImage(0);
+        }
+        if(playerRef.current && overlay === false){
+            playerRef.current.play();
+        }
+        if(playerRef.current && overlay === true){
+            playerRef.current.pause();
         }
     }
     const linkInfo = {
@@ -127,7 +147,8 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
                 }
                 {video &&
                     <div className={'pt-[56.25%] w-full relative'}>
-                        <iframe title={`video`} className={`w-full h-full z-50 absolute object-cover left-0 top-0`} src={video} width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+                        {/* <script src="https://player.vimeo.com/api/player.js"></script> */}
+                        <iframe ref={playerRef} title={`video`} className={`w-full h-full z-50 absolute object-cover left-0 top-0`} src={video} width="1920" height="1080" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 }
 
