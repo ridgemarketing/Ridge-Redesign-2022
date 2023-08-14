@@ -67,16 +67,16 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
         }
         
         {typeOfProject !== 'Websites'&&
-            <div role="button" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()}  className={`flex shadow-lightbox absolute top-0 left-0 justify-center items-center w-full h-full opacity-0 lg:hover:opacity-100 bg-opacity-80 backdrop-blur-sm transition-opacity duration-500 bg-transparent lg:bg-white`} >
+            <div role="button" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()}  className={`flex shadow-lightbox absolute top-0 left-0 justify-center items-center w-full h-full opacity-0 xl:hover:opacity-100 bg-transparent xl:bg-white !bg-opacity-80 backdrop-blur-sm transition-opacity duration-500`} >
                 <div className={'text-center'}>
-                    <p className={`${theme.text.P_STD} md:pb-2 text-rm-black font-bold hidden lg:block`}>{caption}</p>
-                    <p className={`${theme.text.H4} text-rm-black pb-4 hidden lg:block`}>{title}</p>
+                    <p className={`${theme.text.P_STD} md:pb-2 text-rm-black font-bold hidden xl:block`}>{caption}</p>
+                    <p className={`${theme.text.H4} text-rm-black pb-4 hidden xl:block`}>{title}</p>
                     <div className={"w-[65px] lg:w-[95px] text-center mx-auto xl:pt-7"}>
                         {typeOfProject == 'Video'&&
-                            <img className="hidden lg:block" src={'https://rm2022stage.wpengine.com/wp-content/uploads/2023/06/circle-play-solid-1.svg'} alt={`play button`} />
+                            <img className="hidden xl:block" src={'https://rm2022stage.wpengine.com/wp-content/uploads/2023/06/circle-play-solid-1.svg'} alt={`play button`} />
                         }
                         {typeOfProject !== 'Video'&& 
-                            <img className="hidden lg:block" src={'https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/plus.png'} alt={`plus`} />
+                            <img className="hidden xl:block" src={'https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/plus.png'} alt={`plus`} />
                         }
                     </div>
                 </div>
@@ -84,7 +84,7 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
         }
     </div>
     {typeOfProject == 'Video' &&
-        <div className="block lg:hidden bg-black p-6 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
+        <div className="block xl:hidden bg-black p-6">
             <p className={`${theme.text.P_STD} md:pb-2 text-rm-white text-left font-bold`}>{caption}</p>
             <h2 role="button" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()}  className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{title}</h2>
             <span role="button" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()}  className={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`}>
@@ -94,7 +94,7 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
     }
     <div className={`fixed top-0 left-0 h-screen w-screen`} style={{display:overlay ? 'block':'none', visibility:overlay ? 'visible':'hidden', zIndex:overlay ? '50':'0'}} aria-label="lightbox" aria-expanded={overlay}>
         <div className={`relative z-10 w-full h-full flex flex-col items-center justify-center`}>
-            <div className={`w-[95%] md:w-3/4 lg:w-[40%] h-max relative flex flex-col justify-center items-center`}>
+            <div className={`w-[95%] md:w-3/4 xl:w-3/5 h-max relative flex flex-col justify-center items-center`}>
                 <nav className={`absolute top-0 left-0 w-full h-full z-50 text-rm-white flex justify-between items-center ml-auto mr-auto`}> 
                     <button className={`absolute z-50 text-rm-white p-2 -top-[50px] right-0`} aria-label="Close Lightbox" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} tabIndex={0}>
                         <svg width="26" height="24" viewBox="0 0 26 24" fill="none">
