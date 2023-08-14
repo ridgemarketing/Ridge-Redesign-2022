@@ -3,14 +3,21 @@ import { theme } from "../../static/theme";
 import Link from "./FlexibleLink"
 import { GatsbyImage } from "gatsby-plugin-image";
 
-const LightBox = ({type, images, video, title, link, caption, typeOfProject, noThumb}) => {
+const LightBox = ({type, images, video, title, link, caption, typeOfProject, noThumb, brandingImgLinkLarge, brandingImgLinkMobile }) => {
     // const noThumbnail                   = noThumb;
     const thumbnail                     = (video) ? images.localFile.childImageSharp.gatsbyImageData : images[0].image.localFile.childImageSharp.gatsbyImageData;
     const gallery                       = images.length > 1 ? images.slice(1) : video ? thumbnail : images[0]
     const [image, setImage]             = useState(0);
     const [hoverState, setHoverState]   = useState("hidden");
-    const [imgBlur, setImgBlur]         = useState("");
+    // const [imgBlur, setImgBlur]         = useState("");
     const [overlay, setOverlay]         = useState(false);
+
+    let galleryLength;
+    if(gallery.length){
+        galleryLength = true;
+    }else{
+        galleryLength = false;
+    }
 
     const loadNext = () =>{
         if( (image) === (gallery.length - 1)){
@@ -45,45 +52,26 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
     }
     const handleHoverState = (currentlyShowing) => {
         setHoverState((currentlyShowing) ? "hidden" : "flex");
-        setImgBlur((currentlyShowing) ? "" : "blur(4px)");
+        // setImgBlur((currentlyShowing) ? "" : "");
         return;
     }
     return(<>
     <div onMouseEnter={() => handleHoverState(false)} onMouseLeave={() => handleHoverState(true)} className={`${typeOfProject == 'Video'&& 'pt-[56.25%]'}`}>
         
         {typeOfProject == 'Video'&&
-            <GatsbyImage image={thumbnail} alt={`${title}`} className={`absolute top-0 left-0 h-full cursor-pointer object-contain w-full`} style={{filter: `${imgBlur}`}}/>
+            <GatsbyImage image={thumbnail} alt={`${title}`} className={`absolute top-0 left-0 h-full cursor-pointer object-contain w-full`}/>
         }
         
         {typeOfProject !== 'Video'&& typeOfProject !== 'Branding'&&
-            <GatsbyImage image={thumbnail} alt={`${title}`} className={`cursor-pointer object-cover w-full`} style={{filter: `${imgBlur}`}}/>
-        }
-
-        {typeOfProject == 'Branding'&&
-            <>
-                {/* rollover desktop */}
-                <div className="hidden lg:flex flex-col justify-center items-center absolute opacity-0 hover:opacity-100 bg-opacity-80 backdrop-blur-sm bg-white w-[calc(100%-18px)] h-[calc(100%-18px)] top-[9px] left-[9px] transition-opacity duration-500">
-                    <h2 className="text-rm-black font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-[45px]">{title}</h2>
-                        <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`${theme.button['BASE_STYLING']} ${theme.button['SOLID_GREEN_HOVER_DARK']}`}>
-                            VIEW WORK
-                        </button>
-                </div>
-                {/* text link mobile */}
-                <div className="block lg:hidden bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px] z-10">
-                    <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{title}</h2>
-                    <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `}>
-                        VIEW WORK
-                    </button>
-                </div>
-            </>
+            <GatsbyImage image={thumbnail} alt={`${title}`} className={`cursor-pointer object-cover w-full`}/>
         }
         
         {typeOfProject !== 'Branding'&&
             <div className={`shadow-lightbox absolute top-0 left-0 flex justify-center items-center w-full h-full  opacity-0 hover:opacity-100 bg-opacity-80 backdrop-blur-sm transition-opacity duration-500 bg-white`} style={{backgroundColor: "rgba(255,255,255,0.8)"}} >
                 <div className={'text-center'}>
-                    <p className={`${theme.text.P_STD} pb-2 text-rm-black font-bold`}>{caption}</p>
+                    <p className={`${theme.text.P_STD} md:pb-2 text-rm-black font-bold`}>{caption}</p>
                     <p className={`${theme.text.H4} text-rm-black pb-4`}>{title}</p>
-                    <div role="button" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={"w-[95px] text-center mx-auto pt-7"}>
+                    <div role="button" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={"w-[65px] lg:w-[95px] text-center mx-auto xl:pt-7"}>
                         {typeOfProject == 'Video'&&
                             <img src={'https://rm2022stage.wpengine.com/wp-content/uploads/2023/06/circle-play-solid-1.svg'} alt={`play button`} />
                         }
@@ -111,9 +99,9 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
                         {gallery[0] &&
                             <GatsbyImage aria-controls={`image-${gallery}`} image={gallery[image] ? gallery[image].image.localFile.childImageSharp.gatsbyImageData : gallery[0].image.localFile.childImageSharp.gatsbyImageData} alt={``} className={`w-full z-0`} />
                         }
-                        {gallery.length > 1 &&
+                        {galleryLength == true && gallery.length > 1 &&
                             <>
-                                <button className={`hidden md:block absolute top-1/2 left-[-50px] ml-2 z-50 text-white ${gallery.length < 3 ? 'hidden' : ''}`} onClick={()=>loadPrev()} onKeyDown={()=>loadPrev()} aria-label="Next Image" tabIndex={0}>
+                                <button galleryLength className={`hidden md:block absolute top-1/2 left-[-50px] ml-2 z-50 text-white ${gallery.length < 3 ? 'hidden' : ''}`} onClick={()=>loadPrev()} onKeyDown={()=>loadPrev()} aria-label="Next Image" tabIndex={0}>
                                     <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                         <path d="M11.9531 22.9375L13.5156 21.375C13.8281 20.9844 13.8281 20.4375 13.4375 20.0469L7.1875 14.0312L34.0625 14.0312C34.6094 14.0312 35 13.5625 35 13.0938V10.9062C35 10.3594 34.6094 9.96875 34.0625 9.96875L7.1875 9.96875L13.4375 3.875C13.8281 3.48437 13.8281 2.9375 13.5156 2.54687L11.9531 0.984375C11.5625 0.671875 11.0156 0.671875 10.625 0.984375L0.3125 11.2969C0 11.6875 0 12.2344 0.3125 12.625L10.625 22.9375C11.0156 23.25 11.5625 23.25 11.9531 22.9375Z" fill="currentColor"/>
                                     </svg>
@@ -136,18 +124,20 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
 
                 <h3 className={`${theme.text.H4} pt-4 text-rm-white text-center`}>{(!video) ? gallery[image].text ? gallery[image].text : title : title}</h3>
                 
-                <div className={"flex justify-between pt-6 md:hidden w-full"}>
-                    <button className={`relative text-white ml-2 z-50 ${gallery.length < 3 ? 'hidden' : ''}`} onClick={()=>loadPrev()} onKeyDown={()=>loadPrev()} aria-label="Next Image" tabIndex={0}>
-                                <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M11.9531 22.9375L13.5156 21.375C13.8281 20.9844 13.8281 20.4375 13.4375 20.0469L7.1875 14.0312L34.0625 14.0312C34.6094 14.0312 35 13.5625 35 13.0938V10.9062C35 10.3594 34.6094 9.96875 34.0625 9.96875L7.1875 9.96875L13.4375 3.875C13.8281 3.48437 13.8281 2.9375 13.5156 2.54687L11.9531 0.984375C11.5625 0.671875 11.0156 0.671875 10.625 0.984375L0.3125 11.2969C0 11.6875 0 12.2344 0.3125 12.625L10.625 22.9375C11.0156 23.25 11.5625 23.25 11.9531 22.9375Z" fill="currentColor"/>
-                                </svg>
-                    </button>
-                    <button className={`z-50 mr-2 text-white ${gallery.length < 3 ? 'hidden' : ''}`} onClick={()=>loadNext()} onKeyDown={()=>loadNext()} aria-label="Previous Image" tabIndex={0}>
-                                <svg width="35" height="24" viewBox="0 0 35 24" fill="none">
-                                    <path d="M23.0469 1.0625L21.4844 2.625C21.1719 3.01562 21.1719 3.5625 21.5625 3.95312L27.8125 9.96875H0.9375C0.390625 9.96875 0 10.4375 0 10.9062V13.0938C0 13.6406 0.390625 14.0312 0.9375 14.0312H27.8125L21.5625 20.125C21.1719 20.5156 21.1719 21.0625 21.4844 21.4531L23.0469 23.0156C23.4375 23.3281 23.9844 23.3281 24.375 23.0156L34.6875 12.7031C35 12.3125 35 11.7656 34.6875 11.375L24.375 1.0625C23.9844 0.75 23.4375 0.75 23.0469 1.0625Z" fill="currentColor"/>
-                                </svg>
-                    </button>
-                </div>
+                {galleryLength == true && gallery.length > 1 &&
+                    <div className={"flex justify-between pt-6 md:hidden w-full"}>
+                        <button className={`relative text-white ml-2 z-50 ${gallery.length < 3 ? 'hidden' : ''}`} onClick={()=>loadPrev()} onKeyDown={()=>loadPrev()} aria-label="Next Image" tabIndex={0}>
+                                    <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M11.9531 22.9375L13.5156 21.375C13.8281 20.9844 13.8281 20.4375 13.4375 20.0469L7.1875 14.0312L34.0625 14.0312C34.6094 14.0312 35 13.5625 35 13.0938V10.9062C35 10.3594 34.6094 9.96875 34.0625 9.96875L7.1875 9.96875L13.4375 3.875C13.8281 3.48437 13.8281 2.9375 13.5156 2.54687L11.9531 0.984375C11.5625 0.671875 11.0156 0.671875 10.625 0.984375L0.3125 11.2969C0 11.6875 0 12.2344 0.3125 12.625L10.625 22.9375C11.0156 23.25 11.5625 23.25 11.9531 22.9375Z" fill="currentColor"/>
+                                    </svg>
+                        </button>
+                        <button className={`z-50 mr-2 text-white ${gallery.length < 3 ? 'hidden' : ''}`} onClick={()=>loadNext()} onKeyDown={()=>loadNext()} aria-label="Previous Image" tabIndex={0}>
+                                    <svg width="35" height="24" viewBox="0 0 35 24" fill="none">
+                                        <path d="M23.0469 1.0625L21.4844 2.625C21.1719 3.01562 21.1719 3.5625 21.5625 3.95312L27.8125 9.96875H0.9375C0.390625 9.96875 0 10.4375 0 10.9062V13.0938C0 13.6406 0.390625 14.0312 0.9375 14.0312H27.8125L21.5625 20.125C21.1719 20.5156 21.1719 21.0625 21.4844 21.4531L23.0469 23.0156C23.4375 23.3281 23.9844 23.3281 24.375 23.0156L34.6875 12.7031C35 12.3125 35 11.7656 34.6875 11.375L24.375 1.0625C23.9844 0.75 23.4375 0.75 23.0469 1.0625Z" fill="currentColor"/>
+                                    </svg>
+                        </button>
+                    </div>
+                }
                 {typeOfProject !== 'Branding'&&
                     <>
                         {linkInfo.url !== null && <div className={'pt-10'}>
