@@ -617,7 +617,7 @@ const FeaturedProjectsGridDev = (props) => {
     }, [])
 
 
-    let containerGrid = 'default';
+    let containerGrid = 'none';
     if(context.filterState == 'Websites' || context.filterState == 'Branding'){
         containerGrid = 'none';
     }
@@ -649,7 +649,7 @@ const FeaturedProjectsGridDev = (props) => {
                     </div>
               }
               {context.filterState == 'Video'  && 
-                <div>
+                <div className="overflow-hidden xl:px-12 max-w-[1280px] ml-auto mr-auto">
                     {videos && videos.map( (block) => {
                       var videoContent = block.category;
                         return(
@@ -687,7 +687,7 @@ const FeaturedProjectsGridDev = (props) => {
                 </div>
               }
               {context.filterState == 'Interactive' &&
-                <div>
+                <div className="overflow-hidden xl:px-12 max-w-[1280px] ml-auto mr-auto">
                     {interactives && interactives.map( (block) => {
                       var interactiveContent = block.category;
                         
@@ -724,28 +724,6 @@ const FeaturedProjectsGridDev = (props) => {
                     })}
                 </div>
               }
-
-
-              {/* {context.filterState !== 'Websites' && context.filterState !== 'Branding' && context.filterState !== 'Video' && context.filterState !== 'Interactive' &&
-                <div className={`md:grid md:grid-cols-2 md:gap-6 xl:grid-cols-3 xl:gap-x-4 xl:gap-y-8 py-16`}>
-                    {toRender && toRender.map((block, index) => {
-                      const video = (block.videoUrl && block.videoUrl !== null) ? block.videoUrl : false ;
-                      const images = (block.videoUrl && block.videoUrl !== null) ? block.thumbnailImage : block.lightboxImages;
-
-                        if (block.videoUrl !== null && block.lightboxImages !== null) {
-                          return (
-                              <div className={`relative my-10 md:my-0 ${context.filterState == 'Video'&& 'h-min'}`}>
-                                  <LightBox key={`FeaturedProjectItem__${block.guid}__${index}`} images={images} title={block.title} typeOfProject={context.filterState} caption={block.caption} link={block.websiteLink} video={video} />
-                              </div>
-                          )
-                        }
-                      
-                      return(<></>)
-                    })} 
-                  </div>
-              } */}
-
-
             </>
           </Container>
         </Section>
