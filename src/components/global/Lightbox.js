@@ -26,9 +26,6 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
         if(playerRef.current){
             playerRef.current = new Vimeo(playerRef.current);
 
-            // return () => {
-            //     //playerRef.current.destroy();
-            // };
         }
     },[])
 
