@@ -25,7 +25,6 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
     useEffect(() =>{
         if(playerRef.current){
             playerRef.current = new Vimeo(playerRef.current);
-
         }
     },[])
 
