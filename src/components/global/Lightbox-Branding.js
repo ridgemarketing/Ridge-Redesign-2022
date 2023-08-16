@@ -45,14 +45,16 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
         }
 
         togglePopup = () =>{
-            if(overlay === false){
-                setOverlay(true);
-                document.body.classList.add("overflow-hidden");
-            }
-            if(overlay === true){
-                setOverlay(false);
-                document.body.classList.remove("overflow-hidden");
-                setImage(0);
+            if(images.length > 1){
+                if(overlay === false){
+                    setOverlay(true);
+                    document.body.classList.add("overflow-hidden");
+                }
+                if(overlay === true){
+                    setOverlay(false);
+                    document.body.classList.remove("overflow-hidden");
+                    setImage(0);
+                }
             }
         }
         linkInfo = {
@@ -119,7 +121,7 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
                         <h2 className="text-rm-black font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-[45px]">{title}</h2>
                             {images.length > 1 &&
                                 <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`${theme.button['BASE_STYLING']} ${theme.button['SOLID_GREEN_HOVER_DARK']}`}>
-                                    VIEW WORK
+                                    VIEW PROJECT
                                 </button>
                             }
                     </div>
@@ -128,7 +130,7 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
                         <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{title}</h2>
                         {images.length > 1 &&
                             <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `}>
-                                VIEW WORK
+                                VIEW PROJECT
                             </button>
                         }
                     </div>
