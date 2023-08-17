@@ -127,9 +127,9 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
                     </div>
                     {/* text link mobile */}
                     <div className="block lg:hidden bg-black p-8 lg:absolute bottom-4 left-4 lg:max-w-[350px] z-10">
-                        <h2 className="text-white font-stratos uppercase text-[2.5rem] leading-10 font-bold mb-5">{title}</h2>
+                        <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{title}</h2>
                         {images.length > 1 &&
-                            <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `}>
+                            <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`}>
                                 VIEW PROJECT
                             </button>
                         }
@@ -148,7 +148,7 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
                 <div className="bg-black p-6">
                     <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{title}</h2>
                     {images.length > 1 &&
-                        <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `}>
+                        <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']} `}>
                             VIEW WORK
                         </button>
                     }
