@@ -36,7 +36,7 @@ import TextVideoOverhang from "./layouts/TextVideoOverhang"
 import ButtonRow from "./layouts/ButtonRow" 
 import BrandingCards from "./layouts/BrandingCards"
 import FlexibleProjectBlocks from "./layouts/FlexibleProjectBlocks"
-// import FeaturedProjectsGrid from "./layouts/FeaturedProjectsGrid"
+import FeaturedProjectsGridDev from "./layouts/FeaturedProjectsGridDev"
 
 
 let Layouts = {}; 
@@ -44,6 +44,7 @@ let Layouts = {};
 Layouts['ContactFourSquare']                = ContactFourSquare;
 Layouts['FeaturedProjectsCarousel']         = FeaturedProjectsCarousel;
 Layouts['FeaturedProjectsGrid']             = FeaturedProjectsGrid;
+Layouts['FeaturedProjectsGridDev']          = FeaturedProjectsGridDev;
 Layouts['FullWidthImage']                   = FullWidthImage;
 Layouts['FullWidthImageText']               = FullWidthImageText;
 // Layouts['ThreeColumnTextBlock']          = ThreeColumnTextBlock;

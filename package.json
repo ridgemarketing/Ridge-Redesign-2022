@@ -26,6 +26,7 @@
     "@sendgrid/mail": "^7.7.0",
     "@u-wave/react-vimeo": "^0.9.8",
     "@upsetjs/react": "^1.11.0",
+    "@vimeo/player": "^2.20.1",
     "dompurify": "^3.0.1",
     "formik": "^2.2.9",
     "framer-motion": "^8.4.1",
@@ -44,6 +45,7 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.43.9",
+    "react-input-mask": "^3.0.0-alpha.2",
     "react-visibility-sensor": "^5.1.1",
     "sharp": "^0.32.1",
     "wp-graphql-yoast-seo": "github:ashhitch/wp-graphql-yoast-seo"

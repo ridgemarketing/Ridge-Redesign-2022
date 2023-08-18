@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Input, TextArea } from "./FormFields"
+import { Input, PhoneInput, TextArea } from "./FormFields"
 import { theme } from "../../static/theme"
 import { useForm } from "react-hook-form";
 
@@ -169,7 +169,7 @@ export const FormContacPage = ({classes, submitLabel, btnContainerClasses, btnSt
             <span className={`mb-6 block`}><Input errors={errors} register={register} required={true} type={`text`} name={`name`} label={`Name`} bgColor={`white`} textColor={`black`} /></span>
             <span className={`mb-6 block`}><Input errors={errors} register={register} required={true} type={`text`} name={`company`} label={`Company`} bgColor={`white`} textColor={`black`} /></span>
             <span className={`mb-6 block`}><Input errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Email`} bgColor={`white`} textColor={`black`} /></span>
-            <span className={`mb-6 block`}><Input errors={errors} register={register} required={true} type={`tel`} name={`phone`} label={`Phone`} bgColor={`white`} textColor={`black`} /></span>
+            <span className={`mb-6 block`}><PhoneInput errors={errors} register={register} required={true} type={`tel`} name={`phone`} label={`Phone`} bgColor={`white`} textColor={`black`} /></span>
             <span className={`mb-6 block`}><TextArea errors={errors} register={register} required={true} name={`message`} label={`What are your marketing goals?`} bgColor={`white`} textColor={`black`} /></span>
             
             <div className={`mt-6 ${btnContainerClasses ? btnContainerClasses : ``}`}>

@@ -98,12 +98,12 @@ const Header = (props) => {
 
     return(
         <>
-            <header className={`${textColor} ${bkgClass} fixed w-full h-[100px] z-50 top-0 flex items-center`} >
+            <header className={`${textColor} ${bkgClass} fixed w-full z-50 top-0 flex items-center transition-all duration-500 h-[100px] ${isScrolled ? `is-scrolled !h-[65px]` : ``}`} >
             <button type="button" onClick={()=>focusMain()} onKeyDown={()=>focusMain()} className="bg-rm-white text-rm-black p-5 font-basic-sans text-18px absolute -top-96 -left-96 focus:left-0 focus:top-0 focus:underline z-50" title="skip main navigation">Skip Main Navigation</button>
             <section className="container h-full">
                 <nav className="h-full">
                     <ul className="flex items-center justify-between h-full">
-                        <li><Link to={`/`} className="h-min">{logo}</Link></li>
+                        <li className={`transition-transform duration-500 ${isScrolled ? `scale-75` : ``}`}><Link to={`/`} className="h-min">{logo}</Link></li>
                         <li className="w-[40px] h-[40px] flex ml-auto xl:hidden" >
                             <button className={``} onClick={() => setShowMenu(!showMenu)} onKeyDown={() => setShowMenu(!showMenu) } type="button" aria-expanded="false" aria-label="Mobile Menu Container">
                                 {showMenu ? 

@@ -67,13 +67,14 @@ const ProjectBlocks = (props) => {
 
                             image = block.projectInformation.images.projectIndexGrid.localFile.childImageSharp.gatsbyImageData;
                             let logo = '';
+                            const logoClasses = 'w-3/4 xl:w-3/5 mb-8 block h-auto -translate-y-5 group-hover:translate-y-0 focus-within:translate-y-0 focus:translate-y-0 opacity-0 group-hover:opacity-100 focus-within:opacity-100 cursor-pointer z-20 transition-all duration-300 ease-out';
 
                             if(block.projectInformation.logos){
 
                               if (block.projectInformation.logos.dark.localFile.ext === `.svg`) {
-                                logo = <img className={`w-3/4 xl:w-3/5 mb-8 block h-auto -translate-y-5 group-hover:translate-y-0 focus-within:translate-y-0 focus:translate-y-0 opacity-0 group-hover:opacity-100 focus-within:opacity-100 cursor-pointer z-20 transition-all duration-300 ease-out`} alt={`${block.title} logo`} src={block.projectInformation.logos.dark.sourceUrl} />
+                                logo = <img className={logoClasses} alt={`${block.title} logo`} src={block.projectInformation.logos.dark.sourceUrl} />
                               }else{
-                                logo = <GatsbyImage image={image} alt={`${block.title} logo`} className={`object-contain w-3/4`} />
+                                logo = <GatsbyImage image={block.projectInformation.logos.dark.localFile.childImageSharp.gatsbyImageData} alt={`${block.title} logo`} className={logoClasses} />
                               }
 
                             }

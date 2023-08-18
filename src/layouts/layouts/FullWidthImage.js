@@ -58,7 +58,9 @@ const FullWidthImage = (props) => {
     splitMargins()
 
     let textCenter = false;
+
     // console.log(settings.classes);
+
     if( ( settings.classes = 'text-center' ) ){
       textCenter = true;
     }

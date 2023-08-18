@@ -13,6 +13,7 @@ const PostCards = (props) => {
       query GetPosts {
         allWpPost(sort: {date: DESC}, limit: 3) {
           nodes {
+            date
             guid
             title
             content
@@ -47,6 +48,8 @@ const PostCards = (props) => {
     const posts         = allPosts.allWpPost.nodes;
     const taxonomy      = content.taxonomy;
     let cards           = [];
+
+    console.log('post cards',posts, content);
 
     for(let a =0; taxonomy.length > a; a++){
       for(let b =0; posts.length > b; b++){
