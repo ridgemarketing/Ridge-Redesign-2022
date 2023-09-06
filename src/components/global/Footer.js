@@ -3,10 +3,11 @@ import { graphql, useStaticQuery } from "gatsby"
 import { theme } from '../../static/theme'
 import { Link } from "gatsby" 
 import { GatsbyImage } from 'gatsby-plugin-image'
+import { Container } from "./Wrappers"
 
 const Footer = () =>{
     
-    const footerMenu = useStaticQuery( graphql`
+    const Menu = useStaticQuery( graphql`
     query GetMenus {
         allWpMenu(filter: {name: {eq: "Footer"}}) {
           nodes {
@@ -96,8 +97,8 @@ const Footer = () =>{
       }      
     `); 
 
-    const footerLinks   = footerMenu.allWpMenu.nodes[0].menuItems.nodes;
-    const content       = footerMenu.allWp.nodes[0].globalSettings.globalSettings;
+    const footerLinks   = Menu.allWpMenu.nodes[0].menuItems.nodes;
+    const content       = Menu.allWp.nodes[0].globalSettings.globalSettings;
 
     const checkImg = function(img){
         if (img.localFile.ext === `.svg`) {
@@ -145,75 +146,89 @@ const Footer = () =>{
     }
 
     return(
-        <footer className="text-center lg:text-left bg-rm-black text-rm-white py-12 lg:py-16">
-            <section className="container">
-                <h2 className={`${theme.text.HERO} lg:w-3/4`}>{content.footertext.cta}</h2>
-                <Link to={content.footertext.link.url} className={`ml-auto mr-auto lg:ml-0 lg:mr-0 text-rm-green mt-12 lg:mt-16 w-max hover:text-rm-white hover:underline ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.LARGE} ${theme.text_links.ARW_FWD_GREEN}`}>{content.footertext.link.title}</Link>
+        <footer className="-mt-px text-center lg:text-left bg-rm-black text-rm-white py-12 lg:py-16">
+            <Container container={"slim"}>
+                {content.footertext.cta &&
+                  <h2 className={`${theme.text.HERO} lg:w-3/4`}>{content.footertext.cta}</h2>
+                }
+                {content.footertext.link.url && content.footertext.link.title &&
+                  <Link to={content.footertext.link.url} className={`ml-auto mr-auto lg:ml-0 lg:mr-0 text-rm-green mt-12 lg:mt-16 w-max hover:text-rm-white hover:underline ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.LARGE} ${theme.text_links.ARW_FWD_GREEN} ${theme.text_links.HOVER_ARW_FWD_WHITE}`}>{content.footertext.link.title}</Link>
+                }
                 <div className="mt-12 lg:w-[95%] lg:mt-28">
-                    <ul key={`footer${Math.random()}`} className="block lg:flex justify-between">
+                    <ul key={`footer-top`} className="block lg:flex justify-between">
                         <li className="lg:mt-4">
                             {logo}
                             <address className={`${theme.text.FOOTER} flex items-center lg:items-start flex-col my-9 not-italic`}>
-                                <span className="mb-9" dangerouslySetInnerHTML={ {__html:address} }></span>
-                                <a href={content.contact.phone.phone.url} className="text-rm-green w-max">{content.contact.phone.phone.title}</a>
-                                <a href={content.contact.email.url} className="text-rm-green w-max">{content.contact.email.title}</a>
+                                <span className="mb-9" dangerouslySetInnerHTML={{__html:address}}></span>
+                                {content.contact.phone && content.contact.phone.phone.url && content.contact.phone.phone.title &&
+                                  <a href={content.contact.phone.phone.url} className="text-rm-green w-max">{content.contact.phone.phone.title}</a>
+                                }
+                                {content.contact.email && content.contact.email.url && content.contact.email.title &&
+                                  <a href={content.contact.email.url} className="text-rm-green w-max">{content.contact.email.title}</a>
+                                }
                             </address>
-                            <ul className="flex mt-9 justify-center lg:justify-start">
-                                {socials.map( (social) =>{
-                                    let icon = checkImg(social.icon);
-                                    return(
-                                        <li key={`${social.link.url}`} className="mr-3 last-of-type:mr-0" >
-                                            <a href={social.link.url} target={social.link.target}>
-                                                {icon}
-                                            </a>
-                                        </li>
-                                    );
-                                })}
-                            </ul>
-                        </li>
+                            {socials &&
+                                <ul className="flex mt-9 justify-center lg:justify-start">
+                                  {socials.map( (social) =>{
+                                      let icon = checkImg(social.icon);
+                                      return(
+                                          <li key={`${social.link.url.replace('https://', '')}___footer-social-a`} className="mr-3 last-of-type:mr-0 hover:text-rm-green" >
+                                              <a href={social.link.url} target={social.link.target}>
+                                                  {icon}
+                                              </a>
+                                          </li>
+                                      );
+                                  })}
+                              </ul>
+                            }
 
-                        <div className="block mt-16 lg:mt-0 lg:flex">
-                          {menuBreakpoints.map( (breakPoint)=>{
-                            //let colWidth = Math.round((1/menuBreakpoints.length)*100);
-                            return(<div key={`breakpoint${Math.random()}`}>
-                                {breakPoint.map( (menuItem) => {   
-                                        if(menuItem.childItems.nodes.length > 0){
-                                            return(
-                                                <li key={menuItem.url + Math.random()} className={`mt-4 lg:mr-12`}>
-                                                    <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase`}>
-                                                        {menuItem.label}
-                                                    </Link>
-                                                    <ul key={menuItem.label + Math.random()}>
-                                                        {menuItem.childItems.nodes.map( (subMenuItem) => { 
-                                                            return(
-                                                                <li key={subMenuItem.label + Math.random()} className={`${theme.text.FOOTER} normal-case mt-2`}>
-                                                                    <Link to={subMenuItem.url} className={`hover:text-rm-green hover:underline`}>                                                        
-                                                                        {subMenuItem.label}
-                                                                    </Link>
-                                                                </li>
-                                                            )
-                                                        }
-                                                        )}
-                                                    </ul>
-                                                </li>
-                                            )
-                                        }else{
-                                            return(
-                                                <li key={menuItem.url + Math.random()} className="mt-4 lg:mr-12">
-                                                    <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase`}>
-                                                        {menuItem.label}
-                                                    </Link>
-                                                </li>
-                                            )
-                                        }
-                                })}
-                            </div>)
-                          })}
-                        </div>
+                        </li>
+                        {menuBreakpoints &&
+                          <div className="block mt-16 lg:mt-0 lg:flex">
+                            {menuBreakpoints.map( (breakPoint)=>{
+                              //let colWidth = Math.round((1/menuBreakpoints.length)*100);
+                              return(<div key={`breakpoint${ breakPoint.map((bp) =>{return(bp.label)} )}`}>
+                                  {breakPoint.map( (menuItem) => {   
+                                          if(menuItem.childItems.nodes.length > 0){
+                                              return(
+                                                  <li key={`${menuItem.url}footer-a`} className={`mt-4 lg:mr-12`}>
+                                                      <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase hover:text-rm-green hover:underline`}>
+                                                          {menuItem.label}
+                                                      </Link>
+                                                      <ul key={`${menuItem.label}footer`}>
+                                                          {menuItem.childItems.nodes.map( (subMenuItem) => { 
+                                                              return(
+                                                                  <li key={subMenuItem.label} className={`${theme.text.FOOTER} normal-case mt-2`}>
+                                                                      <Link to={subMenuItem.url} className={`hover:text-rm-green hover:underline`}>                                                        
+                                                                          {subMenuItem.label}
+                                                                      </Link>
+                                                                  </li>
+                                                              )
+                                                          }
+                                                          )}
+                                                      </ul>
+                                                  </li>
+                                              )
+                                          }else{
+                                              return(
+                                                  <li key={`${menuItem.url}${menuItem.label}}footer-b`} className="mt-4 lg:mr-12">
+                                                      <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase hover:text-rm-green hover:underline`}>
+                                                          {menuItem.label}
+                                                      </Link>
+                                                  </li>
+                                              )
+                                          }
+                                  })}
+                              </div>)
+                            })}
+                          </div>
+                        }
                     </ul> 
                 </div>
-                <small className={`${theme.text.FOOTER} mt-16 lg:mt-32 text-[14px] block`}>{content.copyright}</small>
-            </section>
+                {content.copyright &&
+                  <small className={`${theme.text.FOOTER} mt-16 lg:mt-32 text-[14px] block`}  dangerouslySetInnerHTML={ {__html:content.copyright} }></small>
+                }
+            </Container>
         </footer>
     )
 } 

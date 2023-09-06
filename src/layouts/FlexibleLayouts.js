@@ -4,10 +4,10 @@ import Layouts from './layoutIndex';
 
 const FlexibleLayouts = (props) => {
 
-  let layouts = props.flexibleLayouts.layouts;
+  let flexLayouts = props.flexibleLayouts.layouts;
   const layoutsArray = [];
 
-  layouts && layouts.map((res) => {
+  flexLayouts && flexLayouts.map((res, index) => {
       if (Object.keys(res).length > 0) {
         let subString = res.fieldGroupName.split('_').pop();
         let layoutArrTitle = `layout${subString}`;
@@ -16,12 +16,15 @@ const FlexibleLayouts = (props) => {
         if (Layouts[subString]) {
             layoutProps = {
                 layoutContent: res[layoutArrTitle].layoutContent || {},
-                layoutSettings: res[layoutArrTitle].layoutSettings  || {}
+                layoutSettings: res[layoutArrTitle].layoutSettings  || {},
+                location: props.location
             }
         }
         
         const LayoutToRender = Layouts[subString]
-        return(layoutsArray.push(<LayoutToRender layoutData={layoutProps} />));
+        return(layoutsArray.push(<LayoutToRender key={layoutArrTitle + '_' + index} layoutData={layoutProps} />));
+    } else {
+      return (<></>)
     }
   });
   return (
@@ -41,6 +44,7 @@ export const pageQuery = graphql`
         ...TwoColBreakoutImageTextPage
         ...TwoColBreakoutImageHeadingPage
         ...TwoColTextQuotePage
+        ...FlexibleProjectBlocksPage
         ...ProjectBlocksPage
         ...TextBlockPage
         ...VideoPlayerPage
@@ -59,6 +63,14 @@ export const pageQuery = graphql`
         ...LineBreakPage
         ...ContactFourSquare
         ...QuarterImageTextPage
+        ...TeamGridPage
+        ...ResultsTextBlockPage
+        ...CareersFormPage
+        ...TextVideoOverhangPage
+        ...FeaturedProjectsGridPage
+        ...FeaturedProjectsGridPageDev
+        ...ButtonRowPage
+        ...BrandingCardsPage
       }
     }
   }
@@ -71,6 +83,7 @@ export const serviceQuery = graphql`
         ...TwoColBreakoutImageTextService
         ...TwoColBreakoutImageHeadingService 
         ...TwoColTextQuoteService
+        ...FlexibleProjectBlocksService
         ...ProjectBlocksService
         ...TextBlockService
         ...VideoPlayerService
@@ -88,6 +101,11 @@ export const serviceQuery = graphql`
         ...ProjectPortfolioService 
         ...CTAFormService
         ...LineBreakService
+        ...TeamGridService
+        ...ResultsTextBlockService
+        ...TextVideoOverhangService
+        ...FeaturedProjectsGridService
+        ...BrandingCardsService
       }
     }
   }
@@ -101,6 +119,7 @@ export const projectQuery = graphql`
         ...TwoColBreakoutImageTextProject
         ...TwoColBreakoutImageHeadingProject
         ...TwoColTextQuoteProject
+        ...FlexibleProjectBlocksProject
         ...ProjectBlocksProject
         ...VideoPlayerProject
         ...FullWidthImageProject
@@ -126,6 +145,11 @@ export const projectQuery = graphql`
         ...PostCardsProject
         ...ProjectPortfolioProject 
         ...LineBreakProject
+        ...TeamGridProject
+        ...ResultsTextBlockProject
+        ...TextVideoOverhangProject
+        ...FeaturedProjectsGridProject
+        ...BrandingCardsProject 
       }
     }
   }

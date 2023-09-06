@@ -7,14 +7,22 @@ module.exports = {
     title: `Ridge Marketing`,
     siteUrl: `http://www.ridgemarketing.com`
   },
+  flags: {
+    DEV_SSR: true
+  },
   plugins: [
     {
       resolve: `gatsby-source-wordpress`,
+      
       options: {
+        production: {
+          allow404Images: true,
+        },
+        html: { useGatsbyImage: false },
         url:
         // allows a fallback url if WPGRAPHQL_URL is not set in the env, this may be a local or remote WP instance.
-          process.env.WPGRAPHQL_URL ||
-          `https://rm2022dev.wpengine.com/graphql`,
+          process.env.WPGRAPHQL_URL_PROD ||
+          `https://rm2022.wpengine.com/graphql`,
           // `http://ridge-marketing-2022.local/graphql`,
         schema: {
           //Prefixes all WP Types with "Wp" so "Post and allPost" become "WpPost and allWpPost".
@@ -42,8 +50,72 @@ module.exports = {
         duration: 10,
       }
     },
+    {
+      resolve: "gatsby-plugin-sitemap",
+      options: {
+        query: `
+        {
+          allSitePage {
+            nodes {
+              path
+            }
+          }
+          allWpContentNode(filter: {nodeType: {in: ["Post", "Page", "Project", "Service"]}}) {
+            nodes {
+              ... on WpPost {
+                uri
+                modifiedGmt
+              }
+              ... on WpPage {
+                uri
+                modifiedGmt
+              }
+              ... on WpProject {
+                uri
+                modifiedGmt
+              }
+              ... on WpService {
+                uri
+                modifiedGmt
+              }
+            }
+          }
+        }
+      `,
+        resolveSiteUrl: () => `http://www.ridgemarketing.com`,
+        resolvePages: ({
+          allSitePage: { nodes: allPages },
+          allWpContentNode: { nodes: allWpNodes },
+        }) => {
+          const wpNodeMap = allWpNodes.reduce((acc, node) => {
+            const { uri } = node
+            acc[uri] = node
+
+            return acc
+          }, {})
+
+          return allPages.map(page => {
+            return { ...page, ...wpNodeMap[page.path] }
+          })
+        },
+        serialize: ({ path, modifiedGmt }) => {
+          return {
+            url: path,
+            lastmod: modifiedGmt,
+          }
+        },
+      },
+    },
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-NV9M24V",
+        includeInDevelopment: false,
+        defaultDataLayer: { platform: "gatsby" },
+        enableWebVitalsTracking: true,
+      },
+    },
     'gatsby-plugin-postcss',
-    `gatsby-plugin-sitemap`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,

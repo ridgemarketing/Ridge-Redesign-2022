@@ -22,7 +22,7 @@ const IconTextBoxFlex = (props) => {
 
     let marginClasses   = `ml-6 `;
 
-    if (props.iconType === `icon` || props.iconType === `icon-number`) {
+    if ((props.iconType === `icon` || props.iconType === `icon-number`) && content.image) {
         var image = (content.image.localFile.ext === `.svg`) 
         ? <img className={''} src={content.image.sourceUrl} alt={content.image.altText} />
         : <GatsbyImage 
@@ -61,6 +61,13 @@ const IconTextBoxFlex = (props) => {
         wrapperClasses += ` xl:w-[31%]`;
     }
 
+    let headingfont;
+    if(content.body){
+        headingfont = theme.text['H4'];
+    }else{
+        headingfont = theme.text['H5'];
+    }
+
 
     useEffect(() => {
         function handleResize() {
@@ -68,9 +75,10 @@ const IconTextBoxFlex = (props) => {
         }
 
         setTimeout(function() {
-
             setHeight(ref.current ? ref.current.clientHeight : 0 );
-            setIconHeight(iconElement.current.clientHeight);
+            if (iconElement.current && iconElement.current.clientHeight) {
+                setIconHeight(iconElement.current.clientHeight);
+            }
         }, 0)
 
         window.addEventListener('resize', handleResize);
@@ -93,17 +101,21 @@ const IconTextBoxFlex = (props) => {
                         <div className={`mb-4`}>
                             <p ref={ref}
                                 style={{marginTop: customTop, marginBottom: customBottom, marginLeft: '24px'}}
-                                className={ `${theme.text['H4']} block items-center ${props.color}` }>
+                                className={ `${headingfont} block items-center ${props.color}` }>
                                 { content.heading }
                             </p>
                         </div>
                     }
-                    <div className={ `${marginClasses}`}>
-                        <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={ `${theme.text['FOOTER']}  ${props.color}` }></p>
-                    </div>
-                    <div className={ marginClasses + `mt-4`}>
-                        <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} text-[#A9CF38]`} />
-                    </div>
+                    {content.body && 
+                        <div className={ `${marginClasses}`}>
+                            <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={ `${theme.text['FOOTER']}  ${props.color}` }></p>
+                        </div>
+                    }
+                    {content.link && 
+                        <div className={ marginClasses + `mt-4`}>
+                            <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links.HOVER_ARW_FWD_WHITE} ${theme.text_links.HOVER_WHITE} text-[#A9CF38]`} />
+                        </div>
+                    }
                 </div>
             </div>
     )

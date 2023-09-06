@@ -1,16 +1,15 @@
-import React, {useRef, useState} from "react"
+import React, {useRef, useState, useEffect, useContext } from "react"
 import { graphql, useStaticQuery } from "gatsby"
-import { theme } from '../static/theme'
+import { theme, ThemeContext } from '../static/theme'
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
-
-import Layout from "../components/global/Layout"
+import Parser from "../components/global/Parser"
 
 const Blog = () => {
 
   const getThePosts = useStaticQuery(graphql`
     query GetBlogPosts {
-        allWpPost {
+        allWpPost(sort: {date: DESC}) {
         nodes {
             id
             title
@@ -44,14 +43,20 @@ const Blog = () => {
     }
   `)
 
+  const context               = useRef(useContext(ThemeContext));
   const posts                 = getThePosts.allWpPost.nodes;
   const featured              = posts[0];
-  const postsToAdd            = 2;
-  const [counter, setCounter] = useState(postsToAdd);
+  const initialCount          = 5;
+  const postsToAdd            = 4;
+  const [counter, setCounter] = useState(initialCount);
 
   let button                  = useRef(null);
   let buttonDisplay           = '';
 
+  useEffect(() => {
+    context.current.updateHeaderBkgcolor('white');
+  }, []);
+  
   const loadMore = () =>{
       setCounter(counter + postsToAdd);
   }
@@ -59,9 +64,10 @@ const Blog = () => {
   if(counter >= posts.length){
     buttonDisplay ='hidden invsibile';
   }
+  const blurb = (featured.excerpt.replace(/(<([^>]+)>)/gi, "")).substring(0,200) + '...';
 
   return ( 
-   <Layout>
+   <>
    <div className="w-full bg-cover bg-center bg-no-repeat" style={{backgroundImage:'url("https://rm2022dev.wpengine.com/wp-content/uploads/2022/07/blog-hero.png")'}}>
       <hgroup className="container">
         <h1 className={theme.text.H1_STD + 'text-rm-white text-left py-12'}>
@@ -75,9 +81,13 @@ const Blog = () => {
         <article className="featured md:flex">
           <GatsbyImage className="w-full md:w-3/5" alt={featured.featuredImage.node.altText} image={featured.featuredImage.node.localFile.childImageSharp.gatsbyImageData || ` `} />
           <div className="w-full md:ml-[5%] md:w-[35%]">
-            <h2 className={theme.text.H5 + 'mb-6'}>{featured.title}</h2>
-            <p className={theme.text.P_STD + 'mb-6'}>{ (featured.excerpt.replace(/(<([^>]+)>)/gi, "")).substring(0,200) + '...'}</p>
-            <Link to={`/blog` + featured.link} className={theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + `w-max` }>
+            <h2 className={theme.text.H5 + 'mb-6'}>
+              <Link to={`/blog` + featured.link} className={`hover:text-rm-green`}>  
+                {featured.title}
+              </Link>
+            </h2>
+            <p className={theme.text.P_STD + 'mb-6'} dangerouslySetInnerHTML={{__html: Parser(blurb)}}></p> {/* { ((featured.excerpt.replace(/(<([^>]+)>)/gi, "")).substring(0,200) + '...')} */}
+            <Link to={`/blog` + featured.link} className={theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + theme.text_links.HOVER_ARW_FWD_GREEN + theme.text_links.HOVER_GREEN + `w-max` }>
               READ ARTICLE
             </Link>
           </div>
@@ -87,12 +97,17 @@ const Blog = () => {
         
         <div className="flex flex-wrap flex-row mt-7 md:mt-20 lg:w-[90%] justify-between">
           {posts.slice(1,counter).map((post) => {
+            const innerBlurb = (post.excerpt.replace(/(<([^>]+)>)/gi, "")).substring(0,200) + '...';
               return(
                 <article key={post.id} className="w-full md:w-[45%] lg:mx-[2.5%] flex flex-col mb-7 lg:mb-20">
                     <GatsbyImage className={`object-cover h-[200px] w-full `} alt={post.featuredImage.node.altText} image={post.featuredImage.node.localFile.childImageSharp.gatsbyImageData || ` `} />
-                    <h3 className={theme.text.H4 + 'mt-6'}>{post.title}</h3>
-                    <p className={theme.text.P_STD + 'mt-2 mb-6'}>{ (post.excerpt.replace(/(<([^>]+)>)/gi, "")).substring(0,200) + '...'}</p>
-                    <Link to={`/blog` + post.link} className={ theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + `w-max` }>
+                    <h3 className={theme.text.H4 + 'mt-6'}>
+                      <Link to={`/blog` + post.link} className={`hover:text-rm-green`}>  
+                        {post.title}
+                      </Link>
+                    </h3>
+                    <p className={theme.text.P_STD + 'mt-2 mb-6'} dangerouslySetInnerHTML={{__html: Parser(innerBlurb)}}></p>
+                    <Link to={`/blog` + post.link} className={ theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + theme.text_links.HOVER_ARW_FWD_GREEN + theme.text_links.HOVER_GREEN + `w-max` }>
                       READ ARTICLE
                     </Link>
                 </article>
@@ -113,7 +128,7 @@ const Blog = () => {
 
       </div> 
     </section>
-   </Layout> 
+   </> 
   )
 }
 export default Blog

@@ -7,8 +7,9 @@ export const theme = {
     
     text:{
         HERO:               'font-stratos uppercase font-bold text-50px sm:text-60px lg:text-100px leading-H1-m lg:leading-H1 ',
+        PAGE_HEADER:        'font-stratos uppercase font-bold text-80px leading-[74px] xl:text-100px xl:leading-[76px] ',
         H1_STD:             'font-stratos uppercase font-bold text-60px lg:text-80px leading-H1-m lg:leading-H1 ',
-        H1_LTE:             'font-stratos-lights uppercase text-60px lg:text-80px leading-H1 ',
+        H1_LTE:             'font-stratos-lights uppercase text-60px lg:text-80px leading-H1-m lg:leading-H1 ',
         H2:                 'font-stratos uppercase font-bold text-50px leading-H2-H3 ',
         H3:                 'font-basic-sans font-semibold text-50px leading-H2-H3 ',
         H4:                 'font-basic-sans font-semibold text-26px leading-30px ',
@@ -29,6 +30,8 @@ export const theme = {
         
         GHOST_GREEN_HOVER_DARK:    'GHOST_GREEN_HOVER_DARK text-rm-black border-rm-green bg-white hover:bg-rm-green ',
         GHOST_GREEN_HOVER_LIGHT:   'GHOST_GREEN_HOVER_LIGHT text-rm-white border-rm-green bg-rm-black hover:bg-rm-green hover:text-rm-black ',
+        GHOST_GREEN_TRANSPARENT:   'GHOST_GREEN_TRANSPARENT text-rm-black border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-black ',
+        GHOST_GREEN_TRANSPARENT_W:   'GHOST_GREEN_TRANSPARENT text-rm-white border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-white ',
         
         SOLID_GREEN_HOVER_LIGHT:    'SOLID_GREEN_HOVER_LIGHT text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
         SOLID_GREEN_HOVER_DARK:     'SOLID_GREEN_HOVER_DARK text-rm-black border-rm-green bg-rm-green hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
@@ -36,6 +39,9 @@ export const theme = {
         SOLID_BLACK_HOVER_DARK:     'SOLID_BLACK_HOVER_LIGHT text-rm-white border-rm-black bg-rm-black hover:bg-rm-green hover:text-rm-black hover:border-rm-green ',
     
         GHOST_WHITE_HOVER_LIGHT:    'GHOST_WHITE_HOVER_LIGHT text-rm-white border-rm-white hover:bg-rm-green hover:text-rm-black hover:border-rm-green',
+        
+        GHOST_GREEN_GREY_HOVER_DARK:'GHOST_GREEN_HOVER_DARK text-rm-black border-rm-green bg-rm-pale-grey hover:bg-rm-green ',
+        GHOST_GREEN_GREY_HOVER_LIGHT:'GHOST_GREEN_HOVER_LIGHT text-rm-white border-rm-green bg-rm-pale-grey hover:bg-rm-green hover:text-rm-black ',  
     },
     
     text_links: {
@@ -45,27 +51,36 @@ export const theme = {
         
         STD:                'text-21px ',
         LARGE:              'text-40px after:w-[40px] before:w-[40px] ', 
+
+        HOVER_WHITE:        ' hover:underline hover:text-white ',
+        HOVER_GREEN:        ' hover:underline hover:text-rm-green ',
         
         ARW_FWD_WHITE:      'before:hidden after:bg-[url("../static/arrow-right-white.svg")] ',
         ARW_FWD_GREY:       'before:hidden after:bg-[url("../static/arrow-right-grey.svg")] hover:after:bg-[url("../static/arrow-right-white.svg")] ',
         ARW_FWD_BLACK:      'before:hidden after:bg-[url("../static/arrow-right-black.svg")] ',
         ARW_FWD_GREEN:      'before:hidden after:bg-[url("../static/arrow-right-green.svg")] ',
         ARW_BACK_GREEN:     'after:hidden before:bg-[url("../static/arrow-left-green.svg")] ',
+        HOVER_ARW_FWD_WHITE:' hover:after:bg-[url("../static/arrow-right-white.svg")] ',
+        HOVER_ARW_FWD_GREEN:' hover:after:bg-[url("../static/arrow-right-green.svg")] ',
+
     },
 
     forms:{
-        INPUT:              'font-basic-sans border-b border-solid h-[30px] ',
-        LABEL:              '-translate-y-10 transition-all ease-out ',
-        CONTAINER:          'form-group w-full lg:w-[48%] font-basic-san w-full flex flex-col mb-12 ',
+        INPUT:              'font-basic-sans border-b border-solid min-h-[30px] ',
+        LABEL:              '',
+        CONTAINER:          'form-group w-full lg:w-[48%] font-basic-san w-full flex flex-col mb-6 ',
         
-        BASE_STYLING:       'translate-form ',
+        BASE_STYLING:       '',
         HALF:               'form-one-col w-full xl:w-[45%] xl:ml-[5%] xl:mr-[5%] flex-col',
         HALF_PADDING:       'p-8 lg:p-16',
         FULL_DISPLAY:       'form-two-col mt-20 ml-auto mr-auto w-full lg:w-3/4 flex flex-row justify-around flex-wrap',
+        NO_WRAP:            'form-one-col w-full flex-col',
+        NO_WRAP_PADDING:    'py-8',
     },
     paddingTop:{
         standard: 'pt-20',
         none: 'pt-0',
+        header: 'pt-20',
         custom: ''
     },
     paddingBottom:{
@@ -78,6 +93,7 @@ export const theme = {
         black: 'black text-white',
         white: 'white',
         paleGrey: 'rm-pale-grey',
+        darkGrey: 'rm-dark-grey',
         paleTeal: 'rm-pale-teal',
         transparent: 'transparent',
         whiteToBlack: 'white-black'
@@ -95,11 +111,23 @@ export const theme = {
     colors: {
         primary: {
             accent: `#A9CF38`
+        },
+        secondary: {
+            accent: `#000000`
         }
     }
 }
 
 export const ThemeContext = React.createContext({
+    backgroundColor: 'white',
+    updateHeaderBkgcolor: () => {},
+
     accent: theme.colors.primary.accent,
-    updateAccentFunction: () => {}
+    secondary: theme.colors.secondary.accent,
+    updateAccentFunction: () => {},
+    updateSecondaryFunction: () => {},
+
+    //context for portfolio page
+    filterState: "Websites",
+    updateFilterState: () => {}
 });

@@ -3,8 +3,12 @@
 @tailwind utilities;
 
 @layer base{
-    html {
-        @apply scroll-smooth;
+
+    html, body{
+        /* @apply overflow-x-hidden; */
+    }
+    main{
+        /* @apply overflow-x-hidden;  */
     }
     :focus-visible{
         @apply outline-rm-green;
@@ -17,7 +21,7 @@
         top: -0.25em;
     }
     q:before{
-        @apply content-['“'] -ml-3 absolute;
+        @apply content-['“'] -ml-3 lg:-ml-6 absolute;
     }
     q:after{
         @apply content-['”'];
@@ -25,17 +29,34 @@
     strong{
         @apply font-bold;
     }
+
+    /* header nav a{
+        @apply -xl:text-rm-black;
+    } */
+    /* header nav a::before{
+        @apply block font-bold h-0 overflow-hidden invisible;
+        content: attr(title);
+    } */
 }
 
-@layer components 
-{
-.container {
-    @apply px-6 md:px-0 xl:px-8 2xl:px-0;
+@layer components {
+    .h-inherit{
+        height:inherit;
+    }
 }
 
-.h-inherit{
-    height:inherit;
+@media screen and (max-width:1024px) {
+    .moblileMenuHeight{
+        height: 85vh;
+    }
 }
+
+.homeHero {
+    @apply w-full h-[40vh] xl:h-[80vh];
+}
+
+.belowHomeHero{
+    @apply !pt-10 lg:!pt-16;
 }
 
 .lf-player-container{
@@ -47,23 +68,37 @@
     @apply w-full;
 }
 
+input[type="file"] {
+    @apply !border-b-0;
+}
+
 input:-internal-autofill-selected, input:-internal-autofill:active, input:-internal-autofill {
     background-color: rgba(0,0,0,0) !important;
 }
 .form-group input, .form-group textarea, .form-group select{
     background-color: rgba(0,0,0,0)!important;
-    @apply text-21px;
+    @apply text-21px px-3 py-2;
+}
+.form-group input[type=file]{
+    background-color: rgba(255,255,255,1) !important;
+    @apply text-rm-black p-3 mt-2 !h-min;
 }
 
 /* Form label transitions */
 .translate-form .form-group input:focus + label, .translate-form .form-group input:valid + label, .translate-form .form-group input:not(:placeholder-shown) + label {
-    @apply -translate-y-14 text-18px;
+    @apply -translate-y-20 text-18px;
 }
 .translate-form textarea:focus + label, .translate-form .form-group textarea:not(:placeholder-shown) + label {
-    @apply -translate-y-14 text-18px;
+    @apply -translate-y-20 text-18px;
 } 
 .translate-form .form-group select + label{
-    @apply -translate-y-14 text-18px;
+    @apply -translate-y-20 text-18px;
+}
+.translate-form .fileLabel{
+    @apply -translate-y-0;
+}
+.translate-form-global{
+    @apply -mt-6;
 }
 
 .pristine-error {
@@ -90,11 +125,16 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     @apply mb-6 mt-14
 }
 .terms p {
-    @apply mb-5
+    @apply font-basic-sans font-light text-21px leading-28px mb-5
 }
 .terms a {
     @apply underline font-basic-sans font-light mb-16;
 }
+.blog-float-right {
+    @apply float-right mt-0 mr-0 mb-6 ml-0 md:ml-6 lg:ml-20
+}
+
+
 /* Frosted Effect */
 .frosted-glass{
     @apply drop-shadow-lg;
@@ -109,4 +149,109 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
         backdrop-filter: saturate(200%) blur(1px);
         -webkit-backdrop-filter: saturate(150%) blur(1px);
     }
+}
+.gatsby-image-wrapper.gatsby-image-wrapper-constrained.absolute {
+    position: absolute !important;
+}
+.gatsby-image-wrapper.absolute {
+    position: absolute !important;
+}
+
+.blog-container h2 {
+    @apply font-stratos uppercase font-bold text-40px leading-44px mt-10 mb-6;
+}
+
+.blog-container h3 {
+    @apply font-basic-sans font-semibold text-26px leading-30px mb-6;
+}
+
+.blog-container h6 {
+    @apply font-basic-sans text-[1.625rem] leading-[1.875rem] font-bold mb-3;
+}
+
+.blog-container p, .blog-container li {
+    @apply font-basic-sans font-light text-21px leading-28px;
+}
+
+.blog-container p {
+    @apply mb-10;
+}
+
+.blog-container a {
+    @apply underline text-rm-blog-blue font-semibold hover:underline hover:text-rm-green;
+}
+
+.blog-container ul {
+    @apply list-disc pl-5 mb-10;
+}
+
+.blog-container img {
+    @apply mb-10 w-full max-w-[850px] mx-auto;
+}
+.blog-container .wp-block-columns img{
+    @apply max-w-[350px]
+}
+
+.blog-container figure.alignright {
+    @apply md:float-right md:ml-6 md:max-w-[40%];
+}
+
+.blog-container figure.alignleft {
+    @apply md:float-left md:mr-6 md:max-w-[40%];
+}
+
+.blog-container .has-text-align-center {
+    @apply text-center;
+}
+
+.blog-container figure.alignright::after, .blog-container figure.alignleft::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.blog-container figcaption {
+    @apply text-center text-[0.9rem] italic mt-[10px] opacity-60 font-light max-w-[800px] mx-auto;
+}
+
+.blog-container .blog-dotted {
+    @apply list-disc pl-[20px] my-4 mx-0;
+}
+
+.blog-container .blog-dotted li, .blog-container .blog-decimal li {
+    @apply py-2
+}
+
+.blog-container .blog-decimal {
+    @apply list-decimal pl-[14px] my-4;
+}
+
+.blog-container .wp-block-columns {
+    @apply block md:flex justify-between;
+}
+
+.blog-container .wp-block-column {
+    @apply w-full md:w-[48%];
+}
+
+.max-960px {
+    @apply max-w-[960px];
+}
+
+.bg-allshifts {
+    @apply !bg-[#f3faff];
+}
+
+.add-shadow-to-blocks .media-video {
+    @apply shadow-[0_0_20px_0_rgba(0,0,0,0.2)];
+}
+
+.dark-play-buttons .media-video {
+    @apply !text-black;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
 }

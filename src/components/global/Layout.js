@@ -2,37 +2,78 @@ import React, { useState } from "react"
 import { theme, ThemeContext } from "../../static/theme"
 import Header from "./Header"
 import Footer from "./Footer"
+import "../../css/styles.css"
 
 export default function Layout({ children }) {
 
-    const updateAccent = (color) => {
-        setColors({
+    const updatePrimary = (color) => {
+        setPrimary({
             accent: color
         })
     }
+    const updateSecondary = (color) => {
+        setSecondary({
+            accent: color
+        })
+    }
+    const updateFilter = (filter) => {
+        setFilter(filter);
+    }
 
-    const [colors, setColors] = useState({
+    const [primary, setPrimary] = useState({
         accent: theme.colors.primary.accent
       }
     )
-    
+    const [secondary, setSecondary] = useState({
+        accent: theme.colors.primary.accent
+      }
+    )
+    const [filter, setFilter] = useState("Websites");
+
+    const updateHeaderBkg = (prop) => {
+        setBackgroundColor({
+            headerBkgcolor: prop,
+        })
+    }
+    const [backgroundColor, setBackgroundColor] = useState({
+        headerBkgcolor: 'white',
+    })
+
     const globalStyles = `
         .accent-text {
-          color: ${colors.accent};
+          color: ${primary.accent};
+        }
+        .secondary-text {
+            color: ${secondary.accent}
+        }
+        .header-color{
+            background:${backgroundColor.headerBkgcolor};
+            ${backgroundColor.headerBkgcolor === 'black' && 
+             `background-color:rgba(0,0,0,0.7);`
+            }
         }
     `
 
     return (
         <ThemeContext.Provider value={{
-            accent: colors.accent,
-            updateAccentFunction: updateAccent
+            accent: primary.accent,
+            secondary: secondary.secondary,
+            
+            updateAccentFunction: updatePrimary,
+            updateSecondaryFunction: updateSecondary,  
+                      
+            backgroundColor: backgroundColor.headerBkgcolor,
+            updateHeaderBkgcolor: updateHeaderBkg,
+
+            filterState: filter,
+            updateFilterState: updateFilter
         }}>
              <style>{globalStyles}</style>
-             <Header color={`white`}/>
+             <Header classes={`header-color`} color={backgroundColor.headerBkgcolor} />
              <main id="mainContent" tabIndex={0} aria-label="Main Content">
                 {children}
              </main>
-             <Footer/>
+             <Footer />
         </ThemeContext.Provider>
     )
   }

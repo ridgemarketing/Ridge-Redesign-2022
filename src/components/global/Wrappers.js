@@ -18,10 +18,11 @@ export const Section = (props) => {
         var pb = theme.paddingBottom[`${props.settings.padding.bottom}`];
     }
 
-    let bg =  props.settings.backgroundColor ? props.settings.backgroundColor : defaults.bgColor;
-    let position        =  props.settings.position ? props.settings.position : defaults.position;
-    let id              =  props.settings.id ? props.settings.id : defaults.id;
-    let classes         =  props.settings.classes ? props.settings.classes : defaults.classes;
+    let bg              =  props.settings && props.settings.backgroundColor ? props.settings.backgroundColor : defaults.bgColor;
+    let position        =  props.settings && props.settings.position ? props.settings.position : defaults.position;
+    let id              =  props.settings && props.settings.id ? props.settings.id : defaults.id;
+    let anchorId        =  props.settings && props.settings.anchorId ? props.settings.anchorId : defaults.id;
+    let classes         =  props.settings && props.settings.classes ? props.settings.classes : defaults.classes;
     let classes_temp    =  props.classes ? props.classes : ''; //used for testing until we pull class data from props
     let role            =  props.role ? props.role : defaults.role;
 
@@ -30,24 +31,31 @@ export const Section = (props) => {
     }
 
     return (
-        <section 
-        id={id} 
-        className={`-mt-px ${pt} ${pb} bg-${theme.backgroundColor[bg]} ${position} ${classes} ${classes_temp}`}
-        role={role}> 
-            {props.children}
-        </section>
+        <>
+            {anchorId !== `` &&
+                <div id={anchorId} className={`relative -top-[100px]`}></div>
+            }
+            <section 
+                id={id} 
+                className={`-mt-px ${pt} ${pb} bg-${theme.backgroundColor[bg]} ${position} ${classes} ${classes_temp}`}
+                role={role}> 
+                    {props.children}
+            </section>
+        </>
+
     )
 }
 
 export const Container = (props) => {
     let size = {
         default: 'container',
-        slim: 'container xl:max-w-[1120px] relative',
+        slim: 'container xl:max-w-[1224px]',
+        mini: 'container lg:max-w-[750px] xl:max-w-[930px]',
         none: ''
     }
     let container = (props.container) ? size[props.container] : size['slim'];
     return (
-        <div className={`${container} ${props.classes || ''}`}>
+        <div className={`${container} relative ${props.classes || ''}`}>
             {props.children}
         </div>
     )
@@ -79,9 +87,9 @@ export const BackgroundImage = (props) => {
         <div 
         id={id}
         className={`${position} ${bgSize} ${top} ${left} ${width} ${height} ${bgRepeat} ${props.classes}`}>
-            { props.image && <GatsbyImage objectFit={'cover'} className={'z-[-10] hidden xl:block'} image={props.image} /> }
-            { props.mobile && <GatsbyImage objectFit={'cover'} className={'z-[-10] md:hidden block'} image={props.mobile} /> }
-            { props.tablet && <GatsbyImage objectFit={'cover'} className={'z-[-10] hidden md:block xl:hidden'} image={props.tablet} /> }
+            { props.image && <GatsbyImage objectFit={'cover'} className={'z-[-10] hidden xl:block'} image={props.image} alt={``}/> }
+            { props.mobile && <GatsbyImage objectFit={'cover'} className={'z-[-10] md:hidden block'} image={props.mobile} alt={``} /> }
+            { props.tablet && <GatsbyImage objectFit={'cover'} className={'z-[-10] hidden md:block xl:hidden'} image={props.tablet} alt={``} /> }
         </div>
     )
 }

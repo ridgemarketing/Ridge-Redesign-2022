@@ -1,40 +1,50 @@
-//import FullWidthTextImage from './page/_FullWidthTextImage';
-// import ThreeColumnTextBlock from './page/ThreeColumnTextBlocks'
-import ContactFourSquare from "./page/ContactFourSquare"
-import FeaturedProjectsCarousel from "./page/FeaturedProjectsCarousel"
-import FeaturedProjectsGrid from "./page/FeaturedProjectsGrid"
-import FullWidthImage from "./page/FullWidthImage"
-import FullWidthImageText from "./page/FullWidthImageText"
-import HomeHero from "./page/HomeHero"
-import IconTextBoxes from "./page/IconTextBoxes"
-import LogoCloud from "./page/LogoCloud"
-import Quotes from "./page/Quotes"
-import PostCards from "./page/PostCards"
-import Results from "./page/Results"
-import ResultsMixed from "./page/ResultsMixed"
-import TextBlock from "./page/TextBlock"
-// import ThreeColIconsText from "./page/_ThreeColIconsText"
-import ProjectBlocks from "./page/ProjectBlocks"
-import TwoColBreakoutImageText from "./page/TwoColBreakoutImageText"
-import TwoColBreakoutImageHeading from "./page/TwoColBreakoutImageHeading"
-// import TwoColIconsText from "./page/TwoColIconsText"
-import TwoColImageText from "./page/TwoColImageText"
-import TwoColList from "./page/TwoColList"
-import TwoColTextQuote from "./page/TwoColTextQuote"
-import VennDiagram from "./page/VennDiagram"
-import VerticalSlider from "./page/VerticalSlider"
-import QuarterImageText from "./page/QuarterImageText"
-import CtaForm from "./page/CtaForm"
-import LineBreak from "./page/LineBreak"
-import ProjectPortfolio from "./page/ProjectPortfolio"
-import VideoPlayer from "./page/VideoPlayer"
-import MediaBlocks from "./page/MediaBlocks"
+//import FullWidthTextImage from './layouts/_FullWidthTextImage';
+// import ThreeColumnTextBlock from './layouts/ThreeColumnTextBlocks'
+import ContactFourSquare from "./layouts/ContactFourSquare"
+import FeaturedProjectsCarousel from "./layouts/FeaturedProjectsCarousel"
+import FeaturedProjectsGrid from "./layouts/FeaturedProjectsGrid"
+import FullWidthImage from "./layouts/FullWidthImage"
+import FullWidthImageText from "./layouts/FullWidthImageText"
+import HomeHero from "./layouts/HomeHero"
+import IconTextBoxes from "./layouts/IconTextBoxes"
+import LogoCloud from "./layouts/LogoCloud"
+import Quotes from "./layouts/Quotes"
+import PostCards from "./layouts/PostCards"
+import Results from "./layouts/Results"
+import ResultsMixed from "./layouts/ResultsMixed"
+import TextBlock from "./layouts/TextBlock"
+// import ThreeColIconsText from "./layouts/_ThreeColIconsText"
+import ProjectBlocks from "./layouts/ProjectBlocks"
+import TwoColBreakoutImageText from "./layouts/TwoColBreakoutImageText"
+import TwoColBreakoutImageHeading from "./layouts/TwoColBreakoutImageHeading"
+// import TwoColIconsText from "./layouts/TwoColIconsText"
+import TwoColImageText from "./layouts/TwoColImageText"
+import TwoColList from "./layouts/TwoColList"
+import TwoColTextQuote from "./layouts/TwoColTextQuote"
+import VennDiagram from "./layouts/VennDiagram"
+import VerticalSlider from "./layouts/VerticalSlider"
+import QuarterImageText from "./layouts/QuarterImageText"
+import CtaForm from "./layouts/CtaForm"
+import LineBreak from "./layouts/LineBreak"
+import ProjectPortfolio from "./layouts/ProjectPortfolio"
+import VideoPlayer from "./layouts/VideoPlayer"
+import MediaBlocks from "./layouts/MediaBlocks"
+import TeamGrid from "./layouts/TeamGrid"
+import ResultsTextBlock from "./layouts/ResultsTextBlock"
+import CareersForm from "./layouts/CareersForm"
+import TextVideoOverhang from "./layouts/TextVideoOverhang"
+import ButtonRow from "./layouts/ButtonRow" 
+import BrandingCards from "./layouts/BrandingCards"
+import FlexibleProjectBlocks from "./layouts/FlexibleProjectBlocks"
+import FeaturedProjectsGridDev from "./layouts/FeaturedProjectsGridDev"
+
 
 let Layouts = {}; 
 
 Layouts['ContactFourSquare']                = ContactFourSquare;
 Layouts['FeaturedProjectsCarousel']         = FeaturedProjectsCarousel;
 Layouts['FeaturedProjectsGrid']             = FeaturedProjectsGrid;
+Layouts['FeaturedProjectsGridDev']          = FeaturedProjectsGridDev;
 Layouts['FullWidthImage']                   = FullWidthImage;
 Layouts['FullWidthImageText']               = FullWidthImageText;
 // Layouts['ThreeColumnTextBlock']          = ThreeColumnTextBlock;
@@ -60,10 +70,18 @@ Layouts['TwoColTextQuote']                  = TwoColTextQuote;
 Layouts['VennDiagram']                      = VennDiagram;
 Layouts['QuarterImageText']                 = QuarterImageText;
 Layouts['CtaForm']                          = CtaForm;
+Layouts['CareersForm']                      = CareersForm;
 Layouts['LineBreak']                        = LineBreak;
 Layouts['ProjectPortfolio']                 = ProjectPortfolio;
 Layouts['VideoPlayer']                      = VideoPlayer;
 Layouts['MediaBlocks']                      = MediaBlocks;
+Layouts['TeamGrid']                         = TeamGrid;
+Layouts['ResultsTextBlock']                 = ResultsTextBlock;
+Layouts['TextVideoOverhang']                = TextVideoOverhang;
+Layouts['FeaturedProjectsGrid']             = FeaturedProjectsGrid;
+Layouts['ButtonRow']                        = ButtonRow;
+Layouts['BrandingCards']                    = BrandingCards;
+Layouts['FlexibleProjectBlocks']            = FlexibleProjectBlocks;
 
 
 export default Layouts
