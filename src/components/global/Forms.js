@@ -294,7 +294,7 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
 
         const message = JSON.stringify(data)
 
-        const res = await fetch("/api/sendgrid-basic-contact", {
+        const res = await fetch("/api/sendgrid-landers", {
             body: JSON.stringify({
             email: data.email,
             subject: `New Lander Form Submission`,
