@@ -15,12 +15,20 @@ const ResultCard = (props) => {
 
     const classes = {
         1: 'md:flex items-center gap-8 max-w-[800px] justify-center',
-        2: 'md:flex-[45%] lg:flex-[50%]',
-        3: 'md:w-[45%] lg:w-[30%]'
+        2: 'md:flex-[45%] lg:flex-[50%] px-4',
+        3: 'md:w-[45%] lg:w-[30%] px-4',
+        4: 'md:w-[45%] xl:w-[24%] px-4'
     }
-    if (props.columns !== "3") {
+
+    if (props.columns === "4") {
+        statClass = 'accent-text text-[100px] xl:text-[100px] font-semibold font-stratos';
+    }
+
+    if (props.columns !== "3" && props.columns !== "4") {
         statClass += ' lg:text-[160px]';
     }
+
+    
 
     return (
             <div key={`${content.description}${content.stat}`} className={ `text-center md:text-left ${props.columns !== "1" && classes[props.columns]} my-6` }>
@@ -32,10 +40,10 @@ const ResultCard = (props) => {
                     <span className={statClass}>{`${statNumber}${suffixString}`}</span>   
                 }            
                 { content.description &&  
-                   <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H5 + 'font-basic-sans normal-case pr-4'} ${descriptionClass}`}></p>  
+                   <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H5 + 'font-basic-sans normal-case'} ${descriptionClass}`}></p>  
                 }
                 { content.company &&  
-                   <p className={`${theme.text.P_STD}`}>
+                   <p className={`${theme.text.P_STD} mt-4`}>
                         { content.company }
                     </p>  
                 }

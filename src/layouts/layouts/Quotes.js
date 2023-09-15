@@ -280,3 +280,36 @@ export const projectQuery = graphql`
       }
   }
 `
+
+export const landerQuery = graphql`
+  fragment QuotesLander on WpLander_Flexiblelayouts_Layouts {
+    ... on WpLander_Flexiblelayouts_Layouts_Quotes {
+        fieldGroupName
+        layoutQuotes {
+          layoutContent {
+            heading
+            quotes {
+                ... on WpReview {
+                  title
+                  content
+                  reviewsFields {
+                    titleCompany
+                  }
+                }
+              }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+            containerWidth
+          }
+        }
+      }
+  }
+`

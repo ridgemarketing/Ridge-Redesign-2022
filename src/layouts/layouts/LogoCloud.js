@@ -232,3 +232,53 @@ export const projectQuery = graphql`
       }
   }
 `
+
+export const landerQuery = graphql`
+  fragment LogoCloudLander on WpLander_Flexiblelayouts_Layouts {
+    ... on WpLander_Flexiblelayouts_Layouts_LogoCloud {
+        fieldGroupName
+        layoutLogoCloud {
+          layoutContent {
+            body
+            heading
+            logos {
+              image {
+                id
+                sourceUrl
+                altText
+                localFile {
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+            componentButton {
+              fieldGroupName
+              colors {
+                fieldGroupName
+                resting
+              }
+              link {
+                url
+                title
+                target
+              }
+              style
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
