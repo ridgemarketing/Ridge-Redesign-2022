@@ -344,6 +344,19 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
                             })}
                         </div>
                     }
+
+                    {status === `fail-email` &&
+                        <div className={`bg-[#E10000] text-white py-3 px-6 mt-3 mb-6`}>
+                            <p className={`${theme.text.P_BLD}`}>There was an error when emailing your submission. Please try again. If the issue persist, let us know at <a href="tel:908-340-4480">908-340-4480</a>.</p>
+                        </div>
+                    }
+
+                    {status === `success` &&
+                        <div className={`bg-rm-aqua text-white py-3 px-6 mt-3 mb-6`}>
+                            <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch with you soon.</p>
+                        </div>
+                    }
+
                     <div>
                         <span className={`mb-6 block`}><Input errors={errors} register={register} required={true} type={`text`} name={`name`} label={`Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <span className={`mb-6 block`}><Input errors={errors} register={register} required={true} type={`text`} name={`company`} label={`Company`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
