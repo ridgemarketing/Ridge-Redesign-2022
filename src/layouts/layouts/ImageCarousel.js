@@ -36,9 +36,10 @@ const ImageCarousel = props => {
                       perMove     : 1,
                       gap         : `1.5rem`,
                       pagination  : false,
+                      lazyLoad    : false,
                       breakpoints: {
                         640: {
-                          perPage: 2,
+                          perPage: 1,
                         }
                       }
                     } }
@@ -47,7 +48,7 @@ const ImageCarousel = props => {
                           {slides.map((slide, index) => {
                             const image = (slide.image.localFile.ext === ".svg") 
                             ? <img key={slide.image.sourceUrl} className={`w-full object-contain`} src={slide.image.sourceUrl} alt={slide.image.altText}/>
-                            : <GatsbyImage key={slide.image.sourceUrl} className={`w-full`} objectFit="contain" image={slide.image.localFile.childImageSharp.gatsbyImageData} alt={slide.image.altText} /> ;
+                            : <GatsbyImage key={slide.image.sourceUrl} className={`w-full`} objectFit="contain" image={slide.image.localFile.childImageSharp.gatsbyImageData} alt={slide.image.altText} loading={`eager`} /> ;
                             return(
                               <SplideSlide>
                                 {image}                       

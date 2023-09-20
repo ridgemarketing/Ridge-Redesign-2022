@@ -54,7 +54,7 @@ const LogoCloud = props => {
                     <p className={`${theme.text.P_STD} text-center my-4`} dangerouslySetInnerHTML={{__html: body}}></p>
                 }
                   <motion.div 
-                  className={"mt-12 flex w-full flex-wrap justify-center items-center lg:justify-around gap-y-10 md:gap-y-16 gap-x-10 sm:gap-x-12 md:gap-x-20 lg:gap-x-6"}
+                  className={"mt-12 flex w-full flex-wrap justify-center items-center lg:justify-around gap-y-6 md:gap-y-8 gap-x-10 sm:gap-x-12 md:gap-x-20 lg:gap-x-6"}
                   variants={containerVariant}
                   initial="hidden"
                   whileInView="visible"

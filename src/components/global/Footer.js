@@ -148,7 +148,7 @@ const Footer = ({location}) =>{
         <footer className="-mt-px text-center lg:text-left bg-rm-black text-rm-white py-12 lg:py-16">
             <Container container={"slim"}>
                 {!location.pathname.includes('lander/') &&
-                  <div>
+                  <div className={`mb-12 lg:mb-28`}>
                       {content.footertext.cta &&
                         <h2 className={`${theme.text.HERO} lg:w-3/4`}>{content.footertext.cta}</h2>
                       }
@@ -157,7 +157,7 @@ const Footer = ({location}) =>{
                       }
                   </div>
                 }
-                <div className="mt-12 lg:w-[95%] lg:mt-28">
+                <div className="lg:w-[95%]">
                     <ul key={`footer-top`} className="block lg:flex justify-between">
                         <li className="lg:mt-4">
                             {logo}

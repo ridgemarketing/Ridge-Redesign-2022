@@ -394,7 +394,7 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
 
                     {status === `success` &&
                         <div className={`bg-rm-aqua text-white py-3 px-6 mt-3 mb-6`}>
-                            <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch with you soon.</p>
+                            <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch with you shortly.</p>
                         </div>
                     }
 
@@ -413,7 +413,7 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
                     </div>
                 </form>
             }
-            <p className={`${theme.text.P_BLD} mt-7`}>Or give us a call: <a className={`text-rm-green`} href={`tel:908-340-4480`}>(908) 340-4480</a></p>
+            <p className={`${theme.text.P_BLD} mt-7`}>Or give us a call: <a className={`text-rm-green block md:inline`} href={`tel:908-340-4480`}>(908) 340-4480</a></p>
         </div>
     )
 }

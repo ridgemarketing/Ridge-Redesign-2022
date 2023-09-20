@@ -11,6 +11,7 @@ const ResultCard = (props) => {
     let descriptionClass= props.columns === '1' ? 'md:max-w-[60%]' : '';
     const statNumber = content.stat.split(/\D+/)[0];
     const suffixString = content.stat.split(/\d+/)[1];
+    const columnsNum    = parseInt(props.columns);
 
 
     const classes = {
@@ -20,11 +21,11 @@ const ResultCard = (props) => {
         4: 'md:w-[45%] xl:w-[24%] px-4'
     }
 
-    if (props.columns === "4") {
+    if (columnsNum === 4) {
         statClass = 'accent-text text-[100px] xl:text-[100px] font-semibold font-stratos';
     }
 
-    if (props.columns !== "3" && props.columns !== "4") {
+    if (columnsNum !== 3 && columnsNum !== 4) {
         statClass += ' lg:text-[160px]';
     }
 
@@ -34,7 +35,7 @@ const ResultCard = (props) => {
             <div key={`${content.description}${content.stat}`} className={ `text-center md:text-left ${props.columns !== "1" && classes[props.columns]} my-6` }>
                 <div className={`w-fit mx-auto ${props.columns === "1" && classes[props.columns]}`}>
                 { content.stat && statNumber > 10 &&
-                    <Counter number={statNumber} title={suffixString} classes={statClass} />   
+                    <Counter number={statNumber} title={suffixString} classes={statClass} columns={columnsNum} />   
                 }
                 {content.stat && statNumber < 10 &&
                     <span className={statClass}>{`${statNumber}${suffixString}`}</span>   

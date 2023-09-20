@@ -17,7 +17,7 @@ const CtaFooterPpc = (props) => {
     return(
       <section className={`-mt-px pt-24 px-0 bg-rm-aqua overflow-hidden`}> 
         <Container container={`slim`}>
-          <div className={`flex flex-col-reverse md:grid md:grid-cols-10`}>
+          <div className={`flex flex-col-reverse md:grid md:grid-cols-10 lg:gap-10`}>
             <div className={`md:col-span-2 lg:col-span-3 relative`}>
               <div className={`md:absolute -bottom-4 left-0 w-full h-auto`}>
                 {image}
