@@ -33,7 +33,8 @@ const TwoColTextForm = (props) => {
                     </div>
                   }
                 </div>
-                <div className={`col-span-1`} id={`contact-form`}>
+                <div className={`col-span-1 relative`}>
+                  <div id={`contact-form`} class="absolute -top-20"></div>
                   {formHeading &&
                     <h3 className={`${theme.text.H5} mb-5`}>{formHeading}</h3>
                   }

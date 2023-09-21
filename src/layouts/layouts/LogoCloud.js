@@ -58,6 +58,7 @@ const LogoCloud = props => {
                   variants={containerVariant}
                   initial="hidden"
                   whileInView="visible"
+                  viewport={{ once: true }}
                   >
                     {content.logos.map((logo, index) => {
                       const image = (logo.image.localFile.ext === ".svg") 
