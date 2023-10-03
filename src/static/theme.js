@@ -62,6 +62,7 @@ export const theme = {
         ARW_BACK_GREEN:     'after:hidden before:bg-[url("../static/arrow-left-green.svg")] ',
         HOVER_ARW_FWD_WHITE:' hover:after:bg-[url("../static/arrow-right-white.svg")] ',
         HOVER_ARW_FWD_GREEN:' hover:after:bg-[url("../static/arrow-right-green.svg")] ',
+        HOVER_ARW_FWD_BLACK:' hover:after:bg-[url("../static/arrow-right-black.svg")] ',
 
     },
 

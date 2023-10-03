@@ -17,19 +17,19 @@ const CtaFooterPpc = (props) => {
     return(
       <section className={`-mt-px pt-24 px-0 bg-rm-aqua overflow-hidden`}> 
         <Container container={`slim`}>
-          <div className={`flex flex-col-reverse md:grid md:grid-cols-10 lg:gap-10`}>
-            <div className={`md:col-span-2 lg:col-span-3 relative`}>
-              <div className={`md:absolute -bottom-4 left-0 w-full h-auto`}>
+          <div className={`flex flex-col-reverse lg:grid lg:grid-cols-10 lg:gap-10`}>
+            <div className={`lg:col-span-3 relative`}>
+              <div className={`hidden lg:block lg:absolute -bottom-4 left-0 w-full h-auto`}>
                 {image}
               </div>
               
             </div>
-            <div className={`md:col-span-8 lg:col-span-7 pb-28`}>
+            <div className={`lg:col-span-7 pb-28`}>
                 {content.heading &&
                   <h2 className={`${theme.text.HERO} text-white`}>{content.heading}</h2>
                 }
                 {content.link && content.link.url &&
-                  <Link to={content.link.url} className={`mx-auto mt-8 lg:mx-0 text-white border-2 border-white py-3 px-16 !inline-flex ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.STD} !text-[1.75rem] !leading-[1.12] !px-9 ${theme.text_links.ARW_FWD_WHITE} ${theme.text_links.HOVER_ARW_FWD_WHITE}`}>{content.link.title}</Link>
+                  <Link to={content.link.url} className={`mx-auto mt-8 lg:mx-0 text-white border-2 border-white py-3 px-16 !inline-flex ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.STD} !text-[1.75rem] !leading-[1.12] !px-9 ${theme.text_links.ARW_FWD_WHITE} ${theme.text_links.HOVER_ARW_FWD_BLACK} hover:bg-white hover:text-rm-black`}>{content.link.title}</Link>
                 }
             </div>
           </div>

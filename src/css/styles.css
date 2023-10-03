@@ -255,3 +255,7 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     clear: both;
     display: table;
 }
+
+.two-col-text-form-body p > span {
+    @apply !text-21px !leading-[1.385];
+}

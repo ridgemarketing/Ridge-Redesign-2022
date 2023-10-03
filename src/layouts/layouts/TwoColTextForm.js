@@ -24,11 +24,11 @@ const TwoColTextForm = (props) => {
                   {content &&
                     <div>
                       {textHeading &&
-                        <h2 className={`${theme.text.H5} mb-8`}>{textHeading}</h2>
+                        <h2 className={`font-stratos uppercase font-bold text-[2.875rem] leading-[1.1] mb-8`}>{textHeading}</h2>
                       }
 
                       {textBody && 
-                        <div dangerouslySetInnerHTML={{__html: Parser(textBody)}} className={`block`}></div>
+                        <div dangerouslySetInnerHTML={{__html: Parser(textBody)}} className={`block two-col-text-form-body`}></div>
                       }
                     </div>
                   }

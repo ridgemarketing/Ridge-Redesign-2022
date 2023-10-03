@@ -25,7 +25,7 @@ const ImageCarousel = props => {
                 {body &&
                     <p className={`${theme.text.P_STD} text-center my-4`} dangerouslySetInnerHTML={{__html: body}}></p>
                 }
-                  <div className={`mt-10 px-6 md:px-0`}>
+                  <div className={`mt-10 px-6 lg:px-10`}>
                   <Splide
                     className={``}
                     aria-label={`${heading} slider`}
@@ -40,6 +40,9 @@ const ImageCarousel = props => {
                       breakpoints: {
                         640: {
                           perPage: 1,
+                        },
+                        1000: {
+                          perPage: 3,
                         }
                       }
                     } }
@@ -57,7 +60,7 @@ const ImageCarousel = props => {
                           })}
                         </SplideTrack>
                         <div className="splide__arrows">
-                          <button className="splide__arrow splide__arrow--prev !h-auto !w-4 md:!h-24 md:!w-14 !max-w-none !max-h-none !bg-transparent !text-[#474848] !-left-6 md:!-left-24">
+                          <button className="splide__arrow splide__arrow--prev !h-auto !w-4 lg:!h-24 lg:!w-14 !max-w-none !max-h-none !bg-transparent !text-[#474848] !-left-6 lg:!-left-20">
                             <svg width="56" height="98" viewBox="0 0 56 98" fill="none" xmlns="http://www.w3.org/2000/svg" className={`!transform-none !h-auto !w-full`}>
                               <g clipPath="url(#clip0_6369_11245)">
                                 <path d="M2.04922 53.9431C-0.684616 51.2097 -0.684615 46.7705 2.04923 44.0371L44.041 2.05112C46.7749 -0.682336 51.2146 -0.682335 53.9485 2.05112C56.6823 4.78458 56.6823 9.22372 53.9485 11.9572L16.8994 49.001L53.9288 86.0449C56.6626 88.7783 56.6626 93.2153 53.9288 95.9487C51.1949 98.6822 46.7552 98.6822 44.0213 95.9487L2.02954 53.9628L2.05141 53.9409L2.04922 53.9431Z" fill="#474848"/>
@@ -69,7 +72,7 @@ const ImageCarousel = props => {
                               </defs>
                             </svg>
                           </button>
-                          <button className="splide__arrow splide__arrow--next !h-auto !w-4 md:!h-24 md:!w-14 !max-w-none !max-h-none !bg-transparent !text-[#474848] !-right-6 md:!-right-24">
+                          <button className="splide__arrow splide__arrow--next !h-auto !w-4 lg:!h-24 lg:!w-14 !max-w-none !max-h-none !bg-transparent !text-[#474848] !-right-6 lg:!-right-20">
                             <svg width="56" height="98" viewBox="0 0 56 98" fill="none" xmlns="http://www.w3.org/2000/svg" className={`!h-auto !w-full`}>
                               <g clipPath="url(#clip0_6369_11243)">
                                 <path d="M53.9507 44.0569C56.6846 46.7903 56.6846 51.2295 53.9507 53.9629L11.9589 95.9489C9.22508 98.6823 4.78532 98.6823 2.05148 95.9489C-0.682362 93.2154 -0.682362 88.7763 2.05148 86.0428L39.1005 48.999L2.07116 11.9551C-0.662678 9.22167 -0.662678 4.78471 2.07116 2.05125C4.805 -0.682205 9.24476 -0.682205 11.9786 2.05125L53.9704 44.0372L53.9485 44.0591L53.9507 44.0569Z" fill="#474848"/>
