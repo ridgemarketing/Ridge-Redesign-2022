@@ -23,7 +23,7 @@ const Counter = (props) => {
   useEffect(() => {
     // if in view and hasn't been animated already
     if (inView && !scrolledOnce) {
-      let start = 0;
+      let start = props.number < 60 ? 0 : Math.round(props.number / 2);
       const end = parseInt(props.number);
       if (start === end) {
         //set scrolled to prevent repeat and end animation
@@ -44,7 +44,15 @@ const Counter = (props) => {
   }, [inView]);
 
     return (
-      <span ref={ref} className={props.classes}>{`${count}${suffix}`}</span>  
+      <span ref={ref} className={props.classes}>
+        {count}
+        {(props.columns === 4 && suffix === `%`) && 
+         <sup className="text-[60%] -top-6">{suffix}</sup>
+        }
+        {(props.columns !== 4 || suffix !== `%`) && 
+         <span>{suffix}</span>
+        }
+      </span>  
     );
   }
 

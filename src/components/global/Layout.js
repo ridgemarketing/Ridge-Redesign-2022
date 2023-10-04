@@ -4,7 +4,7 @@ import Header from "./Header"
 import Footer from "./Footer"
 import "../../css/styles.css"
 
-export default function Layout({ children }) {
+export default function Layout({ location, children }) {
 
     const updatePrimary = (color) => {
         setPrimary({
@@ -73,7 +73,7 @@ export default function Layout({ children }) {
              <main id="mainContent" tabIndex={0} aria-label="Main Content">
                 {children}
              </main>
-             <Footer />
+             <Footer location={location} />
         </ThemeContext.Provider>
     )
   }

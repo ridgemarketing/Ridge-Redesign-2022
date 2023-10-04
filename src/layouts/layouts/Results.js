@@ -130,3 +130,33 @@ export const projectQuery = graphql`
       }
   }
 `
+
+export const landerQuery = graphql`
+  fragment ResultsLander on WpLander_Flexiblelayouts_Layouts {
+    ... on WpLander_Flexiblelayouts_Layouts_Results {
+        fieldGroupName
+        layoutResults {
+          layoutContent {
+            columns
+            body
+            heading
+            results {
+              company
+              description
+              stat
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`

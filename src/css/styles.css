@@ -185,6 +185,10 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     @apply list-disc pl-5 mb-10;
 }
 
+.blog-container ol {
+    @apply list-decimal pl-5 mb-10;
+}
+
 .blog-container img {
     @apply mb-10 w-full max-w-[850px] mx-auto;
 }
@@ -254,4 +258,8 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     content: "";
     clear: both;
     display: table;
+}
+
+.two-col-text-form-body p > span {
+    @apply !text-21px !leading-[1.385];
 }

@@ -71,6 +71,10 @@ export const pageQuery = graphql`
         ...FeaturedProjectsGridPageDev
         ...ButtonRowPage
         ...BrandingCardsPage
+        ...CtaFooterPpcPage
+        ...ImageCarouselPage
+        ...PullquoteImagePage
+        ...TwoColTextFormPage
       }
     }
   }
@@ -106,6 +110,10 @@ export const serviceQuery = graphql`
         ...TextVideoOverhangService
         ...FeaturedProjectsGridService
         ...BrandingCardsService
+        ...CtaFooterPpcService
+        ...ImageCarouselService
+        ...PullquoteImageService
+        ...TwoColTextFormService
       }
     }
   }
@@ -149,7 +157,28 @@ export const projectQuery = graphql`
         ...ResultsTextBlockProject
         ...TextVideoOverhangProject
         ...FeaturedProjectsGridProject
-        ...BrandingCardsProject 
+        ...BrandingCardsProject
+        ...CtaFooterPpcProject
+        ...ImageCarouselProject
+        ...PullquoteImageProject
+        ...TwoColTextFormProject
+      }
+    }
+  }
+`
+
+export const landerQuery = graphql`
+  fragment FlexibleLayoutsLander on WpLander {
+    flexibleLayouts {
+      layouts {
+        ...IconTextBoxesLander
+        ...ResultsLander
+        ...QuotesLander
+        ...LogoCloudLander
+        ...CtaFooterPpcLander
+        ...ImageCarouselLander
+        ...PullquoteImageLander
+        ...TwoColTextFormLander
       }
     }
   }

@@ -54,10 +54,11 @@ const LogoCloud = props => {
                     <p className={`${theme.text.P_STD} text-center my-4`} dangerouslySetInnerHTML={{__html: body}}></p>
                 }
                   <motion.div 
-                  className={"mt-12 flex w-full flex-wrap justify-center items-center lg:justify-around gap-y-10 md:gap-y-16 gap-x-10 sm:gap-x-12 md:gap-x-20 lg:gap-x-6"}
+                  className={"mt-12 flex w-full flex-wrap justify-center items-center lg:justify-around gap-y-6 md:gap-y-8 gap-x-10 sm:gap-x-12 md:gap-x-20 lg:gap-x-6"}
                   variants={containerVariant}
                   initial="hidden"
                   whileInView="visible"
+                  viewport={{ once: true }}
                   >
                     {content.logos.map((logo, index) => {
                       const image = (logo.image.localFile.ext === ".svg") 
@@ -186,6 +187,56 @@ export const serviceQuery = graphql`
 export const projectQuery = graphql`
   fragment LogoCloudProject on WpProject_Flexiblelayouts_Layouts {
     ... on WpProject_Flexiblelayouts_Layouts_LogoCloud {
+        fieldGroupName
+        layoutLogoCloud {
+          layoutContent {
+            body
+            heading
+            logos {
+              image {
+                id
+                sourceUrl
+                altText
+                localFile {
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
+            }
+            componentButton {
+              fieldGroupName
+              colors {
+                fieldGroupName
+                resting
+              }
+              link {
+                url
+                title
+                target
+              }
+              style
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const landerQuery = graphql`
+  fragment LogoCloudLander on WpLander_Flexiblelayouts_Layouts {
+    ... on WpLander_Flexiblelayouts_Layouts_LogoCloud {
         fieldGroupName
         layoutLogoCloud {
           layoutContent {
