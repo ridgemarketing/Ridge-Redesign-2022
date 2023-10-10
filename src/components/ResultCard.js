@@ -11,31 +11,40 @@ const ResultCard = (props) => {
     let descriptionClass= props.columns === '1' ? 'md:max-w-[60%]' : '';
     const statNumber = content.stat.split(/\D+/)[0];
     const suffixString = content.stat.split(/\d+/)[1];
+    const columnsNum    = parseInt(props.columns);
 
 
     const classes = {
         1: 'md:flex items-center gap-8 max-w-[800px] justify-center',
-        2: 'md:flex-[45%] lg:flex-[50%]',
-        3: 'md:w-[45%] lg:w-[30%]'
+        2: 'md:flex-[45%] lg:flex-[50%] px-4',
+        3: 'md:w-[45%] lg:w-[30%] px-4',
+        4: 'md:w-[45%] xl:w-[24%] px-4'
     }
-    if (props.columns !== "3") {
+
+    if (columnsNum === 4) {
+        statClass = 'accent-text text-[100px] xl:text-[100px] font-semibold font-stratos';
+    }
+
+    if (columnsNum !== 3 && columnsNum !== 4) {
         statClass += ' lg:text-[160px]';
     }
+
+    
 
     return (
             <div key={`${content.description}${content.stat}`} className={ `text-center md:text-left ${props.columns !== "1" && classes[props.columns]} my-6` }>
                 <div className={`w-fit mx-auto ${props.columns === "1" && classes[props.columns]}`}>
                 { content.stat && statNumber > 10 &&
-                    <Counter number={statNumber} title={suffixString} classes={statClass} />   
+                    <Counter number={statNumber} title={suffixString} classes={statClass} columns={columnsNum} />   
                 }
                 {content.stat && statNumber < 10 &&
                     <span className={statClass}>{`${statNumber}${suffixString}`}</span>   
                 }            
                 { content.description &&  
-                   <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H5 + 'font-basic-sans normal-case pr-4'} ${descriptionClass}`}></p>  
+                   <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H5 + 'font-basic-sans normal-case'} ${descriptionClass}`}></p>  
                 }
                 { content.company &&  
-                   <p className={`${theme.text.P_STD}`}>
+                   <p className={`${theme.text.P_STD} mt-4`}>
                         { content.company }
                     </p>  
                 }

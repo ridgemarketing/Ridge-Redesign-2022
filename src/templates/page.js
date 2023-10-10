@@ -153,7 +153,6 @@ export const query = graphql`
       }
       ...PageHeader
       ...PortfolioHeader
-
       ...FlexibleLayoutsPage
       seo {
         title

@@ -37,7 +37,10 @@ import ButtonRow from "./layouts/ButtonRow"
 import BrandingCards from "./layouts/BrandingCards"
 import FlexibleProjectBlocks from "./layouts/FlexibleProjectBlocks"
 import FeaturedProjectsGridDev from "./layouts/FeaturedProjectsGridDev"
-
+import CtaFooterPpc from "./layouts/CtaFooterPpc"
+import ImageCarousel from "./layouts/ImageCarousel"
+import PullquoteImage from "./layouts/PullquoteImage"
+import TwoColTextForm from "./layouts/TwoColTextForm"
 
 let Layouts = {}; 
 
@@ -82,6 +85,9 @@ Layouts['FeaturedProjectsGrid']             = FeaturedProjectsGrid;
 Layouts['ButtonRow']                        = ButtonRow;
 Layouts['BrandingCards']                    = BrandingCards;
 Layouts['FlexibleProjectBlocks']            = FlexibleProjectBlocks;
-
+Layouts['CtaFooterPpc']                     = CtaFooterPpc;
+Layouts['ImageCarousel']                    = ImageCarousel;
+Layouts['PullquoteImage']                   = PullquoteImage;
+Layouts['TwoColTextForm']                   = TwoColTextForm;
 
 export default Layouts

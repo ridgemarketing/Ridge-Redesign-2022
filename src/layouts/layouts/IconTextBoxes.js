@@ -323,3 +323,70 @@ export const projectQuery = graphql`
       }
   }
 `
+
+export const landerQuery = graphql`
+  fragment IconTextBoxesLander on WpLander_Flexiblelayouts_Layouts {
+    ... on WpLander_Flexiblelayouts_Layouts_IconTextBoxes {
+        fieldGroupName
+        layoutIconTextBoxes {
+          layoutContent {
+            body
+            boxes {
+              body
+              heading
+              link {
+                target
+                title
+                url
+              }
+              image {
+                localFile {
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+                altText
+                sourceUrl
+              }
+            }
+            heading
+            body
+            bottomHeading
+            bottomBody
+
+            componentButton {
+              fieldGroupName
+              colors {
+                fieldGroupName
+                resting
+              }
+              link {
+                url
+                title
+                target
+              }
+              style
+            }
+
+            settings {
+              columns
+              feature
+              type
+            }
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+            containerWidth
+          }
+        }
+      }
+  }
+`

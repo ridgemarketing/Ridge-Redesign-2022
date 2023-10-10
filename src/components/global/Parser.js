@@ -46,6 +46,10 @@ const tagList = [
         replace:`<span style="display:block;" class="${theme.text.H4} mb-6 !normal-case">`
     },
     {
+        tag:`[h4LTE]`,
+        replace:`<span style="display:block;" class="${theme.text.H4_LTE} mb-6 !normal-case">`
+    },
+    {
         tag:`[h5]`,
         replace:`<span style="display:block;" class="${theme.text.H5}">`
     }
