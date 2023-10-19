@@ -14,9 +14,8 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
     let galleryLength;
 
     if(images && images.length > 0){
-        console.log(images);
         let thumbnail                   = images[0].image.localFile.childImageSharp.gatsbyImageData;
-        gallery                         = images.length > 1 ? images.slice(1) : video ? thumbnail : images[0]
+        gallery                         = images.length > 1 ? images : video ? thumbnail : images[0]
     }
     const [image, setImage]             = useState(0);
     const [hoverState, setHoverState]   = useState("hidden");
@@ -121,7 +120,7 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
                         <h2 className="text-rm-black font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-[45px]">{title}</h2>
                             {images.length > 1 &&
                                 <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`${theme.button['BASE_STYLING']} ${theme.button['SOLID_GREEN_HOVER_DARK']}`}>
-                                    VIEW PROJECT
+                                    VIEW WORK
                                 </button>
                             }
                     </div>
@@ -130,7 +129,7 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
                         <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{title}</h2>
                         {images.length > 1 &&
                             <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`}>
-                                VIEW PROJECT
+                                VIEW WORK
                             </button>
                         }
                     </div>
