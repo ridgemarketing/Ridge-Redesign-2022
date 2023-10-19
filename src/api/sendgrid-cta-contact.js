@@ -3,11 +3,14 @@ import sendgrid from "@sendgrid/mail";
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 async function sendEmail(req, res) {
+
+  const message = JSON.parse(req.body.message)
+  
+  if (message['email'] === `robert.87@outlook.com` || message['message'].includes('bankllist.us')) {
+    return res.status(200).json({ error: "" });
+  }
+
   try {
-
-    const message = JSON.parse(req.body.message)
-
-    console.log(message);
     
     const sendGridRequest = {
       personalizations: [
