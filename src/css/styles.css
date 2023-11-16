@@ -268,3 +268,6 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 .two-col-text-form-body p > span {
     @apply !text-21px !leading-[1.385];
 }
+.barn-floated--text p {
+    @apply xl:max-w-[580px]
+}
