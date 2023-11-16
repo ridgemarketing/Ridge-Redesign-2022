@@ -28,7 +28,7 @@ const QuarterImageText = (props) => {
                 </div>
                 <div className={`lg:flex ${order}`}>
                       <motion.div
-                      className={`lg:text-left text-center mb-12 lg:w-1/4 lg:mr-12 lg:flex-grow-1 lg:flex-shrink-0`}
+                      className={`lg:text-left text-center mb-6 lg:w-1/4 lg:mr-12 lg:flex-grow-1 lg:flex-shrink-0`}
                       initial={{ /** scale: 0.75 **/ }}
                       whileInView={{ /** scale: [0.75, 1.2, 1] **/ }}
                       transition={{ /** ease: "easeOut", duration: 1.5 **/ }}
@@ -38,7 +38,7 @@ const QuarterImageText = (props) => {
                     <div className={``}>
                         <p dangerouslySetInnerHTML={{__html:body}} className={`${theme.text.P_STD}`}>
                         </p>
-                        {content.componentButton && content.componentButton.link.url &&
+                        {content.componentButton && content.componentButton.link && content.componentButton.link.url &&
                           <div className={`mt-14`}>
                             <Buttons 
                               content={content.componentButton} 
