@@ -269,5 +269,8 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     @apply !text-21px !leading-[1.385];
 }
 .barn-floated--text p {
-    @apply xl:max-w-[580px]
+    @apply xl:max-w-screen-sm
+}
+.barn-floated--text .quarterContent {
+    @apply items-center
 }

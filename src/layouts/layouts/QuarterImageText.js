@@ -26,14 +26,14 @@ const QuarterImageText = (props) => {
                   <p dangerouslySetInnerHTML={{__html: introText}} className={theme.text.H4_LTE}>
                   </p>
                 </div>
-                <div className={`lg:flex ${order}`}>
+                <div className={`lg:flex quarterContent ${order}`}>
                       <motion.div
                       className={`lg:text-left text-center mb-6 lg:w-1/4 lg:mr-12 lg:flex-grow-1 lg:flex-shrink-0`}
                       initial={{ /** scale: 0.75 **/ }}
                       whileInView={{ /** scale: [0.75, 1.2, 1] **/ }}
                       transition={{ /** ease: "easeOut", duration: 1.5 **/ }}
                       >
-                        <GatsbyImage image={image} alt={content.componentFlexibleMedia.image.altText} />
+                        <GatsbyImage placeholder={"blurred"} image={image} alt={content.componentFlexibleMedia.image.altText} />
                       </motion.div>
                     <div className={``}>
                         <p dangerouslySetInnerHTML={{__html:body}} className={`${theme.text.P_STD}`}>
@@ -77,7 +77,7 @@ export const query = graphql`
                 altText
                 localFile {
                   childImageSharp {
-                    gatsbyImageData
+                    gatsbyImageData(placeholder: BLURRED)
                   }
                 }
               }
