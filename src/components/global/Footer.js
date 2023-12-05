@@ -176,7 +176,7 @@ const Footer = ({location}) =>{
                                       let icon = checkImg(social.icon);
                                       return(
                                           <li key={`${social.link.url.replace('https://', '')}___footer-social-a`} className="mr-3 last-of-type:mr-0 hover:text-rm-green" >
-                                              <a href={social.link.url} target={social.link.target}>
+                                              <a aria-label={`View our ${social.icon.altText}`} href={social.link.url} target={social.link.target}>
                                                   {icon}
                                               </a>
                                           </li>

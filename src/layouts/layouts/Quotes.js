@@ -163,11 +163,11 @@ const Quotes = (props) => {
                 </div>
                 {arrows &&
                 <div className={`w-[175px] flex bg-rm-pale-grey lg:ml-10`}>
-                    <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(false)}>
+                    <button title={"previous quote"} className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(false)}>
                         <ArrowTallLeftBlack/>
                     </button>
                     <span className={ theme.text.FOOTER + 'flex items-center font-basic-sans'}> {slide + 1} / {slides.length}</span>
-                    <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(true)}>
+                    <button title={"next quote"} className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(true)}>
                         <ArrowTallRightBlack/>
                     </button>
                 </div>

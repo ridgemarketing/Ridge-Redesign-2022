@@ -112,7 +112,7 @@ const FeaturedProjectsCarousel = (props) => {
                               <div className="homeSlider-2 absolute overflow-hidden w-full h-full"></div> */}
                              <GatsbyImage 
                                 image={data.project.projectInformation.images.carouselFeature.localFile.childImageSharp.gatsbyImageData} 
-                                alt={ ' ' } 
+                                alt={ data.project.projectInformation.images.carouselFeature.altText } 
                                 className={ `` } 
                                 objectFit={'contain'}/>
                             {/*
@@ -131,16 +131,16 @@ const FeaturedProjectsCarousel = (props) => {
                             <div className={`px-8 pt-7 pb-10 bg-white w-full md:max-w-[548px] md:px-12 md:pt-9 shadow-block`}>
                                 <span></span>
                                 <h3 className={`${theme.text.P_STD}`}>{data.project.title}</h3>
-                                <h5 className={`font-stratos uppercase font-bold text-[32px] md:text-40px leading-44px  `}>{data.caption}</h5>
+                                <p className={`font-stratos uppercase font-bold text-[32px] md:text-40px leading-44px  `}>{data.caption}</p>
                                 <div className={'mt-6'}>
                                     <Link className={`${theme.button.BASE_STYLING} ${theme.button.GHOST_GREEN_HOVER_DARK}`} to={data.project.link}>View Project</Link>
                                 </div>
                             </div> 
                             <div className={`w-36 flex bg-rm-pale-grey`}>
-                                <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(false)}>
+                                <button className={`flex-1 px-5 py-3 text-40px`} title={'scroll to previous campaign'} aria-label={'scroll to previous campaign'} onClick={() => handleClick(false)}>
                                    <ArrowTallLeftBlack/>
                                 </button>
-                                <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(true)}>
+                                <button className={`flex-1 px-5 py-3 text-40px`} title={'scroll to next campaign'} aria-label={'scroll to next campaign'} onClick={() => handleClick(true)}>
                                   <ArrowTallRightBlack/>
                                 </button>
                             </div>
@@ -178,6 +178,7 @@ export const query = graphql`
                                 gatsbyImageData
                               }
                             }
+                            altText
                           }
                         }
                       }
@@ -221,6 +222,7 @@ export const serviceQuery = graphql`
                                 gatsbyImageData
                               }
                             }
+                            altText
                           }
                         }
                       }
@@ -264,6 +266,7 @@ export const projectQuery = graphql`
                                 gatsbyImageData
                               }
                             }
+                            altText
                           }
                         }
                       }

@@ -130,7 +130,7 @@ const WpService = ({ data }) =>{
             }
 
             {content.intextFloatedImage &&
-              <GatsbyImage className="mb-9 lg:mb-0 lg:w-1/5 lg:ml-[5%]" objectFit="contain" imgStyle="objectFit:contain" image={content.intextFloatedImage.localFile.childImageSharp.gatsbyImageData} alt={` `} />  
+              <GatsbyImage className="mb-9 lg:mb-0 lg:w-1/5 lg:ml-[5%]" objectFit="contain" imgStyle="objectFit:contain" image={content.intextFloatedImage.localFile.childImageSharp.gatsbyImageData} alt={content.intextFloatedImage.altText} />  
             }
           </Container>
         </Section>
@@ -180,6 +180,7 @@ export const query = graphql`
                   gatsbyImageData
                 }
               }
+              altText
             }
           }
           layoutSettings {

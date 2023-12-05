@@ -82,6 +82,7 @@ const Header = (props) => {
                                             gatsbyImageData
                                         }
                                     }
+                                    altText
                                     sourceUrl
                                 }
                             }
@@ -103,7 +104,7 @@ const Header = (props) => {
             <section className="container h-full">
                 <nav className="h-full">
                     <ul className="flex items-center justify-between h-full">
-                        <li className={`transition-transform duration-500 ${isScrolled ? `scale-75` : ``}`}><Link to={`/`} className="h-min">{logo}</Link></li>
+                        <li className={`transition-transform duration-500 ${isScrolled ? `scale-75` : ``}`}><Link to={`/`} aria-label={'visit home page'} className="h-min">{logo}</Link></li>
                         <li className="w-[40px] h-[40px] flex ml-auto xl:hidden" >
                             <button className={``} onClick={() => setShowMenu(!showMenu)} onKeyDown={() => setShowMenu(!showMenu) } type="button" aria-expanded="false" aria-label="Mobile Menu Container">
                                 {showMenu ? 
