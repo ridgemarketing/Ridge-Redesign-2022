@@ -19,7 +19,7 @@ async function sendEmail(req, res) {
       )
     }
 
-    console.log(html)
+    //console.log(html)
 
     const stringHTML = JSON.stringify(html);
 

@@ -13,7 +13,6 @@ const ProjectHeader = (props) => {
     const [maxHeight, setMaxHeight] = useState(0);
     const ref = useRef();
     let logo;
-    // if (content.videoOverhang) console.log(content.videoOverhang);
 
     // const logo          = (info.logos.light.localFile != null) && (info.logos.light.localFile.ext === `.svg`) 
     // ? <img className={''} src={info.logos.light.sourceUrl} alt={info.logos.light.altText} />

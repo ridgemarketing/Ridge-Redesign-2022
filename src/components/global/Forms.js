@@ -29,7 +29,6 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
         const { error } = await res.json();
           
         if (error) {
-          console.log(error);
           setStatus(`fail-email`)
           return
         }
@@ -119,7 +118,6 @@ export const FormContacPage = ({classes, submitLabel, btnContainerClasses, btnSt
         const { error } = await res.json();
           
         if (error) {
-          console.log(error);
           setStatus(`fail-email`)
           return
         }
@@ -209,7 +207,6 @@ export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnSty
         const { error } = await res.json();
           
         if (error) {
-          console.log(error);
           setStatus(`fail-email`)
           return
         }
@@ -309,7 +306,6 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
         const { error } = await res.json();
           
         if (error) {
-          console.log(error);
           setStatus(`fail-email`)
           return
         }
