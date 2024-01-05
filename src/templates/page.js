@@ -53,11 +53,11 @@ export const Head = ({data}) => (
 
 const WpPage = ({ data, location }) =>{
   let color = 'black';
-  if(data.wpPage.uri === '/contact/' || data.wpPage.uri === `/terms-and-conditions/`){
+  if(data.wpPage.uri === '/contact/' || data.wpPage.uri === `/terms-and-conditions/` || data.wpPage.uri === `/privacy-policy/`){
     color = 'white';
   } 
 
-  const blackList = ["404", "Terms and Conditions", "Portfolio"];
+  const blackList = ["404", "Terms and Conditions", "Portfolio", "Privacy Policy"];
   const context = useRef(useContext(ThemeContext));
 
   useEffect(() => {
@@ -86,7 +86,7 @@ const WpPage = ({ data, location }) =>{
             <Menu />
           </Container>
         }
-        {data.wpPage.title === "Terms and Conditions" &&
+        {data.wpPage.title === "Terms and Conditions" || data.wpPage.title === "Privacy Policy"  &&
           <div className={'terms pb-20'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
         }
         {data.wpPage.flexibleLayouts && 
