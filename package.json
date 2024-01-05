@@ -52,9 +52,10 @@
     "wp-graphql-yoast-seo": "github:ashhitch/wp-graphql-yoast-seo"
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.14",
+    "@tailwindcss/typography": "^0.5.10",
+    "autoprefixer": "^10.4.16",
     "gatsby-plugin-postcss": "^6.10.0",
-    "postcss": "^8.4.23",
-    "tailwindcss": "^3.3.2"
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.0"
   }
 }
