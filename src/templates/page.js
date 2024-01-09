@@ -86,7 +86,7 @@ const WpPage = ({ data, location }) =>{
             <Menu />
           </Container>
         }
-        {data.wpPage.title === "Terms and Conditions" || data.wpPage.title === "Privacy Policy"  &&
+        {(data.wpPage.title === "Terms and Conditions" || data.wpPage.title === "Privacy Policy")  &&
           <div className={'terms pb-20 prose max-w-full'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
         }
         {data.wpPage.flexibleLayouts && 
