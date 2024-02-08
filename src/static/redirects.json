@@ -637,5 +637,10 @@
     },
     {
         "fromPath": "/adjusting-focus-the-effects-of-social-media-on-photography-art", "toPath": "/blog/adjusting-focus-the-effects-of-social-media-on-photography-art"
+    },
+    {
+        "fromPath": "/blog/sports-branding-strategies-that-can-help-any-brand",
+        "toPath": "https://ridgemarketing.com/blog/sports-branding-strategies-that-can-help-any-brand",
+        "statusCode": 200
     }
 ]
