@@ -196,5 +196,8 @@ module.exports = {
         'white-black': 'linear-gradient( to bottom, #ffffff 0%, #ffffff 60%, #000000 60%, #000000 100%)'
       }
     }
-  }
+  },
+  plugins: [
+    require('@tailwindcss/typography'),
+  ]
 } 
