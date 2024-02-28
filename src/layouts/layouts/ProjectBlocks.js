@@ -84,7 +84,7 @@ const ProjectBlocks = (props) => {
                                   <div className={`mt-3 h-full w-full relative group`}>
                                     <div className="w-full h-full flex flex-col justify-center items-center absolute top-0 left-0">
                                         {logo && logo}
-                                        <a href={block.uri} className={`${theme.button.BASE_STYLING} ${theme.button.SOLID_GREEN_HOVER_LIGHT} -translate-y-5 group-hover:translate-y-0 focus-within:translate-y-0 focus:translate-y-0 opacity-0 group-hover:opacity-100 focus-within:opacity-100 cursor-pointer min-w-max h-min z-20 transition-all duration-300 ease-out `}>VIEW WORK</a>
+                                        <a href={block.uri} className={`${theme.button.BASE_STYLING} ${theme.button.SOLID_GREEN_HOVER_LIGHT} -translate-y-5 group-hover:translate-y-0 focus-within:translate-y-0 focus:translate-y-0 opacity-0 group-hover:opacity-100 focus-within:opacity-100 cursor-pointer min-w-max h-min z-20 transition-all duration-300 ease-out `}>CASE STUDY</a>
                                         <div className="w-full h-[0%] bg-rm-black opacity-80 z-10 absolute top-0 left-0 group-hover:h-[100%] focus-within:h-[100%] transition-all duration-300 ease-out"></div>
                                     </div>
                                     <GatsbyImage image={image} alt={``} className={`object-cover w-full h-full`}/> 
