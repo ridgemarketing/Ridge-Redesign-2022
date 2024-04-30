@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react"
 import { graphql } from "gatsby"
+import Seo from 'gatsby-plugin-wpgraphql-seo'
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import Blog from "./blog"
 import HomeHero from "../layouts/layouts/HomeHero"
@@ -10,46 +11,46 @@ import CustomHeader from "../components/global/headerColor"
 import PortfolioHeader from "../layouts/layouts/PortfolioHeader"
 import { theme, ThemeContext } from "../static/theme"
 
-export const Head = ({data}) => (
-  <>
-    <title>{data.wpPage.seo.title}</title>
-    <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
+// export const Head = ({data}) => (
+//   <>
+//     <title>{data.wpPage.seo.title}</title>
+//     <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
 
-    <meta name="description" content={data.wpPage.seo.opengraphDescription} />
-    <meta name="title" content={data.wpPage.seo.title}/>
-    <meta name="pageType" content={data.wpPage.seo.schema.pageType}/>
-    <meta name="keywords" content={data.wpPage.seo.metaKeywords}/>
-    <meta name="author" content={data.wpPage.seo.opengraphAuthor}/>
+//     <meta name="description" content={data.wpPage.seo.opengraphDescription} />
+//     <meta name="title" content={data.wpPage.seo.title}/>
+//     <meta name="pageType" content={data.wpPage.seo.schema.pageType}/>
+//     <meta name="keywords" content={data.wpPage.seo.metaKeywords}/>
+//     <meta name="author" content={data.wpPage.seo.opengraphAuthor}/>
 
-    {data.wpPage.seo.metaRobotsNoindex === 'noindex' &&
-      <>
-        <meta name="robots" content="noindex" />
-        <meta name="googlebot-news" content="noindex" />
-      </>
-    }
-    {data.wpPage.seo.metaRobotsNoFollow === 'nofollow' &&
-       <meta name="robots" content={data.wpPage.seo.metaRobotsNoFollow} />
-    }
+//     {data.wpPage.seo.metaRobotsNoindex === 'noindex' &&
+//       <>
+//         <meta name="robots" content="noindex" />
+//         <meta name="googlebot-news" content="noindex" />
+//       </>
+//     }
+//     {data.wpPage.seo.metaRobotsNoFollow === 'nofollow' &&
+//        <meta name="robots" content={data.wpPage.seo.metaRobotsNoFollow} />
+//     }
 
-    <meta property="og:type" content={data.wpPage.seo.opengraphType}/>
-    <meta property="og:author" content={data.wpPage.seo.opengraphAuthor}/>
-    <meta property="og:url" content={data.wpPage.seo.opengraphUrl}/>
-    <meta property="og:title" content={data.wpPage.seo.opengraphTitle}/>
-    <meta property="og:description" content={data.wpPage.seo.opengraphDescription}/>
-    {data.wpPage.seo.opengraphImage &&
-      <meta property="og:image" content={data.wpPage.seo.opengraphImage.sourceUrl}/>
-    }
+//     <meta property="og:type" content={data.wpPage.seo.opengraphType}/>
+//     <meta property="og:author" content={data.wpPage.seo.opengraphAuthor}/>
+//     <meta property="og:url" content={data.wpPage.seo.opengraphUrl}/>
+//     <meta property="og:title" content={data.wpPage.seo.opengraphTitle}/>
+//     <meta property="og:description" content={data.wpPage.seo.opengraphDescription}/>
+//     {data.wpPage.seo.opengraphImage &&
+//       <meta property="og:image" content={data.wpPage.seo.opengraphImage.sourceUrl}/>
+//     }
 
-    <meta property="twitter:card" content="summary_large_image"/>
-    <meta property="twitter:url" content={data.wpPage.seo.opengraphUrl}/>
-    <meta property="twitter:title" content={data.wpPage.seo.twitterTitle}/>
-    <meta property="twitter:description" content={data.wpPage.seo.twitterDescription}/>
-    {data.wpPage.seo.twitterImage &&
-      <meta property="twitter:image" content={data.wpPage.seo.twitterImage.sourceUrl}/>
-    }
-    {data.wpPage.seo.fullHead}
-  </>
-)
+//     <meta property="twitter:card" content="summary_large_image"/>
+//     <meta property="twitter:url" content={data.wpPage.seo.opengraphUrl}/>
+//     <meta property="twitter:title" content={data.wpPage.seo.twitterTitle}/>
+//     <meta property="twitter:description" content={data.wpPage.seo.twitterDescription}/>
+//     {data.wpPage.seo.twitterImage &&
+//       <meta property="twitter:image" content={data.wpPage.seo.twitterImage.sourceUrl}/>
+//     }
+//     {data.wpPage.seo.fullHead}
+//   </>
+// )
 
 const WpPage = ({ data, location }) =>{
   let color = 'black';
@@ -66,10 +67,16 @@ const WpPage = ({ data, location }) =>{
   }, []);
 
   if(data.wpPage.isPostsPage === true){
-    return ( <Blog/> )
+    return (
+    <>
+      <Seo post={data.wpPage} />
+      <Blog/>
+    </>
+    )
   } else {
     return (
       <>
+        <Seo post={data.wpPage} />
         <CustomHeader color={color} />
         {data.wpPage.pageHeader && !data.wpPage.isFrontPage && !blackList.includes(data.wpPage.title) &&
           <PageHeader layoutData={data.wpPage.pageHeader.pageHeader} />
@@ -157,35 +164,34 @@ export const query = graphql`
       seo {
         title
         metaDesc
+        focuskw
+        metaKeywords
+        metaRobotsNoindex
+        metaRobotsNofollow
+        opengraphTitle
         opengraphDescription
+        opengraphType
+        opengraphUrl
+        opengraphAuthor
         opengraphImage {
-          localFile {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-          sourceUrl
+            altText
+            sourceUrl
+            srcSet
         }
         twitterTitle
         twitterDescription
         twitterImage {
-          localFile {
-            childImageSharp {
-              gatsbyImageData
-            }
-          }
-          sourceUrl
+            altText
+            sourceUrl
+            srcSet
         }
+        canonical
+        cornerstone
         schema {
-          pageType
+            articleType
+            pageType
+            raw
         }
-        opengraphTitle
-        opengraphType
-        opengraphUrl
-        metaKeywords
-        metaRobotsNofollow
-        opengraphAuthor
-        metaRobotsNoindex
       }
   }
   allWp {

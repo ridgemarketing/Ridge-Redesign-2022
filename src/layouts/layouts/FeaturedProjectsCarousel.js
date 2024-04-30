@@ -29,7 +29,7 @@ const FeaturedProjectsCarousel = (props) => {
             setData(slides[i + 1]);
         }
 
-        console.log(slide)
+        //console.log(slide)
     }
 
     const prevSlide = () => {
@@ -42,7 +42,7 @@ const FeaturedProjectsCarousel = (props) => {
             setData(slides[i - 1]);
         }
 
-        console.log(slide)
+        //console.log(slide)
     }
     const handleClick = (next) => {
       setInteraction(true);
