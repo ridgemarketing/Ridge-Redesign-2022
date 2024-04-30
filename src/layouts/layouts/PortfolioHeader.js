@@ -40,7 +40,7 @@ const PortfolioHeader = (props) => {
           setRendering(content.websites);
           break;
       }
-      console.log(toRender);
+      //console.log(toRender);
       return;
     }
 

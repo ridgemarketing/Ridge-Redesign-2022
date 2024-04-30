@@ -8,7 +8,7 @@ import { motion } from "framer-motion"
 const TwoColTextQuote = (props) => {
 
     const content     = props.layoutData.layoutContent;
-    console.log(content);
+    //console.log(content);
     const settings    = props.layoutData.layoutSettings;
     const textColor   = settings.backgroundColor === 'black' ? 'text-rm-white' : 'text-rm-black'; 
     const quotations  = content.quoteContent.quotations;
