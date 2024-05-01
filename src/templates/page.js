@@ -52,6 +52,12 @@ import { theme, ThemeContext } from "../static/theme"
 //   </>
 // )
 
+export const Head = ({data}) => (
+  <>
+    <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
+  </>
+)
+
 const WpPage = ({ data, location }) =>{
   let color = 'black';
   if(data.wpPage.uri === '/contact/' || data.wpPage.uri === `/terms-and-conditions/` || data.wpPage.uri === `/privacy-policy/`){

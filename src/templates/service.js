@@ -49,6 +49,12 @@ import Parser from '../components/global/Parser'
 //   </>
 // )
 
+export const Head = ({data}) => (
+  <>
+    <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
+  </>
+)
+
 const WpService = ({ data }) =>{
   
   const settings  = data.wpService.servicesHeader.serviceHeader.layoutSettings;

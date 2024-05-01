@@ -48,6 +48,12 @@ import { ThemeContext } from "../static/theme"
 //   </>
 // )
 
+export const Head = ({data}) => (
+  <>
+    <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
+  </>
+)
+
 const WpPost = ({ data, pageContext }) =>{
     const content       = data.wpPost;
     const context       = pageContext;
