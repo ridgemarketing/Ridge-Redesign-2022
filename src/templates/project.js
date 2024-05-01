@@ -46,6 +46,12 @@ import PostNav from "../components/PostNav"
 //   </>
 // )
 
+export const Head = ({data}) => (
+  <>
+    <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
+  </>
+)
+
 const WpProject = ({ data, pageContext }) => {
   const project = pageContext
   const links = {
