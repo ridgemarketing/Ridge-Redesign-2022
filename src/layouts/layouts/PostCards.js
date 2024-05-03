@@ -2,7 +2,7 @@ import React from "react"
 import { graphql, useStaticQuery } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers'
-import BlogCard from '../../components/BlogCard'
+import BlogCardHome from '../../components/BlogCardHome'
 
 const PostCards = (props) => {
 
@@ -18,6 +18,18 @@ const PostCards = (props) => {
             title
             content
             link
+            blogFields {
+              additionalBlogFields {
+                squareImage {
+                  altText
+                  localFile {
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+                }
+              }
+            }
             featuredImage {
               node {
                 localFile {
@@ -80,11 +92,11 @@ return (
             <div className="mt-12 flex w-full flex-col items-center lg:items-stretch justify-between lg:flex-row lg:flex-wrap lg:justify-between">
               {
                 cards.map((card, index) => {
-                  return <BlogCard
+                  return <BlogCardHome
                       key     = {`BlogCardItem__${card.guid}__${index}`}
                       heading = {card.title}
                       link    = {`/blog` + card.link || ` `}
-                      image   = {card.featuredImage.node.localFile.childImageSharp.gatsbyImageData || ` `}
+                      image   = {card.blogFields?.additionalBlogFields?.squareImage?.localFile?.childImageSharp?.gatsbyImageData ? card.blogFields.additionalBlogFields.squareImage.localFile.childImageSharp.gatsbyImageData : (card?.featuredImage?.node?.localFile?.childImageSharp?.gatsbyImageData || ` `)}
                       alt     = {card.featuredImage.node.altText}
                   />
                 })
