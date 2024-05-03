@@ -56,7 +56,7 @@ const LogoCloud = props => {
                     <p className={`${theme.text.P_STD} text-center my-4`} dangerouslySetInnerHTML={{__html: body}}></p>
                 }
                 {content.type === 'carousel' &&
-                  <div>
+                  <div className="mt-12">
                     <Splide
                       extensions={ { AutoScroll } }
                       options={ {
