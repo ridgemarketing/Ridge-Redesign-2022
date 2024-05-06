@@ -229,7 +229,10 @@ const Footer = ({location}) =>{
                     </ul> 
                 </div>
                 {content.copyright &&
-                  <small className={`${theme.text.FOOTER} mt-16 lg:mt-32 text-[14px] block`}  dangerouslySetInnerHTML={ {__html:content.copyright} }></small>
+                  <div className="block mt-16 lg:mt-32">
+                    <small className={`${theme.text.FOOTER} text-[14px] inline`} >&copy; {new Date().getFullYear()} &nbsp;</small>
+                    <small className={`${theme.text.FOOTER} text-[14px] inline`} dangerouslySetInnerHTML={ {__html:content.copyright} }></small>
+                  </div>
                 }
             </Container>
         </footer>

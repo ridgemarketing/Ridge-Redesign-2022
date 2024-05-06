@@ -6,6 +6,8 @@ import { Container, Section } from '../../components/global/Wrappers'
 import Buttons from '../../components/global/Buttons'
 import Parser from '../../components/global/Parser'
 import { motion } from "framer-motion"
+import { Splide, SplideSlide } from '@splidejs/react-splide';
+import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
 const LogoCloud = props => {
 
@@ -53,6 +55,43 @@ const LogoCloud = props => {
                 {content.body &&
                     <p className={`${theme.text.P_STD} text-center my-4`} dangerouslySetInnerHTML={{__html: body}}></p>
                 }
+                {content.type === 'carousel' &&
+                  <div className="mt-12">
+                    <Splide
+                      extensions={ { AutoScroll } }
+                      options={ {
+                        type: 'loop',
+                        autoWidth: true,
+                        gap   : '4rem',
+                        drag: 'free',
+                        focus: 'center',
+                        arrows: false,
+                        perMove: 1,
+                        pagination: false,
+                        autoScroll: {
+                          pauseOnHover: false,
+                          pauseOnFocus: false,
+                          rewind: true,
+                          speed: 0.6,
+                        }
+                      } }
+                    >
+                        {content.logos.map((logo, index) => {
+                          const image = (logo.image.localFile.ext === ".svg") 
+                          ? <img key={logo.image.sourceUrl} className={`w-full object-contain h-auto`} src={logo.image.sourceUrl} alt={logo.image.altText}/>
+                          : <GatsbyImage key={logo.image.sourceUrl} className={`w-full`} objectFit="contain" image={logo.image.localFile.childImageSharp.gatsbyImageData} alt={logo.image.altText} /> ;
+                          return(
+                            <SplideSlide>
+                              <motion.div key={`LogoCloudItem__${image.id}__${index}`} variants={variantItems} className={"h-[110px] flex flex-col items-center justify-center"}>
+                                {image}                        
+                              </motion.div>
+                            </SplideSlide>
+                          )
+                        })}
+                    </Splide>
+                  </div>
+                }
+                {content.type !== 'carousel' &&
                   <motion.div 
                   className={"mt-12 flex w-full flex-wrap justify-center items-center lg:justify-around gap-y-6 md:gap-y-8 gap-x-10 sm:gap-x-12 md:gap-x-20 lg:gap-x-6"}
                   variants={containerVariant}
@@ -71,6 +110,7 @@ const LogoCloud = props => {
                       )
                     })}
                   </motion.div>
+                }
                 {content.componentButton && content.componentButton.link &&
                 <div className='text-center my-12'>
                   <Buttons 
@@ -93,6 +133,7 @@ export const query = graphql`
           layoutContent {
             body
             heading
+            type
             logos {
               image {
                 id
@@ -142,6 +183,7 @@ export const serviceQuery = graphql`
           layoutContent {
             body
             heading
+            type
             logos {
               image {
                 id
@@ -192,6 +234,7 @@ export const projectQuery = graphql`
           layoutContent {
             body
             heading
+            type
             logos {
               image {
                 id
@@ -242,6 +285,7 @@ export const landerQuery = graphql`
           layoutContent {
             body
             heading
+            type
             logos {
               image {
                 id

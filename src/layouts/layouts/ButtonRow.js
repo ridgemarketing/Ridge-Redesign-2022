@@ -56,7 +56,7 @@ const ButtonRow = (props) => {
                         initial="hidden"
                         whileInView="visible"
                       >                      
-                      {content.buttons.map((button, index) => {
+                      {content.buttons && content.buttons.map((button, index) => {
                         const linkInfo  = button.componentButton.link;
                         const uid       = linkInfo.title.replace(' ', '_')
                         return (

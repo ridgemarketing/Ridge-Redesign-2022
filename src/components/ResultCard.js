@@ -6,12 +6,12 @@ import Counter from "./Counter"
 
 const ResultCard = (props) => {
 
-    const content = props.content;
-    let statClass= 'accent-text text-[100px] xl:text-[120px] font-semibold font-stratos';
-    let descriptionClass= props.columns === '1' ? 'md:max-w-[60%]' : '';
-    const statNumber = content.stat.split(/\D+/)[0];
-    const suffixString = content.stat.split(/\d+/)[1];
-    const columnsNum    = parseInt(props.columns);
+    const content           = props.content;
+    let statClass           = 'accent-text text-[100px] xl:text-[120px] font-semibold font-stratos';
+    let descriptionClass    = props.columns === '1' ? 'md:max-w-[60%]' : '';
+    const statNumber        = content.stat ? content.stat.split(/\D+/)[0] : false;
+    const suffixString      = content.stat ? content.stat.split(/\d+/)[1] : false;
+    const columnsNum        = parseInt(props.columns);
 
 
     const classes = {
