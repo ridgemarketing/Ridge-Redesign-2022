@@ -16,7 +16,7 @@ const MediaBlocks = (props) => {
       <Section settings={settings}>
         <Container>
           {content.heading &&
-            <h2 className={`text-center ${theme.text.H2}`}>{content.heading}</h2>
+            <h2 className={`text-${content.text_align} ${theme.text.H2}`}>{content.heading}</h2>
           }
           {media && mediaExists &&
             <div className={columns}> 
@@ -25,6 +25,9 @@ const MediaBlocks = (props) => {
                 return (
                   <div className={`w-full mb-20`}>
                     <FlexibleMedia key={`MediaBlocksItem__${index}`} paddingRatio={content.ratio} data={block.componentFlexibleMedia} />
+                    {block.heading&& 
+                      <p className={`${theme.text['P_STD']} mt-4`}>{block.heading}</p>
+                    }
                   </div>
                 )
               })}
@@ -48,6 +51,7 @@ export const query = graphql`
               componentFlexibleMedia {
                 lottie
                 type
+                heading
                 videoSource
                 video {
                   videoUrl
@@ -71,6 +75,7 @@ export const query = graphql`
               }
             }
             columns
+            textAlign
             heading
             ratio
           }
@@ -122,6 +127,7 @@ export const serviceQuery = graphql`
               }
             }
             columns
+            textAlign
             heading
             ratio
           }
@@ -174,6 +180,7 @@ export const projectQuery = graphql`
               }
             }
             columns
+            textAlign
             heading
             ratio
           }

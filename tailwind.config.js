@@ -53,7 +53,10 @@ module.exports = {
     'xl:pt-20',
     'pt-[56.25%',
     'pt-[100%]',
-    'xl:p-24'
+    'xl:p-24',
+    'text-center',
+    'text-left',
+    'text-right',
   ],
   theme: {
     screens:{
