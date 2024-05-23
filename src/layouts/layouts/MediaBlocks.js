@@ -25,8 +25,8 @@ const MediaBlocks = (props) => {
                 return (
                   <div className={`w-full mb-20`}>
                     <FlexibleMedia key={`MediaBlocksItem__${index}`} paddingRatio={content.ratio} data={block.componentFlexibleMedia} />
-                    {block.heading&& 
-                      <p className={`${theme.text['P_STD']} mt-4`}>{block.heading}</p>
+                    {block.componentFlexibleMedia.caption&& 
+                      <p className={`${theme.text['P_STD']} mt-4`}>{block.componentFlexibleMedia.caption}</p>
                     }
                   </div>
                 )
@@ -51,8 +51,8 @@ export const query = graphql`
               componentFlexibleMedia {
                 lottie
                 type
-                heading
                 videoSource
+                caption
                 video {
                   videoUrl
                   thumbnailImage {
@@ -76,7 +76,6 @@ export const query = graphql`
             }
             columns
             textAlign
-            heading
             ratio
           }
           layoutSettings {
@@ -105,6 +104,7 @@ export const serviceQuery = graphql`
                 lottie
                 type
                 videoSource
+                caption
                 video {
                   videoUrl
                   thumbnailImage {
@@ -118,6 +118,7 @@ export const serviceQuery = graphql`
                   }
                 }
                 image {
+                  caption
                   localFile {
                     childImageSharp {
                       gatsbyImageData
@@ -128,7 +129,6 @@ export const serviceQuery = graphql`
             }
             columns
             textAlign
-            heading
             ratio
           }
           layoutSettings {
@@ -158,6 +158,7 @@ export const projectQuery = graphql`
                 lottie
                 type
                 videoSource
+                caption
                 video {
                   videoUrl
                   thumbnailImage {
@@ -171,6 +172,7 @@ export const projectQuery = graphql`
                   }
                 }
                 image {
+                  caption
                   localFile {
                     childImageSharp {
                       gatsbyImageData
@@ -181,7 +183,6 @@ export const projectQuery = graphql`
             }
             columns
             textAlign
-            heading
             ratio
           }
           layoutSettings {
