@@ -9,7 +9,8 @@ const Counter = (props) => {
 
   const suffix = props.title;
   const ref = useRef(null);
-  const SPEED = props.number < 100 ? 2 : 4; // animation speed
+  let SPEED = props.number < 100 ? 2 : 4; // animation speed
+
 
   // intersection observer function I built (components/OnScreen.js) to check if ref is in view
   const isVisible = useOnScreen(ref); 
@@ -24,6 +25,11 @@ const Counter = (props) => {
     // if in view and hasn't been animated already
     if (inView && !scrolledOnce) {
       let start = props.number < 60 ? 0 : Math.round(props.number / 2);
+
+      if(props.number > 2500){
+        start = Math.round(props.number * 0.9);
+      }
+
       const end = parseInt(props.number);
       if (start === end) {
         //set scrolled to prevent repeat and end animation
