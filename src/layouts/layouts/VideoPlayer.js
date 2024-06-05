@@ -34,8 +34,9 @@ const VideoPlayer = (props) => {
               }
               <Vimeo
                 video={player.source}
-                muted
+                muted={player.autoplay || false}
                 responsive
+                controls={player.autoplay || false}
                 autoplay={player.autoplay || false}
                 loop={player.autoplay || false}
                 className={`absolute top-0 left-0 w-full h-full object-cover`}
