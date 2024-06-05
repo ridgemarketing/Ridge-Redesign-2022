@@ -35,10 +35,10 @@ const ResultCard = (props) => {
             <div key={`${content.description}${content.stat}`} className={ `text-center md:text-left ${props.columns !== "1" && classes[props.columns]} my-6` }>
                 <div className={`w-fit mx-auto ${props.columns === "1" && classes[props.columns]}`}>
                 { content.stat && statNumber > 10 &&
-                    <Counter number={statNumber} title={suffixString} classes={statClass} columns={columnsNum} />   
+                    <Counter number={statNumber} title={suffixString} classes={`${statClass} tracking-tight`} columns={columnsNum} />   
                 }
                 {content.stat && statNumber < 10 &&
-                    <span className={statClass}>{`${statNumber}${suffixString}`}</span>   
+                    <span className={`${statClass} tracking-tighter`}>{`${statNumber}${suffixString}`}</span>   
                 }            
                 { content.description &&  
                    <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H5 + 'font-basic-sans normal-case'} ${descriptionClass}`}></p>  
