@@ -66,7 +66,6 @@ const FlexibleMedia = (props) => {
                         <Vimeo
                             video={video.videoUrl}
                             paused={pauseVideo}
-                            muted
                             responsive
                             className={`absolute top-0 left-0 w-full h-full object-cover`}
                             onPause={() => setPauseVideo(true)}
