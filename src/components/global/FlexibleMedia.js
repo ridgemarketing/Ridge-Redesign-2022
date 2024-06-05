@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { Player } from '@lottiefiles/react-lottie-player'
+import { LottiePlayerNoSsr } from "./LottiePlayerNoSsr"
 import { Play } from "../svg"
 import Vimeo from "@u-wave/react-vimeo"
 
@@ -43,7 +43,7 @@ const FlexibleMedia = (props) => {
             }
             {lottie &&
                 <div>
-                    <Player
+                    <LottiePlayerNoSsr
                         autoplay={true} controls={false}
                         loop={true}
                         src={lottie}

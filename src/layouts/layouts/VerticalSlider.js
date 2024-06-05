@@ -3,7 +3,7 @@ import { graphql } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers'
 import { AnchorLink } from "gatsby-plugin-anchor-links";
-import { Player } from '@lottiefiles/react-lottie-player';
+import { LottiePlayerNoSsr } from "../../components/global/LottiePlayerNoSsr.js";
 
 const VerticalSlider = (props) => {
 
@@ -135,7 +135,7 @@ const VerticalSlider = (props) => {
               </div>
                 
               <div className={`w-full h-[45%] mt-[5%] md:mt-0 md:h-auto md:w-[50%] lg:h-full block object-cover`}>
-                <Player className={`"w-full h-full block`} src={ vslides[vslide].lottieJsonUrl } loop={true} autoplay={true} controls={false}/>
+                <LottiePlayerNoSsr className={`"w-full h-full block`} src={ vslides[vslide].lottieJsonUrl } loop={true} autoplay={true} controls={false}/>
               </div>
               <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `md:hidden text-left w-full mt-[5%] h-[3%] transition-all ease-out ${theme.text.H4_LTE} ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.ARW_FWD_GREY} flex items-center text-rm-grey hover:text-rm-white capitalize`}>Skip </AnchorLink>
             </div>
