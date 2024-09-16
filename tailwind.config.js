@@ -57,6 +57,7 @@ module.exports = {
     'text-center',
     'text-left',
     'text-right',
+    'mb-0',
   ],
   theme: {
     screens:{
