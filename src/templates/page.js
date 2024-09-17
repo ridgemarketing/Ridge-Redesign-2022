@@ -84,10 +84,10 @@ const WpPage = ({ data, location }) =>{
       <>
         <Seo post={data.wpPage} />
         <CustomHeader color={color} />
-        {data.wpPage.pageHeader && !data.wpPage.isFrontPage && !blackList.includes(data.wpPage.title) &&
+        {(data.wpPage.pageHeader && !data.wpPage.isFrontPage && !blackList.includes(data.wpPage.title)) &&
           <PageHeader layoutData={data.wpPage.pageHeader.pageHeader} />
         }
-        {data.wpPage.title === "Portfolio" || data.wpPage.title === 'PortfolioDev' &&
+        {(data.wpPage.title === "Portfolio" || data.wpPage.title === 'PortfolioDev') &&
             <PortfolioHeader layoutData={data.wpPage.portfolioHeader.portfolioHeader} />
         }
         {data.wpPage.isFrontPage &&
@@ -102,7 +102,7 @@ const WpPage = ({ data, location }) =>{
         {(data.wpPage.title === "Terms and Conditions" || data.wpPage.title === "Privacy Policy")  &&
           <div className={'terms pb-20 prose max-w-full'} dangerouslySetInnerHTML={{__html: data.wpPage.content}}></div>
         }
-        {data.wpPage.flexibleLayouts && 
+        {(data.wpPage.flexibleLayouts) && 
           <FlexibleLayouts location={location} flexibleLayouts={data.wpPage.flexibleLayouts} />
         }
       </>

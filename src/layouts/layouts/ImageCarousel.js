@@ -50,10 +50,10 @@ const ImageCarousel = props => {
                         <SplideTrack>
                           {slides.map((slide, index) => {
                             const image = (slide.image.localFile.ext === ".svg") 
-                            ? <img key={slide.image.sourceUrl} className={`w-full object-contain`} src={slide.image.sourceUrl} alt={slide.image.altText}/>
-                            : <GatsbyImage key={slide.image.sourceUrl} className={`w-full`} objectFit="contain" image={slide.image.localFile.childImageSharp.gatsbyImageData} alt={slide.image.altText} loading={`eager`} /> ;
+                            ? <img className={`w-full object-contain`} src={slide.image.sourceUrl} alt={slide.image.altText}/>
+                            : <GatsbyImage className={`w-full`} objectFit="contain" image={slide.image.localFile.childImageSharp.gatsbyImageData} alt={slide.image.altText} loading={`eager`} /> ;
                             return(
-                              <SplideSlide>
+                              <SplideSlide key={slide.image.sourceUrl}>
                                 {image}                       
                               </SplideSlide>
                             )

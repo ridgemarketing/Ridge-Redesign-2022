@@ -10,14 +10,14 @@ const IconCard = (props) => {
     let marginClasses   = `ml-6 `;
     let stacked = ` `;
     
-    // if (props.orientation == `stacked`) {
+    // if (props.orientation === `stacked`) {
     //     stacked = 'flex-col ';
     //     marginClasses = ` `;
     // }
     if (props.twoCol){
         wrapperClasses = `flex w-full md:w-[48%] mb-12 md:mb-16 lg:mb-32`;
     }
-    if(props.headingSize == `large`){
+    if(props.headingSize === `large`){
         headingSize = theme.text['H5'];
     }
 

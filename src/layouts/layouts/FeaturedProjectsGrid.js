@@ -102,16 +102,16 @@ const FeaturedProjectsGrid = (props) => {
 
     useEffect(() => {
       if(parameter1){
-        if(parameter1 == 'video'){
+        if(parameter1 === 'video'){
           handleFilterChange('Video');
         }
-        if(parameter1 == 'websites'){
+        if(parameter1 === 'websites'){
           handleFilterChange('Websites');
         }
-        if(parameter1 == 'branding'){
+        if(parameter1 === 'branding'){
           handleFilterChange('Branding');
         }
-        if(parameter1 == 'interactive'){
+        if(parameter1 === 'interactive'){
           handleFilterChange('Interactive');
         }
       }
@@ -120,7 +120,7 @@ const FeaturedProjectsGrid = (props) => {
 
     let containerGrid = 'default';
     const [websitesArray, setWebsitesArray] = useState([]);
-    if(context.filterState == 'Websites' || context.filterState == 'websites'){
+    if(context.filterState === 'Websites' || context.filterState === 'websites'){
       containerGrid = 'none';
       while(toRender.length){
         websitesArray.push(toRender.splice(0,3));
@@ -208,7 +208,7 @@ const FeaturedProjectsGrid = (props) => {
 
                         if (block.videoUrl !== null && block.lightboxImages !== null) {
                           return (
-                              <div className={`relative my-10 md:my-0 ${context.filterState == 'Video'&& 'h-min'}`}>
+                              <div className={`relative my-10 md:my-0 ${context.filterState === 'Video'&& 'h-min'}`}>
                                   <LightBox key={`FeaturedProjectItem__${block.guid}__${index}`} images={images} title={block.title} typeOfProject={context.filterState} caption={block.caption} link={block.websiteLink} video={video} />
                               </div>
                           )

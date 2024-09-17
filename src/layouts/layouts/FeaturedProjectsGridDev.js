@@ -180,13 +180,13 @@ const WebsiteBlock = ({block, index, contactLink, currentContext}) => {
   }
 
   let sidePin = 'center';
-  if(block.group.largeImage.desktopImageSidePin == 'Center'){
+  if(block.group.largeImage.desktopImageSidePin === 'Center'){
       sidePin = 'center'
   }
-  if(block.group.largeImage.desktopImageSidePin == 'Left'){
+  if(block.group.largeImage.desktopImageSidePin === 'Left'){
     sidePin = 'left'
   }
-  if(block.group.largeImage.desktopImageSidePin == 'Right'){
+  if(block.group.largeImage.desktopImageSidePin === 'Right'){
     sidePin = 'right'
   }
 
@@ -200,7 +200,7 @@ const WebsiteBlock = ({block, index, contactLink, currentContext}) => {
 
   return( 
     <>                                                                            
-        <article className={`flex md:hidden xl:flex flex-col md:flex-row ${rowReverse == true && 'xl:flex-row-reverse'} w-full h-min xl:h-[700px] overflow-hidden xl:px-12 max-w-[1280px] ml-auto mr-auto `} >
+        <article className={`flex md:hidden xl:flex flex-col md:flex-row ${rowReverse === true && 'xl:flex-row-reverse'} w-full h-min xl:h-[700px] overflow-hidden xl:px-12 max-w-[1280px] ml-auto mr-auto `} >
             <div className={`relative flex flex-col w-full md:w-1/3 xl:flex-row xl:w-[calc(100%-350px)] xl:h-[700px]`}>
               
               {block.group.largeImage.mobileImage && 
@@ -295,13 +295,13 @@ const BrandingBlock = ({block, index, contactLink, currentContext}) => {
   // console.log(smallImageBottomLightbox, smallImageTopLightbox, largeImageLightbox);
 
   let sidePin = 'center';
-  if(block.group.largeImage.desktopImageSidePin == 'Center'){
+  if(block.group.largeImage.desktopImageSidePin === 'Center'){
       sidePin = 'center'
   }
-  if(block.group.largeImage.desktopImageSidePin == 'Left'){
+  if(block.group.largeImage.desktopImageSidePin === 'Left'){
     sidePin = 'left'
   }
-  if(block.group.largeImage.desktopImageSidePin == 'Right'){
+  if(block.group.largeImage.desktopImageSidePin === 'Right'){
     sidePin = 'right'
   }
 
@@ -315,7 +315,7 @@ const BrandingBlock = ({block, index, contactLink, currentContext}) => {
 
   return( 
     <>                                                                            
-        <div className={`flex md:hidden xl:flex flex-col md:flex-row ${rowReverse == true && 'xl:flex-row-reverse'} w-full h-min xl:h-[700px] overflow-hidden xl:px-12 max-w-[1280px] ml-auto mr-auto `} >
+        <div className={`flex md:hidden xl:flex flex-col md:flex-row ${rowReverse === true && 'xl:flex-row-reverse'} w-full h-min xl:h-[700px] overflow-hidden xl:px-12 max-w-[1280px] ml-auto mr-auto `} >
             <div className={`relative flex flex-col w-full md:w-1/3 xl:flex-row xl:w-[calc(100%-350px)] xl:h-[700px]`}>
 
               {block.group.largeImage.mobileImage&& 
@@ -601,16 +601,16 @@ const FeaturedProjectsGridDev = (props) => {
 
     useEffect(() => {
       if(parameter1){
-        if(parameter1 == 'video' || parameter1 == 'videos'){
+        if(parameter1 === 'video' || parameter1 === 'videos'){
           handleFilterChange('Video');
         }
-        if(parameter1 == 'websites'){
+        if(parameter1 === 'websites'){
           handleFilterChange('Websites');
         }
-        if(parameter1 == 'branding'){
+        if(parameter1 === 'branding'){
           handleFilterChange('Branding');
         }
-        if(parameter1 == 'interactive'){
+        if(parameter1 === 'interactive'){
           handleFilterChange('Interactive');
         }
       }
@@ -618,7 +618,7 @@ const FeaturedProjectsGridDev = (props) => {
 
 
     let containerGrid = 'none';
-    if(context.filterState == 'Websites' || context.filterState == 'Branding'){
+    if(context.filterState === 'Websites' || context.filterState === 'Branding'){
         containerGrid = 'none';
     }
 
@@ -648,7 +648,7 @@ const FeaturedProjectsGridDev = (props) => {
                           })}
                     </div>
               }
-              {context.filterState == 'Video'  && 
+              {context.filterState === 'Video'  && 
                 <div className="overflow-hidden xl:px-12 max-w-[1280px] ml-auto mr-auto">
                     {videos && videos.map( (block) => {
                       var videoContent = block.category;
@@ -664,7 +664,7 @@ const FeaturedProjectsGridDev = (props) => {
                               {videoContent.videos.map( (vidGrid, index) =>{
                                  if (vidGrid.group.videoUrl !== null && vidGrid.group.image !== null) {
                                   return(
-                                    <div className={`relative my-10 md:my-0 ${context.filterState == 'Video'&& 'h-min'}`}>
+                                    <div className={`relative my-10 md:my-0 ${context.filterState === 'Video'&& 'h-min'}`}>
                                       
                                         <LightBox 
                                             key={`FeaturedProjectItem__${context.filterState}__${index}`} 
@@ -686,7 +686,7 @@ const FeaturedProjectsGridDev = (props) => {
                     })}
                 </div>
               }
-              {context.filterState == 'Interactive' &&
+              {context.filterState === 'Interactive' &&
                 <div className="overflow-hidden xl:px-12 max-w-[1280px] ml-auto mr-auto">
                     {interactives && interactives.map( (block) => {
                       var interactiveContent = block.category;
@@ -703,7 +703,7 @@ const FeaturedProjectsGridDev = (props) => {
                               {interactiveContent.videos.map( (interactiveGrid, index) =>{
                                  if (interactiveGrid.group.videoUrl !== null && interactiveGrid.group.image !== null) {
                                   return(
-                                    <div className={`relative my-10 md:my-0 ${context.filterState == 'Video'&& 'h-min'}`}>
+                                    <div className={`relative my-10 md:my-0 ${context.filterState === 'Video'&& 'h-min'}`}>
                                         <LightBox 
                                             key={`FeaturedProjectItem__${context.filterState}__${index}`} 
                                             images={interactiveGrid.group.image} 
