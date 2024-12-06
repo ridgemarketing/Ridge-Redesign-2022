@@ -1,6 +1,7 @@
 import React from "react";
 import { StaticImage } from "gatsby-plugin-image";
 import { theme } from "../../static/theme";
+import { Link } from "gatsby";
 
 const Wrapped2024 = () => {
 
@@ -32,6 +33,13 @@ const Wrapped2024 = () => {
                     <Playlists/>
                 </div>
             </article>
+            <Link to="/" className={`flex items-center text-white gap-4 relative justify-center my-10 font-stratos group ${theme.text.LINK} no-underline hover:underline`}>
+                GO TO RIDGE MARKETING WEBSITE 
+                <svg className="group-hover:translate-x-2 will-change-transform transition-all ease-in-out duration-300" width="19" height="13" viewBox="0 0 19 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.4795 0.58252C12.6846 0.418457 12.9717 0.418457 13.1768 0.58252L18.5908 5.99658C18.7549 6.20166 18.7549 6.48877 18.5908 6.69385L13.1768 12.1079C12.9717 12.272 12.6846 12.272 12.4795 12.1079L11.6592 11.2876C11.4951 11.0825 11.4951 10.7954 11.7002 10.5903L14.9814 7.39111H0.87207C0.584961 7.39111 0.379883 7.18604 0.379883 6.89893V5.75049C0.379883 5.50439 0.584961 5.2583 0.87207 5.2583H14.9814L11.7002 2.1001C11.4951 1.89502 11.4951 1.60791 11.6592 1.40283L12.4795 0.58252Z" fill="currentColor"/>
+                </svg>
+
+            </Link>
         </section>
     </>)
 }
@@ -48,11 +56,11 @@ const Playlists = () => {
     return(<>
         {logos.map((logo) => {
             return(
-            <div className="px-4 sm:px-10 py-10 flex justify-between items-center border-white border-solid border-t-[0.5px] text-white">
+            <div className="px-6 sm:px-10 py-10 flex justify-between items-center border-white border-solid border-t-[0.5px] text-white group">
                 <img src={logo} alt=""/>
                 <a href="#" target="blank" className={`font-stratos flex gap-4 items-center ${theme.text.P_STD}`}>
                     PLAY
-                    <svg width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <svg class="group-hover:translate-x-2 will-change-transform transition-all ease-in-out duration-300" width="12" height="13" viewBox="0 0 12 13" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path fill-rule="evenodd" clip-rule="evenodd" d="M0 12.8576L11.1022 6.42881L0 0V12.861V12.8576Z" fill="currentColor"/>
                     </svg>
                 </a>
