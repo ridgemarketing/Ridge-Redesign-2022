@@ -132,6 +132,14 @@ export default function Layout({ location, children }) {
         }
     `
 
+    if(location.pathname === '/wrapped_2024/'){
+        return (
+            <main id="mainContent" tabIndex={0} aria-label="Main Content">
+                {children}
+            </main>
+        )
+    }
+
     return (
         <SEOContext.Provider value={{ global: seo }}>
             <ThemeContext.Provider value={{

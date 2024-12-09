@@ -10,6 +10,7 @@ import { Container } from "../components/global/Wrappers"
 import CustomHeader from "../components/global/headerColor"
 import PortfolioHeader from "../layouts/layouts/PortfolioHeader"
 import { theme, ThemeContext } from "../static/theme"
+import Wrapped2024 from "../layouts/layouts/wrapped2024"
 
 // export const Head = ({data}) => (
 //   <>
@@ -59,6 +60,7 @@ export const Head = ({data}) => (
 )
 
 const WpPage = ({ data, location }) =>{
+
   let color = 'black';
   if(data.wpPage.uri === '/contact/' || data.wpPage.uri === `/terms-and-conditions/` || data.wpPage.uri === `/privacy-policy/`){
     color = 'white';
@@ -71,6 +73,15 @@ const WpPage = ({ data, location }) =>{
     context.current.updateAccentFunction(theme.colors.primary.accent);
     context.current.updateSecondaryFunction(theme.colors.secondary.accent);
   }, []);
+
+  if(data.wpPage.uri === '/wrapped_2024/'){
+    return (
+      <>
+        <Seo post={data.wpPage} />
+        <Wrapped2024/>
+      </>
+    )
+  }
 
   if(data.wpPage.isPostsPage === true){
     return (
