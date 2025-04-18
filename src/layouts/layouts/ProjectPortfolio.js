@@ -126,10 +126,10 @@ const ProjectPortfolio = (props) => {
           {content.settings.backgroundColor && 
             <div className={`absolute w-full`} style={{backgroundColor: content.settings.backgroundColor, height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }}></div>
           }
-          {content.settings.backgroundImage.localFile.ext == '.svg' && 
+          {content.settings?.backgroundImage?.localFile.ext == '.svg' && 
             <img src={content.settings.backgroundImage.sourceUrl} className={`object-cover absolute w-full`} style={{height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }} alt={``}/>
           }
-          {content.settings.backgroundImage.localFile.ext !== '.svg' && bgImage && 
+          {content.settings?.backgroundImage?.localFile.ext !== '.svg' && bgImage && 
               <GatsbyImage image={bgImage} objectFit={`cover`} className={`absolute w-full`} style={{height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }} alt={``} />
           }
 
