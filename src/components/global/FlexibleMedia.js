@@ -6,14 +6,14 @@ import Vimeo from "@u-wave/react-vimeo"
 
 const FlexibleMedia = (props) => {
     
-    const data  = props.data
-    const type  = data.type
-    let image   = false
-    const lottie  = (type === `lottie`) ? data.lottie : false;
-    const video   = (type === `video`) ? data.video : false;
+    const data      = props.data
+    const type      = data.type
+    let image       = false
+    const lottie    = (type === `lottie`) ? data.lottie : false;
+    const video     = (type === `video`) ? data.video : false;
     const videoType = (type === 'video') ? data.videoSource : null;
     const thumbnail = (type === 'video') ? getImage(video.thumbnailImage.localFile) : false;
-    const ratio = props.paddingRatio ? props.paddingRatio : '56.25%';
+    const ratio     = props.paddingRatio ? props.paddingRatio : '56.25%';
 
     const playVideo = () => {
         setPauseVideo(false)

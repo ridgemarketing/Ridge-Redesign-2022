@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import { Container, Section } from '../../components/global/Wrappers'
 import { theme } from "../../static/theme"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { Play } from "../../components/svg"
 import Vimeo from '@u-wave/react-vimeo';
 
 const VideoPlayer = (props) => {
@@ -12,6 +13,14 @@ const VideoPlayer = (props) => {
   let videos          = content.videos;
 
   const [player, setPlayer] = useState(videos[0]);
+
+  const playVideo = () => {
+      setPauseVideo(false)
+      setShowVideo(true)
+  }
+
+  const [pauseVideo, setPauseVideo] = useState(true)
+  const [showVideo, setShowVideo] = useState(false)
 
   // const swapVideos = (video, index) => {
   //   const newThumbnail = player;
@@ -29,17 +38,24 @@ const VideoPlayer = (props) => {
         {player &&
           <div>
             <div className={`relative pt-[56.25%]`}>
-              {player.placeholder &&
-                <GatsbyImage className={`absolute top-0 left-0 w-full h-full object-cover`} image={getImage(player.placeholder.localFile)} />
+              {player.placeholder && !showVideo &&
+                <GatsbyImage className={`absolute top-0 left-0 w-full h-full object-cover z-10`} image={getImage(player.placeholder.localFile)} />
               }
               <Vimeo
                 video={player.source}
+                paused={pauseVideo}
                 muted
                 responsive
                 autoplay={player.autoplay || false}
                 loop={player.autoplay || false}
                 className={`absolute top-0 left-0 w-full h-full object-cover`}
+                onPause={() => setPauseVideo(true)}
               />
+              {pauseVideo && !player.autoplay &&
+                  <div className={`absolute top-0 left-0 w-full h-full object-cover z-30 flex flex-col items-center justify-center text-rm-white`}>
+                      <button onClick={() => playVideo()} className={`relative rounded-full shadow-none transition-shadow hover:shadow-block`}><Play /></button>
+                  </div>
+              }
             </div>
           </div>
         }

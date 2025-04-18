@@ -126,8 +126,11 @@ const ProjectPortfolio = (props) => {
           {content.settings.backgroundColor && 
             <div className={`absolute w-full`} style={{backgroundColor: content.settings.backgroundColor, height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }}></div>
           }
-          {bgImage && 
-            <GatsbyImage image={bgImage} objectFit={`cover`} className={`absolute w-full`} style={{height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }} alt={``} />
+          {content.settings.backgroundImage.localFile.ext == '.svg' && 
+            <img src={content.settings.backgroundImage.sourceUrl} className={`object-cover absolute w-full`} style={{height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }} alt={``}/>
+          }
+          {content.settings.backgroundImage.localFile.ext !== '.svg' && bgImage && 
+              <GatsbyImage image={bgImage} objectFit={`cover`} className={`absolute w-full`} style={{height: bgHeight + `px`, top: startRef.current ? startRef.current.offsetTop : `auto` }} alt={``} />
           }
 
           <Container>
@@ -186,7 +189,9 @@ export const query = graphql`
             settings {
               backgroundColor
               backgroundImage {
+                sourceUrl
                 localFile {
+                   ext
                   childImageSharp {
                     gatsbyImageData
                   }
@@ -248,8 +253,10 @@ export const serviceQuery = graphql`
             }
             settings {
               backgroundColor
-              backgroundImage {
+               backgroundImage {
+                sourceUrl
                 localFile {
+                  ext
                   childImageSharp {
                     gatsbyImageData
                   }
@@ -318,7 +325,9 @@ export const projectQuery = graphql`
             settings {
               backgroundColor
               backgroundImage {
+                sourceUrl
                 localFile {
+                  ext
                   childImageSharp {
                     gatsbyImageData (quality: 99, formats: [AUTO, WEBP, AVIF])
                   }

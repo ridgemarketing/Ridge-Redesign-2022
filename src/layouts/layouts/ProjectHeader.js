@@ -106,7 +106,10 @@ const ProjectHeader = (props) => {
           {content.backgroundColor &&
               <div className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} style={{backgroundColor: content.backgroundColor, maxHeight: `calc(100% - ${maxHeight}px)`}}></div>
           }
-          {bgImage && 
+          {content.backgroundImage?.localFile.ext == '.svg' && 
+            <img src={content.backgroundImage.sourceUrl} style={{maxHeight: `calc(100% - ${maxHeight}px)`}} className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`}/>
+          }
+          {!(content.backgroundImage?.localFile.ext == '.svg') && bgImage && 
               <GatsbyImage loading={`eager`} alt={``} style={{maxHeight: `calc(100% - ${maxHeight}px)`}} className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} image={bgImage} />
           }
           

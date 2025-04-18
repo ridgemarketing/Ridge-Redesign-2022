@@ -5,10 +5,10 @@ import { theme } from "../../static/theme"
 import FlexibleMedia from "../../components/global/FlexibleMedia"
 
 const MediaBlocks = (props) => {
-  const content   = props.layoutData.layoutContent;
-  const settings  = props.layoutData.layoutSettings;
+  const content     = props.layoutData.layoutContent;
+  const settings    = props.layoutData.layoutSettings;
 
-  const media     = content.blocks
+  const media       = content.blocks
   const mediaExists = media && (media[0].componentFlexibleMedia.image || media[0].componentFlexibleMedia.video.videoUrl);
   // const columns = (content.columns === 2) ? `lg:w-[calc(50%-5rem)]` : `lg:w-[calc(33%-4rem)]`;
   const columns = (content.columns === 1) ? `mt-14 block` : `lg:grid grid-cols-${content.columns} gap-x-6  mt-14`;
