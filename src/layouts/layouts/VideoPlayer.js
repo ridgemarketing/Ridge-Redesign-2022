@@ -44,7 +44,7 @@ const VideoPlayer = (props) => {
               <Vimeo
                 video={player.source}
                 paused={pauseVideo}
-                muted
+                muted={player.autoplay ?? false}
                 responsive
                 autoplay={player.autoplay || false}
                 loop={player.autoplay || false}
@@ -57,6 +57,9 @@ const VideoPlayer = (props) => {
                   </div>
               }
             </div>
+            {player.caption &&
+                <p className={`mt-2 ${theme.text.P_STD} max-w-[1120px] mx-auto`}>{player.caption}</p>
+              }
           </div>
         }
         {videos && videos.length > 1 &&
@@ -106,6 +109,7 @@ export const pageQuery = graphql`
                   }
                 }
               }
+              caption
               source
               autoplay
             }
@@ -147,6 +151,7 @@ export const serviceQuery = graphql`
                   }
                 }
               }
+              caption
               source
               autoplay
             }
@@ -188,6 +193,7 @@ export const projectQuery = graphql`
                   }
                 }
               }
+              caption
               source
               autoplay
             }

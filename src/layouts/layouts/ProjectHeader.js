@@ -103,8 +103,11 @@ const ProjectHeader = (props) => {
 
     return (
       <section className={`relative text-${content.textTheme}`} style={{backgroundColor: topColor ? content.backgroundColor : 'transparent'}}>
-          {content.backgroundColor &&
+          {content.backgroundColor && ( videoOverhang || imageOverhang ) && 
               <div className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} style={{backgroundColor: content.backgroundColor, maxHeight: `calc(100% - ${maxHeight}px)`}}></div>
+          }
+          {content.backgroundColor && ( !(videoOverhang) && !(imageOverhang) ) && 
+              <div className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} style={{backgroundColor: content.backgroundColor}}></div>
           }
           {content.backgroundImage?.localFile.ext == '.svg' && 
             <img src={content.backgroundImage.sourceUrl} style={{maxHeight: `calc(100% - ${maxHeight}px)`}} className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`}/>

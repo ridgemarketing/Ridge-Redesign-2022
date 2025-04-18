@@ -274,3 +274,7 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 .barn-floated--text .quarterContent {
     @apply items-center
 }
+
+.bg-F1F6F8{
+    @apply bg-[#F1F6F8];
+}

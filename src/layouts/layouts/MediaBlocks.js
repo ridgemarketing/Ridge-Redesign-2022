@@ -16,7 +16,7 @@ const MediaBlocks = (props) => {
       <Section settings={settings}>
         <Container>
           {content.heading &&
-            <h2 className={`text-center ${theme.text.H2}`}>{content.heading}</h2>
+            <h2 className={`${ content.textAlign ?  `text-${content.textAlign}` : `text-center` } ${theme.text.H2}`}>{content.heading}</h2>
           }
           {media && mediaExists &&
             <div className={columns}> 
@@ -43,10 +43,12 @@ export const query = graphql`
         fieldGroupName
         layoutMediaBlocks {
           layoutContent {
+                        textAlign
             blocks {
               heading
               componentFlexibleMedia {
                 lottie
+                caption
                 type
                 videoSource
                 video {
@@ -94,10 +96,12 @@ export const serviceQuery = graphql`
         fieldGroupName
         layoutMediaBlocks {
           layoutContent {
+                        textAlign
             blocks {
               heading
               componentFlexibleMedia {
                 lottie
+                caption
                 type
                 videoSource
                 video {
@@ -146,10 +150,12 @@ export const projectQuery = graphql`
         fieldGroupName
         layoutMediaBlocks {
           layoutContent {
+                        textAlign
             blocks {
               heading
               componentFlexibleMedia {
                 lottie
+                caption
                 type
                 videoSource
                 video {
