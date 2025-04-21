@@ -118,7 +118,7 @@ export const serviceQuery = graphql`
     }
   }
 `
-
+//         ...ImagesTopAlignedTextProject
 export const projectQuery = graphql`
   fragment FlexibleLayoutsProject on WpProject {
     flexibleLayouts {
@@ -130,6 +130,7 @@ export const projectQuery = graphql`
         ...FlexibleProjectBlocksProject
         ...ProjectBlocksProject
         ...VideoPlayerProject
+        ...ImagesTopAlignedTextProject
         ...FullWidthImageProject
         ...FullWidthImageTextProject
         ...IconTextBoxesProject

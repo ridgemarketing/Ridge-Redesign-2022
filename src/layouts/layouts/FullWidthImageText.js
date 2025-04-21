@@ -47,16 +47,16 @@ const FullWidthImageText = (props) => {
     return (
       <Section settings={settings}>
         <Container container={settings.containerWidth}>
-          <div className={`text-center`}>
+          <div className={`${settings.classes.includes('text-left') ? 'text-left' : `text-center`}`}>
             { content.heading && 
-                <h2 dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`${theme.text.H2} ${headerClasses} ${textColor} px-3`}></h2>
+                <h2 dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`${theme.text.H2} ${headerClasses} ${textColor} max-w-[1120px] mx-auto `}></h2>
             }
             {
             content.alignment === 'standard' && content.body && <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`mt-6 ${theme.text.P_STD} max-w-[1120px] mx-auto ${textColor}`}></p> 
             }
 
             {image &&
-              <div className={`mx-auto ${imageWrapperClasses}`}>
+              <div className={`mx-auto max-w-[1120px] ${imageWrapperClasses}`}>
                 <div className={imageClasses}>{image}</div>
                 {mobile}
               </div>

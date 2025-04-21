@@ -28,6 +28,7 @@ import CtaForm from "./layouts/CtaForm"
 import LineBreak from "./layouts/LineBreak"
 import ProjectPortfolio from "./layouts/ProjectPortfolio"
 import VideoPlayer from "./layouts/VideoPlayer"
+import ImagesTopAlignedText from "./layouts/ImagesTopAlignedText"
 import MediaBlocks from "./layouts/MediaBlocks"
 import TeamGrid from "./layouts/TeamGrid"
 import ResultsTextBlock from "./layouts/ResultsTextBlock"
@@ -77,6 +78,7 @@ Layouts['CareersForm']                      = CareersForm;
 Layouts['LineBreak']                        = LineBreak;
 Layouts['ProjectPortfolio']                 = ProjectPortfolio;
 Layouts['VideoPlayer']                      = VideoPlayer;
+Layouts['ImagesTopAlignedText']             = ImagesTopAlignedText;
 Layouts['MediaBlocks']                      = MediaBlocks;
 Layouts['TeamGrid']                         = TeamGrid;
 Layouts['ResultsTextBlock']                 = ResultsTextBlock;
