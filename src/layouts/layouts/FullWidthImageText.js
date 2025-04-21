@@ -47,7 +47,7 @@ const FullWidthImageText = (props) => {
     return (
       <Section settings={settings}>
         <Container container={settings.containerWidth}>
-          <div className={`${settings.classes.includes('text-left') ? 'text-left' : `text-center`}`}>
+          <div className={`${settings?.classes?.includes('text-left') ? 'text-left' : `text-center`}`}>
             { content.heading && 
                 <h2 dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`${theme.text.H2} ${headerClasses} ${textColor} max-w-[1120px] mx-auto `}></h2>
             }
