@@ -21,11 +21,11 @@ const TextVideoOverhang = (props) => {
             </div>
                 <div className={'py-20 max-w-[1020px] mx-auto -mt-[180px] lg:-mt-[360px]'}> 
                   <div className={'w-[84%] relative mx-auto'}> {/* bg-[#383737] */}
-                      <img className={'relative mx-auto z-10'} alt={"laptop screen"}src={"https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/MacBookPro-Laptop-Top-2.svg"} />
+                      <img className={'relative mx-auto z-10'} alt={"laptop screen"}src={"https://cms.ridgemarketing.com/wp-content/uploads/2022/12/MacBookPro-Laptop-Top-2.svg"} />
                       {video && <video className={'mx-auto absolute top-0 left-0 w-full h-full object-cover p-[1%]'} autoPlay loop muted playsInline src={video}></video> }
                   </div>
                   <div className={'-mt-px z-20 relative'}>
-                      <img alt={"laptop keyboad"} src={"https://rm2022dev.wpengine.com/wp-content/uploads/2022/12/MacBookPro-Laptop-Bottom.svg"} />
+                      <img alt={"laptop keyboad"} src={"https://cms.ridgemarketing.com/wp-content/uploads/2022/12/MacBookPro-Laptop-Bottom.svg"} />
                   </div>
                 </div>
             </Container>
