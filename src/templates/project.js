@@ -1,6 +1,6 @@
 import React from "react"
 import { graphql } from "gatsby"
-import Seo from 'gatsby-plugin-wpgraphql-seo'
+// import Seo from 'gatsby-plugin-wpgraphql-seo'
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import ProjectHeader from "../layouts/layouts/ProjectHeader"
 import PostNav from "../components/PostNav"
@@ -60,7 +60,7 @@ const WpProject = ({ data, pageContext }) => {
   }
   return (
     <>
-        <Seo post={data?.wpProject} />
+        {/* <Seo post={data?.wpProject} /> */}
         {data?.wpProject?.projectHeader && 
             <ProjectHeader content={data?.wpProject?.projectHeader} info={data?.wpProject?.projectInformation} />
         }
