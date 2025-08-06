@@ -160,6 +160,13 @@ const ProjectHeader = (props) => {
                           </div>
                       }
                   </div>
+                {content.postBodyHeading && 
+                  <h2 class="text-left mb-4 mt-8">
+                    <span class="font-stratos uppercase font-bold text-50px leading-H2-H3 block pt-[30px] -mb-[20px">
+                      {content.postBodyHeading}
+                    </span>
+                  </h2>
+                }
               </div>
           </Container>
 
@@ -190,6 +197,7 @@ export const query = graphql`
           textTheme
           body
           heading
+          postBodyHeading
           backgroundImage {
             sourceUrl
             localFile {
