@@ -18,12 +18,12 @@ const FeaturedProjectsCarousel = (props) => {
     const [slideInteraction, setInteraction] = useState(false);
     //let dataTwo = slide + 1;
 
-    const nextSlide = () => {
+       const nextSlide = () => {
         let i = slide;
         //dataTwo = slide + 1;
         if (i === (slides.length - 1)) {
             setSlide(0);
-            setData(slides[slides.length - 1]);
+            setData(slides[0]);
         } else {
             setSlide(i + 1);
             setData(slides[i + 1]);
@@ -36,7 +36,7 @@ const FeaturedProjectsCarousel = (props) => {
         let i = slide
         if (i === 0) { 
             setSlide(slides.length - 1);
-            setData(slides[slides.length - 1]);            
+            setData(slides[slides.length - 1]); 
         } else {
             setSlide(i - 1);
             setData(slides[i - 1]);
