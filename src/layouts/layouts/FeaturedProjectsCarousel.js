@@ -9,10 +9,10 @@ import { ArrowTallLeftBlack } from "../../static/arrow-tall-left-black"
 
 const FeaturedProjectsCarousel = (props) => {
 
-    const content = props.layoutData.layoutContent;
-    const settings = props.layoutData.layoutSettings;
-    const slides = content.featuredProjects;
-    let headingArr = content.heading.split(' ');
+    const content     = props.layoutData.layoutContent;
+    const settings    = props.layoutData.layoutSettings;
+    const slides      = content.featuredProjects;
+    let headingArr    = content.heading.split(' ');
     const [slide, setSlide] = useState(0);
     const [data, setData] = useState(slides[0]);
     const [slideInteraction, setInteraction] = useState(false);
@@ -23,7 +23,7 @@ const FeaturedProjectsCarousel = (props) => {
         //dataTwo = slide + 1;
         if (i === (slides.length - 1)) {
             setSlide(0);
-            setData(slides[slides.length - 1]);
+            setData(slides[0]);
         } else {
             setSlide(i + 1);
             setData(slides[i + 1]);
@@ -36,7 +36,7 @@ const FeaturedProjectsCarousel = (props) => {
         let i = slide
         if (i === 0) { 
             setSlide(slides.length - 1);
-            setData(slides[slides.length - 1]);            
+            setData(slides[slides.length - 1]); 
         } else {
             setSlide(i - 1);
             setData(slides[i - 1]);
