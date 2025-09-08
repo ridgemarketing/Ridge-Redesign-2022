@@ -117,7 +117,7 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
                 <>
                     {/* rollover desktop */}
                     <div className="hidden lg:flex flex-col justify-center items-center absolute opacity-0 hover:opacity-100 bg-opacity-80 backdrop-blur-sm bg-white w-[calc(100%-18px)] h-[calc(100%-18px)] top-[9px] left-[9px] transition-opacity duration-500">
-                        <h2 className="text-rm-black font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-[45px]">{title}</h2>
+                        <h2 className="text-rm-black font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-[45px] text-center">{title}</h2>
                             {images.length > 1 &&
                                 <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`${theme.button['BASE_STYLING']} ${theme.button['SOLID_GREEN_HOVER_DARK']}`}>
                                     VIEW WORK
