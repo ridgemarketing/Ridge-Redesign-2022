@@ -47,7 +47,8 @@ const WebsiteBrandingImgLinkLargeMobile = ({block, link, image, sidePin}) => {
 }
 
 const WebsiteBrandingImgSmallMobile = ({block, link, image, sidePin}) => {
-  return(
+  return(<>
+    {link?.url &&
       <a className="block h-max" href={link.url} target={link.target}>
         <GatsbyImage 
             image={image.localFile.childImageSharp.gatsbyImageData} 
@@ -55,7 +56,15 @@ const WebsiteBrandingImgSmallMobile = ({block, link, image, sidePin}) => {
             objectPosition={`${sidePin}`}
             className={`w-full h-[100vw] xl:h-[350px] z-0 border-solid border-black border-[9px]`} />
       </a>
-  )
+    } 
+    {!link && 
+      <GatsbyImage 
+        image={image.localFile.childImageSharp.gatsbyImageData} 
+        alt={``} 
+        objectPosition={`${sidePin}`}
+        className={`w-full h-[100vw] xl:h-[350px] z-0 border-solid border-black border-[9px]`} />
+    }
+  </>)
 }
 
 const WebsiteBrandingTitleAndLink = ({block, link, title}) => {
@@ -63,7 +72,7 @@ const WebsiteBrandingTitleAndLink = ({block, link, title}) => {
     <>
       {/* rollover desktop */}
       <div className="hidden lg:flex flex-col justify-center items-center absolute opacity-0 hover:opacity-100 bg-opacity-80 backdrop-blur-sm bg-white w-[calc(100%-18px)] h-[calc(100%-18px)] top-[9px] left-[9px] transition-opacity duration-500">
-        <h2 className="text-rm-black font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-[45px]">{title}</h2>
+        <h2 className={`text-rm-black font-stratos uppercase text-[1.75rem] leading-6 font-bold ${link && 'mb-[45px]'} text-center`}>{title}</h2>
         {link.url &&
             <FlexibleLink classes={`${theme.button['BASE_STYLING']} ${theme.button['SOLID_GREEN_HOVER_DARK']} `} link={link}/>
         }
@@ -71,7 +80,7 @@ const WebsiteBrandingTitleAndLink = ({block, link, title}) => {
 
       {/* text link mobile */}
       <div className="block lg:hidden bg-black p-6 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
-          <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{title}</h2>
+          <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2 text-center">{title}</h2>
           {link.url &&
               <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={link}/>
           }
@@ -81,23 +90,25 @@ const WebsiteBrandingTitleAndLink = ({block, link, title}) => {
 }
 
 const WebsiteTwoColImage = ({block, sidePin, image, link, index}) =>{
-  return(
-      <a href={link.url} target={link.target}>
+  return(<>
+      <a href={link ? link?.url : false} target={link ? link?.target : false}>
         <GatsbyImage 
           image={image} 
           alt={``}
           bjectPosition={`${sidePin}`}
           className={`w-full z-0 h-[calc(50vw)] border-solid border-black border-[9px]`} />
       </a>
-  )
+  </>)
 }
 
 const WebsiteTwoColLink = ({link, title}) =>{
   return(
     <div className="bg-black p-6">
-      <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{title}</h2>
-        <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} 
-      link={link} />
+      <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2 text-center">{title}</h2>
+      {link.url && 
+            <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} 
+            link={link} />
+      }
     </div>
   )
 }
@@ -125,15 +136,15 @@ const WebsiteTwoCol = ({block, sidePin}) =>{
       <div className="relative hidden md:block xl:hidden max-w-[50%]"> 
         {block.group.smallImageTop.image && !block.group.smallImageTop.mobileImage &&
             <WebsiteTwoColImage 
-                sidePin={sidePin} 
-                link={block.group.smallImageTop.link}
-                image={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} /> 
+                sidePin ={sidePin} 
+                link    ={block.group.smallImageTop.link}
+                image   ={block.group.smallImageTop.image.localFile.childImageSharp.gatsbyImageData} /> 
         }
         {block.group.smallImageTop.mobileImage &&
             <WebsiteTwoColImage 
-                sidePin={sidePin} 
-                link={block.group.smallImageTop.link}
-                image={block.group.smallImageTop.mobileImage.localFile.childImageSharp.gatsbyImageData} /> 
+                sidePin ={sidePin} 
+                link    ={block.group.smallImageTop.link}
+                image   ={block.group.smallImageTop.mobileImage.localFile.childImageSharp.gatsbyImageData} /> 
         }
         {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
             <WebsiteTwoColLink title={block.group.smallImageTop.title} link={block.group.smallImageTop.link} />
@@ -142,18 +153,18 @@ const WebsiteTwoCol = ({block, sidePin}) =>{
       <div className="relative hidden md:block xl:hidden max-w-[50%]">
         {block.group.smallImageBottom.image && !block.group.smallImageBottom.mobileImage &&
             <WebsiteTwoColImage 
-                sidePin={sidePin} 
-                link={block.group.smallImageBottom.link}
-                image={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} /> 
+                sidePin ={sidePin} 
+                link    ={block.group.smallImageBottom.link}
+                image   ={block.group.smallImageBottom.image.localFile.childImageSharp.gatsbyImageData} /> 
         }
         {block.group.smallImageBottom.mobileImage&&
             <WebsiteTwoColImage 
-                sidePin={sidePin} 
-                link={block.group.smallImageBottom.link}
-                image={block.group.smallImageBottom.mobileImage.localFile.childImageSharp.gatsbyImageData} /> 
+              sidePin={sidePin} 
+              link={block.group.smallImageBottom.link}
+              image={block.group.smallImageBottom.mobileImage.localFile.childImageSharp.gatsbyImageData} /> 
         }
-        {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
-          <WebsiteTwoColLink title={block.group.smallImageBottom.title} link={block.group.smallImageBottom.link} />
+        {block?.group?.smallImageBottom?.link?.url && block.group.smallImageBottom.title &&
+            <WebsiteTwoColLink title={block.group.smallImageBottom.title} link={block.group.smallImageBottom.link} />
         } 
       </div>
     </>
@@ -240,10 +251,10 @@ const WebsiteBlock = ({block, index, contactLink, currentContext}) => {
                             sidePin         ={sidePin} />
                       }
 
-                      {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
+                      {block.group.smallImageTop.title &&
                           <WebsiteBrandingTitleAndLink 
-                              title         ={block.group.smallImageTop.title}
-                              link          ={block.group.smallImageTop.link}
+                              title         ={block.group.smallImageTop.title ?? false}
+                              link          ={block.group.smallImageTop.link ?? false}
                               block         ={block} />
                       }
                   </div>
@@ -253,16 +264,16 @@ const WebsiteBlock = ({block, index, contactLink, currentContext}) => {
 
                       {!block.group.smallImageBottom.mobileImage && 
                           <WebsiteBrandingImgSmallMobile 
-                            link            ={block.group.smallImageBottom.link} 
+                            link            ={block.group.smallImageBottom.link ?? false} 
                             image           ={block.group.smallImageBottom.image} 
                             // mobileImage     ={block.group.smallImageBottom.mobileImage} 
                             block           ={block} 
                             sidePin         ={sidePin} />
                       }
-                      {block.group.smallImageBottom.link.url && block.group.smallImageBottom.title &&
-                          <WebsiteBrandingTitleAndLink 
-                          title         ={block.group.smallImageBottom.title}
-                          link          ={block.group.smallImageBottom.link}
+                      {block?.group?.smallImageBottom?.title &&
+                        <WebsiteBrandingTitleAndLink 
+                          title         ={block.group.smallImageBottom.title ?? false}
+                          link          ={block.group.smallImageBottom.link ?? false }
                           block         ={block} />
                       }
                   </div>    
@@ -398,11 +409,13 @@ const BrandingBlock = ({block, index, contactLink, currentContext}) => {
                   }
                   {!block.group.smallImageBottom.image &&
                     <div className="relative hidden xl:flex flex-col items-center justify-center bg-[#24B6BF] xl:h-[350px] border-solid border-black border-[9px]">
-                      <h2 className="text-white text-center font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">Want to See your new site here?</h2>
+                      <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2 text-center">Want to See your new site here?</h2>
+                      {contactLink?.url &&
                       <FlexibleLink
                           link={contactLink}
                           classes={theme.button.BASE_STYLING + theme.text_links.STD + theme.button.SOLID_BLACK_HOVER_DARK + ' text-[18px] relative z-0'}
                           />
+                      }
                     </div>    
                   }
             </div> 
