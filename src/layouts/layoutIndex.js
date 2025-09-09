@@ -11,6 +11,7 @@ import LogoCloud from "./layouts/LogoCloud"
 import Quotes from "./layouts/Quotes"
 import PostCards from "./layouts/PostCards"
 import Results from "./layouts/Results"
+import ResultsImage from "./layouts/ResultsImage"
 import ResultsMixed from "./layouts/ResultsMixed"
 import TextBlock from "./layouts/TextBlock"
 // import ThreeColIconsText from "./layouts/_ThreeColIconsText"
@@ -61,6 +62,7 @@ Layouts['VerticalSlider']                   = VerticalSlider;
 Layouts['Quotes']                           = Quotes;
 Layouts['PostCards']                        = PostCards;
 Layouts['Results']                          = Results;
+Layouts['ResultsImage']                     = ResultsImage;
 Layouts['ResultsMix']                       = ResultsMixed; //component name is different in backend, causing this change to be necessary to match up
 Layouts['TextBlock']                        = TextBlock;
 // Layouts['ThreeColIconsText']             = ThreeColIconsText;

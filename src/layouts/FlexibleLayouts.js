@@ -4,20 +4,21 @@ import Layouts from './layoutIndex';
 
 const FlexibleLayouts = (props) => {
 
-  let flexLayouts = props.flexibleLayouts.layouts;
-  const layoutsArray = [];
+  let flexLayouts     = props.flexibleLayouts.layouts;
+  const layoutsArray  = [];
 
   flexLayouts && flexLayouts.map((res, index) => {
       if (Object.keys(res).length > 0) {
-        let subString = res.fieldGroupName.split('_').pop();
-        let layoutArrTitle = `layout${subString}`;
+        let subString       = res.fieldGroupName.split('_').pop();
+        let layoutArrTitle  = `layout${subString}`;
 
         let layoutProps;
+        
         if (Layouts[subString]) {
             layoutProps = {
-                layoutContent: res[layoutArrTitle].layoutContent || {},
-                layoutSettings: res[layoutArrTitle].layoutSettings  || {},
-                location: props.location
+                layoutContent   : res[layoutArrTitle].layoutContent || {},
+                layoutSettings  : res[layoutArrTitle].layoutSettings  || {},
+                location        : props.location
             }
         }
         
@@ -56,6 +57,7 @@ export const pageQuery = graphql`
         ...FeaturedProjectsCarouselPage
         ...QuotesPage
         ...ResultsPage
+        ...ResultsImagePage
         ...ResultsMixPage
         ...LogoCloudPage
         ...PostCardsPage
@@ -99,6 +101,7 @@ export const serviceQuery = graphql`
         ...FeaturedProjectsCarouselService 
         ...QuotesService
         ...ResultsService
+        ...ResultsImageService
         ...ResultsMixService
         ...LogoCloudService
         ...PostCardsService
@@ -137,6 +140,7 @@ export const projectQuery = graphql`
         ...MediaBlocksProject
         ...QuotesProject
         ...ResultsProject
+        ...ResultsImageProject
         ...ResultsMixProject
         ...LogoCloudProject
         ...PostCardsProject
