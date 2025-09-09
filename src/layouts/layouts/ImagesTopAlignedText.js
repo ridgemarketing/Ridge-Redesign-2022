@@ -5,7 +5,6 @@ import { theme } from "../../static/theme"
 import { GatsbyImage } from 'gatsby-plugin-image'
 import Parser from "../../components/global/Parser"
 
-
 const ImagesTopAlignedText = (props) => {
     const content   = props.layoutData.layoutContent || {};
     const settings  = props.layoutData.layoutSettings || {};
@@ -19,19 +18,20 @@ const ImagesTopAlignedText = (props) => {
                 {content?.images && 
                     <div className="max-w-[1120px] mx-auto mt-7 flex flex-col gap-6 lg:gap-20">
                         {content.images?.map((image) => {
+                            const headingSize =  image.headingSize !== 'heading' ? `${theme.text.P_BLD}` : `${theme.text.H2}`
                             return(
                                 <div className="relative">
                                     {image.image.localFile.ext !== '.svg' &&
                                         <GatsbyImage 
-                                            image={image.image.localFile.childImageSharp.gatsbyImageData} 
-                                            alt={image.image.alt}
-                                            className={``}
+                                            image       ={image.image.localFile.childImageSharp.gatsbyImageData} 
+                                            alt         ={image.image.alt}
+                                            className   ={``}
                                         />
                                     }
                                     { (image.text || image.body) &&
                                         <section className=" mt-6 lg:mt-0 lg:absolute top-0 right-0 lg:max-w-[285px] xl:max-w-[350px]">
                                             {image.text &&
-                                                <h3 className={`${theme.text.P_BLD} mb-6`}>{image.text}</h3>
+                                                <h3 className={`${headingSize} mb-6`}>{image.text}</h3>
                                             }
                                             {image.body &&
                                                 <p className={`${theme.text.P_STD}`}>{image.body}</p>
@@ -68,6 +68,7 @@ export const projectQuery = graphql`
                     altText
                 }
                 text
+                headingSize
                 body
             }
           }

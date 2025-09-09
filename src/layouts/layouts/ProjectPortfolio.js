@@ -116,7 +116,7 @@ const ProjectPortfolio = (props) => {
       <Section classes={`relative`} settings={settings}>
         <Container>
             {content.heading &&
-              <h2 className={`mb-8 text-center ${textAlign} ${theme.text.H2}`}>{content.heading}</h2>
+              <h2 className={`mb-8 ${settings?.classes?.includes('text-left') ? 'text-left' : 'text-center'} ${textAlign} ${theme.text.H2}`}>{content.heading}</h2>
             }
             {content.body && 
               <p className={`mb-12 text-center lg:text-left ${theme.text.P_STD}`}>{content.body}</p>
