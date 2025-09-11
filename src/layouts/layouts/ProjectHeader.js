@@ -56,12 +56,12 @@ const ProjectHeader = (props) => {
     }
     useEffect(() => {
       function handleResize() {
-          setImageHeight(ref.current.clientHeight);
+          setImageHeight(ref?.current?.clientHeight);
       }
 
       setTimeout(function() {
         // console.log(ref.current.clientHeight);
-          setImageHeight(ref.current ? ref.current.clientHeight : 0 );
+          setImageHeight(ref.current ? ref.current?.clientHeight : 0 );
       }, 0)
 
       window.addEventListener('resize', handleResize);

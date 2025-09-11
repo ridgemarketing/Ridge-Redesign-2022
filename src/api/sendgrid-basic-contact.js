@@ -34,19 +34,23 @@ async function sendEmail(req, res) {
           ],
           subject: `Ridge Site Lead - ${message['name']}`,
           dynamic_template_data:{
-            name:`${message['name']}`,
-            company:`${message['company']}`,
-            email:`${message['email']}`,
-            phone:`${message['phone']}`,
-            message:`${message['message']}`,
-            subject: `Ridge Site Lead - ${message['name']}`,
+            name            :`${message['name']}`,
+            company         :`${message['company']}`,
+            email           :`${message['email']}`,
+            phone           :`${message['phone']}`,
+            message         :`${message['message']}`,
+            companySize     :`${message['companySize']}`,
+            companyRevenue  :`${message['companyRevenue']}`,
+            budget          :`${message['budget']}`,
+
+            subject : `Ridge Site Lead - ${message['name']}`,
           }
         },
       ],
       template_id:"d-4719197d6c064d99aa32313eb1b3ffc2",
 
       from: {
-        email: "noreply@ridgemarketing.com", // your website email address here  
+        email: "noreply@ridgemarketing.com",
         name: "No Reply"
       },
       replyTo: {  
