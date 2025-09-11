@@ -16,7 +16,7 @@ const ImagesTopAlignedText = (props) => {
                     <h2 dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`${theme.text.H2} max-w-[1120px] mx-auto`}></h2>
                 }
                 {content?.images && 
-                    <div className="max-w-[1120px] mx-auto mt-7 flex flex-col gap-6 lg:gap-20">
+                    <div className="max-w-[1120px] mx-auto mt-7 flex flex-col gap-20">
                         {content.images?.map((image) => {
                             const headingSize =  image.headingSize !== 'heading' ? `${theme.text.P_BLD}` : `${theme.text.H2}`
                             return(

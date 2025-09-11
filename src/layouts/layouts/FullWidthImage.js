@@ -57,23 +57,12 @@ const FullWidthImage = (props) => {
 
     splitMargins()
 
-    let textCenter = false;
-
-    // console.log(settings.classes);
-
-    if( ( settings.classes = 'text-center' ) ){
-      textCenter = true;
-    }
-
     return (
       <>
         <Section settings={settings}>
             <Container container={settings.containerWidth}>
-                { (content.heading && textCenter == false) && 
-                  <p className={`${theme.text.H2} px-2 pb-8 text-center lg:text-left`}>{content.heading}</p>
-                }
-                { (content.heading && textCenter == true) && 
-                  <p className={`${theme.text.H2} px-2 pb-8 text-center`}>{content.heading}</p>
+                {content.heading && 
+                  <p className={`${theme.text.H2} px-2 pb-8 ${settings?.classes?.includes('text-center') ? 'text-center' : 'text-center lg:text-left'}`}>{content.heading}</p>
                 }
                 <div ref={overlapImage} className={`mx-auto ${overlapImageClass}`}> 
                     {image}
