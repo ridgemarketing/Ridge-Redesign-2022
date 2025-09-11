@@ -12,13 +12,50 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
 
         setStatus(`processing`)
 
-        const message = JSON.stringify(data)
+        let attachments = [];
+        if (data?.resume && data?.resume.length > 0) {
+            for (const file of data.resume) {
+                // File type validation
+                const allowedTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'];
+                if (!allowedTypes.includes(file?.type)) {
+                    console.log('Invalid file type:', file?.type)
+                    setStatus(`fail-email`)
+                    return 
+                }
+
+                // File size validation (5MB limit to prevent payload issues)
+                const maxFileSize = 5 * 1024 * 1024; // 5MB
+                if (file.size > maxFileSize) {
+                    console.log('File too large:', file.size, 'bytes')
+                    setStatus(`fail-email`)
+                    return 
+                }
+
+                const base64 = await new Promise((resolve) => {
+                    const reader    = new FileReader()
+                    reader.onload   = () => resolve(reader.result.split(',')[1])
+                    reader.readAsDataURL(file)
+                });
+
+                attachments.push({
+                    content     : base64,
+                    filename    : file.name,
+                    type        : file.type,
+                    disposition : 'attachment'
+                });
+            }
+        }
+
+        const dataToSend    = { ...data }
+        delete dataToSend.resume;
+        const message       = JSON.stringify(dataToSend)
 
         const res = await fetch("/api/sendgrid-careers", {
             body: JSON.stringify({
-            email: data.email,
-            subject: `New Careers Form Submission`,
-            message: message,
+                email           : data.email,
+                subject         : `New Careers Form Submission`,
+                message         : message,
+                attachments     : attachments
         }),
             headers: {
             "Content-Type": "application/json",
@@ -74,12 +111,13 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
                 </div>
             }
 
-            <span className={`block mb-2`}><Input errors={errors} register={register} required={true} type={`text`} name={`name`} label={`Name`} textColor={`white`} bgColor={`black`} /></span>
-            <span className={`block mb-2`}><Input errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Email`} textColor={`white`} bgColor={`black`} /></span>
-            <span className={`block mb-2`}><Input errors={errors} register={register} required={true} type={`tel`} name={`phone`} label={`Phone`} textColor={`white`} bgColor={`black`} /></span>
-            <span className={`block mb-2`}><Input errors={errors} register={register} required={true} type={`text`} name={`position`} label={`Position Sought`} textColor={`white`} bgColor={`black`} /></span>
+            <span className={`block mb-2`}><Input errors={errors} register={register} required={false} type={`text`} name={`name`} label={`Name`} textColor={`white`} bgColor={`black`} /></span>
+            <span className={`block mb-2`}><Input errors={errors} register={register} required={false} type={`email`} name={`email`} label={`Email`} textColor={`white`} bgColor={`black`} /></span>
+            <span className={`block mb-2`}><Input errors={errors} register={register} required={false} type={`tel`} name={`phone`} label={`Phone`} textColor={`white`} bgColor={`black`} /></span>
+            <span className={`block mb-2`}><Input errors={errors} register={register} required={false} type={`text`} name={`position`} label={`Position Sought`} textColor={`white`} bgColor={`black`} /></span>
             <span className={`block mb-2`}><Input errors={errors} register={register} required={false} type={`text`} name={`portfolio`} label={`Portfolio or LinkedIn`} textColor={`white`} bgColor={`black`} /></span>
-            <span className={`block`}><TextArea errors={errors} register={register} required={true} name={`message`} label={`What would you bring to the Barn of Brands`} textColor={`white`} bgColor={`black`} /></span>
+            <span className={`block`}><TextArea errors={errors} register={register} required={false} name={`message`} label={`What would you bring to the Barn of Brands`} textColor={`white`} bgColor={`black`} /></span>
+            <span className={`block mt-10 mb-16`}><Input errors={errors} register={register} required={false} type={`file`} name={`resume`} label={`Upload Resume`} textColor={`white`} bgColor={`black`} /></span>
             
 
             <div className={`mt-6 ${btnContainerClasses ? btnContainerClasses : ``}`}>
