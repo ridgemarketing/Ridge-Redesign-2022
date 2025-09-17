@@ -1,17 +1,39 @@
 import sendgrid from "@sendgrid/mail";
 
-export const config = {
-  bodyParser: {
-    json: {
-      limit: "10mb",
-    },
-  },
-}
+// export const config = {
+//   bodyParser: {
+//     json: {
+//       limit: "10mb",
+//     },
+//   },
+// }
+
+// export const config = {
+//   bodyParser: {
+//     raw: {
+//       type: `-`,
+//       limit: "10mb",
+//     },
+//     text: {
+//       type: `-`,
+//       limit: "10mb",
+//     },
+//     urlencoded: {
+//       type: `-`,
+//       extended: true,
+//       limit: "10mb",
+//     },
+//     json: {
+//       type: `*/*`,
+//       limit: "10mb",
+//     },
+//   },
+// }
 
 sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 async function sendEmail(req, res) {
-  const message = JSON.parse(req.body.message)
+  const message     = JSON.parse(req.body.message)
   const attachments = req.body.attachments || []
   
   if (message['email'] === `robert.87@outlook.com` || message['message'].includes('bankllist.us')) {

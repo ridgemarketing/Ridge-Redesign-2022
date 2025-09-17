@@ -21,8 +21,8 @@ const FlexibleMedia = (props) => {
         setShowVideo(true)
     }
 
-    const [pauseVideo, setPauseVideo] = useState(true)
-    const [showVideo, setShowVideo] = useState(false)
+    const [pauseVideo, setPauseVideo]   = useState(true)
+    const [showVideo, setShowVideo]     = useState(false)
 
     if (type === `image`) {
         image = (data.image.localFile.ext === `.svg`) 
