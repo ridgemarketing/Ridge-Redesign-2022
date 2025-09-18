@@ -3,25 +3,26 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Play } from "../svg"
 import Vimeo from "@u-wave/react-vimeo"
+import { theme } from "../../static/theme"
 
 const FlexibleMedia = (props) => {
     
-    const data  = props.data
-    const type  = data.type
-    let image   = false
-    const lottie  = (type === `lottie`) ? data.lottie : false;
-    const video   = (type === `video`) ? data.video : false;
+    const data      = props.data
+    const type      = data.type
+    let image       = false
+    const lottie    = (type === `lottie`) ? data.lottie : false;
+    const video     = (type === `video`) ? data.video : false;
     const videoType = (type === 'video') ? data.videoSource : null;
     const thumbnail = (type === 'video') ? getImage(video.thumbnailImage.localFile) : false;
-    const ratio = props.paddingRatio ? props.paddingRatio : '56.25%';
+    const ratio     = props.paddingRatio ? props.paddingRatio : '56.25%';
 
     const playVideo = () => {
         setPauseVideo(false)
         setShowVideo(true)
     }
 
-    const [pauseVideo, setPauseVideo] = useState(true)
-    const [showVideo, setShowVideo] = useState(false)
+    const [pauseVideo, setPauseVideo]   = useState(true)
+    const [showVideo, setShowVideo]     = useState(false)
 
     if (type === `image`) {
         image = (data.image.localFile.ext === `.svg`) 
@@ -57,6 +58,7 @@ const FlexibleMedia = (props) => {
                 </div>
             }
             {video && videoType === 'vimeo' && 
+                <>
                 <div className={`pt-[${ratio}] w-full relative media-video`}>
                     {video.thumbnailImage && !showVideo &&
                         <div className={`absolute top-0 left-0 w-full h-full object-cover z-30 flex flex-col items-center justify-center`}>
@@ -66,6 +68,9 @@ const FlexibleMedia = (props) => {
                         <Vimeo
                             video={video.videoUrl}
                             paused={pauseVideo}
+
+                            // muted={player.autoplay ?? false}
+
                             responsive
                             className={`absolute top-0 left-0 w-full h-full object-cover`}
                             onPause={() => setPauseVideo(true)}
@@ -75,7 +80,11 @@ const FlexibleMedia = (props) => {
                                 <button onClick={() => playVideo()} className={`relative rounded-full shadow-none transition-shadow hover:shadow-block`}><Play /></button>
                             </div>
                         }
-                </div>            
+                </div>  
+                {data.caption &&
+                    <p className={`mt-2 ${theme.text.P_STD} max-w-[1120px] mx-auto`}>{data.caption}</p>
+                }
+                </>         
             }
         </div>
     )

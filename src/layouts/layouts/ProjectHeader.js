@@ -56,12 +56,12 @@ const ProjectHeader = (props) => {
     }
     useEffect(() => {
       function handleResize() {
-          setImageHeight(ref.current.clientHeight);
+          setImageHeight(ref?.current?.clientHeight);
       }
 
       setTimeout(function() {
         // console.log(ref.current.clientHeight);
-          setImageHeight(ref.current ? ref.current.clientHeight : 0 );
+          setImageHeight(ref.current ? ref.current?.clientHeight : 0 );
       }, 0)
 
       window.addEventListener('resize', handleResize);
@@ -103,10 +103,16 @@ const ProjectHeader = (props) => {
 
     return (
       <section className={`relative text-${content.textTheme}`} style={{backgroundColor: topColor ? content.backgroundColor : 'transparent'}}>
-          {content.backgroundColor &&
+          {content.backgroundColor && ( videoOverhang || imageOverhang ) && 
               <div className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} style={{backgroundColor: content.backgroundColor, maxHeight: `calc(100% - ${maxHeight}px)`}}></div>
           }
-          {bgImage && 
+          {content.backgroundColor && ( !(videoOverhang) && !(imageOverhang) ) && 
+              <div className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} style={{backgroundColor: content.backgroundColor}}></div>
+          }
+          {content.backgroundImage?.localFile.ext == '.svg' && 
+            <img src={content.backgroundImage.sourceUrl} style={{maxHeight: `calc(100% - ${maxHeight}px)`}} className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`}/>
+          }
+          {!(content.backgroundImage?.localFile.ext == '.svg') && bgImage && 
               <GatsbyImage loading={`eager`} alt={``} style={{maxHeight: `calc(100% - ${maxHeight}px)`}} className={`absolute ${top} bottom-80 left-0 w-full h-full object-cover`} image={bgImage} />
           }
           

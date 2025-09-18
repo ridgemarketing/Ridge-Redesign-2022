@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useRef } from "react"
 import { graphql } from "gatsby"
-import Seo from 'gatsby-plugin-wpgraphql-seo'
+// import Seo from 'gatsby-plugin-wpgraphql-seo'
 import { GatsbyImage } from 'gatsby-plugin-image'
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import { Container, Section } from '../components/global/Wrappers'
@@ -8,52 +8,52 @@ import { theme, ThemeContext } from '../static/theme'
 import Buttons from '../components/global/Buttons'
 import Parser from '../components/global/Parser'
 
-// export const Head = ({data}) => (
-//   <>
-//     <title>{data.wpService.seo.title}</title>
-//     <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
-
-//     <meta name="description" content={data.wpService.seo.opengraphDescription} />
-//     <meta name="title" content={data.wpService.seo.title}/>
-//     <meta name="pageType" content={data.wpService.seo.schema.pageType}/>
-//     <meta name="keywords" content={data.wpService.seo.metaKeywords}/>
-//     <meta name="author" content={data.wpService.seo.opengraphAuthor}/>
-
-//     {data.wpService.seo.metaRobotsNoindex === 'noindex' &&
-//       <>
-//       <meta name="robots" content="noindex" />
-//       <meta name="googlebot-news" content="noindex" />
-//       </>
-//     }
-//     {data.wpService.seo.metaRobotsNoFollow === 'nofollow' &&
-//        <meta name="robots" content={data.wpService.seo.metaRobotsNoFollow} />
-//     }
-
-//     <meta property="og:type" content={data.wpService.seo.opengraphType}/>
-//     <meta property="og:author" content={data.wpService.seo.opengraphAuthor}/>
-//     <meta property="og:url" content={data.wpService.seo.opengraphUrl}/>
-//     <meta property="og:title" content={data.wpService.seo.opengraphTitle}/>
-//     <meta property="og:description" content={data.wpService.seo.opengraphDescription}/>
-//     {data.wpService.seo.opengraphImage &&
-//       <meta property="og:image" content={data.wpService.seo.opengraphImage.sourceUrl}/>
-//     }
-
-//     <meta property="twitter:card" content="summary_large_image"/>
-//     <meta property="twitter:url" content={data.wpService.seo.opengraphUrl}/>
-//     <meta property="twitter:title" content={data.wpService.seo.twitterTitle}/>
-//     <meta property="twitter:description" content={data.wpService.seo.twitterDescription}/>
-//     {data.wpService.seo.twitterImage &&
-//       <meta property="twitter:image" content={data.wpService.seo.twitterImage.sourceUrl}/>
-//     }
-//     {data.wpService.seo.fullHead}
-//   </>
-// )
-
 export const Head = ({data}) => (
   <>
+    <title>{data.wpService.seo.title}</title>
     <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
+
+    <meta name="description" content={data.wpService.seo.opengraphDescription} />
+    <meta name="title" content={data.wpService.seo.title}/>
+    <meta name="pageType" content={data.wpService.seo.schema.pageType}/>
+    <meta name="keywords" content={data.wpService.seo.metaKeywords}/>
+    <meta name="author" content={data.wpService.seo.opengraphAuthor}/>
+
+    {data.wpService.seo.metaRobotsNoindex === 'noindex' &&
+      <>
+      <meta name="robots" content="noindex" />
+      <meta name="googlebot-news" content="noindex" />
+      </>
+    }
+    {data.wpService.seo.metaRobotsNoFollow === 'nofollow' &&
+       <meta name="robots" content={data.wpService.seo.metaRobotsNoFollow} />
+    }
+
+    <meta property="og:type" content={data.wpService.seo.opengraphType}/>
+    <meta property="og:author" content={data.wpService.seo.opengraphAuthor}/>
+    <meta property="og:url" content={data.wpService.seo.opengraphUrl}/>
+    <meta property="og:title" content={data.wpService.seo.opengraphTitle}/>
+    <meta property="og:description" content={data.wpService.seo.opengraphDescription}/>
+    {data.wpService.seo.opengraphImage &&
+      <meta property="og:image" content={data.wpService.seo.opengraphImage.sourceUrl}/>
+    }
+
+    <meta property="twitter:card" content="summary_large_image"/>
+    <meta property="twitter:url" content={data.wpService.seo.opengraphUrl}/>
+    <meta property="twitter:title" content={data.wpService.seo.twitterTitle}/>
+    <meta property="twitter:description" content={data.wpService.seo.twitterDescription}/>
+    {data.wpService.seo.twitterImage &&
+      <meta property="twitter:image" content={data.wpService.seo.twitterImage.sourceUrl}/>
+    }
+    {data.wpService.seo.fullHead}
   </>
 )
+
+// export const Head = ({data}) => (
+//   <>
+//     <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
+//   </>
+// )
 
 const WpService = ({ data }) =>{
   
@@ -81,7 +81,7 @@ const WpService = ({ data }) =>{
 
   return (
     <>
-      <Seo post={data.wpService} />
+      {/* <Seo post={data.wpService} /> */}
       <Section settings={settings}>
         <Container>
           {content.eyebrow &&

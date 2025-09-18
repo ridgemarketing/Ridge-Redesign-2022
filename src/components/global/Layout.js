@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { useStaticQuery, graphql } from 'gatsby';
-import { SEOContext } from 'gatsby-plugin-wpgraphql-seo';
+// import { SEOContext } from 'gatsby-plugin-wpgraphql-seo';
 import { theme, ThemeContext } from "../../static/theme"
 import Header from "./Header"
 import Footer from "./Footer"
@@ -141,7 +141,7 @@ export default function Layout({ location, children }) {
     }
 
     return (
-        <SEOContext.Provider value={{ global: seo }}>
+        // <SEOContext.Provider value={{ global: seo }}>
             <ThemeContext.Provider value={{
                 accent: primary.accent,
                 secondary: secondary.secondary,
@@ -162,6 +162,6 @@ export default function Layout({ location, children }) {
                 </main>
                 <Footer location={location} />
             </ThemeContext.Provider>
-        </SEOContext.Provider>
+        // </SEOContext.Provider>
     )
   }

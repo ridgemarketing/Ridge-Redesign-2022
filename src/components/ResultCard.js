@@ -7,8 +7,11 @@ import Counter from "./Counter"
 const ResultCard = (props) => {
 
     const content           = props.content;
-    let statClass           = 'accent-text text-[100px] xl:text-[120px] font-semibold font-stratos';
-    let descriptionClass    = props.columns === '1' ? 'md:max-w-[60%]' : '';
+    let statClass           = `accent-text font-semibold font-stratos ${props.statFontSize || 'text-[100px] xl:text-[120px]'}`;
+    let descriptionClass = `
+        ${props.columns === '1' ? 'md:max-w-[60%]' : ''}
+        ${props.noBoldDescription ? 'font-normal' : ''}
+        `;
     const statNumber        = content.stat ? content.stat.split(/\D+/)[0] : false;
     const suffixString      = content.stat ? content.stat.split(/\d+/)[1] : false;
     const columnsNum        = parseInt(props.columns);
@@ -34,15 +37,20 @@ const ResultCard = (props) => {
     return (
             <div key={`${content.description}${content.stat}`} className={ `text-center md:text-left ${props.columns !== "1" && classes[props.columns]} my-6` }>
                 <div className={`w-fit mx-auto ${props.columns === "1" && classes[props.columns]}`}>
-                { content.stat && statNumber > 10 &&
-                    <Counter number={statNumber} title={suffixString} classes={`${statClass} tracking-tight`} columns={columnsNum} />   
+
+                {!props.noCounter && content.stat && statNumber > 10 &&
+                    <Counter number={statNumber} title={suffixString} classes={statClass} columns={columnsNum} />   
                 }
-                {content.stat && statNumber < 10 &&
-                    <span className={`${statClass} tracking-tighter`}>{`${statNumber}${suffixString}`}</span>   
-                }            
-                { content.description &&  
+                {!props.noCounter && content.stat && statNumber < 10 &&
+                    <span className={statClass}>{`${statNumber}${suffixString}`}</span>   
+                }          
+                {props.noCounter && content.stat &&
+                    <span className={statClass}>{content.stat}</span>
+                    }   
+                {content.description &&  
                    <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H5 + 'font-basic-sans normal-case'} ${descriptionClass}`}></p>  
                 }
+
                 { content.company &&  
                    <p className={`${theme.text.P_STD} mt-4`}>
                         { content.company }

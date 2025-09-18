@@ -87,7 +87,9 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
                     <p className={`${theme.text.P_STD} md:pb-2 text-rm-black font-bold hidden xl:block`}>{caption}</p>
                     <p className={`${theme.text.H4} text-rm-black pb-4 hidden xl:block`}>{title}</p>
                     <div className={"w-[65px] lg:w-[95px] text-center mx-auto xl:pt-7"}>
-                        {typeOfProject === 'Video'&&
+
+                        {typeOfProject == 'Video'&&
+
                             <img className="hidden xl:block" src={'https://cms.ridgemarketing.com/wp-content/uploads/2023/06/circle-play-solid-1.svg'} alt={`play button`} />
                         }
                         {typeOfProject !== 'Video'&& 

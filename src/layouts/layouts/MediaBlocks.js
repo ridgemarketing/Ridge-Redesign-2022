@@ -4,11 +4,11 @@ import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import FlexibleMedia from "../../components/global/FlexibleMedia"
 
-const MediaBlocks = (props) => { 
-  const content   = props.layoutData.layoutContent;
-  const settings  = props.layoutData.layoutSettings;
+  const MediaBlocks = (props) => {
+  const content     = props.layoutData.layoutContent;
+  const settings    = props.layoutData.layoutSettings;
 
-  const media     = content.blocks
+  const media       = content.blocks
   const mediaExists = media && (media[0].componentFlexibleMedia.image || media[0].componentFlexibleMedia.video.videoUrl);
   // const columns = (content.columns === 2) ? `lg:w-[calc(50%-5rem)]` : `lg:w-[calc(33%-4rem)]`;
   const columns = (content.columns === 1) ? `mt-14 block` : `lg:grid grid-cols-${content.columns} gap-x-6  mt-14`;
@@ -16,7 +16,9 @@ const MediaBlocks = (props) => {
       <Section settings={settings}>
         <Container>
           {content.heading &&
-            <h2 className={`text-${content.text_align} ${theme.text.H2}`}>{content.heading}</h2>
+
+            <h2 className={`${ content.textAlign ?  `text-${content.textAlign}` : `text-center` } ${theme.text.H2}`}>{content.heading}</h2>
+
           }
           {media && mediaExists &&
             <div className={columns}> 
@@ -46,10 +48,12 @@ export const query = graphql`
         fieldGroupName
         layoutMediaBlocks {
           layoutContent {
+                        textAlign
             blocks {
               heading
               componentFlexibleMedia {
                 lottie
+                caption
                 type
                 videoSource
                 caption
@@ -98,10 +102,12 @@ export const serviceQuery = graphql`
         fieldGroupName
         layoutMediaBlocks {
           layoutContent {
+                        textAlign
             blocks {
               heading
               componentFlexibleMedia {
                 lottie
+                caption
                 type
                 videoSource
                 caption
@@ -152,10 +158,12 @@ export const projectQuery = graphql`
         fieldGroupName
         layoutMediaBlocks {
           layoutContent {
+                        textAlign
             blocks {
               heading
               componentFlexibleMedia {
                 lottie
+                caption
                 type
                 videoSource
                 caption

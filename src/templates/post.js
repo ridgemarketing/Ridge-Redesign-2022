@@ -1,6 +1,6 @@
 import React, { useEffect, useContext } from "react"
 import { graphql } from "gatsby"
-import Seo from 'gatsby-plugin-wpgraphql-seo'
+// import Seo from 'gatsby-plugin-wpgraphql-seo'
 import { theme } from "../static/theme"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link }from "gatsby"
@@ -71,7 +71,7 @@ const WpPost = ({ data, pageContext }) =>{
     
   return (
     <>
-      <Seo post={content} />
+      {/* <Seo post={content} /> */}
       <hgroup className="container pt-20">
         <h1 className={theme.text.H1_STD + 'mb-9'}> {content.title} </h1>
         <div className="flex items-center">

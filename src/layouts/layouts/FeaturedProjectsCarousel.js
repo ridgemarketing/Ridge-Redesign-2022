@@ -9,10 +9,10 @@ import { ArrowTallLeftBlack } from "../../static/arrow-tall-left-black"
 
 const FeaturedProjectsCarousel = (props) => {
 
-    const content = props.layoutData.layoutContent;
-    const settings = props.layoutData.layoutSettings;
-    const slides = content.featuredProjects;
-    let headingArr = content.heading.split(' ');
+    const content     = props.layoutData.layoutContent;
+    const settings    = props.layoutData.layoutSettings;
+    const slides      = content.featuredProjects;
+    let headingArr    = content.heading.split(' ');
     const [slide, setSlide] = useState(0);
     const [data, setData] = useState(slides[0]);
     const [slideInteraction, setInteraction] = useState(false);

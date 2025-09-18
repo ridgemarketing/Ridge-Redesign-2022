@@ -6,13 +6,13 @@ import Parser from "../../components/global/Parser.js"
 import { GatsbyImage } from "gatsby-plugin-image"
 // import { FormSpreeForm } from "../../components/global/FormSpreeForm.js"
 // import { TextArea, Input } from "../../components/global/FormFields.js"
-import { FormContacPage } from "../../components/global/Forms.js"
+import { FormContactPage } from "../../components/global/Forms.js"
 
 const ContactFourSquare = (props) => {
   const content       = props.layoutData.layoutContent;
   const settings      = props.layoutData.layoutSettings;
 
-  const formId                = `mdovyzbl`
+  const formId        = `mdovyzbl`
 
 
   const globalContact = useStaticQuery( graphql`
@@ -87,7 +87,7 @@ const ContactFourSquare = (props) => {
             <div className={` mt-10 xl:mt-0 xl:ml-4 xl:w-[50%] xl:max-w-[800px]`}>
               <h2 className={`${theme.text.H5} mb-6`}>{content.formHeading}</h2>
               <div className={`shadow-block pt-10 px-10 pb-12 bg-white`}>
-                  <FormContacPage formId={formId} classes={`bg-white text-rm-black`} submitLabel={`Submit`} />
+                  <FormContactPage formId={formId} classes={`bg-white text-rm-black`} submitLabel={`Submit`} />
               </div>
             </div>
           </Container>

@@ -8,11 +8,11 @@ import Buttons from "../../components/global/Buttons"
 
 const FullWidthImageText = (props) => {
 
-  const content = props.layoutData.layoutContent || {};
-  const settings = props.layoutData.layoutSettings || {};
+  const content       = props.layoutData.layoutContent || {};
+  const settings      = props.layoutData.layoutSettings || {};
   let headerClasses;
   let imageWrapperClasses;
-  let imageClasses ='';
+  let imageClasses    ='';
   let mobile;
   let textColor;
   // console.log(settings);
@@ -23,58 +23,65 @@ const FullWidthImageText = (props) => {
 
   if (content.mobile) {
     imageClasses += 'hidden md:block';
-    mobile = <img className={`mx-auto md:hidden`} src={content.mobile.sourceUrl} alt={content.mobile.altText} />
+    mobile        = <img className={`mx-auto md:hidden`} src={content.mobile.sourceUrl} alt={content.mobile.altText} />
   }
 
   if (content.image) {
     var image = (content.image.localFile.ext === ".svg") 
     ? <img className={`mx-auto ${imageClasses}`} src={content.image.sourceUrl} alt={content.image.altText}/>
     : <GatsbyImage 
-        image={content.image.localFile.childImageSharp.gatsbyImageData} 
-        alt={content.image.altText} 
-        className={`${imageClasses}`} 
-        objectFit={'contain'}/> ;
+        image     ={content.image.localFile.childImageSharp.gatsbyImageData} 
+        alt       ={content.image.altText} 
+        className ={`${imageClasses}`} 
+        objectFit ={'contain'}/> ;
   }
 
   if (content.alignment === 'overlap') {
-    headerClasses = 'z-20 relative';
+    headerClasses       = 'z-20 relative';
     imageWrapperClasses = 'relative bottom-6 z-10';
-  } else if (content.alignment === 'standard') {
-    headerClasses = '';
+  } else {
+    headerClasses       = '';
     imageWrapperClasses = 'mt-20';
   }
 
     return (
       <Section settings={settings}>
         <Container container={settings.containerWidth}>
-          <div className={`text-center`}>
-            { content.heading && 
-                <h2 dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`${theme.text.H2} ${headerClasses} ${textColor} px-3`}></h2>
+          <div className={`${settings?.classes?.includes('text-left') ? 'text-left' : 'text-center'}`}>
+            {content.heading && 
+              <h2 dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`${theme.text.H2} ${headerClasses} ${textColor} max-w-[1120px] mx-auto `}></h2>
             }
-            {
-            content.alignment === 'standard' && content.body && <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`mt-6 ${theme.text.P_STD} max-w-[1120px] mx-auto ${textColor}`}></p> 
+
+            {content.alignment !== 'overlap' && content.body && 
+              <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`mt-6 ${theme.text.P_STD} max-w-[1120px] mx-auto ${textColor}`}></p> 
             }
 
             {image &&
-              <div className={`mx-auto ${imageWrapperClasses}`}>
+              <div className={`mx-auto max-w-[1120px] ${content.alignment === 'overlapBottom' ? 'z-20 relative' : ''} ${imageWrapperClasses}`}>
                 <div className={imageClasses}>{image}</div>
                 {mobile}
               </div>
             }
 
-            {
-            content.alignment === 'overlap' && content.intro &&  <p dangerouslySetInnerHTML={{__html: Parser(content.intro)}} className={`text-left mt-8 ${theme.text.H4_LTE} ${textColor}`}></p> 
+            {content.alignment === 'overlap' && content.intro &&  
+              <p dangerouslySetInnerHTML={{__html: Parser(content.intro)}} className={`text-left mt-8 ${theme.text.H4_LTE} ${textColor}`}></p> 
             }
-            {
-            content.alignment === 'overlap' && content.body &&  <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`text-left mt-8 ${theme.text.P_STD} ${textColor}`}></p> 
+            
+            {content.alignment == 'overlap' && content.body &&  
+              <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`text-left mt-8 ${theme.text.P_STD} ${textColor}`}></p> 
             }
+            
             {content.componentButton &&
-                <div className={`text-center pt-4 mt-10`}>
-                    <Buttons content={content.componentButton} sectionBackground={settings.backgroundColor}/>  
-                </div>
-              }
+              <div className={`text-center pt-4 mt-10`}>
+                  <Buttons content={content.componentButton} sectionBackground={settings.backgroundColor}/>  
+              </div>
+            }
+
           </div>     
         </Container>
+        {content.alignment === 'overlapBottom' &&
+          <div className={`bg-white absolute bottom-0 w-full h-[150px]`}></div>
+        }
       </Section>
     )
 }
