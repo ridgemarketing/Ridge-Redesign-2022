@@ -29,11 +29,11 @@ const ResultsImage = (props) => {
     return(
         <Section settings={settings}>
             <Container container={settings.containerWidth} classes={`bg-rm-${content.backgroundColor}`}>
-              <Container classes={'px-8 py-16 xlz:px-0 xl:py-20  w-[calc(100%-520px)] ml-0'}>
+              <Container classes={'px-8 py-16 xlz:px-0 xl:py-20 w-full mx-auto lg:w-[calc(100%-360px)] xl:w-[calc(100%-520px)] lg:ml-0'}>
                 <div className={`lg:flex`}>
-                      <div className={`lg:w-3/4 xl:pr-24`}>
-                          <h2 dangerouslySetInnerHTML={{__html: content.heading}} className={`${theme.text.H2} `}></h2>
-                          <p dangerouslySetInnerHTML={{__html: content.body}} className={`${theme.text.H4_LTE} mt-8`}></p>
+                      <div className={`lg:w-3/4 lg:max-w-[80%] xl:pr-24`}>
+                          <h2 dangerouslySetInnerHTML={{__html: content.heading}} className={`${theme.text.H2} text-[80px] fontsemibold`}></h2>
+                          <p dangerouslySetInnerHTML={{__html: content.body}} className={`${theme.text.H4_LTE} mt-12 text-[50px] font-semibold`}></p>
                           <div className='mt-8'>
                             <Buttons 
                               content={content.componentButton} 
@@ -53,16 +53,30 @@ const ResultsImage = (props) => {
                           }
                       </div>
                   </div>
+
                   <div className={`flex flex-wrap justify-center ${columns}`}>
                       {content.results && content.results.map((result, index) => {
-                          return <ResultCard key={`ResultsTextBlock_CardsItem__${result.description.replace(' ', '_')}__${index}`} content ={result} columns={content.columns}/>
-                        })           
+                          return (
+                            <div key={`ResultsTextBlock_CardsItem__${index}`} className="w-full md:w-1/2">
+                              <ResultCard key={`ResultsTextBlock_CardsItem__${result.description.replace(' ', '_')}__${index}`} content ={result} columns={content.columns} statFontSize="text-[100px] lg:text-[80px] xl:text-[120px]" />
+                          </div>
+                          )
+                        })
                       }
                   </div>
+
+                  {content.secondaryBody && (
+                    <div className="mt-8 text-center lg:text-left">
+                      <p 
+                        dangerouslySetInnerHTML={{ __html: content.secondaryBody }} 
+                        className={`${theme.text.H4_LTE} text-[21px] font-light leading-[28px]`}
+                      ></p>
+                    </div>
+                  )}
                 </Container>
             </Container>
             {image &&
-              <div className={`absolute top-40 right-0 max-w-[700px]`}>
+              <div className={`relative w-full lg:absolute top-0 lg:top-60 right-0 lg:max-w-[450px] xl:max-w-[600px] 2xl:max-w-[700px]`}>
                 <div className={imageClasses}>{image}</div>
               </div>
             }
@@ -86,6 +100,7 @@ export const query = graphql`
               description
               stat
             }
+            secondaryBody
             services {
               service {
                 ... on WpService {
@@ -136,6 +151,7 @@ export const serviceQuery = graphql`
               description
               stat
             }
+            secondaryBody
             services {
               service {
                 ... on WpService {
@@ -197,6 +213,7 @@ export const projectQuery = graphql`
               description
               stat
             }
+            secondaryBody
             services {
               service {
                 ... on WpService {

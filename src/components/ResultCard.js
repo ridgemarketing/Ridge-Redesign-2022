@@ -7,7 +7,7 @@ import Counter from "./Counter"
 const ResultCard = (props) => {
 
     const content           = props.content;
-    let statClass           = 'accent-text text-[100px] xl:text-[120px] font-semibold font-stratos';
+    let statClass           = `accent-text font-semibold font-stratos ${props.statFontSize || 'text-[100px] xl:text-[120px]'}`;
     let descriptionClass    = props.columns === '1' ? 'md:max-w-[60%]' : '';
     const statNumber        = content.stat ? content.stat.split(/\D+/)[0] : false;
     const suffixString      = content.stat ? content.stat.split(/\d+/)[1] : false;
@@ -41,7 +41,7 @@ const ResultCard = (props) => {
                     <span className={statClass}>{`${statNumber}${suffixString}`}</span>   
                 }            
                 { content.description &&  
-                   <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H5 + 'font-basic-sans normal-case'} ${descriptionClass}`}></p>  
+                <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H5 + 'font-basic-sans normal-case'} ${descriptionClass} xl:${theme.text.H4} !font-normal`}></p>  
                 }
                 { content.company &&  
                    <p className={`${theme.text.P_STD} mt-4`}>
@@ -55,8 +55,8 @@ const ResultCard = (props) => {
                             theme.text_links['BASE_STYLING'] + 
                             theme.text_links['FWD_BASE'] + 
                             theme.text_links['STD'] + 
-                            theme.text_links['ARW_FWD_BLACK'] }>
-                        VIEW CASE STUDY
+                            theme.text_links['ARW_FWD_BLACK'] }> 
+                        VIEW CASE STUDY 
                     </Link>
                 }
                 </div>
