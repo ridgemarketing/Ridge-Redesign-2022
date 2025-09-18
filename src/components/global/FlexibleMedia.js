@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
-import { Player } from '@lottiefiles/react-lottie-player'
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Play } from "../svg"
 import Vimeo from "@u-wave/react-vimeo"
 import { theme } from "../../static/theme"
@@ -44,7 +44,7 @@ const FlexibleMedia = (props) => {
             }
             {lottie &&
                 <div>
-                    <Player
+                    <DotLottieReact
                         autoplay={true} controls={false}
                         loop={true}
                         src={lottie}
@@ -68,7 +68,9 @@ const FlexibleMedia = (props) => {
                         <Vimeo
                             video={video.videoUrl}
                             paused={pauseVideo}
+
                             // muted={player.autoplay ?? false}
+
                             responsive
                             className={`absolute top-0 left-0 w-full h-full object-cover`}
                             onPause={() => setPauseVideo(true)}

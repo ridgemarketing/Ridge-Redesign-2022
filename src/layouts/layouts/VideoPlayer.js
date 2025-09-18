@@ -46,11 +46,13 @@ const VideoPlayer = (props) => {
                 paused={pauseVideo}
                 muted={player.autoplay ?? false}
                 responsive
+                controls={!player.autoplay}
                 autoplay={player.autoplay || false}
                 loop={player.autoplay || false}
                 className={`absolute top-0 left-0 w-full h-full object-cover`}
                 onPause={() => setPauseVideo(true)}
               />
+
               {pauseVideo && !player.autoplay &&
                   <div className={`absolute top-0 left-0 w-full h-full object-cover z-30 flex flex-col items-center justify-center text-rm-white`}>
                       <button onClick={() => playVideo()} className={`relative rounded-full shadow-none transition-shadow hover:shadow-block`}><Play /></button>
@@ -61,7 +63,7 @@ const VideoPlayer = (props) => {
                 <p className={`mt-2 ${theme.text.P_STD} max-w-[1120px] mx-auto`}>{player.caption}</p>
               }
           </div>
-        }
+        } 
         {videos && videos.length > 1 &&
           <div className={`grid grid-cols-3 mt-4 xl:mt-9 -mx-2 xl:-mx-5`}>
             {videos.map((video, index) => {
@@ -112,6 +114,7 @@ export const pageQuery = graphql`
               caption
               source
               autoplay
+              caption
             }
           }
           layoutSettings {
@@ -154,6 +157,7 @@ export const serviceQuery = graphql`
               caption
               source
               autoplay
+              caption
             }
           }
           layoutSettings {
@@ -196,6 +200,7 @@ export const projectQuery = graphql`
               caption
               source
               autoplay
+              caption
             }
           }
           layoutSettings {

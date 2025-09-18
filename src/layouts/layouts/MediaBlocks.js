@@ -4,7 +4,7 @@ import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import FlexibleMedia from "../../components/global/FlexibleMedia"
 
-const MediaBlocks = (props) => {
+  const MediaBlocks = (props) => {
   const content     = props.layoutData.layoutContent;
   const settings    = props.layoutData.layoutSettings;
 
@@ -16,7 +16,9 @@ const MediaBlocks = (props) => {
       <Section settings={settings}>
         <Container>
           {content.heading &&
+
             <h2 className={`${ content.textAlign ?  `text-${content.textAlign}` : `text-center` } ${theme.text.H2}`}>{content.heading}</h2>
+
           }
           {media && mediaExists &&
             <div className={columns}> 
@@ -25,6 +27,9 @@ const MediaBlocks = (props) => {
                 return (
                   <div className={`w-full mb-20`}>
                     <FlexibleMedia key={`MediaBlocksItem__${index}`} paddingRatio={content.ratio} data={block.componentFlexibleMedia} />
+                    {block.componentFlexibleMedia.caption&& 
+                      <p className={`${theme.text['P_STD']} mt-4`}>{block.componentFlexibleMedia.caption}</p>
+                    }
                   </div>
                 )
               })}
@@ -51,6 +56,7 @@ export const query = graphql`
                 caption
                 type
                 videoSource
+                caption
                 video {
                   videoUrl
                   thumbnailImage {
@@ -73,7 +79,7 @@ export const query = graphql`
               }
             }
             columns
-            heading
+            textAlign
             ratio
           }
           layoutSettings {
@@ -104,6 +110,7 @@ export const serviceQuery = graphql`
                 caption
                 type
                 videoSource
+                caption
                 video {
                   videoUrl
                   thumbnailImage {
@@ -117,6 +124,7 @@ export const serviceQuery = graphql`
                   }
                 }
                 image {
+                  caption
                   localFile {
                     childImageSharp {
                       gatsbyImageData
@@ -126,7 +134,7 @@ export const serviceQuery = graphql`
               }
             }
             columns
-            heading
+            textAlign
             ratio
           }
           layoutSettings {
@@ -158,6 +166,7 @@ export const projectQuery = graphql`
                 caption
                 type
                 videoSource
+                caption
                 video {
                   videoUrl
                   thumbnailImage {
@@ -171,6 +180,7 @@ export const projectQuery = graphql`
                   }
                 }
                 image {
+                  caption
                   localFile {
                     childImageSharp {
                       gatsbyImageData
@@ -180,7 +190,7 @@ export const projectQuery = graphql`
               }
             }
             columns
-            heading
+            textAlign
             ratio
           }
           layoutSettings {

@@ -18,7 +18,7 @@ const FeaturedProjectsCarousel = (props) => {
     const [slideInteraction, setInteraction] = useState(false);
     //let dataTwo = slide + 1;
 
-    const nextSlide = () => {
+       const nextSlide = () => {
         let i = slide;
         //dataTwo = slide + 1;
         if (i === (slides.length - 1)) {

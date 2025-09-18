@@ -69,7 +69,7 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
     return(<>
         {!twoCol &&
             <div onMouseEnter={() => handleHoverState(false)} onMouseLeave={() => handleHoverState(true)}>
-                {size == 'large' && 
+                {size === 'large' && 
                     <>
                         {brandingImgLinkMobile && 
                             <>
@@ -102,7 +102,7 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
                         }
                     </>
                 }
-                {size == 'small' &&
+                {size === 'small' &&
                     <>
                         {brandingImgLinkSmall&& 
                             <button className="block h-max" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()}>
@@ -117,7 +117,7 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
                 <>
                     {/* rollover desktop */}
                     <div className="hidden lg:flex flex-col justify-center items-center absolute opacity-0 hover:opacity-100 bg-opacity-80 backdrop-blur-sm bg-white w-[calc(100%-18px)] h-[calc(100%-18px)] top-[9px] left-[9px] transition-opacity duration-500">
-                        <h2 className="text-rm-black font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-[45px]">{title}</h2>
+                        <h2 className="text-rm-black font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-[45px] text-center">{title}</h2>
                             {images.length > 1 &&
                                 <button onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} className={`${theme.button['BASE_STYLING']} ${theme.button['SOLID_GREEN_HOVER_DARK']}`}>
                                     VIEW WORK
@@ -173,7 +173,7 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
                                 {gallery[0] &&
                                     <GatsbyImage aria-controls={`image-${gallery}`} image={gallery[image] ? gallery[image].image.localFile.childImageSharp.gatsbyImageData : gallery[0].image.localFile.childImageSharp.gatsbyImageData} alt={``} className={`w-full z-0`} />
                                 }
-                                {galleryLength == true && gallery.length > 1 &&
+                                {galleryLength === true && gallery.length > 1 &&
                                     <>
                                         <button galleryLength className={`hidden md:block absolute top-1/2 left-[-50px] ml-2 z-50 text-white ${gallery.length < 3 ? 'hidden' : ''}`} onClick={()=>loadPrev()} onKeyDown={()=>loadPrev()} aria-label="Next Image" tabIndex={0}>
                                             <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -193,7 +193,7 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
 
                         {/* <h3 className={`${theme.text.H4} pt-4 text-rm-white text-center`}>{(!video) ? gallery[image].text ? gallery[image].text : title : title}</h3> */}
                         
-                        {galleryLength == true && gallery.length > 1 &&
+                        {galleryLength === true && gallery.length > 1 &&
                             <div className={"flex justify-between pt-6 md:hidden w-full"}>
                                 <button className={`relative text-white ml-2 z-50 ${gallery.length < 3 ? 'hidden' : ''}`} onClick={()=>loadPrev()} onKeyDown={()=>loadPrev()} aria-label="Next Image" tabIndex={0}>
                                             <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">

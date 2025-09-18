@@ -71,9 +71,9 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
         return;
     }
     return(<>
-    <div onMouseEnter={() => handleHoverState(false)} onMouseLeave={() => handleHoverState(true)} className={`${typeOfProject == 'Video'&& 'pt-[56.25%]'} relative`}>
+    <div onMouseEnter={() => handleHoverState(false)} onMouseLeave={() => handleHoverState(true)} className={`${typeOfProject === 'Video'&& 'pt-[56.25%]'} relative`}>
         
-        {typeOfProject == 'Video'&&
+        {typeOfProject === 'Video'&&
             <GatsbyImage image={thumbnail} alt={`${title}`} className={`absolute top-0 left-0 h-full cursor-pointer object-contain w-full`}/>
         }
         
@@ -87,7 +87,9 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
                     <p className={`${theme.text.P_STD} md:pb-2 text-rm-black font-bold hidden xl:block`}>{caption}</p>
                     <p className={`${theme.text.H4} text-rm-black pb-4 hidden xl:block`}>{title}</p>
                     <div className={"w-[65px] lg:w-[95px] text-center mx-auto xl:pt-7"}>
+
                         {typeOfProject == 'Video'&&
+
                             <img className="hidden xl:block" src={'https://cms.ridgemarketing.com/wp-content/uploads/2023/06/circle-play-solid-1.svg'} alt={`play button`} />
                         }
                         {typeOfProject !== 'Video'&& 
@@ -98,7 +100,7 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
             </div>
         }
     </div>
-    {typeOfProject == 'Video' &&
+    {typeOfProject === 'Video' &&
         <div className="block xl:hidden bg-black p-6">
             <p className={`${theme.text.P_STD} md:pb-2 text-rm-white text-left font-bold`}>{caption}</p>
             <h2 role="button" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()}  className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2">{title}</h2>
@@ -123,7 +125,7 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
                         {gallery[0] &&
                             <GatsbyImage aria-controls={`image-${gallery}`} image={gallery[image] ? gallery[image].image.localFile.childImageSharp.gatsbyImageData : gallery[0].image.localFile.childImageSharp.gatsbyImageData} alt={``} className={`w-full z-0`} />
                         }
-                        {galleryLength == true && gallery.length > 1 &&
+                        {galleryLength === true && gallery.length > 1 &&
                             <>
                                 <button galleryLength className={`hidden md:block absolute top-1/2 left-[-50px] ml-2 z-50 text-white ${gallery.length < 3 ? 'hidden' : ''}`} onClick={()=>loadPrev()} onKeyDown={()=>loadPrev()} aria-label="Next Image" tabIndex={0}>
                                     <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -148,7 +150,7 @@ const LightBox = ({type, images, video, title, link, caption, typeOfProject, noT
 
                 <h3 className={`${theme.text.H4} pt-4 text-rm-white text-center`}>{(!video) ? gallery[image].text ? gallery[image].text : title : title}</h3>
                 
-                {galleryLength == true && gallery.length > 1 &&
+                {galleryLength === true && gallery.length > 1 &&
                     <div className={"flex justify-between pt-6 md:hidden w-full"}>
                         <button className={`relative text-white ml-2 z-50 ${gallery.length < 3 ? 'hidden' : ''}`} onClick={()=>loadPrev()} onKeyDown={()=>loadPrev()} aria-label="Next Image" tabIndex={0}>
                                     <svg width="35" height="24" viewBox="0 0 35 24" fill="none" xmlns="http://www.w3.org/2000/svg">

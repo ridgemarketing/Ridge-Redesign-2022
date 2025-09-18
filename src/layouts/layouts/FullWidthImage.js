@@ -61,12 +61,17 @@ const FullWidthImage = (props) => {
       <>
         <Section settings={settings}>
             <Container container={settings.containerWidth}>
+
                 {content.heading && 
                   <p className={`${theme.text.H2} px-2 pb-8 ${settings?.classes?.includes('text-center') ? 'text-center' : 'text-center lg:text-left'}`}>{content.heading}</p>
+
                 }
                 <div ref={overlapImage} className={`mx-auto ${overlapImageClass}`}> 
                     {image}
                 </div>
+                {content.caption&& 
+                  <p className={`${theme.text['P_STD']} mt-4 text-left`}>{content.caption}</p>
+                }
             </Container>
         </Section>
         <div ref={overlapDiv} className={`${overlapSection} bg-${theme.backgroundColor[overlapBkg]}`}></div>
@@ -84,6 +89,7 @@ export const query = graphql`
             heading
             imageOverlap
             imageClasses
+            caption
             backgroundColor
             image {
               localFile {
@@ -126,6 +132,7 @@ export const serviceQuery = graphql`
             heading
             imageOverlap
             imageClasses
+            caption
             backgroundColor
             image {
               localFile {
@@ -169,6 +176,7 @@ export const projectQuery = graphql`
             heading
             imageOverlap
             imageClasses
+            caption
             image {
               localFile {
                 childImageSharp {
