@@ -34,12 +34,9 @@ const ResultCard = (props) => {
     return (
             <div key={`${content.description}${content.stat}`} className={ `text-center md:text-left ${props.columns !== "1" && classes[props.columns]} my-6` }>
                 <div className={`w-fit mx-auto ${props.columns === "1" && classes[props.columns]}`}>
-                { content.stat && statNumber > 10 &&
-                    <Counter number={statNumber} title={suffixString} classes={statClass} columns={columnsNum} />   
-                }
-                {content.stat && statNumber < 10 &&
-                    <span className={statClass}>{`${statNumber}${suffixString}`}</span>   
-                }            
+                {content.stat &&
+                    <span className={statClass}>{content.stat}</span>
+                    }          
                 { content.description &&  
                 <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H5 + 'font-basic-sans normal-case'} ${descriptionClass} xl:${theme.text.H4} !font-normal`}></p>  
                 }
