@@ -117,7 +117,8 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
             <span className={`block mb-2`}><Input errors={errors} register={register} required={true} type={`text`} name={`position`} label={`Position Sought`} textColor={`white`} bgColor={`black`} /></span>
             <span className={`block mb-2`}><Input errors={errors} register={register} required={false} type={`text`} name={`portfolio`} label={`Portfolio or LinkedIn`} textColor={`white`} bgColor={`black`} /></span>
             <span className={`block`}><TextArea errors={errors} register={register} required={false} name={`message`} label={`What would you bring to the Barn of Brands`} textColor={`white`} bgColor={`black`} /></span>
-            <span className={`block mt-10 mb-16`}><Input errors={errors} register={register} required={false} type={`file`} name={`resume`} label={`Upload Resume`} textColor={`white`} bgColor={`black`} /></span>
+            {/* taking this out for now until the bodyparser rebuild issue is completed */}
+            {/* <span className={`block mt-10 mb-16`}><Input errors={errors} register={register} required={false} type={`file`} name={`resume`} label={`Upload Resume`} textColor={`white`} bgColor={`black`} /></span> */}
             
 
             <div className={`mt-6 ${btnContainerClasses ? btnContainerClasses : ``}`}>
