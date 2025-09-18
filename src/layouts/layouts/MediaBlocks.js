@@ -27,9 +27,9 @@ import FlexibleMedia from "../../components/global/FlexibleMedia"
                 return (
                   <div className={`w-full mb-20`}>
                     <FlexibleMedia key={`MediaBlocksItem__${index}`} paddingRatio={content.ratio} data={block.componentFlexibleMedia} />
-                    {block.componentFlexibleMedia.caption&& 
+                    {/* {block.componentFlexibleMedia.caption&& 
                       <p className={`${theme.text['P_STD']} mt-4`}>{block.componentFlexibleMedia.caption}</p>
-                    }
+                    } */}
                   </div>
                 )
               })}
