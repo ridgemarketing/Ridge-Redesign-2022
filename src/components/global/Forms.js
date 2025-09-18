@@ -5,16 +5,17 @@ import { useForm } from "react-hook-form";
 
 export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle}) => {
     const { register, handleSubmit, watch, reset, formState, formState: { errors, isSubmitSuccessful } } = useForm()
-    const [status, setStatus] = useState(false)
-    const [submittedData, setSubmittedData] = useState({})
+    const [status, setStatus]                   = useState(false)
+    const [submittedData, setSubmittedData]     = useState({})
 
     const onSubmit = async (data) => {
 
         setStatus(`processing`)
 
-        let attachments = [];
+        let attachments = []
         if (data?.resume && data?.resume.length > 0) {
             for (const file of data.resume) {
+
                 // File type validation
                 const allowedTypes = ['application/pdf', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 'application/msword'];
                 if (!allowedTypes.includes(file?.type)) {
@@ -23,7 +24,6 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
                     return 
                 }
 
-                // File size validation (5MB limit to prevent payload issues)
                 const maxFileSize = 5 * 1024 * 1024; // 5MB
                 if (file.size > maxFileSize) {
                     console.log('File too large:', file.size, 'bytes')
@@ -35,14 +35,14 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
                     const reader    = new FileReader()
                     reader.onload   = () => resolve(reader.result.split(',')[1])
                     reader.readAsDataURL(file)
-                });
+                })
 
                 attachments.push({
                     content     : base64,
                     filename    : file.name,
                     type        : file.type,
                     disposition : 'attachment'
-                });
+                })
             }
         }
 
@@ -55,7 +55,7 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
                 email           : data.email,
                 subject         : `New Careers Form Submission`,
                 message         : message,
-                attachments     : attachments
+                // attachments     : attachments
         }),
             headers: {
             "Content-Type": "application/json",

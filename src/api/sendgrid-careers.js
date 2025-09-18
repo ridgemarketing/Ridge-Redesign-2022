@@ -71,7 +71,6 @@ async function sendEmail(req, res) {
         {
           to: [
               {
-                // email: "harrison@ridgemarketing.com", 
                 email: "aquincy@ridgemarketing.com", 
                 name: "Andrea Quincy"
               }
