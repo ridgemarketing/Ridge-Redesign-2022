@@ -268,7 +268,7 @@ export const FormContactPage = ({classes, submitLabel, btnContainerClasses, btnS
                         </div>
                     }
                     <div>
-                        <span className={`mb-6 block`}><Select errors={errors} register={register} required={true} name={`companySize`} label={`Company Size`} options={[`< 10`,`10-50`,`50-250`,`250+`]} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <span className={`mb-6 block`}><Select errors={errors} register={register} required={true} name={`companySize`} label={`Company Size`} options={[`< 10 Employees`,`10-50 Employees`,`50-250 Employees`,`250+ Employees`]} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <span className={`mb-6 block`}><Select errors={errors} register={register} required={true} name={`companyRevenue`} label={`Company Revenue`} options={[`Less than $5M`,`$5M-$50M`,`$50M-250M`,`$250M-$1B`,`$1B+`]} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <span className={`mb-6 block`}><Input errors={errors} register={register} required={true} type={`text`} name={`budget`} label={`Budget`} bgColor={`white`} textColor={`black`} /></span>
                         <div className={`mt-6 ${btnContainerClasses ? btnContainerClasses : ``}`}>
