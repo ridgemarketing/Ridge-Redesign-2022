@@ -159,7 +159,7 @@ const LightBoxBranding = ({ images, video, title, link, size, brandingImgLinkLar
         {images.length > 1 &&
             <div className={`fixed top-0 left-0 h-screen w-screen`} style={{display:overlay ? 'block':'none', visibility:overlay ? 'visible':'hidden', zIndex:overlay ? '50':'0'}} aria-label="lightbox" aria-expanded={overlay}>
                 <div className={`relative z-10 w-full h-full flex flex-col items-center justify-center`}>
-                    <div className={`w-[95%] md:w-3/4 lg:w-[40%] h-max relative flex flex-col justify-center items-center`}>
+                    <div className={`w-[95%] md:w-3/4 lg:w-[900px] h-max relative flex flex-col justify-center items-center`}>
                         <nav className={`absolute top-0 left-0 w-full h-full z-50 text-rm-white flex justify-between items-center ml-auto mr-auto`}> 
                             <button className={`absolute z-50 text-rm-white p-2 -top-[50px] right-0`} aria-label="Close Lightbox" onClick={()=>togglePopup()} onKeyDown={()=>togglePopup()} tabIndex={0}>
                                 <svg width="26" height="24" viewBox="0 0 26 24" fill="none">
