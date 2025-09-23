@@ -15,7 +15,7 @@ export default function HTML(props) {
         {props.headComponents}
         <link rel="stylesheet" href="https://use.typekit.net/thq8rzi.css"></link>
         
-        <script>{`
+        <script id="facebookPixel">{`
         !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
         n.callMethod.apply(n,arguments):n.queue.push(arguments)};
         if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
@@ -26,9 +26,7 @@ export default function HTML(props) {
         fbq('init', '685423524573079');
         fbq('track', 'PageView');`}
         </script>
-        <noscript><img height="1" width="1" style="display:none"
-        src="https://www.facebook.com/tr?id=685423524573079&ev=PageView&noscript=1"
-        /></noscript>
+        <noscript><img style={{"display":"none", "height":"1px", "width":"1px"}} src="https://www.facebook.com/tr?id=685423524573079&ev=PageView&noscript=1"/></noscript>
 
       </head> 
       <body {...props.bodyAttributes}>
