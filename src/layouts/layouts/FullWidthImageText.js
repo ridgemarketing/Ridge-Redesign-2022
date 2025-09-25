@@ -71,7 +71,7 @@ const FullWidthImageText = (props) => {
               <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`text-left mt-8 ${theme.text.P_STD} ${textColor}`}></p> 
             }
             
-            {content.componentButton &&
+            {content?.componentButton?.link &&
               <div className={`text-center pt-4 mt-10`}>
                   <Buttons content={content.componentButton} sectionBackground={settings.backgroundColor}/>  
               </div>
