@@ -80,7 +80,7 @@ const WebsiteBrandingTitleAndLink = ({block, link, title}) => {
 
       {/* text link mobile */}
       <div className="block lg:hidden bg-black p-6 lg:absolute bottom-4 left-4 lg:max-w-[350px]">
-          <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2 text-center">{title}</h2>
+          <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2 text-left">{title}</h2>
           {link.url &&
               <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} link={link}/>
           }
@@ -104,8 +104,8 @@ const WebsiteTwoColImage = ({block, sidePin, image, link, index}) =>{
 const WebsiteTwoColLink = ({link, title}) =>{
   return(
     <div className="bg-black p-6">
-      <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2 text-center">{title}</h2>
-      {link.url && 
+      <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2 text-left">{title}</h2>
+      {link?.url && 
             <FlexibleLink classes={`text-[18px] text-rm-green font-stratos-lights uppercase w-max ${theme.text_links['BASE_STYLING']} ${theme.text_links['STD']} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links['HOVER_ARW_FWD_GREEN']} ${theme.text_links['HOVER_GREEN']}`} 
             link={link} />
       }
@@ -129,8 +129,8 @@ const WebsiteTwoCol = ({block, sidePin}) =>{
                 link={block.group.largeImage.link}
                 image={block.group.largeImage.mobileImage.localFile.childImageSharp.gatsbyImageData} /> 
           } 
-          {block.group.largeImage.link.url &&
-              <WebsiteTwoColLink title={block.group.largeImage.title} link={block.group.largeImage.link} />
+          { (block.group.largeImage.link.url || block.group.largeImage.title) &&
+              <WebsiteTwoColLink title={block?.group?.largeImage?.title} link={block?.group?.largeImage?.link} />
           }
       </div>
       <div className="relative hidden md:block xl:hidden max-w-[50%]"> 
@@ -146,8 +146,8 @@ const WebsiteTwoCol = ({block, sidePin}) =>{
                 link    ={block.group.smallImageTop.link}
                 image   ={block.group.smallImageTop.mobileImage.localFile.childImageSharp.gatsbyImageData} /> 
         }
-        {block.group.smallImageTop.link.url && block.group.smallImageTop.title &&
-            <WebsiteTwoColLink title={block.group.smallImageTop.title} link={block.group.smallImageTop.link} />
+        { (block.group.smallImageTop.link.url || block.group.smallImageTop.title) &&
+            <WebsiteTwoColLink title={block?.group?.smallImageTop?.title} link={block?.group?.smallImageTop?.link} />
         }
       </div>
       <div className="relative hidden md:block xl:hidden max-w-[50%]">
@@ -163,8 +163,8 @@ const WebsiteTwoCol = ({block, sidePin}) =>{
               link={block.group.smallImageBottom.link}
               image={block.group.smallImageBottom.mobileImage.localFile.childImageSharp.gatsbyImageData} /> 
         }
-        {block?.group?.smallImageBottom?.link?.url && block.group.smallImageBottom.title &&
-            <WebsiteTwoColLink title={block.group.smallImageBottom.title} link={block.group.smallImageBottom.link} />
+        {(block?.group?.smallImageBottom?.link?.url || block.group.smallImageBottom.title) &&
+            <WebsiteTwoColLink title={block?.group?.smallImageBottom?.title} link={block?.group?.smallImageBottom?.link} />
         } 
       </div>
     </>
@@ -409,7 +409,7 @@ const BrandingBlock = ({block, index, contactLink, currentContext}) => {
                   }
                   {!block.group.smallImageBottom.image &&
                     <div className="relative hidden xl:flex flex-col items-center justify-center bg-[#24B6BF] xl:h-[350px] border-solid border-black border-[9px]">
-                      <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2 text-center">Want to See your new site here?</h2>
+                      <h2 className="text-white font-stratos uppercase text-[1.75rem] leading-6 font-bold mb-2 text-left">Want to See your new site here?</h2>
                       {contactLink?.url &&
                       <FlexibleLink
                           link={contactLink}
