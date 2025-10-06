@@ -9,13 +9,18 @@ const Blog = () => {
 
   const getThePosts = useStaticQuery(graphql`
     query GetBlogPosts {
-        allWpPost(sort: {date: DESC}) {
+        allWpPost(sort: {date: DESC}, filter: {blogFields: {additionalBlogFields: {previewMode: {ne: true}}}}) {
         nodes {
             id
             title
             content
             link
             excerpt
+            blogFields {
+              additionalBlogFields {
+                previewMode
+              }
+            }
             featuredImage {
               node {
                     localFile {
@@ -49,6 +54,13 @@ const Blog = () => {
   const initialCount          = 5;
   const postsToAdd            = 4;
   const [counter, setCounter] = useState(initialCount);
+
+
+  // posts.forEach( (post, index) => {
+  //   if (post.blogFields.additionalBlogFields.previewMode) {
+  //     posts.splice(index, 1)
+  //   }
+  // })
 
   let button                  = useRef(null);
   let buttonDisplay           = '';
@@ -98,6 +110,9 @@ const Blog = () => {
         <div className="flex flex-wrap flex-row mt-7 md:mt-20 lg:w-[90%] justify-between">
           {posts.slice(1,counter).map((post) => {
             const innerBlurb = (post.excerpt.replace(/(<([^>]+)>)/gi, "")).substring(0,200) + '...';
+              // if (post?.blogFields?.additionalBlogFields?.previewMode) {
+              //   return
+              // }
               return(
                 <article key={post.id} className="w-full md:w-[45%] lg:mx-[2.5%] flex flex-col mb-7 lg:mb-20">
                     <GatsbyImage className={`object-cover h-[200px] w-full `} alt={post.featuredImage.node.altText} image={post.featuredImage.node.localFile.childImageSharp.gatsbyImageData || ` `} />
