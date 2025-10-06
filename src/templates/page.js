@@ -10,7 +10,7 @@ import { Container } from "../components/global/Wrappers"
 import CustomHeader from "../components/global/headerColor"
 import PortfolioHeader from "../layouts/layouts/PortfolioHeader"
 import { theme, ThemeContext } from "../static/theme"
-import Wrapped2024 from "../layouts/layouts/Wrapped2024"
+import Wrapped2024 from "../layouts/layouts/wrapped2024"
 
 export const Head = ({data}) => (
   <>

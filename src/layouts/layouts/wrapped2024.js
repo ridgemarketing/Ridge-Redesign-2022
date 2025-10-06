@@ -11,7 +11,7 @@ const Wrapped2024 = () => {
                     width={1920}
                     height={1012}
                     src="https://cms.ridgemarketing.com/wp-content/uploads/2024/12/Wrapped-Background-Image-scaled-1.jpg"
-                    alt=""
+                    alt="" 
                     placeholder="blurred"
                     className="object-cover object-center w-[calc(100%+5rem)] h-[calc(100%+5rem)] -mt-[2.5rem] -ml-[2.5rem] blur-sm"
                 />

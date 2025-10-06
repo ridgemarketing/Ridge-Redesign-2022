@@ -9,7 +9,7 @@ const Blog = () => {
 
   const getThePosts = useStaticQuery(graphql`
     query GetBlogPosts {
-        allWpPost(sort: {date: DESC},  filter: {blogFields: {additionalBlogFields: {previewMode: {ne: true}}}}) {
+        allWpPost(sort: {date: DESC}, filter: {blogFields: {additionalBlogFields: {previewMode: {ne: true}}}}) {
         nodes {
             id
             title
@@ -61,7 +61,6 @@ const Blog = () => {
   //     posts.splice(index, 1)
   //   }
   // })
-
 
   let button                  = useRef(null);
   let buttonDisplay           = '';
