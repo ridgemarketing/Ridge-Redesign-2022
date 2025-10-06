@@ -7,46 +7,55 @@ import { Link }from "gatsby"
 import Parser from "../components/global/Parser"
 import { ThemeContext } from "../static/theme"
 
-export const Head = ({data}) => (
-  <>
-    <title>{data?.wpPost?.seo?.title}</title>
-    <link rel="icon" type="image/x-icon" href={data?.allWp?.nodes[0]?.globalSettings?.globalSettings?.logos?.favicon?.sourceUrl}></link>
-
-    <meta name="description" content={data?.wpPost.seo.opengraphDescription} />
-    <meta name="title" content={data?.wpPost?.seo?.title}/>
-    <meta name="pageType" content={data?.wpPost?.seo?.schema?.pageType}/>
-    <meta name="keywords" content={data?.wpPost?.seo?.metaKeywords}/>
-    <meta name="author" content={data?.wpPost?.seo?.opengraphAuthor}/>
-
-    {data?.wpPost?.seo?.metaRobotsNoindex === 'noindex' &&
+export const Head = ({data}) => {
+  if (data?.wpPost?.blogFields?.additionalBlogFields?.previewMode) {
+    return (
+        <meta name="robots" content="noindex"/>
+    )
+  }
+  if (!data?.wpPost?.blogFields?.additionalBlogFields?.previewMode) {
+    return(
       <>
-      <meta name="robots" content="noindex" />
-      <meta name="googlebot-news" content="noindex" />
+        <title>{data?.wpPost?.seo?.title}</title>
+        <link rel="icon" type="image/x-icon" href={data?.allWp?.nodes[0]?.globalSettings?.globalSettings?.logos?.favicon?.sourceUrl}></link>
+
+        <meta name="description" content={data?.wpPost.seo.opengraphDescription} />
+        <meta name="title" content={data?.wpPost?.seo?.title}/>
+        <meta name="pageType" content={data?.wpPost?.seo?.schema?.pageType}/>
+        <meta name="keywords" content={data?.wpPost?.seo?.metaKeywords}/>
+        <meta name="author" content={data?.wpPost?.seo?.opengraphAuthor}/>
+
+        {data?.wpPost?.seo?.metaRobotsNoindex === 'noindex' &&
+          <>
+            <meta name="robots" content="noindex" />
+            <meta name="googlebot-news" content="noindex" />
+          </>
+        }
+        {data?.wpPost?.seo?.metaRobotsNoFollow  === 'nofollow' &&
+          <meta name="robots" content={data?.wpPost?.seo?.metaRobotsNoFollow} />
+        }
+
+        <meta property="og:type" content={data?.wpPost?.seo?.opengraphType}/>
+        <meta property="og:author" content={data?.wpPost?.seo?.opengraphAuthor}/>
+        <meta property="og:url" content={data?.wpPost?.seo?.opengraphUrl}/>
+        <meta property="og:title" content={data?.wpPost?.seo?.opengraphTitle}/>
+        <meta property="og:description" content={data?.wpPost?.seo?.opengraphDescription}/>
+        {data?.wpPost?.seo?.opengraphImage &&
+          <meta property="og:image" content={data?.wpPost?.seo?.opengraphImage?.sourceUrl}/>
+        }
+
+        <meta property="twitter:card" content="summary_large_image"/>
+        <meta property="twitter:url" content={data?.wpPost?.seo?.opengraphUrl}/>
+        <meta property="twitter:title" content={data?.wpPost?.seo?.twitterTitle}/>
+        <meta property="twitter:description" content={data?.wpPost?.seo?.twitterDescription}/>
+        {data?.wpPost?.seo?.twitterImage &&
+          <meta property="twitter:image" content={data?.wpPost?.seo?.twitterImage?.sourceUrl}/>
+        }
+        {data?.wpPost?.seo?.fullHead}
       </>
-    }
-    {data?.wpPost?.seo?.metaRobotsNoFollow  === 'nofollow' &&
-       <meta name="robots" content={data?.wpPost?.seo?.metaRobotsNoFollow} />
-    }
-
-    <meta property="og:type" content={data?.wpPost?.seo?.opengraphType}/>
-    <meta property="og:author" content={data?.wpPost?.seo?.opengraphAuthor}/>
-    <meta property="og:url" content={data?.wpPost?.seo?.opengraphUrl}/>
-    <meta property="og:title" content={data?.wpPost?.seo?.opengraphTitle}/>
-    <meta property="og:description" content={data?.wpPost?.seo?.opengraphDescription}/>
-    {data?.wpPost?.seo?.opengraphImage &&
-      <meta property="og:image" content={data?.wpPost?.seo?.opengraphImage?.sourceUrl}/>
-    }
-
-    <meta property="twitter:card" content="summary_large_image"/>
-    <meta property="twitter:url" content={data?.wpPost?.seo?.opengraphUrl}/>
-    <meta property="twitter:title" content={data?.wpPost?.seo?.twitterTitle}/>
-    <meta property="twitter:description" content={data?.wpPost?.seo?.twitterDescription}/>
-    {data?.wpPost?.seo?.twitterImage &&
-      <meta property="twitter:image" content={data?.wpPost?.seo?.twitterImage?.sourceUrl}/>
-    }
-    {data?.wpPost?.seo?.fullHead}
-  </>
-)
+    )
+  }
+}
 
 // export const Head = ({data}) => (
 //   <>
@@ -55,6 +64,7 @@ export const Head = ({data}) => (
 // )
 
 const WpPost = ({ data, pageContext }) =>{
+
     const content       = data.wpPost;
     const context       = pageContext;
     const themeContext  = useContext(ThemeContext);
@@ -124,7 +134,13 @@ export const query = graphql`
       id
       uri
       title
+      blogFields {
+        additionalBlogFields {
+          previewMode
+        }
+      }
       content
+      status
       author {
         node {
           avatar {

@@ -11,7 +11,7 @@ const PostCards = (props) => {
     
     const allPosts = useStaticQuery( graphql`
       query GetPosts {
-        allWpPost(sort: {date: DESC}, limit: 3) {
+        allWpPost(sort: {date: DESC} , filter: {blogFields: {additionalBlogFields: {previewMode: {ne: true}}}}, limit: 3)  {
           nodes {
             date
             guid
@@ -61,11 +61,9 @@ const PostCards = (props) => {
     const taxonomy      = content.taxonomy;
     let cards           = [];
 
-    //console.log('post cards',posts, content);
-
-    for(let a =0; taxonomy.length > a; a++){
-      for(let b =0; posts.length > b; b++){
-        for(let c =0; posts[b].categories.nodes.length > c; c++){
+    for(let a = 0; taxonomy.length > a; a++){
+      for(let b = 0; posts.length > b; b++){
+        for(let c = 0; posts[b].categories.nodes.length > c; c++){
           if(taxonomy[a].name === posts[b].categories.nodes[c].name){
             if (cards.length >= 3){}else{
               cards.push(posts[b]);
