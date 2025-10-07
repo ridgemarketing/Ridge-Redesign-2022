@@ -6,7 +6,7 @@ import Header from "./Header"
 import Footer from "./Footer"
 import "../../css/styles.css"
 
-export default function Layout({ location, children }) {
+export default function Layout({ location, children, data }) {
     const {
         wp: { seo },
     } = useStaticQuery(graphql`
@@ -160,7 +160,7 @@ export default function Layout({ location, children }) {
                 <main id="mainContent" tabIndex={0} aria-label="Main Content">
                     {children}
                 </main>
-                <Footer location={location} />
+                <Footer location={location} data={data} />
             </ThemeContext.Provider>
         // </SEOContext.Provider>
     )

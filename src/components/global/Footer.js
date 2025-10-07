@@ -5,7 +5,7 @@ import { Link } from "gatsby"
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Container } from "./Wrappers"
 
-const Footer = ({location}) =>{
+const Footer = ({location, data}) =>{
     
     const Menu = useStaticQuery( graphql`
     query GetMenus {
@@ -130,14 +130,14 @@ const Footer = ({location}) =>{
           menuBreakpoints[counter].push(footerLinks[i]);
           if(footerLinks[i].cssClasses.includes('menu-break')){
             prevCounter = counter;
-            counter = counter + 1;
+            counter     = counter + 1;
             menuBreakpoints[counter] = [];
           }
         }else if(counter > prevCounter){
           menuBreakpoints[counter].push(footerLinks[i]);
           if(footerLinks[i].cssClasses.includes('menu-break')){
             prevCounter = counter;
-            counter = counter + 1;
+            counter     = counter + 1;
             menuBreakpoints[counter] = [];
           }
         }else{}
@@ -147,7 +147,7 @@ const Footer = ({location}) =>{
     return(
         <footer className="-mt-px text-center lg:text-left bg-rm-black text-rm-white py-12 lg:py-16">
             <Container container={"slim"}>
-                {!location.pathname.includes('lander/') &&
+                {( (!location.pathname.includes('lander/')) || (data?.wpLander?.landingPages?.showFooter)) &&
                   <div className={`mb-12 lg:mb-28`}>
                       {content.footertext.cta &&
                         <h2 className={`${theme.text.HERO} lg:w-3/4`}>{content.footertext.cta}</h2>
