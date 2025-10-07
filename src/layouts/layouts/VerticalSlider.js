@@ -24,6 +24,8 @@ const VerticalSlider = (props) => {
   let scrollPoints            = [];
 
   const vslides               = content.slides;
+  const flipOrientation      = content.styletoggle ? "md:flex-row-reverse" : "md:flex-row";
+
   
   useEffect(() => {
 
@@ -96,12 +98,12 @@ const VerticalSlider = (props) => {
         <Section settings={ settings }>
             <Container>
                 {content.heading &&
-                  <h2 className={`${theme.text.H1_STD} text-center mb-9 ${textColor}`}> 
+                  <h2 className={`${content.styletoggle ? 'font-stratos uppercase font-light text-40px leading-44px' : theme.text.H1_STD} text-center mb-9 ${textColor}`}> 
                     { content.heading }
                   </h2>
                 }
                 {content.body &&
-                  <p className={`${theme.text.P_STD} text-center ${textColor} `}>
+                  <p className={`${theme.text.P_STD} text-center ${textColor} x`}>
                     { content.body }  
                   </p>
                 }
@@ -111,32 +113,56 @@ const VerticalSlider = (props) => {
           <div className={ `block invisible` } style={ { height:slideHeight + 'px' } } aria-hidden="true"></div>
           
           <div ref={innerContainer} className={ `container flex-wrap relative`} style={{height:"inherit"}}>
-            <div ref={firstSlide} className={`flex flex-col ml-auto mr-auto w-[95%] md:flex-row md:w-full items-center sticky -translate-y-1/2 top-[50%]`} style={ { height : slideHeight } }>
-              <div className="w-full h-full md:w-[50%] md:h-[80%] flex items-center" >
+            <div ref={firstSlide} className={`flex flex-col ml-auto mr-auto w-[95%] md:flex-row  md:w-full items-center sticky -translate-y-1/2 top-[50%]`} style={ { height : slideHeight } }>
+              <div className="flex flex-col items-center h-[75%] w-[7px] md:mr-[5rem] lg:mr-[6rem] md:mt-12">
+                <div role={`progressbar`} aria-valuenow={0} aria-labelledby={`slides-main`} className={`h-[100%] w-[7px]`}>
+                  { vslides.map( (key, index)  => (
+                      <div ref={ el => progressBar.current[ index ] = el } aria-label={`go to slide ${index}`} role={`button`} tabIndex={0} className="w-[5px] cursor-pointer overflow-hidden border-b-8 last:border-b-0 border-rm-black bg-rm-white transition-all ease-out"  key={ 'slides' + index } style={ { height: 100 / ( vslides.length  + 1 )  + '%' } }  onClick={() => skipTo(index)} onKeyDown={() => skipTo(index)}>
+                          <div className="w-full h-0 transition-all ease-out"></div>
+                      </div>
+                  ) ) } 
+                </div> 
+
                 <div className={`h-[100%] md:h-[70%]`}>
-                  <div role={`progressbar`} aria-valuenow={0} aria-labelledby={`slides-main`} className={`h-full w-[7px]`}>
-                    { vslides.map( (key, index)  => (
-                        <div ref={ el => progressBar.current[ index ] = el } aria-label={`go to slide ${index}`} role={`button`} tabIndex={0} className="w-[5px] cursor-pointer overflow-hidden border-b-8 last:border-b-0 border-rm-black bg-rm-white transition-all ease-out"  key={ 'slides' + index } style={ { height: 100 / ( vslides.length  + 1 )  + '%' } }  onClick={() => skipTo(index)} onKeyDown={() => skipTo(index)}>
-                            <div className="w-full h-0 transition-all ease-out"></div>
-                        </div>
-                    ) ) } 
-                  </div> 
-
-                  <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `hidden md:flex transition-all ease-out ` + theme.text.H4_LTE + theme.text_links.BASE_STYLING + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_GREY + ` items-center text-rm-grey h-[30%] hover:text-rm-white capitalize`}> Skip </AnchorLink>
+                  <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `hidden md:flex transition-all ease-out` + theme.text.H4_LTE + theme.text_links.BASE_STYLING + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_GREY + ` items-center text-rm-grey h-[30%] hover:text-rm-white capitalize mt-12`}> Skip </AnchorLink>
+                </div>
                 </div>
 
-                <div id="slides-main" className={`ml-[10%] mr-[10%]`}>
-                  <p key={Math.random()} className={`${theme.text['CIRCLE_NUM']} w-[55px] h-[55px] text-rm-green border-rm-green animate-quote`}> { vslide + 1 } </p>
-                  <h2 key={Math.random()} className={`${theme.text['H2']} mt-5 mb-5 md:mb-0 md:mt-10 animate-quote opacity-0`} style={{animationDelay:'0.22s'}}> { vslides[vslide].heading } </h2>
-                  {vslides[vslide].smallText && 
-                    <p key={Math.random()} className={`${theme.text['P_STD']} + 'mt-6 animate-quote opacity-0`} style={{animationDelay:'0.37s'}}> { vslides[vslide].smallText } </p>
-                  }
+              <div className={`flex w-full ${flipOrientation} items-center`}>
+                <div className="w-full h-full md:w-[50%] md:h-[80%] flex items-center" >
+                  <div id="slides-main" className={`ml-[10%] mr-[10%]`}>
+                    {!content.styletoggle && (
+                      <p key={Math.random()} className={`${theme.text['CIRCLE_NUM']} w-[55px] h-[55px] text-rm-green border-rm-green animate-quote`}> { vslide + 1 } </p>
+                    )}
+                    <h2 key={Math.random()} 
+                      className={`${content.styletoggle ? theme.text.H3 + 'text-rm-green pb-6' : theme.text.H2} mt-5 mb-5 md:mb-0 md:mt-10 animate-quote opacity-0`} 
+                      style={{animationDelay:'0.22s'}}> { vslides[vslide].heading } 
+                    </h2>
+                    {vslides[vslide].smallText && 
+                      <p key={Math.random()} className={`${theme.text['P_STD']} + 'mt-6 animate-quote opacity-0`} style={{animationDelay:'0.37s'}}> { vslides[vslide].smallText } </p>
+                    }
+                  </div>
                 </div>
-              </div>
                 
-              <div className={`w-full h-[45%] mt-[5%] md:mt-0 md:h-auto md:w-[50%] lg:h-full block object-cover`}>
-                <DotLottieReact className={`"w-full h-full block`} src={ vslides[vslide].lottieJsonUrl } loop={true} autoplay={true} controls={false}/>
+                <div className={`w-full h-[45%] mt-[5%] md:mt-0 md:h-auto md:w-[50%] lg:h-full block object-cover`}>
+                  {content.styletoggle && vslides[vslide].image?.sourceUrl ? (
+                    <img
+                      src={vslides[vslide].image.sourceUrl}
+                      alt={vslides[vslide].image.altText || ''}
+                      className="w-full h-auto object-cover"
+                    />
+                  ) : (
+                    <DotLottieReact
+                      className="w-full h-full block"
+                      src={vslides[vslide].lottieJsonUrl}
+                      loop={true}
+                      autoplay={true}
+                      controls={false}
+                    />
+                  )}
+                </div>
               </div>
+              
               <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `md:hidden text-left w-full mt-[5%] h-[3%] transition-all ease-out ${theme.text.H4_LTE} ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.ARW_FWD_GREY} flex items-center text-rm-grey hover:text-rm-white capitalize`}>Skip </AnchorLink>
             </div>
             { vslides.map( (key, index) => (
@@ -162,9 +188,13 @@ export const query = graphql`
               heading
               lottieJsonUrl
               smallText
+              image {
+                sourceUrl 
+              }
             }
             body
             heading
+            styletoggle
           }
           layoutSettings {
             padding {
@@ -190,9 +220,13 @@ export const serviceQuery = graphql`
               heading
               lottieJsonUrl
               smallText
+              image {
+                sourceUrl 
+              }
             }
             body
             heading
+            styletoggle
           }
           layoutSettings {
             padding {
@@ -221,6 +255,39 @@ export const projectQuery = graphql`
             }
             body
             heading
+          }
+          layoutSettings {
+            padding {
+              bottom
+              top
+            }
+            anchorId
+            backgroundColor
+            classes
+            id
+          }
+        }
+      }
+  }
+`
+
+export const landerQuery = graphql`
+  fragment VerticalSliderLander on WpLander_Flexiblelayouts_Layouts {
+    ... on WpLander_Flexiblelayouts_Layouts_VerticalSlider {
+        fieldGroupName
+        layoutVerticalSlider {
+          layoutContent {
+            slides {
+              heading
+              lottieJsonUrl
+              smallText
+              image {
+                sourceUrl 
+              }
+            }
+            body
+            heading
+            styletoggle
           }
           layoutSettings {
             padding {

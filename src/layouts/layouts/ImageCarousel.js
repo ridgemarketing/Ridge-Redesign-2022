@@ -14,7 +14,7 @@ const ImageCarousel = props => {
   const heading   = content.heading;
   const body      = content.body;
   const slides    = content.slides;
-  const button    = content.componentButton;
+  const buttons    = content.componentButtonGroup;
 
     return(
         <Section settings={ settings }>
@@ -87,11 +87,15 @@ const ImageCarousel = props => {
                         </div>
                     </Splide>
                   </div>
-                {button && button.link &&
-                  <div className='text-center my-12'>
-                    <Buttons 
-                      content={button} 
-                      sectionBackground={settings.backgroundColor}/>
+                  {buttons && buttons.length > 0 &&
+                  <div className='flex flex-wrap justify-center gap-4 my-12'>
+                    {buttons.map((button, index) => (
+                      button.componentButton && button.componentButton.link &&
+                      <Buttons 
+                        key={index}
+                        content={button.componentButton} 
+                        sectionBackground={settings.backgroundColor}/>
+                    ))}
                   </div>
                 }
             </Container>
@@ -107,17 +111,19 @@ export const query = graphql`
         fieldGroupName
         layoutImageCarousel {
           layoutContent {
-            componentButton {
-              colors {
-                fieldGroupName
-                resting
+            componentButtonGroup {
+              componentButton {
+                colors {
+                  fieldGroupName
+                  resting
+                }
+                link {
+                  target
+                  title
+                  url
+                }
+                style
               }
-              link {
-                target
-                title
-                url
-              }
-              style
             }
             heading
             slides {
@@ -153,17 +159,19 @@ export const serviceQuery = graphql`
         fieldGroupName
         layoutImageCarousel {
           layoutContent {
-            componentButton {
-              colors {
-                fieldGroupName
-                resting
+            componentButtonGroup {
+              componentButton {
+                colors {
+                  fieldGroupName
+                  resting
+                }
+                link {
+                  target
+                  title
+                  url
+                }
+                style
               }
-              link {
-                target
-                title
-                url
-              }
-              style
             }
             heading
             slides {
@@ -200,17 +208,19 @@ export const projectQuery = graphql`
         fieldGroupName
         layoutImageCarousel {
           layoutContent {
-            componentButton {
-              colors {
-                fieldGroupName
-                resting
+            componentButtonGroup {
+              componentButton {
+                colors {
+                  fieldGroupName
+                  resting
+                }
+                link {
+                  target
+                  title
+                  url
+                }
+                style
               }
-              link {
-                target
-                title
-                url
-              }
-              style
             }
             heading
             slides {
@@ -247,17 +257,19 @@ export const landerQuery = graphql`
         fieldGroupName
         layoutImageCarousel {
           layoutContent {
-            componentButton {
-              colors {
-                fieldGroupName
-                resting
+            componentButtonGroup {
+              componentButton {
+                colors {
+                  fieldGroupName
+                  resting
+                }
+                link {
+                  target
+                  title
+                  url
+                }
+                style
               }
-              link {
-                target
-                title
-                url
-              }
-              style
             }
             heading
             slides {
