@@ -148,7 +148,11 @@ const Footer = ({location, data}) =>{
         <footer className="-mt-px text-center lg:text-left bg-rm-black text-rm-white py-12 lg:py-16">
             <Container container={"slim"}>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                 {( (!location.pathname.includes('lander/')) || (data?.wpLander?.landingPages?.showFooter)) &&
+=======
+                {!location.pathname.includes('/lander/') || location.pathname.includes('/lander/test') &&
+>>>>>>> Stashed changes
 =======
                 {!location.pathname.includes('/lander/') || location.pathname.includes('/lander/test') &&
 >>>>>>> Stashed changes

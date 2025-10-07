@@ -131,7 +131,7 @@ const VerticalSlider = (props) => {
                        </div>
                    ) ) }
                  </div>
-
+                 
 
                  <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `hidden md:flex transition-all ease-out ` + theme.text.H4_LTE + theme.text_links.BASE_STYLING + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_GREY + ` items-center text-rm-grey h-[30%] hover:text-rm-white capitalize`}> Skip </AnchorLink>
                </div>

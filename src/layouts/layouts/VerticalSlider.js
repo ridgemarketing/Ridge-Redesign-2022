@@ -311,4 +311,7 @@ export const landerQuery = graphql`
       }
   }
 `
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
