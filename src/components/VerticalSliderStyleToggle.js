@@ -116,7 +116,7 @@ const VerticalSlider = (props) => {
                 <div ref={firstSlide} className={`flex flex-col ml-auto mr-auto w-[95%] md:flex-row md:w-full items-center sticky -translate-y-1/2 top-[50%]`} style={ { height : slideHeight } }>
                   
                   <div className="w-full h-full md:h-[80%] flex items-center" >
-                    <div className="h-[100%] md:h-[70%]">
+                    <div className="h-[100%] md:h-[150px]">
                           <div role={`progressbar`} aria-valuenow={0} aria-labelledby={`slides-main`} className={`h-[100%] w-[7px]`}>
                             { vslides.map( (key, index)  => (
                                 <div ref={ el => progressBar.current[ index ] = el } aria-label={`go to slide ${index}`} role={`button`} tabIndex={0} className="w-[5px] cursor-pointer overflow-hidden border-b-8 last:border-b-0 border-rm-black bg-rm-white transition-all ease-out"  key={ 'slides' + index } style={ { height: 100 / ( vslides.length  + 1 )  + '%' } }  onClick={() => skipTo(index)} onKeyDown={() => skipTo(index)}>
@@ -125,11 +125,11 @@ const VerticalSlider = (props) => {
                             ) ) } 
                           </div> 
 
-                          <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `hidden md:flex transition-all ease-out` + theme.text.H4_LTE + theme.text_links.BASE_STYLING + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_GREY + ` items-center text-rm-grey h-[30%] hover:text-rm-white capitalize mt-12`}> Skip </AnchorLink>
+                          <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `hidden md:flex transition-all ease-out` + theme.text.H4_LTE + theme.text_links.BASE_STYLING + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_GREY + ` items-center text-rm-grey h-[30%] hover:text-rm-white capitalize mt-32`}> Skip </AnchorLink>
                     </div>
 
                     {/* Image / Lottie  -- Desktop */}
-                    <div className={`w-full sm:pt-6 md:w-[50%] h-auto md:h-[80%] items-center hidden md:block`}>
+                    <div className={`w-full sm:pt-6 md:w-[80%] h-auto md:h-[80%] md:flex items-center justify-center hidden`} >
                         {content.styletoggle && vslides[vslide].image?.sourceUrl ? (
                         <img
                             src={vslides[vslide].image.sourceUrl}
