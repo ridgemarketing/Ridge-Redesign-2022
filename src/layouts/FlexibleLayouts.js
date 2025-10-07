@@ -184,6 +184,7 @@ export const landerQuery = graphql`
         ...ImageCarouselLander
         ...PullquoteImageLander
         ...TwoColTextFormLander
+        ...VerticalSliderLander
       }
     }
   }

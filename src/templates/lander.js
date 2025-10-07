@@ -53,8 +53,9 @@ export const Head = ({data}) => (
 //   </>
 // )
 
-const WpLander = ({ data, location }) =>{
-  let color = 'black';
+const WpLander = ({ data, location }) => {
+  console.log(data)
+  let color     = 'black';
   const context = useRef(useContext(ThemeContext));
 
   useEffect(() => {
@@ -82,6 +83,9 @@ export const query = graphql`
       id
       uri
       title
+      landingPages {
+        showFooter
+      }
       content
       ...PageHeaderLander
       ...FlexibleLayoutsLander

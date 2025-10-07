@@ -18,6 +18,7 @@ const Buttons = (props) => {
             background = `_GREY_HOVER_DARK`;
             break;
         case `transparent`:
+        case `paleTeal`:
             background = (content.style === `solid`) ? `_HOVER_DARK` : `_TRANSPARENT`;
             break;
         default:
