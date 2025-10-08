@@ -4,6 +4,7 @@ import { theme } from '../static/theme.js'
 import { Container, Section } from './global/Wrappers.js'
 import { AnchorLink } from "gatsby-plugin-anchor-links";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import Parser from "./global/Parser"
 
 const VerticalSlider = (props) => {
 
@@ -98,9 +99,10 @@ const VerticalSlider = (props) => {
         <Section settings={ settings }>
             <Container>
                 {content.heading &&
-                  <h2 className={`${content.styletoggle ? 'font-stratos uppercase font-light text-40px leading-44px' : theme.text.H1_STD} text-center mb-9 ${textColor}`}> 
-                    { content.heading }
-                  </h2>
+                  <h2
+                  className={`${content.styletoggle ? 'font-stratos uppercase font-light text-40px leading-44px' : theme.text.H1_STD} text-center mb-9 ${textColor}`}
+                  dangerouslySetInnerHTML={{ __html: Parser(content.heading) }}
+                />
                 }
                 {content.body &&
                   <p className={`${theme.text.P_STD} text-center ${textColor} x`}>

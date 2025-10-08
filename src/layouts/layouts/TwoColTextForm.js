@@ -24,7 +24,10 @@ const TwoColTextForm = (props) => {
                   {content &&
                     <div>
                       {textHeading &&
-                        <h2 className={`font-stratos uppercase font-bold text-[2.875rem] leading-[1.1] mb-8`}>{textHeading}</h2>
+                        <h2
+                        className="font-stratos uppercase font-bold text-[2.875rem] leading-[1.1] mb-8"
+                        dangerouslySetInnerHTML={{ __html: Parser(textHeading) }}
+                      />
                       }
 
                       {textBody && 
