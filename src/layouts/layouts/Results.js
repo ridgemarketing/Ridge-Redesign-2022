@@ -19,8 +19,8 @@ const Results = (props) => {
                 {content.heading &&
                   <h2 className={'text-center mb-4 '}>
                       <span 
-                          className={`${theme.text['H2']}`}> 
-                          { content.heading }
+                          className={`${theme.text['H2']}`}
+                          dangerouslySetInnerHTML={{ __html: Parser(content.heading) }}>
                       </span>
                   </h2>
                 }
