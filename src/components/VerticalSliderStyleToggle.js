@@ -130,7 +130,7 @@ const VerticalSlider = (props) => {
 
                       {/* Image / Lottie  -- Desktop */}
                       <div className={`w-full sm:pt-6 md:w-[80%] h-auto md:h-[80%] md:flex items-center justify-center hidden`} >
-                          {content.styletoggle && vslides[vslide].image?.sourceUrl ? (
+                          {content.styleToggle && vslides[vslide].image?.sourceUrl ? (
                           <img
                               src={vslides[vslide].image.sourceUrl}
                               alt={vslides[vslide].image.altText || ''}
@@ -148,7 +148,7 @@ const VerticalSlider = (props) => {
                       </div>
                       {/* Image / Lottie  -- Mobile */}
                       <div className={`w-full sm:pt-6 md:w-[50%] h-auto md:h-[80%] items-center md:hidden`}>
-                          {content.styletoggle && vslides[vslide].image?.sourceUrl ? (
+                          {content.styleToggle && vslides[vslide].image?.sourceUrl ? (
                           <img
                               src={vslides[vslide].image.sourceUrl}
                               alt={vslides[vslide].image.altText || ''}
@@ -170,11 +170,11 @@ const VerticalSlider = (props) => {
                           {/* Text next to progress bar ON MOBILE */}
                           <div className="flex w-full mb-4 md:mb-0">
                               <div id="slides-main" className="ml-[10%] mr-[10%]">
-                              {!content.styletoggle && (
+                              {!content.styleToggle && (
                                   <p className={`${theme.text['CIRCLE_NUM']} w-[55px] h-[55px] text-rm-green border-rm-green animate-quote`}> { vslide + 1 } </p>
                               )}
                               
-                              <h2 className={`${content.styletoggle ? theme.text.H3 + ' text-rm-green pb-6' : theme.text.H2} mt-5 mb-5 md:mb-0 md:mt-10 animate-quote opacity-0`} style={{animationDelay:'0.22s'}}>
+                              <h2 className={`${content.styleToggle ? theme.text.H3 + ' text-rm-green pb-6' : theme.text.H2} mt-5 mb-5 md:mb-0 md:mt-10 animate-quote opacity-0`} style={{animationDelay:'0.22s'}}>
                                   { vslides[vslide].heading }
                               </h2>
                               {vslides[vslide].smallText && (
@@ -227,7 +227,7 @@ export const query = graphql`
             }
             body
             heading
-            styletoggle
+            styleToggle
             componentButton {
             colors {
               fieldGroupName
@@ -271,7 +271,7 @@ export const serviceQuery = graphql`
             }
             body
             heading
-            styletoggle
+            styleToggle
             componentButton {
             colors {
               fieldGroupName
@@ -344,7 +344,7 @@ export const landerQuery = graphql`
             }
             body
             heading
-            styletoggle
+            styleToggle
             componentButton {
             colors {
               fieldGroupName

@@ -84,7 +84,9 @@ export const query = graphql`
       uri
       title
       landingPages {
-        showFooter
+        showFooter 
+        linkType 
+        url
       }
       content
       ...PageHeaderLander
