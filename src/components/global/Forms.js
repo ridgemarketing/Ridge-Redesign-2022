@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react"
 import { Input, PhoneInput, Select, TextArea } from "./FormFields"
 import { theme } from "../../static/theme"
 import { useForm } from "react-hook-form";
+import { navigate } from "gatsby"
 
 export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle}) => {
     const { register, handleSubmit, watch, reset, formState, formState: { errors, isSubmitSuccessful } } = useForm()
@@ -378,7 +379,7 @@ export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnSty
     )
 }
 
-export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle}) => {
+export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle, redirectForm}) => {
     const { register, handleSubmit, watch, reset, formState, formState: { errors, isSubmitSuccessful } } = useForm()
     const [status, setStatus] = useState(false)
     const [submittedData, setSubmittedData] = useState({});
@@ -428,6 +429,9 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
             setStep(1)
             if (window.dataLayer && typeof window.dataLayer.push === "function") {
              window.dataLayer.push({event: 'Contact Form Submission'});
+            }
+            if (redirectForm) {
+                navigate("/thank-you/")
             }
             
           }

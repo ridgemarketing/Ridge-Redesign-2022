@@ -8,13 +8,14 @@ import { FormLanders } from "../../components/global/Forms"
 
 const TwoColTextForm = (props) => {
 
-    const content     = props.layoutData.layoutContent;
-    const settings    = props.layoutData.layoutSettings;
-    const textContent = content.textContent;
-    const textHeading = textContent.heading;
-    const textBody    = textContent.body;
-    const formContent = content.formContent;
-    const formHeading = formContent.heading;
+    const content        = props.layoutData.layoutContent;
+    const settings       = props.layoutData.layoutSettings;
+    const textContent    = content.textContent;
+    const textHeading    = textContent.heading;
+    const textBody       = textContent.body;
+    const formContent    = content.formContent;
+    const formHeading    = formContent.heading;
+    const anchorOverride = content.anchorLinkOverride;
 
     return (
         <Section settings={settings}>
@@ -42,7 +43,7 @@ const TwoColTextForm = (props) => {
                     <h3 className={`${theme.text.H5} mb-5`}>{formHeading}</h3>
                   }
                   <div className={`shadow-block p-10`}>
-                    <FormLanders />
+                    <FormLanders redirectForm={content.formContent.redirectForm}/>
                   </div>
                   
                 </div>
@@ -63,6 +64,7 @@ export const query = graphql`
           layoutContent {
             formContent {
               heading
+              redirectForm
             }
             textContent {
               body
@@ -93,6 +95,7 @@ export const serviceQuery = graphql`
           layoutContent {
             formContent {
               heading
+              redirectForm
             }
             textContent {
               body
@@ -123,6 +126,7 @@ export const projectQuery = graphql`
           layoutContent {
             formContent {
               heading
+              redirectForm
             }
             textContent {
               body
@@ -153,6 +157,7 @@ export const landerQuery = graphql`
           layoutContent {
             formContent {
               heading
+              redirectForm
             }
             textContent {
               body

@@ -106,6 +106,7 @@ public
 
 # Envs
 .env.local
+.env.development
 
 .DS_Store
 .wordpress-cache

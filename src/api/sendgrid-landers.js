@@ -16,15 +16,11 @@ async function sendEmail(req, res) {
         {
           to: [
               {
-                email: "aquincy@ridgemarketing.com", 
-                name: "Andrea Quincy"
+                email: "alejandro@ridgemarketing.com", 
+                name: "Alejandro Silva"
               }
             ], 
           cc: [
-            {
-              email:"rquincy@ridgemarketing.com", 
-              name:"Rob Quincy"
-            }, 
             {
               email:"dev@ridgemarketing.com", 
               name:"Developers"
