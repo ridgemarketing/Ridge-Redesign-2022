@@ -28,7 +28,6 @@ const VerticalSlider = (props) => {
   const vslides               = content.slides;
   const flipOrientation       = content.styleToggle ? "md:flex-row-reverse" : "md:flex-row";
 
-  
   useEffect(() => {
 
     if (vslides.length > 0) {
@@ -94,7 +93,7 @@ const VerticalSlider = (props) => {
     const skipTo = (location) => {
       window.scrollBy(0, (scrollPoints[location] + slideHeight) - offSetTop );
     }
-
+ 
     return(
       <>
         <Section settings={ settings }>
