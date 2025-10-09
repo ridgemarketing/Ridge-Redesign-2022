@@ -12,12 +12,12 @@ import Parser from "../../components/global/Parser"
 
 const ImageCarousel = props => {
 
-  const settings   = props.layoutData.layoutSettings;
-  const content    = props.layoutData.layoutContent;
-  const heading    = content.heading;
-  const body       = content.body;
-  const slides     = content.slides;
-  const buttons    = content.componentButtonGroup;
+  const settings      = props.layoutData.layoutSettings;
+  const content       = props.layoutData.layoutContent;
+  const heading       = content.heading;
+  const body          = content.body;
+  const slides        = content.slides;
+  const buttons       = content.componentButtonGroup;
   const arrowStyle    = content.arrowstyle;
 
     return(

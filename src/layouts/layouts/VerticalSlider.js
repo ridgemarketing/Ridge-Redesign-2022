@@ -5,7 +5,7 @@ import VerticalSliderStyleToggle from "../../components/VerticalSliderStyleToggl
 const VerticalSlider = (props) => {
   const content = props.layoutData.layoutContent
 
-  if (content.styletoggle) {
+  if (content.styleToggle) {
     return <VerticalSliderStyleToggle {...props} />
   } else {
     return <VerticalSliderDefault {...props} />
