@@ -26,9 +26,8 @@ const VerticalSlider = (props) => {
   let scrollPoints            = [];
 
   const vslides               = content.slides;
-  const flipOrientation       = content.styletoggle ? "md:flex-row-reverse" : "md:flex-row";
+  const flipOrientation       = content.styleToggle ? "md:flex-row-reverse" : "md:flex-row";
 
-  
   useEffect(() => {
 
     if (vslides.length > 0) {
@@ -94,14 +93,14 @@ const VerticalSlider = (props) => {
     const skipTo = (location) => {
       window.scrollBy(0, (scrollPoints[location] + slideHeight) - offSetTop );
     }
-
+ 
     return(
       <>
         <Section settings={ settings }>
             <Container>
                 {content.heading &&
                   <h2
-                  className={`${content.styletoggle ? 'font-stratos uppercase font-light text-40px leading-44px' : theme.text.H1_STD} text-center pt-10 ${textColor}`}
+                  className={`${content.styleToggle ? 'font-stratos uppercase font-light text-40px leading-44px' : theme.text.H1_STD} text-center pt-10 ${textColor}`}
                   dangerouslySetInnerHTML={{ __html: Parser(content.heading) }}
                 />
                 }
