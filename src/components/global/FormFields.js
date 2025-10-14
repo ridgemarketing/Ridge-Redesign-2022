@@ -119,3 +119,38 @@ export const Select = ({label, name, options, textColor, fontWeight, required, e
         </>
     )
 }
+
+export const CheckboxGroup = ({label, name, options, textColor, fontWeight, required, errors, register}) => {
+    const [selectedValues, setSelectedValues] = useState([])
+
+    const handleChange = (value, isChecked) => {
+        if (isChecked) {
+            setSelectedValues([...selectedValues, value])
+        } else {
+            setSelectedValues(selectedValues.filter(v => v !== value))
+        }
+    }
+
+    return(
+        <>
+            <label className={`block mb-4 ${theme.text['FOOTER']} ${theme.forms['LABEL']} text-rm-${textColor} ${fontWeight === `light` ? theme.text['P_STD'] : theme.text['P_BLD']}`}>{label}</label>
+            <div className={`flex flex-col gap-3`}>
+                {options.map((option, index) => {
+                    return(
+                        <label key={index} className={`flex items-center gap-3 cursor-pointer`}>
+                            <input
+                                type="checkbox"
+                                value={option}
+                                {...register(name, { required: required })}
+                                onChange={(e) => handleChange(option, e.target.checked)}
+                                className={`w-5 h-5 border-2 border-rm-${textColor} text-rm-green focus:ring-rm-green focus:ring-2 rounded`}
+                            />
+                            <span className={`${theme.text['P_STD']} text-rm-${textColor}`}>{option}</span>
+                        </label>
+                    )
+                })}
+            </div>
+            {errors[name] && <span className="block mt-2 text-[#EA0000] text-18px leading-26px">This field is required</span>}
+        </>
+    )
+}
