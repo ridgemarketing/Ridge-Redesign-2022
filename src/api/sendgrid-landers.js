@@ -39,6 +39,7 @@ async function sendEmail(req, res) {
             companySize:`${message['companySize']}`,
             companyRevenue:`${message['companyRevenue']}`,
             serviceArea:`${message['serviceArea']}`,
+            interests: `${message['interests']}`,
             message:`${message['message']}`,
             subject: `Ridge PPC Lead - ${message['name']}`,
           }

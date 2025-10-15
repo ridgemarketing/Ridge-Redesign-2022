@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react"
-import { Input, PhoneInput, Select, TextArea } from "./FormFields"
+import { Input, PhoneInput, Select, TextArea, CheckboxGroup } from "./FormFields"
 import { theme } from "../../static/theme"
 import { useForm } from "react-hook-form";
 import { navigate } from "gatsby"
@@ -399,15 +399,15 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
         const message = JSON.stringify(data)
 
         const res = await fetch("/api/sendgrid-landers", {
-            body: JSON.stringify({
-            email: data.email,
-            subject: `New Lander Form Submission`,
-            message: message,
+            body    : JSON.stringify({
+            email   : data.email,
+            subject : `New Lander Form Submission`,
+            message : message,
         }),
-            headers: {
+            headers : {
             "Content-Type": "application/json",
         },
-            method: "POST",
+            method  : "POST",
         })
 
         const { error } = await res.json();
@@ -506,10 +506,11 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
                     }
 
                     <div>
-                        <span className={`mb-6 block`}><Select errors={errors} register={register} required={true} name={`companySize`} label={`Company Size`} options={[`< 10`,`10-50`,`50-250`,`250+`]} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`mb-6 block`}><Select errors={errors} register={register} required={true} name={`companyRevenue`} label={`Company Revenue`} options={[`Less than $5M`,`$5M-$50M`,`$50M-250M`,`$250M-$1B`,`$1B+`]} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <span className={`mb-6 block`}><Select errors={errors} register={register} required={true} name={`companySize`} label={`Company Size`} options={[`< 10 Employees`,`10-50 Employees`,`50-250 Employees`,`250+ Employees`]} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <span className={`mb-6 block`}><Select errors={errors} register={register} required={true} name={`companyRevenue`} label={`Company Revenue`} options={[`< $10M`,`$10M-$50M`,`$50M-$1B`,`$1B+`]} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <span className={`mb-6 block`}><Select errors={errors} register={register} required={true} name={`serviceArea`} label={`Service Area`} options={[`Local`,`Regional`,`National`,`Global`]} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`mb-6 block`}><TextArea errors={errors} register={register} required={true} name={`message`} label={`What are your marketing goals?`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <span className={`mb-6 block`}><CheckboxGroup errors={errors} register={register} required={true} name={`interests`} label={`What are you interested in? (Select all that apply)`} options={['Branding', 'Marketing Strategy & Messaging', 'Website Design & Development', 'Content Marketing', 'Search & AI Marketing', 'Digital Advertising', 'Social Media Support', 'Video Production']} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <span className={`mb-6 block`}><TextArea errors={errors} register={register} required={true} name={`message`} label={`Tell us about your marketing goals`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <div className={`mt-10 ${btnContainerClasses ? btnContainerClasses : ``}`}>
                             <button
                                 className={`${status === `processing` ? `opacity-80` : `` } ${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} cursor-pointer min-w-[210px]`}
@@ -520,7 +521,6 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
                     </div>
                 </form>
             }
-            <p className={`${theme.text.P_BLD} mt-7`}>Or give us a call: <a className={`text-rm-green block md:inline`} href={`tel:908-340-4480`}>(908) 340-4480</a></p>
         </div>
     )
 }
