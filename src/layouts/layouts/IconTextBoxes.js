@@ -6,9 +6,8 @@ import IconTextBoxStack from '../../components/IconTextBoxStack'
 import IconTextBoxFlex from '../../components/IconTextBoxFlex'
 import Buttons from '../../components/global/Buttons'
 import Parser from "../../components/global/Parser"
-
 const IconTextBoxes = (props) => {
-  const content  = props.layoutData.layoutContent;
+  const content = props.layoutData.layoutContent;
   const settings = props.layoutData.layoutSettings;
 
   let textColor = 'text-black';

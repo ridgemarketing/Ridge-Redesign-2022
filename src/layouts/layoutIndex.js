@@ -43,8 +43,6 @@ import CtaFooterPpc from "./layouts/CtaFooterPpc"
 import ImageCarousel from "./layouts/ImageCarousel"
 import PullquoteImage from "./layouts/PullquoteImage"
 import TwoColTextForm from "./layouts/TwoColTextForm"
-import TwoColIconText from "./layouts/TwoColIconText"
-import FrequentlyAskedQuestions from "./layouts/FrequentlyAskedQuestions"
 
 let Layouts = {}; 
 
@@ -95,8 +93,5 @@ Layouts['CtaFooterPpc']                     = CtaFooterPpc;
 Layouts['ImageCarousel']                    = ImageCarousel;
 Layouts['PullquoteImage']                   = PullquoteImage;
 Layouts['TwoColTextForm']                   = TwoColTextForm;
-Layouts['TwoColIconText']                   = TwoColIconText;
-Layouts['FrequentlyAskedQuestions']         = FrequentlyAskedQuestions;
-
 
 export default Layouts
