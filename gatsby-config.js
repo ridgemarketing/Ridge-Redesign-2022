@@ -11,6 +11,7 @@ module.exports = {
     DEV_SSR: true
   },
   plugins: [
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-wordpress`,
       

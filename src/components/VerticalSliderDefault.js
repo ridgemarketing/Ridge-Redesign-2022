@@ -8,10 +8,8 @@ import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const VerticalSlider = (props) => {
 
-
  const content               = props.layoutData.layoutContent;
  const settings              = props.layoutData.layoutSettings;
-
 
  const textColor             = settings.backgroundColor === 'black' ? 'text-rm-white' : 'text-rm-black';
  const backgroundColor       = settings.backgroundColor === 'black' ? 'bg-rm-black' : 'bg-rm-white';

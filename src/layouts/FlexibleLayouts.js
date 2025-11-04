@@ -77,6 +77,9 @@ export const pageQuery = graphql`
         ...ImageCarouselPage
         ...PullquoteImagePage
         ...TwoColTextFormPage
+        ...TwoColIconTextPage
+        ...TwoColIconTextPage
+        ...FrequentlyAskedQuestionsPage
       }
     }
   }
@@ -117,6 +120,8 @@ export const serviceQuery = graphql`
         ...ImageCarouselService
         ...PullquoteImageService
         ...TwoColTextFormService
+        ...TwoColIconTextService
+        ...FrequentlyAskedQuestionsService
       }
     }
   }
@@ -167,6 +172,8 @@ export const projectQuery = graphql`
         ...ImageCarouselProject
         ...PullquoteImageProject
         ...TwoColTextFormProject
+        ...TwoColIconTextProject
+        ...FrequentlyAskedQuestionsProject
       }
     }
   }
@@ -185,6 +192,7 @@ export const landerQuery = graphql`
         ...PullquoteImageLander
         ...TwoColTextFormLander
         ...VerticalSliderLander
+        ...FrequentlyAskedQuestionsLander
       }
     }
   }
