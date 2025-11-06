@@ -4,7 +4,7 @@ import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
-import { GatsbyImage } from 'gatsby-plugin-image'
+import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 
 const FrequentlyAskedQuestions = ({ layoutData }) => {
   const content  = layoutData.layoutContent
@@ -49,19 +49,19 @@ const FrequentlyAskedQuestions = ({ layoutData }) => {
       <Section settings={settings} className="relative">
         {/* Image that extends above section */}
         {content.image && (
-          <div className="absolute left-1/2 -translate-x-1/2 -top-32 w-full max-w-3xl z-10">
-            <GatsbyImage 
-              image={content.image} 
-              alt={content.image?.altText || "FAQ Image"}
-              className="w-full h-64 rounded-lg shadow-xl"
-            />
+          <div className="absolute left-1/2 -translate-x-1/2 -top-32 max-w-3xl z-10 w-72 h-72">
+            <GatsbyImage
+              alt={content.image.altText || "FAQ Logo Image"}
+              image={getImage(content.image.localFile)}
+              className="w-full h-full"
+              />
           </div>
         )}
 
-        <Container container={settings.containerWidth} className={content.image ? "pt-40" : ""}>
+        <Container container={settings.containerWidth}>
           {/* Title */}
           {content.title && (
-            <h2 className={`${theme.text.H2} text-center mb-6`}>
+            <h2 className={`${theme.text.H2} text-center mb-6 ${content.image ? 'pt-32' : ''}`}>
               {content.title}
             </h2>
           )}
