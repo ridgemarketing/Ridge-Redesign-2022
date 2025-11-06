@@ -36,7 +36,7 @@ const TwoColIconText = (props) => {
                 {/* Text (textarea) */}
                 {item.text && (
                   <p className={theme.text.P_STD + " text-center lg:text-left mb-6"}>
-                    {Parser(item.text)}
+                    {item.text}
                   </p>
                 )}
 
