@@ -107,7 +107,8 @@ module.exports = {
         'rm-pale-grey'       : '#F1F5F5',
         'rm-pale-teal'       : '#F3F9F9',
         'rm-blog-blue'       : '#1f9da5',
-        'rm-dark-grey'       : '#1C1C1C'
+        'rm-dark-grey'       : '#1C1C1C',
+        'rm-ocean-teal'      : '#209DA5'
       },
       fontSize: {
           '18px'             : '1.125rem',
