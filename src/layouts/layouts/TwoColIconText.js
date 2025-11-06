@@ -25,11 +25,12 @@ const TwoColIconText = (props) => {
                         />
                     </div>
                     )}
+      
 
                 {/* Title */}
                 {item.title && (
                   <h3 className={theme.text.H2 + " text-center lg:text-left mb-4"}>
-                    {item.title}
+                    {item.title} 
                   </h3>
                 )}
 

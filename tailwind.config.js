@@ -16,6 +16,7 @@ module.exports = {
     'bg-white',
     'bg-white-black',
     'bg-rm-pale-teal',
+    'bg-rm-ocean-teal',
     'md:pt-36',
     'pt-24',
     '-mb-12',
