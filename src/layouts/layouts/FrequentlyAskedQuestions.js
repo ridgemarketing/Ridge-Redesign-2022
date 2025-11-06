@@ -4,9 +4,10 @@ import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import { Helmet } from "react-helmet"
+import { GatsbyImage } from 'gatsby-plugin-image'
 
 const FrequentlyAskedQuestions = ({ layoutData }) => {
-  const content = layoutData.layoutContent
+  const content  = layoutData.layoutContent
   const settings = layoutData.layoutSettings
 
   // Toggle + / - indicator
@@ -45,8 +46,19 @@ const FrequentlyAskedQuestions = ({ layoutData }) => {
         </Helmet>
       )}
 
-      <Section settings={settings}>
-        <Container container={settings.containerWidth}>
+      <Section settings={settings} className="relative">
+        {/* Image that extends above section */}
+        {content.image && (
+          <div className="absolute left-1/2 -translate-x-1/2 -top-32 w-full max-w-3xl z-10">
+            <GatsbyImage 
+              image={content.image} 
+              alt={content.image?.altText || "FAQ Image"}
+              className="w-full h-64 rounded-lg shadow-xl"
+            />
+          </div>
+        )}
+
+        <Container container={settings.containerWidth} className={content.image ? "pt-40" : ""}>
           {/* Title */}
           {content.title && (
             <h2 className={`${theme.text.H2} text-center mb-6`}>
@@ -108,6 +120,14 @@ export const query = graphql`
       fieldGroupName
       layoutFrequentlyAskedQuestions {
         layoutContent {
+          image {
+                altText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
           title
           text
           faqItems {
@@ -136,6 +156,14 @@ export const serviceQuery = graphql`
       fieldGroupName
       layoutFrequentlyAskedQuestions {
         layoutContent {
+          image {
+                altText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
           title
           text
           faqItems {
@@ -164,6 +192,14 @@ export const projectQuery = graphql`
       fieldGroupName
       layoutFrequentlyAskedQuestions {
         layoutContent {
+          image {
+                altText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
           title
           text
           faqItems {
@@ -192,6 +228,14 @@ export const landerQuery = graphql`
       fieldGroupName
       layoutFrequentlyAskedQuestions {
         layoutContent {
+          image {
+                altText
+                localFile {
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              }
           title
           text
           faqItems {
