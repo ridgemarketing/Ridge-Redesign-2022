@@ -80,6 +80,7 @@ export const pageQuery = graphql`
         ...TwoColIconTextPage
         ...TwoColIconTextPage
         ...FrequentlyAskedQuestionsPage
+        ...TwoColImageListPage
       }
     }
   }
@@ -122,6 +123,7 @@ export const serviceQuery = graphql`
         ...TwoColTextFormService
         ...TwoColIconTextService
         ...FrequentlyAskedQuestionsService
+        ...TwoColImageListService
       }
     }
   }
@@ -174,6 +176,7 @@ export const projectQuery = graphql`
         ...TwoColTextFormProject
         ...TwoColIconTextProject
         ...FrequentlyAskedQuestionsProject
+        ...TwoColImageListProject
       }
     }
   }
