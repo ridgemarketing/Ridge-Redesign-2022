@@ -31,6 +31,12 @@ const Buttons = (props) => {
     const baseColor         = content.colors.resting;
 
     let buttonClass   = style + baseColor + background;
+
+    //Transparent background with white hover state 
+    if (baseColor.toUpperCase() === 'TRANSPARENT') {
+        buttonClass = 'GHOST_TRANSPARENT_WHITE';
+    }
+
     const check = function(){
         if( props.sectionBackground === `black` ){
             buttonClass = `SOLID_GREEN_HOVER_LIGHT`;

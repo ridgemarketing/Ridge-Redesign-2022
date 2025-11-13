@@ -26,22 +26,25 @@ export const theme = {
     },
 
     button: {
-        BASE_STYLING:              'inline-block text-21px font-stratos uppercase py-3 px-16 text-center font-normal border-2 border-solid transition-all ease-in-out ',
+        BASE_STYLING:                   'inline-block text-21px font-stratos uppercase py-3 px-16 text-center font-normal border-2 border-solid transition-all ease-in-out ',
         
-        GHOST_GREEN_HOVER_DARK:    'GHOST_GREEN_HOVER_DARK text-rm-black border-rm-green bg-white hover:bg-rm-green ',
-        GHOST_GREEN_HOVER_LIGHT:   'GHOST_GREEN_HOVER_LIGHT text-rm-white border-rm-green bg-rm-black hover:bg-rm-green hover:text-rm-black ',
-        GHOST_GREEN_TRANSPARENT:   'GHOST_GREEN_TRANSPARENT text-rm-black border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-black ',
-        GHOST_GREEN_TRANSPARENT_W:   'GHOST_GREEN_TRANSPARENT text-rm-white border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-white ',
+        GHOST_GREEN_HOVER_DARK:         'GHOST_GREEN_HOVER_DARK text-rm-black border-rm-green bg-white hover:bg-rm-green ',
+        GHOST_GREEN_HOVER_LIGHT:        'GHOST_GREEN_HOVER_LIGHT text-rm-white border-rm-green bg-rm-black hover:bg-rm-green hover:text-rm-black ',
+        GHOST_GREEN_TRANSPARENT:        'GHOST_GREEN_TRANSPARENT text-rm-black border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-black ',
+        GHOST_GREEN_TRANSPARENT_W:      'GHOST_GREEN_TRANSPARENT text-rm-white border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-white ',
         
-        SOLID_GREEN_HOVER_LIGHT:    'SOLID_GREEN_HOVER_LIGHT text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
-        SOLID_GREEN_HOVER_DARK:     'SOLID_GREEN_HOVER_DARK text-rm-black border-rm-green bg-rm-green hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
+        SOLID_GREEN_HOVER_LIGHT:        'SOLID_GREEN_HOVER_LIGHT text-rm-black border-rm-green bg-rm-green hover:bg-rm-white hover:text-rm-black hover:border-rm-white ',
+        SOLID_GREEN_HOVER_DARK:         'SOLID_GREEN_HOVER_DARK text-rm-black border-rm-green bg-rm-green hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
         
-        SOLID_BLACK_HOVER_DARK:     'SOLID_BLACK_HOVER_LIGHT text-rm-white border-rm-black bg-rm-black hover:bg-rm-green hover:text-rm-black hover:border-rm-green ',
+        SOLID_BLACK_HOVER_DARK:         'SOLID_BLACK_HOVER_LIGHT text-rm-white border-rm-black bg-rm-black hover:bg-rm-green hover:text-rm-black hover:border-rm-green ',
     
-        GHOST_WHITE_HOVER_LIGHT:    'GHOST_WHITE_HOVER_LIGHT text-rm-white border-rm-white hover:bg-rm-green hover:text-rm-black hover:border-rm-green',
+        GHOST_WHITE_HOVER_LIGHT:        'GHOST_WHITE_HOVER_LIGHT text-rm-white border-rm-white hover:bg-rm-green hover:text-rm-black hover:border-rm-green',
         
-        GHOST_GREEN_GREY_HOVER_DARK:'GHOST_GREEN_HOVER_DARK text-rm-black border-rm-green bg-rm-pale-grey hover:bg-rm-green ',
-        GHOST_GREEN_GREY_HOVER_LIGHT:'GHOST_GREEN_HOVER_LIGHT text-rm-white border-rm-green bg-rm-pale-grey hover:bg-rm-green hover:text-rm-black ',  
+        GHOST_GREEN_GREY_HOVER_DARK:    'GHOST_GREEN_HOVER_DARK text-rm-black border-rm-green bg-rm-pale-grey hover:bg-rm-green ',
+        GHOST_GREEN_GREY_HOVER_LIGHT:   'GHOST_GREEN_HOVER_LIGHT text-rm-white border-rm-green bg-rm-pale-grey hover:bg-rm-green hover:text-rm-black ',  
+
+        GHOST_TRANSPARENT_WHITE:        'GHOST_TRANSPARENT_WHITE text-rm-white border-rm-white bg-transparent hover:bg-white hover:text-black',
+
 
     },
     
