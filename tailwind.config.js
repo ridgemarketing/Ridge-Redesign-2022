@@ -8,6 +8,7 @@ module.exports = {
       variants: ['sm', 'md', 'lg', 'xl', 'xlz', '2xl'],
     },
     'bg-[#EFEEEE]',
+    'bg-[#FFFAF4]',
     'bg-allshifts',
     'text-rm-green', 
     'bg-rm-green',

@@ -54,7 +54,7 @@ const FlexibleMedia = (props) => {
             }
             {video && videoType === 'file' &&
                 <div>
-                    <video preload="metadata" controls src={video.videoUrl} type="video/mp4" className={`w-full z-0`} />
+                    <video preload="metadata" controls={ !video.controls || video.controls !== 'Hide' && true } autoPlay={video.autoplay && video.autoplay == 'Yes' ? true : false} muted={video.autoplay && video.autoplay == 'Yes' ? true : false} loop={video.autoplay && video.autoplay == 'Yes' ? true : false}  src={video.videoUrl} type="video/mp4" className={`w-full z-0`} />
                 </div>
             }
             {video && videoType === 'vimeo' && 
