@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect, useRef} from "react"
 import { Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
@@ -43,6 +43,34 @@ const FullWidthImageVideoText = (props) => {
     imageWrapperClasses = 'my-10';
   }
 
+
+  const mobileVideo  = useRef(null)
+  
+  useEffect( () => {
+     const observer = new IntersectionObserver(([entry]) => {
+        if (entry.isIntersecting) {
+            entry.target.play()
+        }
+      },
+      {
+        root        : null,
+        rootMargin  : '0px',
+        threshold   : 0.5,
+      }
+    )
+
+    if (mobileVideo.current) {
+      observer.observe(mobileVideo.current)
+    }
+
+    return () => {
+      if (mobileVideo.current) {
+        observer.unobserve(mobileVideo.current)
+      }
+      observer.disconnect()
+    }
+  }, [content.mobile])
+
     return (
       <Section settings={settings}>
         <Container container={settings.containerWidth}>
@@ -62,7 +90,7 @@ const FullWidthImageVideoText = (props) => {
             }
 
             {content.mobile &&
-              <video className="md:hidden block mx-auto" controls={false} muted autoPlay={true} loop={true}>
+              <video ref={mobileVideo} className="md:hidden block mx-auto" controls={false} muted loop={true}>
                   <source src={content.mobile.mediaItemUrl} type={content.mobile.mimeType} />
               </video>
             }
