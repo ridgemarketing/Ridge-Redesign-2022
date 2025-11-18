@@ -59,6 +59,7 @@ export const query = graphql`
                 caption
                 video {
                   videoUrl
+                  mobileVideoUrlOptional
                   autoplay
                   controls
                   thumbnailImage {
@@ -115,6 +116,7 @@ export const serviceQuery = graphql`
                 caption
                 video {
                   videoUrl
+                  mobileVideoUrlOptional
                   autoplay
                   controls
                   thumbnailImage {
@@ -175,6 +177,7 @@ export const projectQuery = graphql`
                   videoUrl
                   autoplay
                   controls
+                  mobileVideoUrlOptional
                   thumbnailImage {
                     sourceUrl
                     localFile {
