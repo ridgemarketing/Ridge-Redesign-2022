@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import { Play } from "../svg"
@@ -35,6 +35,36 @@ const FlexibleMedia = (props) => {
                 objectFit={props.objectFit}/> 
     }
 
+
+    const autoPlayOnMobile  = useRef(null)
+    
+    useEffect( () => {
+        if (videoType === 'file' && video.autoplay === "Yes") {
+            const observer = new IntersectionObserver(([entry]) => {
+                    if (entry.isIntersecting) {
+                        entry.target.play()
+                    }
+                },
+                {
+                    root        : null,
+                    rootMargin  : '0px',
+                    threshold   : 0.5,
+                }
+            )
+        
+            if (autoPlayOnMobile.current) {
+                observer.observe(autoPlayOnMobile.current)
+            }
+        
+            return () => {
+                if (autoPlayOnMobile.current) {
+                    observer.unobserve(autoPlayOnMobile.current)
+                }
+                observer.disconnect()
+            }
+        }
+    }, [])
+    
     return (
         <div className={props.wrapperClassName}>
             {image &&
@@ -45,7 +75,8 @@ const FlexibleMedia = (props) => {
             {lottie &&
                 <div>
                     <DotLottieReact
-                        autoplay={true} controls={false}
+                        autoplay={true} 
+                        controls={false}
                         loop={true}
                         src={lottie}
                         style={{ height: 'auto', width: '100%' }}
@@ -54,7 +85,14 @@ const FlexibleMedia = (props) => {
             }
             {video && videoType === 'file' &&
                 <div>
-                    <video preload="metadata" controls={ !video.controls || video.controls !== 'Hide' && true } autoPlay={video.autoplay && video.autoplay == 'Yes' ? true : false} muted={video.autoplay && video.autoplay == 'Yes' ? true : false} loop={video.autoplay && video.autoplay == 'Yes' ? true : false}  src={video.videoUrl} type="video/mp4" className={`w-full z-0`} />
+                    {video.mobileVideoUrlOptional &&
+                        <video ref={autoPlayOnMobile} preload="metadata" className="md:hidden w-full z-0" controls={ !video.controls || video.controls !== 'Hide' && true } muted={video.autoplay && video.autoplay == 'Yes' ? true : false} loop={video.autoplay && video.autoplay == 'Yes' ? true : false}>   
+                            <source src={video.mobileVideoUrlOptional} type="video/mp4"/>  
+                        </video>
+                    }
+                    <video preload="metadata" className={`${video.mobileVideoUrlOptional && 'hidden md:block'} w-full z-0`} controls={ !video.controls || video.controls !== 'Hide' && true } autoPlay={video.autoplay && video.autoplay == 'Yes' ? true : false} muted={video.autoplay && video.autoplay == 'Yes' ? true : false} loop={video.autoplay && video.autoplay == 'Yes' ? true : false}>
+                        <source src={video.videoUrl} type="video/mp4"/>      
+                    </video>
                 </div>
             }
             {video && videoType === 'vimeo' && 
