@@ -73,7 +73,7 @@ const ProjectBlock = ({block, type, index})  => {
           
           <div className={'pt-[56.25%] w-full relative'}>
           <iframe
-            src={`${block.videoSource}?autoplay=1&muted=0`}
+            src={`${block.videoSource}?autoplay=1&muted=1`}
             className="absolute top-0 left-0 w-full h-full object-cover"
             allow="autoplay; fullscreen; picture-in-picture"
             allowFullScreen

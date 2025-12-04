@@ -17,16 +17,26 @@ const TwoColIconText = (props) => {
             content.items.map((item, index) => (
               <div key={index} className="flex flex-col">
                 {/* Image */}
-                {item.image?.localFile && (
-                    <div className="mb-6 relative w-24 h-auto mx-auto lg:mx-0">
-                        <GatsbyImage
+                {item.image && (
+                  <div className="mb-6 relative w-24 h-auto mx-auto lg:mx-0">
+                    {item.image.localFile?.childImageSharp ? (
+                      // JPG, PNG, WebP
+                      <GatsbyImage
                         alt={item.image.altText || ""}
                         image={getImage(item.image.localFile)}
                         className="w-full h-auto object-contain"
-                        />
-                    </div>
+                      />
+                    ) : (
+                      // SVG 
+                      <img
+                        src={item.image.sourceUrl}
+                        alt={item.image.altText || ""}
+                        className="w-full h-auto object-contain"
+                      />
                     )}
-      
+                  </div>
+                )}
+
 
                 {/* Title */}
                 {item.title && (
@@ -88,6 +98,7 @@ export const query = graphql`
           items {
             image {
                 altText
+                sourceUrl
                 localFile {
                   childImageSharp {
                     gatsbyImageData
@@ -127,6 +138,7 @@ export const serviceQuery = graphql`
           items {
             image {
                 altText
+                sourceUrl
                 localFile {
                   childImageSharp {
                     gatsbyImageData
@@ -166,6 +178,7 @@ export const projectQuery = graphql`
           items {
             image {
                 altText
+                sourceUrl
                 localFile {
                   childImageSharp {
                     gatsbyImageData
