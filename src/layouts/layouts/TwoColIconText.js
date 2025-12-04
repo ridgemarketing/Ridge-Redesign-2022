@@ -3,6 +3,7 @@ import { Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
+import Parser from "../../components/global/Parser"
 
 const TwoColIconText = (props) => {
   const content  = props.layoutData.layoutContent;
@@ -37,7 +38,7 @@ const TwoColIconText = (props) => {
                 {/* Text (textarea) */}
                 {item.text && (
                   <p className={theme.text.P_STD + " text-center lg:text-left mb-6"}>
-                    {item.text}
+                    <span dangerouslySetInnerHTML={{__html: Parser(item.text)}}></span>
                   </p>
                 )}
 
@@ -51,7 +52,7 @@ const TwoColIconText = (props) => {
                 {/* List */}
                 {item.list && item.list.length > 0 && (
                   <div>
-                    <ul className="list-disc space-y-3 pl-4 pt-2">
+                    <ul className="list-disc space-y-3 pt-2">
                       {item.list.map((innerListItem, i) => (
                         <li
                           key={i}

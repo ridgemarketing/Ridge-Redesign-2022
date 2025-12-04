@@ -68,7 +68,7 @@ const FrequentlyAskedQuestions = ({ layoutData }) => {
 
           {/* Text */}
           {content.text && (
-            <p className={`${theme.text.P_STD} text-center mb-8`}>
+            <p className={`${theme.text.P_STD} text-center mb-16`}>
               {content.text}
             </p>
           )}

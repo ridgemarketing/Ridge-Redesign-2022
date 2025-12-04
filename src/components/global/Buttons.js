@@ -1,9 +1,11 @@
 import React from "react"
 import { theme } from '../../static/theme'
 import Link from "../../components/global/FlexibleLink"
+import ArrowRight from '../../static/arrow-right-white.svg';
 
 const Buttons = (props) => {
     const content           = props.content;
+    const icon              = content.icon || 'none';
 
     let bkg                 = props.sectionBackground;
     // if( (bkg === `paleGrey`) || (bkg === `transparent`) ){
@@ -48,6 +50,18 @@ const Buttons = (props) => {
     if ( (baseColor.toUpperCase() === background.toUpperCase())  || !(theme.button[buttonClass]) ){
         check();
     }
+
+    // Create button content
+    const buttonContent = (
+        <>
+            {content.link.title}
+            {icon === 'button' && 
+                <span className="inline-block ml-2">
+                    <ArrowRight />
+                </span>
+            }
+        </>
+    );
     
     return(
         <>
@@ -56,6 +70,7 @@ const Buttons = (props) => {
                 classes = {theme.button.BASE_STYLING + theme.button[buttonClass]}
                 link = {content.link}
             >
+                {buttonContent}
             </Link>
         }
         </>

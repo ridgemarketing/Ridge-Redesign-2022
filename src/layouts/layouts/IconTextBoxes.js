@@ -75,8 +75,15 @@ const IconTextBoxes = (props) => {
     textColor = 'text-white';
   }
     const cols = content.settings.columns === 3 ? 'xl:grid-cols-3' : '';
+
+    //added logic to flex setup that centers last item if it does not take up the full row for 3 col setup
+    const boxes = content.boxes || [];
+    const isThreeCols = content.settings.columns === 3;
+    const leftover = boxes.length % 3;
+    const hasSingleLastItem = isThreeCols && leftover === 1;
+    
     //added code to dynamically set mt on wrapper div depending on stack or flex (icon placement affects margin needed)
-    const wrapperClasses = (content.settings.type === 'stack') ? `${(content.heading || content.subheading) ? 'mt-16' : 'mt-0'} grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} gap-8 max-w-[1100px] mx-auto` : `${(!content.heading && !content.subheading) ? 'mt-0' : 'mt-24'} flex w-full flex-wrap justify-between ${flexDirection} threeColIconsText`;
+    const wrapperClasses = (content.settings.type === 'stack') ? `${(content.heading || content.subheading) ? 'mt-16' : 'mt-0'} grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} gap-8 max-w-[1100px] mx-auto` : `${(!content.heading && !content.subheading) ? 'mt-0' : 'mt-24'} flex w-full flex-wrap justify-between ${flexDirection} threeColIconsText ${hasSingleLastItem ? '[&>*:last-child]:mx-auto' : ''}`;
 
   return (
       <Section settings={settings}>
