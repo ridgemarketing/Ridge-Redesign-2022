@@ -109,7 +109,7 @@ const WpService = ({ data }) =>{
             return (<></>)
           })}
           
-          <div className={visibility + ` lg:w-8/12`}>
+          <div className={visibility + ` lg:w-7/12`}>
               {floatP.map((key) => {
                 const textSize = 'P_STD';
                 return(
@@ -138,7 +138,7 @@ const WpService = ({ data }) =>{
             }
 
             {content.intextFloatedImage &&
-              <GatsbyImage className="mb-9 lg:mb-0 lg:w-3/12 lg:ml-[5%] mt-12 lg:mt-0" objectFit="contain" imgStyle="objectFit:contain" image={content.intextFloatedImage.localFile.childImageSharp.gatsbyImageData} alt={` `} />  
+              <GatsbyImage className="mb-9 lg:mb-0 lg:w-4/12 lg:ml-[5%] mt-12 lg:mt-0" objectFit="contain" imgStyle="objectFit:contain" image={content.intextFloatedImage.localFile.childImageSharp.gatsbyImageData} alt={` `} />  
             }
           </Container>
         </Section>
