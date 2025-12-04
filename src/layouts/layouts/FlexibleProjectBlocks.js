@@ -72,14 +72,12 @@ const ProjectBlock = ({block, type, index})  => {
           </button>
           
           <div className={'pt-[56.25%] w-full relative'}>
-          <Vimeo
-                  video={block.videoSource}
-                  muted
-                  responsive
-                  autoplay={false}
-                  loop={false}
-                  className={`absolute top-0 left-0 w-full h-full object-cover`}
-                />
+          <iframe
+            src={`${block.videoSource}?autoplay=1&muted=0`}
+            className="absolute top-0 left-0 w-full h-full object-cover"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowFullScreen
+          ></iframe>
           </div>
           </div>
 
