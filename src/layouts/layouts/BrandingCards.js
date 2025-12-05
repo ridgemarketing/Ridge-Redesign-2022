@@ -10,6 +10,18 @@ const BrandingCards = (props) => {
     const settings = props.layoutData.layoutSettings;
     const cards = content.cards;
 
+    const paddingTopMap = {
+      "24_pixels": "pt-6",
+      "32_pixels": "pt-8",
+      "48_pixels": "pt-12",
+    };
+    
+    const paddingBottomMap = {
+      "24_pixels": "pb-6",
+      "32_pixels": "pb-8",
+      "48_pixels": "pb-12",
+    };
+
     return (
         <Section classes={"relative"} settings={settings}>
             <div className={'absolute top-0 h-[280px] bg-black w-full'}></div>
@@ -19,7 +31,11 @@ const BrandingCards = (props) => {
                     {cards.map((card, index) => {
                         return (
                             <div key={`BrandingCard__${card.image.guid}__${index}`} className={"bg-white max-w-[320px] w-full shadow-brandcard flex justify-center align-center h-[200px]"}>
-                                <img className={'py-12 px-10 object-contain'} src={card.image.sourceUrl} alt={card.image.altText} />
+                                <img className={`
+                                ${paddingTopMap[card.imagePaddingTop] || "pt-12"} 
+                                ${paddingBottomMap[card.imagePaddingBottom] || "pb-12"} px-10 object-contain`} 
+                                src={card.image.sourceUrl} 
+                                alt={card.image.altText} />
                             </div>
                         )
                     })}
@@ -53,6 +69,8 @@ export const query = graphql`
                     guid
                     sourceUrl
                 }
+                imagePaddingTop
+                imagePaddingBottom
             }
             bottomHeading
             componentButton {
@@ -96,6 +114,8 @@ export const serviceQuery = graphql`
                     guid
                     sourceUrl
                 }
+                imagePaddingTop
+                imagePaddingBottom
             }
             bottomHeading
             componentButton {
@@ -139,6 +159,8 @@ export const projectQuery = graphql`
                     guid
                     sourceUrl
                 }
+                imagePaddingTop
+                imagePaddingBottom
             }
             bottomHeading
             componentButton {
