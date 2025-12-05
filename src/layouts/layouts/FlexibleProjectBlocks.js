@@ -4,12 +4,11 @@ import { Link } from "gatsby"
 import { theme } from '../../static/theme.js'
 import { Container, Section } from '../../components/global/Wrappers'
 import { graphql } from "gatsby"
-import Buttons from "../../components/global/Buttons"
 import Parser from "../../components/global/Parser"
-import Vimeo from '@u-wave/react-vimeo'
 
 const ProjectBlock = ({block, type, index})  => {
   const [overlay, setOverlay]         = useState(false);
+  const widthClass                    = block.imageWidth === 'full' ? 'w-full' : 'w-3/4';
   const togglePopup = () =>{
       if(overlay === false){
           setOverlay(true);
@@ -27,7 +26,7 @@ const ProjectBlock = ({block, type, index})  => {
             <div className={`w-full h-full flex flex-col justify-center items-center`}>
                 {type === `project` &&
                     <Link to={block.link ? block.link.url : `#`} className={`h-full flex flex-col justify-center items-center`}>
-                      <div className={`w-3/4 mx-auto block`}>
+                      <div className={`${widthClass} mx-auto block`}>
                         <GatsbyImage image={block.featuredImage.localFile.childImageSharp.gatsbyImageData} alt={`${block.title} logo`} className={`object-contain`} />
                       </div>
                       <div className="flex-1 flex flex-col justify-end">
@@ -146,6 +145,7 @@ export const query = graphql`
               link {
                 url
               }
+              imageWidth
             }
           }
           layoutSettings {
@@ -185,6 +185,7 @@ export const serviceQuery = graphql`
               link {
                 url
               }
+              imageWidth
             }
           }
           layoutSettings {
@@ -224,6 +225,7 @@ export const projectQuery = graphql`
               link {
                 url
               }
+              imageWidth
             }
           }
           layoutSettings {
