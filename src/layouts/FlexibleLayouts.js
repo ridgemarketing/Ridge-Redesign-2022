@@ -99,6 +99,7 @@ export const serviceQuery = graphql`
         ...VideoPlayerService
         ...FullWidthImageService
         ...FullWidthImageTextService
+        ...FullWidthImageVideoTextService
         ...IconTextBoxesService
         ...VerticalSliderService
         ...MediaBlocksService
@@ -142,7 +143,6 @@ export const projectQuery = graphql`
         ...VideoPlayerProject
         ...ImagesTopAlignedTextProject
         ...FullWidthImageProject
-        ...FullWidthImageTextProject
         ...IconTextBoxesProject
         ...MediaBlocksProject
         ...QuotesProject

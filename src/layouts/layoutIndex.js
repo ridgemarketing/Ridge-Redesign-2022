@@ -5,6 +5,7 @@ import FeaturedProjectsCarousel from "./layouts/FeaturedProjectsCarousel"
 import FeaturedProjectsGrid from "./layouts/FeaturedProjectsGrid"
 import FullWidthImage from "./layouts/FullWidthImage"
 import FullWidthImageText from "./layouts/FullWidthImageText"
+import FullWidthImageVideoText from "./layouts/FullWidthImageVideoText"
 import HomeHero from "./layouts/HomeHero"
 import IconTextBoxes from "./layouts/IconTextBoxes"
 import LogoCloud from "./layouts/LogoCloud"
@@ -55,6 +56,7 @@ Layouts['FeaturedProjectsGrid']             = FeaturedProjectsGrid;
 Layouts['FeaturedProjectsGridDev']          = FeaturedProjectsGridDev;
 Layouts['FullWidthImage']                   = FullWidthImage;
 Layouts['FullWidthImageText']               = FullWidthImageText;
+Layouts['FullWidthImageVideoText']          = FullWidthImageVideoText;
 // Layouts['ThreeColumnTextBlock']          = ThreeColumnTextBlock;
 Layouts['TextBlock']                        = TextBlock;
 Layouts['HomeHero']                         = HomeHero;

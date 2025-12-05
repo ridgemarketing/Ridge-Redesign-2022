@@ -4,7 +4,7 @@ import { Section, Container } from "../../components/global/Wrappers"
 import { theme } from "../../static/theme"
 import FlexibleMedia from "../../components/global/FlexibleMedia"
 
-  const MediaBlocks = (props) => {
+const MediaBlocks = (props) => {
   const content     = props.layoutData.layoutContent;
   const settings    = props.layoutData.layoutSettings;
 
@@ -59,6 +59,9 @@ export const query = graphql`
                 caption
                 video {
                   videoUrl
+                  mobileVideoUrlOptional
+                  autoplay
+                  controls
                   thumbnailImage {
                     sourceUrl
                     localFile {
@@ -113,6 +116,9 @@ export const serviceQuery = graphql`
                 caption
                 video {
                   videoUrl
+                  mobileVideoUrlOptional
+                  autoplay
+                  controls
                   thumbnailImage {
                     sourceUrl
                     localFile {
@@ -169,6 +175,9 @@ export const projectQuery = graphql`
                 caption
                 video {
                   videoUrl
+                  autoplay
+                  controls
+                  mobileVideoUrlOptional
                   thumbnailImage {
                     sourceUrl
                     localFile {
