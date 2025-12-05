@@ -17,6 +17,7 @@ module.exports = {
     'bg-white',
     'bg-white-black',
     'bg-rm-pale-teal',
+    'bg-rm-ocean-teal',
     'md:pt-36',
     'pt-24',
     '-mb-12',
@@ -35,7 +36,9 @@ module.exports = {
     '-lg:before:hidden', 
     '-lg:after:bg-[url("../static/arrow-right-black.svg")]',
     'pb-40',
+    'pb-60',
     'xl:ml-24',
+    'pb-12',
     'pb-16',
     'pt-16',
     'bg-rm-pale-teal',
@@ -108,7 +111,8 @@ module.exports = {
         'rm-pale-grey'       : '#F1F5F5',
         'rm-pale-teal'       : '#F3F9F9',
         'rm-blog-blue'       : '#1f9da5',
-        'rm-dark-grey'       : '#1C1C1C'
+        'rm-dark-grey'       : '#1C1C1C',
+        'rm-ocean-teal'      : '#209DA5'
       },
       fontSize: {
           '18px'             : '1.125rem',

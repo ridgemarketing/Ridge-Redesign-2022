@@ -35,9 +35,12 @@ const ResultsImage = (props) => {
                           <h2 dangerouslySetInnerHTML={{__html: content.heading}} className={`${theme.text.H2} text-[80px] fontsemibold`}></h2>
                           <p dangerouslySetInnerHTML={{__html: content.body}} className={`${theme.text.H4_LTE} mt-12 text-[50px] font-semibold`}></p>
                           <div className='mt-8'>
-                            <Buttons 
-                              content={content.componentButton} 
-                              sectionBackground={settings.backgroundColor}/>
+                          {(content.componentButton?.link?.title || content.componentButton?.link?.url) && (
+                              <Buttons
+                                  content={content.componentButton}
+                                  sectionBackground={settings.backgroundColor}
+                              />
+                          )}
                           </div>
                       </div>
                       <div className={`mt-12 lg:mt-0 lg:pl-10 lg:w-auto`}>

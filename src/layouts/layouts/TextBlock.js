@@ -4,6 +4,7 @@ import { theme } from "../../static/theme"
 import Link from "../../components/global/FlexibleLink"
 import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser";
+import Buttons from '../../components/global/Buttons';
 
 const TextBlock = (props) => {
     const content = props.layoutData.layoutContent;
@@ -28,12 +29,13 @@ const TextBlock = (props) => {
             <Container classes={`${alignment} ${settings.classes}`} container={settings.containerWidth}>
                 <h2 className={`${theme.text[headingStyle]} pb-6 lg:w-[95%]`} dangerouslySetInnerHTML={{__html: heading}}></h2>
                 <p className={`${theme.text.P_STD} lg:w-[95%]`} dangerouslySetInnerHTML={{__html: body}}></p>
-                {content.componentButton &&  
-                    <Link
-                    link={content.componentButton.link}
-                    classes={theme.button.BASE_STYLING + theme.button.GHOST_GREEN_HOVER_DARK + buttonAlignment + " mt-8"}
+                {(content.componentButton?.link?.title || content.componentButton?.link?.url) && (
+                    <Buttons
+                        content={content.componentButton}
+                        sectionBackground={settings.backgroundColor}
                     />
-                }
+                )}
+
             </Container>
         </Section>
     )

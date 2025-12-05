@@ -46,6 +46,7 @@ import PullquoteImage from "./layouts/PullquoteImage"
 import TwoColTextForm from "./layouts/TwoColTextForm"
 import TwoColIconText from "./layouts/TwoColIconText"
 import FrequentlyAskedQuestions from "./layouts/FrequentlyAskedQuestions"
+import TwoColImageList from "./layouts/TwoColImageList"
 
 let Layouts = {}; 
 
@@ -99,6 +100,7 @@ Layouts['PullquoteImage']                   = PullquoteImage;
 Layouts['TwoColTextForm']                   = TwoColTextForm;
 Layouts['TwoColIconText']                   = TwoColIconText;
 Layouts['FrequentlyAskedQuestions']         = FrequentlyAskedQuestions;
+Layouts['TwoColImageList']                  = TwoColImageList;
 
 
 export default Layouts
