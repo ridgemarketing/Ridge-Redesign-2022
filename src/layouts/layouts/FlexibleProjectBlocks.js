@@ -21,7 +21,7 @@ const ProjectBlock = ({block, type, index})  => {
   }
   return(
     <>
-      <div key={`FlexibleProjectItem__${block.featuredImage.guid}__${index}`} className={`flex flex-col justify-center items-center w-[375px] mx-auto pb-8 md:pb-0`}>
+      <div key={`FlexibleProjectItem__${block.featuredImage.guid}__${index}`} className={`flex flex-col justify-center items-center max-w-[375px] w-full mx-auto pb-20 md:pb-0`}>
           <div className={`mt-3 h-full w-full relative group`}>
             <div className={`w-full h-full flex flex-col justify-center items-center`}>
                 {type === `project` &&
@@ -110,7 +110,7 @@ const FlexibleProjectBlocks = (props) => {
                   <h2 dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`${theme.text.H2} mb-20 text-center ${textColor}`}></h2>
                 }
                 {content.blocks &&
-                  <div className={`md:grid md:grid-cols-2 lg:grid-cols-3 gap-12`}>
+                  <div className={`md:grid md:grid-cols-2 xl:grid-cols-3 gap-12`}>
                       {content.blocks.map((block, index) => {
                         return <ProjectBlock block={block} type={content.type} index={index} />
                       })}
