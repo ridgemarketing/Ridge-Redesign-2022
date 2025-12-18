@@ -5,6 +5,7 @@ import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import PageHeader from "../layouts/layouts/PageHeader"
 import CustomHeader from "../components/global/headerColor"
 import { theme, ThemeContext } from "../static/theme"
+import PPCLanderWrapper from "../layouts/layouts/ppcLander/PpcLanderWrapper"
 
 export const Head = ({data}) => (
   <>
@@ -54,7 +55,6 @@ export const Head = ({data}) => (
 // )
 
 const WpLander = ({ data, location }) => {
-  console.log(data)
   let color     = 'black';
   const context = useRef(useContext(ThemeContext));
 
@@ -62,6 +62,13 @@ const WpLander = ({ data, location }) => {
     context.current.updateAccentFunction(theme.colors.primary.accent);
     context.current.updateSecondaryFunction(theme.colors.secondary.accent);
   }, []);
+
+  if (data.wpLander.uri === '/lander/ridge-ppc-2026/') {
+    return (<>
+      <CustomHeader color={color} />
+      <PPCLanderWrapper data={data.wpLander.Ridge2026PPC} />
+    </>)
+  }
 
     return (
       <>
@@ -121,6 +128,25 @@ export const query = graphql`
             articleType
             pageType
             raw
+        }
+      }
+      Ridge2026PPC {
+        hero {
+          heading
+          circleImages {
+            image {
+              altText
+            }
+          }
+          subHeading
+          componentButton {
+            style
+            link {
+              target
+              title
+              url
+            }
+          }
         }
       }
   }
