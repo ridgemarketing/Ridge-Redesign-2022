@@ -10,12 +10,14 @@ const PPCLanderWrapper = ({data}) => {
             <PPCHero data={data.hero} />
         }
 
-        <PPCTwoColContent data={data} />
+        {data.twoColumnContent &&
+            <PPCTwoColContent data={data.twoColumnContent} />
+        }
         
         {data.projectSlider&&
             <PPCProjectSlider data={data.projectSlider} />
         }
-        
+
         <PPCForm data={data} />
     </>)
 }

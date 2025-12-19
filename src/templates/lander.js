@@ -131,6 +131,7 @@ export const query = graphql`
         }
       }
       Ridge2026PPC {
+
         hero {
           heading
           circleImagesDown {
@@ -170,6 +171,29 @@ export const query = graphql`
             }
           }
         }
+
+        twoColumnContent {
+          checklist {
+            heading
+            list {
+              item
+            }
+          }
+          videoText {
+            body
+            heading
+            video {
+              mediaDetails {
+                file
+                height
+                width
+              }
+              mimeType
+              mediaItemUrl
+            }
+          }
+        }
+
         projectSlider {
           images{
             image {
@@ -197,6 +221,7 @@ export const query = graphql`
             }
           }
         }
+          
       }
   }
   allWp {
