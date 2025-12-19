@@ -165,6 +165,36 @@ export const query = graphql`
               title
               url
             }
+            colors {
+              resting
+            }
+          }
+        }
+        projectSlider {
+          images{
+            image {
+              localFile {
+                    ext
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+              altText
+              sourceUrl
+            }
+          }
+          componentButtonGroup {
+            componentButton {
+              colors {
+                resting
+              }
+              link {
+                target
+                title
+                url
+              }
+              style
+            }
           }
         }
       }
