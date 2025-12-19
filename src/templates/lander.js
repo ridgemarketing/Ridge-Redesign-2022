@@ -133,9 +133,28 @@ export const query = graphql`
       Ridge2026PPC {
         hero {
           heading
-          circleImages {
+          circleImagesDown {
             image {
-              altText
+                localFile {
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+                altText
+                sourceUrl
+            }
+          }
+          circleImagesUp {
+            image {
+                 localFile {
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+                altText
+                sourceUrl
             }
           }
           subHeading
