@@ -379,12 +379,12 @@ export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnSty
     )
 }
 
-export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle, redirectForm}) => {
+export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnStyle, redirectForm}) => {
     const { register, handleSubmit, watch, reset, formState, formState: { errors, isSubmitSuccessful } } = useForm()
-    const [status, setStatus] = useState(false)
-    const [submittedData, setSubmittedData] = useState({});
-    const [savedData, setSavedData] = useState({});
-    const [step, setStep] = useState(1)
+    const [status, setStatus]               = useState(false)
+    const [submittedData, setSubmittedData] = useState({})
+    const [savedData, setSavedData]         = useState({})
+    const [step, setStep]                   = useState(1)
 
     const saveData = (data) => {
         setStatus(`processing`)
@@ -401,7 +401,7 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
         const res = await fetch("/api/sendgrid-landers", {
             body    : JSON.stringify({
             email   : data.email,
-            subject : `New Lander Form Submission`,
+            subject : `New 2026 PPC Page Submission`,
             message : message,
         }),
             headers : {
@@ -428,12 +428,11 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
             reset()
             setStep(1)
             if (window.dataLayer && typeof window.dataLayer.push === "function") {
-             window.dataLayer.push({event: 'Contact Form Submission'});
+                window.dataLayer.push({event: 'Contact Form Submission'});
             }
             if (redirectForm) {
                 navigate("/thank-you/")
             }
-            
           }
       
     }, [formState, submittedData, reset])
@@ -464,11 +463,11 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
                         </div>
                     }
 
-                    <div>
-                        <span className={`mb-6 block`}><Input errors={errors} register={register} required={true} type={`text`} name={`name`} label={`Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`mb-6 block`}><Input errors={errors} register={register} required={true} type={`text`} name={`company`} label={`Company`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`mb-6 block`}><Input errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Email`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`mb-6 block`}><PhoneInput errors={errors} register={register} required={true} type={`tel`} name={`phone`} label={`Phone`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                    <div className="flex flex-wrap gap-7">
+                        <span className={`block w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`text`} name={`name`} label={`Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <span className={`block w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`text`} name={`company`} label={`Company`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <span className={`block w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Email`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <span className={`block w-[calc(50%-28px)]`}><PhoneInput bg={'white'} errors={errors} register={register} required={true} type={`tel`} name={`phone`} label={`Phone`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <div className={`mt-10 ${btnContainerClasses ? btnContainerClasses : ``}`}>
                             <button
                                 className={`${status === `processing` ? `opacity-80` : `` } ${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} ${theme.text_links.FWD_BASE} ${theme.text_links.ARW_FWD_BLACK} ${theme.text_links.HOVER_ARW_FWD_WHITE} !inline-flex items-center cursor-pointer min-w-[210px]`}

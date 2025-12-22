@@ -198,11 +198,11 @@ export const query = graphql`
           images{
             image {
               localFile {
-                    ext
-                    childImageSharp {
-                      gatsbyImageData
-                    }
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
                   }
+                }
               altText
               sourceUrl
             }
@@ -218,6 +218,109 @@ export const query = graphql`
                 url
               }
               style
+            }
+          }
+        }
+
+        iconTextBoxes {
+          badge {
+            altText
+            sourceUrl
+          }
+          buttons {
+            componentButton {
+              colors {
+                resting
+              }
+              link {
+                url
+                title
+                target
+              }
+              style
+            }
+          }
+          heading
+          icons {
+            heading
+            icon {
+              altText
+              sourceUrl
+              localFile{
+                ext
+              }
+            }
+            link {
+              url
+              title
+              target
+            }
+          }
+        }
+
+        stats {
+          columns {
+            body
+            number
+          }
+          body
+          heading
+        }
+
+        logos {
+          image {
+            altText
+            sourceUrl
+            localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+          }
+        }
+
+        form {
+          body
+          heading
+          image {
+            altText
+            sourceUrl
+            localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+            }
+          }
+        }
+
+        quotes {
+          quotes {
+            ... on WpReview {
+              id
+              title
+              content
+              reviewsFields {
+                fieldGroupName
+                titleCompany
+              }
+            }
+          }
+        }
+
+        tools {
+          heading
+          logos {
+            logo {
+              altText
+              sourceUrl
+              localFile {
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+              }
             }
           }
         }

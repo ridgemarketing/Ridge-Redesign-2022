@@ -27,7 +27,7 @@ const Quotes = (props) => {
     }
     const handleClick = (next) => {
       setInteraction(true);
-      (next) ? nextSlide() : prevSlide();
+      next ? nextSlide() : prevSlide();
       return;
     }
 

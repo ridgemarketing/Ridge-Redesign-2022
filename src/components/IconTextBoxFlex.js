@@ -5,22 +5,20 @@ import Link from '../components/global/FlexibleLink'
 import Parser from "./global/Parser"
 
 const IconTextBoxFlex = (props) => {
-    const content = props.content;
+    const content                           = props.content;
 
-    const [height, setHeight] = useState(0);
-    const [iconHeight, setIconHeight] = useState(0);
-    const [customTop, setCustomTop] = useState('0px');
-    const [customBottom, setCustomBottom] = useState('0px');
-    const [windowWidth, setWindowWidth] = useState(0);
+    const [height, setHeight]               = useState(0);
+    const [iconHeight, setIconHeight]       = useState(0);
+    const [customTop, setCustomTop]         = useState('0px');
+    const [customBottom, setCustomBottom]   = useState('0px');
+    const [windowWidth, setWindowWidth]     = useState(0);
 
-    const iconElement = useRef();
-    const ref = useRef();
+    const iconElement                       = useRef();
+    const ref                               = useRef();
 
-    let component = ''
-
-    let wrapperClasses  = `flex w-full md:w-[48%] mb-16 items-start`;
-
-    let marginClasses   = `ml-6 `;
+    let component                           = ''
+    let wrapperClasses                      = `flex w-full md:w-[48%] mb-16 items-start`;
+    let marginClasses                       = `ml-6 `;
 
     if ((props.iconType === `icon` || props.iconType === `icon-number`) && content.image) {
         var image = (content.image.localFile.ext === `.svg`) 
@@ -38,6 +36,7 @@ const IconTextBoxFlex = (props) => {
             {image}
         </div>
     }
+    
     if (props.iconType === `number`) {
         component = 
         <div className={`text-center md:text-left ml-6`}>
@@ -91,6 +90,12 @@ const IconTextBoxFlex = (props) => {
             setCustomBottom((difference > 0) ? (difference / 2 + 6) + 'px' : '0px');
     }, [height, iconHeight, windowWidth])
 
+
+    let customCase = 'uppercase'
+    if (props.lowercase) {
+        customCase = 'capitalize'
+    }
+
     return(
             <div className={wrapperClasses} key={`iconTextBoxFlex-item${Math.random()}`}>
                 <div ref={iconElement}>
@@ -100,8 +105,8 @@ const IconTextBoxFlex = (props) => {
                     {content.heading && 
                         <div className={`mb-4`}>
                             <p ref={ref}
-                                style={{marginTop: customTop, marginBottom: customBottom, marginLeft: '24px'}}
-                                className={ `${headingfont} block items-center ${props.color}` }>
+                                style={{marginTop: customTop, marginBottom: customBottom, marginLeft: '24px', textTransform: customCase}}
+                                className={ `${headingfont} block items-center ${props.color} w-full` }>
                                 { content.heading }
                             </p>
                         </div>

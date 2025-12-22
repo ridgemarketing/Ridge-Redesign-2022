@@ -286,3 +286,6 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 .ppcProjectSlider .is-active [data-gatsby-image-wrapper] {
     @apply scale-100
 }
+.ppcProjectSlider .splide__arrow {
+    @apply bg-transparent relative
+}
