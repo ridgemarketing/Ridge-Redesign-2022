@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useLayoutEffect, useRef, useState } from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide"
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll"
@@ -15,6 +15,59 @@ const PPCHero = ({data}) => {
     const circleImagesUp        = data.circleImagesUp ?? false 
     const componentButton       = data.componentButton ?? false 
     const popupCircles          = useRef([])
+    const coverUp               = useRef(null)
+    const mainSection           = useRef(null)
+    const innerSection          = useRef(null)
+    const backgroundCloud       = useRef(null)
+    const splideRight           = useRef(null)
+    const splideLeft            = useRef(null)
+    const [height, setHeight]   = useState(0)
+    const [wait, setWait]       = useState(0)
+
+    useEffect(() => {
+        const adjustHeight = () => {
+            if (innerSection.current) {
+                console.log(mainSection, window.innerWidth, splideLeft.current.splideRef, splideRight.current.splideRef)
+                let ratio = 1.65
+                if (window.innerWidth >= 1920) { // 2xl
+                    ratio = 1.65
+                } else if (window.innerWidth >= 1280) { // xl
+                    ratio = 1.65 * (110 / 130)
+                } else if (window.innerWidth >= 1024) { // lg
+                    ratio = 1.65 * (110 / 160)
+                }
+                setHeight((window.innerWidth / ratio))
+            }
+        }
+        adjustHeight()
+
+        window.addEventListener('resize', adjustHeight)
+        return ()=> window.removeEventListener('resize', adjustHeight)
+    }, [])
+
+    useEffect(() => {
+        if (innerSection.current && splideLeft.current && splideRight.current && backgroundCloud.current) {
+            innerSection.current.style.height                   = `${height}px`
+            splideLeft.current.splideRef.current.style.height   = `${height}px`
+            splideRight.current.splideRef.current.style.height  = `${height}px`
+            backgroundCloud.current.style.height                = `${(height + 50)}px`
+            setWait(1)
+        }
+    }, [height])
+
+    useEffect(() => {
+        if (wait === 1) {
+            if (coverUp.current) {
+                coverUp.current.style.opacity = `${0}`
+            }
+            setWait(2)
+        }
+        if (wait === 2) {
+            if (coverUp.current) {
+                coverUp.current.style.zIndex = `-100`
+            }
+        }
+    }, [wait])
 
     useEffect(() => {
 
@@ -56,9 +109,10 @@ const PPCHero = ({data}) => {
         }
     }, [popupCircles])
 
-    return(
-        <>
-            <section className="min-h-[1050px] relative bg-[#00abb6]" style={{ clipPath: 'url(#clipCloud)' }}>
+    return(<>
+        <div ref={coverUp} className="fixed top-0 left-0 h-full w-full z-30 bg-[#00abb6] transition-all duration-700 opacity-100 ease-out"></div>
+        <div ref={mainSection} className="hidden xl:block overflow-hidden relative mx-auto">
+            <section ref={innerSection} className="mx-auto w-full relative overflow-hidden bg-[#00abb6] overflow-x-hidden [mask-image:url(/cloudMask.svg)] [mask-repeat:no-repeat] [mask-position:top_center] [-webkit-mask-image:url(/cloudMask.svg)] [-webkit-mask-repeat:no-repeat] [-webkit-mask-position:top_center] lg:[mask-size:160%_auto] lg:[-webkit-mask-size:160%_auto] xl:[mask-size:130%_auto] xl:[-webkit-mask-size:130%_auto] 2xl:[mask-size:110%_auto] 2xl:-webkit-mask-size:110%_auto]">
                 <Container>
                     <div className="pt-40 flex flex-col gap-9 relative z-10">
                         {heading &&
@@ -73,45 +127,35 @@ const PPCHero = ({data}) => {
                             </div>
                         }
                     </div>
-                    {circleImagesDown && 
-                        <CustomSplide images={circleImagesDown} direction={'down'} position={'right'}/>
+                    {circleImagesDown &&
+                        <CustomSplide splideRef={splideRight} images={circleImagesDown} direction={'down'} position={'right'}/>
                     }
-                    {circleImagesUp && 
-                        <CustomSplide images={circleImagesUp} direction={'up'} position={'left'}/>
+                    {circleImagesUp &&
+                        <CustomSplide splideRef={splideLeft} images={circleImagesUp} direction={'up'} position={'left'}/>
                     }
                 </Container>
-
-                {/* <div aria-hidden={true} className="absolute bottom-0 right-0 w-full h-[350px] bg-gradient-to-t from-[#00ABB6] via-[#00ABB6] via-20% to-transparent"></div> */}
-
-                {/* <DarkBlueCloud_Large className={`w-full absolute top-0 left-0 -z-[1]`} /> */}
-
-                <svg aria-hidden={true} width={0} height={0} preserveAspectRatio="xMaxYMid meet" viewBox="0 0 1919.54 1050">
-                    <defs>
-                        <clipPath id="clipCloud" clipPathUnits="objectBoundingBox" transform="scale(0.000521 0.000952)">
-                            <path d="M0,0v664.44c.75,1.92,1.53,3.82,2.34,5.7,13.19,61.24,81,108.66,164.52,112.88,20.25,1.6,40.58.14,60-4.57,53.62-11.19,97.12-40.72,117.9-79.08,31.15,38.89,95.9,65.63,170.74,65.63,6.99,0,13.89-.24,20.69-.69,23.72,48.44,96.37,83.69,182.31,83.69,34.24,0,66.37-5.6,94.14-15.4,2.01,18.21,8.71,35.21,19.01,50.04,18.04,33.64,54.56,56.05,93.76,55.02,6.55.87,13.26,1.33,20.09,1.33,15.05,0,29.52-2.2,43.02-6.26,4.15,6.43,8.91,12.52,14.2,18.15,37.64,58.61,118.1,99.11,211.28,99.11,85.89,0,160.97-34.41,201.67-85.7,8.87,1.77,18,2.7,27.33,2.7,67.71,0,125.27-48.73,146.38-116.66,13.99,7.39,28.8,13.16,44.47,15.74,56.01,10.66,115.59-15.33,145.71-63.81,7.97-12.59,13.9-26.39,17.65-40.77.2-.74.38-1.46.55-2.19,19.95,43.98,65.79,77.14,121.78,86.2V0H0Z"/>
-                        </clipPath>
-                    </defs>
-                </svg>
+                <div aria-hidden={true} className="absolute bottom-0 right-0 w-full h-[350px] bg-gradient-to-t from-[#00ABB6] via-[#00ABB6] via-20% to-transparent"></div>
             </section>
+            <svg ref={(el) => { if (el) popupCircles.current[0] = el }} className="-mt-[calc(350px/2)]" viewBox="0 0 1920 307.6">
+                <ellipse className="scale-0 transition-all ease-in-out duration-300 delay-[600ms]" transform="matrix(0.7693 -0.6389 0.6389 0.7693 -32.3279 439.3668)" fill="#00ABB6" cx="592.2" cy="264.4" style={{transformOrigin: '596.9px 264.4px'}} rx="26.2" ry="26.2"/>
+                <path style={{transformOrigin: '554.7px 264.4px'}} className="scale-0 transition-all ease-in-out duration-150 delay-300" fill="#00ABB6" d="M522.7,175.5c-0.9,9.2,1.9,18.2,7.8,25.3c12.2,14.7,34,16.7,48.7,4.5c14.7-12.2,16.7-34,4.5-48.7
+                    c-6.8-8.2-16.7-12.5-26.6-12.5c-7.8,0-15.6,2.6-22.1,8C527.9,158,523.5,166.3,522.7,175.5z"/>
+                <circle className="scale-0 transition-all ease-in-out duration-300" fill="#00ABB6" cx="596.9" cy="78.6" r="47.1" style={{transformOrigin: '596.9px 78.6px'}}/>
+            </svg>
 
-            {/* <svg ref={(el) => { if (el) popupCircles.current[0] = el }} className="absolute top-0 left-0 -z-[2]" viewBox="0 0 1920 1121">
-                <circle className="scale-0 transition-all ease-in-out duration-300 delay-300" cx="592.2" cy="1077.9" r="26.2" transform="translate(-552.1 627.1) rotate(-39.7)" fill="#00abb6" style={{transformOrigin: '592.2px 1077.9px'}}/>
-                <path className="scale-0 transition-all ease-in-out duration-300 delay-150" d="M522.7,989c-.9,9.2,1.9,18.2,7.8,25.3,12.2,14.7,34,16.7,48.7,4.5,14.7-12.2,16.7-34,4.5-48.7-6.8-8.2-16.7-12.5-26.6-12.5s-15.6,2.6-22.1,8c-7.1,5.9-11.5,14.2-12.3,23.4Z" fill="#00abb6" style={{transformOrigin: '554.7px 1001.2px'}}/>
-                <circle className="scale-0 transition-all ease-in-out duration-300" cx="596.9" cy="892" r="47.1" fill="#00abb6" style={{transformOrigin: '596.9px 892px'}}/>
-            </svg> */}
-
-            {/* <LightBlueCloud_Large className={`w-full absolute top-0 left-0 -z-[3]`} /> */}
-        </>
-    )
+            <LightBlueCloud_Large theRef={backgroundCloud} className={`w-[160%] xl:w-[130%] 2xl:w-[110%] absolute top-0 left-0 -z-[3]`} />
+        </div>
+    </>)
 
 }
 export default PPCHero
 
 
-const CustomSplide = ({images, direction, position}) => {
+const CustomSplide = ({images, direction, position, splideRef}) => {
     return (
         <Splide
-            className       = {`!absolute !visible top-0 ${position === 'right' ? 'right-0' :'right-[335px]'}`}
+            ref             = {splideRef}
+            className       = {`!absolute !visible top-0 ${position === 'right' ? '-right-[125px]' :'right-[235px]'}`}
             aria-label      = {`images ${direction} carousel`}
             hasTrack        = { false }
             extensions      = { { AutoScroll } }
@@ -120,22 +164,20 @@ const CustomSplide = ({images, direction, position}) => {
             options         = { {
                 type        : `loop`,
                 direction   : `ttb`,
-                height      : `1050px`,
+                height      : `100%`,
                 focus       : 'center',
-                perPage     : 3,
+                perPage     : 4,
                 // perMove     : 1,
-                gap         : `27px`,
+                gap         : `30px`,
                 drag        : false,
                 rewindByDrag: false,
                 pagination  : false,
                 lazyLoad    : false,
                 arrows      : false,
                 breakpoints: {
-                    640: {
-                        perPage: 1,
-                    },
-                    1000: {
-                        perPage: 3,
+                    1650: {
+                        perPage : 3,
+                        gap     : `27px`,
                     }
                 },
                 autoScroll  : {
@@ -152,7 +194,7 @@ const CustomSplide = ({images, direction, position}) => {
                                 <GatsbyImage 
                                     image       = {circle.image.localFile.childImageSharp.gatsbyImageData} 
                                     alt         = {circle.image.altText} 
-                                    className   = {`flex self-start w-[335px] h-[335px]`} 
+                                    className   = {`flex self-start w-[300px] h-[300px] drop-shadow-md`} 
                                     objectFit   = {'contain'}/>
                             </SplideSlide>
                         )

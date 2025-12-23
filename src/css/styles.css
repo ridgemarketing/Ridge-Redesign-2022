@@ -289,3 +289,7 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 .ppcProjectSlider .splide__arrow {
     @apply bg-transparent relative
 }
+
+main {
+    @apply outline-none
+}

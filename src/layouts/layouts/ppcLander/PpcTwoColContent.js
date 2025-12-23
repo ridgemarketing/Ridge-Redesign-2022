@@ -11,22 +11,22 @@ const PPCTwoColContent = ({data}) => {
 
     return(<>
         <section className="pt-[60px] relative bg-gradient-to-t from-[#edf8f9] via-[#f3f9f9] via-47% to-white">
-            <Container classes={`flex flex-col lg:flex-row gap-8 flex-nowrap justify-center items-center lg:p-0 pb-20 lg:pb-20`}>
+            <Container classes={`flex flex-col xl:flex-row gap-8 flex-nowrap justify-center items-center xl:p-0 pb-20 xl:pb-20`}>
                 <div className="flex flex-col gap-6 flex-1">
                     {videoText?.heading &&
-                        <h2 dangerouslySetInnerHTML={{__html: Parser(videoText.heading)}} className={`text-left text-[2.5rem] leading-[2.75rem] font-stratos text-black uppercase`}></h2>
+                        <h2 dangerouslySetInnerHTML={{__html: Parser(videoText.heading)}} className={`text-center xl:text-left max-w-[750px] mx-auto xl:max-w-full text-[2.5rem] leading-[2.75rem] font-stratos text-black uppercase`}></h2>
                     }
                     {videoText?.body &&
-                        <p dangerouslySetInnerHTML={{__html: Parser(videoText.body)}} className={`text-left ${theme.text.H4_LTE} text-rm-grey`}></p>
+                        <p dangerouslySetInnerHTML={{__html: Parser(videoText.body)}} className={`text-center xl:text-left ${theme.text.H4_LTE} text-rm-grey`}></p>
                     }
                 </div>
                 {videoText?.video?.mediaItemUrl &&
-                    <video className="aspect-video rounded-3xl flex-1 w-full lg:w-1/2" autoPlay={true} muted={true} controls={false} loop={true}>
+                    <video className="aspect-video rounded-3xl flex-1 w-full max-w-[630px] xl:w-1/2" autoPlay={true} muted={true} controls={false} loop={true}>
                         <source src={videoText?.video?.mediaItemUrl} type={videoText?.video?.mimeType}/>
                     </video>
                 }
             </Container>
-            <Container classes={`pt-[60px] pb-20 flex flex-col gap-12`}>
+            <Container classes={`pt-5 md:pt-[60px] pb-20 flex flex-col gap-12`}>
                 {checklist.heading &&
                     <h2 dangerouslySetInnerHTML={{__html: Parser(checklist.heading)}} className={`text-[2rem] leading-[2.2rem] font-semibold font-stratos text-black uppercase text-center`}></h2>
                 }

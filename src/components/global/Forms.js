@@ -464,10 +464,10 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
                     }
 
                     <div className="flex flex-wrap gap-7">
-                        <span className={`block w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`text`} name={`name`} label={`Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`block w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`text`} name={`company`} label={`Company`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`block w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Email`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`block w-[calc(50%-28px)]`}><PhoneInput bg={'white'} errors={errors} register={register} required={true} type={`tel`} name={`phone`} label={`Phone`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <span className={`block w-full xl:w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`text`} name={`name`} label={`Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <span className={`block w-full xl:w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`text`} name={`company`} label={`Company`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <span className={`block w-full xl:w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Email`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <span className={`block w-full xl:w-[calc(50%-28px)]`}><PhoneInput bg={'white'} errors={errors} register={register} required={true} type={`tel`} name={`phone`} label={`Phone`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <div className={`mt-10 ${btnContainerClasses ? btnContainerClasses : ``}`}>
                             <button
                                 className={`${status === `processing` ? `opacity-80` : `` } ${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} ${theme.text_links.FWD_BASE} ${theme.text_links.ARW_FWD_BLACK} ${theme.text_links.HOVER_ARW_FWD_WHITE} !inline-flex items-center cursor-pointer min-w-[210px]`}

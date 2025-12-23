@@ -34,7 +34,7 @@ const PPCIconTextBoxes = ({data}) => {
                 }
             
             } else if (iconContainer) {
-                iconContainer.current.setAttribute('style','height:100%')
+                iconContainer?.current?.setAttribute('style','height:100%')
             }
         }
         setHeight()

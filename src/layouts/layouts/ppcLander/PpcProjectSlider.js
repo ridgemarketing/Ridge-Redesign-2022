@@ -10,7 +10,7 @@ const PPCProjectSlider = ({data}) => {
         <div className="overflow-hidden">
             {data.images &&
                 <Splide
-                    className       = {`w-[120%] -ml-[10%] ppcProjectSlider`}
+                    className       = {` w-[175%] -ml-[35%] lg:w-[120%] lg:-ml-[10%] ppcProjectSlider`}
                     hasTrack        = { false }
                     // extensions      = { { AutoScroll } }
                     onMove          = { ( splide, newIndex, prevIndex, destIndex ) => { console.log( 'move', newIndex, prevIndex, destIndex  ) } }
@@ -33,7 +33,7 @@ const PPCProjectSlider = ({data}) => {
                         rewindSpeed : 1200,
                         breakpoints : {
                             500: {
-                                perPage: 1,
+                                perPage: 3,
                             },
                             768: {
                                 perPage: 3,

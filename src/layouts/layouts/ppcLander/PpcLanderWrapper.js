@@ -1,5 +1,6 @@
 import React from "react"
 import PPCHero from "./PpcHero"
+import PPCHeroStandard from "./PpcHero-Standard"
 import PPCTwoColContent from "./PpcTwoColContent"
 import PPCProjectSlider from "./PpcProjectSlider"
 import PPCStats from "./PpcStats"
@@ -14,9 +15,10 @@ const PPCLanderWrapper = ({data}) => {
     console.log('all data', data)
 
     return(<>
-        {data.hero && 
-            <PPCHero data={data.hero} />
-        }
+        {data.hero && <> 
+            <PPCHero data={data.hero} /> {/* above 1280 */}
+            <PPCHeroStandard data={data.hero} /> {/* below 1280 */}
+        </>}
         {data.twoColumnContent &&
             <PPCTwoColContent data={data.twoColumnContent} />
         }
