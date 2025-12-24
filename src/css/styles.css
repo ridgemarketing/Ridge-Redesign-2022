@@ -278,3 +278,18 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 .bg-F1F6F8{
     @apply bg-[#F1F6F8];
 }
+
+/* 2026 PPC Lander */
+.ppcProjectSlider [data-gatsby-image-wrapper] {
+    @apply scale-90 transition-all duration-300 ease-out
+}
+.ppcProjectSlider .is-active [data-gatsby-image-wrapper] {
+    @apply scale-100
+}
+.ppcProjectSlider .splide__arrow {
+    @apply bg-transparent relative
+}
+
+main {
+    @apply outline-none
+}
