@@ -18,6 +18,9 @@ const IconTextBoxFlex = (props) => {
 
     let component                           = ''
     let wrapperClasses                      = `flex w-full md:w-[48%] mb-16 items-start`;
+    if (props.custom === true) {
+        wrapperClasses                      = `flex w-full md:w-full mb-16 items-start`;
+    }
     let marginClasses                       = `ml-6 `;
 
     if ((props.iconType === `icon` || props.iconType === `icon-number`) && content.image) {
@@ -36,7 +39,7 @@ const IconTextBoxFlex = (props) => {
             {image}
         </div>
     }
-    
+
     if (props.iconType === `number`) {
         component = 
         <div className={`text-center md:text-left ml-6`}>

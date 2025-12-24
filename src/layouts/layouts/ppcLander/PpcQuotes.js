@@ -74,26 +74,26 @@ const PPCQuotes = ({data}) => {
     const quoteFunc = () => {
         if (slides.length > 0) {
 
-            let topLeft              = 50
-            let topRight             = 50
+            let topLeft              = 25
+            let topRight             = 75
             let topCounter           = 0.15
             let prevDirection        = `0`
 
-            if (window.innerWidth < 1024) {
+            if (window.innerWidth < 768) {
                 // topCounter  = 0.35
-                topLeft     = 50
+                topLeft     = 15
                 topRight    = 50
             }
 
             function inView(){
                 if (quoteLeft.current !== null && quoteRight.current !== null) {
-                    if (window.pageYOffset > prevDirection){
+                    if (window.pageYOffset > prevDirection) {
                         topLeft                         = topLeft - topCounter
                         topRight                        = topRight + topCounter
                         quoteLeft.current.style.top     = topLeft + '%'
                         quoteRight.current.style.top    = topRight + '%'
                     }
-                    if (window.pageYOffset < prevDirection){
+                    if (window.pageYOffset < prevDirection) {
                         topLeft                         = topLeft + topCounter
                         topRight                        = topRight - topCounter
                         quoteLeft.current.style.top     = topLeft + '%'
@@ -105,14 +105,14 @@ const PPCQuotes = ({data}) => {
 
             function reset() {
                 if (quoteLeft.current !== null && quoteRight.current !== null) {
-                    if(window.innerWidth < 1024){
-                        topLeft                       = 50
+                    if (window.innerWidth < 768) {
+                        topLeft                       = 15
                         topRight                      = 50
                         quoteLeft.current.style.top   = `${topLeft}%`
                         quoteRight.current.style.top  = `${topRight}%`
-                    }else{
-                        topLeft                       = 50
-                        topRight                      = 50
+                    } else {
+                        topLeft                       = 25
+                        topRight                      = 74
                         quoteLeft.current.style.top   = `${topLeft}%`
                         quoteRight.current.style.top  = `${topRight}%`
                     }
@@ -174,8 +174,8 @@ const PPCQuotes = ({data}) => {
                         }
                     </div> 
                 </Container>
-                <span ref={quoteLeft}  aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-1/2 left-[30%] lg:left-[20%] -z-10`}> “</span>
-                <span ref={quoteRight} aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-1/2 right-[30%] lg:right-[20%] -z-10`}>” </span>
+                <span ref={quoteLeft}  aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-[15%] md:top-1/4 left-[30%] lg:left-[20%] -z-10`}> “</span>
+                <span ref={quoteRight} aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-3/4 md:top-1/2 right-[30%] lg:right-[20%] -z-10`}>” </span>
             </section>
       </div>
     </>)

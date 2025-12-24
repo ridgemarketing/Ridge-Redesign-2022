@@ -10,10 +10,10 @@ const PPCProjectSlider = ({data}) => {
         <div className="overflow-hidden">
             {data.images &&
                 <Splide
-                    className       = {` w-[175%] -ml-[35%] lg:w-[120%] lg:-ml-[10%] ppcProjectSlider`}
+                    className       = {` w-[175%] -ml-[35%] xl:w-[120%] xl:-ml-[10%] ppcProjectSlider`}
                     hasTrack        = { false }
                     // extensions      = { { AutoScroll } }
-                    onMove          = { ( splide, newIndex, prevIndex, destIndex ) => { console.log( 'move', newIndex, prevIndex, destIndex  ) } }
+                    // onMove          = { ( splide, newIndex, prevIndex, destIndex ) => { console.log( 'move', newIndex, prevIndex, destIndex  ) } }
                     // onMoved         = { ( splide, newIndex, prevIndex, destIndex ) => { console.log( 'moved', splide, newIndex, prevIndex, destIndex  ) } }
                     // onVisible       = { ( splide, Slide ) => { console.log( 'visible', splide, Slide ) } }
                     options         = { {
@@ -76,7 +76,7 @@ const PPCProjectSlider = ({data}) => {
                 <div className="w-max mt-10  mx-auto flex gap-4 text-white">
                     {data.componentButtonGroup.map((button, key) => {
                         if (button?.componentButton?.link?.url) {
-                            return <Buttons key={key} content={button.componentButton} />
+                            return <Buttons key={key} content={button.componentButton} sectionBackground={'white'} />
                         }
                     })}
                 </div>

@@ -53,7 +53,7 @@ const PPCTools = ({data}) => {
                             ? <img key={logo.logo.sourceUrl} className={`w-full object-contain`} src={logo.logo.sourceUrl} alt={logo.logo.altText}/>
                             : <GatsbyImage key={logo.logo.sourceUrl} className={`w-full`} objectFit="contain" image={logo.logo.localFile.childImageSharp.gatsbyImageData} alt={logo.logo.altText} /> ;
                             return(
-                            <motion.div key={`LogoCloudItem__${image.id}__${index}`} variants={variantItems} className={"w-[24%] lg:w-[15%] h-full"}>
+                            <motion.div key={`LogoCloudItem__${image.id}__${index}`} variants={variantItems} className={"w-[42%] sm:w-[24%] lg:w-[15%] h-full"}>
                                 {image}                        
                             </motion.div>
                             )

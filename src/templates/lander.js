@@ -63,7 +63,7 @@ const WpLander = ({ data, location }) => {
     context.current.updateSecondaryFunction(theme.colors.secondary.accent);
   }, []);
 
-  if (data.wpLander.uri === '/lander/ridge-ppc-2026/') {
+  if (data.wpLander.uri === '/lander/marketing-dream/') {
     return (<>
       <style>{`body { overflow-x : hidden }`}</style>
       <CustomHeader color={color} />

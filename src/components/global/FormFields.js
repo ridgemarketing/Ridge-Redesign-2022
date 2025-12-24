@@ -65,7 +65,7 @@ export const PhoneInput = ({type, label, name, textColor, fontWeight, required, 
     )
 }
 
-export const TextArea = ({label, name, textColor, fontWeight, required, errors, register}) => {
+export const TextArea = ({label, name, textColor, fontWeight, required, errors, register, bg}) => {
     const [isFocused, setIsFocused] = useState(false)
     //const [hasValue, setHasValue] = useState(false)
 
@@ -81,15 +81,15 @@ export const TextArea = ({label, name, textColor, fontWeight, required, errors, 
         <>
             <label className={`block mb-2 ${theme.text['FOOTER']} ${theme.forms['LABEL']} text-rm-${textColor} duration-500 ${isFocused ? `opacity-1` : `opacity-0 translate-y-6`}`} htmlFor={name}>{label}</label>
             <span className={`relative block`}>
-                <span className={`absolute top-0 left-0 w-full transition-all ${fontWeight === `light` ? theme.text['P_STD'] : theme.text['P_BLD']} duration-300 ${isFocused ? `opacity-0 -translate-y-4` : `opacity-1`}`}>{label}</span>
-                <textarea onBlur={checkValue} onFocus={() => setIsFocused(true)} {...register(name, { required: required })} className={`relative w-full ${theme.forms.INPUT} ${theme.text['P_STD']} form-control bg-transparent border-rm-${textColor} text-rm-${textColor} focus:border-rm-green ${errors.name && `border-b-[#EA0000]`}`} rows={4} />
+                <span className={`${bg === 'white' ? 'bg-white w-full h-full pl-4 pt-4 pb-3 border-l border-t border-r border-solid border-l-[#48474730] border-r-[#48474730] border-t-[#48474730]' : ''} absolute top-0 left-0 w-full transition-all ${fontWeight === `light` ? theme.text['P_STD'] : theme.text['P_BLD']} duration-300 ${isFocused ? `opacity-0 -translate-y-4` : `opacity-1`}`}>{label}</span>
+                <textarea onBlur={checkValue} onFocus={() => setIsFocused(true)} {...register(name, { required: required })} className={`relative w-full ${theme.forms.INPUT} ${theme.text['P_STD']} form-control border-rm-${textColor} text-rm-${textColor} focus:border-rm-green ${errors.name && `border-b-[#EA0000]`} ${bg === 'white' ? 'pl-4 pt-4 pb-3 border-l border-t border-r border-solid border-l-[#48474730] border-r-[#48474730] border-t-[#48474730]' : ''} bg-transparent `} rows={4} />
                 {errors.name && <span className="block text-[#EA0000] text-18px leading-26px">This field is required</span>}
             </span>
         </>
     )
 }
 
-export const Select = ({label, name, options, textColor, fontWeight, required, errors, register}) => {
+export const Select = ({label, name, options, textColor, fontWeight, required, errors, register, bg}) => {
     const [isFocused, setIsFocused] = useState(false)
     //const [hasValue, setHasValue] = useState(false)
 
@@ -105,8 +105,8 @@ export const Select = ({label, name, options, textColor, fontWeight, required, e
         <>
             <label className={`block mb-2 ${theme.text['FOOTER']} ${theme.forms['LABEL']} text-rm-${textColor} duration-500 ${isFocused ? `opacity-1` : `opacity-0 translate-y-6`}`} htmlFor={name}>{label}</label>
             <span className={`relative block`}>
-                <span className={`absolute top-0 left-0 w-full transition-all ${fontWeight === `light` ? theme.text['P_STD'] : theme.text['P_BLD']} duration-300 ${isFocused ? `opacity-0 -translate-y-4` : `opacity-1`}`}>{label}</span>
-                <select onBlur={checkValue} onFocus={() => setIsFocused(true)} {...register(name, { required: required })} className={`relative w-full ${theme.forms.INPUT} ${theme.text['P_STD']} form-control bg-transparent border-rm-${textColor} text-rm-${textColor} focus:border-rm-green ${errors.name && `border-b-[#EA0000]`}`}>
+                <span className={`${bg === 'white' ? 'bg-white pl-4 pt-4 pb-3' : ''} absolute top-0 left-0 w-full transition-all ${fontWeight === `light` ? theme.text['P_STD'] : theme.text['P_BLD']} duration-300 ${isFocused ? `opacity-0 -translate-y-4` : `opacity-1`}`}>{label}</span>
+                <select onBlur={checkValue} onFocus={() => setIsFocused(true)} {...register(name, { required: required })} className={`${bg === 'white' ? 'pl-4 pt-4 pb-3 border-l border-t border-r border-solid border-l-[#48474730] border-r-[#48474730] border-t-[#48474730]' : ''} relative w-full ${theme.forms.INPUT} ${theme.text['P_STD']} form-control bg-transparent border-rm-${textColor} text-rm-${textColor} focus:border-rm-green ${errors.name && `border-b-[#EA0000]`}`}>
                     <option value={``} disabled selected></option>
                     {options.map(option => {
                         return(

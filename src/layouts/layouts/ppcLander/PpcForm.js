@@ -1,5 +1,5 @@
 import React from "react"
-import { BottomCloudPiece_Large } from "../../../static/clouds"
+import { BottomCloudPiece_Large, BottomCloudPiece_Medium, BottomCloudPiece_Small } from "../../../static/clouds"
 import { Container } from "../../../components/global/Wrappers"
 import Parser from "../../../components/global/Parser"
 import { theme } from "../../../static/theme"
@@ -12,12 +12,14 @@ const PPCForm = ({data}) => {
     const body      = data.body ?? false
     const image     = data.image ?? false
     let textColor   = `rm-white`
-    let btnStyle    = `SOLID_GREEN_HOVER_LIGHT`
+    let btnStyle    = `SOLID_GREEN_HOVER_DARK`
 
     return(<>
-        <section id="form">
-            <BottomCloudPiece_Large className={`w-full mt-20`} />
-            <div className="pb-[160px] relative bg-gradient-to-t from-white via-[#f3f9f9] via-47% to-[#edf8f9]">
+        <section>
+            <BottomCloudPiece_Large className={`w-full mt-20 hidden xl:block`} />
+            <BottomCloudPiece_Medium className={`w-full hidden md:block xl:hidden`} />
+            <BottomCloudPiece_Small className={`w-full md:hidden`} />
+            <div id="form" className="pb-[160px] relative bg-gradient-to-t from-white via-[#f3f9f9] via-47% to-[#edf8f9]">
                 <Container classes={`flex flex-col gap-[100px]`}>
                     <div className="flex flex-col-reverse items-center justify-center xl:flex-row xl:flex-wrap flex-nowrap gap-20 xl:gap-6">
                         <div className="flex flex-col gap-6 text-left flex-1">
@@ -25,7 +27,7 @@ const PPCForm = ({data}) => {
                                 <h2 dangerouslySetInnerHTML={{__html: Parser(heading)}} className={`text-center xl:text-left text-[4.5rem] leading-[4.475rem] font-stratos font-semibold text-black uppercase`}></h2>
                             }
                             {body &&
-                                <p dangerouslySetInnerHTML={{__html: Parser(body)}} className={`text-center xl:text-left ${theme.text.H4_LTE} text-rm-grey`}></p>
+                                <p dangerouslySetInnerHTML={{__html: Parser(body)}} className={`text-center xl:text-left ${theme.text.H4_LTE} text-rm-grey max-w-[835px] mx-auto`}></p>
                             }
                         </div>
                         {image &&

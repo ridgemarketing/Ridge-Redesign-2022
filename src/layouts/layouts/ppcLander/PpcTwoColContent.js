@@ -1,5 +1,5 @@
 import React from "react"
-import { TopCloud_Large, TopCloudPiece_Large } from "../../../static/clouds"
+import { TopCloud_Large, TopCloudPiece_Large, TopCloudPiece_Medium, TopCloudPiece_Small } from "../../../static/clouds"
 import { Container } from "../../../components/global/Wrappers"
 import Parser from "../../../components/global/Parser"
 import { theme } from "../../../static/theme"
@@ -26,12 +26,12 @@ const PPCTwoColContent = ({data}) => {
                     </video>
                 }
             </Container>
-            <Container classes={`pt-5 md:pt-[60px] pb-20 flex flex-col gap-12`}>
+            <Container classes={`pt-5 md:pt-[60px] xl:pb-20 flex flex-col gap-12`}>
                 {checklist.heading &&
                     <h2 dangerouslySetInnerHTML={{__html: Parser(checklist.heading)}} className={`text-[2rem] leading-[2.2rem] font-semibold font-stratos text-black uppercase text-center`}></h2>
                 }
                 {checklist.list && 
-                    <ul className="max-w-[750px] w-full mx-auto md:columns-2 gap-16">
+                    <ul className="max-w-[750px] w-full mx-auto sm:px-4 md:px-0 sm:columns-2 gap-16">
                         {checklist.list.map((item, key) => {
                             return(
                                 <li className="flex items-center gap-4 mb-6 font-basic-sans font-semibold text-[1.625rem] leading-[1.875rem] " key={key}>
@@ -46,7 +46,9 @@ const PPCTwoColContent = ({data}) => {
                 }
             </Container>
         </section>
-        <TopCloudPiece_Large className={`w-full mb-20 lg:mb-[150px]`} />
+        <TopCloudPiece_Large className={`w-full hidden xl:block mb-[150px]`} />
+        <TopCloudPiece_Medium className={`w-full hidden md:block xl:hidden mb-[150px]`} />
+        <TopCloudPiece_Small className={`w-full md:hidden mb-[150px] -mt-[75px] sm:-mt-[150px]`} />
     </>)
 }
 
