@@ -16,9 +16,9 @@ const PPCForm = ({data}) => {
 
     return(<>
         <section>
-            <BottomCloudPiece_Large className={`w-full mt-20 hidden xl:block`} />
-            <BottomCloudPiece_Medium className={`w-full hidden md:block xl:hidden`} />
-            <BottomCloudPiece_Small className={`w-full md:hidden`} />
+            <BottomCloudPiece_Large className={`w-full mt-20 hidden xl:block cloudAnimation-Bottom`} />
+            <BottomCloudPiece_Medium className={`w-full hidden md:block xl:hidden cloudAnimation-Bottom`} />
+            <BottomCloudPiece_Small className={`w-full md:hidden cloudAnimation-Bottom`} />
             <div id="form" className="pb-[160px] relative bg-gradient-to-t from-white via-[#f3f9f9] via-47% to-[#edf8f9]">
                 <Container classes={`flex flex-col gap-[100px]`}>
                     <div className="flex flex-col-reverse items-center justify-center xl:flex-row xl:flex-wrap flex-nowrap gap-20 xl:gap-6">

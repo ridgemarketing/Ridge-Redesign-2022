@@ -1,4 +1,4 @@
-import React from "react"
+import React,  { useEffect, useRef, useState } from "react"
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide"
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll"
 import { GatsbyImage } from "gatsby-plugin-image"
@@ -6,19 +6,57 @@ import Buttons from "../../../components/global/Buttons"
 
 const PPCProjectSlider = ({data}) => {
 
+    const container                     = useRef(null)
+    const [moving, setMoving]           = useState(false)
+    const [prevIndex, setPrevIndex]     = useState(0)
+    const [newIndex, setNewIndex]       = useState(1)
+
+    const handleMove = (newIndex, prevIndex) => {
+        console.log('moving...', newIndex, prevIndex)
+        setNewIndex(newIndex)
+        setPrevIndex(prevIndex)
+        setMoving(true)
+        console.log()
+    }
+    const handlePostMove = (newIndex, prevIndex) => {
+        console.log('done moved', newIndex, prevIndex)
+        setMoving(false)
+    }
+
+    useEffect( () => {
+        console.log('state has updated')
+    }, [moving])
+
     return(<>
-        <div className="overflow-hidden">
+        {moving && (newIndex > prevIndex) && <>
+            <style>{`
+                .ppcProjectSlider .is-active [data-gatsby-image-wrapper] { transform : scale(0.9) }
+                .ppcProjectSlider .is-next [data-gatsby-image-wrapper] { transform : scale(1) }
+            `}</style>
+        </>}
+        {moving && (newIndex < prevIndex) && <>
+            <style>{`
+                .ppcProjectSlider .is-active [data-gatsby-image-wrapper] { transform : scale(0.9) }
+                .ppcProjectSlider .is-prev [data-gatsby-image-wrapper] { transform : scale(1) }
+            `}</style>
+        </>}
+        {!moving && <>
+            <style>{`
+                .ppcProjectSlider .is-active [data-gatsby-image-wrapper] { transform : scale(1) }
+            `}</style>
+        </>}
+        <div ref={container} className="overflow-hidden">
             {data.images &&
                 <Splide
                     className       = {` w-[175%] -ml-[35%] xl:w-[120%] xl:-ml-[10%] ppcProjectSlider`}
                     hasTrack        = { false }
                     // extensions      = { { AutoScroll } }
-                    // onMove          = { ( splide, newIndex, prevIndex, destIndex ) => { console.log( 'move', newIndex, prevIndex, destIndex  ) } }
-                    // onMoved         = { ( splide, newIndex, prevIndex, destIndex ) => { console.log( 'moved', splide, newIndex, prevIndex, destIndex  ) } }
+                    onMove          = { ( splide, newIndex, prevIndex, destIndex ) => { handleMove(newIndex, prevIndex) } }
+                    onMoved         = { ( splide, newIndex, prevIndex, destIndex ) => { handlePostMove(newIndex, prevIndex) } }
                     // onVisible       = { ( splide, Slide ) => { console.log( 'visible', splide, Slide ) } }
                     options         = { {
                         type        : `loop`,
-                        focus       : 'center',
+                        focus       : `center`,
                         perPage     : 5,
                         perMove     : 1,
                         padding     : `12px`,
@@ -28,19 +66,17 @@ const PPCProjectSlider = ({data}) => {
                         lazyLoad    : false,
                         arrows      : true,
                         autoplay    : true,
-                        interval    : 3500, 
+                        // interval    : 3500, 
+                        interval    : 30500, 
                         speed       : 1200,
                         rewindSpeed : 1200,
                         breakpoints : {
-                            500: {
-                                perPage: 3,
-                            },
                             768: {
                                 perPage: 3,
                             },
-                            // 1000: {
-                            //     perPage: 5,
-                            // }
+                            500: {
+                                perPage: 3,
+                            }
                         },
                         // autoScroll  : {
                         //     pauseOnHover    : false,
@@ -52,11 +88,11 @@ const PPCProjectSlider = ({data}) => {
                     <SplideTrack>
                         {data.images.map((circle, key) => {
                             return (
-                                <SplideSlide className="" key={key}>
+                                <SplideSlide key={key}>
                                     <GatsbyImage 
                                         image       = {circle.image.localFile.childImageSharp.gatsbyImageData} 
                                         alt         = {circle.image.altText} 
-                                        className   = {`flex self-start w-[542] rounded-3xl`} 
+                                        className   = {`flex self-start rounded-3xl`} 
                                         objectFit   = {'contain'}/>
                                 </SplideSlide>
                             )

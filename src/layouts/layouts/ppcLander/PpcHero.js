@@ -151,7 +151,7 @@ const PPCHero = ({data}) => {
     return(<>
         <div ref={coverUp} className="fixed top-0 left-0 h-full w-full z-30 bg-[#00abb6] transition-all duration-700 opacity-100 ease-out"></div>
         <div ref={mainSection} className="hidden xl:block overflow-hidden relative mx-auto">
-            <section ref={innerSection} className="mx-auto w-full relative overflow-hidden bg-[#00abb6] overflow-x-hidden [mask-image:url(/cloudMask.svg)] [mask-repeat:no-repeat] [-webkit-mask-image:url(/cloudMask.svg)] [-webkit-mask-repeat:no-repeat] [mask-position:top_center] [-webkit-mask-position:top_center] xlz:[mask-position:0_-75px] xlz:[-webkit-mask-position:0_-75px] lg:[mask-size:160%_auto] lg:[-webkit-mask-size:160%_auto] xl:[mask-size:130%_auto] xl:[-webkit-mask-size:130%_auto] 2xl:[mask-size:110%_auto] 2xl:-webkit-mask-size:110%_auto]">
+            <section ref={innerSection} className="max-w-[1920px] mx-auto w-full relative overflow-hidden bg-[#00abb6] overflow-x-hidden [mask-image:url(/cloudMask.svg)] [mask-repeat:no-repeat] [-webkit-mask-image:url(/cloudMask.svg)] [-webkit-mask-repeat:no-repeat] [mask-position:top_center] [-webkit-mask-position:top_center] xlz:[mask-position:0_-75px] xlz:[-webkit-mask-position:0_-75px] lg:[mask-size:160%_auto] lg:[-webkit-mask-size:160%_auto] xl:[mask-size:130%_auto] xl:[-webkit-mask-size:130%_auto] 2xl:[mask-size:110%_auto] 2xl:-webkit-mask-size:110%_auto]">
                 <Container>
                     <div className="pt-40 2xl:pt-56 flex flex-col gap-9 relative z-10">
                         {heading &&
@@ -205,7 +205,7 @@ const CustomSplide = ({images, direction, position, splideRef}) => {
                 direction   : `ttb`,
                 height      : `100%`,
                 focus       : 'center',
-                perPage     : 4,
+                perPage     : 3,
                 // perMove     : 1,
                 gap         : `30px`,
                 drag        : false,
@@ -216,20 +216,20 @@ const CustomSplide = ({images, direction, position, splideRef}) => {
                 breakpoints: {
                     1650: {
                         perPage : 3,
-                        gap     : `27px`,
+                        // gap     : `27px`,
                     }
                 },
                 autoScroll  : {
                     pauseOnHover    : false,
                     pauseOnFocus    : false,
                     rewind          : true,
-                    speed           : direction === 'down' ? -0.2 : 0.2,
+                    speed           : direction === 'down' ? -0.35 : 0.35,
                 },
         }}>
             <SplideTrack>
                     {images.map((circle, key) => {
                         return (
-                            <SplideSlide className="" key={key}>
+                            <SplideSlide className="max-h-[300px]" key={key}>
                                 <GatsbyImage 
                                     image       = {circle.image.localFile.childImageSharp.gatsbyImageData} 
                                     alt         = {circle.image.altText} 

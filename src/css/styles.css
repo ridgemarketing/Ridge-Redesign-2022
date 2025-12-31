@@ -283,13 +283,54 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
 .ppcProjectSlider [data-gatsby-image-wrapper] {
     @apply scale-90 transition-all duration-300 ease-out
 }
-.ppcProjectSlider .is-active [data-gatsby-image-wrapper] {
-    @apply scale-100
-}
+
 .ppcProjectSlider .splide__arrow {
     @apply bg-transparent relative
 }
 
+
 main {
     @apply outline-none
+}
+
+.cloudAnimation-Top, .cloudAnimation-Bottom {
+    animation-timing-function: ease-in-out;
+    animation-duration: 3000ms;
+    animation-iteration-count: infinite;
+    animation-fill-mode: both;
+    animation-direction: alternate-reverse;
+}
+.cloudAnimation-Top {
+    animation-name: cloudAnimation-Top-Keyframes;
+}
+.cloudAnimation-Bottom{
+    animation-name: cloudAnimation-Bottom-Keyframes;
+}
+
+@keyframes cloudAnimation-Top-Keyframes {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+
+    /* 50%{
+        transform: translate(0px, -25px) rotate(-1.7deg);
+    } */
+
+    100%{
+        transform: translate(0px, -30px) rotate(-2deg);
+    }
+}
+
+@keyframes cloudAnimation-Bottom-Keyframes {
+    0% {
+        transform: translate(0px, 0px) rotate(0deg);
+    }
+
+    /* 50%{
+        transform: translate(0px, 25px) rotate(1.7deg);
+    } */
+
+    100%{
+        transform: translate(0px, 30px) rotate(2deg);
+    }
 }

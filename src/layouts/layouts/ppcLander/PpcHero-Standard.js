@@ -87,11 +87,11 @@ const PPCHeroStandard = ({data}) => {
                     {/* <LightBlueCloud_Piece_Large className={`w-full absolute top-0 left-0 -z-10 hidden xl:block`} /> 
                     <DarkBlueCloud_Piece_Large className={`w-full relative z-10 hidden xl:block`} />  */}
 
-                    <LightBlueCloud_Piece_Small className={`w-full absolute top-0 left-0 -z-10 hidden md:block lg:hidden`} /> 
-                    <DarkBlueCloud_Piece_Small className={`w-full relative z-10 hidden md:block lg:hidden`} /> 
+                    <LightBlueCloud_Piece_Small className={`-mt-[1px] w-full absolute top-0 left-0 -z-10 hidden md:block lg:hidden`} /> 
+                    <DarkBlueCloud_Piece_Small className={`-mt-[1px] w-full relative z-10 hidden md:block lg:hidden`} /> 
 
-                    <LightBlueCloud_Piece_Medium className={`w-full absolute top-0 left-0 -z-10 block md:hidden lg:block`} /> 
-                    <DarkBlueCloud_Piece_Medium className={`w-full relative z-10 block md:hidden lg:block`} /> 
+                    <LightBlueCloud_Piece_Medium className={`-mt-[1px] w-full absolute top-0 left-0 -z-10 block md:hidden lg:block`} /> 
+                    <DarkBlueCloud_Piece_Medium className={`-mt-[1px] w-full relative z-10 block md:hidden lg:block`} /> 
                 </div>
             </section>
 
@@ -121,8 +121,8 @@ const CustomSplide = ({images, direction, position}) => {
             aria-label      = {`images ${direction} carousel`}
             hasTrack        = { false }
             extensions      = { { AutoScroll } }
-            onMoved         = { ( splide, newIndex, prevIndex, destIndex ) => { console.log( splide, newIndex, prevIndex, destIndex  ) } }
-            onVisible       = { ( splide, Slide ) => { console.log( splide, Slide ) } }
+            // onMoved         = { ( splide, newIndex, prevIndex, destIndex ) => { console.log( splide, newIndex, prevIndex, destIndex  ) } }
+            // onVisible       = { ( splide, Slide ) => { console.log( splide, Slide ) } }
             options         = { {
                 type        : `loop`,
                 // direction   : `ttb`,
@@ -130,7 +130,7 @@ const CustomSplide = ({images, direction, position}) => {
                 focus       : 'center',
                 perPage     : 3,
                 // perMove     : 1,
-                gap         : `27px`,
+                gap         : `30px`,
                 drag        : false,
                 rewindByDrag: false,
                 pagination  : false,
@@ -157,11 +157,11 @@ const CustomSplide = ({images, direction, position}) => {
             <SplideTrack>
                     {images.map((circle, key) => {
                         return (
-                            <SplideSlide className="" key={key}>
+                            <SplideSlide className="max-w-[200px] md:max-w-[285px] lgz:max-w-[335px]" key={key}>
                                 <GatsbyImage 
                                     image       = {circle.image.localFile.childImageSharp.gatsbyImageData} 
                                     alt         = {circle.image.altText} 
-                                    className   = {`flex self-start w-[335px] h-[335px]`} 
+                                    className   = {`flex self-start w-[200px] md:w-[285px] h-[200px] md:h-[286px] lgz:w-[335px] lgz:h-[335px] drop-shadow-md`} 
                                     objectFit   = {'contain'}/>
                             </SplideSlide>
                         )
