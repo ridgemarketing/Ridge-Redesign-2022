@@ -12,14 +12,32 @@ const PPCProjectSlider = ({data}) => {
     const [newIndex, setNewIndex]       = useState(1)
 
     const handleMove = (newIndex, prevIndex) => {
-        console.log('moving...', newIndex, prevIndex)
+        console.log('moving...', `new index ${newIndex}`, `prev index ${prevIndex}`)
+        
         setNewIndex(newIndex)
         setPrevIndex(prevIndex)
+
+        if ( newIndex === 0 ) {
+            setNewIndex(1)
+            setPrevIndex(0)
+        }
+
+        if (prevIndex === 0 ) {
+            setNewIndex(1)
+            setPrevIndex(0)
+        }
+
+        if (prevIndex === 0 && newIndex > 1) {
+            setNewIndex(newIndex)
+            setPrevIndex(prevIndex)
+        }
+
         setMoving(true)
         console.log()
     }
+
     const handlePostMove = (newIndex, prevIndex) => {
-        console.log('done moved', newIndex, prevIndex)
+        console.log('moving...', `new index ${newIndex}`, `prev index ${prevIndex}`)
         setMoving(false)
     }
 
@@ -28,15 +46,18 @@ const PPCProjectSlider = ({data}) => {
     }, [moving])
 
     return(<>
+        {moving &&
+            <style>{`
+            .ppcProjectSlider .is-active [data-gatsby-image-wrapper] { transform : scale(0.9) }
+        `}</style>
+        }
         {moving && (newIndex > prevIndex) && <>
             <style>{`
-                .ppcProjectSlider .is-active [data-gatsby-image-wrapper] { transform : scale(0.9) }
                 .ppcProjectSlider .is-next [data-gatsby-image-wrapper] { transform : scale(1) }
             `}</style>
         </>}
         {moving && (newIndex < prevIndex) && <>
             <style>{`
-                .ppcProjectSlider .is-active [data-gatsby-image-wrapper] { transform : scale(0.9) }
                 .ppcProjectSlider .is-prev [data-gatsby-image-wrapper] { transform : scale(1) }
             `}</style>
         </>}
@@ -48,7 +69,7 @@ const PPCProjectSlider = ({data}) => {
         <div ref={container} className="overflow-hidden">
             {data.images &&
                 <Splide
-                    className       = {` w-[175%] -ml-[35%] xl:w-[120%] xl:-ml-[10%] ppcProjectSlider`}
+                    className       = {` w-[175%] -ml-[37.5%] xl:w-[120%] xl:-ml-[10%] ppcProjectSlider`}
                     hasTrack        = { false }
                     // extensions      = { { AutoScroll } }
                     onMove          = { ( splide, newIndex, prevIndex, destIndex ) => { handleMove(newIndex, prevIndex) } }

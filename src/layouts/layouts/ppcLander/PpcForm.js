@@ -16,15 +16,15 @@ const PPCForm = ({data}) => {
 
     return(<>
         <section>
-            <BottomCloudPiece_Large className={`w-full mt-20 hidden xl:block cloudAnimation-Bottom`} />
-            <BottomCloudPiece_Medium className={`w-full hidden md:block xl:hidden cloudAnimation-Bottom`} />
-            <BottomCloudPiece_Small className={`w-full md:hidden cloudAnimation-Bottom`} />
+            <BottomCloudPiece_Large className={`w-full mt-20 hidden xl:block cloudAnimation-Bottom -z-[10] relative`} />
+            <BottomCloudPiece_Medium className={`w-full hidden md:block xl:hidden cloudAnimation-Bottom -z-[10] relative`} />
+            <BottomCloudPiece_Small className={`w-full md:hidden cloudAnimation-Bottom -z-[10] relative`} />
             <div id="form" className="pb-[160px] relative bg-gradient-to-t from-white via-[#f3f9f9] via-47% to-[#edf8f9]">
                 <Container classes={`flex flex-col gap-[100px]`}>
                     <div className="flex flex-col-reverse items-center justify-center xl:flex-row xl:flex-wrap flex-nowrap gap-20 xl:gap-6">
                         <div className="flex flex-col gap-6 text-left flex-1">
                             {heading &&
-                                <h2 dangerouslySetInnerHTML={{__html: Parser(heading)}} className={`text-center xl:text-left text-[4.5rem] leading-[4.475rem] font-stratos font-semibold text-black uppercase`}></h2>
+                                <h2 dangerouslySetInnerHTML={{__html: Parser(heading)}} className={`text-center xl:text-left text-[2.5rem] leading-[2.7rem] md:text-[4.5rem] md:leading-[4.475rem] font-stratos font-semibold text-black uppercase`}></h2>
                             }
                             {body &&
                                 <p dangerouslySetInnerHTML={{__html: Parser(body)}} className={`text-center xl:text-left ${theme.text.H4_LTE} text-rm-grey max-w-[835px] mx-auto`}></p>

@@ -46,9 +46,9 @@ const PPCTwoColContent = ({data}) => {
                 }
             </Container>
         </section>
-        <TopCloudPiece_Large className={`w-full hidden xl:block mb-[150px] cloudAnimation-Top`} />
-        <TopCloudPiece_Medium className={`w-full hidden md:block xl:hidden mb-[150px] cloudAnimation-Top`} />
-        <TopCloudPiece_Small className={`w-full md:hidden mb-[150px] -mt-[75px] sm:-mt-[150px] cloudAnimation-Top`} />
+        <TopCloudPiece_Large className={`w-full hidden xl:block mb-[150px] cloudAnimation-Top -z-[10] relative`} />
+        <TopCloudPiece_Medium className={`w-full hidden md:block xl:hidden mb-[150px] cloudAnimation-Top -z-[10] relative`} />
+        <TopCloudPiece_Small className={`w-full md:hidden mb-[150px] -mt-[75px] sm:-mt-[150px] cloudAnimation-Top -z-[10] relative`} />
     </>)
 }
 
