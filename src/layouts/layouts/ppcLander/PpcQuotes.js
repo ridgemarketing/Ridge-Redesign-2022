@@ -174,8 +174,8 @@ const PPCQuotes = ({data}) => {
                         }
                     </div> 
                 </Container>
-                <span ref={quoteLeft}  aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-[15%] left-0 md:top-1/4 xl:left-[20%] -z-10`}> “</span>
-                <span ref={quoteRight} aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-3/4 right-0 md:top-1/2 x:right-[20%] -z-10`}>” </span>
+                <span ref={quoteLeft}  aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-[15%] left-0 lg:left-[calc(100%-932px)] xl:left-[calc(100%-1224px)] md:top-1/4 -z-10`}> “</span>
+                <span ref={quoteRight} aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-3/4 right-0 lg:right-[calc(100%-932px)] xl:right-[calc(100%-1224px)] md:top-1/2  -z-10`}>” </span>
             </section>
       </div>
     </>)
