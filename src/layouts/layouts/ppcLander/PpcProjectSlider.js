@@ -66,10 +66,10 @@ const PPCProjectSlider = ({data}) => {
                 .ppcProjectSlider .is-active [data-gatsby-image-wrapper] { transform : scale(1) }
             `}</style>
         </>}
-        <div ref={container} className="overflow-hidden">
+        <div ref={container} className="overflow-hidden will-change-transform">
             {data.images &&
                 <Splide
-                    className       = {` w-[175%] -ml-[37.5%] xl:w-[120%] xl:-ml-[10%] ppcProjectSlider`}
+                    className       = {` w-[175%] -ml-[37.5%] xl:w-[120%] xl:-ml-[10%] ppcProjectSlider will-change-transform`}
                     hasTrack        = { false }
                     // extensions      = { { AutoScroll } }
                     onMove          = { ( splide, newIndex, prevIndex, destIndex ) => { handleMove(newIndex, prevIndex) } }
@@ -113,7 +113,7 @@ const PPCProjectSlider = ({data}) => {
                                     <GatsbyImage 
                                         image       = {circle.image.localFile.childImageSharp.gatsbyImageData} 
                                         alt         = {circle.image.altText} 
-                                        className   = {`flex self-start rounded-3xl`} 
+                                        className   = {`flex self-start rounded-3xl will-change-transform [image-rendering:crisp-edges]`} 
                                         objectFit   = {'contain'}/>
                                 </SplideSlide>
                             )

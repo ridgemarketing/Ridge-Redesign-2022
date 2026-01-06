@@ -4,7 +4,7 @@ import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide"
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll"
 import { Container } from "../../../components/global/Wrappers"
 import Parser from "../../../components/global/Parser"
-import { DarkBlueCloud_Large, LightBlueCloud_Large } from "../../../static/clouds"
+import { DarkBlueCloud_Large, LightBlueCloud_Large, LightBlueCloud_XL } from "../../../static/clouds"
 import Buttons from "../../../components/global/Buttons"
 
 const PPCHero = ({data}) => {
@@ -19,6 +19,7 @@ const PPCHero = ({data}) => {
     const mainSection           = useRef(null)
     const innerSection          = useRef(null)
     const backgroundCloud       = useRef(null)
+    const backgroundCloudXL     = useRef(null)
     const splideRight           = useRef(null)
     const splideLeft            = useRef(null)
     const [height, setHeight]   = useState(0)
@@ -28,14 +29,22 @@ const PPCHero = ({data}) => {
         const adjustHeight = () => {
             if (innerSection.current) {
                 let ratio = 1.65
+                let max   = false
                 if (window.innerWidth >= 1920) { // 2xl
-                    ratio = 1.65
+                    // ratio = 1.65
+                    max   = true
+                    setHeight(1170)
                 } else if (window.innerWidth >= 1280) { // xl
                     ratio = 1.65 * (110 / 130)
+                    max   = false
                 } else if (window.innerWidth >= 1024) { // lg
                     ratio = 1.65 * (110 / 160)
+                    max   = false
                 }
-                setHeight((window.innerWidth / ratio))
+
+                if (!max) {
+                    setHeight((window.innerWidth / ratio))
+                }
             }
         }
         adjustHeight()
@@ -50,6 +59,7 @@ const PPCHero = ({data}) => {
             splideLeft.current.splideRef.current.style.height   = `${height}px`
             splideRight.current.splideRef.current.style.height  = `${height}px`
             backgroundCloud.current.style.height                = `${(height + 50)}px`
+            backgroundCloudXL.current.style.height              = `${(height + 75)}px`
             setWait(1)
         }
     }, [height])
@@ -109,49 +119,55 @@ const PPCHero = ({data}) => {
 
 
     useEffect(() => {
-        const slideAround = () => {
-            if (backgroundCloud.current) {
+        const slideAround = (theCloud) => {
 
-                let topCounter          = 0.85
-                let prevDirection       = 0
-                let top                 = window.innerWidth >= 1366 ? -75 : 0 
-   
-                function inView() {
-                    if (backgroundCloud.current) {
-                        top = window.pageYOffset > prevDirection ? top - topCounter : top + topCounter
-                        backgroundCloud.current.style.top = `${top}px`
-                    }
-                    prevDirection = window.pageYOffset
+            let topCounter          = 0.85
+            let prevDirection       = 0
+            let top                 = ( window.innerWidth >= 1366 ) ? -75 : 0 
+
+            function inView() {
+                if (theCloud) {
+                    top = window.pageYOffset > prevDirection ? top - topCounter : top + topCounter
+                    theCloud.style.top = `${top}px`
                 }
-
-                function reset() {
-                    if (backgroundCloud.current) {
-                        backgroundCloud.current.style.top = window.innerWidth >= 1366 ? `${-75}px` : `${0}px`
-                    }
-                }
-
-                let observer = new IntersectionObserver( (entries) => {
-                    entries.forEach ( entry => {
-                        if( entry.isIntersecting ){
-                            window.addEventListener('scroll',  inView, {passive: true})
-                        } else {
-                            reset()
-                            window.removeEventListener('scroll',  inView, {passive: true})
-                        }
-                    })
-                })
-                observer.observe(backgroundCloud.current)
+                prevDirection = window.pageYOffset
             }
+
+            function reset() {
+                if (theCloud) {
+                    theCloud.style.top = ( window.innerWidth >= 1366 ) ? `${-75}px` : `${0}px`
+                }
+            }
+
+            let observer = new IntersectionObserver( (entries) => {
+                entries.forEach ( entry => {
+                    if( entry.isIntersecting ){
+                        window.addEventListener('scroll',  inView, {passive: true})
+                    } else {
+                        reset()
+                        window.removeEventListener('scroll',  inView, {passive: true})
+                    }
+                })
+            })
+            observer.observe(theCloud)
         }
 
-        slideAround()
+        if (backgroundCloud.current || backgroundCloudXL.current) {
+            if (backgroundCloud.current) {
+                slideAround(backgroundCloud.current)
+            }
+
+            if (backgroundCloudXL.current) {
+                slideAround(backgroundCloudXL.current)
+            }
+        }
 
     }, [])
 
     return(<>
         <div ref={coverUp} className="fixed top-0 left-0 h-full w-full z-30 bg-[#00abb6] transition-all duration-700 opacity-100 ease-out"></div>
         <div ref={mainSection} className="hidden xl:block overflow-hidden relative mx-auto">
-            <section ref={innerSection} className="max-w-[1920px] mx-auto w-full relative overflow-hidden bg-[#00abb6] overflow-x-hidden [mask-image:url(/cloudMask.svg)] [mask-repeat:no-repeat] [-webkit-mask-image:url(/cloudMask.svg)] [-webkit-mask-repeat:no-repeat] [mask-position:top_center] [-webkit-mask-position:top_center] xlz:[mask-position:0_-75px] xlz:[-webkit-mask-position:0_-75px] lg:[mask-size:160%_auto] lg:[-webkit-mask-size:160%_auto] xl:[mask-size:130%_auto] xl:[-webkit-mask-size:130%_auto] 2xl:[mask-size:110%_auto] 2xl:-webkit-mask-size:110%_auto]">
+            <section ref={innerSection} className="max-w-[1920px] mx-auto w-full relative overflow-hidden bg-[#00abb6] overflow-x-hidden [mask-image:url(/cloudMask.svg)] 2xl:[mask-image:url(/cloudMaskLarge.svg)] [mask-repeat:no-repeat] [mask-position:top_center] xlz:[mask-position:0_-75px] 2xl:[mask-position:0_0] lg:[mask-size:160%_auto]  xl:[mask-size:130%_auto]  2xl:[mask-size:100%_auto]">
                 <Container>
                     <div className="pt-40 2xl:pt-56 flex flex-col gap-9 relative z-10">
                         {heading &&
@@ -175,14 +191,15 @@ const PPCHero = ({data}) => {
                 </Container>
                 <div aria-hidden={true} className="absolute bottom-0 right-0 w-full h-[350px] bg-gradient-to-t from-[#00ABB6] via-[#00ABB6] via-20% to-transparent"></div>
             </section>
-            <svg ref={(el) => { if (el) popupCircles.current[0] = el }} className="-mt-[calc(350px/2)] xlz:-mt-[calc(400px/2)]" viewBox="0 0 1920 307.6">
+            <svg ref={(el) => { if (el) popupCircles.current[0] = el }} className="-mt-[calc(350px/2)] xlz:-mt-[calc(400px/2)] 2xl:max-w-[1920px] 2xl:mx-auto" viewBox="0 0 1920 307.6">
                 <ellipse className="scale-0 transition-all ease-in-out duration-300 delay-[600ms]" transform="matrix(0.7693 -0.6389 0.6389 0.7693 -32.3279 439.3668)" fill="#00ABB6" cx="592.2" cy="264.4" style={{transformOrigin: '596.9px 264.4px'}} rx="26.2" ry="26.2"/>
                 <path style={{transformOrigin: '554.7px 264.4px'}} className="scale-0 transition-all ease-in-out duration-150 delay-300" fill="#00ABB6" d="M522.7,175.5c-0.9,9.2,1.9,18.2,7.8,25.3c12.2,14.7,34,16.7,48.7,4.5c14.7-12.2,16.7-34,4.5-48.7
                     c-6.8-8.2-16.7-12.5-26.6-12.5c-7.8,0-15.6,2.6-22.1,8C527.9,158,523.5,166.3,522.7,175.5z"/>
                 <circle className="scale-0 transition-all ease-in-out duration-300" fill="#00ABB6" cx="596.9" cy="78.6" r="47.1" style={{transformOrigin: '596.9px 78.6px'}}/>
             </svg>
 
-            <LightBlueCloud_Large theRef={backgroundCloud} className={`w-[160%] xl:w-[130%] 2xl:w-[110%] absolute top-0 xlz:-top-[75px] left-0 -z-[3] transition-[top] ease-out duration-1000`} />
+            <LightBlueCloud_Large theRef={backgroundCloud} className={`block 2xl:hidden w-[160%] xl:w-[130%] 2xl:w-[110%] absolute top-0 left-0 -z-[3] transition-[top] ease-out duration-1000`} />
+            <LightBlueCloud_XL theRef={backgroundCloudXL} className={`hidden 2xl:block w-[1920px] absolute top-0 left-1/2 -translate-x-1/2 -z-[3] transition-[top] ease-out duration-1000`} />
         </div>
     </>)
 
