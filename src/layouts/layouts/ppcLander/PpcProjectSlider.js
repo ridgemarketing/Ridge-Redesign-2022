@@ -1,6 +1,7 @@
 import React,  { useEffect, useRef, useState } from "react"
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide"
 import { AutoScroll } from "@splidejs/splide-extension-auto-scroll"
+import { Intersection } from '@splidejs/splide-extension-intersection';
 import { GatsbyImage } from "gatsby-plugin-image"
 import Buttons from "../../../components/global/Buttons"
 
@@ -8,13 +9,13 @@ const PPCProjectSlider = ({data}) => {
 
     const container                     = useRef(null)
     const [moving, setMoving]           = useState(false)
+    const [resetPoint, setResetPoint]   = useState(false)
     const [prevIndex, setPrevIndex]     = useState(0)
     const [newIndex, setNewIndex]       = useState(1)
     const splideRef                     = useRef(null)
-    const [firstToLast, setFirstToLast] = useState(false)
 
     const handleMove = (newIndex, prevIndex) => {
-        console.log('moving...', `new index ${newIndex}`, `prev index ${prevIndex}`)
+        // console.log('moving...', `new index ${newIndex}`, `prev index ${prevIndex}`)
         
         setNewIndex(newIndex)
         setPrevIndex(prevIndex)
@@ -29,71 +30,24 @@ const PPCProjectSlider = ({data}) => {
             setPrevIndex(0)
         }
 
-        //first to last
-        if (newIndex === data.images.length-1 && prevIndex ===  0) {
-            console.log ("from first to last")
-            setNewIndex(0)
-            setPrevIndex(data.images.length)
-            setFirstToLast(true)
+        if (newIndex === (data.images.length - 1) && prevIndex ===  0) {
+            // console.log ("from first to last", `new index ${newIndex}`, `prev index ${prevIndex}`)
+            setResetPoint(true)
         }
 
-        //last to first
-        if (newIndex === 0 && prevIndex ===  data.images.length-1) {
-            console.log ("from last to first")
-            setNewIndex(0)
-            setPrevIndex(data.images.length)
-            console.log(`new index ${newIndex}`, `prev index ${prevIndex}`)
+        if (newIndex === 0 && prevIndex === (data.images.length - 1) ) {
+            // console.log ("from last to first", `new index ${newIndex}`, `prev index ${prevIndex}`)
+            setResetPoint(true)
         }
-
-        // if (prevIndex === 0 && newIndex > 1) {
-        //     setNewIndex(newIndex)
-        //     setPrevIndex(prevIndex)
-        // }
 
         setMoving(true)
-        console.log()
     }
 
     const handlePostMove = (newIndex, prevIndex) => {
-        console.log('moving...', `new index ${newIndex}`, `prev index ${prevIndex}`)
-        setFirstToLast(false)
+        // console.log('moving...', `new index ${newIndex}`, `prev index ${prevIndex}`)
+        setResetPoint(false)
         setMoving(false)
     }
-
-    // Intersection Observer to detect when carousel is in view
-    useEffect(() => {
-        const observer = new IntersectionObserver(
-            ([entry]) => {
-                if (splideRef.current?.splide) {
-                    if (entry.isIntersecting) {
-                        // Start autoplay when in view
-                        splideRef.current.splide.Components.Autoplay.play()
-                    } else {
-                        // Pause autoplay when out of view
-                        splideRef.current.splide.Components.Autoplay.pause()
-                    }
-                }
-            },
-            {
-                threshold: 0.3, // Trigger when 30% of carousel is visible
-                rootMargin: '0px'
-            }
-        )
-
-        if (container.current) {
-            observer.observe(container.current)
-        }
-
-        return () => {
-            if (container.current) {
-                observer.unobserve(container.current)
-            }
-        }
-    }, [])
-
-    useEffect( () => {
-        console.log('state has updated')
-    }, [moving])
 
     return(<>
         {moving &&
@@ -101,21 +55,28 @@ const PPCProjectSlider = ({data}) => {
             .ppcProjectSlider .is-active [data-gatsby-image-wrapper] { transform : scale(0.9) }
         `}</style>
         }
-        {firstToLast && <>
-            <style>{`
-                .ppcProjectSlider .is-prev [data-gatsby-image-wrapper] { transform : scale(1) }
-            `}</style>
-        </>}
-        {moving && (newIndex > prevIndex) && <>
+        {moving && (newIndex > prevIndex) && !resetPoint && <>
             <style>{`
                 .ppcProjectSlider .is-next [data-gatsby-image-wrapper] { transform : scale(1) }
             `}</style>
         </>}
-        {moving && (newIndex < prevIndex) && <>
+        {moving && (newIndex < prevIndex) && !resetPoint && <>
             <style>{`
                 .ppcProjectSlider .is-prev [data-gatsby-image-wrapper] { transform : scale(1) }
             `}</style>
         </>}
+
+        {moving && (prevIndex === 0) && resetPoint && <>
+            <style>{`
+                .ppcProjectSlider .is-next [data-gatsby-image-wrapper] { transform : scale(1) }
+            `}</style>
+        </>}
+        {moving && (prevIndex === data.images.length) && resetPoint && <>
+            <style>{`
+                .ppcProjectSlider .is-prev [data-gatsby-image-wrapper] { transform : scale(1) }
+            `}</style>
+        </>}
+
         {!moving && <>
             <style>{`
                 .ppcProjectSlider .is-active [data-gatsby-image-wrapper] { transform : scale(1) }
@@ -127,7 +88,7 @@ const PPCProjectSlider = ({data}) => {
                     ref             = { splideRef }
                     className       = {` w-[175%] -ml-[37.5%] xl:w-[120%] xl:-ml-[10%] ppcProjectSlider will-change-transform`}
                     hasTrack        = { false }
-                    // extensions      = { { AutoScroll } }
+                    extensions      = { { Intersection } }
                     onMove          = { ( splide, newIndex, prevIndex, destIndex ) => { handleMove(newIndex, prevIndex) } }
                     onMoved         = { ( splide, newIndex, prevIndex, destIndex ) => { handlePostMove(newIndex, prevIndex) } }
                     // onVisible       = { ( splide, Slide ) => { console.log( 'visible', splide, Slide ) } }
@@ -137,14 +98,19 @@ const PPCProjectSlider = ({data}) => {
                         perPage     : 5,
                         perMove     : 1,
                         padding     : `12px`,
-                        drag        : true,
+                        drag        : false,
                         rewindByDrag: false,
                         pagination  : false,
                         lazyLoad    : false,
                         arrows      : true,
-                        autoplay    : false,
-                        // interval    : 3500, 
-                        interval    : 30500, 
+                        autoplay    : 'pause',
+                        intersection: {
+                            inView: {
+                                autoplay: true,
+                            },
+                        },
+                        interval    : 3500, 
+                        // interval    : 30500, 
                         speed       : 1200,
                         breakpoints : {
                             768: {
@@ -154,12 +120,6 @@ const PPCProjectSlider = ({data}) => {
                                 perPage: 3,
                             }
                         },
-                        // autoScroll  : {
-                        //     pauseOnHover    : false,
-                        //     pauseOnFocus    : false,
-                        //     rewind          : true,
-                        //     speed           : 0.2,
-                        // },
                 }}>
                     <SplideTrack>
                         {data.images.map((circle, key) => {
