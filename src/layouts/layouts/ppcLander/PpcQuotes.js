@@ -146,7 +146,7 @@ const PPCQuotes = ({data}) => {
     }
 
     return(<>
-        <div ref={parallaxContainer} className={`block my-20 relative`}>
+        <div ref={parallaxContainer} className={`block my-20 relative max-w-[1600px] mx-auto`}>
             <section classes="overflow-hidden bg-transparent">
                 <Container classes={`bg-transparent`}>
                     <div ref={sliderRef} className={`mt-12 flex w-full flex-wrap justify-between relative`}>
@@ -173,9 +173,10 @@ const PPCQuotes = ({data}) => {
                             </div>
                         }
                     </div> 
+                    <span ref={quoteLeft}  aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-[15%] left-[88px] md:left-16 lg:left-18 xl:left-28 md:top-1/4 -z-10`}> “</span>
+                <span ref={quoteRight} aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-3/4 right-[88px] md:right-16 lg:right-18 xl:right-28 md:top-3/4  -z-10`}>” </span>
                 </Container>
-                <span ref={quoteLeft}  aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-[15%] md:top-1/4 left-[30%] lg:left-[20%] -z-10`}> “</span>
-                <span ref={quoteRight} aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-3/4 md:top-1/2 right-[30%] lg:right-[20%] -z-10`}>” </span>
+                
             </section>
       </div>
     </>)

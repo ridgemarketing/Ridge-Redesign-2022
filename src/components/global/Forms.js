@@ -609,7 +609,7 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
                     }
 
                     <div className="flex flex-wrap xl:gap-x-7">
-                        <span className={`block w-full xl:w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`text`} name={`name`} label={`Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <span className={`block w-full xl:w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`text`} name={`name`} label={`Full Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <span className={`block w-full xl:w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`text`} name={`company`} label={`Company`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <span className={`block w-full xl:w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Email`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <span className={`block w-full xl:w-[calc(50%-28px)]`}><PhoneInput bg={'white'} errors={errors} register={register} required={true} type={`tel`} name={`phone`} label={`Phone`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
