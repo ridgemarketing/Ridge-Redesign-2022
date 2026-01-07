@@ -27,6 +27,7 @@
     "@sendgrid/mail": "^8.1.5",
     "@splidejs/react-splide": "^0.7.12",
     "@splidejs/splide-extension-auto-scroll": "^0.5.3",
+    "@splidejs/splide-extension-intersection": "^0.2.0",
     "@u-wave/react-vimeo": "^0.9.8",
     "@upsetjs/react": "^1.11.0",
     "@vimeo/player": "^2.20.1",

@@ -4,7 +4,8 @@ sendgrid.setApiKey(process.env.SENDGRID_API_KEY);
 
 async function sendEmail(req, res) {
   const message = JSON.parse(req.body.message)
-  
+  const subject = req.body.subject
+
   if (message['email'] === `robert.87@outlook.com` || message['message'].includes('bankllist.us')) {
     return res.status(200).json({ error: "" });
   }
@@ -28,9 +29,13 @@ async function sendEmail(req, res) {
             {
               email:"dev@ridgemarketing.com", 
               name:"Developers"
+            },
+            {
+              email:"chase@ridgemarketing.com", 
+              name:"Chase"
             }
           ],
-          subject: `Ridge PPC Lead - ${message['name']}`,
+          subject: subject && subject.length > 0 ? subject : `Ridge PPC Lead - ${message['name']}`,
           dynamic_template_data:{
             name:`${message['name']}`,
             company:`${message['company']}`,
@@ -41,7 +46,7 @@ async function sendEmail(req, res) {
             // serviceArea:`${message['serviceArea']}`,
             interests: `${message['interests']}`,
             message:`${message['message']}`,
-            subject: `Ridge PPC Lead - ${message['name']}`,
+            subject: subject && subject.length > 0 ? subject : `Ridge PPC Lead - ${message['name']}`,
           }
         },
       ],
