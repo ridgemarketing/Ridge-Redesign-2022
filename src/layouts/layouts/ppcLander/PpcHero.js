@@ -221,7 +221,8 @@ const CustomSplide = ({images, direction, position, splideRef}) => {
                 type        : `loop`,
                 direction   : `ttb`,
                 height      : `100%`,
-                focus       : 'center',
+                start       : 0, //puts starting index of slides of the first slide uploaded to wordpress
+                focus       : 0, //puts starting index of slides of the first slide uploaded to wordpress
                 perPage     : 3,
                 // perMove     : 1,
                 gap         : `30px`,
