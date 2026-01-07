@@ -121,8 +121,8 @@ const CustomSplide = ({images, direction, position}) => {
             aria-label      = {`images ${direction} carousel`}
             hasTrack        = { false }
             extensions      = { { AutoScroll } }
-            onMoved         = { ( splide, newIndex, prevIndex, destIndex ) => { console.log( splide, newIndex, prevIndex, destIndex  ) } }
-            onVisible       = { ( splide, Slide ) => { console.log( splide, Slide ) } }
+            //onMoved         = { ( splide, newIndex, prevIndex, destIndex ) => { console.log( splide, newIndex, prevIndex, destIndex  ) } }
+            //onVisible       = { ( splide, Slide ) => { console.log( splide, Slide ) } }
             options         = { {
                 type        : `loop`,
                 // direction   : `ttb`,
