@@ -87,11 +87,11 @@ const PPCHeroStandard = ({data}) => {
                     {/* <LightBlueCloud_Piece_Large className={`w-full absolute top-0 left-0 -z-10 hidden xl:block`} /> 
                     <DarkBlueCloud_Piece_Large className={`w-full relative z-10 hidden xl:block`} />  */}
 
-                    <LightBlueCloud_Piece_Small className={`w-full absolute top-0 left-0 -z-10 hidden md:block lg:hidden`} /> 
-                    <DarkBlueCloud_Piece_Small className={`w-full relative z-10 hidden md:block lg:hidden`} /> 
+                    <LightBlueCloud_Piece_Small className={`-mt-[1px] w-full absolute top-0 left-0 -z-10 hidden md:block lg:hidden`} /> 
+                    <DarkBlueCloud_Piece_Small className={`-mt-[1px] w-full relative z-10 hidden md:block lg:hidden`} /> 
 
-                    <LightBlueCloud_Piece_Medium className={`w-full absolute top-0 left-0 -z-10 block md:hidden lg:block`} /> 
-                    <DarkBlueCloud_Piece_Medium className={`w-full relative z-10 block md:hidden lg:block`} /> 
+                    <LightBlueCloud_Piece_Medium className={`-mt-[1px] w-full absolute top-0 left-0 -z-10 block md:hidden lg:block`} /> 
+                    <DarkBlueCloud_Piece_Medium className={`-mt-[1px] w-full relative z-10 block md:hidden lg:block`} /> 
                 </div>
             </section>
 
