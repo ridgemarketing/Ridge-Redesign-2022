@@ -73,6 +73,8 @@ module.exports = {
       'xl'                 : '1280px',
       'xlz'                : '1366px',
       '2xl'                : '1920px',
+      '3xl'                : '2150px',
+      '4xl'                : '2475px',
     },
     container: {
       center: true,

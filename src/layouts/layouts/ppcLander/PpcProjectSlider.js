@@ -87,7 +87,6 @@ const PPCProjectSlider = ({data}) => {
                     extensions      = { { Intersection } }
                     onMove          = { ( splide, newIndex, prevIndex, destIndex ) => { handleMove(newIndex, prevIndex) } }
                     onMoved         = { ( splide, newIndex, prevIndex, destIndex ) => { handlePostMove(newIndex, prevIndex) } }
-                    // onVisible       = { ( splide, Slide ) => { console.log( 'visible', splide, Slide ) } }
                     options         = { {
                         type        : `loop`,
                         focus       : `center`,
@@ -99,12 +98,15 @@ const PPCProjectSlider = ({data}) => {
                         pagination  : false,
                         lazyLoad    : false,
                         arrows      : true,
-                        autoplay    : 'pause',
-                        intersection: {
-                            inView: {
-                                autoplay: true,
-                            },
-                        },
+                        autoplay    : true,
+                        pauseOnHover: false,
+                        pauseOnFocus: false,
+                        // autoplay    : 'pause',
+                        // intersection: {
+                        //     inView: {
+                        //         autoplay: true,
+                        //     },
+                        // },
                         interval    : 3000, 
                         // interval    : 30500, 
                         speed       : 1200,
