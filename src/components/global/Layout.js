@@ -117,6 +117,15 @@ export default function Layout({ location, children, data }) {
         headerBkgcolor: 'white',
     })
 
+    const updateHeaderPosition = (prop) => {
+        setHeaderPosition({
+            position: prop
+        })
+    }
+    const [headerPosition, setHeaderPosition] = useState({
+        position: 'fixed'
+    })
+
     const globalStyles = `
         .accent-text {
           color: ${primary.accent};
@@ -126,7 +135,7 @@ export default function Layout({ location, children, data }) {
         }
         .header-color{
             background:${backgroundColor.headerBkgcolor};
-            ${backgroundColor.headerBkgcolor === 'black' && 
+            ${backgroundColor.headerBkgcolor === 'black' && headerPosition.position !== 'sticky' && 
              `background-color:rgba(0,0,0,0.7);`
             }
         }
@@ -152,11 +161,14 @@ export default function Layout({ location, children, data }) {
                 backgroundColor: backgroundColor.headerBkgcolor,
                 updateHeaderBkgcolor: updateHeaderBkg,
 
+                position: headerPosition.position,
+                updateHeaderPositionFunction: updateHeaderPosition,
+
                 filterState: filter,
                 updateFilterState: updateFilter
             }}>
                 <style>{globalStyles}</style>
-                <Header classes={`header-color`} color={backgroundColor.headerBkgcolor} />
+                <Header classes={`header-color`} color={backgroundColor.headerBkgcolor} position={headerPosition.position} />
                 <main id="mainContent" tabIndex={0} aria-label="Main Content">
                     {children}
                 </main>

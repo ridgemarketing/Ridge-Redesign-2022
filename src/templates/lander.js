@@ -65,8 +65,7 @@ const WpLander = ({ data, location }) => {
 
   if (data.wpLander.uri === '/lander/marketing-dream/') {
     return (<>
-      <style>{`body { overflow-x : hidden } main { overflow-x: hidden }`}</style>
-      <CustomHeader color={color} />
+      <CustomHeader color={color} position={`sticky`} />
       <PPCLanderWrapper data={data.wpLander.Ridge2026PPC} />
     </>)
   }

@@ -31,9 +31,9 @@ const PPCHero = ({data}) => {
                 let ratio = 1.65
                 let max   = false
                 if (window.innerWidth >= 1920) { // 2xl
-                    // ratio = 1.65
-                    max   = true
-                    setHeight(1170)
+                    ratio = 1.65
+                    // max   = true
+                    // setHeight(1170)
                 } else if (window.innerWidth >= 1280) { // xl
                     ratio = 1.65 * (110 / 130)
                     max   = false
@@ -167,7 +167,7 @@ const PPCHero = ({data}) => {
     return(<>
         <div ref={coverUp} className="fixed top-0 left-0 h-full w-full z-30 bg-[#00abb6] transition-all duration-700 opacity-100 ease-out"></div>
         <div ref={mainSection} className="hidden xl:block overflow-hidden relative mx-auto">
-            <section ref={innerSection} className="max-w-[1920px] mx-auto w-full relative overflow-hidden bg-[#00abb6] overflow-x-hidden [mask-image:url(/cloudMask.svg)] 2xl:[mask-image:url(/cloudMaskLarge.svg)] [mask-repeat:no-repeat] [mask-position:top_center] xlz:[mask-position:0_-75px] 2xl:[mask-position:0_0] lg:[mask-size:160%_auto]  xl:[mask-size:130%_auto]  2xl:[mask-size:100%_auto]">
+            <section ref={innerSection} className="mx-auto w-full relative overflow-hidden bg-[#00abb6] overflow-x-hidden [mask-image:url(/cloudMask.svg)] 2xl:[mask-image:url(/cloudMaskLarge.svg)] [mask-repeat:no-repeat] [mask-position:top_center] xlz:[mask-position:0_-75px] 2xl:[mask-position:0_0] lg:[mask-size:160%_auto]  xl:[mask-size:130%_auto]  2xl:[mask-size:100%_auto]">
                 <Container>
                     <div className="pt-40 2xl:pt-56 flex flex-col gap-9 relative z-10">
                         {heading &&
@@ -199,7 +199,7 @@ const PPCHero = ({data}) => {
             </svg>
 
             <LightBlueCloud_Large theRef={backgroundCloud} className={`block 2xl:hidden w-[160%] xl:w-[130%] 2xl:w-[110%] absolute top-0 left-0 -z-[3] transition-[top] ease-out duration-1000`} />
-            <LightBlueCloud_XL theRef={backgroundCloudXL} className={`hidden 2xl:block w-[1920px] absolute top-0 left-1/2 -translate-x-1/2 -z-[3] transition-[top] ease-out duration-1000`} />
+            <LightBlueCloud_XL theRef={backgroundCloudXL} className={`hidden 2xl:block w-full absolute top-0 left-1/2 -translate-x-1/2 -z-[3] transition-[top] ease-out duration-1000`} />
         </div>
     </>)
 
