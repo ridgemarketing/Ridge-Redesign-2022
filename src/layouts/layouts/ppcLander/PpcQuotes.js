@@ -152,7 +152,7 @@ const PPCQuotes = ({data}) => {
                     <div ref={sliderRef} className={`mt-12 flex w-full flex-wrap justify-between relative`}>
                         <div className={`p-8 lg:p-14 w-full`}>
                             <div key={Math.random()}  className={`animate-quote text-center`}>
-                                <div dangerouslySetInnerHTML={{__html: Parser(slidedata.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out font-semibold text-rm-aqua' }></div>
+                                <div dangerouslySetInnerHTML={{__html: Parser(slidedata.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out font-semibold text-black' }></div>
                                 <p className={ theme.text.P_BLD +  `pt-8 pb-2` }>
                                     { slidedata.title }
                                 </p>
@@ -173,8 +173,8 @@ const PPCQuotes = ({data}) => {
                             </div>
                         }
                     </div> 
-                    <span ref={quoteLeft}  aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-[15%] left-[88px] md:left-16 lg:left-18 xl:left-28 md:top-1/4 -z-10`}> “</span>
-                <span ref={quoteRight} aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-3/4 right-[88px] md:right-16 lg:right-18 xl:right-28 md:top-3/4  -z-10`}>” </span>
+                    <span ref={quoteLeft}  aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-[15%] left-[40px] sm:left-[88px] md:left-16 lg:left-18 xl:left-28 md:top-1/4 -z-10`}> “</span>
+                    <span ref={quoteRight} aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-3/4 right-[40px] sm:right-[88px] md:right-16 lg:right-18 xl:right-28 md:top-3/4  -z-10`}>” </span>
                 </Container>
                 
             </section>
