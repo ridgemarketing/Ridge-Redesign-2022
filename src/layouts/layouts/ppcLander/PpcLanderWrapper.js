@@ -12,9 +12,10 @@ import PPCTools from "./PpcTools"
 
 const PPCLanderWrapper = ({data}) => {
 
-    console.log('all data', data)
-
     return(<>
+        <style>{`
+            main { overflow : hidden }
+        `}</style>
         {data.hero && <> 
             <PPCHero data={data.hero} /> {/* above 1280 */}
             <PPCHeroStandard data={data.hero} /> {/* below 1280 */}

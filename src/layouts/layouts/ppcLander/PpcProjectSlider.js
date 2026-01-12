@@ -15,7 +15,6 @@ const PPCProjectSlider = ({data}) => {
     const splideRef                     = useRef(null)
 
     const handleMove = (newIndex, prevIndex) => {
-        // console.log('moving...', `new index ${newIndex}`, `prev index ${prevIndex}`)
         
         setNewIndex(newIndex)
         setPrevIndex(prevIndex)
@@ -31,12 +30,10 @@ const PPCProjectSlider = ({data}) => {
         }
 
         if (newIndex === (data.images.length - 1) && prevIndex ===  0) {
-            // console.log ("from first to last", `new index ${newIndex}`, `prev index ${prevIndex}`)
             setResetPoint(true)
         }
 
         if (newIndex === 0 && prevIndex === (data.images.length - 1) ) {
-            // console.log ("from last to first", `new index ${newIndex}`, `prev index ${prevIndex}`)
             setResetPoint(true)
         }
 
@@ -44,7 +41,6 @@ const PPCProjectSlider = ({data}) => {
     }
 
     const handlePostMove = (newIndex, prevIndex) => {
-        // console.log('moving...', `new index ${newIndex}`, `prev index ${prevIndex}`)
         setResetPoint(false)
         setMoving(false)
     }
@@ -91,25 +87,27 @@ const PPCProjectSlider = ({data}) => {
                     extensions      = { { Intersection } }
                     onMove          = { ( splide, newIndex, prevIndex, destIndex ) => { handleMove(newIndex, prevIndex) } }
                     onMoved         = { ( splide, newIndex, prevIndex, destIndex ) => { handlePostMove(newIndex, prevIndex) } }
-                    // onVisible       = { ( splide, Slide ) => { console.log( 'visible', splide, Slide ) } }
                     options         = { {
                         type        : `loop`,
                         focus       : `center`,
                         perPage     : 5,
                         perMove     : 1,
                         padding     : `12px`,
-                        drag        : false,
+                        drag        : true,
                         rewindByDrag: false,
                         pagination  : false,
                         lazyLoad    : false,
                         arrows      : true,
-                        autoplay    : 'pause',
-                        intersection: {
-                            inView: {
-                                autoplay: true,
-                            },
-                        },
-                        interval    : 3500, 
+                        autoplay    : true,
+                        pauseOnHover: false,
+                        pauseOnFocus: false,
+                        // autoplay    : 'pause',
+                        // intersection: {
+                        //     inView: {
+                        //         autoplay: true,
+                        //     },
+                        // },
+                        interval    : 3000, 
                         // interval    : 30500, 
                         speed       : 1200,
                         breakpoints : {
