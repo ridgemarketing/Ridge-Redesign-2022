@@ -191,7 +191,7 @@ const PPCHero = ({data}) => {
                 </Container>
                 <div aria-hidden={true} className="absolute bottom-0 right-0 w-full h-[350px] bg-gradient-to-t from-[#00ABB6] via-[#00ABB6] via-20% to-transparent"></div>
             </section>
-            <svg ref={(el) => { if (el) popupCircles.current[0] = el }} className="-mt-[calc(350px/2)] xlz:-mt-[calc(400px/2)] 2xl:max-w-[1920px] 2xl:mx-auto" viewBox="0 0 1920 307.6">
+            <svg ref={(el) => { if (el) popupCircles.current[0] = el }} className="-mt-[calc(350px/2)] xlz:-mt-[calc(400px/2)] 3xl:-mt-[350px] 4xl:-mt-[550px] 2xl:max-w-[1920px] 2xl:mx-auto" viewBox="0 0 1920 307.6">
                 <ellipse className="scale-0 transition-all ease-in-out duration-300 delay-[600ms]" transform="matrix(0.7693 -0.6389 0.6389 0.7693 -32.3279 439.3668)" fill="#00ABB6" cx="592.2" cy="264.4" style={{transformOrigin: '596.9px 264.4px'}} rx="26.2" ry="26.2"/>
                 <path style={{transformOrigin: '554.7px 264.4px'}} className="scale-0 transition-all ease-in-out duration-150 delay-300" fill="#00ABB6" d="M522.7,175.5c-0.9,9.2,1.9,18.2,7.8,25.3c12.2,14.7,34,16.7,48.7,4.5c14.7-12.2,16.7-34,4.5-48.7
                     c-6.8-8.2-16.7-12.5-26.6-12.5c-7.8,0-15.6,2.6-22.1,8C527.9,158,523.5,166.3,522.7,175.5z"/>
