@@ -63,7 +63,7 @@ const WpLander = ({ data, location }) => {
     context.current.updateSecondaryFunction(theme.colors.secondary.accent);
   }, []);
 
-  if (data.wpLander.uri === '/lander/marketing-dream/') {
+  if (data.wpLander.uri === '/lander/your-marketing-dream-team/') {
     return (<>
       <CustomHeader color={color} position={`sticky`} />
       <PPCLanderWrapper data={data.wpLander.Ridge2026PPC} />
