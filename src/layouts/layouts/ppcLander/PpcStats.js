@@ -51,7 +51,7 @@ const PPCStats = ({data}) => {
                         viewport    ={{ once: true }}                      
                         initial     ="hidden"
                         whileInView ="visible" 
-                        className   ="flex gap-y-20 gap-x-12 flex-wrap xl:flex-nowrap w-full justify-center items-center">
+                        className   ="flex items-stretch gap-y-20 gap-x-12 flex-wrap xl:flex-nowrap w-full justify-center items-center">
                         {stats.map((stat, key) => {
                             return (
                                 <motion.li key={key} variants={variantItems}  className="flex flex-col w-full md:w-[calc(50%-24px)] xl:w-[calc(25%-24px)] gap-6 text-center font-stratos">

@@ -109,7 +109,7 @@ const PPCProjectSlider = ({data}) => {
                         // },
                         interval    : 3000, 
                         // interval    : 30500, 
-                        speed       : 1200,
+                        speed       : 800,
                         breakpoints : {
                             768: {
                                 perPage: 3,

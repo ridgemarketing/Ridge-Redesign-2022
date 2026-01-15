@@ -150,6 +150,9 @@ const PPCHero = ({data}) => {
                 })
             })
             observer.observe(theCloud)
+            return () => {
+                observer.disconnect()
+            }
         }
 
         if (backgroundCloud.current || backgroundCloudXL.current) {
