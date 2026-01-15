@@ -69,7 +69,7 @@ const PPCQuotes = ({data}) => {
         }, 6000)
     
         return () => clearInterval(interval)
-    })
+    }, [])
 
     const quoteFunc = () => {
         if (slides.length > 0) {

@@ -112,3 +112,7 @@ public
 .wordpress-cache
 .wordpress-cache/
 *.wordpress-cache
+
+
+_node_modules
+_node_modules_trash
