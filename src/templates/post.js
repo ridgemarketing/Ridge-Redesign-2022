@@ -145,7 +145,12 @@ const WpPost = ({ data, pageContext }) => {
               width:100%;
               border-collapse:collapse;
               border:2px solid black;
-              margin-bottom:60px;
+              overflow:scroll;
+            }
+            .wp-block-table {
+             width:100%;
+             overflow:scroll;
+             margin-bottom:60px;
             }
             thead{
               text-align:left;
@@ -181,7 +186,11 @@ const WpPost = ({ data, pageContext }) => {
               text-align:center;
               padding:20px 12px;
               border:2px solid black;
-              width:220px;
+            }
+            @media screen and (min-width:768px) {
+              .sideheader td:first-child{
+                width:220px;
+              }
             }
             .sideheader td:first-child strong{
               font-weight:600;
@@ -248,7 +257,7 @@ const WpPost = ({ data, pageContext }) => {
 }
 export default WpPost;
 
-export const query = graphql`
+export const query = graphql` 
   query PostById( $id: String ){
     wpPost(id: {eq: $id}) {
       id
