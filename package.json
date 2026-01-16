@@ -4,8 +4,8 @@
   "description": "Ridge Marketing's New Website circa 2022",
   "main": "index.js",
   "scripts": {
-    "develop": "NODE_ENV=development gatsby develop",
-    "start": "NODE_ENV=development gatsby develop",
+    "develop": "gatsby develop",
+    "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
@@ -21,7 +21,6 @@
   },
   "homepage": "https://github.com/ridgemarketing/Ridge-Redesign-2022#readme",
   "dependencies": {
-    "@alloc/quick-lru": "^5.2.0",
     "@formspree/react": "^3.0.0",
     "@lottiefiles/dotlottie-react": "^0.8.12",
     "@lottiefiles/react-lottie-player": "^3.5.4",
@@ -47,7 +46,6 @@
     "gatsby-source-wordpress": "^7.10.0",
     "gatsby-transformer-sharp": "^5.13.1",
     "npm": "^9.6.6",
-    "postcss-loader": "^7.3.4",
     "pristinejs": "^1.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
@@ -62,10 +60,10 @@
     "path-to-regexp": "^0.1.12"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.19",
+    "@tailwindcss/typography": "^0.5.15",
     "autoprefixer": "^10.4.23",
-    "gatsby-plugin-postcss": "file:gatsby-plugin-postcss-6.13.1.tgz",
+    "gatsby-plugin-postcss": "^6.15.0",
     "postcss": "^8.5.6",
-    "tailwindcss": "^3.4.19"
+    "tailwindcss": "^3.4.11"
   }
 }
