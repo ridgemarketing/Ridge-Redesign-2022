@@ -250,6 +250,19 @@ const WpPost = ({ data, pageContext }) => {
               margin-top:16px;
               margin-bottom:0;
             }
+            .showMobile, .showDesktop {
+              display:none;
+            }
+            @media screen and (max-width:768px) {
+              .showMobile {
+                display:block;
+              }
+            }
+            @media screen and (min-width:768px) {
+              .showDesktop {
+                display:block;
+              }
+            }
         `}</style>
       }
     </>
