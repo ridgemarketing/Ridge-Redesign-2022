@@ -148,9 +148,14 @@ const WpPost = ({ data, pageContext }) => {
               overflow:scroll;
             }
             .wp-block-table {
-             width:100%;
-             overflow:scroll;
-             margin-bottom:60px;
+              width:100%;
+              overflow:scroll;
+              margin-bottom:60px;
+            }
+            @media screen and (min-width:640px){
+              .wp-block-table, table {
+                overflow: hidden;
+              }
             }
             thead{
               text-align:left;
