@@ -45,11 +45,12 @@ export const Head = ({data}) => {
           <meta property="og:image" content={data?.wpPost?.seo?.opengraphImage?.sourceUrl}/>
         }
 
+
         {/* Canonical */}
-        {post.seo.canonical && (
+        {data?.wpPost?.seo?.canonical && (
           <link
             rel="canonical"
-            href={`https://www.ridgemarketing.com${post.seo.canonical}`}
+            href={`https://www.ridgemarketing.com${data.wpPost.seo.canonical}`}
           />
         )}
 
@@ -57,29 +58,29 @@ export const Head = ({data}) => {
         <meta name="twitter:card" content="summary_large_image" />
         <meta
           name="twitter:url"
-          content={`https://www.ridgemarketing.com${post.uri}`}
+          content={`https://www.ridgemarketing.com${data?.wpPost?.uri}`}
         />
         <meta
           name="twitter:title"
-          content={post.seo.twitterTitle || post.seo.title}
+          content={data?.wpPost?.seo?.twitterTitle || data?.wpPost?.seo?.title}
         />
         <meta
           name="twitter:description"
-          content={post.seo.twitterDescription || post.seo.metaDesc}
+          content={data?.wpPost?.seo?.twitterDescription || data?.wpPost?.seo?.metaDesc}
         />
         <meta
           name="twitter:image"
           content={
-            post.seo.twitterImage?.sourceUrl ||
+            data?.wpPost?.seo?.twitterImage?.sourceUrl ||
             "https://www.ridgemarketing.com/social-default.jpg"
           }
         />
 
         {/* JSON-LD Structured Data */}
-        {post.seo.schema?.raw && (
+        {data?.wpPost?.seo?.schema?.raw && (
           <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: post.seo.schema.raw }}
+            dangerouslySetInnerHTML={{ __html: data.wpPost.seo.schema.raw }}
           />
         )}
 

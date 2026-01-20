@@ -38,10 +38,10 @@ export const Head = ({data}) => (
     }
 
     {/* Canonical */}
-    {lander.seo.canonical && (
+    {data?.wpLander?.seo?.canonical && (
       <link
         rel="canonical"
-        href={`https://www.ridgemarketing.com${lander.seo.canonical}`}
+        href={`https://www.ridgemarketing.com${data.wpLander.seo.canonical}`}
       />
     )}
 
@@ -49,29 +49,29 @@ export const Head = ({data}) => (
     <meta name="twitter:card" content="summary_large_image" />
     <meta
       name="twitter:url"
-      content={`https://www.ridgemarketing.com${lander.uri}`}
+      content={`https://www.ridgemarketing.com${data?.wpLander?.uri}`}
     />
     <meta
       name="twitter:title"
-      content={lander.seo.twitterTitle || lander.seo.title}
+      content={data?.wpLander?.seo?.twitterTitle || data?.wpLander?.seo?.title}
     />
     <meta
       name="twitter:description"
-      content={lander.seo.twitterDescription || lander.seo.metaDesc}
+      content={data?.wpLander?.seo?.twitterDescription || data?.wpLander?.seo?.metaDesc}
     />
     <meta
       name="twitter:image"
       content={
-        lander.seo.twitterImage?.sourceUrl ||
+        data?.wpLander?.seo?.twitterImage?.sourceUrl ||
         "https://www.ridgemarketing.com/social-default.jpg"
       }
     />
 
     {/* JSON-LD Structured Data */}
-    {lander.seo.schema?.raw && (
+    {data?.wpLander?.seo?.schema?.raw && (
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: lander.seo.schema.raw }}
+        dangerouslySetInnerHTML={{ __html: data.wpLander.seo.schema.raw }}
       />
     )}
 
