@@ -17,6 +17,7 @@ export const Head = ({data}) => {
     return(
       <>
         <title>{data?.wpPost?.seo?.title}</title>
+
         <link rel="icon" type="image/x-icon" href={data?.allWp?.nodes[0]?.globalSettings?.globalSettings?.logos?.favicon?.sourceUrl}></link>
 
         <meta name="description" content={data?.wpPost.seo.opengraphDescription} />
@@ -44,13 +45,44 @@ export const Head = ({data}) => {
           <meta property="og:image" content={data?.wpPost?.seo?.opengraphImage?.sourceUrl}/>
         }
 
-        <meta property="twitter:card" content="summary_large_image"/>
-        <meta property="twitter:url" content={data?.wpPost?.seo?.opengraphUrl}/>
-        <meta property="twitter:title" content={data?.wpPost?.seo?.twitterTitle}/>
-        <meta property="twitter:description" content={data?.wpPost?.seo?.twitterDescription}/>
-        {data?.wpPost?.seo?.twitterImage &&
-          <meta property="twitter:image" content={data?.wpPost?.seo?.twitterImage?.sourceUrl}/>
-        }
+        {/* Canonical */}
+        {post.seo.canonical && (
+          <link
+            rel="canonical"
+            href={`https://www.ridgemarketing.com${post.seo.canonical}`}
+          />
+        )}
+
+        {/* Twitter Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:url"
+          content={`https://www.ridgemarketing.com${post.uri}`}
+        />
+        <meta
+          name="twitter:title"
+          content={post.seo.twitterTitle || post.seo.title}
+        />
+        <meta
+          name="twitter:description"
+          content={post.seo.twitterDescription || post.seo.metaDesc}
+        />
+        <meta
+          name="twitter:image"
+          content={
+            post.seo.twitterImage?.sourceUrl ||
+            "https://www.ridgemarketing.com/social-default.jpg"
+          }
+        />
+
+        {/* JSON-LD Structured Data */}
+        {post.seo.schema?.raw && (
+          <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: post.seo.schema.raw }}
+          />
+        )}
+
         {data?.wpPost?.seo?.fullHead}
       </>
     )

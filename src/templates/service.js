@@ -38,13 +38,45 @@ export const Head = ({data}) => (
       <meta property="og:image" content={data.wpService.seo.opengraphImage.sourceUrl}/>
     }
 
-    <meta property="twitter:card" content="summary_large_image"/>
-    <meta property="twitter:url" content={data.wpService.seo.opengraphUrl}/>
-    <meta property="twitter:title" content={data.wpService.seo.twitterTitle}/>
-    <meta property="twitter:description" content={data.wpService.seo.twitterDescription}/>
-    {data.wpService.seo.twitterImage &&
-      <meta property="twitter:image" content={data.wpService.seo.twitterImage.sourceUrl}/>
-    }
+    {/* Canonical */}
+    {service.seo.canonical && (
+      <link
+        rel="canonical"
+        href={`https://www.ridgemarketing.com${service.seo.canonical}`}
+      />
+    )}
+
+    {/* Twitter Meta Tags */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:url"
+      content={`https://www.ridgemarketing.com${service.uri}`}
+    />
+    <meta
+      name="twitter:title"
+      content={service.seo.twitterTitle || service.seo.title}
+    />
+    <meta
+      name="twitter:description"
+      content={service.seo.twitterDescription || service.seo.metaDesc}
+    />
+    <meta
+      name="twitter:image"
+      content={
+        service.seo.twitterImage?.sourceUrl ||
+        "https://www.ridgemarketing.com/social-default.jpg"
+      }
+    />
+
+    {/* JSON-LD Structured Data */}
+    {service.seo.schema?.raw && (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: service.seo.schema.raw }}
+      />
+    )}
+
+
     {data.wpService.seo.fullHead}
   </>
 )

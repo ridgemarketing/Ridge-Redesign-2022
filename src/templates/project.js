@@ -35,13 +35,44 @@ export const Head = ({data}) => (
       <meta property="og:image" content={data?.wpProject?.seo?.opengraphImage.sourceUrl}/>
     }
 
-    <meta property="twitter:card" content="summary_large_image"/>
-    <meta property="twitter:url" content={data?.wpProject?.seo?.opengraphUrl}/>
-    <meta property="twitter:title" content={data?.wpProject?.seo?.twitterTitle}/>
-    <meta property="twitter:description" content={data?.wpProject?.seo?.twitterDescription}/>
-    {data?.wpProject?.seo?.twitterImage &&
-      <meta property="twitter:image" content={data?.wpProject?.seo?.twitterImage.sourceUrl}/>
-    }
+    {/* Canonical */}
+    {project.seo.canonical && (
+      <link
+        rel="canonical"
+        href={`https://www.ridgemarketing.com${project.seo.canonical}`}
+      />
+    )}
+
+    {/* Twitter Meta Tags */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:url"
+      content={`https://www.ridgemarketing.com${project.uri}`}
+    />
+    <meta
+      name="twitter:title"
+      content={project.seo.twitterTitle || project.seo.title}
+    />
+    <meta
+      name="twitter:description"
+      content={project.seo.twitterDescription || project.seo.metaDesc}
+    />
+    <meta
+      name="twitter:image"
+      content={
+        project.seo.twitterImage?.sourceUrl ||
+        "https://www.ridgemarketing.com/social-default.jpg"
+      }
+    />
+
+    {/* JSON-LD Structured Data */}
+    {project.seo.schema?.raw && (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: project.seo.schema.raw }}
+      />
+    )}
+
     {data?.wpProject?.seo?.fullHead}
   </>
 )
