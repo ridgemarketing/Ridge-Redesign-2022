@@ -8,6 +8,7 @@ import Parser from "../components/global/Parser"
 import { ThemeContext } from "../static/theme"
 
 export const Head = ({data}) => {
+  const post = data?.wpPost;
   if (data?.wpPost?.blogFields?.additionalBlogFields?.previewMode) {
     return (
         <meta name="robots" content="noindex"/>
@@ -44,6 +45,7 @@ export const Head = ({data}) => {
         {data?.wpPost?.seo?.opengraphImage &&
           <meta property="og:image" content={data?.wpPost?.seo?.opengraphImage?.sourceUrl}/>
         }
+
 
         {/* Canonical */}
         {post.seo.canonical && (
