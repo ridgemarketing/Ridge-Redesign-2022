@@ -37,13 +37,44 @@ export const Head = ({data}) => (
       <meta property="og:image" content={data.wpLander.seo.opengraphImage.sourceUrl}/>
     }
 
-    <meta property="twitter:card" content="summary_large_image"/>
-    <meta property="twitter:url" content={data.wpLander.seo.opengraphUrl}/>
-    <meta property="twitter:title" content={data.wpLander.seo.twitterTitle}/>
-    <meta property="twitter:description" content={data.wpLander.seo.twitterDescription}/>
-    {data.wpLander.seo.twitterImage &&
-      <meta property="twitter:image" content={data.wpLander.seo.twitterImage.sourceUrl}/>
-    }
+    {/* Canonical */}
+    {lander.seo.canonical && (
+      <link
+        rel="canonical"
+        href={`https://www.ridgemarketing.com${lander.seo.canonical}`}
+      />
+    )}
+
+    {/* Twitter Meta Tags */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:url"
+      content={`https://www.ridgemarketing.com${lander.uri}`}
+    />
+    <meta
+      name="twitter:title"
+      content={lander.seo.twitterTitle || lander.seo.title}
+    />
+    <meta
+      name="twitter:description"
+      content={lander.seo.twitterDescription || lander.seo.metaDesc}
+    />
+    <meta
+      name="twitter:image"
+      content={
+        lander.seo.twitterImage?.sourceUrl ||
+        "https://www.ridgemarketing.com/social-default.jpg"
+      }
+    />
+
+    {/* JSON-LD Structured Data */}
+    {lander.seo.schema?.raw && (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: lander.seo.schema.raw }}
+      />
+    )}
+
     {data.wpLander.seo.fullHead}
   </>
 )
