@@ -26,7 +26,7 @@ async function sendEmail(req, res) {
             },
             {
               email: "dev@ridgemarketing.com",
-              name: "Dev",
+              name: "Development",
             },
           ],
           dynamic_template_data: {
