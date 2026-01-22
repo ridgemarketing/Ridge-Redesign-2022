@@ -18,20 +18,10 @@ async function sendEmail(req, res) {
           to: [
               {
                 // email: "dev@ridgemarketing.com", 
-                email: "aquincy@ridgemarketing.com", 
-                name: "Andrea Quincy"
+                email: "alejandro@ridgemarketing.com", 
+                name: "Alejandro Silva"
               }
             ], 
-          cc: [
-            {
-              email:"rquincy@ridgemarketing.com", 
-              name:"Rob Quincy"
-            }, 
-            {
-              email:"dev@ridgemarketing.com", 
-              name:"Developers"
-            }
-          ],
           dynamic_template_data:{
             name:`${message['name']}`,
             company:`${message['company']}`,

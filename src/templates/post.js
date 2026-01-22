@@ -6,6 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { Link }from "gatsby"
 import Parser from "../components/global/Parser"
 import { ThemeContext } from "../static/theme"
+import { SeoPopup } from "../components/SeoPopup"
 
 export const Head = ({data}) => {
   if (data?.wpPost?.blogFields?.additionalBlogFields?.previewMode) {
@@ -123,7 +124,9 @@ const WpPost = ({ data, pageContext }) => {
             </div>
         </div>
       </nav>
-      {data.wpPost.uri === '/seo-vs-aeo-vs-geo/' &&
+      {data.wpPost.uri === '/seo-vs-aeo-vs-geo/' && (
+        <>
+        <SeoPopup />
         <style>{`
             .blog-container .large img { 
               max-width:100%; 
@@ -269,7 +272,8 @@ const WpPost = ({ data, pageContext }) => {
               }
             }
         `}</style>
-      }
+        </>
+      )}
     </>
   )
 }
