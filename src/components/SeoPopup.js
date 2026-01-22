@@ -11,8 +11,8 @@ export const SeoPopup = () => {
 
     useEffect(() => {
         setIsClient(true)
-        // const hasViewed = localStorage.getItem('SeoPopup_VIEWED') === 'true'
-        // setViewed(hasViewed)
+        const hasViewed = localStorage.getItem('SeoPopup_VIEWED') === 'true'
+        setViewed(hasViewed)
     }, [])
 
     const onSubmit = async (data) => {
