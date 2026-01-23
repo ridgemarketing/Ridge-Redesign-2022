@@ -2,22 +2,27 @@ import React, { useState, useEffect } from "react"
 import { useForm } from "react-hook-form"
 
 export const SeoPopup = () => {
-    const [isClient, setIsClient] = useState(false)
-    const [viewed, setViewed] = useState(false)
+    const [isClient, setIsClient]   = useState(false)
+    const [viewed, setViewed]       = useState(false)
 
-    const [step, setStep] = useState(1)
-    const [status, setStatus] = useState('idle')
+    const [step, setStep]            = useState(1)
+    const [status, setStatus]       = useState('idle')
     const { register, handleSubmit, formState: { errors } } = useForm()
 
     useEffect(() => {
-        setIsClient(true)
 
-         if (typeof localStorage !== "undefined") {
-            let hasViewed = localStorage.getItem('SeoPopup_VIEWED') ? localStorage.getItem('SeoPopup_VIEWED') : false
-            if (hasViewed === 'true') {
-                setViewed(hasViewed)
+        const wait = () => {
+            setIsClient(true)
+
+            if (typeof localStorage !== "undefined") {
+                let hasViewed = localStorage.getItem('SeoPopup_VIEWED') ? localStorage.getItem('SeoPopup_VIEWED') : false
+                if (hasViewed === 'true') {
+                    setViewed(hasViewed)
+                }
             }
         }
+        setTimeout(wait, 10000)
+        
         // const hasViewed = localStorage.getItem('SeoPopup_VIEWED') === 'true'
         // setViewed(hasViewed)
     }, [])
