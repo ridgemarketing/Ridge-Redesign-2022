@@ -573,7 +573,7 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
             reset()
             setStep(1)
             if (window.dataLayer && typeof window.dataLayer.push === "function") {
-                window.dataLayer.push({event: 'Contact Form Submission'});
+                window.dataLayer.push({event: 'PPC 2026 Form Submission'});
             }
             if (redirectForm) {
                 navigate("/thank-you/")
