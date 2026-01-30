@@ -15,11 +15,11 @@ const PPCForm = ({data}) => {
     let btnStyle    = `SOLID_GREEN_HOVER_DARK`
 
     return(<>
-        <section>
-            <BottomCloudPiece_Large className={`w-full mt-20 hidden xl:block cloudAnimation-Bottom -z-[10] relative`} />
-            <BottomCloudPiece_Medium className={`w-full hidden md:block xl:hidden cloudAnimation-Bottom -z-[10] relative`} />
-            <BottomCloudPiece_Small className={`w-full md:hidden cloudAnimation-Bottom -z-[10] relative`} />
-            <div id="form" className="pb-[160px] relative bg-gradient-to-t from-white via-[#f3f9f9] via-47% to-[#edf8f9]">
+        <section className="bg-black -mt-[1px]">
+            <BottomCloudPiece_Large className={`w-full hidden xl:block cloudAnimation-Bottom z-10 relative`} />
+            <BottomCloudPiece_Medium className={`w-full hidden md:block xl:hidden cloudAnimation-Bottom z-10 relative`} />
+            <BottomCloudPiece_Small className={`w-full md:hidden cloudAnimation-Bottom z-10 relative`} />
+            <div id="form" className="pb-[160px] relative bg-gradient-to-t from-white via-[#f3f9f9] via-47% to-[#edf8f9] z-20">
                 <Container classes={`flex flex-col gap-[100px]`}>
                     <div className="flex flex-col-reverse items-center justify-center xl:flex-row xl:flex-wrap flex-nowrap gap-20 xl:gap-6">
                         <div className="flex flex-col gap-6 text-left flex-1">
