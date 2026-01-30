@@ -421,6 +421,8 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
         setStatus(`success`)
         setSubmittedData(data)
 
+
+
     }
 
     useEffect(() => {
@@ -431,7 +433,7 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
              window.dataLayer.push({event: 'Contact Form Submission'});
             }
             if (redirectForm) {
-                navigate("/thank-you/")
+                navigate("/thank-you-landers/")
             }
             
           }
@@ -525,11 +527,20 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
 }
 
 export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnStyle, redirectForm}) => {
-    const { register, handleSubmit, watch, reset, formState, formState: { errors, isSubmitSuccessful } } = useForm()
+    const { register, handleSubmit, watch, reset, setValue, formState, formState: { errors, isSubmitSuccessful } } = useForm()
     const [status, setStatus]               = useState(false)
     const [submittedData, setSubmittedData] = useState({})
     const [savedData, setSavedData]         = useState({})
     const [step, setStep]                   = useState(1)
+    const [urlSource, setUrlSource]         = useState(null)
+
+    useEffect(() => {
+        let params = new URLSearchParams(document.location.search)
+        if (params.get("utm_source")) {
+            setUrlSource(params.get("utm_source"))
+            setValue('urlSource', params.get("utm_source"))
+        }
+    },[])
 
     const saveData = (data) => {
         setStatus(`processing`)
@@ -542,6 +553,24 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
         setStatus(`processing`)
 
         const message = JSON.stringify(data)
+
+        const googleSheet = await fetch("/api/google-sheet", {
+            body    : JSON.stringify({
+                message : message,
+            }),
+            headers : {
+                "Content-Type": "application/json",
+            },
+            method  : "POST",
+        })
+        const { googleError } = await googleSheet.json()
+        console.log('google data', googleError)
+
+        // if (googleError) {
+        //   console.log(googleError);
+        //   setStatus(`fail-email`)
+        //   return
+        // }
 
         const res = await fetch("/api/sendgrid-landers", {
             body    : JSON.stringify({
@@ -576,7 +605,7 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
                 window.dataLayer.push({event: 'PPC 2026 Form Submission'});
             }
             if (redirectForm) {
-                navigate("/thank-you/")
+                navigate("/thank-you-marketing-dream/")
             }
           }
       
@@ -654,6 +683,7 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
                         <span className={`mb-6 block`}><Select bg={'white'} errors={errors} register={register} required={true} name={`companyRevenue`} label={`Company Revenue`} options={[`< $10M`,`$10M-$50M`,`$50M-$1B`,`$1B+`]} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <span className={`mb-6 block`}><CheckboxGroup bg={'white'} errors={errors} register={register} required={true} name={`interests`} label={`What are you interested in? (Select all that apply)`} options={['Branding', 'Marketing Strategy & Messaging', 'Website Design & Development', 'Content Marketing', 'AI Search Marketing', 'Digital & PPC Advertising', 'Social Media Support', 'Video Production']} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <span className={`mb-6 block`}><TextArea bg={'white'} errors={errors} register={register} required={true} name={`message`} label={`Tell us about your marketing goals`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
+                        <input type="hidden" {...register('urlSource')} />
                         <div className={`mt-10 ${btnContainerClasses ? btnContainerClasses : ``}`}>
                             <button
                                 className={`${status === `processing` ? `opacity-80` : `` } ${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} cursor-pointer min-w-[210px]`}
