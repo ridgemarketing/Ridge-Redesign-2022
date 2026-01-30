@@ -311,6 +311,22 @@ export const query = graphql`
           }
         }
 
+        process {
+          body
+          heading
+          icons {
+            body
+            heading
+            icon {
+              sourceUrl
+              altText
+              localFile{
+                ext
+              }
+            }
+          }
+        }
+
         form {
           body
           heading
