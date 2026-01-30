@@ -65,12 +65,16 @@ module.exports = {
   ],
   theme: {
     screens:{
+      'xs'                 : '400px',
       'sm'                 : '640px',
       'md'                 : '768px',
       'lg'                 : '1024px',
+      'lgz'                : '1025px',
       'xl'                 : '1280px',
       'xlz'                : '1366px',
       '2xl'                : '1920px',
+      '3xl'                : '2150px',
+      '4xl'                : '2475px',
     },
     container: {
       center: true,

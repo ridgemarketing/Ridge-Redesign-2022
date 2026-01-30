@@ -6,6 +6,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { Link }from "gatsby"
 import Parser from "../components/global/Parser"
 import { ThemeContext } from "../static/theme"
+import { SeoPopup } from "../components/SeoPopup"
 
 export const Head = ({data}) => {
   if (data?.wpPost?.blogFields?.additionalBlogFields?.previewMode) {
@@ -96,7 +97,7 @@ export const Head = ({data}) => {
 //   </>
 // )
 
-const WpPost = ({ data, pageContext }) =>{
+const WpPost = ({ data, pageContext }) => {
 
     const content       = data.wpPost;
     const context       = pageContext;
@@ -156,12 +157,162 @@ const WpPost = ({ data, pageContext }) =>{
             </div>
         </div>
       </nav>
+      {data.wpPost.uri === '/seo-vs-aeo-vs-geo/' && (
+        <>
+        <SeoPopup />
+        <style>{`
+            .blog-container .large img { 
+              max-width:100%; 
+            }
+            @media screen and (max-width:1024px) {
+              .wp-block-media-text.is-stacked-on-mobile {
+                display:flex;
+                flex-direction:column-reverse;
+              }
+            }
+            @media screen and (min-width:1024px){
+                figure.wp-block-media-text__media{
+                  float: right;
+                  width: 600px;
+                  margin-left: 70px;
+                }
+            }
+            table{
+              width:100%;
+              border-collapse:collapse;
+              border:2px solid black;
+              overflow:scroll;
+            }
+            .wp-block-table {
+              width:100%;
+              overflow:scroll;
+              margin-bottom:60px;
+            }
+            @media screen and (min-width:640px){
+              .wp-block-table, table {
+                overflow: hidden;
+              }
+            }
+            thead{
+              text-align:left;
+              background-color:#1f9da5;
+            }
+            thead th{
+              color:white;
+              font-weight:700;
+              font-size:21px;
+              line-height:28px;
+              padding:10px 12px;
+              border:1px solid black;
+            }
+            tbody td{
+              font-size:21px;
+              line-height:28px;
+              padding:10px 12px;
+              border:1px solid black;
+              font-weight:300;
+            }
+
+            .sideheader table {
+              border:2px solid black;
+              font-weight:300;
+              max-width:658px;
+            }
+            .sideheader td:first-child{
+              background-color:#1f9da5;
+              color:white;
+              font-weight:600;
+              font-size:26px;
+              line-height:30px;
+              text-align:center;
+              padding:20px 12px;
+              border:2px solid black;
+            }
+            @media screen and (min-width:768px) {
+              .sideheader td:first-child{
+                width:220px;
+              }
+            }
+            .sideheader td:first-child strong{
+              font-weight:600;
+            }
+            .sideheader td:last-child{
+              background-color:white;
+              color:black;
+              font-size:21px;
+              line-height:28px;
+              text-align:center;
+              padding:20px 12px;
+              border:2px solid black;
+            }
+            hr {
+              margin-bottom:2.5rem;
+            }
+
+            .faq-section{
+              display:flex;
+              flex-direction:column;
+              gap:16px;
+            }
+            .faq-section details{
+              background-color:#f1f5f5;
+              border-radius:5px;
+              padding:24px;
+            }
+            .faq-section summary{
+              font-weight:700;
+              font-size:21px;
+              line-height:28px;
+              color:black;
+              cursor:pointer;
+              list-style:none;
+              display:flex;
+              justify-content:space-between;
+              align-items:center;
+            }
+            .faq-section summary::-webkit-details-marker{
+              display:none;
+            }
+            .faq-section summary::after{
+              content:'+';
+              font-size:24px;
+              font-weight:400;
+              color:#A9CF38;
+              margin-left:16px;
+            }
+            .faq-section details[open] summary::after{
+              content:'−';
+            }
+            .faq-section details p{
+              font-weight:300;
+              font-size:21px;
+              line-height:28px;
+              color:black;
+              margin-top:16px;
+              margin-bottom:0;
+            }
+            .showMobile, .showDesktop {
+              display:none;
+            }
+            @media screen and (max-width:768px) {
+              .showMobile {
+                display:block;
+              }
+            }
+            @media screen and (min-width:768px) {
+              .showDesktop {
+                display:block;
+              }
+            }
+        `}</style>
+        </>
+      )}
     </>
   )
 }
 export default WpPost;
 
-export const query = graphql`
+export const query = graphql` 
   query PostById( $id: String ){
     wpPost(id: {eq: $id}) {
       id
