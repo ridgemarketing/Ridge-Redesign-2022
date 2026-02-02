@@ -57,23 +57,22 @@ const DesktopMenu = () => {
             }
         }
     `);
-
     return(
-        <div key={`highLevel`} className={`flex justify-end h-full items-center gap-10`}>
+        <div className={`flex justify-end h-full items-center gap-10`}>
             {desktopWpMenuContent && desktopWpMenuContent.wpMenu.menuItems.nodes.map( (navItem, index) => {
                 //let currentItem = false;
                 const uid       = navItem.label.replace(' ', '_')
                 if (!navItem.parentId) {
                     return(
                         <li key={`level-0__${uid}__${index}`} className={`${theme.text.P_STD} group flex flex-col h-full justify-center relative`}>
-                            <Link key={`level-0__${uid}__${index}_sub`} title={navItem.label} to={navItem.url} className={`py-2 border-b border-transparent group-hover:text-rm-green group-hover:border-rm-green`}>
+                            <Link title={navItem.label} to={navItem.url} className={`py-2 border-b border-transparent group-hover:text-rm-green group-hover:border-rm-green`}>
                                 <span className={``}>{navItem.label}</span>
                             </Link>
                             {navItem.childItems.nodes.length > 0 &&
-                                <div key={`${navItem.label}_mid_level_0`} className={`hidden group-hover:block absolute top-full min-w-max left-1/2 right-1/2 -translate-x-1/2`}>
-                                    <span key={`${navItem.label}_span_level_0`}  className={`w-[44px] mx-auto block text-white`}><Triangle key={`${navItem.label}_triangle`} /></span>
+                                <div className={`hidden group-hover:block absolute top-full min-w-max left-1/2 right-1/2 -translate-x-1/2`}>
+                                    <span className={`w-[44px] mx-auto block text-white`}><Triangle /></span>
                                     {navItem.childItems.nodes.length <= 6 &&
-                                        <div key={`${navItem.label}_mid_level_0_1`}  className={`bg-white pt-6 pb-8 px-5 text-rm-black flex flex-col gap-6 shadow-block`}>
+                                        <div className={`bg-white pt-6 pb-8 px-5 text-rm-black flex flex-col gap-6 shadow-block`}>
                                             {navItem.childItems.nodes.map((subNavItem, index) => {
                                                 let menuIcon    = false;
                                                 const uid       = subNavItem.label.replace(' ', '_')
@@ -90,7 +89,7 @@ const DesktopMenu = () => {
                                         </div>
                                     }
                                     {navItem.childItems.nodes.length > 6 &&
-                                        <div key={`${navItem.label}_mid_level_1`} className={`bg-white pt-6 pb-8 px-5 text-rm-black grid grid-cols-2 gap-y-4 gap-x-6 shadow-block`}>
+                                        <div className={`bg-white pt-6 pb-8 px-5 text-rm-black grid grid-cols-2 gap-y-4 gap-x-6 shadow-block`}>
                                             {navItem.childItems.nodes.map((subNavItem, index) => {
                                                 let menuIcon = false;
                                                 const uid       = subNavItem.label.replace(' ', '_')
@@ -112,7 +111,7 @@ const DesktopMenu = () => {
                         </li>
                     )
                 }
-                return
+                return(<></>)
             })}
         </div>
     )

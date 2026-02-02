@@ -14,7 +14,6 @@ const Header = (props) => {
     //const hoverColor                            = backgroundColor === `black` ? `hover:text-rm-green` : ``;
     const bkgClass                              = props.classes;
     const headerPadding                         = backgroundColor  === 'black' ? 'hidden' : 'h-[100px]';
-    const position                              = props.position ?? 'fixed';
     //const mobileMenuIcon                        = useRef([]);
     //const [mobileMenuState, setMobileMenuState] = useState(false);
     //const [overlayState, setOverlayState]       = useState(false);
@@ -36,6 +35,7 @@ const Header = (props) => {
                 objectFit={`contain`}/>)
         }
     }
+
 
     const focusMain = (e) =>{
         if(document.getElementById('mainContent')){
@@ -98,7 +98,7 @@ const Header = (props) => {
 
     return(
         <>
-            <header className={`${textColor} ${bkgClass} ${position} w-full z-50 top-0 flex items-center transition-all duration-500 h-[100px] ${isScrolled ? `is-scrolled !h-[65px]` : ``}`} >
+            <header className={`${textColor} ${bkgClass} fixed w-full z-50 top-0 flex items-center transition-all duration-500 h-[100px] ${isScrolled ? `is-scrolled !h-[65px]` : ``}`} >
             <button type="button" onClick={()=>focusMain()} onKeyDown={()=>focusMain()} className="bg-rm-white text-rm-black p-5 font-basic-sans text-18px absolute -top-96 -left-96 focus:left-0 focus:top-0 focus:underline z-50" title="skip main navigation">Skip Main Navigation</button>
             <section className="container h-full">
                 <nav className="h-full">

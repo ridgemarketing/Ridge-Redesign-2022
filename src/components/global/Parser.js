@@ -26,10 +26,6 @@ const tagList = [
         replace: `<span class="text-rm-green font-semibold">`
     },
     {
-        tag: `[lightBlue]`,
-        replace: `<span class="text-[#A4FAFF]">`
-    },
-    {
         tag: `[accent]`,
         replace: `<span class="accent-text">`
     },

@@ -15,7 +15,7 @@ async function sendEmail(req, res) {
     const sendGridRequest = {
       personalizations: [
         {
-        to: [
+          to: [
               {
                 // email: "dev@ridgemarketing.com", 
                 email: "aquincy@ridgemarketing.com", 
