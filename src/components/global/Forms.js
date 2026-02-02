@@ -421,8 +421,6 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
         setStatus(`success`)
         setSubmittedData(data)
 
-
-
     }
 
     useEffect(() => {
@@ -433,7 +431,7 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
              window.dataLayer.push({event: 'Contact Form Submission'});
             }
             if (redirectForm) {
-                navigate("/thank-you-landers/")
+                navigate("/thank-you/")
             }
             
           }
@@ -512,178 +510,6 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
                         <span className={`mb-6 block`}><Select errors={errors} register={register} required={true} name={`companyRevenue`} label={`Company Revenue`} options={[`< $10M`,`$10M-$50M`,`$50M-$1B`,`$1B+`]} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <span className={`mb-6 block`}><CheckboxGroup errors={errors} register={register} required={true} name={`interests`} label={`What are you interested in? (Select all that apply)`} options={['Branding', 'Marketing Strategy & Messaging', 'Website Design & Development', 'Content Marketing', 'AI Search Marketing', 'Digital & PPC Advertising', 'Social Media Support', 'Video Production']} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
                         <span className={`mb-6 block`}><TextArea errors={errors} register={register} required={true} name={`message`} label={`Tell us about your marketing goals`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <div className={`mt-10 ${btnContainerClasses ? btnContainerClasses : ``}`}>
-                            <button
-                                className={`${status === `processing` ? `opacity-80` : `` } ${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} cursor-pointer min-w-[210px]`}
-                                type="submit" disabled={status === `processing` ? true : false }>
-                                    { status === `processing` ? `Sending...` :  `Submit`}
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            }
-        </div>
-    )
-}
-
-export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnStyle, redirectForm}) => {
-    const { register, handleSubmit, watch, reset, setValue, formState, formState: { errors, isSubmitSuccessful } } = useForm()
-    const [status, setStatus]               = useState(false)
-    const [submittedData, setSubmittedData] = useState({})
-    const [savedData, setSavedData]         = useState({})
-    const [step, setStep]                   = useState(1)
-    const [urlSource, setUrlSource]         = useState(null)
-
-    useEffect(() => {
-        let params = new URLSearchParams(document.location.search)
-        if (params.get("utm_source")) {
-            setUrlSource(params.get("utm_source"))
-            setValue('urlSource', params.get("utm_source"))
-        }
-    },[])
-
-    const saveData = (data) => {
-        setStatus(`processing`)
-        setSavedData(data)
-        setStep(2)
-        setStatus(false)
-    } 
-    const onSubmit = async (data) => {
-
-        setStatus(`processing`)
-
-        const message = JSON.stringify(data)
-
-        const googleSheet = await fetch("/api/google-sheet", {
-            body    : JSON.stringify({
-                message : message,
-            }),
-            headers : {
-                "Content-Type": "application/json",
-            },
-            method  : "POST",
-        })
-        const { googleError } = await googleSheet.json()
-        console.log('google data', googleError)
-
-        // if (googleError) {
-        //   console.log(googleError);
-        //   setStatus(`fail-email`)
-        //   return
-        // }
-
-        const res = await fetch("/api/sendgrid-landers", {
-            body    : JSON.stringify({
-            email   : data.email,
-            subject : `New 2026 PPC Page Submission`,
-            message : message,
-        }),
-            headers : {
-            "Content-Type": "application/json",
-        },
-            method  : "POST",
-        })
-
-        const { error } = await res.json();
-          
-        if (error) {
-          console.log(error);
-          setStatus(`fail-email`)
-          return
-        }
-
-        setStatus(`success`)
-        setSubmittedData(data)
-
-    }
-
-    useEffect(() => {
-        if (formState.isSubmitSuccessful && status === `success`) {
-            reset()
-            setStep(1)
-            if (window.dataLayer && typeof window.dataLayer.push === "function") {
-                window.dataLayer.push({event: 'PPC 2026 Form Submission'});
-            }
-            if (redirectForm) {
-                navigate("/thank-you-marketing-dream/")
-            }
-          }
-      
-    }, [formState, submittedData, reset])
-
-    return(
-        <div>
-            {step === 1 &&
-                <form onSubmit={handleSubmit(saveData)} className={`${classes}`}>
-                    {errors[0] && 
-                        <div className={`bg-[#E10000] text-white py-3 px-6 mt-3 mb-6`}>
-                            {errors.map((error) => {
-                                return(
-                                    <p className={`${theme.text.P_BLD}`}>{error.message}</p>
-                                )
-                            })}
-                        </div>
-                    }
-
-                    {status === `fail-email` &&
-                        <div className={`bg-[#E10000] text-white py-3 px-6 mt-3 mb-6`}>
-                            <p className={`${theme.text.P_BLD}`}>There was an error when emailing your submission. Please try again. If the issue persist, let us know at <a href="tel:908-340-4480">908-340-4480</a>.</p>
-                        </div>
-                    }
-
-                    {status === `success` &&
-                        <div className={`bg-rm-aqua text-white py-3 px-6 mt-3 mb-6`}>
-                            <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch with you soon.</p>
-                        </div>
-                    }
-
-                    <div className="flex flex-wrap xl:gap-x-7">
-                        <span className={`block w-full xl:w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`text`} name={`name`} label={`Full Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`block w-full xl:w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`text`} name={`company`} label={`Company`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`block w-full xl:w-[calc(50%-28px)]`}><Input bg={'white'} errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Email`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`block w-full xl:w-[calc(50%-28px)]`}><PhoneInput bg={'white'} errors={errors} register={register} required={true} type={`tel`} name={`phone`} label={`Phone`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <div className={`mt-10 mx-auto xl:ml-0 ${btnContainerClasses ? btnContainerClasses : ``}`}>
-                            <button
-                                className={`${status === `processing` ? `opacity-80` : `` } ${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} ${theme.text_links.FWD_BASE} ${theme.text_links.ARW_FWD_BLACK} ${theme.text_links.HOVER_ARW_FWD_WHITE} !inline-flex items-center cursor-pointer min-w-[210px]`}
-                                type="submit"
-                                disabled={status === `processing` ? true : false }
-                                >
-                                { status === `processing` ? `Saving...` :  `Continue`}
-                            </button>
-                        </div>
-                    </div>
-                </form>
-            }
-            {step === 2 &&
-                <form onSubmit={handleSubmit(onSubmit)} className={`${classes}`}>
-                    {errors[0] && 
-                        <div className={`bg-[#E10000] text-white py-3 px-6 mt-3 mb-6`}>
-                            {errors.map((error) => {
-                                return(
-                                    <p className={`${theme.text.P_BLD}`}>{error.message}</p>
-                                )
-                            })}
-                        </div>
-                    }
-
-                    {status === `fail-email` &&
-                        <div className={`bg-[#E10000] text-white py-3 px-6 mt-3 mb-6`}>
-                            <p className={`${theme.text.P_BLD}`}>There was an error when emailing your submission. Please try again. If the issue persist, let us know at <a href="tel:908-340-4480">908-340-4480</a>.</p>
-                        </div>
-                    }
-
-                    {status === `success` &&
-                        <div className={`bg-rm-aqua text-white py-3 px-6 mt-3 mb-6`}>
-                            <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch with you shortly.</p>
-                        </div>
-                    }
-
-                    <div>
-                        <span className={`mb-6 block`}><Select bg={'white'} errors={errors} register={register} required={true} name={`companySize`} label={`Company Size`} options={[`< 10 Employees`,`10-50 Employees`,`50-250 Employees`,`250+ Employees`]} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`mb-6 block`}><Select bg={'white'} errors={errors} register={register} required={true} name={`companyRevenue`} label={`Company Revenue`} options={[`< $10M`,`$10M-$50M`,`$50M-$1B`,`$1B+`]} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`mb-6 block`}><CheckboxGroup bg={'white'} errors={errors} register={register} required={true} name={`interests`} label={`What are you interested in? (Select all that apply)`} options={['Branding', 'Marketing Strategy & Messaging', 'Website Design & Development', 'Content Marketing', 'AI Search Marketing', 'Digital & PPC Advertising', 'Social Media Support', 'Video Production']} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <span className={`mb-6 block`}><TextArea bg={'white'} errors={errors} register={register} required={true} name={`message`} label={`Tell us about your marketing goals`} bgColor={`white`} textColor={`black`} fontWeight={`light`} /></span>
-                        <input type="hidden" {...register('urlSource')} />
                         <div className={`mt-10 ${btnContainerClasses ? btnContainerClasses : ``}`}>
                             <button
                                 className={`${status === `processing` ? `opacity-80` : `` } ${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} cursor-pointer min-w-[210px]`}

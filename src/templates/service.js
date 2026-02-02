@@ -7,7 +7,6 @@ import { Container, Section } from '../components/global/Wrappers'
 import { theme, ThemeContext } from '../static/theme'
 import Buttons from '../components/global/Buttons'
 import Parser from '../components/global/Parser'
-import { SeoPopup } from "../components/SeoPopup"
 
 export const Head = ({data}) => (
   <>
@@ -115,9 +114,6 @@ const WpService = ({ data }) =>{
   return (
     <>
       {/* <Seo post={data.wpService} /> */}
-      {data.wpService.uri === '/service/ai-and-search-engine-optimization/' && 
-        <SeoPopup />
-      }
       <Section settings={settings}>
         <Container>
           {content.eyebrow &&

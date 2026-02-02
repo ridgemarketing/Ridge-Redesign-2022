@@ -132,9 +132,6 @@ export const ThemeContext = React.createContext({
     updateAccentFunction: () => {},
     updateSecondaryFunction: () => {},
 
-    position: 'fixed',
-    updateHeaderPositionFunction: () => {},
-
     //context for portfolio page
     filterState: "Websites",
     updateFilterState: () => {}
