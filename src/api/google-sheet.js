@@ -3,13 +3,15 @@ import { google } from "googleapis";
 async function handler(req, res) {
 
     // Decode base64 private key if it doesn't start with the PEM header
-    let privateKey = process.env.GOOGLE_PRIVATE_KEY || '';
-    if (!privateKey.includes('-----BEGIN')) {
-        // Assume base64 encoded
-        privateKey = Buffer.from(privateKey, 'base64').toString('utf-8');
-    }
-    // Also handle literal \n just in case
-    privateKey = privateKey.split('\\n').join('\n');
+    // let privateKey = process.env.GOOGLE_PRIVATE_KEY || '';
+    // if (!privateKey.includes('-----BEGIN')) {
+    //     // Assume base64 encoded
+    //     privateKey = Buffer.from(privateKey, 'base64').toString('utf-8');
+    // }
+    // // Also handle literal \n just in case
+    // privateKey = privateKey.split("\\n").join("\n");
+
+    const privateKey = process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n");
 
     const auth = new google.auth.GoogleAuth({
     credentials: {
