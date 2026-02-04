@@ -18,7 +18,7 @@ async function handler(req, res) {
     if (!privateKey.includes("-----BEGIN PRIVATE KEY-----")) {
       throw new Error("Invalid private key format — missing PEM header");
     }
-
+ 
     const auth = new google.auth.GoogleAuth({ 
     credentials: {
         client_email    : process.env.GOOGLE_CLIENT_EMAIL,
