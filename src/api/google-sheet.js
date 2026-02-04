@@ -2,12 +2,13 @@ import { google } from "googleapis";
 
 async function handler(req, res) {
 
-    // Handle different private key formats from env vars
+    // Decode base64 private key if it doesn't start with the PEM header
     let privateKey = process.env.GOOGLE_PRIVATE_KEY || '';
-    // Debug: log what we're getting
-    console.log('Private key includes literal backslash-n:', privateKey.includes('\\n'));
-    console.log('Private key first 30 chars:', privateKey.substring(0, 30));
-    // Replace literal \n with actual newlines using split/join
+    if (!privateKey.includes('-----BEGIN')) {
+        // Assume base64 encoded
+        privateKey = Buffer.from(privateKey, 'base64').toString('utf-8');
+    }
+    // Also handle literal \n just in case
     privateKey = privateKey.split('\\n').join('\n');
 
     const auth = new google.auth.GoogleAuth({
