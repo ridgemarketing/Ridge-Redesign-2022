@@ -39,8 +39,8 @@ async function sendEmail(req, res) {
             //   name:"Chase"
             // }
             {
-              email:"harrison@ridgemarketing.com", 
-              name:"Harrison"
+              email:"alejandro@ridgemarketing.com", 
+              name:"Alejandro"
             }
           ],
           subject: subject && subject.length > 0 ? subject : `Ridge PPC Lead - ${message['name']}`,

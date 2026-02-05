@@ -14,13 +14,15 @@ async function handler(req, res) {
     // if (!privateKey.includes("-----BEGIN PRIVATE KEY-----")) {
     //   throw new Error("Invalid private key format — missing PEM header");
     // }
- 
+
+    const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+
     const auth = new google.auth.GoogleAuth({ 
-    credentials: {
-        client_email    : process.env.GOOGLE_CLIENT_EMAIL,
-        private_key     : privateKey,
-    },
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+        credentials: {
+            client_email: serviceAccount.client_email,
+            private_key: serviceAccount.private_key,
+        },
+        scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
 
     const sheets        = google.sheets({ version: "v4", auth });
