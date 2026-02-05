@@ -2,8 +2,8 @@ import { google } from "googleapis";
 
 async function handler(req, res) {
 
-    //let privateKey = process.env.GOOGLE_PRIVATE_KEY || '';
-    //privateKey = privateKey.split("\\n").join("\n");
+    let privateKey = process.env.GOOGLE_PRIVATE_KEY || '';
+    privateKey = privateKey.split("\\n").join("\n");
 
     // const privateKey = process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n");
 
@@ -15,14 +15,12 @@ async function handler(req, res) {
     //   throw new Error("Invalid private key format — missing PEM header");
     // }
 
-    const clientEmail = process.env.GOOGLE_CLIENT_EMAIL;
-    let privateKey = process.env.GOOGLE_SERVICE_ACCOUNT || '';
-    privateKey = privateKey.replace(/\\n/g, '\n');
-    
+    const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+
     const auth = new google.auth.GoogleAuth({ 
         credentials: {
-            client_email: clientEmail,
-            private_key: privateKey,
+            client_email: serviceAccount.client_email,
+            private_key: serviceAccount.private_key,
         },
         scopes: ["https://www.googleapis.com/auth/spreadsheets"],
     });
