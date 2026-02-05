@@ -13,6 +13,8 @@ import PPCTools from "./PpcTools"
 
 const PPCLanderWrapper = ({data}) => {
 
+    console.log(data)
+
     return(<>
         <style>{`
             main { overflow : hidden }

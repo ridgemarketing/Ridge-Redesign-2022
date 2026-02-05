@@ -563,8 +563,8 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
         //     },
         //     method  : "POST",
         // })
-        // const googleError = await googleSheet.json()
-        // console.log('google response', googleError)
+        // const { googleError } = await googleSheet.json()
+        // console.log('google data', googleError)
 
         // if (googleError) {
         //   console.log(googleError);
@@ -695,5 +695,121 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
                 </form>
             }
         </div>
+    )
+}
+
+export const FormAudit2026 = ({classes, submitLabel, btnStyle, redirectForm}) => {
+    const { register, handleSubmit, watch, reset, setValue, formState, formState: { errors, isSubmitSuccessful } } = useForm()
+    const [status, setStatus]               = useState(false)
+    const [submittedData, setSubmittedData] = useState({})
+    const [urlSource, setUrlSource]         = useState(null)
+
+    useEffect(() => {
+        let params = new URLSearchParams(document.location.search)
+        if (params.get("utm_source")) {
+            setUrlSource(params.get("utm_source"))
+            setValue('urlSource', params.get("utm_source"))
+        }
+    },[])
+
+    const onSubmit = async (data) => {
+
+        setStatus(`processing`)
+
+        const message = JSON.stringify(data)
+
+        // const googleSheet = await fetch("/api/google-sheet", {
+        //     body: JSON.stringify({
+        //         message : message,
+        //     }),
+        //     headers : {
+        //         "Content-Type": "application/json",
+        //     },
+        //     method  : "POST",
+        // })
+        // const { googleError } = await googleSheet.json()
+        // console.log('google data', googleError)
+
+        const res = await fetch("/api/sendgrid-landers", {
+            body    : JSON.stringify({
+            email   : data.email,
+            subject : `New Audit Page Submission`,
+            message : message,
+        }),
+            headers : {
+            "Content-Type": "application/json",
+        },
+            method  : "POST",
+        })
+
+        const { error } = await res.json();
+
+        if (error) {
+          console.log(error);
+          setStatus(`fail-email`)
+          return
+        }
+
+        setStatus(`success`)
+        setSubmittedData(data)
+
+    }
+
+    useEffect(() => {
+        if (formState.isSubmitSuccessful && status === `success`) {
+            reset()
+            if (window.dataLayer && typeof window.dataLayer.push === "function") {
+                window.dataLayer.push({event: 'Audit 2026 Form Submission'});
+            }
+            if (redirectForm) {
+                navigate("/thank-you-audit/")
+            }
+          }
+
+    }, [formState, submittedData, reset])
+
+    return(
+        <form onSubmit={handleSubmit(onSubmit)} className={`${classes}`}>
+            {errors[0] &&
+                <div className={`bg-[#E10000] text-white py-3 px-6 mt-3 mb-6`}>
+                    {errors.map((error) => {
+                        return(
+                            <p className={`${theme.text.P_BLD}`}>{error.message}</p>
+                        )
+                    })}
+                </div>
+            }
+
+            {status === `fail-email` &&
+                <div className={`bg-[#E10000] text-white py-3 px-6 mt-3 mb-6`}>
+                    <p className={`${theme.text.P_BLD}`}>There was an error when emailing your submission. Please try again. If the issue persist, let us know at <a href="tel:908-340-4480">908-340-4480</a>.</p>
+                </div>
+            }
+
+            {status === `success` &&
+                <div className={`bg-rm-aqua text-white py-3 px-6 mt-3 mb-6`}>
+                    <p className={`${theme.text.P_BLD}`}>Thank you for your submission. We will be in touch with you shortly.</p>
+                </div>
+            }
+
+            <div className="flex flex-col gap-2">
+                <Input errors={errors} register={register} required={true} type={`text`} name={`name`} label={`Full Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
+                <Input errors={errors} register={register} required={true} type={`text`} name={`company`} label={`Company`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
+                <Input errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Email`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
+                <PhoneInput errors={errors} register={register} required={true} type={`tel`} name={`phone`} label={`Phone`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
+                <Input errors={errors} register={register} required={true} type={`url`} name={`website`} label={`Website URL`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
+                <input type="hidden" {...register('urlSource')} />
+                <div className={`mt-4`}>
+                    <button
+                        className={`${status === `processing` ? `opacity-80` : `` } ${theme.button['BASE_STYLING']} ${theme.button[btnStyle ? btnStyle : `SOLID_GREEN_HOVER_DARK`]} cursor-pointer w-max flex flex-nowrap items-center gap-2 group mt-8`}
+                        type="submit" disabled={status === `processing` ? true : false }>
+                            { status === `processing` ? `Sending...` : submitLabel || `Submit`}
+                            <svg className="group:hover:text-white group-focus:text-white" width="25" height="16" viewBox="0 0 25 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.1328 0.21875C16.4062 0 16.7891 0 17.0625 0.21875L24.2812 7.4375C24.5 7.71094 24.5 8.09375 24.2812 8.36719L17.0625 15.5859C16.7891 15.8047 16.4062 15.8047 16.1328 15.5859L15.0391 14.4922C14.8203 14.2188 14.8203 13.8359 15.0938 13.5625L19.4688 9.29688H0.65625C0.273438 9.29688 0 9.02344 0 8.64062V7.10938C0 6.78125 0.273438 6.45312 0.65625 6.45312H19.4688L15.0938 2.24219C14.8203 1.96875 14.8203 1.58594 15.0391 1.3125L16.1328 0.21875Z" fill="currentColor"/>
+                            </svg>
+                    </button>
+                </div>
+            </div>
+        </form>
     )
 }
