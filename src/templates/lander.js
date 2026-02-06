@@ -317,6 +317,45 @@ export const query = graphql`
         }
 
       Ridge2026PPC {
+        heroCopy{
+          heading
+          subHeading
+                    componentButton {
+              style
+              link {
+                target
+                title
+                url
+              }
+              colors {
+                resting
+              }
+            }
+            circleImagesDown {
+              image {
+                  localFile {
+                    ext
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+                  altText
+                  sourceUrl
+              }
+            }
+            circleImagesUp {
+              image {
+                  localFile {
+                    ext
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+                  altText
+                  sourceUrl
+              }
+            }
+        }
         hero {
           heading
           circleImagesDown {
@@ -452,7 +491,29 @@ export const query = graphql`
           heading
         }
 
+        statsCopy {
+          columns {
+            body
+            number
+          }
+          body
+          heading
+        }
+
         logos {
+          image {
+            altText
+            sourceUrl
+            localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+          }
+        }
+
+        logosCopy {
           image {
             altText
             sourceUrl

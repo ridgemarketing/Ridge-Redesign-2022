@@ -15,7 +15,7 @@ const AuditFormText = ({data}) => {
             <Container container="slim">
                 {/* Intro Text - Centered Teal - H5-Light style */}
                 <div className="py-20 text-center">
-                    <p className={`${theme.text.H5} !font-light text-rm-aqua max-w-[1255px] mx-auto`}>
+                    <p className={`font-stratos text-40px leading-44px !font-light text-rm-aqua max-w-[1255px] mx-auto`}>
                         If AI search tools like ChatGPT, Copilot, and Claude aren't citing your brand, you may be missing opportunities for growth.
                     </p>
                 </div>

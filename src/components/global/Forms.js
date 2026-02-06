@@ -718,17 +718,6 @@ export const FormAudit2026 = ({classes, submitLabel, btnStyle, redirectForm}) =>
 
         const message = JSON.stringify(data)
 
-        // const googleSheet = await fetch("/api/google-sheet", {
-        //     body: JSON.stringify({
-        //         message : message,
-        //     }),
-        //     headers : {
-        //         "Content-Type": "application/json",
-        //     },
-        //     method  : "POST",
-        // })
-        // const { googleError } = await googleSheet.json()
-        // console.log('google data', googleError)
 
         const res = await fetch("/api/sendgrid-landers", {
             body    : JSON.stringify({

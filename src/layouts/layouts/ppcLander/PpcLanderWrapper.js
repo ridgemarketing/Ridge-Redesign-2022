@@ -20,8 +20,8 @@ const PPCLanderWrapper = ({data}) => {
             main { overflow : hidden }
         `}</style>
         {data.hero && <> 
-            <PPCHero data={data.hero} /> {/* above 1280 */}
-            <PPCHeroStandard data={data.hero} /> {/* below 1280 */}
+            <PPCHero data={data.heroCopy} /> {/* above 1280 */}
+            <PPCHeroStandard data={data.heroCopy} /> {/* below 1280 */}
         </>}
         {data.twoColumnContent &&
             <PPCTwoColContent data={data.twoColumnContent} />
@@ -30,14 +30,14 @@ const PPCLanderWrapper = ({data}) => {
             <PPCProjectSlider data={data.projectSlider} />
         }
         {data.stats &&
-            <PPCStats data={data.stats} />
+            <PPCStats data={data.statsCopy} />
         }
         {data.logos && 
-            <PPCLogos data={data.logos} />
+            <PPCLogos data={data.logosCopy} />
         }
-        {data.process &&
+        {/* {data.process &&
             <PPCProcess data={data.process} />
-        }   
+        }    */}
         {data.form &&
             <PPCForm data={data.form} />
         }

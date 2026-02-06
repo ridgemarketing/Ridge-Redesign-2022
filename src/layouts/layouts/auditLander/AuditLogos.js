@@ -10,7 +10,6 @@ const AuditLogos = ({data}) => {
     const body      = data.body ?? false
     const logos     = data.logos ?? false
 
-    // Duplicate logos for seamless loop
     const allLogos = logos ? [...logos, ...logos] : []
 
     return(<>

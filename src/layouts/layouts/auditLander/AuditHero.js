@@ -18,7 +18,7 @@ const AuditHero = ({data}) => {
     const largeDesktopBg        = data.largeDesktop ?? false
 
     return(
-        <section className="relative">
+        <section className="relative min-h-[975px] md:min-h-[1115px] xl:min-h-min">
             {largeDesktopBg && largeDesktopBg.localFile?.childImageSharp?.gatsbyImageData &&
                 <div className="absolute !bottom-0 inset-0 hidden 2xl:block">
                     <GatsbyImage

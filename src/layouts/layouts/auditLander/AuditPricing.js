@@ -81,7 +81,7 @@ const AuditPricing = ({data}) => {
     const buttons       = data.componentButtonGroup ?? false
 
     return (
-        <section className="py-20 bg-[#f3f9f9]">
+        <section id="pricing" className="py-20 bg-[#f3f9f9]">
             <Container>
                 {/* Section Header */}
                 <div className="flex flex-col gap-6 text-center mb-16">

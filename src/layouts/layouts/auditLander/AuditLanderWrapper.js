@@ -12,6 +12,7 @@ const AuditLanderWrapper = ({data}) => {
     return(<>
         <style>{`
             main { overflow : hidden }
+            html .gatsby-image-wrapper img, .gatsby-image-wrapper img { bottom:0 !important}
         `}</style>
 
         {data.hero &&
