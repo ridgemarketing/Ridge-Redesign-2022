@@ -34,7 +34,7 @@ const PPCLanderWrapper = ({data}) => {
         }
         {data.logos && 
             <PPCLogos data={data.logosCopy} />
-        }
+        } 
         {/* {data.process &&
             <PPCProcess data={data.process} />
         }    */}
