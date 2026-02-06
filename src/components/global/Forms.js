@@ -782,10 +782,9 @@ export const FormAudit2026 = ({classes, submitLabel, btnStyle, redirectForm}) =>
             }
 
             <div className="flex flex-col gap-2">
-                <Input errors={errors} register={register} required={true} type={`text`} name={`name`} label={`Full Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
-                <Input errors={errors} register={register} required={true} type={`text`} name={`company`} label={`Company`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
-                <Input errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Email`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
-                <PhoneInput errors={errors} register={register} required={true} type={`tel`} name={`phone`} label={`Phone`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
+                <Input errors={errors} register={register} required={true} type={`text`} name={`firstName`} label={`First Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
+                <Input errors={errors} register={register} required={true} type={`text`} name={`lastName`} label={`Last Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
+                <Input errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Business Email`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
                 <Input errors={errors} register={register} required={true} type={`url`} name={`website`} label={`Website URL`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
                 <input type="hidden" {...register('urlSource')} />
                 <div className={`mt-4`}>
