@@ -719,7 +719,7 @@ export const FormAudit2026 = ({classes, submitLabel, btnStyle, redirectForm}) =>
         const message = JSON.stringify(data)
 
 
-        const res = await fetch("/api/sendgrid-landers", {
+        const res = await fetch("/api/sendgrid-audit", {
             body    : JSON.stringify({
             email   : data.email,
             subject : `New Audit Page Submission`,
