@@ -64,3 +64,34 @@
 // }
 
 // export default handler
+
+
+async function handler(req, res) {
+
+    if (req.method !== "POST") {
+        return res.status(405).json({ message: "Method not allowed" });
+    }
+
+    try {
+        const message = JSON.parse(req.body.message);
+        const wpResponse = await fetch(`http://ridge-marketing-2022.local/wp-admin/admin-ajax.php`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                action: 'ridge_get_data_to_add_to_sheet',
+                verify: process.env.VERIFY_GATSBY,
+                data: JSON.stringify(message),
+            }),
+        })
+        const wpData = await wpResponse.json();
+        return res.status(200).json({ data: wpData });
+    }
+    catch (error) {
+        console.error("Google Sheets error:", error);
+        return res.status(500).json({ message: error.message });
+    }
+
+}
+export default handler

@@ -554,17 +554,17 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
 
         const message = JSON.stringify(data)
 
-        // const googleSheet = await fetch("/api/google-sheet", {
-        //     body: JSON.stringify({
-        //         message : message,
-        //     }),
-        //     headers : {
-        //         "Content-Type": "application/json",
-        //     },
-        //     method  : "POST",
-        // })
-        // const { googleError } = await googleSheet.json()
-        // console.log('google data', googleError)
+        const googleSheet = await fetch("/api/google-sheet", {
+            body: JSON.stringify({
+                message : message,
+            }),
+            headers : {
+                "Content-Type": "application/json",
+            },
+            method  : "POST",
+        })
+        const { googleError } = await googleSheet.json()
+        console.log('google data', googleError)
 
         // if (googleError) {
         //   console.log(googleError);
