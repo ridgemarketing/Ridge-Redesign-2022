@@ -5,12 +5,15 @@ import PPCTwoColContent from "./PpcTwoColContent"
 import PPCProjectSlider from "./PpcProjectSlider"
 import PPCStats from "./PpcStats"
 import PPCLogos from "./PpcLogos"
+import PPCProcess from "./PpcProcess"
 import PPCForm from "./PpcForm"
 import PPCIconTextBoxes from "./PpcIconTextBoxes"
 import PPCQuotes from "./PpcQuotes"
 import PPCTools from "./PpcTools"
 
 const PPCLanderWrapper = ({data}) => {
+
+    console.log(data)
 
     return(<>
         <style>{`
@@ -32,6 +35,9 @@ const PPCLanderWrapper = ({data}) => {
         {data.logos && 
             <PPCLogos data={data.logos} />
         }
+        {data.process &&
+            <PPCProcess data={data.process} />
+        }   
         {data.form &&
             <PPCForm data={data.form} />
         }

@@ -7,7 +7,7 @@ export const theme = {
     
     text:{
         HERO:               'font-stratos uppercase font-bold text-50px sm:text-60px lg:text-100px leading-H1-m lg:leading-H1 ',
-        PAGE_HEADER:        'font-stratos uppercase font-bold text-60px md:text-80px leading-[74px] xl:text-100px xl:leading-[76px] ',
+        PAGE_HEADER:        'font-stratos uppercase font-bold text-60px md:text-80px leading-[60px] xl:text-100px xl:leading-[76px] ',
         H1_STD:             'font-stratos uppercase font-bold text-60px lg:text-80px leading-H1-m lg:leading-H1 ',
         H1_LTE:             'font-stratos-lights uppercase text-60px lg:text-80px leading-H1-m lg:leading-H1 ',
         H2:                 'font-stratos uppercase font-bold text-50px leading-H2-H3 ',
@@ -37,8 +37,12 @@ export const theme = {
         SOLID_GREEN_HOVER_DARK:         'SOLID_GREEN_HOVER_DARK text-rm-black border-rm-green bg-rm-green hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
         
         SOLID_BLACK_HOVER_DARK:         'SOLID_BLACK_HOVER_LIGHT text-rm-white border-rm-black bg-rm-black hover:bg-rm-green hover:text-rm-black hover:border-rm-green ',
-    
+
+        SOLID_WHITE_HOVER_DARK:         'SOLID_WHITE_HOVER_DARK text-rm-black border-rm-white bg-rm-white hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
+        SOLID_WHITE_HOVER_LIGHT:        'SOLID_WHITE_HOVER_LIGHT text-rm-black border-rm-white bg-rm-white hover:bg-rm-black hover:text-rm-white hover:border-rm-black ',
+
         GHOST_WHITE_HOVER_LIGHT:        'GHOST_WHITE_HOVER_LIGHT text-rm-white border-rm-white hover:bg-rm-green hover:text-rm-black hover:border-rm-green',
+        GHOST_WHITE_HOVER_DARK:         'GHOST_WHITE_HOVER_DARK text-rm-black border-rm-white bg-rm-white hover:bg-rm-green hover:text-rm-black hover:border-rm-green',
         
         GHOST_GREEN_GREY_HOVER_DARK:    'GHOST_GREEN_HOVER_DARK text-rm-black border-rm-green bg-rm-pale-grey hover:bg-rm-green ',
         GHOST_GREEN_GREY_HOVER_LIGHT:   'GHOST_GREEN_HOVER_LIGHT text-rm-white border-rm-green bg-rm-pale-grey hover:bg-rm-green hover:text-rm-black ',  
