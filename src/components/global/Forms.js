@@ -751,7 +751,7 @@ export const FormAudit2026 = ({classes, submitLabel, btnStyle, redirectForm}) =>
                 window.dataLayer.push({event: 'Audit 2026 Form Submission'});
             }
             if (redirectForm) {
-                navigate("/thank-you-audit/")
+                navigate("/thank-you-audit/") 
             }
           }
 
