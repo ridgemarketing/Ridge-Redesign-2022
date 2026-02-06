@@ -15,7 +15,7 @@ const PPCForm = ({data}) => {
     let btnStyle    = `SOLID_GREEN_HOVER_DARK`
 
     return(<>
-        <section className="bg-black -mt-[1px]">
+        <section className="bg-white -mt-[1px]">
             <BottomCloudPiece_Large className={`w-full hidden xl:block cloudAnimation-Bottom z-10 relative`} />
             <BottomCloudPiece_Medium className={`w-full hidden md:block xl:hidden cloudAnimation-Bottom z-10 relative`} />
             <BottomCloudPiece_Small className={`w-full md:hidden cloudAnimation-Bottom z-10 relative`} />

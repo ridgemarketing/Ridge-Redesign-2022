@@ -16,28 +16,28 @@ async function sendEmail(req, res) {
       personalizations: [
         {
           to: [
-              // {
-              //   email: "aquincy@ridgemarketing.com", 
-              //   name: "Andrea Quincy"
-              // }
               {
-                email: "harrison@ridgemarketing.com", 
-                name: "Harrison"
+                email: "aquincy@ridgemarketing.com", 
+                name: "Andrea Quincy"
               }
+              // {
+              //   email: "harrison@ridgemarketing.com", 
+              //   name: "Harrison"
+              // }
             ], 
           cc: [
-            // {
-            //   email:"rquincy@ridgemarketing.com", 
-            //   name:"Rob Quincy"
-            // }, 
+            {
+              email:"rquincy@ridgemarketing.com", 
+              name:"Rob Quincy"
+            }, 
             {
               email:"dev@ridgemarketing.com", 
               name:"Developers"
             },
-            // {
-            //   email:"chase@ridgemarketing.com", 
-            //   name:"Chase"
-            // }
+            {
+              email:"chase@ridgemarketing.com", 
+              name:"Chase"
+            }
           ],
           subject: subject && subject.length > 0 ? subject : `Ridge PPC Lead - ${message['name']}`,
           dynamic_template_data:{

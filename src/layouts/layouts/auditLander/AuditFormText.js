@@ -15,9 +15,12 @@ const AuditFormText = ({data}) => {
             <Container container="slim">
                 {/* Intro Text - Centered Teal - H5-Light style */}
                 <div className="py-20 text-center">
-                    <p className={`font-stratos text-40px leading-44px !font-light text-rm-aqua max-w-[1255px] mx-auto`}>
-                        If AI search tools like ChatGPT, Copilot, and Claude aren't citing your brand, you may be missing opportunities for growth.
-                    </p>
+                    {mainBody &&
+                        <h2
+                            dangerouslySetInnerHTML={{__html: Parser(mainBody)}}
+                            className={`font-stratos text-40px leading-44px !font-light text-rm-aqua max-w-[1255px] mx-auto`}
+                        />
+                    }
                 </div>
 
                 {/* Two Column Layout */}
@@ -26,9 +29,9 @@ const AuditFormText = ({data}) => {
                     {/* Left Column - Intro Copy */}
                     <div className="flex flex-col gap-6 flex-1 xl:max-w-[613px]">
                         {/* H3 - 34px - Light style */}
-                        {mainBody &&
+                        {listBody &&
                             <p
-                                dangerouslySetInnerHTML={{__html: Parser(mainBody)}}
+                                dangerouslySetInnerHTML={{__html: Parser(listBody)}}
                                 className={`font-light text-[2.125rem] leading-[2.5rem] text-black font-basic-sans`}
                             />
                         }
