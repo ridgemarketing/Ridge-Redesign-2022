@@ -74,7 +74,7 @@ async function handler(req, res) {
 
     try {
         const message = JSON.parse(req.body.message);
-        const wpResponse = await fetch(`http://ridge-marketing-2022.local/wp-admin/admin-ajax.php`, {
+        const wpResponse = await fetch(process.env.WP_URL, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
