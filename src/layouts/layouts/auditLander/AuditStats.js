@@ -58,7 +58,7 @@ const AuditStats = ({data, cmo}) => {
     const stats     = data.stats ?? false
 
     return (
-        <section className={`py-20 bg-white ${cmo && 'bg-rm-carbon'}`}>
+        <section className={`py-20 ${cmo ? 'bg-rm-carbon' : 'bg-white'}`}>
             <Container container="none" classes="max-w-[1450px] mx-auto px-4">
                 {/* Section Header */}
                 <div className="flex flex-col gap-6 text-center mb-16">
