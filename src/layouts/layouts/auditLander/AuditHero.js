@@ -71,7 +71,7 @@ const AuditHero = ({data}) => {
 
                         {/* Pre-heading - H4 style with 36px line height */}
                         {preHeading &&
-                            <p className={`${theme.text.H4} !leading-[36px] text-rm-aqua`}>
+                            <p className={`${theme.text.H4} !leading-[36px] text-rm-blog-blue`}>
                                 {preHeading}
                             </p>
                         }

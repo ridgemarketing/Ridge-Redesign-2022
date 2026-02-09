@@ -18,7 +18,7 @@ const AuditFormText = ({data}) => {
                     {mainBody &&
                         <h2
                             dangerouslySetInnerHTML={{__html: Parser(mainBody)}}
-                            className={`font-stratos text-40px leading-44px !font-light text-rm-aqua max-w-[1255px] mx-auto`}
+                            className={`font-stratos text-40px leading-44px !font-light text-rm-blog-blue max-w-[1255px] mx-auto`}
                         />
                     }
                 </div>
@@ -43,7 +43,7 @@ const AuditFormText = ({data}) => {
                                     <div key={index} className="flex items-center gap-4">
                                         {/* Arrow Icon */}
                                         <svg
-                                            className="w-6 h-6 shrink-0 text-rm-aqua"
+                                            className="w-6 h-6 shrink-0 text-rm-blog-blue"
                                             fill="none"
                                             stroke="currentColor"
                                             viewBox="0 0 24 24"
@@ -73,7 +73,7 @@ const AuditFormText = ({data}) => {
                             {/* Form Header */}
                             <div className="flex flex-col gap-2 mb-2">
                                 {/* H3 - 34px style */}
-                                <h2 className={`${theme.text.H3} !text-[34px] text-rm-aqua`}>
+                                <h2 className={`${theme.text.H3} !text-[34px] text-rm-blog-blue`}>
                                     Get Your Custom Website Audit
                                 </h2>
                                 {/* P style */}

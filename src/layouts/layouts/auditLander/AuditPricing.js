@@ -26,10 +26,10 @@ const PriceBox = ({box, index, isRecommended}) => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className={`flex flex-col p-8 xl:p-12 border border-[#cdcdcd] bg-white relative w-full xl:min-w-[400px] xl:w-auto ${isRecommended ? 'xl:-mt-6 xl:pb-16' : ''}`}
+            className={`flex flex-col p-8 xl:p-12 border border-[#cdcdcd] bg-white relative w-full xlz:min-w-[400px] xl:w-auto ${isRecommended ? 'xl:-mt-6 xl:pt-16' : ''}`}
         >
             {isRecommended &&
-                <div className="absolute -top-4 left-8 xl:left-1/2 xl:-translate-x-1/2 bg-rm-aqua px-6 py-2">
+                <div className="absolute -top-4 left-8 xl:left-1/2 xl:-translate-x-1/2 bg-rm-blog-blue px-6 py-2">
                     <span className="font-basic-sans text-[26px] leading-[36px] font-semibold text-white uppercase whitespace-nowrap">
                         Recommended
                     </span>
@@ -82,7 +82,7 @@ const AuditPricing = ({data}) => {
 
     return (
         <section id="pricing" className="py-20 bg-[#f3f9f9]">
-            <Container>
+            <Container container={"slim"}>
                 {/* Section Header */}
                 <div className="flex flex-col gap-6 text-center mb-16">
                     {/* H5 style */}

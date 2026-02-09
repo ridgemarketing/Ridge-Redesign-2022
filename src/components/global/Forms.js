@@ -785,7 +785,7 @@ export const FormAudit2026 = ({classes, submitLabel, btnStyle, redirectForm}) =>
                 <Input errors={errors} register={register} required={true} type={`text`} name={`firstName`} label={`First Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
                 <Input errors={errors} register={register} required={true} type={`text`} name={`lastName`} label={`Last Name`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
                 <Input errors={errors} register={register} required={true} type={`email`} name={`email`} label={`Business Email`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
-                <Input errors={errors} register={register} required={true} type={`url`} name={`website`} label={`Website URL`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
+                <Input errors={errors} register={register} required={true} type={`text`} name={`website`} label={`Website URL`} bgColor={`white`} textColor={`black`} fontWeight={`light`} />
                 <input type="hidden" {...register('urlSource')} />
                 <div className={`mt-4`}>
                     <button
