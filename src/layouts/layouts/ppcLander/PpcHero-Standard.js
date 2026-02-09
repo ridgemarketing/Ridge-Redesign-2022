@@ -20,7 +20,6 @@ const PPCHeroStandard = ({data}) => {
     useEffect(() => {
 
         const observer = new IntersectionObserver(([entry]) => {
-            console.log(entry)
             if (entry.isIntersecting) {
                 const shapes = [...entry?.target?.children] ?? false
                 if (shapes) {

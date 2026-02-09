@@ -94,9 +94,9 @@ const IconTextBoxFlex = (props) => {
     }, [height, iconHeight, windowWidth])
 
 
-    let customCase = 'uppercase'
+    let customCase = 'capitalize'
     if (props.lowercase) {
-        customCase = 'capitalize'
+        customCase = 'uppercase'
     }
 
     return(
