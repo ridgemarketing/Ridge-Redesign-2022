@@ -71,7 +71,7 @@ const PPCIconTextBoxes = ({data}) => {
                                         textColor   ={`text-white`} 
                                         columns     ={`3`}
                                         custom      ={icon.heading == "Messaging & Positioning" ? true : false}
-                                        lowercase   ={true} 
+                                        lowercase   ={false} 
                                         content     ={icon}/>
                         })}
                     </div>

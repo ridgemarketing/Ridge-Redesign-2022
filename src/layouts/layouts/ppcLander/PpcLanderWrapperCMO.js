@@ -10,8 +10,6 @@ import AuditStats from "../auditLander/AuditStats"
 
 const PPCLanderWrapperCMO = ({data, cmo}) => {
 
-    console.log(data)
-
     return(<>
         <style>{`
             main { overflow : hidden }
