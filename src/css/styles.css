@@ -243,6 +243,13 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     @apply w-full md:w-[48%];
 }
 
+.blog-container .aspect-mobile {
+    @apply aspect-[9/16] max-w-[250px] md:max-w-max mx-auto mb-10 md:mb-0
+}
+.blog-container .wp-block-columns {
+    @apply gap-6 mb-10
+}
+
 .max-960px {
     @apply max-w-[960px];
 }
