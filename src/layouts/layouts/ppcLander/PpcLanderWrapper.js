@@ -11,15 +11,13 @@ import PPCIconTextBoxes from "./PpcIconTextBoxes"
 import PPCQuotes from "./PpcQuotes"
 import PPCTools from "./PpcTools"
 
-const PPCLanderWrapper = ({data}) => {
-
-    console.log(data)
+const PPCLanderWrapper = ({data, cmo}) => {
 
     return(<>
         <style>{`
             main { overflow : hidden }
         `}</style>
-        {data.hero && <> 
+        {data.hero && !cmo && <> 
             <PPCHero data={data.heroCopy} /> {/* above 1280 */}
             <PPCHeroStandard data={data.heroCopy} /> {/* below 1280 */}
         </>}
@@ -27,7 +25,7 @@ const PPCLanderWrapper = ({data}) => {
             <PPCTwoColContent data={data.twoColumnContent} />
         }
         {data.projectSlider&&
-            <PPCProjectSlider data={data.projectSlider} />
+            <PPCProjectSlider data={data.projectSlider} cmo={cmo} />
         }
         {data.stats &&
             <PPCStats data={data.statsCopy} />

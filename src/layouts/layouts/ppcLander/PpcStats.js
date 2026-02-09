@@ -4,7 +4,7 @@ import { theme } from "../../../static/theme"
 import { Container } from "../../../components/global/Wrappers"
 import { motion } from "framer-motion"
 
-const PPCStats = ({data}) => {
+const PPCStats = ({data, cmo}) => {
     
     const heading   = data.heading ?? false
     const body      = data.body ?? false
@@ -35,14 +35,14 @@ const PPCStats = ({data}) => {
     }
 
     return(<>
-        <section className="my-[120px]">
+        <section className={`py-[120px] ${cmo && 'bg-rm-carbon'}`}>
             <Container classes={`flex flex-col gap-16`}>
                 <div className="flex flex-col gap-6">
                     {heading &&
-                        <h2 dangerouslySetInnerHTML={{__html: Parser(heading)}} className={`text-center text-[2.5rem] leading-[2.75rem] font-stratos text-black uppercase`}></h2>
+                        <h2 dangerouslySetInnerHTML={{__html: Parser(heading)}} className={`text-center text-[2.5rem] leading-[2.75rem] font-stratos ${cmo ? ' text-white' : 'text-black' } uppercase`}></h2>
                     }
                     {body &&
-                        <p dangerouslySetInnerHTML={{__html: Parser(body)}} className={`text-center ${theme.text.P_STD} text-black`}></p>
+                        <p dangerouslySetInnerHTML={{__html: Parser(body)}} className={`text-center ${theme.text.P_STD} ${cmo ? ' text-white' : 'text-black' }`}></p>
                     }
                 </div>
                 {stats && 
@@ -56,7 +56,7 @@ const PPCStats = ({data}) => {
                             return (
                                 <motion.li key={key} variants={variantItems}  className="flex flex-col w-full md:w-[calc(50%-24px)] xl:w-[calc(25%-24px)] gap-6 text-center font-stratos">
                                     <span className="text-[10rem] leading-[9.95rem] text-rm-green uppercase font-semibold -tracking-[0.75rem]">{stat.number === null ? `0` : stat.number}</span>
-                                    <span className={`${theme.text.H5} text-black`}>{stat.body}</span>
+                                    <span className={`${theme.text.H5} ${cmo ? ' text-white' : 'text-black' }`}>{stat.body}</span>
                                 </motion.li>
                             )
                         })}

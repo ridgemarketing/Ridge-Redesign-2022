@@ -5,7 +5,7 @@ import { Container } from "../../../components/global/Wrappers"
 import { ArrowTallLeftBlack } from "../../../static/arrow-tall-left-black"
 import { ArrowTallRightBlack } from "../../../static/arrow-tall-right-black"
 
-const PPCQuotes = ({data}) => { 
+const PPCQuotes = ({data, cmo}) => { 
 
     // COPYPASTA from LAYOUTS->Quotes.js 
 
@@ -146,13 +146,13 @@ const PPCQuotes = ({data}) => {
     }
 
     return(<>
-        <div ref={parallaxContainer} className={`block my-20 relative max-w-[1600px] mx-auto`}>
-            <section classes="overflow-hidden bg-transparent">
+        <div ref={parallaxContainer} className={`block py-20 relative`}>
+            <section classes="overflow-hidden bg-transparent max-w-[1600px] mx-auto">
                 <Container classes={`bg-transparent`}>
                     <div ref={sliderRef} className={`mt-12 flex w-full flex-wrap justify-between relative`}>
                         <div className={`p-8 lg:p-14 w-full`}>
-                            <div key={Math.random()}  className={`animate-quote text-center`}>
-                                <div dangerouslySetInnerHTML={{__html: Parser(slidedata.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out font-semibold text-black' }></div>
+                            <div key={Math.random()}  className={`animate-quote text-center ${cmo ? ' text-rm-aqua' : 'text-black' }`}>
+                                <div dangerouslySetInnerHTML={{__html: Parser(slidedata.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out font-semibold' }></div>
                                 <p className={ theme.text.P_BLD +  `pt-8 pb-2` }>
                                     { slidedata.title }
                                 </p>
@@ -174,8 +174,11 @@ const PPCQuotes = ({data}) => {
                         }
                     </div> 
                     <span ref={quoteLeft}  aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-[15%] left-[40px] sm:left-[88px] md:left-16 lg:left-18 xl:left-28 md:top-1/4 -z-10`}> “</span>
-                    <span ref={quoteRight} aria-hidden="true" className={`hidden md:block font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-3/4 right-[40px] sm:right-[88px] md:right-16 lg:right-18 xl:right-28 md:top-3/4  -z-10`}>” </span>
+                    <span ref={quoteRight} aria-hidden="true" className={`hidden md:block font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-3/4 right-[40px] sm:right-[88px] md:right-16 lg:right-18 xl:right-28 md:top-3/4 -z-10`}>” </span>
                 </Container>
+                {cmo && 
+                    <div className="absolute -z-20 w-full h-full bg-rm-carbon top-0 left-0" aria-hidden="true"></div>
+                }
                 
             </section>
       </div>

@@ -6,6 +6,7 @@ import PageHeader from "../layouts/layouts/PageHeader"
 import CustomHeader from "../components/global/headerColor"
 import { theme, ThemeContext } from "../static/theme"
 import PPCLanderWrapper from "../layouts/layouts/ppcLander/PpcLanderWrapper"
+import PPCLanderWrapperCMO from "../layouts/layouts/ppcLander/PpcLanderWrapperCMO"
 import AuditLanderWrapper from "../layouts/layouts/auditLander/AuditLanderWrapper"
 
 export const Head = ({data}) => (
@@ -67,7 +68,14 @@ const WpLander = ({ data, location }) => {
   if (data.wpLander.uri === '/lander/your-marketing-dream-team/') {
     return (<>
       <CustomHeader color={color} position={`sticky`} />
-      <PPCLanderWrapper data={data.wpLander.Ridge2026PPC} />
+      <PPCLanderWrapper data={data.wpLander.Ridge2026PPC} cmo={false} />
+    </>)
+  }
+
+  if (data.wpLander.uri === '/lander/ridge-ppc-2026-cmo/') {
+    return (<>
+      <CustomHeader color={color} position={`sticky`} />
+      <PPCLanderWrapperCMO data={data.wpLander.Ridge2026PPC_CMO} cmo={true} />
     </>)
   }
 
@@ -586,6 +594,178 @@ export const query = graphql`
             }
           }
         }
+          
+      }
+
+      Ridge2026PPC_CMO {
+        heroCmo{
+          heading
+          subHeading
+          image {
+                  localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+                  altText
+                  sourceUrl
+                }
+            componentButton {
+              style
+              link {
+                target
+                title
+                url
+              }
+              colors {
+                resting
+              }
+            }
+            callout {
+            body
+            heading
+          }
+          list {
+            item
+          }
+        }
+
+        approach {
+          image {
+                  localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+                  altText
+                  sourceUrl
+                }
+          heading
+          body
+        }
+
+        audit {
+          body
+          heading
+          list {
+            item
+          }
+          subHeading
+            image {
+              localFile {
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              altText
+              sourceUrl
+            }
+            componentButton {
+              colors {
+                resting
+              }
+              link {
+                target
+                title
+                url
+              }
+              style
+            }
+        }
+        
+        twoColumnContentCopy {
+          checklist {
+            heading
+            list {
+              item
+            }
+          }
+          videoText {
+            body
+            heading
+            video {
+              mediaDetails {
+                file
+                height
+                width
+              }
+              mimeType
+              mediaItemUrl
+            }
+          }
+        }
+
+        projectSliderCopy {
+          heading
+          images{
+            image {
+              localFile {
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              altText
+              sourceUrl
+            }
+          }
+          componentButtonGroup {
+            componentButton {
+              colors {
+                resting
+              }
+              link {
+                target
+                title
+                url
+              }
+              style
+            }
+          }
+        }
+
+        statsCopy2 {
+          stats {
+            heading
+            stat
+            subHeading
+          }
+          body
+          heading
+        }
+
+        formCopy {
+          body
+          heading
+          image {
+            altText
+            sourceUrl
+            localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+            }
+          }
+        }
+
+        quotesCopy {
+          quotes {
+            ... on WpReview {
+              id
+              title
+              content
+              reviewsFields {
+                fieldGroupName
+                titleCompany
+              }
+            }
+          }
+        }
+
           
       }
   }
