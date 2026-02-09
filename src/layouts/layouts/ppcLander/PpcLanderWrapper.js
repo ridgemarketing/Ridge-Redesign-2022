@@ -5,33 +5,37 @@ import PPCTwoColContent from "./PpcTwoColContent"
 import PPCProjectSlider from "./PpcProjectSlider"
 import PPCStats from "./PpcStats"
 import PPCLogos from "./PpcLogos"
+import PPCProcess from "./PpcProcess"
 import PPCForm from "./PpcForm"
 import PPCIconTextBoxes from "./PpcIconTextBoxes"
 import PPCQuotes from "./PpcQuotes"
 import PPCTools from "./PpcTools"
 
-const PPCLanderWrapper = ({data}) => {
+const PPCLanderWrapper = ({data, cmo}) => {
 
     return(<>
         <style>{`
             main { overflow : hidden }
         `}</style>
-        {data.hero && <> 
-            <PPCHero data={data.hero} /> {/* above 1280 */}
-            <PPCHeroStandard data={data.hero} /> {/* below 1280 */}
+        {data.hero && !cmo && <> 
+            <PPCHero data={data.heroCopy} /> {/* above 1280 */}
+            <PPCHeroStandard data={data.heroCopy} /> {/* below 1280 */}
         </>}
         {data.twoColumnContent &&
             <PPCTwoColContent data={data.twoColumnContent} />
         }
         {data.projectSlider&&
-            <PPCProjectSlider data={data.projectSlider} />
+            <PPCProjectSlider data={data.projectSlider} cmo={cmo} />
         }
         {data.stats &&
-            <PPCStats data={data.stats} />
+            <PPCStats data={data.statsCopy} />
         }
         {data.logos && 
-            <PPCLogos data={data.logos} />
-        }
+            <PPCLogos data={data.logosCopy} />
+        } 
+        {/* {data.process &&
+            <PPCProcess data={data.process} />
+        }    */}
         {data.form &&
             <PPCForm data={data.form} />
         }

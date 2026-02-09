@@ -1,51 +1,97 @@
-import { google } from "googleapis";
+// import { google } from "googleapis";
+
+// async function handler(req, res) {
+
+//     let privateKey = process.env.GOOGLE_PRIVATE_KEY || '';
+//     privateKey = privateKey.split("\\n").join("\n");
+
+//     // const privateKey = process.env.GOOGLE_PRIVATE_KEY.replace(/\\n/g, "\n");
+
+//     // let privateKey = process.env.GOOGLE_PRIVATE_KEY || "";
+//     // privateKey = privateKey.trim().replace(/^"(.*)"$/, "$1");
+//     // privateKey = privateKey.replace(/\\n/g, "\n");
+
+//     // if (!privateKey.includes("-----BEGIN PRIVATE KEY-----")) {
+//     //   throw new Error("Invalid private key format — missing PEM header");
+//     // }
+
+//     const serviceAccount = JSON.parse(process.env.GOOGLE_SERVICE_ACCOUNT);
+
+//     const auth = new google.auth.GoogleAuth({ 
+//         credentials: {
+//             client_email: serviceAccount.client_email,
+//             private_key: serviceAccount.private_key,
+//         },
+//         scopes: ["https://www.googleapis.com/auth/spreadsheets"],
+//     });
+
+//     const sheets        = google.sheets({ version: "v4", auth });
+//     const spreadsheetId = process.env.SHEET_ID
+//     const range         = process.env.SHEET_NAME
+
+//   if (req.method !== "POST") {
+//     return res.status(405).json({ message: "Method not allowed" });
+//   }
+
+//   try {
+//     const message = JSON.parse(req.body.message);
+
+//     const response = await sheets.spreadsheets.values.append({
+//       spreadsheetId,
+//       range,
+//       valueInputOption  : "USER_ENTERED",
+//       requestBody       : {
+//         values: [[
+//           message.name,
+//           message.company,
+//           message.email,
+//           message.phone,
+//           message.companySize,
+//           message.companyRevenue,
+//           Array.isArray(message.interests) ? message.interests.join(", ") : message.interests,
+//           message.message,
+//           message.urlSource,
+//           new Date().toISOString(),
+//         ]],
+//       },
+//     });
+
+//     return res.status(200).json({ data: response.data });
+//   } catch (error) {
+//     console.error("Google Sheets error:", error);
+//     return res.status(500).json({ message: error.message });
+//   }
+// }
+
+// export default handler
+
 
 async function handler(req, res) {
 
-    const auth = new google.auth.GoogleAuth({
-    credentials: {
-        client_email    : process.env.GOOGLE_CLIENT_EMAIL,
-        private_key     : process.env.GOOGLE_PRIVATE_KEY?.replace(/\\n/g, "\n"),
-    },
-    scopes: ["https://www.googleapis.com/auth/spreadsheets"],
-    });
+    if (req.method !== "POST") {
+        return res.status(405).json({ message: "Method not allowed" });
+    }
 
-    const sheets        = google.sheets({ version: "v4", auth });
-    const spreadsheetId = process.env.SHEET_ID
-    const range         = process.env.SHEET_NAME
+    try {
+        const message = JSON.parse(req.body.message);
+        const wpResponse = await fetch(process.env.WP_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                action: 'ridge_get_data_to_add_to_sheet',
+                verify: process.env.VERIFY_GATSBY,
+                data: JSON.stringify(message),
+            }),
+        })
+        const wpData = await wpResponse.json();
+        return res.status(200).json({ data: wpData });
+    }
+    catch (error) {
+        console.error("Google Sheets error:", error);
+        return res.status(500).json({ message: error.message });
+    }
 
-  if (req.method !== "POST") {
-    return res.status(405).json({ message: "Method not allowed" });
-  }
-
-  try {
-    const message = JSON.parse(req.body.message);
-
-    const response = await sheets.spreadsheets.values.append({
-      spreadsheetId,
-      range,
-      valueInputOption  : "USER_ENTERED",
-      requestBody       : {
-        values: [[
-          message.name,
-          message.company,
-          message.email,
-          message.phone,
-          message.companySize,
-          message.companyRevenue,
-          Array.isArray(message.interests) ? message.interests.join(", ") : message.interests,
-          message.message,
-          message.urlSource,
-          new Date().toISOString(),
-        ]],
-      },
-    });
-
-    return res.status(200).json({ data: response.data });
-  } catch (error) {
-    console.error("Google Sheets error:", error);
-    return res.status(500).json({ message: error.message });
-  }
 }
-
 export default handler

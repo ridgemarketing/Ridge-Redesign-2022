@@ -45,9 +45,9 @@ const PPCLogos = ({data}) => {
                         } }
                     >
                         {data.map((logo, index) => {
-                            const image = (logo.image.localFile.ext === ".svg") 
-                            ? <img key={logo.image.sourceUrl} className={`w-full object-contain h-auto`} src={logo.image.sourceUrl} alt={logo.image.altText}/>
-                            : <GatsbyImage key={logo.image.sourceUrl} className={`w-full`} objectFit="contain" image={logo.image.localFile.childImageSharp.gatsbyImageData} alt={logo.image.altText} /> ;
+                            const image = (logo.image?.localFile?.ext === ".svg") 
+                            ? <img key={logo.image?.sourceUrl} className={`w-full object-contain h-auto`} src={logo.image?.sourceUrl} alt={logo.image?.altText}/>
+                            : <GatsbyImage key={logo?.image?.sourceUrl} className={`w-full`} objectFit="contain" image={logo.image?.localFile?.childImageSharp.gatsbyImageData} alt={logo.image?.altText} /> ;
                             return(
                                 <SplideSlide key={`LogoCloudItem__slide__${index}`}>
                                     <motion.div key={`LogoCloudItem__inner__${index}`} variants={variantItems} className={"h-[110px] flex flex-col items-center justify-center"}>

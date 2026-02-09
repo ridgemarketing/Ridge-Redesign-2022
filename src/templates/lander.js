@@ -6,6 +6,8 @@ import PageHeader from "../layouts/layouts/PageHeader"
 import CustomHeader from "../components/global/headerColor"
 import { theme, ThemeContext } from "../static/theme"
 import PPCLanderWrapper from "../layouts/layouts/ppcLander/PpcLanderWrapper"
+import PPCLanderWrapperCMO from "../layouts/layouts/ppcLander/PpcLanderWrapperCMO"
+import AuditLanderWrapper from "../layouts/layouts/auditLander/AuditLanderWrapper"
 
 export const Head = ({data}) => (
   <>
@@ -97,7 +99,21 @@ const WpLander = ({ data, location }) => {
   if (data.wpLander.uri === '/lander/your-marketing-dream-team/') {
     return (<>
       <CustomHeader color={color} position={`sticky`} />
-      <PPCLanderWrapper data={data.wpLander.Ridge2026PPC} />
+      <PPCLanderWrapper data={data.wpLander.Ridge2026PPC} cmo={false} />
+    </>)
+  }
+
+  if (data.wpLander.uri === '/lander/ridge-ppc-2026-cmo/') {
+    return (<>
+      <CustomHeader color={color} position={`sticky`} />
+      <PPCLanderWrapperCMO data={data.wpLander.Ridge2026PPC_CMO} cmo={true} />
+    </>)
+  }
+
+  if (data.wpLander.uri === '/lander/audit/') {
+    return (<>
+      <CustomHeader color={color} position={`sticky`} />
+      <AuditLanderWrapper data={data.wpLander.AIAudit} />
     </>)
   }
 
@@ -161,8 +177,224 @@ export const query = graphql`
             raw
         }
       }
-      Ridge2026PPC {
 
+
+    AIAudit {
+          hero {
+            body
+            heading
+            desktopBackground {
+              sourceUrl
+                      localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+            }
+            graphic {
+              sourceUrl
+                      localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+            }
+            largeDesktop {
+              sourceUrl
+                      localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+            }
+            mobileBackground {
+              sourceUrl
+                      localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+            }
+            preHeading
+            tabletBackground {
+              sourceUrl
+                      localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+            }
+            componentButtonGroup {
+              componentButton {
+                colors {
+                  resting
+                }
+                link {
+                  target
+                  title
+                  url
+                }
+                style
+              }
+            }
+          }
+          formText {
+            list {
+              item
+            }
+            listBody
+            mainBody
+          }
+          callout {
+              backgroundImage {
+              altText
+                  localFile {
+                    ext
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+            }
+            body
+            componentButtonGroup {
+              componentButton {
+                colors {
+                  resting
+                }
+                link {
+                  target
+                  title
+                  url
+                }
+                style
+              }
+            }
+            heading
+            subHeading
+          }
+          logos {
+            body
+            heading
+            logos {
+              image {
+                altText
+                sourceUrl
+                        localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+              }
+            }
+          }
+          pricing {
+            body
+            heading
+            componentButtonGroup {
+              componentButton {
+                colors {
+                  resting
+                }
+                link {
+                  target
+                  title
+                  url
+                }
+                style
+              }
+            }
+            priceBoxes {
+              body
+              heading
+              price
+              subHeading
+              recommended
+            }
+          }
+          stats {
+            body
+            heading
+            stats {
+              stat
+              subHeading
+              heading
+            }
+            subBody
+          }
+          steps {
+            body
+            heading
+            steps {
+              body
+              heading
+              icons {
+                body
+                heading
+                icon {
+                  altText
+                  sourceUrl
+                }
+              }
+              subBody
+              image {
+                altText
+                    localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+              }
+            }
+          }
+        }
+
+      Ridge2026PPC {
+        heroCopy{
+          heading
+          subHeading
+                    componentButton {
+              style
+              link {
+                target
+                title
+                url
+              }
+              colors {
+                resting
+              }
+            }
+            circleImagesDown {
+              image {
+                  localFile {
+                    ext
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+                  altText
+                  sourceUrl
+              }
+            }
+            circleImagesUp {
+              image {
+                  localFile {
+                    ext
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+                  altText
+                  sourceUrl
+              }
+            }
+        }
         hero {
           heading
           circleImagesDown {
@@ -298,6 +530,15 @@ export const query = graphql`
           heading
         }
 
+        statsCopy {
+          columns {
+            body
+            number
+          }
+          body
+          heading
+        }
+
         logos {
           image {
             altText
@@ -308,6 +549,35 @@ export const query = graphql`
                   gatsbyImageData
                 }
               }
+          }
+        }
+
+        logosCopy {
+          image {
+            altText
+            sourceUrl
+            localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+          }
+        }
+
+        process {
+          body
+          heading
+          icons {
+            body
+            heading
+            icon {
+              sourceUrl
+              altText
+              localFile{
+                ext
+              }
+            }
           }
         }
 
@@ -355,6 +625,178 @@ export const query = graphql`
             }
           }
         }
+          
+      }
+
+      Ridge2026PPC_CMO {
+        heroCmo{
+          heading
+          subHeading
+          image {
+                  localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+                  altText
+                  sourceUrl
+                }
+            componentButton {
+              style
+              link {
+                target
+                title
+                url
+              }
+              colors {
+                resting
+              }
+            }
+            callout {
+            body
+            heading
+          }
+          list {
+            item
+          }
+        }
+
+        approach {
+          image {
+                  localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+                  altText
+                  sourceUrl
+                }
+          heading
+          body
+        }
+
+        audit {
+          body
+          heading
+          list {
+            item
+          }
+          subHeading
+            image {
+              localFile {
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              altText
+              sourceUrl
+            }
+            componentButton {
+              colors {
+                resting
+              }
+              link {
+                target
+                title
+                url
+              }
+              style
+            }
+        }
+        
+        twoColumnContentCopy {
+          checklist {
+            heading
+            list {
+              item
+            }
+          }
+          videoText {
+            body
+            heading
+            video {
+              mediaDetails {
+                file
+                height
+                width
+              }
+              mimeType
+              mediaItemUrl
+            }
+          }
+        }
+
+        projectSliderCopy {
+          heading
+          images{
+            image {
+              localFile {
+                  ext
+                  childImageSharp {
+                    gatsbyImageData
+                  }
+                }
+              altText
+              sourceUrl
+            }
+          }
+          componentButtonGroup {
+            componentButton {
+              colors {
+                resting
+              }
+              link {
+                target
+                title
+                url
+              }
+              style
+            }
+          }
+        }
+
+        statsCopy2 {
+          stats {
+            heading
+            stat
+            subHeading
+          }
+          body
+          heading
+        }
+
+        formCopy {
+          body
+          heading
+          image {
+            altText
+            sourceUrl
+            localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+            }
+          }
+        }
+
+        quotesCopy {
+          quotes {
+            ... on WpReview {
+              id
+              title
+              content
+              reviewsFields {
+                fieldGroupName
+                titleCompany
+              }
+            }
+          }
+        }
+
           
       }
   }

@@ -1,13 +1,12 @@
 import React, { useEffect, useRef } from "react"
-import { TopCloud_Large, TopCloudPiece_Large, TopCloudPiece_Medium, TopCloudPiece_Small } from "../../../static/clouds"
 import { Container } from "../../../components/global/Wrappers"
 import Parser from "../../../components/global/Parser"
 import { theme } from "../../../static/theme"
 
 const PPCTwoColContent = ({data}) => {
 
-    const checklist     = data.checklist ?? false
-    const videoText     = data.videoText ?? false
+    const checklist     = data?.checklist ?? false
+    const videoText     = data?.videoText ?? false
 
     const video         = useRef(null)
 
@@ -66,9 +65,6 @@ const PPCTwoColContent = ({data}) => {
                 }
             </Container>
         </section>
-        <TopCloudPiece_Large className={`w-full hidden xl:block mb-[150px] cloudAnimation-Top -z-[10] relative`} />
-        <TopCloudPiece_Medium className={`w-full hidden md:block xl:hidden mb-[150px] cloudAnimation-Top -z-[10] relative`} />
-        <TopCloudPiece_Small className={`w-full md:hidden mb-[150px] -mt-[75px] sm:-mt-[150px] cloudAnimation-Top -z-[10] relative`} />
     </>)
 }
 

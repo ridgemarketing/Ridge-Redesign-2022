@@ -20,10 +20,6 @@ async function sendEmail(req, res) {
                 email: "aquincy@ridgemarketing.com", 
                 name: "Andrea Quincy"
               }
-              // {
-              //   email: "harrison@ridgemarketing.com", 
-              //   name: "Harrison"
-              // }
             ], 
           cc: [
             {
@@ -39,22 +35,17 @@ async function sendEmail(req, res) {
               name:"Chase"
             }
           ],
-          subject: subject && subject.length > 0 ? subject : `Ridge PPC Lead - ${message['name']}`,
+          subject: subject && subject.length > 0 ? subject : `Ridge AI Audit - ${message['firstName']} ${message['lastName']}`,
           dynamic_template_data:{
-            name:`${message['name']}`,
-            company:`${message['company']}`,
+            firstName:`${message['firstName']}`,
+            lastName:`${message['lastName']}`,
             email:`${message['email']}`,
-            phone:`${message['phone']}`,
-            companySize:`${message['companySize']}`,
-            companyRevenue:`${message['companyRevenue']}`,
-            // serviceArea:`${message['serviceArea']}`,
-            interests: `${message['interests']}`,
-            message:`${message['message']}`,
-            subject: subject && subject.length > 0 ? subject : `Ridge PPC Lead - ${message['name']}`,
+            website:`${message['website']}`,
+            subject: subject && subject.length > 0 ? subject : `Ridge AI Audit - ${message['firstName']} ${message['lastName']}`,
           }
         },
       ],
-      template_id:"d-1c2baa9d7c274ccdb0a12f3cc7ba3155",
+      template_id:"d-3de66472614041f89dc0e592642ed808",
 
       from: {
         email: "noreply@ridgemarketing.com", // your website email address here  

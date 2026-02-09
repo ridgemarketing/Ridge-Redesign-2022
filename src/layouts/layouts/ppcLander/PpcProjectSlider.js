@@ -5,7 +5,7 @@ import { Intersection } from '@splidejs/splide-extension-intersection';
 import { GatsbyImage } from "gatsby-plugin-image"
 import Buttons from "../../../components/global/Buttons"
 
-const PPCProjectSlider = ({data}) => {
+const PPCProjectSlider = ({data, cmo}) => {
 
     const container                     = useRef(null)
     const [moving, setMoving]           = useState(false)
@@ -78,7 +78,10 @@ const PPCProjectSlider = ({data}) => {
                 .ppcProjectSlider .is-active [data-gatsby-image-wrapper] { transform : scale(1) }
             `}</style>
         </>}
-        <div ref={container} className="overflow-hidden will-change-transform">
+        <div ref={container} className={`overflow-hidden will-change-transform py-20 ${cmo && 'bg-rm-carbon text-white'}`}>
+            {data.heading &&
+                <h2 className={`font-stratos uppercase font-bold text-[40px] leading-[44px] text-center ${cmo ? 'text-white' : 'text-black'} mb-10`}>{data.heading}</h2>
+            }
             {data.images &&
                 <Splide
                     ref             = { splideRef }
