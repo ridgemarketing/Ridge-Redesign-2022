@@ -18,7 +18,7 @@ const AuditFormText = ({data}) => {
                     {mainBody &&
                         <h2
                             dangerouslySetInnerHTML={{__html: Parser(mainBody)}}
-                            className={`font-stratos text-40px leading-44px !font-light text-rm-blog-blue max-w-[1255px] mx-auto`}
+                            className={`font-stratos text-[30px] leading-[30px] md:text-40px md:leading-44px !font-light text-rm-blog-blue max-w-[1255px] mx-auto`}
                         />
                     }
                 </div>
@@ -32,7 +32,7 @@ const AuditFormText = ({data}) => {
                         {listBody &&
                             <p
                                 dangerouslySetInnerHTML={{__html: Parser(listBody)}}
-                                className={`font-light text-[2.125rem] leading-[2.5rem] text-black font-basic-sans`}
+                                className={`font-light text-[2.125rem] leading-[2.5rem] text-black font-basic-sans text-center xl:text-left`}
                             />
                         }
 
@@ -65,7 +65,7 @@ const AuditFormText = ({data}) => {
                     </div>
 
                     {/* Right Column - Form Box */}
-                    <div className="xl:w-[625px] shrink-0">
+                    <div className="xl:w-[625px] shrink-0 px-4">
                         <div
                             className="bg-[#f6f8ef] p-8 xl:px-12 xl:pt-7 xl:pb-9"
                             style={{ boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.2)' }}

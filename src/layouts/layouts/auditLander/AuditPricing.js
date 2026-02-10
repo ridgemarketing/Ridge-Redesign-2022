@@ -26,7 +26,7 @@ const PriceBox = ({box, index, isRecommended}) => {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className={`flex flex-col p-8 xl:p-12 border border-[#cdcdcd] bg-white relative w-full xlz:min-w-[400px] xl:w-auto ${isRecommended ? 'xl:-mt-6 xl:pt-16' : ''}`}
+            className={`flex flex-col p-8 xl:p-12 border border-[#cdcdcd] bg-white relative w-full xlz:min-w-[400px] xl:w-auto ${isRecommended ? 'pt-14 xl:-mt-6 xl:pt-16' : ''}`}
         >
             {isRecommended &&
                 <div className="absolute -top-4 left-8 xl:left-1/2 xl:-translate-x-1/2 bg-rm-blog-blue px-6 py-2">
