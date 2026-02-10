@@ -17,48 +17,70 @@ const AuditHero = ({data}) => {
     const mobileBg              = data.mobileBackground ?? false
     const largeDesktopBg        = data.largeDesktop ?? false
 
+    console.log(data)
+
     return(
         <section className="relative min-h-[975px] md:min-h-[1115px] xl:min-h-min">
-            {largeDesktopBg && largeDesktopBg.localFile?.childImageSharp?.gatsbyImageData &&
-                <div className="absolute !bottom-0 inset-0 hidden 2xl:block">
-                    <GatsbyImage
+            {largeDesktopBg && largeDesktopBg?.sourceUrl &&
+                <div className="absolute !bottom-0 inset-0 hidden xl:block">
+                    {/* <GatsbyImage
                         image={largeDesktopBg.localFile?.childImageSharp?.gatsbyImageData}
                         alt=""
                         className="w-full h-full [&_img]:!bottom-0 "
                         objectFit="cover"
                         objectPosition="bottom"
+                    /> */}
+                    <img 
+                        src={largeDesktopBg.sourceUrl}
+                        class="w-full h-full [&_img]:!bottom-0 object-cover object-bottom"
+                        alt=""
                     />
                 </div>
             }
-            {desktopBg && desktopBg.localFile?.childImageSharp?.gatsbyImageData &&
-                <div className="absolute !bottom-0 inset-0 hidden xl:block 2xl:hidden">
-                    <GatsbyImage
+            {desktopBg && desktopBg?.sourceUrl &&
+                <div className="absolute !bottom-0 inset-0 hidden lg:block xl:hidden">
+                    {/* <GatsbyImage
                         image={desktopBg.localFile?.childImageSharp?.gatsbyImageData }
                         alt=""
                         className="w-full h-full [&_img]:!bottom-0 "
                         objectFit="cover"
                         objectPosition="bottom"
+                    /> */}
+                    <img 
+                        src={desktopBg.sourceUrl}
+                        class="w-full h-full [&_img]:!bottom-0 object-cover object-bottom"
+                        alt=""
                     />
                 </div>
             }
-            {tabletBg && tabletBg.localFile?.childImageSharp?.gatsbyImageData &&
-                <div className="absolute inset-0 hidden sm:block xl:hidden">
-                    <GatsbyImage
+            {tabletBg && tabletBg?.sourceUrl &&
+                <div className="absolute inset-0 hidden sm:block lg:hidden">
+                    {/* <GatsbyImage
                         image={tabletBg.localFile?.childImageSharp?.gatsbyImageData}
                         alt=""
                         className="w-full h-full"
                         objectFit="cover"
+                    /> */}
+                    <img 
+                        src={tabletBg.sourceUrl}
+                        class="w-full h-full [&_img]:!bottom-0 object-cover object-bottom"
+                        alt=""
                     />
                 </div>
             }
-            {mobileBg && mobileBg.localFile?.childImageSharp?.gatsbyImageData &&
+            {mobileBg && mobileBg?.sourceUrl &&
                 <div className="absolute inset-0 sm:hidden bottom-0">
-                    <GatsbyImage
+                    {/* <GatsbyImage
                         image={mobileBg.localFile?.childImageSharp?.gatsbyImageData}
                         alt=""
                         className="w-full h-full object-bottom"
                         objectFit="cover"
                         objectPosition="bottom"
+                    /> */}
+                    <img 
+                        src={mobileBg.sourceUrl}
+                        class="w-full h-full [&_img]:!bottom-0 object-cover object-bottom"
+                        alt=""
                     />
                 </div>
             }
@@ -71,7 +93,7 @@ const AuditHero = ({data}) => {
 
                         {/* Pre-heading - H4 style with 36px line height */}
                         {preHeading &&
-                            <p className={`${theme.text.H4} !leading-[36px] text-rm-aqua`}>
+                            <p className={`${theme.text.H4} !leading-[36px] text-rm-blog-blue`}>
                                 {preHeading}
                             </p>
                         }
@@ -82,7 +104,7 @@ const AuditHero = ({data}) => {
                             {heading &&
                                 <h1
                                     dangerouslySetInnerHTML={{__html: Parser(heading)}}
-                                    className={`${theme.text.PAGE_HEADER} text-black`}
+                                    className={`font-stratos uppercase font-bold text-[50px] md:text-80px leading-[50px] md:leading-[80px] xl:text-100px xl:leading-[76px]`}
                                 />
                             }
                             {/* Sub body - H5 style but regular weight */}

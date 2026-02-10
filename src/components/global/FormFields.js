@@ -27,7 +27,7 @@ export const Input = ({type, label, name, textColor, fontWeight, required, error
                     <input type={type} onBlur={checkValue} onFocus={() => setIsFocused(true)} {...register(name, { required: required })} className={`${bg === 'white' ? 'pl-4 pt-4 pb-3 border-l border-t border-r border-solid border-l-[#48474730] border-r-[#48474730] border-t-[#48474730]' : ''} relative w-full ${theme.forms.INPUT} ${theme.text['P_STD']} form-control bg-transparent border-rm-${textColor} text-rm-${textColor} focus:border-rm-green ${errors.name && `border-b-[#EA0000]`}`} />
                 }
                 {/* errors will return when field validation fails  */}
-                {errors.name && <span className="block text-[#EA0000] text-18px leading-26px">This field is required</span>}
+                {errors[name] && <span className="block text-[#EA0000] text-18px leading-26px">This field is required</span>}
             </span>
         </>
     )
@@ -59,7 +59,7 @@ export const PhoneInput = ({type, label, name, textColor, fontWeight, required, 
                     {...register(name, { required: required })}
                     />
                 {/* errors will return when field validation fails  */}
-                {errors.name && errors.name.type === 'required' && <span className="block text-[#EA0000] text-18px leading-26px">This field is required</span>}
+                {errors[name] && errors.name.type === 'required' && <span className="block text-[#EA0000] text-18px leading-26px">This field is required</span>}
             </span>
         </>
     )
@@ -83,7 +83,7 @@ export const TextArea = ({label, name, textColor, fontWeight, required, errors, 
             <span className={`relative block`}>
                 <span className={`${bg === 'white' ? 'bg-white w-full h-full pl-4 pt-4 pb-3 border-l border-t border-r border-solid border-l-[#48474730] border-r-[#48474730] border-t-[#48474730]' : ''} absolute top-0 left-0 w-full transition-all ${fontWeight === `light` ? theme.text['P_STD'] : theme.text['P_BLD']} duration-300 ${isFocused ? `opacity-0 -translate-y-4` : `opacity-1`}`}>{label}</span>
                 <textarea onBlur={checkValue} onFocus={() => setIsFocused(true)} {...register(name, { required: required })} className={`relative w-full ${theme.forms.INPUT} ${theme.text['P_STD']} form-control border-rm-${textColor} text-rm-${textColor} focus:border-rm-green ${errors.name && `border-b-[#EA0000]`} ${bg === 'white' ? 'pl-4 pt-4 pb-3 border-l border-t border-r border-solid border-l-[#48474730] border-r-[#48474730] border-t-[#48474730]' : ''} bg-transparent `} rows={4} />
-                {errors.name && <span className="block text-[#EA0000] text-18px leading-26px">This field is required</span>}
+                {errors[name] && <span className="block text-[#EA0000] text-18px leading-26px">This field is required</span>}
             </span>
         </>
     )
@@ -114,7 +114,7 @@ export const Select = ({label, name, options, textColor, fontWeight, required, e
                         )
                     })}
                 </select>
-                {errors.name && <span className="block text-[#EA0000] text-18px leading-26px">This field is required</span>}
+                {errors[name] && <span className="block text-[#EA0000] text-18px leading-26px">This field is required</span>}
             </span>
         </>
     )

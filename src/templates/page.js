@@ -24,7 +24,7 @@ export const Head = ({data}) => (
     )}
 
     <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
-s
+
     <meta name="description" content={data.wpPage.seo.opengraphDescription} />
     <meta name="title" content={data.wpPage.seo.title}/>
     <meta name="pageType" content={data.wpPage.seo.schema.pageType}/>
@@ -43,13 +43,20 @@ s
 
     <meta property="og:type" content={data.wpPage.seo.opengraphType}/>
     <meta property="og:author" content={data.wpPage.seo.opengraphAuthor}/>
-    <meta property="og:url" content={data.wpPage.seo.opengraphUrl}/>
+    <meta property="og:url" content={`https://www.ridgemarketing.com${data.wpPage.uri}`}/>
     <meta property="og:title" content={data.wpPage.seo.opengraphTitle}/>
     <meta property="og:description" content={data.wpPage.seo.opengraphDescription}/>
     {data.wpPage.seo.opengraphImage &&
       <meta property="og:image" content={data.wpPage.seo.opengraphImage.sourceUrl}/>
     }
 
+    <meta property="twitter:card" content="summary_large_image"/>
+    <meta property="twitter:url" content={`https://www.ridgemarketing.com${data.wpPage.uri}`}/>
+    <meta property="twitter:title" content={data.wpPage.seo.twitterTitle || data.wpPage.seo.opengraphTitle}/>
+    <meta property="twitter:description" content={data.wpPage.seo.twitterDescription || data.wpPage.seo.opengraphDescription}/>
+    {data.wpPage.seo.twitterImage &&
+      <meta property="twitter:image" content={data.wpPage.seo.twitterImage.sourceUrl}/>
+    }
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content={`https://www.ridgemarketing.com${data.wpPage.uri}`} />
     <meta name="twitter:title" content={data.wpPage.seo.twitterTitle || data.wpPage.seo.title} />

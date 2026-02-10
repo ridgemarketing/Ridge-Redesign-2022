@@ -39,47 +39,33 @@ export const Head = ({data}) => {
 
         <meta property="og:type" content={data?.wpPost?.seo?.opengraphType}/>
         <meta property="og:author" content={data?.wpPost?.seo?.opengraphAuthor}/>
-        <meta property="og:url" content={data?.wpPost?.seo?.opengraphUrl}/>
+        <meta property="og:url" content={`https://www.ridgemarketing.com/blog${data?.wpPost?.uri}`}/>
         <meta property="og:title" content={data?.wpPost?.seo?.opengraphTitle}/>
         <meta property="og:description" content={data?.wpPost?.seo?.opengraphDescription}/>
         {data?.wpPost?.seo?.opengraphImage &&
           <meta property="og:image" content={data?.wpPost?.seo?.opengraphImage?.sourceUrl}/>
         }
 
+        <meta property="twitter:card" content="summary_large_image"/>
+        <meta property="twitter:url" content={`https://www.ridgemarketing.com/blog${data?.wpPost?.uri}`}/>
+        <meta property="twitter:title" content={data?.wpPost?.seo?.twitterTitle || data?.wpPost?.seo?.opengraphTitle}/>
+        <meta property="twitter:description" content={data?.wpPost?.seo?.twitterDescription || data?.wpPost?.seo?.opengraphDescription}/>
+        {data?.wpPost?.seo?.twitterImage &&
+          <meta property="twitter:image" content={data?.wpPost?.seo?.twitterImage?.sourceUrl}/>
+        }
 
         {/* Canonical */}
         {data?.wpPost?.seo?.canonical && (
           <link
             rel="canonical"
-            href={`https://www.ridgemarketing.com${data.wpPost.seo.canonical}`}
+            href={`https://www.ridgemarketing.com/blog${data.wpPost.seo.canonical}`}
           />
         )}
-
-        {/* Twitter Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:url"
-          content={`https://www.ridgemarketing.com${data?.wpPost?.uri}`}
-        />
-        <meta
-          name="twitter:title"
-          content={data?.wpPost?.seo?.twitterTitle || data?.wpPost?.seo?.title}
-        />
-        <meta
-          name="twitter:description"
-          content={data?.wpPost?.seo?.twitterDescription || data?.wpPost?.seo?.metaDesc}
-        />
-        <meta
-          name="twitter:image"
-          content={
-            data?.wpPost?.seo?.twitterImage?.sourceUrl ||
-            "https://www.ridgemarketing.com/social-default.jpg"
-          }
-        />
 
         {/* JSON-LD Structured Data */}
         {data?.wpPost?.seo?.schema?.raw && (
           <script
+            data-search="here"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: data.wpPost.seo.schema.raw }}
           />
@@ -157,6 +143,23 @@ const WpPost = ({ data, pageContext }) => {
             </div>
         </div>
       </nav>
+      <style>
+        {`            
+          .showMobile, .showDesktop {
+            display:none;
+          }
+          @media screen and (max-width:768px) {
+            .showMobile {
+              display:block;
+            }
+          }
+          @media screen and (min-width:768px) {
+            .showDesktop {
+              display:block;
+            }
+          }
+        `}
+      </style>
       {data.wpPost.uri === '/seo-vs-aeo-vs-geo/' && (
         <>
         <SeoPopup />

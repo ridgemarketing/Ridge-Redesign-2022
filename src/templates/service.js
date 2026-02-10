@@ -32,13 +32,20 @@ export const Head = ({data}) => (
 
     <meta property="og:type" content={data.wpService.seo.opengraphType}/>
     <meta property="og:author" content={data.wpService.seo.opengraphAuthor}/>
-    <meta property="og:url" content={data.wpService.seo.opengraphUrl}/>
+    <meta property="og:url" content={`https://www.ridgemarketing.com${data.wpService.uri}`}/>
     <meta property="og:title" content={data.wpService.seo.opengraphTitle}/>
     <meta property="og:description" content={data.wpService.seo.opengraphDescription}/>
     {data.wpService.seo.opengraphImage &&
       <meta property="og:image" content={data.wpService.seo.opengraphImage.sourceUrl}/>
     }
 
+    <meta property="twitter:card" content="summary_large_image"/>
+    <meta property="twitter:url" content={`https://www.ridgemarketing.com${data.wpService.uri}`}/>
+    <meta property="twitter:title" content={data.wpService.seo.twitterTitle || data.wpService.seo.opengraphTitle}/>
+    <meta property="twitter:description" content={data.wpService.seo.twitterDescription || data.wpService.seo.opengraphDescription}/>
+    {data.wpService.seo.twitterImage &&
+      <meta property="twitter:image" content={data.wpService.seo.twitterImage.sourceUrl}/>
+    }
     {/* Canonical */}
       {data?.wpService?.seo?.canonical && (
         <link
@@ -46,28 +53,6 @@ export const Head = ({data}) => (
           href={`https://www.ridgemarketing.com${data.wpService.seo.canonical}`}
         />
       )}
-
-      {/* Twitter Meta Tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta
-        name="twitter:url"
-        content={`https://www.ridgemarketing.com${data?.wpService?.uri}`}
-      />
-      <meta
-        name="twitter:title"
-        content={data?.wpService?.seo?.twitterTitle || data?.wpService?.seo?.title}
-      />
-      <meta
-        name="twitter:description"
-        content={data?.wpService?.seo?.twitterDescription || data?.wpService?.seo?.metaDesc}
-      />
-      <meta
-        name="twitter:image"
-        content={
-          data?.wpService?.seo?.twitterImage?.sourceUrl ||
-          "https://www.ridgemarketing.com/social-default.jpg"
-        }
-      />
 
       {/* JSON-LD Structured Data */}
       {data?.wpService?.seo?.schema?.raw && (

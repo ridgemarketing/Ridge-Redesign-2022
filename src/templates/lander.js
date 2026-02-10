@@ -32,13 +32,20 @@ export const Head = ({data}) => (
 
     <meta property="og:type" content={data.wpLander.seo.opengraphType}/>
     <meta property="og:author" content={data.wpLander.seo.opengraphAuthor}/>
-    <meta property="og:url" content={data.wpLander.seo.opengraphUrl}/>
+    <meta property="og:url" content={`https://www.ridgemarketing.com${data.wpLander.uri}`}/>
     <meta property="og:title" content={data.wpLander.seo.opengraphTitle}/>
     <meta property="og:description" content={data.wpLander.seo.opengraphDescription}/>
     {data.wpLander.seo.opengraphImage &&
       <meta property="og:image" content={data.wpLander.seo.opengraphImage.sourceUrl}/>
     }
 
+    <meta property="twitter:card" content="summary_large_image"/>
+    <meta property="twitter:url" content={`https://www.ridgemarketing.com${data.wpLander.uri}`}/>
+    <meta property="twitter:title" content={data.wpLander.seo.twitterTitle || data.wpLander.seo.opengraphTitle}/>
+    <meta property="twitter:description" content={data.wpLander.seo.twitterDescription || data.wpLander.seo.opengraphDescription}/>
+    {data.wpLander.seo.twitterImage &&
+      <meta property="twitter:image" content={data.wpLander.seo.twitterImage.sourceUrl}/>
+    }
     {/* Canonical */}
     {data?.wpLander?.seo?.canonical && (
       <link
@@ -46,28 +53,6 @@ export const Head = ({data}) => (
         href={`https://www.ridgemarketing.com${data.wpLander.seo.canonical}`}
       />
     )}
-
-    {/* Twitter Meta Tags */}
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:url"
-      content={`https://www.ridgemarketing.com${data?.wpLander?.uri}`}
-    />
-    <meta
-      name="twitter:title"
-      content={data?.wpLander?.seo?.twitterTitle || data?.wpLander?.seo?.title}
-    />
-    <meta
-      name="twitter:description"
-      content={data?.wpLander?.seo?.twitterDescription || data?.wpLander?.seo?.metaDesc}
-    />
-    <meta
-      name="twitter:image"
-      content={
-        data?.wpLander?.seo?.twitterImage?.sourceUrl ||
-        "https://www.ridgemarketing.com/social-default.jpg"
-      }
-    />
 
     {/* JSON-LD Structured Data */}
     {data?.wpLander?.seo?.schema?.raw && (
