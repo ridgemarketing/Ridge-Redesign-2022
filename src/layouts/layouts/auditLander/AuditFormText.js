@@ -24,7 +24,7 @@ const AuditFormText = ({data}) => {
                 </div>
 
                 {/* Two Column Layout */}
-                <div className="flex flex-col xl:flex-row flex-wrap gap-12 pb-20">
+                <div className="flex flex-col xl:flex-row md:flex-wrap gap-12 pb-20">
 
                     {/* Left Column - Intro Copy */}
                     <div className="flex flex-col gap-6 flex-1 xl:max-w-[613px]">
@@ -38,7 +38,7 @@ const AuditFormText = ({data}) => {
 
                         {/* Checklist */}
                         {listItems && listItems.length > 0 &&
-                            <div className="flex flex-col gap-2 mt-4 max-w-[350px] xl:max-w-full xl:w-full self-center">
+                            <div className="flex flex-col gap-8 mt-4 max-w-[350px] xl:max-w-full xl:w-full self-center">
                                 {listItems.map((item, index) => (
                                     <div key={index} className="flex items-center gap-4">
                                         {/* Arrow Icon */}
@@ -55,7 +55,7 @@ const AuditFormText = ({data}) => {
                                                 d="M14 5l7 7m0 0l-7 7m7-7H3"
                                             />
                                         </svg>
-                                        <span className={`${theme.text.H4} !leading-[56px] text-black`}>
+                                        <span className={`${theme.text.H4} text-black`}>
                                             {item.item}
                                         </span>
                                     </div>
@@ -65,7 +65,7 @@ const AuditFormText = ({data}) => {
                     </div>
 
                     {/* Right Column - Form Box */}
-                    <div className="xl:w-[625px] shrink-0 px-4">
+                    <div className="xl:w-[625px] shrink-0 sm:px-4">
                         <div
                             className="bg-[#f6f8ef] p-8 xl:px-12 xl:pt-7 xl:pb-9"
                             style={{ boxShadow: '0px 0px 20px 0px rgba(0, 0, 0, 0.2)' }}
