@@ -42,6 +42,44 @@ export const Head = ({data}) => (
     {data?.wpProject?.seo?.twitterImage &&
       <meta property="twitter:image" content={data?.wpProject?.seo?.twitterImage.sourceUrl}/>
     }
+   {/* Canonical */}
+    {data?.wpProject?.seo?.canonical && (
+      <link
+        rel="canonical"
+        href={`https://www.ridgemarketing.com${data.wpProject.seo.canonical}`}
+      />
+    )}
+
+    {/* Twitter Meta Tags */}
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:url"
+      content={`https://www.ridgemarketing.com${data?.wpProject?.uri}`}
+    />
+    <meta
+      name="twitter:title"
+      content={data?.wpProject?.seo?.twitterTitle || data?.wpProject?.seo?.title}
+    />
+    <meta
+      name="twitter:description"
+      content={data?.wpProject?.seo?.twitterDescription || data?.wpProject?.seo?.metaDesc}
+    />
+    <meta
+      name="twitter:image"
+      content={
+        data?.wpProject?.seo?.twitterImage?.sourceUrl ||
+        "https://www.ridgemarketing.com/social-default.jpg"
+      }
+    />
+
+    {/* JSON-LD Structured Data */}
+    {data?.wpProject?.seo?.schema?.raw && (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: data.wpProject.seo.schema.raw }}
+      />
+    )}
+
     {data?.wpProject?.seo?.fullHead}
   </>
 )

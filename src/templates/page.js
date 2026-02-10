@@ -15,8 +15,16 @@ import Wrapped2024 from "../layouts/layouts/wrapped2024"
 export const Head = ({data}) => (
   <>
     <title>{data.wpPage.seo.title}</title>
-    <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
 
+    {data.wpPage.seo.canonical && (
+      <link
+        rel="canonical"
+        href={`https://www.ridgemarketing.com${data.wpPage.seo.canonical}`}
+      />
+    )}
+
+    <link rel="icon" type="image/x-icon" href={data.allWp.nodes[0].globalSettings.globalSettings.logos.favicon.sourceUrl}></link>
+s
     <meta name="description" content={data.wpPage.seo.opengraphDescription} />
     <meta name="title" content={data.wpPage.seo.title}/>
     <meta name="pageType" content={data.wpPage.seo.schema.pageType}/>
@@ -49,7 +57,24 @@ export const Head = ({data}) => (
     {data.wpPage.seo.twitterImage &&
       <meta property="twitter:image" content={data.wpPage.seo.twitterImage.sourceUrl}/>
     }
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={`https://www.ridgemarketing.com${data.wpPage.uri}`} />
+    <meta name="twitter:title" content={data.wpPage.seo.twitterTitle || data.wpPage.seo.title} />
+    <meta name="twitter:description" content={data.wpPage.seo.twitterDescription || data.wpPage.seo.metaDesc} />
+    {data.wpPage.seo.twitterImage && (
+      <meta name="twitter:image" content={data.wpPage.seo.twitterImage.sourceUrl} />
+    )}
+
+
     {data.wpPage.seo.fullHead}
+
+    {data.wpPage.seo.schema?.raw && (
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: data.wpPage.seo.schema.raw }}
+      />
+    )}
+
   </>
 )
 
