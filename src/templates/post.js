@@ -124,6 +124,23 @@ const WpPost = ({ data, pageContext }) => {
             </div>
         </div>
       </nav>
+      <style>
+        {`            
+          .showMobile, .showDesktop {
+            display:none;
+          }
+          @media screen and (max-width:768px) {
+            .showMobile {
+              display:block;
+            }
+          }
+          @media screen and (min-width:768px) {
+            .showDesktop {
+              display:block;
+            }
+          }
+        `}
+      </style>
       {data.wpPost.uri === '/seo-vs-aeo-vs-geo/' && (
         <>
         <SeoPopup />
