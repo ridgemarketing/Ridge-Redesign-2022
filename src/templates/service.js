@@ -54,28 +54,6 @@ export const Head = ({data}) => (
         />
       )}
 
-      {/* Twitter Meta Tags */}
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta
-        name="twitter:url"
-        content={`https://www.ridgemarketing.com${data?.wpService?.uri}`}
-      />
-      <meta
-        name="twitter:title"
-        content={data?.wpService?.seo?.twitterTitle || data?.wpService?.seo?.title}
-      />
-      <meta
-        name="twitter:description"
-        content={data?.wpService?.seo?.twitterDescription || data?.wpService?.seo?.metaDesc}
-      />
-      <meta
-        name="twitter:image"
-        content={
-          data?.wpService?.seo?.twitterImage?.sourceUrl ||
-          "https://www.ridgemarketing.com/social-default.jpg"
-        }
-      />
-
       {/* JSON-LD Structured Data */}
       {data?.wpService?.seo?.schema?.raw && (
         <script

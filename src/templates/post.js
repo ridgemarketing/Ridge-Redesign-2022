@@ -58,35 +58,14 @@ export const Head = ({data}) => {
         {data?.wpPost?.seo?.canonical && (
           <link
             rel="canonical"
-            href={`https://www.ridgemarketing.com${data.wpPost.seo.canonical}`}
+            href={`https://www.ridgemarketing.com/blog${data.wpPost.seo.canonical}`}
           />
         )}
-
-        {/* Twitter Meta Tags */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:url"
-          content={`https://www.ridgemarketing.com${data?.wpPost?.uri}`}
-        />
-        <meta
-          name="twitter:title"
-          content={data?.wpPost?.seo?.twitterTitle || data?.wpPost?.seo?.title}
-        />
-        <meta
-          name="twitter:description"
-          content={data?.wpPost?.seo?.twitterDescription || data?.wpPost?.seo?.metaDesc}
-        />
-        <meta
-          name="twitter:image"
-          content={
-            data?.wpPost?.seo?.twitterImage?.sourceUrl ||
-            "https://www.ridgemarketing.com/social-default.jpg"
-          }
-        />
 
         {/* JSON-LD Structured Data */}
         {data?.wpPost?.seo?.schema?.raw && (
           <script
+            data-search="here"
             type="application/ld+json"
             dangerouslySetInnerHTML={{ __html: data.wpPost.seo.schema.raw }}
           />
