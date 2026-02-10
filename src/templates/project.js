@@ -28,7 +28,7 @@ export const Head = ({data}) => (
 
     <meta property="og:type" content={data?.wpProject?.seo?.opengraphType}/>
     <meta property="og:author" content={data?.wpProject?.seo?.opengraphAuthor}/>
-    <meta property="og:url" content={data?.wpProject?.seo?.opengraphUrl}/>
+    <meta property="og:url" content={`https://www.ridgemarketing.com${data.wpProject.uri}`}/>
     <meta property="og:title" content={data?.wpProject?.seo?.opengraphTitle}/>
     <meta property="og:description" content={data?.wpProject?.seo?.opengraphDescription}/>
     {data?.wpProject?.seo?.opengraphImage &&
@@ -36,9 +36,9 @@ export const Head = ({data}) => (
     }
 
     <meta property="twitter:card" content="summary_large_image"/>
-    <meta property="twitter:url" content={data?.wpProject?.seo?.opengraphUrl}/>
-    <meta property="twitter:title" content={data?.wpProject?.seo?.twitterTitle}/>
-    <meta property="twitter:description" content={data?.wpProject?.seo?.twitterDescription}/>
+    <meta property="twitter:url" content={`https://www.ridgemarketing.com${data.wpProject.uri}`}/>
+    <meta property="twitter:title" content={data.wpProject.seo.twitterTitle || data.wpProject.seo.opengraphTitle}/>
+    <meta property="twitter:description" content={data.wpProject.seo.twitterDescription || data.wpProject.seo.opengraphDescription}/>
     {data?.wpProject?.seo?.twitterImage &&
       <meta property="twitter:image" content={data?.wpProject?.seo?.twitterImage.sourceUrl}/>
     }
