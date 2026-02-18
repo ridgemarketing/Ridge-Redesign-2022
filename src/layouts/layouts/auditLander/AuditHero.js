@@ -17,8 +17,6 @@ const AuditHero = ({data}) => {
     const mobileBg              = data.mobileBackground ?? false
     const largeDesktopBg        = data.largeDesktop ?? false
 
-    console.log(data)
-
     return(
         <section className="relative min-h-[975px] md:min-h-[1115px] xl:min-h-min">
             {largeDesktopBg && largeDesktopBg?.sourceUrl &&
@@ -32,7 +30,7 @@ const AuditHero = ({data}) => {
                     /> */}
                     <img 
                         src={largeDesktopBg.sourceUrl}
-                        class="w-full h-full [&_img]:!bottom-0 object-cover object-bottom"
+                        className="w-full h-full [&_img]:!bottom-0 object-cover object-bottom"
                         alt=""
                     />
                 </div>
@@ -48,7 +46,7 @@ const AuditHero = ({data}) => {
                     /> */}
                     <img 
                         src={desktopBg.sourceUrl}
-                        class="w-full h-full [&_img]:!bottom-0 object-cover object-bottom"
+                        className="w-full h-full [&_img]:!bottom-0 object-cover object-bottom"
                         alt=""
                     />
                 </div>
@@ -63,7 +61,7 @@ const AuditHero = ({data}) => {
                     /> */}
                     <img 
                         src={tabletBg.sourceUrl}
-                        class="w-full h-full [&_img]:!bottom-0 object-cover object-bottom"
+                        className="w-full h-full [&_img]:!bottom-0 object-cover object-bottom"
                         alt=""
                     />
                 </div>
@@ -79,7 +77,7 @@ const AuditHero = ({data}) => {
                     /> */}
                     <img 
                         src={mobileBg.sourceUrl}
-                        class="w-full h-full [&_img]:!bottom-0 object-cover object-bottom"
+                        className="w-full h-full [&_img]:!bottom-0 object-cover object-bottom"
                         alt=""
                     />
                 </div>

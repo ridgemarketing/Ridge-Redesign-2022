@@ -60,6 +60,7 @@ const StepCard = ({step, index}) => {
         <div className={`${even ? 'bg-rm-pale-teal' : 'bg-white py-20'}`}>
             <Container>
                 <motion.div
+                    suppressHydrationWarning
                     variants={containerVariant}
                     initial="hidden"
                     whileInView="visible"
@@ -81,7 +82,7 @@ const StepCard = ({step, index}) => {
 
                             {/* H4-Light style */}
                             {body &&
-                                <p
+                                <div
                                     dangerouslySetInnerHTML={{__html: Parser(body)}}
                                     className={`${theme.text.H4_LTE} text-black`}
                                 />
@@ -153,7 +154,7 @@ const AuditSteps = ({data}) => {
                     }
                     {/* H4-Light style */}
                     {body &&
-                        <p
+                        <div
                             dangerouslySetInnerHTML={{__html: Parser(body)}}
                             className={`${theme.text.H4_LTE} text-black max-w-[900px] mx-auto`}
                         />

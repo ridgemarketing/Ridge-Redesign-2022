@@ -8,8 +8,8 @@ import Buttons from "../../components/global/Buttons"
 
 const TwoColImageText = (props) => {
 
-    const content = props.layoutData.layoutContent;
-    const settings = props.layoutData.layoutSettings;
+    const content   = props.layoutData.layoutContent;
+    const settings  = props.layoutData.layoutSettings;
     // console.log(content);
     let order;
     order = (content.imagePosition) === 'left' ? 'lg:order-2' : '' ;
@@ -58,6 +58,8 @@ export const query = graphql`
             componentFlexibleMedia {
               videoSource
               video {
+                autoplay
+                controls
                 videoUrl
                 thumbnailImage {
                   publicUrl
@@ -111,6 +113,8 @@ export const serviceQuery = graphql`
             componentFlexibleMedia {
               videoSource
               video {
+                autoplay
+                controls
                 videoUrl
                 thumbnailImage {
                   publicUrl

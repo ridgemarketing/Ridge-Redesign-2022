@@ -6,7 +6,7 @@ import { theme } from "../../../static/theme"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { FormLander2026 } from "../../../components/global/Forms"
 
-const PPCForm = ({data, cmo}) => {
+const PPCForm = ({data, cmo, persistantEmail}) => {
 
     const heading   = data.heading ?? false
     const body      = data.body ?? false
@@ -53,7 +53,8 @@ const PPCForm = ({data, cmo}) => {
                             btnStyle            ={btnStyle} 
                             textColor           ={textColor} 
                             bgColor             ={`white`} 
-                            redirectForm        ={true} />
+                            redirectForm        ={true}
+                            persistantEmail     ={persistantEmail} />
                     </div>
                 </Container>
             </div>

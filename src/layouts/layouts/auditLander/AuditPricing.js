@@ -22,6 +22,7 @@ const PriceBox = ({box, index, isRecommended}) => {
 
     return (
         <motion.div
+            suppressHydrationWarning
             variants={containerVariant}
             initial="hidden"
             whileInView="visible"
@@ -94,7 +95,7 @@ const AuditPricing = ({data}) => {
                     }
                     {/* H4-Light style */}
                     {body &&
-                        <p
+                        <div
                             dangerouslySetInnerHTML={{__html: Parser(body)}}
                             className={`${theme.text.H4_LTE} text-black max-w-[900px] mx-auto`}
                         />

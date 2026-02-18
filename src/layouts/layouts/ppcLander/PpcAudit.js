@@ -3,6 +3,7 @@ import { GatsbyImage } from "gatsby-plugin-image"
 import { Container } from "../../../components/global/Wrappers"
 import Parser from "../../../components/global/Parser"
 import Buttons from "../../../components/global/Buttons"
+import { Link } from "gatsby"
 import { theme } from "../../../static/theme"
 
 const PPCAudit = ({data}) => {
@@ -15,7 +16,7 @@ const PPCAudit = ({data}) => {
     const componentButton   = data.componentButton ?? false
 
     return(<>
-        <section className="py-20">
+        <section className="py-20 xl:pb-40">
             <Container container="default">
                 <div className="bg-[#F3F1EE] rounded-[21px] overflow-hidden flex flex-col xl:flex-row gap-8 xl:gap-12 p-8 md:p-12 xl:p-16">
 
@@ -34,13 +35,13 @@ const PPCAudit = ({data}) => {
                             />
                         }
                         {body &&
-                            <p
+                            <div
                                 dangerouslySetInnerHTML={{__html: Parser(body)}}
-                                className={`${theme.text.H4_LTE} text-black max-w-[535px]`}
+                                className={`${theme.text.H4_LTE} text-black xl:max-w-[535px]`}
                             />
                         }
                         {list && list.length > 0 &&
-                            <ul className="flex flex-col gap-4 mt-2">
+                            <ul className="flex flex-col gap-4 mt-2 mb-6">
                                 {list.map((item, index) => (
                                     <li key={index} className="flex items-center gap-3 font-basic-sans font-semibold text-[26px] leading-[1.4]">
                                         <svg className="w-[24px] shrink-0" viewBox="0 0 24 24" fill="none">
@@ -52,9 +53,15 @@ const PPCAudit = ({data}) => {
                             </ul>
                         }
                         {componentButton?.link?.url &&
-                            <div className="mt-4">
-                                <Buttons content={componentButton} sectionBackground="paleTeal" />
-                            </div>
+                            // <div className="mt-4">
+                            //     <Buttons content={componentButton} sectionBackground="paleTeal" />
+                            // </div>
+                                <Link
+                                className={`${theme.button['BASE_STYLING']} ${theme.button[`SOLID_GREEN_HOVER_DARK`]} ${theme.text_links.FWD_BASE} ${theme.text_links.ARW_FWD_BLACK} ${theme.text_links.HOVER_ARW_FWD_WHITE} !inline-flex items-center cursor-pointer min-w-[210px] w-max`}
+                                to={componentButton.link.url}
+                            >
+                                {componentButton.link.title}
+                            </Link>
                         }
                     </div>
 

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react"
+import React, { use, useEffect, useState } from "react"
 import { Input, PhoneInput, Select, TextArea, CheckboxGroup } from "./FormFields"
 import { theme } from "../../static/theme"
 import { useForm } from "react-hook-form";
@@ -526,7 +526,7 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
     )
 }
 
-export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnStyle, redirectForm}) => {
+export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnStyle, redirectForm, persistantEmail}) => {
     const { register, handleSubmit, watch, reset, setValue, formState, formState: { errors, isSubmitSuccessful } } = useForm()
     const [status, setStatus]               = useState(false)
     const [submittedData, setSubmittedData] = useState({})
@@ -541,6 +541,12 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
             setValue('urlSource', params.get("utm_source"))
         }
     },[])
+
+    useEffect( () => {
+        if (persistantEmail) {
+            setValue('email', persistantEmail)
+        }
+    }, [persistantEmail])
 
     const saveData = (data) => {
         setStatus(`processing`)

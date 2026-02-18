@@ -40,6 +40,7 @@ const AuditCallout = ({data}) => {
 
             <Container container="slim" classes="relative z-10">
                 <motion.div
+                    suppressHydrationWarning
                     variants={containerVariant}
                     initial="hidden"
                     whileInView="visible"
@@ -65,7 +66,7 @@ const AuditCallout = ({data}) => {
 
                     {/* P style */}
                     {body &&
-                        <p
+                        <div
                             dangerouslySetInnerHTML={{__html: Parser(body)}}
                             className={`${theme.text.P_STD} text-black max-w-[1030px]`}
                         />

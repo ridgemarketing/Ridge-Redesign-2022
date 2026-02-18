@@ -51,18 +51,20 @@ const ButtonRow = (props) => {
                         {content.topHeading}
                     </h3>                
                       <motion.div
+                        suppressHydrationWarning
                         className={`flex justify-center gap-x-8 lg:gap-x-1 xl:gap-0 flex-wrap`}
                         variants={containerVariant}
                         initial="hidden"
                         whileInView="visible"
-                      >                      
+                      >
                       {content.buttons && content.buttons.map((button, index) => {
                         const linkInfo  = button.componentButton.link;
                         const uid       = linkInfo.title.replace(' ', '_')
                         return (
                           <motion.div
+                          suppressHydrationWarning
                           key={`ButtonRowItem__${uid}__${index}`}
-                          className={'w-full md:w-[240px] lg:w-1/3 xl:w-1/4 my-4 lg:mt-8 lg:mb-5 text-center'} 
+                          className={'w-full md:w-[240px] lg:w-1/3 xl:w-1/4 my-4 lg:mt-8 lg:mb-5 text-center'}
                           variants={variantItems}>
                             <div className={"xl:pt-10"}>
                               <a href={linkInfo.url} onClick={() => context.updateFilterState(filterType[linkInfo.title.toLowerCase()])} className={`${theme.button.BASE_STYLING} ${theme.button.GHOST_GREEN_HOVER_DARK} w-[240px]`}>{linkInfo.title}</a>

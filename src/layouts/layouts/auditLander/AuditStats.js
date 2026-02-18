@@ -20,6 +20,7 @@ const StatItem = ({stat, index, cmo}) => {
 
     return (
         <motion.div
+            suppressHydrationWarning
             variants={containerVariant}
             initial="hidden"
             whileInView="visible"
@@ -58,7 +59,7 @@ const AuditStats = ({data, cmo}) => {
     const stats     = data.stats ?? false
 
     return (
-        <section className={`py-20 ${cmo ? 'bg-rm-carbon' : 'bg-white'}`}>
+        <section className={` ${cmo ? 'bg-rm-carbon -mt-[1px]' : 'bg-white py-20'}`}>
             <Container container="none" classes="max-w-[1450px] mx-auto px-4">
                 {/* Section Header */}
                 <div className="flex flex-col gap-6 text-center mb-16">
@@ -71,7 +72,7 @@ const AuditStats = ({data, cmo}) => {
                     }
                     {/* H4-Light style */}
                     {body &&
-                        <p
+                        <div
                             dangerouslySetInnerHTML={{__html: Parser(body)}}
                             className={`${theme.text.H4_LTE}  ${cmo ? ' text-white' : 'text-black' } max-w-[1110px] mx-auto`}
                         />

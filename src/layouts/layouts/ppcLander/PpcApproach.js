@@ -24,7 +24,7 @@ const PPCApproach = ({data}) => {
     }
 
     return(<>
-        <section className="py-20">
+        <section className="py-20 lg:pt-40">
             <Container container="slim" classes="flex flex-col items-center gap-8 text-center">
                 {heading &&
                     <h2

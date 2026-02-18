@@ -4,6 +4,7 @@ import Parser from "../../../components/global/Parser"
 import { Container } from "../../../components/global/Wrappers"
 import { ArrowTallLeftBlack } from "../../../static/arrow-tall-left-black"
 import { ArrowTallRightBlack } from "../../../static/arrow-tall-right-black"
+import { Link } from "gatsby"
 
 const PPCQuotes = ({data, cmo}) => { 
 
@@ -18,6 +19,25 @@ const PPCQuotes = ({data, cmo}) => {
     const quoteRight                            = useRef(null)
     const slidedataFetchedRef                   = useRef(false)
     let arrows                                  = false
+    
+
+    // Experiencing ACF data save issues, so instead of adding field, put this here
+    let cmoButton
+    if (cmo) {
+        cmoButton = {
+            "style": "solid",
+            "link": {
+                "target": "",
+                "title": "Get a Quote",
+                "url": "#form"
+            },
+            "colors": {
+                "resting": "GREEN"
+            },
+            "icon": 'button'
+        }
+    }
+
 
     useEffect(() => {
         setslidedata(slides[0])
@@ -146,7 +166,7 @@ const PPCQuotes = ({data, cmo}) => {
     }
 
     return(<>
-        <div ref={parallaxContainer} className={`block py-20 relative`}>
+        <div ref={parallaxContainer} className={`block ${cmo ? 'pt-10 pb-20 -mt-[1px]' : 'py-20'} relative`}>
             <section classes="overflow-hidden bg-transparent max-w-[1600px] mx-auto">
                 <Container classes={`bg-transparent`}>
                     <div ref={sliderRef} className={`mt-12 flex w-full flex-wrap justify-between relative`}>
@@ -173,6 +193,16 @@ const PPCQuotes = ({data, cmo}) => {
                             </div>
                         }
                     </div> 
+                    {cmo &&
+                        <div className="w-full mx-auto flex justify-center mt-12">
+                            <Link
+                                className={`${theme.button['BASE_STYLING']} ${theme.button[`SOLID_GREEN_HOVER_LIGHT`]} ${theme.text_links.FWD_BASE} ${theme.text_links.ARW_FWD_BLACK} ${theme.text_links.HOVER_ARW_FWD_BLACK} !inline-flex items-center cursor-pointer min-w-[210px]`}
+                                to={cmoButton.link.url}
+                            >
+                                {cmoButton.link.title}
+                            </Link>
+                        </div>
+                    }
                     <span ref={quoteLeft}  aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-[15%] left-[40px] sm:left-[88px] md:left-16 lg:left-18 xl:left-28 md:top-1/4 -z-10`}> “</span>
                     <span ref={quoteRight} aria-hidden="true" className={`hidden md:block font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-3/4 right-[40px] sm:right-[88px] md:right-16 lg:right-18 xl:right-28 md:top-3/4 -z-10`}>” </span>
                 </Container>
