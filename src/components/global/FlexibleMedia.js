@@ -90,7 +90,7 @@ const FlexibleMedia = (props) => {
                             <source src={video.mobileVideoUrlOptional} type="video/mp4"/>  
                         </video>
                     }
-                    <video preload="metadata" className={`${video.mobileVideoUrlOptional && 'hidden md:block'} w-full z-0`} controls={ !video.controls || video.controls !== 'Hide' && true } autoPlay={video.autoplay && video.autoplay == 'Yes' ? true : false} muted={video.autoplay && video.autoplay == 'Yes' ? true : false} loop={video.autoplay && video.autoplay == 'Yes' ? true : false}>
+                    <video ref={autoPlayOnMobile} preload="metadata" className={`${video.mobileVideoUrlOptional && 'hidden md:block'} w-full z-0`} controls={ !video.controls || video.controls !== 'Hide' && true } autoPlay={video.autoplay && video.autoplay == 'Yes' ? true : false} muted={video.autoplay && video.autoplay == 'Yes' ? true : false} loop={video.autoplay && video.autoplay == 'Yes' ? true : false}>
                         <source src={video.videoUrl} type="video/mp4"/>      
                     </video>
                 </div>

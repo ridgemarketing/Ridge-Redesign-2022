@@ -30,14 +30,13 @@ const FrequentlyAskedQuestions = ({ layoutData }) => {
       "name": faq.question,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": faq.answer?.replace(/<[^>]*>/g, '') // Strip HTML tags for schema
+        "text": faq.answer?.replace(/<[^>]*>/g, '') 
       }
     })) || []
   }
 
   return (
     <>
-      {/* Add FAQ Schema to head - only if FAQ items exist */}
       {content.faqItems && content.faqItems.length > 0 && (
         <Helmet>
           <script type="application/ld+json">
@@ -47,7 +46,6 @@ const FrequentlyAskedQuestions = ({ layoutData }) => {
       )}
 
       <Section settings={settings} className="relative">
-        {/* Image that extends above section */}
         {content.image && (
           <div className="absolute left-1/2 -translate-x-1/2 -top-32 max-w-3xl z-10 w-72 h-72">
             <GatsbyImage
@@ -59,21 +57,18 @@ const FrequentlyAskedQuestions = ({ layoutData }) => {
         )}
 
         <Container container={settings.containerWidth}>
-          {/* Title */}
           {content.title && (
             <h2 className={`${theme.text.H2} text-center mb-6 ${content.image ? 'pt-32' : ''}`}>
               {content.title}
             </h2>
           )}
 
-          {/* Text */}
           {content.text && (
             <p className={`${theme.text.P_STD} text-center mb-16`}>
               {content.text}
             </p>
           )}
 
-          {/* FAQ Items */}
           {content.faqItems && content.faqItems.length > 0 && (
           <div className="faq-container flex flex-col gap-6">
               {content.faqItems.map((faq, index) => (
