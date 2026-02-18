@@ -1,29 +1,45 @@
-import React from "react"
+import React, { useRef, useEffect, useState } from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Container } from "../../../components/global/Wrappers"
 import Parser from "../../../components/global/Parser"
 import Buttons from "../../../components/global/Buttons"
 import { theme } from "../../../static/theme"
+import { Link } from "gatsby"
 
-const PPCHeroCMO = ({data}) => {
+const PPCHeroCMO = ({data, setPersistantEmail}) => {
 
     const heading           = data.heading ?? false
     const subHeading        = data.subHeading ?? false
     const image             = data.image ?? false
-    const componentButton   = data.componentButton ?? false
+    const buttonData        = data.componentButton ?? false
     const callout           = data.callout ?? false
     const list              = data.list ?? false
+
+    const calloutRef                    = useRef(null)
+    const [calloutHeight, setCalloutHeight] = useState(0)
+
+    useEffect(() => {
+        if (!calloutRef.current) return
+        const update = () => setCalloutHeight(calloutRef.current.offsetHeight)
+        update()
+        window.addEventListener('resize', update)
+        return () => window.removeEventListener('resize', update)
+    }, [])
+
+    const handleBlur = (e) => {
+        setPersistantEmail(e.target.value)
+    }
 
     return(<>
         <section className="relative bg-[#f3f1ee] overflow-hidden">
             {/* Teal gradient overlay */}
             <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(147deg,rgba(0,171,182,0)_54%,rgba(0,171,182,0.6)_167%)]" />
 
-            <Container container="default" classes="relative z-10 pb-[200px]">
+            <Container container="default" classes="relative z-10 pb-[300px]">
                 <div className="flex flex-col xl:flex-row items-center gap-12 xl:gap-0 pt-12 md:py-20 min-h-[500px] xl:min-h-[642px]">
 
                     {/* Left Column - Text Content */}
-                    <div className="flex flex-col gap-6 xl:gap-8 xl:w-[55%] xl:pr-12 text-center xl:text-left pt-8 xl:pt-12">
+                    <div className="flex flex-col gap-6 xl:gap-8 xl:w-[55%] text-center xl:text-left pt-8 xl:pt-12">
                         {heading &&
                             <h1
                                 dangerouslySetInnerHTML={{__html: Parser(heading)}}
@@ -51,7 +67,7 @@ const PPCHeroCMO = ({data}) => {
                     </div>
 
                     {/* Right Column - Image */}
-                    <div className="relative xl:w-[45%] flex items-center justify-center ">
+                    <div className="relative xl:w-[45%] xl:min-w-[800px] xlz:-mr-[110px] flex items-center justify-center ">
                         {image && image.localFile?.childImageSharp?.gatsbyImageData &&
                             <GatsbyImage
                                 image={image.localFile.childImageSharp.gatsbyImageData}
@@ -69,8 +85,12 @@ const PPCHeroCMO = ({data}) => {
         </section>
 
         {/* Description and Quote Callout */}
-        {callout &&
-            <section className="relative z-10 -translate-y-1/2 top-1/2">
+        {callout && <>
+            <section
+                ref={calloutRef}
+                className="relative z-10 -translate-y-1/2"
+                style={{ marginBottom: calloutHeight ? `-${calloutHeight / 2}px` : undefined }}
+            >
                 <Container container="default">
                     <div className="bg-[#107d84] rounded-[21px] py-16 px-8 md:px-20 text-center text-white flex flex-col items-center gap-6">
                         {callout.heading &&
@@ -84,13 +104,24 @@ const PPCHeroCMO = ({data}) => {
                                 className={`${theme.text.H4_LTE} text-white max-w-[1100px]`}
                             />
                         }
-                        {componentButton?.link?.url &&
-                            <Buttons content={componentButton} sectionBackground="black" />
+                        <input 
+                            onBlur={(e) => handleBlur(e)}
+                            placeholder="Your Business Email"
+                            type={`email`} 
+                            className={` ${theme.text.P_STD} w-full font-basic-sans text-center text-black rounded-xl border-solid border-4 border-[#D9D9D9] max-w-[715px] min-h-[60px] mx-auto`}/>
+                        {buttonData?.link?.url &&
+                            <Link
+                                className={`${theme.button['BASE_STYLING']} ${theme.button[`SOLID_GREEN_HOVER_DARK`]} ${theme.text_links.FWD_BASE} ${theme.text_links.ARW_FWD_BLACK} ${theme.text_links.HOVER_ARW_FWD_WHITE} !inline-flex items-center cursor-pointer min-w-[210px]`}
+                                to={buttonData.link.url}
+                            >
+                                {buttonData.link.title}
+                            </Link>
                         }
                     </div>
                 </Container>
             </section>
-        }
+            <div className="mb-20 xl:mb-40 w-full"></div>
+        </>}
     </>)
 }
 

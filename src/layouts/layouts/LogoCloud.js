@@ -92,7 +92,8 @@ const LogoCloud = props => {
                   </div>
                 }
                 {content.type !== 'carousel' &&
-                  <motion.div 
+                  <motion.div
+                  suppressHydrationWarning
                   className={"mt-12 flex w-full flex-wrap justify-center items-center lg:justify-around gap-y-6 md:gap-y-8 gap-x-10 sm:gap-x-12 md:gap-x-20 lg:gap-x-6"}
                   variants={containerVariant}
                   initial="hidden"
@@ -100,11 +101,11 @@ const LogoCloud = props => {
                   viewport={{ once: true }}
                   >
                     {content.logos.map((logo, index) => {
-                      const image = (logo.image.localFile.ext === ".svg") 
+                      const image = (logo.image.localFile.ext === ".svg")
                       ? <img key={logo.image.sourceUrl} className={`w-full object-contain`} src={logo.image.sourceUrl} alt={logo.image.altText}/>
                       : <GatsbyImage key={logo.image.sourceUrl} className={`w-full`} objectFit="contain" image={logo.image.localFile.childImageSharp.gatsbyImageData} alt={logo.image.altText} /> ;
                       return(
-                        <motion.div key={`LogoCloudItem__${image.id}__${index}`} variants={variantItems} className={"w-[24%] lg:w-[15%] h-full"}>
+                        <motion.div suppressHydrationWarning key={`LogoCloudItem__${image.id}__${index}`} variants={variantItems} className={"w-[24%] lg:w-[15%] h-full"}>
                           {image}                        
                         </motion.div>
                       )

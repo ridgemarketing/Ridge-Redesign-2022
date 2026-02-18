@@ -782,7 +782,28 @@ export const query = graphql`
           }
         }
 
-          
+        caseStudies {
+          heading
+          body
+          items {
+            heading
+            body
+            industry
+            tactic
+            image {
+              altText
+              sourceUrl
+              localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+          }
+        }
+
+
       }
   }
   allWp {

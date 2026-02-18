@@ -27,7 +27,7 @@ const AuditLogos = ({data}) => {
                         }
                         {/* H4-Light style */}
                         {body &&
-                            <p
+                            <div
                                 dangerouslySetInnerHTML={{__html: Parser(body)}}
                                 className={`${theme.text.H4_LTE} text-black max-w-[1100px] mx-auto`}
                             />
