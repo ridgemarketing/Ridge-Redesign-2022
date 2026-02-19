@@ -47,8 +47,9 @@ import TwoColTextForm from "./layouts/TwoColTextForm"
 import TwoColIconText from "./layouts/TwoColIconText"
 import FrequentlyAskedQuestions from "./layouts/FrequentlyAskedQuestions"
 import TwoColImageList from "./layouts/TwoColImageList"
+import AuditCard from "./layouts/AuditCard"
 
-let Layouts = {}; 
+let Layouts = {};
 
 Layouts['ContactFourSquare']                = ContactFourSquare;
 Layouts['FeaturedProjectsCarousel']         = FeaturedProjectsCarousel;
@@ -101,6 +102,6 @@ Layouts['TwoColTextForm']                   = TwoColTextForm;
 Layouts['TwoColIconText']                   = TwoColIconText;
 Layouts['FrequentlyAskedQuestions']         = FrequentlyAskedQuestions;
 Layouts['TwoColImageList']                  = TwoColImageList;
-
+Layouts['AuditCard']                        = AuditCard;
 
 export default Layouts

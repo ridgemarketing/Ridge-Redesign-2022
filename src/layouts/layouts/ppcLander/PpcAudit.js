@@ -20,7 +20,6 @@ const PPCAudit = ({data}) => {
             <Container container="default">
                 <div className="bg-[#F3F1EE] rounded-[21px] overflow-hidden flex flex-col xl:flex-row gap-8 xl:gap-12 p-8 md:p-12 xl:p-16">
 
-                    {/* Left - Text Content */}
                     <div className="flex flex-col gap-5 xl:w-1/2">
                         {heading &&
                             <h2
@@ -65,7 +64,6 @@ const PPCAudit = ({data}) => {
                         }
                     </div>
 
-                    {/* Right - Image */}
                     <div className="xl:w-1/2 flex items-center justify-center">
                         {image && image.localFile?.childImageSharp?.gatsbyImageData &&
                             <GatsbyImage

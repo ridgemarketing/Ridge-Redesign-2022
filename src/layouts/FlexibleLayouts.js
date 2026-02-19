@@ -81,6 +81,7 @@ export const pageQuery = graphql`
         ...TwoColIconTextPage
         ...FrequentlyAskedQuestionsPage
         ...TwoColImageListPage
+        ...AuditCardPage
       }
     }
   }
@@ -125,6 +126,7 @@ export const serviceQuery = graphql`
         ...TwoColIconTextService
         ...FrequentlyAskedQuestionsService
         ...TwoColImageListService
+        ...AuditCardService
       }
     }
   }
@@ -177,6 +179,7 @@ export const projectQuery = graphql`
         ...TwoColIconTextProject
         ...FrequentlyAskedQuestionsProject
         ...TwoColImageListProject
+        ...AuditCardProject
       }
     }
   }
@@ -196,6 +199,7 @@ export const landerQuery = graphql`
         ...TwoColTextFormLander
         ...VerticalSliderLander
         ...FrequentlyAskedQuestionsLander
+        ...AuditCardLander
       }
     }
   }
