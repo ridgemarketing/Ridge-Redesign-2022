@@ -7,15 +7,17 @@ import Buttons from "../../components/global/Buttons"
 import { theme } from "../../static/theme"
 
 const AuditCard = (props) => {
-    const content           = props.layoutData.layoutContent
-    const settings          = props.layoutData.layoutSettings
+    const content             = props.layoutData.layoutContent
+    const settings            = props.layoutData.layoutSettings
 
-    const heading           = content.heading      ?? false
-    const subHeading        = content.subHeading   ?? false
-    const body              = content.body         ?? false
-    const list              = content.list         ?? false
-    const componentButton   = content.componentButton ?? false
-    const image             = content.image        ?? false
+    const heading             = content.heading      ?? false
+    const subHeading          = content.subHeading   ?? false
+    const body                = content.body         ?? false
+    const list                = content.list         ?? false
+    const componentButton     = content.componentButton ?? false
+    const image               = content.image        ?? false
+    const halfBackground      = content.halfBackground ?? false
+    const halfBackgroundColor = content.halfBackgroundColor ?? false
 
     let renderImage
     if (image) {
@@ -32,6 +34,9 @@ const AuditCard = (props) => {
 
     return (
         <Section settings={settings}>
+            {halfBackground && halfBackgroundColor &&
+              <div className={`absolute top-0 left-0 h-1/2 w-full bg-${halfBackgroundColor}`}></div>
+            }
             <Container container="default">
                 <div className="bg-[#F3F1EE] rounded-[21px] overflow-hidden flex flex-col xl:flex-row gap-8 xl:gap-12 p-8 md:p-12 xl:p-16">
 
@@ -110,6 +115,8 @@ export const query = graphql`
               childImageSharp { gatsbyImageData }
             }
           }
+          halfBackground
+          halfBackgroundColor
         }
         layoutSettings {
           padding { bottom top }
