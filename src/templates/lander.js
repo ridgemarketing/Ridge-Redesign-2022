@@ -790,6 +790,16 @@ export const query = graphql`
             body
             industry
             tactic
+            mediaType
+            video {
+              mediaDetails {
+                  file
+                  height
+                  width
+                }
+                mimeType
+                mediaItemUrl
+            }
             image {
               altText
               sourceUrl
