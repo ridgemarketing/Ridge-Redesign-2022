@@ -5,14 +5,17 @@ import Parser from "../../../components/global/Parser"
 import { theme } from "../../../static/theme"
 
 const PpcCaseStudies = ({ data }) => {
-    const heading = data.heading ?? false
-    const body    = data.body    ?? false
-    const items   = data.items   ?? []
+    const heading   = data.heading ?? false
+    const body      = data.body    ?? false
+    const items     = data.items   ?? []
 
-    const [slide, setSlide]               = useState(0)
-    const [slideInteraction, setInteraction] = useState(false)
-    const [isVisible, setIsVisible]       = useState(false)
-    const carouselRef                     = useRef(null)
+    const [slide, setSlide]                     = useState(0)
+    const [slideInteraction, setInteraction]    = useState(false)
+    const [isVisible, setIsVisible]             = useState(false)
+    const carouselRef                           = useRef(null)
+    const activeVideo                           = useRef(null)
+
+    console.log(items[slide])
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -21,6 +24,12 @@ const PpcCaseStudies = ({ data }) => {
         if (carouselRef.current) observer.observe(carouselRef.current)
         return () => observer.disconnect()
     }, [])
+
+    useEffect(() => {
+        if (activeVideo.current) {
+            activeVideo.current.play().catch(() => {})
+        }
+    }, [slide])
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -41,7 +50,9 @@ const PpcCaseStudies = ({ data }) => {
         setSlide(i => (i === 0) ? items.length - 1 : i - 1)
     }
 
-    if (!items.length) return null
+    if (!items.length) {
+        return null
+    }
 
     const current = items[slide]
 
@@ -50,12 +61,21 @@ const PpcCaseStudies = ({ data }) => {
             ? <GatsbyImage
                 image={current.image.localFile.childImageSharp.gatsbyImageData}
                 alt={current.image.altText || ''}
-                className="w-full h-full"
-                objectFit="cover"
+                className="w-full h-full aspect-video"
+                objectFit="contain"
               />
             : current.image.sourceUrl
                 ? <img src={current.image.sourceUrl} alt={current.image.altText || ''} className="w-full h-full object-cover" />
                 : null
+        : null
+    // const renderImage = current.image.sourceUrl
+    //             ? <img src={current.image.sourceUrl} alt={current.image.altText || ''} className="w-full h-full object-contain" />
+    //             : null
+
+    const renderVideo = current.video?.mediaItemUrl
+        ? <video key={current.video.mediaItemUrl} ref={activeVideo} autoPlay muted playsInline className="w-full h-full aspect-video">
+               <source src={current.video.mediaItemUrl} type={current.video.mimeType} />
+          </video>
         : null
 
     return (
@@ -75,14 +95,12 @@ const PpcCaseStudies = ({ data }) => {
                 </Container>
             )}
 
-            <div ref={carouselRef} className="flex flex-col xl:flex-row xl:mr-[calc((100%-1224px)/2)]">
+            <div ref={carouselRef} className="flex flex-col xl:flex-row xl:mr-[calc((100%-1224px)/2)] max-w-[2000px] 3xl:mx-auto items-start justify-start">
 
-                {/* Left: Image */}
-                <div className="w-full xl:w-[55%] h-[360px] md:h-[500px] lg:h-[600px] xl:h-[720px] xlz:min-w-[945px] overflow-hidden bg-rm-pale-grey shrink-0">
-                    {renderImage}
+                <div className="w-full xl:w-[55%] xlz:w-[945px] aspect-video overflow-hidden shrink-0">
+                    {current.mediaType === 'image' ? (renderImage) : (renderVideo)}
                 </div>
 
-                {/* Right: Text + Nav */}
                 <div className="w-full xl:w-[45%] flex flex-col justify-center gap-10 px-8 md:px-14 xl:pl-20 xl:pr-0 py-12 xl:py-0">
 
                     <div className="flex flex-col gap-6">
@@ -106,7 +124,6 @@ const PpcCaseStudies = ({ data }) => {
                         }
                     </div>
 
-                    {/* Nav counter */}
                     {items.length > 1 &&
                         <div className="flex items-center bg-rm-pale-grey w-[138px] h-[68px]">
                             <button
