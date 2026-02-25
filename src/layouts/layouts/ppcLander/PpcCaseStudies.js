@@ -5,14 +5,17 @@ import Parser from "../../../components/global/Parser"
 import { theme } from "../../../static/theme"
 
 const PpcCaseStudies = ({ data }) => {
-    const heading = data.heading ?? false
-    const body    = data.body    ?? false
-    const items   = data.items   ?? []
+    const heading   = data.heading ?? false
+    const body      = data.body    ?? false
+    const items     = data.items   ?? []
 
-    const [slide, setSlide]               = useState(0)
-    const [slideInteraction, setInteraction] = useState(false)
-    const [isVisible, setIsVisible]       = useState(false)
-    const carouselRef                     = useRef(null)
+    const [slide, setSlide]                     = useState(0)
+    const [slideInteraction, setInteraction]    = useState(false)
+    const [isVisible, setIsVisible]             = useState(false)
+    const carouselRef                           = useRef(null)
+    const activeVideo                           = useRef(null)
+
+    console.log(items[slide])
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -21,6 +24,12 @@ const PpcCaseStudies = ({ data }) => {
         if (carouselRef.current) observer.observe(carouselRef.current)
         return () => observer.disconnect()
     }, [])
+
+    useEffect(() => {
+        if (activeVideo.current) {
+            activeVideo.current.play().catch(() => {})
+        }
+    }, [slide])
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -41,7 +50,9 @@ const PpcCaseStudies = ({ data }) => {
         setSlide(i => (i === 0) ? items.length - 1 : i - 1)
     }
 
-    if (!items.length) return null
+    if (!items.length) {
+        return null
+    }
 
     const current = items[slide]
 
@@ -61,6 +72,12 @@ const PpcCaseStudies = ({ data }) => {
     //             ? <img src={current.image.sourceUrl} alt={current.image.altText || ''} className="w-full h-full object-contain" />
     //             : null
 
+    const renderVideo = current.video?.mediaItemUrl
+        ? <video key={current.video.mediaItemUrl} ref={activeVideo} autoPlay muted playsInline className="w-full h-full aspect-video">
+               <source src={current.video.mediaItemUrl} type={current.video.mimeType} />
+          </video>
+        : null
+
     return (
         <section className="py-20 xl:pt-0 xl:pb-40">
 
@@ -78,10 +95,10 @@ const PpcCaseStudies = ({ data }) => {
                 </Container>
             )}
 
-            <div ref={carouselRef} className="flex flex-col xl:flex-row xl:mr-[calc((100%-1224px)/2)] items-start justify-start">
+            <div ref={carouselRef} className="flex flex-col xl:flex-row xl:mr-[calc((100%-1224px)/2)] max-w-[2000px] 3xl:mx-auto items-start justify-start">
 
                 <div className="w-full xl:w-[55%] xlz:w-[945px] aspect-video overflow-hidden shrink-0">
-                    {renderImage}
+                    {current.mediaType === 'image' ? (renderImage) : (renderVideo)}
                 </div>
 
                 <div className="w-full xl:w-[45%] flex flex-col justify-center gap-10 px-8 md:px-14 xl:pl-20 xl:pr-0 py-12 xl:py-0">
