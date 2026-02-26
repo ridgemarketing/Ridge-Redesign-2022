@@ -56,7 +56,7 @@ const AuditCard = (props) => {
                         {body &&
                             <div
                                 dangerouslySetInnerHTML={{ __html: Parser(body) }}
-                                className={`text-[1.3125rem] leading-[2rem] text-black max-w-[535px]`}
+                                className={`font-basic-sans text-[1.3125rem] leading-[2rem] text-black max-w-[535px]`}
                             />
                         }
                         {list && list.length > 0 &&
