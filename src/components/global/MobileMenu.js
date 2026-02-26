@@ -35,13 +35,25 @@ const MenuItem = ({navItem, setShowMenu}) => {
                 <div key={``} className={`transition-all duration-300 ${subMenuOpen ? `h-auto` : `h-0 overflow-hidden`}`}>
                     {navItem.childItems.nodes.length <= 6 &&
                         <div className={`bg-white py-2 text-rm-black flex flex-col gap-6 pl-4 border-l border-rm-grey border-opacity-10`}>
-                            {navItem.childItems.nodes.map((subNavItem) => {
-                                let menuIcon = false;
-                                if(subNavItem.acfWpMenu.icon){
+                            {navItem.childItems.nodes.map((subNavItem, index) => {
+                                let menuIcon    = false
+                                const uid       = subNavItem.label.replace(' ', '_')
+
+                                if (subNavItem.acfWpMenu.icon) {
                                     menuIcon = checkImg(subNavItem.acfWpMenu.icon, 'h-[40px] w-[40px] mr-5');
                                 }
+
+                                if (subNavItem.label.toLowerCase() === 'ai search audit') {
+                                    return(
+                                        <Link key={`mobile_level-2b__${uid}__${index}`} onClick={() => setShowMenu(false)} to={subNavItem.url} className={`flex text-white hover:text-rm-green hover:underline bg-black w-max px-6 py-2 items-center rounded-md`}>
+                                            {menuIcon && menuIcon}
+                                            {subNavItem.label}
+                                        </Link>
+                                    )
+                                }
+
                                 return(
-                                    <Link onClick={() => setShowMenu(false)}  to={subNavItem.url} className={`hover:text-rm-green hover:underline`}>
+                                    <Link onClick={() => setShowMenu(false)} to={subNavItem.url} className={`hover:text-rm-green hover:underline`}>
                                         {menuIcon && menuIcon}
                                         {subNavItem.label}
                                     </Link>
@@ -51,12 +63,23 @@ const MenuItem = ({navItem, setShowMenu}) => {
                     }
                     {navItem.childItems.nodes.length > 6 &&
                         <div className={`bg-white pt-6 pb-8 text-rm-black grid md:grid-cols-2 gap-y-4 gap-x-6`}>
-                            {navItem.childItems.nodes.map((subNavItem) => {
-                                let menuIcon = false;
+                            {navItem.childItems.nodes.map((subNavItem, index) => {
+                                let menuIcon    = false;
+                                const uid       = subNavItem.label.replace(' ', '_')
 
                                 if(subNavItem.acfWpMenu.icon){
                                     menuIcon = checkImg(subNavItem.acfWpMenu.icon, 'h-[40px] w-[40px] mr-5');
                                 }
+
+                                if (subNavItem.label.toLowerCase() === 'ai search audit') {
+                                    return(
+                                        <Link key={`mobile_level-2b__${uid}__${index}`} onClick={() => setShowMenu(false)} to={subNavItem.url} className={`flex text-white hover:text-rm-green hover:underline bg-black w-max px-6 py-2 items-center rounded-md`}>
+                                            {menuIcon && menuIcon}
+                                            {subNavItem.label}
+                                        </Link>
+                                    )
+                                }
+                                
                                 return(
                                     <Link onClick={() => setShowMenu(false)}  to={subNavItem.url} className={`flex hover:text-rm-green hover:underline`}>
                                         {menuIcon && menuIcon}
@@ -113,7 +136,7 @@ const MobileMenu = ({setShowMenu}) => {
     `);
 
     return(
-        <div className={`absolute top-full left-0 flex flex-col pt-6 min-h-screen md:w-full`}>
+        <div className={`absolute top-full left-0 flex flex-col pt-6 min-h-screen w-full`}>
             <div className={`absolute top-0 left-0 w-full h-full bg-black bg-opacity-70`}></div>
             <div className={`container`}>
                 <div className={`relative py-4 px-6 bg-white text-black max-h-[80vh] overflow-scroll`}>
