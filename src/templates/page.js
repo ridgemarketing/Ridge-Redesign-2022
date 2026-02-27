@@ -11,6 +11,7 @@ import CustomHeader from "../components/global/headerColor"
 import PortfolioHeader from "../layouts/layouts/PortfolioHeader"
 import { theme, ThemeContext } from "../static/theme"
 import Wrapped2024 from "../layouts/layouts/wrapped2024"
+import AuditLanderWrapper from "../layouts/layouts/auditLander/AuditLanderWrapper"
 
 export const Head = ({data}) => (
   <>
@@ -98,6 +99,13 @@ const WpPage = ({ data, location }) =>{
     context.current.updateAccentFunction(theme.colors.primary.accent);
     context.current.updateSecondaryFunction(theme.colors.secondary.accent);
   }, []);
+
+  if (data.wpPage.uri === '/audit/') {
+    return (<>
+      <CustomHeader color={color} position={`sticky`} />
+      <AuditLanderWrapper data={data.wpPage.AIAudit} />
+    </>)
+  }
 
   if(data.wpPage.uri === '/wrapped_2024/'){
     return (
@@ -235,6 +243,183 @@ export const query = graphql`
             raw
         }
       }
+
+
+      AIAudit {
+          hero {
+            body
+            heading
+            desktopBackground {
+              sourceUrl
+                      localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+            }
+            graphic {
+              sourceUrl
+                      localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+            }
+            largeDesktop {
+              sourceUrl
+                      localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+            }
+            mobileBackground {
+              sourceUrl
+                      localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+            }
+            preHeading
+            tabletBackground {
+              sourceUrl
+                      localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+            }
+            componentButtonGroup {
+              componentButton {
+                colors {
+                  resting
+                }
+                link {
+                  target
+                  title
+                  url
+                }
+                style
+              }
+            }
+          }
+          formText {
+            list {
+              item
+            }
+            listBody
+            mainBody
+          }
+          callout {
+              backgroundImage {
+              altText
+                  localFile {
+                    ext
+                    childImageSharp {
+                      gatsbyImageData
+                    }
+                  }
+            }
+            body
+            componentButtonGroup {
+              componentButton {
+                colors {
+                  resting
+                }
+                link {
+                  target
+                  title
+                  url
+                }
+                style
+              }
+            }
+            heading
+            subHeading
+          }
+          logos {
+            body
+            heading
+            logos {
+              image {
+                altText
+                sourceUrl
+                        localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+              }
+            }
+          }
+          pricing {
+            body
+            heading
+            componentButtonGroup {
+              componentButton {
+                colors {
+                  resting
+                }
+                link {
+                  target
+                  title
+                  url
+                }
+                style
+              }
+            }
+            priceBoxes {
+              body
+              heading
+              price
+              subHeading
+              recommended
+            }
+          }
+          stats {
+            body
+            heading
+            stats {
+              stat
+              subHeading
+              heading
+            }
+            subBody
+          }
+          steps {
+            body
+            heading
+            steps {
+              body
+              heading
+              icons {
+                body
+                heading
+                icon {
+                  altText
+                  sourceUrl
+                }
+              }
+              subBody
+              image {
+                altText
+                    localFile {
+                      ext
+                      childImageSharp {
+                        gatsbyImageData
+                      }
+                    }
+              }
+            }
+          }
+        }
   }
   allWp {
     nodes {

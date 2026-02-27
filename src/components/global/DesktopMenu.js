@@ -92,12 +92,22 @@ const DesktopMenu = () => {
                                     {navItem.childItems.nodes.length > 6 &&
                                         <div key={`${navItem.label}_mid_level_1`} className={`bg-white pt-6 pb-8 px-5 text-rm-black grid grid-cols-2 gap-y-4 gap-x-6 shadow-block`}>
                                             {navItem.childItems.nodes.map((subNavItem, index) => {
-                                                let menuIcon = false;
+                                                let menuIcon    = false;
                                                 const uid       = subNavItem.label.replace(' ', '_')
 
                                                 if(subNavItem.acfWpMenu.icon){
                                                     menuIcon = checkImg(subNavItem.acfWpMenu.icon, 'h-[40px] w-[40px] mr-5');
                                                 }
+
+                                                if(subNavItem.label.toLowerCase() === 'ai search audit') {
+                                                    return(
+                                                        <Link key={`level-2b__${uid}__${index}`} to={subNavItem.url} className={`flex text-white hover:text-rm-green hover:underline bg-black w-max px-6 py-2 items-center rounded-md`}>
+                                                            {menuIcon && menuIcon}
+                                                            {subNavItem.label}
+                                                        </Link>
+                                                    )
+                                                }
+
                                                 return(
                                                     <Link key={`level-2b__${uid}__${index}`} to={subNavItem.url} className={`flex hover:text-rm-green hover:underline`}>
                                                         {menuIcon && menuIcon}

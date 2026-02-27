@@ -83,7 +83,7 @@ const PPCProjectSlider = ({data, cmo}) => {
                 <h2 className={`font-stratos uppercase font-bold text-[40px] leading-[44px] text-center ${cmo ? 'text-white mb-20' : 'text-black mb-10'} `}>{data.heading}</h2>
             }
             {data.images &&
-                <Splide
+                <Splide 
                     ref             = { splideRef }
                     className       = {` w-[175%] -ml-[37.5%] xl:w-[120%] xl:-ml-[10%] ppcProjectSlider will-change-transform`}
                     hasTrack        = { false }
