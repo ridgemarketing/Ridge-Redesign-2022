@@ -36,17 +36,30 @@ const MenuItem = ({navItem, setShowMenu}) => {
                     {navItem.childItems.nodes.length <= 6 &&
                         <div className={`bg-white py-2 text-rm-black flex flex-col gap-6 pl-4 border-l border-rm-grey border-opacity-10`}>
                             {navItem.childItems.nodes.map((subNavItem, index) => {
-                                let menuIcon    = false
-                                const uid       = subNavItem.label.replace(' ', '_')
+                                let menuIcon        = false
+                                let menuIconHover   = false
+                                const uid           = subNavItem.label.replace(' ', '_')
 
                                 if (subNavItem.acfWpMenu.icon) {
                                     menuIcon = checkImg(subNavItem.acfWpMenu.icon, 'h-[40px] w-[40px] mr-5');
                                 }
 
+                                if (subNavItem.acfWpMenu.iconHover) {
+                                    menuIconHover = checkImg(subNavItem.acfWpMenu.iconHover, 'h-[40px] w-[40px] mr-5');
+                                }
+
                                 if (subNavItem.label.toLowerCase() === 'ai search audit') {
                                     return(
-                                        <Link key={`mobile_level-2b__${uid}__${index}`} onClick={() => setShowMenu(false)} to={subNavItem.url} className={`flex text-white hover:text-rm-green hover:underline bg-black w-max px-6 py-2 items-center rounded-md`}>
-                                            {menuIcon && menuIcon}
+                                        <Link key={`mobile_level-2b__${uid}__${index}`} onClick={() => setShowMenu(false)} to={subNavItem.url} className={`group/link flex text-black hover:text-white focus:text-white bg-rm-pale-grey hover:bg-black focus:bg-black transition-all duration-300 ease-out w-max px-6 py-2 items-center rounded-md`}>
+                                            {menuIconHover ? 
+                                            <>
+                                                {menuIcon && 
+                                                    <div className="group-hover/link:hidden group-focus/link:hidden">{menuIcon}</div>
+                                                }
+                                                <div className="hidden group-hover/link:block group-focus/link:block">
+                                                    {menuIconHover}
+                                                </div>
+                                            </> : menuIcon && menuIcon}
                                             {subNavItem.label}
                                         </Link>
                                     )
@@ -64,17 +77,29 @@ const MenuItem = ({navItem, setShowMenu}) => {
                     {navItem.childItems.nodes.length > 6 &&
                         <div className={`bg-white pt-6 pb-8 text-rm-black grid md:grid-cols-2 gap-y-4 gap-x-6`}>
                             {navItem.childItems.nodes.map((subNavItem, index) => {
-                                let menuIcon    = false;
-                                const uid       = subNavItem.label.replace(' ', '_')
+                                let menuIcon        = false
+                                let menuIconHover   = false
+                                const uid           = subNavItem.label.replace(' ', '_')
 
                                 if(subNavItem.acfWpMenu.icon){
                                     menuIcon = checkImg(subNavItem.acfWpMenu.icon, 'h-[40px] w-[40px] mr-5');
                                 }
+                                if (subNavItem.acfWpMenu.iconHover) {
+                                    menuIconHover = checkImg(subNavItem.acfWpMenu.iconHover, 'h-[40px] w-[40px] mr-5');
+                                }
 
                                 if (subNavItem.label.toLowerCase() === 'ai search audit') {
                                     return(
-                                        <Link key={`mobile_level-2b__${uid}__${index}`} onClick={() => setShowMenu(false)} to={subNavItem.url} className={`flex text-white hover:text-rm-green hover:underline bg-black w-max px-6 py-2 items-center rounded-md`}>
-                                            {menuIcon && menuIcon}
+                                        <Link key={`mobile_level-2b__${uid}__${index}`} onClick={() => setShowMenu(false)} to={subNavItem.url} className={`group/link flex text-black hover:text-white focus:text-white bg-rm-pale-grey hover:bg-black focus:bg-black transition-all duration-300 ease-out w-max px-6 py-2 items-center rounded-md`}>
+                                            {menuIconHover ? 
+                                            <>
+                                                {menuIcon && 
+                                                    <div className="group-hover/link:hidden group-focus/link:hidden">{menuIcon}</div>
+                                                }
+                                                <div className="hidden group-hover/link:block group-focus/link:block">
+                                                    {menuIconHover}
+                                                </div>
+                                            </> : menuIcon && menuIcon}
                                             {subNavItem.label}
                                         </Link>
                                     )
@@ -118,6 +143,15 @@ const MobileMenu = ({setShowMenu}) => {
                                 }
                                 acfWpMenu {
                                     icon {
+                                        sourceUrl
+                                        localFile {
+                                            ext
+                                            childImageSharp {
+                                                gatsbyImageData
+                                            }
+                                        }
+                                    }
+                                    iconHover {
                                         sourceUrl
                                         localFile {
                                             ext
