@@ -100,7 +100,7 @@ const WpPage = ({ data, location }) =>{
     context.current.updateSecondaryFunction(theme.colors.secondary.accent);
   }, []);
 
-  if (data.wpPage.uri === '/audit/') {
+  if (data.wpPage.uri === '/visibility-audit/') {
     return (<>
       <CustomHeader color={color} position={`sticky`} />
       <AuditLanderWrapper data={data.wpPage.AIAudit} />
