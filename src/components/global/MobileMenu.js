@@ -50,7 +50,7 @@ const MenuItem = ({navItem, setShowMenu}) => {
 
                                 if (subNavItem.label.toLowerCase() === 'ai search audit') {
                                     return(
-                                        <Link key={`mobile_level-2b__${uid}__${index}`} onClick={() => setShowMenu(false)} to={subNavItem.url} className={`group/link flex text-black hover:text-white focus:text-white bg-rm-pale-grey hover:bg-black focus:bg-black transition-all duration-300 ease-out w-max px-6 py-2 items-center rounded-md`}>
+                                        <Link key={`mobile_level-2b__${uid}__${index}`} onClick={() => setShowMenu(false)} to={subNavItem.url} className={`group/link flex text-black hover:text-white focus:text-white bg-rm-pale-grey hover:bg-black focus:bg-black transition-all duration-300 ease-out w-max px-6 -ml-6 py-2 items-center rounded-md`}>
                                             {menuIconHover ? 
                                             <>
                                                 {menuIcon && 
@@ -90,7 +90,7 @@ const MenuItem = ({navItem, setShowMenu}) => {
 
                                 if (subNavItem.label.toLowerCase() === 'ai search audit') {
                                     return(
-                                        <Link key={`mobile_level-2b__${uid}__${index}`} onClick={() => setShowMenu(false)} to={subNavItem.url} className={`group/link flex text-black hover:text-white focus:text-white bg-rm-pale-grey hover:bg-black focus:bg-black transition-all duration-300 ease-out w-max px-6 py-2 items-center rounded-md`}>
+                                        <Link key={`mobile_level-2b__${uid}__${index}`} onClick={() => setShowMenu(false)} to={subNavItem.url} className={`group/link flex text-black hover:text-white focus:text-white bg-rm-pale-grey hover:bg-black focus:bg-black transition-all duration-300 ease-out w-max px-6 -ml-6 py-2 items-center rounded-md`}>
                                             {menuIconHover ? 
                                             <>
                                                 {menuIcon && 
