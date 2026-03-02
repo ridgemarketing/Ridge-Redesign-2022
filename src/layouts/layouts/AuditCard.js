@@ -153,6 +153,8 @@ export const serviceQuery = graphql`
               childImageSharp { gatsbyImageData }
             }
           }
+          halfBackground
+          halfBackgroundColor
         }
         layoutSettings {
           padding { bottom top }
