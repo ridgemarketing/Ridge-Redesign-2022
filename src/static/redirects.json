@@ -643,5 +643,8 @@
     },
     {
         "fromPath": "/your-marketing-dream-team/", "toPath": "/lander/your-marketing-dream-team/"
+    },
+    {
+        "fromPath": "/audit/", "toPath": "/lander/audit/"
     }
 ]
