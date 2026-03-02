@@ -120,7 +120,7 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
                     </div>
                 </Container>
             </section>
-            <div className="mb-20 xl:mb-40 w-full"></div>
+            <div className="mb-20 xl:mb-40 w-full"></div> 
         </>}
     </>)
 }

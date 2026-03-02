@@ -49,6 +49,15 @@ const DesktopMenu = () => {
                                         }
                                     }
                                 }
+                                iconHover {
+                                    sourceUrl
+                                    localFile {
+                                        ext
+                                        childImageSharp {
+                                            gatsbyImageData
+                                        }
+                                    }
+                                }
                             }
                         }
                         }
@@ -92,17 +101,29 @@ const DesktopMenu = () => {
                                     {navItem.childItems.nodes.length > 6 &&
                                         <div key={`${navItem.label}_mid_level_1`} className={`bg-white pt-6 pb-8 px-5 text-rm-black grid grid-cols-2 gap-y-4 gap-x-6 shadow-block`}>
                                             {navItem.childItems.nodes.map((subNavItem, index) => {
-                                                let menuIcon    = false;
-                                                const uid       = subNavItem.label.replace(' ', '_')
+                                                let menuIcon        = false
+                                                let menuIconHover   = false
+                                                const uid           = subNavItem.label.replace(' ', '_')
 
-                                                if(subNavItem.acfWpMenu.icon){
+                                                if (subNavItem.acfWpMenu.icon) {
                                                     menuIcon = checkImg(subNavItem.acfWpMenu.icon, 'h-[40px] w-[40px] mr-5');
+                                                }
+                                                if (subNavItem.acfWpMenu.iconHover) {
+                                                    menuIconHover = checkImg(subNavItem.acfWpMenu.iconHover, 'h-[40px] w-[40px] mr-5');
                                                 }
 
                                                 if(subNavItem.label.toLowerCase() === 'ai search audit') {
                                                     return(
-                                                        <Link key={`level-2b__${uid}__${index}`} to={subNavItem.url} className={`flex text-white hover:text-rm-green hover:underline bg-black w-max px-6 py-2 items-center rounded-md`}>
-                                                            {menuIcon && menuIcon}
+                                                        <Link key={`level-2b__${uid}__${index}`} to={subNavItem.url} className={`group/link flex text-black hover:text-white focus:text-white bg-rm-pale-grey hover:bg-black focus:bg-black transition-all duration-300 ease-out w-max px-6 py-2 items-center rounded-md`}>
+                                                            {menuIconHover ? 
+                                                                <>
+                                                                    {menuIcon && 
+                                                                        <div className="group-hover/link:hidden group-focus/link:hidden">{menuIcon}</div>
+                                                                    }
+                                                                    <div className="hidden group-hover/link:block group-focus/link:block">
+                                                                        {menuIconHover}
+                                                                    </div>
+                                                                </> : menuIcon && menuIcon}
                                                             {subNavItem.label}
                                                         </Link>
                                                     )
