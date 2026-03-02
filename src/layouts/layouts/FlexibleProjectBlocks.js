@@ -2,6 +2,8 @@ import React, { useState } from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Link } from "gatsby"
 import { theme } from '../../static/theme.js'
+import arrowBlack from '../../static/arrow-right-black.svg'
+import arrowGreen from '../../static/arrow-right-green.svg'
 import { Container, Section } from '../../components/global/Wrappers'
 import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser"
@@ -30,8 +32,17 @@ const ProjectBlock = ({block, type, index})  => {
                         <GatsbyImage image={block.featuredImage.localFile.childImageSharp.gatsbyImageData} alt={`${block.title} logo`} className={`object-contain`} />
                       </div>
                       <div className="flex-1 flex flex-col justify-end">
-                        <span className={ theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_BLACK + theme.text_links.HOVER_GREEN + theme.text_links.HOVER_ARW_FWD_GREEN + ' mt-3 justify-center'}>
-                          { block.heading }
+                        <span className={ theme.text_links.BASE_STYLING + theme.text_links.STD + theme.text_links.HOVER_GREEN + ' mt-3 justify-center text-center group'}>
+                          <span className="inline items-end gap-2">
+                            <span>{ block.heading }</span>
+                                <svg className="inline w-[20px] translate-x-3 -translate-y-1 group-hover:translate-x-4 group-focus:translate-x-4 transition-transform duration-300 ease-out" viewBox="0 0 158.2 101.6">
+                                          <g>
+                                            <path fill="currentColor" d="M109.8,2.1l45.8,45.8c1.6,1.6,1.6,4.3,0,5.9l-45.8,45.8c-1.6,1.6-4.3,1.6-5.9,0l-6.8-6.8c-1.6-1.7-1.6-4.3,0.1-6l28-26.9
+                                              H5.5c-2.3,0-4.2-1.9-4.2-4.2v-9.7c0-2.3,1.9-4.2,4.2-4.2h119.7l-28-26.9c-1.7-1.6-1.7-4.3-0.1-6l6.8-6.8
+                                              C105.6,0.4,108.2,0.4,109.8,2.1z"/>
+                                          </g>
+                                  </svg>
+                          </span>
                         </span>
                       </div>
                     </Link>
