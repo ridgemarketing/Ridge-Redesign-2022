@@ -12,10 +12,9 @@ const ResultCard = (props) => {
         ${props.columns === '1' ? 'md:max-w-[60%]' : ''}
         ${props.noBoldDescription ? 'font-normal' : ''}
         `;
-    const statNumber        = content.stat ? content.stat.split(/\D+/)[0] : false;
-    const suffixString      = content.stat ? content.stat.split(/\d+/)[1] : false;
+    const statNumber        = content.stat ? content.stat.split(/[^\d.]+/)[0] : false;
+    const suffixString      = content.stat ? content.stat.split(/[\d.]+/)[1] : false;
     const columnsNum        = parseInt(props.columns);
-
 
     const classes = {
         1: 'md:flex items-center gap-8 max-w-[800px] justify-center',
@@ -32,10 +31,10 @@ const ResultCard = (props) => {
         statClass += ' lg:text-[160px]';
     }
 
-    
+    console.log(props.settings)
 
     return (
-            <div key={`${content.description}${content.stat}`} className={ `text-center md:text-left ${props.columns !== "1" && classes[props.columns]} my-6` }>
+            <div key={`${content.description}${content.stat}`} className={ `text-center ${props.settings.includes('text-center') ? '' : 'md:text-left' } ${props.columns !== "1" && classes[props.columns]} my-6` }>
                 <div className={`w-fit mx-auto ${props.columns === "1" && classes[props.columns]}`}>
 
                 {!props.noCounter && content.stat && statNumber > 10 &&

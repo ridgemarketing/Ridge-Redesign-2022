@@ -7,17 +7,21 @@ import Parser from "../../components/global/Parser";
 
 const Results = (props) => {
     
-    const content = props.layoutData.layoutContent || {};
-    const settings = props.layoutData.layoutSettings || {};
+    const content   = props.layoutData.layoutContent || {};
+    const settings  = props.layoutData.layoutSettings || {};
 
-    const body = Parser(content.body);
-    let columns = content.columns === '1' ? '' : 'md:justify-between';
+    const body      = Parser(content.body);
+    let columns     = content.columns === '1' ? '' : 'md:justify-between';
+
+    if(settings.classes.includes('text-center')){
+        console.log('text-center')
+    }
 
     return(
         <Section settings={settings}>
             <Container>
                 {content.heading &&
-                  <h2 className={'text-center mb-4 '}>
+                  <h2 className={'text-center mb-4'}>
                       <span 
                           className={`${theme.text['H2']}`}
                           dangerouslySetInnerHTML={{ __html: Parser(content.heading) }}>
@@ -32,7 +36,7 @@ const Results = (props) => {
                 <div className={`flex flex-wrap justify-center ${columns}`}>
                     { content.results && content.results.map((result, index) => {
                       if (result) {
-                        return <ResultCard key={`ResultCard__${result.stat}__${index}`} content ={result} columns={content.columns}/>
+                        return <ResultCard key={`ResultCard__${result.stat}__${index}`} content ={result} columns={content.columns} settings={settings.classes}/>
                       }
                     })           
                     }
