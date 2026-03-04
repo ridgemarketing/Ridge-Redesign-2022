@@ -32,7 +32,7 @@ const Results = (props) => {
                 <div className={`flex flex-wrap justify-center ${columns}`}>
                     { content.results && content.results.map((result, index) => {
                       if (result) {
-                        return <ResultCard key={`ResultCard__${result.stat}__${index}`} content ={result} columns={content.columns} settings={settings.classes}/>
+                        return <ResultCard key={`ResultCard__${result.stat}__${index}`} content ={result} columns={content.columns} settings={settings?.classes ? settings.classes : ''}/>
                       }
                     })           
                     }
