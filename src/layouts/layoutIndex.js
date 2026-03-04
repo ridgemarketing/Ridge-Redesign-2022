@@ -48,6 +48,7 @@ import TwoColIconText from "./layouts/TwoColIconText"
 import FrequentlyAskedQuestions from "./layouts/FrequentlyAskedQuestions"
 import TwoColImageList from "./layouts/TwoColImageList"
 import AuditCard from "./layouts/AuditCard"
+import TwoColContentPpc from "./layouts/TwoColContentPpc"
 
 let Layouts = {};
 
@@ -103,5 +104,6 @@ Layouts['TwoColIconText']                   = TwoColIconText;
 Layouts['FrequentlyAskedQuestions']         = FrequentlyAskedQuestions;
 Layouts['TwoColImageList']                  = TwoColImageList;
 Layouts['AuditCard']                        = AuditCard;
+Layouts['TwoColumnContentPpc']              = TwoColContentPpc;
 
 export default Layouts
