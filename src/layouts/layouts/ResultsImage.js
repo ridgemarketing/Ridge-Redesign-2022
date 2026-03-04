@@ -61,7 +61,7 @@ const ResultsImage = (props) => {
                       {content.results && content.results.map((result, index) => {
                           return (
                             <div key={`ResultsTextBlock_CardsItem__${index}`} className="w-full md:w-[48%]">
-                              <ResultCard key={`ResultsTextBlock_CardsItem__${result.description.replace(' ', '_')}__${index}`} noCounter={true} content={result} columns={content.columns} statFontSize="text-[100px] lg:text-[80px] xl:text-[120px]" />
+                              <ResultCard key={`ResultsTextBlock_CardsItem__${result.description.replace(' ', '_')}__${index}`} noCounter={true} content={result} columns={content.columns} statFontSize="text-[100px] lg:text-[80px] xl:text-[120px]" settings={''} />
                           </div>
                           )
                         })

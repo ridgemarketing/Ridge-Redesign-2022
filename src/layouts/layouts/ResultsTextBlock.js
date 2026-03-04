@@ -43,7 +43,7 @@ const ResultsTextBlock = (props) => {
                 </div>
                 <div className={`flex flex-wrap justify-center ${columns}`}>
                     { content.results && content.results.map((result, index) => {
-                      return <ResultCard key={`ResultsTextBlock_CardsItem__${result.description.replace(' ', '_')}__${index}`} content ={result} columns={content.columns}/>
+                      return <ResultCard key={`ResultsTextBlock_CardsItem__${result.description.replace(' ', '_')}__${index}`} content ={result} columns={content.columns} settings={''}/>
                     })           
                     }
                 </div>
