@@ -3,6 +3,8 @@ import useOnScreen from "./OnScreen";
 
 const Counter = (props) => {
 
+  console.log(props)
+
   const [inView, setView] = useState(false); // used to track if ref is in view
   const [scrolledOnce, setScrolled] = useState(false); //state to track if we've already scrolled the numbers
   const [count, setCount] = useState("0"); //count injected into the text
