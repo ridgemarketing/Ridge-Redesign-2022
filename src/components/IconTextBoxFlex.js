@@ -89,8 +89,8 @@ const IconTextBoxFlex = (props) => {
 
     useEffect(() => {
             let difference = iconHeight - height;
-            setCustomTop((difference > 0) ? (difference / 2) + 'px' : '0px');
-            setCustomBottom((difference > 0) ? (difference / 2 + 6) + 'px' : '0px');
+            // setCustomTop((difference > 0) ? (difference / 2) + 'px' : '0px');
+            // setCustomBottom((difference > 0) ? (difference / 2 + 6) + 'px' : '0px');
     }, [height, iconHeight, windowWidth])
 
 

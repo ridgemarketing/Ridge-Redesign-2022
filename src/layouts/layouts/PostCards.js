@@ -6,12 +6,12 @@ import BlogCardHome from '../../components/BlogCardHome'
 
 const PostCards = (props) => {
 
-    const content = props.layoutData.layoutContent;
-    const settings = props.layoutData.layoutSettings;
+    const content       = props.layoutData.layoutContent;
+    const settings      = props.layoutData.layoutSettings;
     
-    const allPosts = useStaticQuery( graphql`
+    const data = useStaticQuery( graphql`
       query GetPosts {
-        allWpPost(sort: {date: DESC} , filter: {blogFields: {additionalBlogFields: {previewMode: {ne: true}}}}, limit: 3)  {
+        allWpPost(sort: {date: DESC}, filter: {blogFields: {additionalBlogFields: {previewMode: {ne: true}}}}, limit: 3) {
           nodes {
             date
             guid
@@ -23,9 +23,7 @@ const PostCards = (props) => {
                 squareImage {
                   altText
                   localFile {
-                    childImageSharp {
-                      gatsbyImageData
-                    }
+                    childImageSharp { gatsbyImageData }
                   }
                 }
               }
@@ -33,33 +31,50 @@ const PostCards = (props) => {
             featuredImage {
               node {
                 localFile {
-                  childImageSharp {
-                    gatsbyImageData
-                  }
+                  childImageSharp { gatsbyImageData }
                 }
                 altText
               }
             }
-            categories {
-              nodes {
-                id
-                name
+            categories { nodes { id name } }
+            tags { nodes { id name } }
+          }
+        }
+        allWpPostAI: allWpPost(sort: {date: DESC}, filter: {categories: {nodes: {elemMatch: {name: {eq: "AI"}}}}, blogFields: {additionalBlogFields: {previewMode: {ne: true}}}}, limit: 3) {
+          nodes {
+            date
+            guid
+            title
+            content
+            link
+            blogFields {
+              additionalBlogFields {
+                squareImage {
+                  altText
+                  localFile {
+                    childImageSharp { gatsbyImageData }
+                  }
+                }
               }
             }
-            tags {
-              nodes {
-                id
-                name
+            featuredImage {
+              node {
+                localFile {
+                  childImageSharp { gatsbyImageData }
+                }
+                altText
               }
             }
+            categories { nodes { id name } }
+            tags { nodes { id name } }
           }
         }
       }
     `)
 
-    const posts         = allPosts.allWpPost.nodes;
-    const taxonomy      = content.taxonomy;
-    let cards           = [];
+    const taxonomy = content.taxonomy;
+    const posts    = content?.taxonomy[0].name == 'AI' ? data.allWpPostAI.nodes : data.allWpPost.nodes;
+    let cards      = [];
 
     for(let a = 0; taxonomy.length > a; a++){
       for(let b = 0; posts.length > b; b++){
