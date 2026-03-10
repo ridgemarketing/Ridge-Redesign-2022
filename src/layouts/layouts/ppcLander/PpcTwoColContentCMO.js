@@ -1,11 +1,10 @@
 import React, { useEffect, useRef } from "react"
-import { TopCloudPiece_Large, TopCloudPiece_Medium, TopCloudPiece_Small } from "../../../static/clouds"
 import { Container } from "../../../components/global/Wrappers"
 import Parser from "../../../components/global/Parser"
 import { theme } from "../../../static/theme"
 
 const ArrowIcon = () => (
-    <svg className="w-[20px] shrink-0" viewBox="0 0 24 24" fill="none">
+    <svg className="w-[30px] shrink-0" viewBox="0 0 24 24" fill="none">
         <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#A9CF38" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
     </svg>
 )
