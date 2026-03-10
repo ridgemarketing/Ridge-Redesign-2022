@@ -646,5 +646,8 @@
     },
     {
         "fromPath": "/audit/", "toPath": "/lander/audit/"
+    },
+    {
+        "fromPath": "/service/sem-ppc/", "toPath": "/service/digital-advertising/"
     }
 ]
