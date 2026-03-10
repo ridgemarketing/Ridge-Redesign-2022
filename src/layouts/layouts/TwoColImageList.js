@@ -4,6 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser"
+import Buttons from "../../components/global/Buttons"
 
 const TwoColImageList = (props) => {
   const content  = props.layoutData.layoutContent;
@@ -54,7 +55,7 @@ const TwoColImageList = (props) => {
                     <div className={`flex flex-col ${isImageLeft ? 'lg:order-2' : 'lg:order-1'}`}>
                       {/* Side Text */}
                       {item.sideText && (
-                        <p className={theme.text.P_STD + " text-center lg:text-left mb-6"}
+                        <p className={theme.text.P_STD + " text-center lg:text-left"}
                           dangerouslySetInnerHTML={ {__html:  Parser(item.sideText)} }>
                         </p>
                       )}
@@ -92,6 +93,11 @@ const TwoColImageList = (props) => {
                           ))}
                         </ul>
                       )}
+                      {item.componentButton?.link?.url &&
+                        <div className="mt-6 pb-2">
+                          <Buttons content={item.componentButton} sectionBackground={settings?.backgroundColor} />
+                        </div>
+                      }
                     </div>
                   </div>
                 </div>
@@ -127,6 +133,11 @@ export const query = graphql`
                   gatsbyImageData
                 }
               }
+            }
+            componentButton {
+              style
+              link { target title url }
+              colors { resting }
             }
           }
         }
@@ -168,6 +179,11 @@ export const serviceQuery = graphql`
                 }
               }
             }
+            componentButton {
+              style
+              link { target title url }
+              colors { resting }
+            }
           }
         }
         layoutSettings {
@@ -207,6 +223,11 @@ export const projectQuery = graphql`
                   gatsbyImageData
                 }
               }
+            }
+            componentButton {
+              style
+              link { target title url }
+              colors { resting }
             }
           }
         }
