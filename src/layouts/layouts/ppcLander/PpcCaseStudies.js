@@ -9,6 +9,8 @@ const PpcCaseStudies = ({ data }) => {
     const body      = data.body    ?? false
     const items     = data.items   ?? []
 
+    console.log(data, 'case studies')
+
     const [slide, setSlide]                     = useState(0)
     const [slideInteraction, setInteraction]    = useState(false)
     const [isVisible, setIsVisible]             = useState(false)
@@ -54,16 +56,26 @@ const PpcCaseStudies = ({ data }) => {
         return null
     }
 
-    const current = items[slide]
+    const current       = items[slide]
 
-    const renderImage = current.image
-        ? current.image.localFile?.childImageSharp?.gatsbyImageData
-            ? <GatsbyImage
-                image={current.image.localFile.childImageSharp.gatsbyImageData}
-                alt={current.image.altText || ''}
-                className="w-full h-full aspect-video"
-                objectFit="contain"
-              />
+    const renderImage   = current.image
+        ? current?.image?.localFile?.childImageSharp?.gatsbyImageData
+            ?  <>
+                {current?.mobileImage && 
+                    <GatsbyImage
+                        image={current.mobileImage.localFile.childImageSharp.gatsbyImageData}
+                        alt={current.mobileImage.altText || ''}
+                        className="w-full h-full aspect-video xl:hidden"
+                        objectFit="contain"
+                    />
+                }
+                <GatsbyImage
+                    image={current.image.localFile.childImageSharp.gatsbyImageData}
+                    alt={current.image.altText || ''}
+                    className={`w-full h-full aspect-video ${current?.mobileImage ?? 'hidden xl:block'}`}
+                    objectFit="contain"
+                />
+              </>
             : current.image.sourceUrl
                 ? <img src={current.image.sourceUrl} alt={current.image.altText || ''} className="w-full h-full object-cover" />
                 : null
@@ -73,7 +85,7 @@ const PpcCaseStudies = ({ data }) => {
     //             : null
 
     const renderVideo = current.video?.mediaItemUrl
-        ? <video key={current.video.mediaItemUrl} ref={activeVideo} autoPlay muted playsInline className="w-full h-full aspect-video">
+        ? <video key={current.video.mediaItemUrl} ref={activeVideo} autoPlay muted playsInline loop className="w-full h-full aspect-video">
                <source src={current.video.mediaItemUrl} type={current.video.mimeType} />
           </video>
         : null
@@ -95,24 +107,24 @@ const PpcCaseStudies = ({ data }) => {
                 </Container>
             )}
 
-            <div ref={carouselRef} className="flex flex-col xl:flex-row xl:mr-[calc((100%-1224px)/2)] max-w-[2000px] 3xl:mx-auto items-start justify-start">
+            <div ref={carouselRef} className="flex flex-col xl:flex-row xl:mr-[calc((100%-1224px)/2)] max-w-[2000px] 3xl:mx-auto items-center justify-start">
 
-                <div className="w-full xl:w-[55%] xlz:w-[945px] aspect-video overflow-hidden shrink-0">
+                <div className="w-full xl:w-[55%] xlz:w-[65%] xlz:max-w-[945px] aspect-video overflow-hidden shrink-0">
                     {current.mediaType === 'image' ? (renderImage) : (renderVideo)}
                 </div>
 
-                <div className="w-full xl:w-[45%] flex flex-col justify-center gap-10 px-8 md:px-14 xl:pl-20 xl:pr-0 py-12 xl:py-0">
+                <div className="w-full xl:w-[45%] xlz:w-[35%] flex flex-col justify-center gap-10 px-8 md:px-14 xl:pl-20 xl:pr-0 py-12 xl:py-0">
 
                     <div className="flex flex-col gap-6">
                         {current.heading &&
-                            <h3 className="font-stratos font-normal text-[40px] md:text-[50px] leading-[1.3] text-black">
+                            <h3 className="font-stratos font-normal text-[2.5rem] md:text-[2.875rem] leading-[1.2] text-black">
                                 {current.heading}
                             </h3>
                         }
                         {current.body &&
                             <div
                                 dangerouslySetInnerHTML={{ __html: Parser(current.body) }}
-                                className={`${theme.text.H4_LTE} text-black`}
+                                className={`${theme.text.P_STD} !leading-[2rem] text-black`}
                             />
                         }
                         {(current.industry || current.tactic) &&

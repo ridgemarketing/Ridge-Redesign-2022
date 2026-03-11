@@ -810,6 +810,16 @@ export const query = graphql`
                 }
               }
             }
+            mobileImage {
+              altText
+              sourceUrl
+              localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
           }
         }
 

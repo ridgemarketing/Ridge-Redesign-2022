@@ -38,6 +38,7 @@ const HomeHero = (props) => {
         var video = <video playsInline autoPlay="1" muted loop="loop" src={content.video} className={'absolute object-cover object-center w-full h-full'} type="video/webm"></video>
         isImage = false;
     }
+    
     return (
         <>
         <Section classes={'relative'} settings={settings}>

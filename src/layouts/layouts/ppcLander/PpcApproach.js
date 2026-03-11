@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useState } from "react"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Container } from "../../../components/global/Wrappers"
 import Parser from "../../../components/global/Parser"
@@ -10,8 +10,38 @@ const PPCApproach = ({data}) => {
     const body      = data.body ?? false
     const image     = data.image ?? false
 
+    // why is this here you wonder? ACF save issues combined with that this is really never going to be edited by anyone who isnt a developer
+    // the positions of the popups dont follow a consitent pattern either, so they are specifically positioned
+    const copy = [
+        {
+            title: 'Strategy',
+            color: 'text-rm-green',
+            copy: 'We start with your end goals in mind and build an iterative and actionable plan to get you there.'
+        },
+        {
+            title: 'Creativity',
+            color: 'text-rm-aqua',
+            copy: 'We build and optimize websites, creative assets and campaigns to attract and inspire your next wave of customers.'
+        },
+        {
+            title: 'Service',
+            color: 'text-[#757575]',
+            copy: 'We work as an extension of your team, we pay attention to details, and we execute quickly.'
+        },
+        {
+            title: 'Results',
+            color: 'text-rm-grey',
+            copy: 'We work strategically to achieve the results you need, track campaigns carefully, and make continuous improvements.'
+        }
+    ]
+
+    const [activeIndex, setActiveIndex] = useState(0)
+
     const handleClick = (e) => {
-        const popup = e?.currentTarget.querySelector('div')
+        const popup         = e?.currentTarget.querySelector('div')
+        const classesOn     = ['opacity-0', 'h-0', 'overflow-hidden']
+        const classesOff    = ['px-7', 'pt-6', 'pb-14']
+
         if (!popup || !popup.dataset.open){
             return
         }
@@ -19,13 +49,23 @@ const PPCApproach = ({data}) => {
 
         if (open === 0) {
 
-            popup.classList.remove('opacity-0')
+            classesOn.map(el => {
+                popup.classList.remove(el)
+            })
+            classesOff.map(el => {
+                popup.classList.add(el)
+            })
             popup.dataset.open = 1
         }
 
         if (open === 1) {
 
-            popup.classList.add('opacity-0')
+            classesOn.map(el => {
+                popup.classList.add(el)
+            })
+            classesOff.map(el => {
+                popup.classList.remove(el)
+            })
             popup.dataset.open = 0
         }
         
@@ -42,6 +82,41 @@ const PPCApproach = ({data}) => {
                     className="w-full max-w-[1122px] mx-auto"
                     objectFit="contain" />
                 : null
+    }
+
+    function renderInsideDesktop(copy) {
+        if (!copy) {
+            return
+        }
+        return(<>
+             <svg width="31" height="31" viewBox="0 0 31 31" fill="none">
+                <path d="M23.5 14.5V16.5C23.5 16.9375 23.125 17.25 22.75 17.25H17.25V22.75C17.25 23.1875 16.875 23.5 16.5 23.5H14.5C14.0625 23.5 13.75 23.1875 13.75 22.75V17.25H8.25C7.8125 17.25 7.5 16.9375 7.5 16.5V14.5C7.5 14.125 7.8125 13.75 8.25 13.75H13.75V8.25C13.75 7.875 14.0625 7.5 14.5 7.5H16.5C16.875 7.5 17.25 7.875 17.25 8.25V13.75H22.75C23.125 13.75 23.5 14.125 23.5 14.5ZM31 15.5C31 24.0625 24.0625 31 15.5 31C6.9375 31 0 24.0625 0 15.5C0 6.9375 6.9375 0 15.5 0C24.0625 0 31 6.9375 31 15.5ZM28 15.5C28 8.625 22.375 3 15.5 3C8.5625 3 3 8.625 3 15.5C3 22.4375 8.5625 28 15.5 28C22.375 28 28 22.4375 28 15.5Z" fill="white"/>
+            </svg>
+            <div data-open="0" className="bg-white rounded-2xl shadow-cmocard hidden xl:flex flex-col items-center w-[313px] h-0 overflow-hidden gap-4 absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 transition-all duration-150 ease-out">
+                <svg width="31" height="31" viewBox="0 0 31 31" fill="none">
+                    <path d="M8.25 17.25C7.8125 17.25 7.5 16.9375 7.5 16.5V14.5C7.5 14.125 7.8125 13.75 8.25 13.75H22.75C23.125 13.75 23.5 14.125 23.5 14.5V16.5C23.5 16.9375 23.125 17.25 22.75 17.25H8.25ZM31 15.5C31 24.0625 24.0625 31 15.5 31C6.9375 31 0 24.0625 0 15.5C0 6.9375 6.9375 0 15.5 0C24.0625 0 31 6.9375 31 15.5ZM28 15.5C28 8.625 22.375 3 15.5 3C8.5625 3 3 8.625 3 15.5C3 22.4375 8.5625 28 15.5 28C22.375 28 28 22.4375 28 15.5Z" fill="black"/>
+                </svg>
+                <p className={theme.text.P_STD}>
+                    {copy}
+                </p>
+            </div> 
+        </>)
+    }
+
+    function renderInsideMobile(el) {
+        if (!el) {
+            return
+        }
+        return(<>
+            <div className="bg-white rounded-2xl shadow-cmocard flex flex-col gap-6 py-10 px-7 md:px-14 items-center w-full">
+                 <h3 className={`font-stratos ${el.color} font-bold text-[2.125rem] uppercase`}>
+                    {el.title}
+                 </h3>
+                 <p className={theme.text.P_STD}>
+                    {el.copy}
+                </p>
+            </div>
+        </>)
     }
 
     return(<>
@@ -66,39 +141,24 @@ const PPCApproach = ({data}) => {
                 } */}
 
                 <div className="relative">
-                    <button onClick={handleClick} className="absolute z-10 left-[12.75%] ml-[15px] bottom-12">
-                        <svg width="31" height="31" viewBox="0 0 31 31" fill="none">
-                            <path d="M23.5 14.5V16.5C23.5 16.9375 23.125 17.25 22.75 17.25H17.25V22.75C17.25 23.1875 16.875 23.5 16.5 23.5H14.5C14.0625 23.5 13.75 23.1875 13.75 22.75V17.25H8.25C7.8125 17.25 7.5 16.9375 7.5 16.5V14.5C7.5 14.125 7.8125 13.75 8.25 13.75H13.75V8.25C13.75 7.875 14.0625 7.5 14.5 7.5H16.5C16.875 7.5 17.25 7.875 17.25 8.25V13.75H22.75C23.125 13.75 23.5 14.125 23.5 14.5ZM31 15.5C31 24.0625 24.0625 31 15.5 31C6.9375 31 0 24.0625 0 15.5C0 6.9375 6.9375 0 15.5 0C24.0625 0 31 6.9375 31 15.5ZM28 15.5C28 8.625 22.375 3 15.5 3C8.5625 3 3 8.625 3 15.5C3 22.4375 8.5625 28 15.5 28C22.375 28 28 22.4375 28 15.5Z" fill="white"/>
-                        </svg>
-                        <div data-open="0" className="bg-white rounded-2xl shadow-cmocard flex flex-col items-center w-[313px] gap-4 absolute top-0 left-1/2 -translate-x-1/2 opacity-0 px-7 py-14 transition-all duration-300 ease-out">
-                            <svg width="31" height="31" viewBox="0 0 31 31" fill="none">
-                                <path d="M8.25 17.25C7.8125 17.25 7.5 16.9375 7.5 16.5V14.5C7.5 14.125 7.8125 13.75 8.25 13.75H22.75C23.125 13.75 23.5 14.125 23.5 14.5V16.5C23.5 16.9375 23.125 17.25 22.75 17.25H8.25ZM31 15.5C31 24.0625 24.0625 31 15.5 31C6.9375 31 0 24.0625 0 15.5C0 6.9375 6.9375 0 15.5 0C24.0625 0 31 6.9375 31 15.5ZM28 15.5C28 8.625 22.375 3 15.5 3C8.5625 3 3 8.625 3 15.5C3 22.4375 8.5625 28 15.5 28C22.375 28 28 22.4375 28 15.5Z" fill="black"/>
-                            </svg>
-                            <p className={theme.text.P_STD}>
-                                We start with your end goals in mind and build an iterative and actionable plan to get you there.
-                            </p>
-                        </div>
+
+                    <button onClick={(e) => { handleClick(e); setActiveIndex(0) }} className="absolute z-10 hidden md:block left-[12.75%] ml-[15px] bottom-12">
+                       {renderInsideDesktop(copy[0].copy)}
                     </button>
 
-                    <button onClick={handleClick} className="absolute z-10 left-[37.5%] bottom-12">
-                        <svg width="31" height="31" viewBox="0 0 31 31" fill="none">
-                            <path d="M23.5 14.5V16.5C23.5 16.9375 23.125 17.25 22.75 17.25H17.25V22.75C17.25 23.1875 16.875 23.5 16.5 23.5H14.5C14.0625 23.5 13.75 23.1875 13.75 22.75V17.25H8.25C7.8125 17.25 7.5 16.9375 7.5 16.5V14.5C7.5 14.125 7.8125 13.75 8.25 13.75H13.75V8.25C13.75 7.875 14.0625 7.5 14.5 7.5H16.5C16.875 7.5 17.25 7.875 17.25 8.25V13.75H22.75C23.125 13.75 23.5 14.125 23.5 14.5ZM31 15.5C31 24.0625 24.0625 31 15.5 31C6.9375 31 0 24.0625 0 15.5C0 6.9375 6.9375 0 15.5 0C24.0625 0 31 6.9375 31 15.5ZM28 15.5C28 8.625 22.375 3 15.5 3C8.5625 3 3 8.625 3 15.5C3 22.4375 8.5625 28 15.5 28C22.375 28 28 22.4375 28 15.5Z" fill="white"/>
-                        </svg>
+                    <button onClick={(e) => { handleClick(e); setActiveIndex(1) }} className="absolute z-10 hidden md:block left-[37.5%] bottom-12">
+                        {renderInsideDesktop(copy[1].copy)}
                     </button>
 
-                    <button onClick={handleClick} className="absolute z-10 left-[61%] bottom-12">
-                        <svg width="31" height="31" viewBox="0 0 31 31" fill="none">
-                            <path d="M23.5 14.5V16.5C23.5 16.9375 23.125 17.25 22.75 17.25H17.25V22.75C17.25 23.1875 16.875 23.5 16.5 23.5H14.5C14.0625 23.5 13.75 23.1875 13.75 22.75V17.25H8.25C7.8125 17.25 7.5 16.9375 7.5 16.5V14.5C7.5 14.125 7.8125 13.75 8.25 13.75H13.75V8.25C13.75 7.875 14.0625 7.5 14.5 7.5H16.5C16.875 7.5 17.25 7.875 17.25 8.25V13.75H22.75C23.125 13.75 23.5 14.125 23.5 14.5ZM31 15.5C31 24.0625 24.0625 31 15.5 31C6.9375 31 0 24.0625 0 15.5C0 6.9375 6.9375 0 15.5 0C24.0625 0 31 6.9375 31 15.5ZM28 15.5C28 8.625 22.375 3 15.5 3C8.5625 3 3 8.625 3 15.5C3 22.4375 8.5625 28 15.5 28C22.375 28 28 22.4375 28 15.5Z" fill="white"/>
-                        </svg>
+                    <button onClick={(e) => { handleClick(e); setActiveIndex(2) }} className="absolute z-10 hidden md:block left-[61%] bottom-12">
+                        {renderInsideDesktop(copy[2].copy)}
                     </button>
 
-                    <button onClick={handleClick} className="absolute z-10 left-[83%] bottom-12">
-                        <svg width="31" height="31" viewBox="0 0 31 31" fill="none">
-                            <path d="M23.5 14.5V16.5C23.5 16.9375 23.125 17.25 22.75 17.25H17.25V22.75C17.25 23.1875 16.875 23.5 16.5 23.5H14.5C14.0625 23.5 13.75 23.1875 13.75 22.75V17.25H8.25C7.8125 17.25 7.5 16.9375 7.5 16.5V14.5C7.5 14.125 7.8125 13.75 8.25 13.75H13.75V8.25C13.75 7.875 14.0625 7.5 14.5 7.5H16.5C16.875 7.5 17.25 7.875 17.25 8.25V13.75H22.75C23.125 13.75 23.5 14.125 23.5 14.5ZM31 15.5C31 24.0625 24.0625 31 15.5 31C6.9375 31 0 24.0625 0 15.5C0 6.9375 6.9375 0 15.5 0C24.0625 0 31 6.9375 31 15.5ZM28 15.5C28 8.625 22.375 3 15.5 3C8.5625 3 3 8.625 3 15.5C3 22.4375 8.5625 28 15.5 28C22.375 28 28 22.4375 28 15.5Z" fill="white"/>
-                        </svg>
+                    <button onClick={(e) => { handleClick(e); setActiveIndex(3) }} className="absolute z-10 hidden md:block left-[83%] bottom-12">
+                        {renderInsideDesktop(copy[3].copy)}
                     </button>
 
-                    <svg width="1146" height="358" viewBox="0 0 1146 358" fill="none">
+                    <svg className="w-full" width="1146" viewBox="0 0 1146 358" fill="none">
                         <g filter="url(#filter0_d_9665_1379)">
                             <path d="M967.213 346C1059.33 346 1134 271.23 1134 179C1134 86.7699 1059.33 12 967.213 12C875.102 12 800.428 86.7699 800.428 179C800.428 271.23 875.102 346 967.213 346Z" fill="white" fillOpacity="0.8" shapeRendering="crispEdges"/>
                         </g>
@@ -162,6 +222,17 @@ const PPCApproach = ({data}) => {
                             </filter>
                         </defs>
                     </svg>
+
+                </div>
+
+                <div className="hidden md:block xl:hidden mt-10">
+                    {renderInsideMobile(copy[activeIndex], copy[activeIndex].copy)}
+                </div>
+
+                <div className="md:hidden flex flex-col gap-4 mt-10">
+                    {copy.map( (el) => {
+                        return renderInsideMobile(el)
+                    })}
                 </div>
 
             </Container>
