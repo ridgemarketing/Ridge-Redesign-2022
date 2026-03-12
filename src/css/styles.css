@@ -189,17 +189,20 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     @apply list-decimal pl-5 mb-10;
 }
 
-.blog-container img {
+/* .blog-container img {
     @apply mb-10 w-full max-w-[850px] mx-auto;
+} */
+.blog-container img {
+    @apply mb-10 w-full mx-auto;
 }
 
 .blog-container .wp-block-columns img {
     @apply max-w-[350px];
 }
 
-.blog-container .wp-block-column figure.max-w-full img {
+/* .blog-container .wp-block-column figure.max-w-full img {
     @apply max-w-[850px];
-}
+} */
 
 .blog-container figure.alignright {
     @apply md:float-right md:ml-6 md:max-w-[40%];

@@ -172,11 +172,11 @@ const PPCQuotes = ({data, cmo}) => {
                     <div ref={sliderRef} className={`mt-12 flex w-full flex-wrap justify-between relative`}>
                         <div className={`p-8 lg:p-14 w-full`}>
                             <div key={Math.random()}  className={`animate-quote text-center ${cmo ? ' text-rm-aqua' : 'text-black' }`}>
-                                <div dangerouslySetInnerHTML={{__html: Parser(slidedata.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out font-semibold' }></div>
-                                <p className={ theme.text.P_BLD +  `pt-8 pb-2` }>
+                                <div dangerouslySetInnerHTML={{__html: Parser(slidedata.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out font-normal' }></div>
+                                <p className={ theme.text.P_BLD +  `pt-8 pb-2 text-white` }>
                                     { slidedata.title }
                                 </p>
-                                <small className={ theme.text.FOOTER  }>
+                                <small className={`${theme.text.FOOTER} text-white`}>
                                     { slidedata?.reviewsFields?.titleCompany }
                                 </small>
                             </div>

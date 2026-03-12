@@ -338,6 +338,27 @@ export const query = graphql`
               }
             }
           }
+          twoColumnContent {
+            checklist {
+              heading
+              list {
+                item
+              }
+            }
+            videoText {
+              body
+              heading
+              video {
+                mediaDetails {
+                  file
+                  height
+                  width
+                }
+                mimeType
+                mediaItemUrl
+              }
+            }
+          }
         }
 
       Ridge2026PPC {
@@ -801,6 +822,16 @@ export const query = graphql`
                 mediaItemUrl
             }
             image {
+              altText
+              sourceUrl
+              localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+            }
+            mobileImage {
               altText
               sourceUrl
               localFile {
