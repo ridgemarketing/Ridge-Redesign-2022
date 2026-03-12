@@ -9,7 +9,7 @@ const ArrowIcon = () => (
     </svg>
 )
 
-const PPCTwoColContentCMO = ({data, cmo}) => {
+const PPCTwoColContentCMO = ({data, cmo, audit = false}) => {
 
     const checklist     = data?.checklist ?? false
     const videoText     = data?.videoText ?? false
@@ -36,12 +36,12 @@ const PPCTwoColContentCMO = ({data, cmo}) => {
 
 
     return(<>
-        <section className={`${cmo ? '' : 'pt-[60px]'} md:pb-[160px] relative`}>
+        <section className={`${cmo ? '' : 'pt-[60px]'} ${!audit ? 'md:pb-[160px]' : 'md:pb-20'} relative`}>
             <Container classes={`flex flex-col xl:flex-row gap-8 flex-nowrap justify-center items-center xl:items-start xl:p-0 pb-20 ${cmo ? '' : 'xl:pb-20'}`}>
                 {/* Left Column - Text & Services */}
                 <div className="flex flex-col gap-6 flex-1">
                     {videoText?.heading &&
-                        <h2 dangerouslySetInnerHTML={{__html: Parser(videoText.heading)}} className={`text-center xl:text-left max-w-[750px] mx-auto xl:ml-0 xl:max-w-full ${theme.text.H5} text-black`}></h2>
+                        <h2 dangerouslySetInnerHTML={{__html: Parser(videoText.heading)}} className={`text-center xl:text-left max-w-[750px] mx-auto xl:ml-0 xl:max-w-full font-stratos uppercase text-40px leading-44px text-black`}></h2>
                     }
                     {videoText?.body &&
                         <p dangerouslySetInnerHTML={{__html: Parser(videoText.body)}} className={`text-center xl:text-left ${theme.text.H4_LTE} text-rm-grey`}></p>

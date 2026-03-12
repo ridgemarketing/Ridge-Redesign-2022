@@ -6,6 +6,7 @@ import AuditPricing from "./AuditPricing"
 import AuditStats from "./AuditStats"
 import AuditLogos from "./AuditLogos"
 import AuditCallout from "./AuditCallout"
+import PPCTwoColContentCMO from "../ppcLander/PpcTwoColContentCMO"
 
 const AuditLanderWrapper = ({data}) => {
 
@@ -20,6 +21,9 @@ const AuditLanderWrapper = ({data}) => {
         }
         {data.formText &&
             <AuditFormText data={data.formText} />
+        }
+        {data.twoColumnContent &&
+            <PPCTwoColContentCMO data={data.twoColumnContent} audit={true} />
         }
         {data.steps &&
             <AuditSteps data={data.steps} />
