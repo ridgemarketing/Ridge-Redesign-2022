@@ -34,10 +34,10 @@ const PPCTwoColContentCMO = ({data, cmo, audit = false}) => {
         }
     }, [])
 
-
     return(<>
-        <section className={`${cmo ? '' : 'pt-[60px]'} ${!audit ? 'md:pb-[160px]' : 'md:pb-20'} relative`}>
-            <Container classes={`flex flex-col xl:flex-row gap-8 flex-nowrap justify-center items-center xl:items-start xl:p-0 pb-20 ${cmo ? '' : 'xl:pb-20'}`}>
+        <section className={`${cmo ? '' : 'pt-[60px]'} ${!audit ? 'md:pb-[160px]' : 'md:pb-20'} ${audit && '!pt-20'} relative`}>
+            {/* ${audit ? 'xl:!px-12' : ''} */}
+            <Container classes={`flex flex-col xl:flex-row gap-8 flex-nowrap justify-center items-center xl:items-start xl:p-0 pb-20 ${cmo ? '' : 'xl:pb-20'} `}>
                 {/* Left Column - Text & Services */}
                 <div className="flex flex-col gap-6 flex-1">
                     {videoText?.heading &&

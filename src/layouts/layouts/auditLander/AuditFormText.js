@@ -93,6 +93,7 @@ const AuditFormText = ({data}) => {
                     </div>
                 </div>
             </Container>
+            <hr className="container xl:max-w-[1224px]"/>
         </section>
     )
 }
