@@ -9,7 +9,6 @@ const PpcCaseStudies = ({ data }) => {
     const body      = data.body    ?? false
     const items     = data.items   ?? []
 
-    console.log(data, 'case studies')
 
     const [slide, setSlide]                     = useState(0)
     const [slideInteraction, setInteraction]    = useState(false)
@@ -17,7 +16,8 @@ const PpcCaseStudies = ({ data }) => {
     const carouselRef                           = useRef(null)
     const activeVideo                           = useRef(null)
 
-    console.log(items[slide])
+    const textEl                                = useRef(null)
+    const [breakEl, setBreakEL]                 = useState('')
 
     useEffect(() => {
         const observer = new IntersectionObserver(
@@ -52,12 +52,32 @@ const PpcCaseStudies = ({ data }) => {
         setSlide(i => (i === 0) ? items.length - 1 : i - 1)
     }
 
+    useEffect( () => {
+        if (!textEl.current) {
+            return
+        }
+
+        let total = 0
+        textEl.current.childNodes.forEach(node => {
+            if (node.nodeType === Node.TEXT_NODE) {
+                const range = document.createRange()
+                range.selectNode(node)
+                total += range.getBoundingClientRect().width
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                const style = getComputedStyle(node)
+                total += node.offsetWidth + parseFloat(style.marginLeft) + parseFloat(style.marginRight)
+            }
+        })
+
+        setBreakEL(total > textEl.current.offsetWidth ? 'block' : '')
+
+    }, [slide])
+
     if (!items.length) {
         return null
     }
 
     const current       = items[slide]
-
     const renderImage   = current.image
         ? current?.image?.localFile?.childImageSharp?.gatsbyImageData
             ?  <>
@@ -65,14 +85,14 @@ const PpcCaseStudies = ({ data }) => {
                     <GatsbyImage
                         image={current.mobileImage.localFile.childImageSharp.gatsbyImageData}
                         alt={current.mobileImage.altText || ''}
-                        className="w-full h-full aspect-video xl:hidden"
+                        className="w-full h-full aspect-video xl:!hidden"
                         objectFit="contain"
                     />
                 }
                 <GatsbyImage
                     image={current.image.localFile.childImageSharp.gatsbyImageData}
                     alt={current.image.altText || ''}
-                    className={`w-full h-full aspect-video ${current?.mobileImage ?? 'hidden xl:block'}`}
+                    className={`w-full h-full aspect-video ${current?.mobileImage ?? 'hidden xl:!block'}`}
                     objectFit="contain"
                 />
               </>
@@ -128,10 +148,11 @@ const PpcCaseStudies = ({ data }) => {
                             />
                         }
                         {(current.industry || current.tactic) &&
-                            <p className={`${theme.text.FOOTER} text-black`}>
-                                {current.industry && <><strong>Industry:</strong> {current.industry}</>}
+                            <p ref={textEl} className={`${theme.text.FOOTER} text-black`}>
+                                {current.industry && <><strong>Industry:</strong> <span>{current.industry}</span></>}
                                 {current.industry && current.tactic && <span className="text-[#cdcdcd] mx-3">|</span>}
-                                {current.tactic && <><strong>Tactic:</strong> {current.tactic}</>}
+                                <span className={`${breakEl} w-0`}></span>
+                                {current.tactic && <><strong>Tactic:</strong> <span>{current.tactic}</span></>}
                             </p>
                         }
                     </div>
