@@ -35,40 +35,21 @@ const PPCApproach = ({data}) => {
         }
     ]
 
-    const [activeIndex, setActiveIndex] = useState(0)
+    const [activeIndex, setActiveIndex]     = useState(0)
+    const [openDesktop, setOpenDesktop]     = useState(null)
+    const [openTablet, setOpenTablet]       = useState(true)
 
-    const handleClick = (e) => {
-        const popup         = e?.currentTarget.querySelector('div')
-        const classesOn     = ['opacity-0', 'h-0', 'overflow-hidden']
-        const classesOff    = ['px-7', 'pt-6', 'pb-14']
+    const handleDesktopClick = (index) => {
+        setActiveIndex(index)
+        setOpenTablet(true)
+        setOpenDesktop(prev => prev === index ? null : index)
+    }
 
-        if (!popup || !popup.dataset.open){
+    const handleClose = (e) => {
+        if (!openTablet) {
             return
         }
-        const open = Number(popup.dataset.open)
-
-        if (open === 0) {
-
-            classesOn.map(el => {
-                popup.classList.remove(el)
-            })
-            classesOff.map(el => {
-                popup.classList.add(el)
-            })
-            popup.dataset.open = 1
-        }
-
-        if (open === 1) {
-
-            classesOn.map(el => {
-                popup.classList.add(el)
-            })
-            classesOff.map(el => {
-                popup.classList.remove(el)
-            })
-            popup.dataset.open = 0
-        }
-        
+        setOpenTablet(false)
     }
 
     let renderImage
@@ -84,22 +65,41 @@ const PPCApproach = ({data}) => {
                 : null
     }
 
-    function renderInsideDesktop(copy) {
+    function renderInsideDesktop(copy, isOpen) {
         if (!copy) {
             return
         }
         return(<>
-             <svg width="31" height="31" viewBox="0 0 31 31" fill="none">
+            <svg width="31" height="31" viewBox="0 0 31 31" fill="none">
                 <path d="M23.5 14.5V16.5C23.5 16.9375 23.125 17.25 22.75 17.25H17.25V22.75C17.25 23.1875 16.875 23.5 16.5 23.5H14.5C14.0625 23.5 13.75 23.1875 13.75 22.75V17.25H8.25C7.8125 17.25 7.5 16.9375 7.5 16.5V14.5C7.5 14.125 7.8125 13.75 8.25 13.75H13.75V8.25C13.75 7.875 14.0625 7.5 14.5 7.5H16.5C16.875 7.5 17.25 7.875 17.25 8.25V13.75H22.75C23.125 13.75 23.5 14.125 23.5 14.5ZM31 15.5C31 24.0625 24.0625 31 15.5 31C6.9375 31 0 24.0625 0 15.5C0 6.9375 6.9375 0 15.5 0C24.0625 0 31 6.9375 31 15.5ZM28 15.5C28 8.625 22.375 3 15.5 3C8.5625 3 3 8.625 3 15.5C3 22.4375 8.5625 28 15.5 28C22.375 28 28 22.4375 28 15.5Z" fill="white"/>
             </svg>
-            <div data-open="0" className="bg-white rounded-2xl shadow-cmocard hidden xl:flex flex-col items-center w-[313px] h-0 overflow-hidden gap-4 absolute -top-6 left-1/2 -translate-x-1/2 opacity-0 transition-all duration-150 ease-out">
+            <div className={`bg-white rounded-2xl shadow-cmocard hidden xl:flex flex-col items-center w-[313px] gap-4 absolute -top-6 left-1/2 -translate-x-1/2 transition-all duration-150 ease-out ${isOpen ? 'px-7 pt-6 pb-14' : 'h-0 overflow-hidden opacity-0'}`}>
                 <svg width="31" height="31" viewBox="0 0 31 31" fill="none">
                     <path d="M8.25 17.25C7.8125 17.25 7.5 16.9375 7.5 16.5V14.5C7.5 14.125 7.8125 13.75 8.25 13.75H22.75C23.125 13.75 23.5 14.125 23.5 14.5V16.5C23.5 16.9375 23.125 17.25 22.75 17.25H8.25ZM31 15.5C31 24.0625 24.0625 31 15.5 31C6.9375 31 0 24.0625 0 15.5C0 6.9375 6.9375 0 15.5 0C24.0625 0 31 6.9375 31 15.5ZM28 15.5C28 8.625 22.375 3 15.5 3C8.5625 3 3 8.625 3 15.5C3 22.4375 8.5625 28 15.5 28C22.375 28 28 22.4375 28 15.5Z" fill="black"/>
                 </svg>
                 <p className={theme.text.P_STD}>
                     {copy}
                 </p>
-            </div> 
+            </div>
+        </>)
+    }
+
+    function renderInsideTablet(el) {
+        if (!el) {
+            return
+        }
+        return(<>
+            <div className={`bg-white rounded-2xl shadow-cmocard flex-col gap-6 py-10 px-7 md:px-14 items-center w-full relative ${openTablet ? 'flex' : 'hidden'}`}>
+                <svg onClick={(e) => handleClose(e)} className="absolute top-5 right-5" width="10" height="11" viewBox="0 0 10 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M9.07177 0.000546455L5.50377 5.34455L9.07177 10.5605H7.40777L5.27977 7.44055C4.95977 6.96055 4.62377 6.28855 4.54377 6.11255H4.51177C4.43177 6.28855 4.09577 6.96055 3.75977 7.44055L1.59977 10.5605H-0.000234365L3.53577 5.36055L-0.000234365 0.000546455H1.74377L3.82377 3.28055C4.04777 3.64855 4.43177 4.33655 4.51177 4.52855H4.54377C4.62377 4.33655 5.00777 3.64855 5.24777 3.28055L7.39177 0.000546455H9.07177Z" fill="#474848"/>
+                </svg>
+                 <h3 className={`font-stratos ${el.color} font-bold text-[2.125rem] uppercase`}>
+                    {el.title}
+                 </h3>
+                 <p className={theme.text.P_STD}>
+                    {el.copy}
+                </p>
+            </div>
         </>)
     }
 
@@ -108,7 +108,7 @@ const PPCApproach = ({data}) => {
             return
         }
         return(<>
-            <div className="bg-white rounded-2xl shadow-cmocard flex flex-col gap-6 py-10 px-7 md:px-14 items-center w-full">
+            <div className="bg-white rounded-2xl shadow-cmocard flex flex-col gap-6 py-10 px-7 md:px-14 items-center w-full relative">
                  <h3 className={`font-stratos ${el.color} font-bold text-[2.125rem] uppercase`}>
                     {el.title}
                  </h3>
@@ -120,7 +120,7 @@ const PPCApproach = ({data}) => {
     }
 
     return(<>
-        <section className="py-20 lg:pt-40">
+        <section className="pt-20 xl:py-40">
             <Container container="slim" classes="flex flex-col items-center gap-4 text-center">
                 {heading &&
                     <h2
@@ -142,20 +142,20 @@ const PPCApproach = ({data}) => {
 
                 <div className="relative">
 
-                    <button onClick={(e) => { handleClick(e); setActiveIndex(0) }} className="absolute z-10 hidden md:block left-[12.75%] ml-[15px] bottom-12">
-                       {renderInsideDesktop(copy[0].copy)}
+                    <button onClick={() => handleDesktopClick(0)} className="absolute z-10 hidden md:block left-[13.5%] lg:left-[12.75%] lg:ml-[15px] bottom-12">
+                        {renderInsideDesktop(copy[0].copy, openDesktop === 0)}
                     </button>
 
-                    <button onClick={(e) => { handleClick(e); setActiveIndex(1) }} className="absolute z-10 hidden md:block left-[37.5%] bottom-12">
-                        {renderInsideDesktop(copy[1].copy)}
+                    <button onClick={() => handleDesktopClick(1)} className="absolute z-10 hidden md:block left-[36.5%] lg:left-[37.5%] bottom-12">
+                        {renderInsideDesktop(copy[1].copy, openDesktop === 1)}
                     </button>
 
-                    <button onClick={(e) => { handleClick(e); setActiveIndex(2) }} className="absolute z-10 hidden md:block left-[61%] bottom-12">
-                        {renderInsideDesktop(copy[2].copy)}
+                    <button onClick={() => handleDesktopClick(2)} className="absolute z-10 hidden md:block left-[60%] lg:left-[61%] bottom-12">
+                        {renderInsideDesktop(copy[2].copy, openDesktop === 2)}
                     </button>
 
-                    <button onClick={(e) => { handleClick(e); setActiveIndex(3) }} className="absolute z-10 hidden md:block left-[83%] bottom-12">
-                        {renderInsideDesktop(copy[3].copy)}
+                    <button onClick={() => handleDesktopClick(3)} className="absolute z-10 hidden md:block left-[82%] lg:left-[83%] bottom-12">
+                        {renderInsideDesktop(copy[3].copy, openDesktop === 3)}
                     </button>
 
                     <svg className="w-full" width="1146" viewBox="0 0 1146 358" fill="none">
@@ -226,7 +226,7 @@ const PPCApproach = ({data}) => {
                 </div>
 
                 <div className="hidden md:block xl:hidden mt-10">
-                    {renderInsideMobile(copy[activeIndex], copy[activeIndex].copy)}
+                    {renderInsideTablet(copy[activeIndex], copy[activeIndex].copy)}
                 </div>
 
                 <div className="md:hidden flex flex-col gap-4 mt-10">

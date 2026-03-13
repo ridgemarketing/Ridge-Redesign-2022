@@ -527,7 +527,7 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
 }
 
 export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnStyle, redirectForm, persistantEmail}) => {
-    const { register, handleSubmit, watch, reset, setValue, formState, formState: { errors, isSubmitSuccessful } } = useForm()
+    const { register, handleSubmit, watch, reset, setValue, setFocus, formState, formState: { errors, isSubmitSuccessful } } = useForm()
     const [status, setStatus]               = useState(false)
     const [submittedData, setSubmittedData] = useState({})
     const [savedData, setSavedData]         = useState({})
@@ -545,6 +545,7 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
     useEffect( () => {
         if (persistantEmail) {
             setValue('email', persistantEmail)
+            setFocus('email')
         }
     }, [persistantEmail])
 
@@ -554,6 +555,7 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
         setStep(2)
         setStatus(false)
     } 
+
     const onSubmit = async (data) => {
 
         setStatus(`processing`)
@@ -723,7 +725,6 @@ export const FormAudit2026 = ({classes, submitLabel, btnStyle, redirectForm}) =>
         setStatus(`processing`)
 
         const message = JSON.stringify(data)
-
 
         const res = await fetch("/api/sendgrid-audit", {
             body    : JSON.stringify({
