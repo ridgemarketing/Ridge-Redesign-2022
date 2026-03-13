@@ -62,7 +62,7 @@ const AuditCard = (props) => {
                         {list && list.length > 0 &&
                             <ul className="flex flex-col gap-4 mt-2">
                                 {list.map((item, index) => (
-                                    <li key={index} className="flex items-baseline gap-3 font-basic-sans font-semibold text-[22px] leading-[1.4rem]">
+                                    <li key={index} className="flex items-baseline gap-3 font-basic-sans font-semibold text-[1.375rem] leading-[1.4rem]">
                                         <svg className="w-[24px] shrink-0" viewBox="0 0 24 24" fill="none">
                                             <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#1F9DA5" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                                         </svg>

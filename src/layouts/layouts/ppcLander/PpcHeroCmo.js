@@ -35,11 +35,11 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
             {/* Teal gradient overlay */}
             <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(147deg,rgba(0,171,182,0)_54%,rgba(0,171,182,0.6)_167%)]" />
 
-            <Container container="default" classes="relative z-10 pb-[450px] md:pb-[300px]">
+            <Container container="default" classes="relative z-10 pb-[450px] md:pb-[300px] xl:max-w-[1400px] xl:translate-x-[60px]">
                 <div className="flex flex-col xl:flex-row items-center gap-12 xl:gap-0 pt-12 md:py-20 min-h-[500px] xl:min-h-[642px]">
 
                     {/* Left Column - Text Content */}
-                    <div className="flex flex-col gap-6 xl:gap-8 xl:w-[55%] text-center xl:text-left pt-8 xl:pt-12">
+                    <div className="flex flex-col gap-6 xl:gap-8 xl:w-[55%] xl:max-w-[625px] text-center xl:text-left pt-8 xl:pt-12 z-10">
                         {heading &&
                             <h1
                                 dangerouslySetInnerHTML={{__html: Parser(heading)}}
@@ -67,7 +67,7 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
                     </div>
 
                     {/* Right Column - Image */}
-                    <div className="relative xl:w-[45%] xl:min-w-[800px] xlz:-mr-[110px] flex items-center justify-center ">
+                    <div className="relative xl:absolute xl:right-0 xl:pt-12 xl:w-[45%] xl:min-w-[800px] xlz:-translate-x-[110px] flex items-center justify-center ">
                         {image && image.localFile?.childImageSharp?.gatsbyImageData &&
                             <GatsbyImage
                                 image={image.localFile.childImageSharp.gatsbyImageData}
