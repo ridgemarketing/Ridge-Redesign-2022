@@ -46,7 +46,6 @@ const PPCApproach = ({data}) => {
     }
 
     const handleClose = (e) => {
-        console.log(e, openTablet)
         if (!openTablet) {
             return
         }
