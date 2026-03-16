@@ -88,7 +88,7 @@ const WpLander = ({ data, location }) => {
     </>)
   }
 
-  if (data.wpLander.uri === '/lander/ridge-ppc-2026-cmo/') {
+  if (data.wpLander.uri === '/lander/b2b-marketing-agency/') {
     return (<>
       <CustomHeader color={color} position={`sticky`} />
       <PPCLanderWrapperCMO data={data.wpLander.Ridge2026PPC_CMO} cmo={true} />

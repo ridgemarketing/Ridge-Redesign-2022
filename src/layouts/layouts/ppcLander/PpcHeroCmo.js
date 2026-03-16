@@ -74,6 +74,8 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
                                 alt={image.altText || ''}
                                 className="w-full"
                                 objectFit="contain"
+                                placeholder="none"
+                                backgroundColor="transparent"
                             />
                         }
                         {image && !image.localFile?.childImageSharp?.gatsbyImageData && image.sourceUrl &&
