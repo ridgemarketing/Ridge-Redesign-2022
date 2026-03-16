@@ -69,13 +69,18 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
                     {/* Right Column - Image */}
                     <div className="relative xl:absolute xl:right-0 xl:pt-12 xl:w-[45%] xl:min-w-[800px] xlz:-translate-x-[110px] flex items-center justify-center ">
                         {image && image.localFile?.childImageSharp?.gatsbyImageData &&
-                            <GatsbyImage
-                                image={image.localFile.childImageSharp.gatsbyImageData}
+                            // <GatsbyImage
+                            //     image={image.localFile.childImageSharp.gatsbyImageData}
+                            //     alt={image.altText || ''}
+                            //     className="w-full"
+                            //     objectFit="contain"
+                            //     placeholder="none"
+                            //     backgroundColor="transparent"
+                            // />
+                            <img 
+                                src={image.sourceUrl}
                                 alt={image.altText || ''}
-                                className="w-full"
-                                objectFit="contain"
-                                placeholder="none"
-                                backgroundColor="transparent"
+                                className="w-full object-contain"
                             />
                         }
                         {image && !image.localFile?.childImageSharp?.gatsbyImageData && image.sourceUrl &&
