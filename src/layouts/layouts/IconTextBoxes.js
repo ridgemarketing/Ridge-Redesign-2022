@@ -83,7 +83,7 @@ const IconTextBoxes = (props) => {
     const hasSingleLastItem = isThreeCols && leftover === 1;
     
     //added code to dynamically set mt on wrapper div depending on stack or flex (icon placement affects margin needed)
-    const wrapperClasses = (content.settings.type === 'stack') ? `${(content.heading || content.subheading) ? 'mt-16' : 'mt-0'} grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} gap-8 max-w-[1100px] mx-auto` : `${(!content.heading && !content.subheading) ? 'mt-0' : 'mt-16'} flex w-full flex-wrap justify-between ${flexDirection} threeColIconsText ${hasSingleLastItem ? '[&>*:last-child]:mx-auto' : ''}`;
+    const wrapperClasses = (content.settings.type === 'stack') ? `${(content.heading || content.subheading) ? 'mt-0' : 'mt-0'} grid gap-x-8 gap-y-6 md:grid-cols-2 md:gap-y-12 ${cols} gap-8 max-w-[1100px] mx-auto` : `${(!content.heading && !content.subheading) ? 'mt-0' : 'mt-16'} flex w-full flex-wrap justify-between ${flexDirection} threeColIconsText ${hasSingleLastItem ? '[&>*:last-child]:mx-auto' : ''}`;
 
   return (
       <Section settings={settings}>
