@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Ridge Marketing`,
-    siteUrl: `http://www.ridgemarketing.com`
+    siteUrl: `https://www.ridgemarketing.com`
   },
   flags: {
     DEV_SSR: true
@@ -24,7 +24,7 @@ module.exports = {
           // allows a fallback url if WPGRAPHQL_URL is not set in the env, this may be a local or remote WP instance.
           process.env.WPGRAPHQL_URL_PROD ||
           `https://cms.ridgemarketing.com/graphql`,
-          //`https://rm2022stage.wpengine.com/graphql`,
+          // `https://rm2022stage.wpengine.com/graphql`,
           // `http://ridge-marketing-2022.local/graphql`,
         schema: {
           //Prefixes all WP Types with "Wp" so "Post and allPost" become "WpPost and allWpPost".
@@ -55,58 +55,72 @@ module.exports = {
     {
       resolve: "gatsby-plugin-sitemap",
       options: {
+        output: "/",
+        excludes: [
+          `/dev-404-page`,
+          `/404`,
+          `/404.html`,
+          `/offline-plugin-app-shell-fallback`,
+          `/lander/*`,
+        ],
         query: `
-        {
-          allSitePage {
-            nodes {
-              path
-            }
-          }
-          allWpContentNode(filter: {nodeType: {in: ["Post", "Page", "Project", "Service"]}}) {
-            nodes {
-              ... on WpPost {
-                uri
-                modifiedGmt
-              }
-              ... on WpPage {
-                uri
-                modifiedGmt
-              }
-              ... on WpProject {
-                uri
-                modifiedGmt
-              }
-              ... on WpService {
-                uri
-                modifiedGmt
+          {
+            site {
+              siteMetadata {
+                siteUrl
               }
             }
+            allSitePage {
+              nodes {
+                path
+              }
+            }
+            allWpContentNode(filter: {nodeType: {in: ["Post", "Page", "Project", "Service"]}}) {
+              nodes {
+                ... on WpPost {
+                  uri
+                  modifiedGmt
+                }
+                ... on WpPage {
+                  uri
+                  modifiedGmt
+                }
+                ... on WpProject {
+                  uri
+                  modifiedGmt
+                }
+                ... on WpService {
+                  uri
+                  modifiedGmt
+                }
+              }
+            }
           }
-        }
-      `,
-        resolveSiteUrl: () => `http://www.ridgemarketing.com`,
+        `,
         resolvePages: ({
           allSitePage: { nodes: allPages },
           allWpContentNode: { nodes: allWpNodes },
         }) => {
           const wpNodeMap = allWpNodes.reduce((acc, node) => {
-            const { uri } = node
-            acc[uri] = node
-
+            acc[node.uri] = node
             return acc
           }, {})
 
-          return allPages.map(page => {
-            return { ...page, ...wpNodeMap[page.path] }
-          })
+          return allPages.map(page => ({ ...page, ...wpNodeMap[page.path] }))
         },
-        serialize: ({ path, modifiedGmt }) => {
-          return {
-            url: path,
-            lastmod: modifiedGmt,
-          }
-        },
+        serialize: ({ path, modifiedGmt }) => ({
+          url: path,
+          lastmod: modifiedGmt,
+        }),
       },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.ridgemarketing.com',
+        sitemap: 'https://www.ridgemarketing.com/sitemap-index.xml',
+        policy: [{ userAgent: '*', allow: '/' }]
+      }
     },
     {
       resolve: "gatsby-plugin-google-tagmanager",
