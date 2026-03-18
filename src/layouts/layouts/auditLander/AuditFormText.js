@@ -18,7 +18,7 @@ const AuditFormText = ({data}) => {
                     {mainBody &&
                         <h2
                             dangerouslySetInnerHTML={{__html: Parser(mainBody)}}
-                            className={`font-stratos text-[30px] leading-[30px] md:text-40px md:leading-44px !font-light text-rm-blog-blue max-w-[1255px] mx-auto`}
+                            className={`font-stratos text-[30px] leading-[30px] md:text-40px md:leading-[58px] !font-light text-rm-blog-blue max-w-[1255px] mx-auto`}
                         />
                     }
                 </div>
@@ -93,7 +93,7 @@ const AuditFormText = ({data}) => {
                     </div>
                 </div>
             </Container>
-            <hr className="container xl:max-w-[1224px]"/>
+            <hr className="container xl:max-w-[1224px] mt-12 pb-12"/>
         </section>
     )
 }
