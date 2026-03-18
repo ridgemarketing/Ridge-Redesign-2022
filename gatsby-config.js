@@ -5,7 +5,7 @@ require("dotenv").config({
 module.exports = {
   siteMetadata: {
     title: `Ridge Marketing`,
-    siteUrl: `https://www.ridgemarketing.com`
+    siteUrl: `https://ridgemarketing.com`
   },
   flags: {
     DEV_SSR: true
@@ -62,6 +62,9 @@ module.exports = {
           `/404.html`,
           `/offline-plugin-app-shell-fallback`,
           `/lander/*`,
+          `/thank-you*`,
+          `/wrapped_2024/`,
+          `/visibility-audit/`,
         ],
         query: `
           {
@@ -117,8 +120,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
-        host: 'https://www.ridgemarketing.com',
-        sitemap: 'https://www.ridgemarketing.com/sitemap-index.xml',
+        host: 'https://ridgemarketing.com',
+        sitemap: 'https://ridgemarketing.com/sitemap-index.xml',
         policy: [{ userAgent: '*', allow: '/' }]
       }
     },
