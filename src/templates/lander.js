@@ -32,7 +32,7 @@ export const Head = ({data}) => (
 
     <meta property="og:type" content={data.wpLander.seo.opengraphType}/>
     <meta property="og:author" content={data.wpLander.seo.opengraphAuthor}/>
-    <meta property="og:url" content={`https://www.ridgemarketing.com${data.wpLander.uri}`}/>
+    <meta property="og:url" content={`https://ridgemarketing.com${data.wpLander.uri}`}/>
     <meta property="og:title" content={data.wpLander.seo.opengraphTitle}/>
     <meta property="og:description" content={data.wpLander.seo.opengraphDescription}/>
     {data.wpLander.seo.opengraphImage &&
@@ -40,7 +40,7 @@ export const Head = ({data}) => (
     }
 
     <meta property="twitter:card" content="summary_large_image"/>
-    <meta property="twitter:url" content={`https://www.ridgemarketing.com${data.wpLander.uri}`}/>
+    <meta property="twitter:url" content={`https://ridgemarketing.com${data.wpLander.uri}`}/>
     <meta property="twitter:title" content={data.wpLander.seo.twitterTitle || data.wpLander.seo.opengraphTitle}/>
     <meta property="twitter:description" content={data.wpLander.seo.twitterDescription || data.wpLander.seo.opengraphDescription}/>
     {data.wpLander.seo.twitterImage &&
@@ -50,7 +50,7 @@ export const Head = ({data}) => (
     {data?.wpLander?.seo?.canonical && (
       <link
         rel="canonical"
-        href={`https://www.ridgemarketing.com${data.wpLander.seo.canonical}`}
+        href={`https://ridgemarketing.com${data.wpLander.seo.canonical}`}
       />
     )}
 

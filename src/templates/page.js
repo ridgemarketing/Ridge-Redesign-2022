@@ -20,7 +20,7 @@ export const Head = ({data}) => (
     {data.wpPage.seo.canonical && (
       <link
         rel="canonical"
-        href={`https://www.ridgemarketing.com${data.wpPage.seo.canonical}`}
+        href={`https://ridgemarketing.com${data.wpPage.seo.canonical}`}
       />
     )}
 
@@ -44,7 +44,7 @@ export const Head = ({data}) => (
 
     <meta property="og:type" content={data.wpPage.seo.opengraphType}/>
     <meta property="og:author" content={data.wpPage.seo.opengraphAuthor}/>
-    <meta property="og:url" content={`https://www.ridgemarketing.com${data.wpPage.uri}`}/>
+    <meta property="og:url" content={`https://ridgemarketing.com${data.wpPage.uri}`}/>
     <meta property="og:title" content={data.wpPage.seo.opengraphTitle}/>
     <meta property="og:description" content={data.wpPage.seo.opengraphDescription}/>
     {data.wpPage.seo.opengraphImage &&
@@ -52,14 +52,14 @@ export const Head = ({data}) => (
     }
 
     <meta property="twitter:card" content="summary_large_image"/>
-    <meta property="twitter:url" content={`https://www.ridgemarketing.com${data.wpPage.uri}`}/>
+    <meta property="twitter:url" content={`https://ridgemarketing.com${data.wpPage.uri}`}/>
     <meta property="twitter:title" content={data.wpPage.seo.twitterTitle || data.wpPage.seo.opengraphTitle}/>
     <meta property="twitter:description" content={data.wpPage.seo.twitterDescription || data.wpPage.seo.opengraphDescription}/>
     {data.wpPage.seo.twitterImage &&
       <meta property="twitter:image" content={data.wpPage.seo.twitterImage.sourceUrl}/>
     }
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:url" content={`https://www.ridgemarketing.com${data.wpPage.uri}`} />
+    <meta name="twitter:url" content={`https://ridgemarketing.com${data.wpPage.uri}`} />
     <meta name="twitter:title" content={data.wpPage.seo.twitterTitle || data.wpPage.seo.title} />
     <meta name="twitter:description" content={data.wpPage.seo.twitterDescription || data.wpPage.seo.metaDesc} />
     {data.wpPage.seo.twitterImage && (

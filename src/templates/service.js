@@ -32,7 +32,7 @@ export const Head = ({data}) => (
 
     <meta property="og:type" content={data.wpService.seo.opengraphType}/>
     <meta property="og:author" content={data.wpService.seo.opengraphAuthor}/>
-    <meta property="og:url" content={`https://www.ridgemarketing.com${data.wpService.uri}`}/>
+    <meta property="og:url" content={`https://ridgemarketing.com${data.wpService.uri}`}/>
     <meta property="og:title" content={data.wpService.seo.opengraphTitle}/>
     <meta property="og:description" content={data.wpService.seo.opengraphDescription}/>
     {data.wpService.seo.opengraphImage &&
@@ -40,7 +40,7 @@ export const Head = ({data}) => (
     }
 
     <meta property="twitter:card" content="summary_large_image"/>
-    <meta property="twitter:url" content={`https://www.ridgemarketing.com${data.wpService.uri}`}/>
+    <meta property="twitter:url" content={`https://ridgemarketing.com${data.wpService.uri}`}/>
     <meta property="twitter:title" content={data.wpService.seo.twitterTitle || data.wpService.seo.opengraphTitle}/>
     <meta property="twitter:description" content={data.wpService.seo.twitterDescription || data.wpService.seo.opengraphDescription}/>
     {data.wpService.seo.twitterImage &&
@@ -50,7 +50,7 @@ export const Head = ({data}) => (
       {data?.wpService?.seo?.canonical && (
         <link
           rel="canonical"
-          href={`https://www.ridgemarketing.com${data.wpService.seo.canonical}`}
+          href={`https://ridgemarketing.com${data.wpService.seo.canonical}`}
         />
       )}
 
