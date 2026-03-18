@@ -64,7 +64,6 @@ module.exports = {
           `/lander/*`,
           `/thank-you*`,
           `/wrapped_2024/`,
-          `/visibility-audit/`,
         ],
         query: `
           {
