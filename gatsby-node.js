@@ -5,12 +5,21 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
   // query content for WordPress posts
 
-  redirects.forEach(redirect => 
+  redirects.forEach(redirect =>
     createRedirect({
-      fromPath: redirect.fromPath,
-      toPath: redirect.toPath,
+      fromPath    : redirect.fromPath,
+      toPath      : redirect.toPath,
+      isPermanent : true,
+      force       : true,
     })
   )
+
+  // Proxy WordPress media so images are served from ridgemarketing.com
+  createRedirect({
+    fromPath   : `/wp-content/uploads/*`,
+    toPath     : `https://cms.ridgemarketing.com/wp-content/uploads/:splat`,
+    statusCode : 200,
+  })
 
   const {
     data: {
