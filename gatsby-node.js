@@ -1,6 +1,29 @@
 const path = require(`path`)
 const redirects = require("./src/static/redirects.json")
 const { slash } = require(`gatsby-core-utils`)
+
+const CMS_URL  = `https://cms.ridgemarketing.com`
+const SITE_URL = `https://ridgemarketing.com`
+
+const rewriteUrl = url =>
+  typeof url === `string` ? url.replace(CMS_URL, SITE_URL) : url
+
+exports.createResolvers = ({ createResolvers }) => {
+  createResolvers({
+    WpMediaItem: {
+      sourceUrl: {
+        resolve(source) {
+          return rewriteUrl(source.sourceUrl)
+        },
+      },
+      mediaItemUrl: {
+        resolve(source) {
+          return rewriteUrl(source.mediaItemUrl)
+        },
+      },
+    },
+  })
+}
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
   // query content for WordPress posts
