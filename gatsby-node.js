@@ -1,16 +1,51 @@
 const path = require(`path`)
 const redirects = require("./src/static/redirects.json")
 const { slash } = require(`gatsby-core-utils`)
+
+const CMS_URL  = `https://cms.ridgemarketing.com`
+const SITE_URL = `https://ridgemarketing.com`
+
+const rewriteUrl = url =>
+  process.env.NODE_ENV === `production` && typeof url === `string`
+    ? url.replace(CMS_URL, SITE_URL)
+    : url
+
+exports.createResolvers = ({ createResolvers }) => {
+  createResolvers({
+    WpMediaItem: {
+      sourceUrl: {
+        resolve(source) {
+          return rewriteUrl(source.sourceUrl)
+        },
+      },
+      mediaItemUrl: {
+        resolve(source) {
+          return rewriteUrl(source.mediaItemUrl)
+        },
+      },
+    },
+  })
+}
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
   // query content for WordPress posts
 
-  redirects.forEach(redirect => 
+  redirects.forEach(redirect =>
     createRedirect({
-      fromPath: redirect.fromPath,
-      toPath: redirect.toPath,
+      fromPath    : redirect.fromPath,
+      toPath      : redirect.toPath,
+      isPermanent : true,
+      force       : true,
     })
   )
+
+  // Proxy WordPress media so images are served from ridgemarketing.com
+  createRedirect({
+    fromPath   : `/wp-content/uploads/*`,
+    toPath     : `https://cms.ridgemarketing.com/wp-content/uploads/:splat`,
+    statusCode : 200,
+  })
 
   const {
     data: {
