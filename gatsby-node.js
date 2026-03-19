@@ -5,10 +5,14 @@ const { slash } = require(`gatsby-core-utils`)
 const CMS_URL  = `https://cms.ridgemarketing.com`
 const SITE_URL = `https://ridgemarketing.com`
 
-const rewriteUrl = url =>
-  process.env.NODE_ENV === `production` && typeof url === `string`
-    ? url.replace(CMS_URL, SITE_URL)
-    : url
+// const rewriteUrl = url =>
+//   process.env.NODE_ENV === `production` && typeof url === `string`
+//     ? url.replace(CMS_URL, SITE_URL)
+//     : url
+
+  const rewriteUrl = url =>
+  typeof url === `string` ? url.replace(CMS_URL, SITE_URL) : url
+
 
 exports.createResolvers = ({ createResolvers }) => {
   createResolvers({
