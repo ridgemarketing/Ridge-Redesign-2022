@@ -6,7 +6,9 @@ const CMS_URL  = `https://cms.ridgemarketing.com`
 const SITE_URL = `https://ridgemarketing.com`
 
 const rewriteUrl = url =>
-  typeof url === `string` ? url.replace(CMS_URL, SITE_URL) : url
+  process.env.NODE_ENV === `production` && typeof url === `string`
+    ? url.replace(CMS_URL, SITE_URL)
+    : url
 
 exports.createResolvers = ({ createResolvers }) => {
   createResolvers({
@@ -24,6 +26,7 @@ exports.createResolvers = ({ createResolvers }) => {
     },
   })
 }
+
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage, createRedirect } = actions
   // query content for WordPress posts
