@@ -10,6 +10,16 @@ module.exports = {
   flags: {
     DEV_SSR: true
   },
+  developMiddleware: (app) => {
+    const proxy = require(`express-http-proxy`)
+    app.use(
+      `/wp-content/uploads`,
+      proxy(`https://cms.ridgemarketing.com`, {
+        preserveHostHdr: false,
+        proxyReqPathResolver: (req) => `/wp-content/uploads` + req.url,
+      })
+    )
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
