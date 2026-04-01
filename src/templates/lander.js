@@ -666,6 +666,11 @@ export const query = graphql`
           list {
             item
           }
+          mediaType
+          video {
+            mediaItemUrl
+            mimeType
+          }
         }
 
         approach {
