@@ -11,12 +11,15 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
     const heading           = data.heading ?? false
     const subHeading        = data.subHeading ?? false
     const image             = data.image ?? false
+    const mediaType         = data.mediaType ?? 'image'
+    const video             = data.video ?? false
     const buttonData        = data.componentButton ?? false
     const callout           = data.callout ?? false
     const list              = data.list ?? false
 
     const calloutRef                    = useRef(null)
     const [calloutHeight, setCalloutHeight] = useState(0)
+    const videoRef          = useRef(null)
 
     useEffect(() => {
         if (!calloutRef.current) return
@@ -24,6 +27,19 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
         update()
         window.addEventListener('resize', update)
         return () => window.removeEventListener('resize', update)
+    }, [])
+
+    useEffect(() => {
+        if (!videoRef.current) return
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.play()
+                }
+            })
+        }, { threshold: 0.25 })
+        observer.observe(videoRef.current)
+        return () => observer.disconnect()
     }, [])
 
     const handleBlur = (e) => {
@@ -66,25 +82,29 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
                         }
                     </div>
 
-                    {/* Right Column - Image */}
+                    {/* Right Column - Image or Video */}
                     <div className="relative xl:absolute xl:right-0 xl:pt-12 xl:w-[45%] xl:min-w-[800px] xlz:-translate-x-[110px] flex items-center justify-center ">
-                        {image && image.localFile?.childImageSharp?.gatsbyImageData &&
-                            // <GatsbyImage
-                            //     image={image.localFile.childImageSharp.gatsbyImageData}
-                            //     alt={image.altText || ''}
-                            //     className="w-full"
-                            //     objectFit="contain"
-                            //     placeholder="none"
-                            //     backgroundColor="transparent"
-                            // />
-                            <img 
-                                src={image.sourceUrl}
-                                alt={image.altText || ''}
+                        {mediaType === 'video' && video?.mediaItemUrl
+                            ? <video
+                                ref={videoRef}
+                                src={video.mediaItemUrl}
+                                muted
+                                loop
+                                playsInline
                                 className="w-full object-contain"
-                            />
-                        }
-                        {image && !image.localFile?.childImageSharp?.gatsbyImageData && image.sourceUrl &&
-                            <img src={image.sourceUrl} alt={image.altText || ''} className="w-full object-contain" />
+                              />
+                            : <>
+                                {image && image.localFile?.childImageSharp?.gatsbyImageData &&
+                                    <img
+                                        src={image.sourceUrl}
+                                        alt={image.altText || ''}
+                                        className="w-full object-contain"
+                                    />
+                                }
+                                {image && !image.localFile?.childImageSharp?.gatsbyImageData && image.sourceUrl &&
+                                    <img src={image.sourceUrl} alt={image.altText || ''} className="w-full object-contain" />
+                                }
+                              </>
                         }
                     </div>
                 </div>
