@@ -83,7 +83,7 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
                     </div>
 
                     {/* Right Column - Image or Video */}
-                    <div className="relative xl:absolute xl:right-0 xl:pt-12 xl:w-[45%] xl:min-w-[800px] xlz:-translate-x-[110px] flex items-center justify-center ">
+                    <div className="relative xl:absolute xl:right-0 xl:pt-12 xl:w-[45%] xl:min-w-[800px] xl:translate-x-[75px] xlz:-translate-x-[20px] flex items-center justify-center ">
                         {mediaType === 'video' && video?.mediaItemUrl
                             ? <video
                                 ref={videoRef}
