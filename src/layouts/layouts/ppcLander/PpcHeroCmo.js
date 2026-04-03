@@ -48,8 +48,8 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
 
     return(<>
         <section className="relative bg-[#f3f1ee] overflow-hidden">
-            {/* Teal gradient overlay */}
-            <div className="absolute inset-0 pointer-events-none bg-[linear-gradient(147deg,rgba(0,171,182,0)_54%,rgba(0,171,182,0.6)_167%)]" />
+                 {/* bg-[linear-gradient(147deg,rgba(0,171,182,0)_54%,rgba(0,171,182,0.6)_167%)] */}
+            <div className="absolute inset-0 pointer-events-none bg-[#F3F1EE]" />
 
             <Container container="default" classes="relative z-10 pb-[450px] md:pb-[300px] xl:max-w-[1400px] xl:translate-x-[60px]">
                 <div className="flex flex-col xl:flex-row items-center gap-12 xl:gap-0 pt-12 md:py-20 min-h-[500px] xl:min-h-[642px]">
