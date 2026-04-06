@@ -10,6 +10,16 @@ module.exports = {
   flags: {
     DEV_SSR: true
   },
+  developMiddleware: (app) => {
+    const proxy = require(`express-http-proxy`)
+    app.use(
+      `/wp-content/uploads`,
+      proxy(`https://cms.ridgemarketing.com`, {
+        preserveHostHdr: false,
+        proxyReqPathResolver: (req) => `/wp-content/uploads` + req.url,
+      })
+    )
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
@@ -20,6 +30,10 @@ module.exports = {
           allow404Images: true,
         },
         html: { useGatsbyImage: false },
+        searchAndReplaceContentUrls: {
+          sourceUrl: `https://cms.ridgemarketing.com`,
+          replacementUrl: `https://ridgemarketing.com`,
+        },
         url:
           // allows a fallback url if WPGRAPHQL_URL is not set in the env, this may be a local or remote WP instance.
           process.env.WPGRAPHQL_URL_PROD ||
@@ -137,6 +151,8 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-netlify`,
+    // `gatsby-transformer-inline-svg`,
     // `gatsby-plugin-postcss`
   ]
 };
