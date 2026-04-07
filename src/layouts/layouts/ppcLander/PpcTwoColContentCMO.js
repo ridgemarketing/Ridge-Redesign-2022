@@ -63,7 +63,12 @@ const PPCTwoColContentCMO = ({data, cmo, audit = false}) => {
                 {/* Right Column - Video */}
                 {videoText?.video?.mediaItemUrl && 
                     <div className="relative max-w-[630px] xl:w-1/2">
-                        <video ref={video} className="aspect-video rounded-3xl flex-1 w-full " autoPlay={false} muted={true} controls={false} loop={true}>
+                        <video ref={video} className="aspect-video rounded-3xl flex-1 w-full " 
+                                autoPlay                         
+                                muted
+                                loop
+                                playsInline 
+                            >
                             <source src={videoText?.video?.mediaItemUrl} type={videoText?.video?.mimeType}/>
                         </video>
                         <svg className="absolute -right-[20px] -bottom-[65px] hidden md:block" width="132" height="131" viewBox="0 0 132 131" fill="none" xmlns="http://www.w3.org/2000/svg">
