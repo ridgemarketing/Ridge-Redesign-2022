@@ -33,7 +33,7 @@ const ResultCard = (props) => {
 
     return (
             <div key={`${content.description}${content.stat}`} className={ `text-center ${props?.settings?.includes('text-center') ? '' : 'md:text-left' } ${props.columns !== "1" && classes[props.columns]} my-6` }>
-                <div className={`w-fit mx-auto ${props.columns === "1" && classes[props.columns]}`}>
+                <div className={`w-fit ml-0 ${props.columns === "1" && classes[props.columns]}`}>
 
                 {!props.noCounter && content.stat && statNumber > 40 &&
                     <Counter number={statNumber} title={suffixString} classes={statClass} columns={columnsNum} />   
