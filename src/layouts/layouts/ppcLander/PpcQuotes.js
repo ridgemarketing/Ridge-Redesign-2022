@@ -100,7 +100,7 @@ const PPCQuotes = ({data, cmo}) => {
             let prevDirection        = `0`
 
             if (window.innerWidth < 768) {
-                // topCounter  = 0.35
+                topCounter  = 0.05
                 topLeft     = 15
                 topRight    = 50
             }
