@@ -3,7 +3,10 @@ const redirects = require("./src/static/redirects.json")
 const { slash } = require(`gatsby-core-utils`)
 
 const CMS_URL    = `https://cms.ridgemarketing.com`
-const DEPLOY_URL = process.env.DEPLOY_PRIME_URL || process.env.URL  // set by Netlify on every build
+// Use custom domain on production, preview URL on deploy previews, undefined locally
+const DEPLOY_URL = process.env.CONTEXT === `deploy-preview`
+  ? process.env.DEPLOY_PRIME_URL
+  : process.env.URL
 
 const rewriteUrl = url =>
   DEPLOY_URL && typeof url === `string`
