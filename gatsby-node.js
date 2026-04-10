@@ -3,7 +3,7 @@ const redirects = require("./src/static/redirects.json")
 const { slash } = require(`gatsby-core-utils`)
 
 const CMS_URL    = `https://cms.ridgemarketing.com`
-const DEPLOY_URL = process.env.DEPLOY_URL || process.env.URL  // set by Netlify on every build
+const DEPLOY_URL = process.env.DEPLOY_PRIME_URL || process.env.URL  // set by Netlify on every build
 
 const rewriteUrl = url =>
   DEPLOY_URL && typeof url === `string`
