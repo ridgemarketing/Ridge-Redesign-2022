@@ -83,6 +83,9 @@ export const pageQuery = graphql`
         ...TwoColImageListPage
         ...AuditCardPage
         ...TwoColContentPpcPage
+        ...PpcFormLayoutPage
+        ...AuditStatsLayoutPage
+        ...PpcProjectSliderLayoutPage
       }
     }
   }
@@ -129,6 +132,9 @@ export const serviceQuery = graphql`
         ...TwoColImageListService
         ...AuditCardService
         ...TwoColContentPpcService
+        ...PpcFormLayoutService
+        ...AuditStatsLayoutService
+        ...PpcProjectSliderLayoutService
       }
     }
   }
@@ -183,6 +189,9 @@ export const projectQuery = graphql`
         ...TwoColImageListProject
         ...AuditCardProject
         ...TwoColContentPpcProject
+        ...PpcFormLayoutProject
+        ...AuditStatsLayoutProject
+        ...PpcProjectSliderLayoutProject
       }
     }
   }
@@ -203,6 +212,10 @@ export const landerQuery = graphql`
         ...VerticalSliderLander
         ...FrequentlyAskedQuestionsLander
         ...AuditCardLander
+        ...TwoColContentPpcLander
+        ...PpcFormLayoutLander
+        ...AuditStatsLayoutLander
+        ...PpcProjectSliderLayoutLander
       }
     }
   }

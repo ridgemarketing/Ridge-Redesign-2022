@@ -49,6 +49,9 @@ import FrequentlyAskedQuestions from "./layouts/FrequentlyAskedQuestions"
 import TwoColImageList from "./layouts/TwoColImageList"
 import AuditCard from "./layouts/AuditCard"
 import TwoColContentPpc from "./layouts/TwoColContentPpc"
+import PpcFormLayout from "./layouts/PpcFormLayout"
+import AuditStatsLayout from "./layouts/AuditStatsLayout"
+import PpcProjectSliderLayout from "./layouts/PpcProjectSliderLayout"
 
 let Layouts = {};
 
@@ -105,5 +108,8 @@ Layouts['FrequentlyAskedQuestions']         = FrequentlyAskedQuestions;
 Layouts['TwoColImageList']                  = TwoColImageList;
 Layouts['AuditCard']                        = AuditCard;
 Layouts['TwoColumnContentPpc']              = TwoColContentPpc;
+Layouts['PpcForm']                          = PpcFormLayout;
+Layouts['AuditStats']                       = AuditStatsLayout;
+Layouts['PpcProjectSlider']                 = PpcProjectSliderLayout;
 
 export default Layouts

@@ -1,0 +1,111 @@
+import React from "react"
+import { graphql } from "gatsby"
+import PPCStats from "./ppcLander/PpcStats"
+
+const AuditStatsLayout = (props) => {
+    const content = props.layoutData.layoutContent
+
+    return <PPCStats data={content} />
+}
+
+export default AuditStatsLayout
+
+export const pageQuery = graphql`
+  fragment AuditStatsLayoutPage on WpPage_Flexiblelayouts_Layouts {
+    ... on WpPage_Flexiblelayouts_Layouts_AuditStats {
+      fieldGroupName
+      layoutAuditStats {
+        layoutContent {
+          heading
+          body
+          columns {
+            number
+            body
+          }
+        }
+        layoutSettings {
+          padding { bottom top }
+          anchorId
+          backgroundColor
+          classes
+          id
+        }
+      }
+    }
+  }
+`
+
+export const serviceQuery = graphql`
+  fragment AuditStatsLayoutService on WpService_Flexiblelayouts_Layouts {
+    ... on WpService_Flexiblelayouts_Layouts_AuditStats {
+      fieldGroupName
+      layoutAuditStats {
+        layoutContent {
+          heading
+          body
+          columns {
+            number
+            body
+          }
+        }
+        layoutSettings {
+          padding { bottom top }
+          anchorId
+          backgroundColor
+          classes
+          id
+        }
+      }
+    }
+  }
+`
+
+export const projectQuery = graphql`
+  fragment AuditStatsLayoutProject on WpProject_Flexiblelayouts_Layouts {
+    ... on WpProject_Flexiblelayouts_Layouts_AuditStats {
+      fieldGroupName
+      layoutAuditStats {
+        layoutContent {
+          heading
+          body
+          columns {
+            number
+            body
+          }
+        }
+        layoutSettings {
+          padding { bottom top }
+          anchorId
+          backgroundColor
+          classes
+          id
+        }
+      }
+    }
+  }
+`
+
+export const landerQuery = graphql`
+  fragment AuditStatsLayoutLander on WpLander_Flexiblelayouts_Layouts {
+    ... on WpLander_Flexiblelayouts_Layouts_AuditStats {
+      fieldGroupName
+      layoutAuditStats {
+        layoutContent {
+          heading
+          body
+          columns {
+            number
+            body
+          }
+        }
+        layoutSettings {
+          padding { bottom top }
+          anchorId
+          backgroundColor
+          classes
+          id
+        }
+      }
+    }
+  }
+`
