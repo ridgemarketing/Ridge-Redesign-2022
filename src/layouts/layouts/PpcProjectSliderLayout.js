@@ -5,7 +5,7 @@ import PPCProjectSlider from "./ppcLander/PpcProjectSlider"
 const PpcProjectSliderLayout = (props) => {
     const content = props.layoutData.layoutContent
 
-    return <PPCProjectSlider data={content} />
+    return <PPCProjectSlider data={content} cmo={true} />
 }
 
 export default PpcProjectSliderLayout
@@ -29,7 +29,6 @@ export const pageQuery = graphql`
             componentButton {
               style
               link { target title url }
-              colors { resting }
             }
           }
         }
@@ -64,7 +63,6 @@ export const serviceQuery = graphql`
             componentButton {
               style
               link { target title url }
-              colors { resting }
             }
           }
         }
@@ -99,7 +97,6 @@ export const projectQuery = graphql`
             componentButton {
               style
               link { target title url }
-              colors { resting }
             }
           }
         }
@@ -134,7 +131,6 @@ export const landerQuery = graphql`
             componentButton {
               style
               link { target title url }
-              colors { resting }
             }
           }
         }

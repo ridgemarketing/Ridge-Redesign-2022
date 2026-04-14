@@ -38,7 +38,7 @@ const TwoColContentPpc = (props) => {
                     {videoText?.heading &&
                         <h2
                             dangerouslySetInnerHTML={{__html: Parser(videoText.heading)}}
-                            className={`text-center xl:text-left max-w-[750px] mx-auto xl:max-w-full font-stratos uppercase text-40px leading-44px font-normal ${settings?.backgroundColor === 'black' ? 'text-rm-white' : 'text-black'}`}
+                            className={`text-center xl:text-left max-w-[750px] mx-auto xl:max-w-full font-stratos uppercase text-40px leading-44px font-normal ml-0 ${settings?.backgroundColor === 'black' ? 'text-rm-white' : 'text-black'}`}
                         />
                     }
                     {videoText?.body &&

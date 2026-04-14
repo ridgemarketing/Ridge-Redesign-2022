@@ -5,7 +5,7 @@ import PPCForm from "./ppcLander/PpcForm"
 const PpcFormLayout = (props) => {
     const content = props.layoutData.layoutContent
 
-    return <PPCForm data={content} />
+    return <PPCForm data={content} cmo={true} pt={true} />
 }
 
 export default PpcFormLayout

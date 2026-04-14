@@ -1,11 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
-import PPCStats from "./ppcLander/PpcStats"
+import AuditStats from "./auditLander/AuditStats"
 
 const AuditStatsLayout = (props) => {
     const content = props.layoutData.layoutContent
 
-    return <PPCStats data={content} />
+    return <AuditStats data={content} cmo={true} pb={true} />
 }
 
 export default AuditStatsLayout
@@ -18,9 +18,11 @@ export const pageQuery = graphql`
         layoutContent {
           heading
           body
-          columns {
-            number
-            body
+          subBody
+          stats {
+            stat
+            heading
+            subHeading
           }
         }
         layoutSettings {
@@ -43,9 +45,11 @@ export const serviceQuery = graphql`
         layoutContent {
           heading
           body
-          columns {
-            number
-            body
+          subBody
+          stats {
+            stat
+            heading
+            subHeading
           }
         }
         layoutSettings {
@@ -68,9 +72,11 @@ export const projectQuery = graphql`
         layoutContent {
           heading
           body
-          columns {
-            number
-            body
+          subBody
+          stats {
+            stat
+            heading
+            subHeading
           }
         }
         layoutSettings {
@@ -93,9 +99,11 @@ export const landerQuery = graphql`
         layoutContent {
           heading
           body
-          columns {
-            number
-            body
+          subBody
+          stats {
+            stat
+            heading
+            subHeading
           }
         }
         layoutSettings {
