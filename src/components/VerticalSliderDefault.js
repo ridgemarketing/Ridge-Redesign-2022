@@ -49,38 +49,26 @@ const VerticalSlider = (props) => {
                setVslide(vslides.length - 1)
              }
             
-             if( entry.isIntersecting ){
-              
-               if(firstSlide.current.offsetTop < totalHeight ){
-  
-                 onscroll = () => {
-                   for( let i = 0; scrollPoints.length > i; i++ ){
-                     if ( firstSlide.current.offsetTop > scrollPoints[i] ){
+             onscroll = () => {
+               for( let i = 0; scrollPoints.length > i; i++ ){
+                 if ( firstSlide.current.offsetTop > scrollPoints[i] ){
+                   setVslide(i);
+                   current = i;
 
-
-                       //console.log('greater than', scrollPoints[i], firstSlide.current.offsetTop, totalHeight, i);
-
-
-                       setVslide(i);
-                       current = i;
-  
-                       progressBar.current[i].style.height = 200 / ( vslides.length  + 1 ) + '%';
-                       progressBar.current[i].style.backgroundColor = '#FFFFFF';
-                       progressBar.current[i].children[0].style.backgroundColor = '#A9CF38';
-                       progressBar.current[i].children[0].style.height = ( ( firstSlide.current.offsetTop - scrollPoints[i] ) / slideHeight ) * 100 + '%';
-                       progressBar.current[i].parentElement.setAttribute('aria-valuenow', Math.round( (firstSlide.current.offsetTop / totalHeight) * 100 ) );
-                     }
-                   }
-                   for( let z = 0; scrollPoints.length > z; z++){
-                     if( z === current ){}else{
-                       progressBar.current[z].style.height = 100 / ( vslides.length  + 1 ) + '%';
-                       progressBar.current[z].children[0].style.backgroundColor = '#FFFFFF';
-                       progressBar.current[z].style.backgroundColor = '#FFFFFF';
-                     }
-                   }
+                   progressBar.current[i].style.height = 200 / ( vslides.length  + 1 ) + '%';
+                   progressBar.current[i].style.backgroundColor = '#FFFFFF';
+                   progressBar.current[i].children[0].style.backgroundColor = '#A9CF38';
+                   progressBar.current[i].children[0].style.height = ( ( firstSlide.current.offsetTop - scrollPoints[i] ) / slideHeight ) * 100 + '%';
+                   progressBar.current[i].parentElement.setAttribute('aria-valuenow', Math.round( (firstSlide.current.offsetTop / totalHeight) * 100 ) );
                  }
                }
-               //observer.unobserve(innerContainer.current);
+               for( let z = 0; scrollPoints.length > z; z++){
+                 if( z === current ){}else{
+                   progressBar.current[z].style.height = 100 / ( vslides.length  + 1 ) + '%';
+                   progressBar.current[z].children[0].style.backgroundColor = '#FFFFFF';
+                   progressBar.current[z].style.backgroundColor = '#FFFFFF';
+                 }
+               }
              }
 
 

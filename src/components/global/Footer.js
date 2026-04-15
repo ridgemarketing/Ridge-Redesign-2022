@@ -148,21 +148,25 @@ const Footer = ({location, data}) =>{
         <footer className="-mt-px text-center lg:text-left bg-rm-black text-rm-white py-12 lg:py-16">
             <Container container={"slim"}>
                 {( (!location.pathname.includes('lander/')) || (data?.wpLander?.landingPages?.showFooter)) &&
-                  <div className={`mb-12 lg:mb-28`}>
-                      {content.footertext.cta &&
-                        <h2 className={`${theme.text.HERO} lg:w-3/4`}>{content.footertext.cta}</h2>
-                      }
-                      {content.footertext.link.url && content.footertext.link.title &&
-                        <Link 
-                        to={
-                          data?.wpLander?.landingPages?.showFooter &&
-                          data?.wpLander?.landingPages?.linkType === "custom"
-                            ? data?.wpLander?.landingPages?.url
-                            : content.footertext.link.url
-                        }
-                          className={`ml-auto mr-auto lg:ml-0 lg:mr-0 text-rm-green mt-12 lg:mt-16 w-max hover:text-rm-white hover:underline ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.LARGE} ${theme.text_links.ARW_FWD_GREEN} ${theme.text_links.HOVER_ARW_FWD_WHITE}`}>{content.footertext.link.title}</Link>
-                      }
-                  </div>
+                  <>
+                    {!(data?.wpPage?.uri === "/barn-of-brands/") && 
+                      <div className={`mb-12 lg:mb-28`}>
+                          {content.footertext.cta &&
+                            <h2 className={`${theme.text.HERO} lg:w-3/4`}>{content.footertext.cta}</h2>
+                          }
+                          {content.footertext.link.url && content.footertext.link.title &&
+                            <Link 
+                            to={
+                              data?.wpLander?.landingPages?.showFooter &&
+                              data?.wpLander?.landingPages?.linkType === "custom"
+                                ? data?.wpLander?.landingPages?.url
+                                : content.footertext.link.url
+                            }
+                              className={`ml-auto mr-auto lg:ml-0 lg:mr-0 text-rm-green mt-12 lg:mt-16 w-max hover:text-rm-white hover:underline ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.LARGE} ${theme.text_links.ARW_FWD_GREEN} ${theme.text_links.HOVER_ARW_FWD_WHITE}`}>{content.footertext.link.title}</Link>
+                          }
+                      </div>
+                    }
+                  </>
                 }
                 <div className="lg:w-[95%]">
                     <ul key={`footer-top`} className="block lg:flex justify-between">
