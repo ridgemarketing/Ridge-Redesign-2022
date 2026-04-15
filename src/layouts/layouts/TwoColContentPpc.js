@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react"
 import { graphql } from "gatsby"
 import { Section, Container } from "../../components/global/Wrappers"
 import Parser from "../../components/global/Parser"
+import Buttons from "../../components/global/Buttons"
 import { theme } from "../../static/theme"
 
 const ArrowIcon = () => (
@@ -11,11 +12,14 @@ const ArrowIcon = () => (
 )
 
 const TwoColContentPpc = (props) => {
-    const content   = props.layoutData.layoutContent
-    const settings  = props.layoutData.layoutSettings
-    const videoText = content?.videoText ?? false
-    const checklist = content?.checklist ?? false
-    const listItems = checklist?.list || []
+    const content          = props.layoutData.layoutContent
+    const settings         = props.layoutData.layoutSettings
+    const videoText        = content?.videoText ?? false
+    const checklist        = content?.checklist ?? false
+    const listItems        = checklist?.list || []
+    const videoTop         = videoText?.videoTop ?? false
+    const componentButton  = videoText?.componentButton ?? false
+    const logoToggle       = videoText?.logoToggle ?? false
 
     const video = useRef(null)
 
@@ -34,11 +38,11 @@ const TwoColContentPpc = (props) => {
         // classes="pt-[60px] pb-[160px]"
         <Section settings={settings}>
             <Container classes="flex flex-col xl:flex-row gap-8 flex-nowrap justify-center items-center xl:p-0 pb-20 xl:pb-20">
-                <div className="flex flex-col gap-6 flex-1">
+                <div className={`flex flex-col gap-6 flex-1 ${videoTop ? 'order-last xl:order-none' : ''}`}>
                     {videoText?.heading &&
                         <h2
                             dangerouslySetInnerHTML={{__html: Parser(videoText.heading)}}
-                            className={`text-center xl:text-left max-w-[750px] mx-auto xl:max-w-full font-stratos uppercase text-40px leading-44px font-normal ${settings?.backgroundColor === 'black' ? 'text-rm-white' : 'text-black'}`}
+                            className={`text-center xl:text-left max-w-[750px] mx-auto xl:max-w-full font-stratos uppercase text-40px leading-44px font-normal xl:ml-0 ${settings?.backgroundColor === 'black' ? 'text-rm-white' : 'text-black'}`}
                         />
                     }
                     {videoText?.body &&
@@ -59,12 +63,23 @@ const TwoColContentPpc = (props) => {
                             </ul>
                         </div>
                     }
+                    {componentButton?.link?.url &&
+                        <div className="flex justify-center xl:justify-start mt-2">
+                            <Buttons content={componentButton} sectionBackground={settings?.backgroundColor || 'white'} />
+                        </div>
+                    }
                 </div>
                 {videoText?.video?.mediaItemUrl &&
-                    <div className="relative max-w-[630px] xl:w-1/2">
+                    <div className={`relative max-w-[630px] xl:w-1/2 ${videoTop ? 'order-first xl:order-none' : ''}`}>
                         <video ref={video} className="aspect-video rounded-3xl flex-1 w-full" autoPlay={false} muted={true} controls={false} loop={true}>
                             <source src={videoText.video.mediaItemUrl} type={videoText.video.mimeType} />
                         </video>
+                        {logoToggle && <svg className="absolute -right-[20px] -bottom-[65px] hidden xl:block" width="132" height="131" viewBox="0 0 132 131" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="65.2929" cy="65.2929" r="65.2929" fill="black"/>
+                            <path fillRule="evenodd" clipRule="evenodd" d="M65.6517 2.89007C53.2418 2.89007 41.1105 6.54993 30.792 13.4068C20.4735 20.2638 12.4312 30.0097 7.68216 41.4124C2.93308 52.815 1.69051 65.3622 4.11157 77.4672C6.53263 89.5722 12.5086 100.691 21.2837 109.418C30.0589 118.146 41.2391 124.089 53.4106 126.497C65.5821 128.905 78.1982 127.669 89.6635 122.946C101.129 118.223 110.928 110.224 117.823 99.9622C124.718 89.7 128.397 77.6351 128.397 65.293C128.38 48.7479 121.764 32.8853 110.001 21.1862C98.2374 9.48708 82.2877 2.90707 65.6517 2.89007ZM65.6517 130.586C52.667 130.586 39.974 126.757 29.1776 119.582C18.3812 112.408 9.96649 102.21 4.99747 90.2795C0.0284472 78.3488 -1.27168 65.2205 1.26151 52.5549C3.79469 39.8894 10.0474 28.2553 19.229 19.1239C28.4105 9.99251 40.1085 3.77396 52.8437 1.25461C65.5789 -1.26473 78.7792 0.0282917 90.7755 4.97016C102.772 9.91202 113.025 18.2808 120.239 29.0182C127.453 39.7555 131.303 52.3792 131.303 65.293C131.286 82.6045 124.364 99.2021 112.056 111.443C99.7472 123.684 83.0584 130.569 65.6517 130.586Z" fill="#FEFEFE"/>
+                            <path fillRule="evenodd" clipRule="evenodd" d="M53.8125 48.6915H63.8755V55.3064C64.532 50.479 68.1805 48.167 73.3358 48.167H77.3502C82.3548 48.167 85.7666 50.7466 87.7469 56.0343C89.5012 49.9545 91.7613 48.167 97.7453 48.167H100.974C110.596 48.167 114.061 53.7865 114.061 63.4412V82.419H103.503V64.2976C103.503 59.6735 102.513 58.0894 96.3569 58.0894C91.2985 58.0894 89.1998 59.406 89.1998 63.8373V82.419H78.6525V63.3128C78.6525 59.149 77.3825 58.0894 71.0003 58.0894C66.4908 58.0894 64.3491 59.4059 64.3491 64.6294V82.419H53.8125V48.6915Z" fill="#A9CF38"/>
+                            <path fillRule="evenodd" clipRule="evenodd" d="M19.9199 49.2178H29.5417V55.6401H29.6062C30.7794 50.2882 34.9875 48.6934 39.5939 48.6934C47.1277 48.6934 50.0121 52.6645 50.0121 61.9874C50.0121 62.8437 50.0121 63.7643 49.9044 64.9631H41.0791C41.0791 60.6816 40.2827 58.6157 36.1606 58.6157C32.6413 58.6157 30.1766 60.2641 30.1766 64.2994V82.9454H19.9199V49.2178Z" fill="#FEFEFE"/>
+                        </svg>}
                     </div>
                 }
             </Container>
@@ -91,6 +106,13 @@ export const pageQuery = graphql`
           videoText {
             heading
             body
+            videoTop
+            logoToggle
+            componentButton {
+              style
+              link { target title url }
+              colors { resting }
+            }
             video {
               mediaItemUrl
               mimeType
@@ -124,6 +146,13 @@ export const projectQuery = graphql`
           videoText {
             heading
             body
+            videoTop
+            logoToggle
+            componentButton {
+              style
+              link { target title url }
+              colors { resting }
+            }
             video {
               mediaItemUrl
               mimeType
@@ -157,6 +186,13 @@ export const serviceQuery = graphql`
           videoText {
             heading
             body
+            videoTop
+            logoToggle
+            componentButton {
+              style
+              link { target title url }
+              colors { resting }
+            }
             video {
               mediaItemUrl
               mimeType
@@ -190,6 +226,13 @@ export const landerQuery = graphql`
           videoText {
             heading
             body
+            videoTop
+            logoToggle
+            componentButton {
+              style
+              link { target title url }
+              colors { resting }
+            }
             video {
               mediaItemUrl
               mimeType

@@ -51,7 +51,7 @@ const StatItem = ({stat, index, cmo}) => {
     )
 }
 
-const AuditStats = ({data, cmo}) => {
+const AuditStats = ({data, cmo, pb = false}) => {
 
     const heading   = data.heading ?? false
     const body      = data.body ?? false
@@ -59,7 +59,7 @@ const AuditStats = ({data, cmo}) => {
     const stats     = data.stats ?? false
 
     return (
-        <section className={` ${cmo ? 'bg-rm-carbon -mt-[1px]' : 'bg-white py-20'}`}>
+        <section className={` ${cmo ? 'bg-rm-carbon -mt-[1px]' : 'bg-white py-20'} ${pb ? 'pb-40' : ''}`}>
             <Container container="none" classes="max-w-[1450px] mx-auto px-4">
                 {/* Section Header */}
                 <div className="flex flex-col gap-6 text-center mb-16">

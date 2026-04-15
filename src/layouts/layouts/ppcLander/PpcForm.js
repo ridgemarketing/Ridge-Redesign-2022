@@ -6,7 +6,7 @@ import { theme } from "../../../static/theme"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { FormLander2026 } from "../../../components/global/Forms"
 
-const PPCForm = ({data, cmo, persistantEmail}) => {
+const PPCForm = ({data, cmo, persistantEmail, pt = false}) => {
 
     const heading   = data.heading ?? false
     const body      = data.body ?? false
@@ -21,7 +21,7 @@ const PPCForm = ({data, cmo, persistantEmail}) => {
                 <BottomCloudPiece_Medium className={`w-full hidden md:block xl:hidden cloudAnimation-Bottom z-10 relative`} />
                 <BottomCloudPiece_Small className={`w-full md:hidden cloudAnimation-Bottom z-10 relative`} />
             </>}
-            <div className={`pb-[160px] relative ${cmo ? `pt-10 md:pt-[160px] bg-[#f3f1ee] bg-[linear-gradient(225deg,rgba(0,171,182,0.25)_0%,transparent_35%,transparent_65%,rgba(0,171,182,0.25)_100%)]` : `bg-gradient-to-t from-white via-[#f3f9f9] via-47% to-[#edf8f9]` } z-20`}>
+            <div className={`pb-[160px] relative ${pt ? 'mt-40' : ''} ${cmo ? `pt-10 md:pt-[160px] bg-[#f3f1ee] bg-[linear-gradient(225deg,rgba(0,171,182,0.25)_0%,transparent_35%,transparent_65%,rgba(0,171,182,0.25)_100%)]` : `bg-gradient-to-t from-white via-[#f3f9f9] via-47% to-[#edf8f9]` } z-20`}>
                 <Container classes={`flex flex-col gap-[100px]`}>
                     <div className="flex flex-col-reverse items-center justify-center xl:flex-row xl:flex-wrap flex-nowrap xl:gap-6">
                         <div className="flex flex-col gap-6 text-left flex-1">
