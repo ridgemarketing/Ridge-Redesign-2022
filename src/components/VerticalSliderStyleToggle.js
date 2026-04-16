@@ -83,7 +83,7 @@ const VerticalSlider = (props) => {
                   }
                 }
               }
-
+ 
             }) 
           },
         {
