@@ -26,7 +26,7 @@ const VerticalSlider = (props) => {
   const progressBgColor       = settings.backgroundColor === 'black' ? '#FFFFFF' : '#E5E7EB';
   let slideHeight             = 550;
   let totalHeight             = 0;
-  let scrollPoints            = [];
+  const scrollPointsRef       = useRef([]);
 
   const vslides               = content.slides;
   const flipOrientation       = content.styleToggle ? "md:flex-row-reverse" : "md:flex-row";
@@ -35,7 +35,7 @@ const VerticalSlider = (props) => {
 
     if (vslides.length > 0) {
       for (let i = 0; vslides.length > i; i++){
-        scrollPoints.push(totalHeight);
+        scrollPointsRef.current.push(totalHeight);
         totalHeight = totalHeight + slideHeight;
       }
     }
@@ -51,10 +51,19 @@ const VerticalSlider = (props) => {
               }
               
               onscroll = () => {
+                const scrollPoints = scrollPointsRef.current;
                 for( let i = 0; scrollPoints.length > i; i++ ){
+                  if (!firstSlide.current){
+                    continue
+                  }
+                  
                   if ( firstSlide.current.offsetTop > scrollPoints[i] ){
                     setVslide(i);
                     current = i;
+
+                    if (!progressBar.current){
+                      continue
+                    }
 
                     progressBar.current[i].style.height = 200 / ( vslides.length  + 1 ) + '%';
                     progressBar.current[i].style.backgroundColor = progressBgColor;
@@ -64,10 +73,13 @@ const VerticalSlider = (props) => {
                   }
                 }
                 for( let z = 0; scrollPoints.length > z; z++){
-                  if( z === current ){}else{
-                    progressBar.current[z].style.height = 100 / ( vslides.length  + 1 ) + '%';
-                    progressBar.current[z].children[0].style.backgroundColor = progressBgColor;
-                    progressBar.current[z].style.backgroundColor = progressBgColor;
+                  if( z === current ){} else {
+                    if (progressBar.current && progressBar.current[z]){
+                      console.log(progressBar.current, progressBar.current[z])
+                      progressBar.current[z].style.height = 100 / ( vslides.length  + 1 ) + '%';
+                      progressBar.current[z].children[0].style.backgroundColor = progressBgColor;
+                      progressBar.current[z].style.backgroundColor = progressBgColor;
+                    }
                   }
                 }
               }
@@ -91,8 +103,10 @@ const VerticalSlider = (props) => {
 
     const offSetTop =  firstSlide.current ?  firstSlide.current.offsetTop : 0
     const skipTo = (location) => {
-      window.scrollBy(0, (scrollPoints[location] + slideHeight) - offSetTop );
+      window.scrollBy(0, (scrollPointsRef.current[location] + slideHeight) - offSetTop );
     }
+
+    console.log(content)
  
     return(
       <>
@@ -124,7 +138,7 @@ const VerticalSlider = (props) => {
                                   </div>
                               ) ) } 
                             </div> 
-                            <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `hidden md:flex transition-all ease-out` + theme.text.H4_LTE + theme.text_links.BASE_STYLING + theme.text_links.FWD_BASE + theme.text_links.ARW_FWD_GREY + ` items-center text-rm-grey h-[30%] ${settings.backgroundColor === 'black' ? 'hover:text-rm-white' : 'hover:text-rm-green' } capitalize mt-32`}> Skip </AnchorLink>
+                            <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `hidden md:flex transition-all ease-out` + theme.text.H4_LTE + theme.text_links.BASE_STYLING + theme.text_links.FWD_BASE + (settings.backgroundColor === 'black' ? theme.text_links.ARW_FWD_GREY : 'before:hidden after:bg-[url("../static/arrow-right-grey.svg")] ' + theme.text_links.HOVER_ARW_FWD_GREEN) + ` items-center text-rm-grey h-[30%] ${settings.backgroundColor === 'black' ? 'hover:text-rm-white' : 'hover:text-rm-green' } capitalize mt-32`}> Skip</AnchorLink>
                       </div>
 
                       {/* Media  -- Desktop */}
@@ -177,27 +191,29 @@ const VerticalSlider = (props) => {
                       </div>
                     </div>
 
-                    <div className={`flex flex-col md:flex-row ${flipOrientation} items-start md:items-center ${settings.backgroundColor === 'white' ? 'w-[70%]' : 'w-full'}`}>
+                    <div className={`flex flex-col md:flex-row ${flipOrientation} items-start md:items-center ${settings.backgroundColor === 'white' ? 'md:w-[70%]' : 'w-full'}`}>
                           {/* Text next to progress bar ON MOBILE */}
                           <div className="flex w-full mb-4 md:mb-0">
-                              <div id="slides-main" className="ml-[10%] mr-[10%]">
+                              <div id="slides-main" className="md:ml-[10%] md:mr-[10%]">
                               {!content.styleToggle && (
                                   <p className={`${theme.text['CIRCLE_NUM']} w-[55px] h-[55px] text-rm-green border-rm-green animate-quote`}> { vslide + 1 } </p>
                               )}
                               
-                              <h2 key={Math.random()} className={`${content.styleToggle ? theme.text.H3 + ' text-rm-green pb-6' : theme.text.H2} mt-5 mb-5 md:mb-0 md:mt-10 animate-slideUp opacity-0`} style={{animationDelay:'0.22s'}}>
+                              <h2 key={Math.random()} className={`${content.styleToggle ? theme.text.H3 + ' text-rm-green md:pb-6' : theme.text.H2} mt-5 mb-5 md:mb-0 md:mt-10 animate-slideUp opacity-0`} style={{animationDelay:'0.22s'}}>
                                   { vslides[vslide].heading }
                               </h2>
-                              {vslides[vslide].smallText && (
+                              {vslides[vslide].smallText && (<>
                                   <p key={Math.random()} className={`${theme.text['P_STD']} mt-0 animate-slideUp opacity-0 !text-[28px]`} style={{animationDelay:'0.37s'}}>
                                   { vslides[vslide].smallText }
                                   </p>
-                              )}
-                              </div>
+                                  <div key={Math.random()} style={{animationDelay:'0.5s'}} className="ease-out animate-slideUp opacity-0">
+                                    <AnchorLink key={Math.random()} to='#skipVerticalSlider' title="Skip to the next section" className={ `md:hidden text-left w-full mt-[5%] h-[3%] transition-all ${theme.text.P_STD} ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${settings.backgroundColor === 'black' ? theme.text_links.ARW_FWD_GREY : 'before:hidden after:bg-[url("../static/arrow-right-grey.svg")] ' + theme.text_links.HOVER_ARW_FWD_GREEN} flex items-center text-rm-grey ${settings.backgroundColor === 'black' ? 'hover:text-rm-white' : 'hover:text-rm-green'} capitalize`}>Skip </AnchorLink>
+                                  </div>
+                              </>)}
+                              
+                            </div>
                           </div>
                       </div>
-                    
-                    <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `md:hidden text-left w-full mt-[5%] h-[3%] transition-all ease-out ${theme.text.H4_LTE} ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${theme.text_links.ARW_FWD_GREY} flex items-center text-rm-grey ${settings.backgroundColor === 'black' ? 'hover:text-rm-white' : 'hover:text-rm-green'} capitalize`}>Skip </AnchorLink>
                     </div>
 
                 { vslides.map( (key, index) => (
