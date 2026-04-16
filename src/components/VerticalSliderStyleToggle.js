@@ -144,7 +144,7 @@ const VerticalSlider = (props) => {
                       {/* Media  -- Desktop */}
                       <div className={`w-full sm:pt-6 ${settings.backgroundColor === 'white' ? 'md:w-full' : 'md:w-[80%]' }  h-auto md:h-[80%] md:flex items-center justify-center hidden`} >
                           <div key={vslide} className="animate-slideUp opacity-0 w-full h-full flex items-center justify-center">
-                              {vslides[vslide].mediaType === 'video' && vslides[vslide].video?.mediaItemUrl ? (
+                              {vslides[vslide]?.mediaType === 'video' && vslides[vslide]?.video?.mediaItemUrl ? (
                                   <video ref={videoRef} muted loop playsInline className="w-full h-auto rounded-xl">
                                       <source src={vslides[vslide].video.mediaItemUrl} type={vslides[vslide].video.mimeType} />
                                   </video>
