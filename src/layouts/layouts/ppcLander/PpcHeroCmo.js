@@ -13,6 +13,7 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
     const image             = data.image ?? false
     const mediaType         = data.mediaType ?? 'image'
     const video             = data.video ?? false
+    const videoFallback     = data.videoFallback ?? false
     const buttonData        = data.componentButton ?? false
     const callout           = data.callout ?? false
     const list              = data.list ?? false
@@ -88,12 +89,16 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
                         {mediaType === 'video' && video?.mediaItemUrl
                             ? <video
                                 ref={videoRef}
-                                src={video.mediaItemUrl}
                                 muted
                                 loop
                                 playsInline
                                 className="w-full object-contain"
-                              />
+                              >
+                                <source src={video.mediaItemUrl} type={video.mimeType} />
+                                {videoFallback?.mediaItemUrl && (
+                                    <source src={videoFallback.mediaItemUrl} type={videoFallback.mimeType} />
+                                )}
+                              </video>
                             : <>
                                 {image && image.localFile?.childImageSharp?.gatsbyImageData &&
                                     <img

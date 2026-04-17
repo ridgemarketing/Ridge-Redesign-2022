@@ -671,6 +671,10 @@ export const query = graphql`
             mediaItemUrl
             mimeType
           }
+          videoFallback {
+            mediaItemUrl
+            mimeType
+          }
         }
 
         approach {
