@@ -84,7 +84,7 @@ const AuditStats = ({data, cmo, pb = false}) => {
                     <div className="text-center mb-12">
                         <p
                             dangerouslySetInnerHTML={{__html: Parser(subBody)}}
-                            className={`${theme.text.H3} !text-[34px] text-black`}
+                            className={`${theme.text.H3} !text-[34px] ${cmo ? ' text-white' : 'text-black' }`}
                         />
                     </div>
                 }

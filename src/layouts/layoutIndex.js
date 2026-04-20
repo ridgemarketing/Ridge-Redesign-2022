@@ -52,6 +52,7 @@ import TwoColContentPpc from "./layouts/TwoColContentPpc"
 import PpcFormLayout from "./layouts/PpcFormLayout"
 import AuditStatsLayout from "./layouts/AuditStatsLayout"
 import PpcProjectSliderLayout from "./layouts/PpcProjectSliderLayout"
+import FullWidthImageGallery from "./layouts/FullWidthImageGallery"
 
 let Layouts = {};
 
@@ -111,5 +112,6 @@ Layouts['TwoColumnContentPpc']              = TwoColContentPpc;
 Layouts['PpcForm']                          = PpcFormLayout;
 Layouts['AuditStats']                       = AuditStatsLayout;
 Layouts['PpcProjectSlider']                 = PpcProjectSliderLayout;
+Layouts['FullWidthImageGallery']            = FullWidthImageGallery;
 
 export default Layouts

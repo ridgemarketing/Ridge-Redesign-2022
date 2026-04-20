@@ -86,6 +86,7 @@ export const pageQuery = graphql`
         ...PpcFormLayoutPage
         ...AuditStatsLayoutPage
         ...PpcProjectSliderLayoutPage
+        ...FullWidthImageGalleryPage
       }
     }
   }
@@ -135,6 +136,7 @@ export const serviceQuery = graphql`
         ...PpcFormLayoutService
         ...AuditStatsLayoutService
         ...PpcProjectSliderLayoutService
+        ...FullWidthImageGalleryService
       }
     }
   }
@@ -192,6 +194,7 @@ export const projectQuery = graphql`
         ...PpcFormLayoutProject
         ...AuditStatsLayoutProject
         ...PpcProjectSliderLayoutProject
+        ...FullWidthImageGalleryProject
       }
     }
   }
@@ -216,6 +219,7 @@ export const landerQuery = graphql`
         ...PpcFormLayoutLander
         ...AuditStatsLayoutLander
         ...PpcProjectSliderLayoutLander
+        ...FullWidthImageGalleryLander
       }
     }
   }

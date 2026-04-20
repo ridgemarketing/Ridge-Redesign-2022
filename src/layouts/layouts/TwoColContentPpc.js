@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react"
+import React, { useEffect, useRef, useState } from "react"
 import { graphql } from "gatsby"
 import { Section, Container } from "../../components/global/Wrappers"
 import Parser from "../../components/global/Parser"
@@ -20,24 +20,45 @@ const TwoColContentPpc = (props) => {
     const videoTop         = videoText?.videoTop ?? false
     const componentButton  = videoText?.componentButton ?? false
     const logoToggle       = videoText?.logoToggle ?? false
+    const columnAlignment  = content?.columnAlignment ? 'items-center lg:items-start' : 'items-center'
+    const buttonUnderVideo = content?.buttonUnderVideo ?? false
+    const videoPopup       = content?.videoPopup ?? false
 
     const video = useRef(null)
+    const [lightboxOpen, setLightboxOpen] = useState(false)
 
     useEffect(() => {
         if (!video.current) return
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
-                if (entry.isIntersecting) entry.target.play()
+                if (entry.isIntersecting) {
+                    entry.target.play()
+                    if (videoPopup) {
+                        setLightboxOpen(true)
+                        observer.disconnect()
+                    }
+                }
             })
-        })
+        }, { threshold: 0.5 })
         observer.observe(video.current)
         return () => observer.disconnect()
-    }, [])
+    }, [videoPopup])
 
-    return (
-        // classes="pt-[60px] pb-[160px]"
+    useEffect(() => {
+        if (!lightboxOpen) return
+        const onKey = (e) => { if (e.key === 'Escape') setLightboxOpen(false) }
+        document.addEventListener('keydown', onKey)
+        document.body.style.overflow = 'hidden'
+        return () => {
+            document.removeEventListener('keydown', onKey)
+            document.body.style.overflow = ''
+        }
+    }, [lightboxOpen])
+
+    return (<>
+        {/* classes="pt-[60px] pb-[160px]" */}
         <Section settings={settings}>
-            <Container classes="flex flex-col xl:flex-row gap-8 flex-nowrap justify-center items-center xl:p-0 pb-20 xl:pb-20">
+            <Container classes={`flex flex-col xl:flex-row gap-8 flex-nowrap justify-center ${columnAlignment} xl:p-0 pb-20 xl:pb-20`}>
                 <div className={`flex flex-col gap-6 flex-1 ${videoTop ? 'order-last xl:order-none' : ''}`}>
                     {videoText?.heading &&
                         <h2
@@ -63,17 +84,27 @@ const TwoColContentPpc = (props) => {
                             </ul>
                         </div>
                     }
-                    {componentButton?.link?.url &&
+                    {componentButton?.link?.url && !buttonUnderVideo &&
                         <div className="flex justify-center xl:justify-start mt-2">
                             <Buttons content={componentButton} sectionBackground={settings?.backgroundColor || 'white'} />
                         </div>
                     }
+                    {componentButton?.link?.url && buttonUnderVideo &&
+                      <div className="flex xl:hidden justify-center">
+                          <Buttons content={componentButton} sectionBackground={settings?.backgroundColor || 'white'} />
+                      </div>
+                    }
                 </div>
                 {videoText?.video?.mediaItemUrl &&
-                    <div className={`relative max-w-[630px] xl:w-1/2 ${videoTop ? 'order-first xl:order-none' : ''}`}>
-                        <video ref={video} className="aspect-video rounded-3xl flex-1 w-full" autoPlay={false} muted={true} controls={false} loop={true}>
+                    <div className={`relative max-w-[630px] mx-auto ${columnAlignment} xl:w-1/2 ${videoTop ? 'order-first xl:order-none' : ''}`}>
+                        <video ref={video} className="aspect-video rounded-3xl flex-1 w-full" autoPlay={true} muted={true} controls={false} loop={true}>
                             <source src={videoText.video.mediaItemUrl} type={videoText.video.mimeType} />
                         </video>
+                        {componentButton?.link?.url && buttonUnderVideo &&
+                            <div className="hidden xl:flex justify-center mt-10">
+                                <Buttons content={componentButton} sectionBackground={settings?.backgroundColor || 'white'} />
+                            </div>
+                        }
                         {logoToggle && <svg className="absolute -right-[20px] -bottom-[65px] hidden xl:block" width="132" height="131" viewBox="0 0 132 131" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="65.2929" cy="65.2929" r="65.2929" fill="black"/>
                             <path fillRule="evenodd" clipRule="evenodd" d="M65.6517 2.89007C53.2418 2.89007 41.1105 6.54993 30.792 13.4068C20.4735 20.2638 12.4312 30.0097 7.68216 41.4124C2.93308 52.815 1.69051 65.3622 4.11157 77.4672C6.53263 89.5722 12.5086 100.691 21.2837 109.418C30.0589 118.146 41.2391 124.089 53.4106 126.497C65.5821 128.905 78.1982 127.669 89.6635 122.946C101.129 118.223 110.928 110.224 117.823 99.9622C124.718 89.7 128.397 77.6351 128.397 65.293C128.38 48.7479 121.764 32.8853 110.001 21.1862C98.2374 9.48708 82.2877 2.90707 65.6517 2.89007ZM65.6517 130.586C52.667 130.586 39.974 126.757 29.1776 119.582C18.3812 112.408 9.96649 102.21 4.99747 90.2795C0.0284472 78.3488 -1.27168 65.2205 1.26151 52.5549C3.79469 39.8894 10.0474 28.2553 19.229 19.1239C28.4105 9.99251 40.1085 3.77396 52.8437 1.25461C65.5789 -1.26473 78.7792 0.0282917 90.7755 4.97016C102.772 9.91202 113.025 18.2808 120.239 29.0182C127.453 39.7555 131.303 52.3792 131.303 65.293C131.286 82.6045 124.364 99.2021 112.056 111.443C99.7472 123.684 83.0584 130.569 65.6517 130.586Z" fill="#FEFEFE"/>
@@ -92,7 +123,31 @@ const TwoColContentPpc = (props) => {
                 </Container>
             }
         </Section>
-    )
+        {videoPopup && (
+            <div
+                className={`fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4 transition-opacity duration-1000 ${lightboxOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+                onClick={() => setLightboxOpen(false)}
+            >
+                <div
+                    className={`relative w-full max-w-4xl transition-transform duration-300 ${lightboxOpen ? 'scale-100' : 'scale-95'}`}
+                    onClick={(e) => e.stopPropagation()}
+                >
+                    <button
+                        onClick={() => setLightboxOpen(false)}
+                        className="absolute -top-10 right-0 text-white hover:text-rm-green transition-colors"
+                        aria-label="Close video"
+                    >
+                        <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M18 6L6 18M6 6l12 12"/></svg>
+                    </button>
+                    {lightboxOpen && (
+                        <video className="w-full aspect-video rounded-xl" autoPlay muted playsInline loop>
+                            <source src={videoText.video.mediaItemUrl} type={videoText.video.mimeType} />
+                        </video>
+                    )}
+                </div>
+            </div>
+        )}
+    </>)
 }
 
 export default TwoColContentPpc
@@ -124,6 +179,9 @@ export const pageQuery = graphql`
               item
             }
           }
+          columnAlignment
+          buttonUnderVideo
+          videoPopup
         }
         layoutSettings {
           padding { bottom top }
@@ -164,6 +222,9 @@ export const projectQuery = graphql`
               item
             }
           }
+          columnAlignment
+          buttonUnderVideo
+          videoPopup
         }
         layoutSettings {
           padding { bottom top }
@@ -204,6 +265,9 @@ export const serviceQuery = graphql`
               item
             }
           }
+          columnAlignment
+          buttonUnderVideo
+          videoPopup
         }
         layoutSettings {
           padding { bottom top }
@@ -244,6 +308,9 @@ export const landerQuery = graphql`
               item
             }
           }
+          columnAlignment
+          buttonUnderVideo
+          videoPopup
         }
         layoutSettings {
           padding { bottom top }
