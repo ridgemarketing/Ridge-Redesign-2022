@@ -28,7 +28,7 @@ const VerticalSlider = (props) => {
   const scrollPointsRef       = useRef([]);
 
   const vslides               = content.slides;
-  const flipOrientation       = content.styleToggle ? "md:flex-row-reverse" : "md:flex-row";
+  const flipOrientation       = content.styleToggle ? "xl:flex-row-reverse" : "xl:flex-row";
 
   useEffect(() => {
 
@@ -60,7 +60,7 @@ const VerticalSlider = (props) => {
                     setVslide(i);
                     current = i;
 
-                    if (!progressBar.current){
+                    if (!progressBar.current || !progressBar.current[i]){
                       continue
                     }
 
@@ -135,19 +135,19 @@ const VerticalSlider = (props) => {
                 />
                 }
                 {content.body &&
-                  <p className={`${theme.text.H4_LTE} text-center pt-4 pb-16 md:pb-0 ${textColor}`}>
+                  <p className={`${theme.text.H4_LTE} text-center pt-4 pb-16 xl:pb-0 ${textColor}`}>
                     { content.body }  
                   </p>
                 }
             </Container>
         </Section>    
         <div ref={outerContainer} className={`${backgroundColor} ${textColor} w-full block`} style={ {marginTop:'-' + slideHeight/1.7 + 'px'} }>
-            <div className={`block invisible`} style={ { height:slideHeight + 'px' } } aria-hidden="true"></div>
+            <div className={`block invisible`} style={ { height:`${slideHeight}px` } } aria-hidden="true"></div>
               <div ref={innerContainer} className={ `container flex-wrap relative`} style={{height:"inherit"}}>
-                  <div ref={firstSlide} className={`flex flex-col ml-auto mr-auto w-[95%] md:flex-row md:w-full items-center sticky -translate-y-1/2 top-[50%]`} style={ { height : slideHeight } }> 
-                    <div className="w-full h-full md:h-[80%] flex items-center" >
-                      <div className="h-[100%] md:h-[150px]">
-                            <div role={`progressbar`} aria-valuenow={0} aria-labelledby={`slides-main`} className={`hidden md:block h-[100%] w-[7px]`}>
+                  <div ref={firstSlide} className={`flex flex-col ml-auto mr-auto w-[95%] xl:flex-row xl:w-full items-center sticky ${content.styleToggle ? ' -translate-y-[60%] ' : ' -translate-y-1/2 ' } top-[50%] ${content.styleToggle && 'gap-[50px]'}`} style={ { height : slideHeight } }> 
+                    <div className="w-full h-full xl:h-[80%] flex items-center" >
+                      <div className="hidden sm:block h-1/2 xl:h-[150px]">
+                            <div role={`progressbar`} aria-valuenow={0} aria-labelledby={`slides-main`} className={`block h-[100%] w-[7px]`}>
                               { vslides.map( (key, index)  => (
                                   <div ref={ el => progressBar.current[ index ] = el } aria-label={`go to slide ${index}`} role={`button`} tabIndex={0} className={`w-[5px] cursor-pointer overflow-hidden border-b-8 last:border-b-0  transition-all ease-out ${settings.backgroundColor === 'black' ? 'bg-rm-white border-rm-black' : 'bg-[#E5E7EB] border-white'}`}  key={ 'slides' + index } style={ { height: 100 / ( vslides.length  + 1 )  + '%' } }  onClick={() => skipTo(index)} onKeyDown={() => skipTo(index)}>
                                       <div className="w-full h-0 transition-all ease-out"></div>
@@ -155,12 +155,12 @@ const VerticalSlider = (props) => {
                               ) ) } 
                             </div> 
                             {!content.styleToggle && 
-                              <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `hidden md:flex transition-all ease-out` + theme.text.H4_LTE + theme.text_links.BASE_STYLING + theme.text_links.FWD_BASE + (settings.backgroundColor === 'black' ? theme.text_links.ARW_FWD_GREY : 'before:hidden after:bg-[url("../static/arrow-right-grey.svg")] ' + theme.text_links.HOVER_ARW_FWD_GREEN) + ` items-center text-rm-grey h-[30%] ${settings.backgroundColor === 'black' ? 'hover:text-rm-white' : 'hover:text-rm-green' } capitalize mt-32`}> Skip</AnchorLink>
+                              <AnchorLink to='#skipVerticalSlider' title="Skip to the next section" className={ `hidden xl:flex transition-all ease-out` + theme.text.H4_LTE + theme.text_links.BASE_STYLING + theme.text_links.FWD_BASE + (settings.backgroundColor === 'black' ? theme.text_links.ARW_FWD_GREY : 'before:hidden after:bg-[url("../static/arrow-right-grey.svg")] ' + theme.text_links.HOVER_ARW_FWD_GREEN) + ` items-center text-rm-grey h-[30%] ${settings.backgroundColor === 'black' ? 'hover:text-rm-white' : 'hover:text-rm-green' } capitalize mt-32`}> Skip</AnchorLink>
                             }
                       </div>
 
                       {/* Media  -- Desktop */}
-                      <div className={`w-full sm:pt-6 ${settings.backgroundColor === 'white' ? 'md:w-full' : 'md:w-[80%]'} h-auto md:h-[80%] md:flex items-center justify-center hidden`}>
+                      <div className={`w-full ${content.styleToggle ? '' : 'sm:pt-6'} ${settings.backgroundColor === 'white' ? '' : 'xl:w-[80%]'} ${content.styleToggle && 'w-full xl:min-w-[720px]'} h-auto xl:h-[80%] xl:flex items-center justify-center hidden`}>
                           <div className="w-full h-full grid">
                               {vslides.map((slide, index) => (
                                   <div key={index} style={{ gridArea: '1/1/2/2' }} className={`w-full h-full flex items-center justify-center ${index === vslide ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
@@ -178,7 +178,7 @@ const VerticalSlider = (props) => {
                           </div>
                       </div>
                       {/* Media  -- Mobile */}
-                      <div className={`w-full sm:pt-6 md:w-[50%] h-auto md:h-[80%] items-center md:hidden`}>
+                      <div className={`w-full sm:w-3/4 lg:w-[55%] mx-auto sm:pt-6 h-auto items-center xl:hidden`}>
                           <div className="w-full h-full grid">
                               {vslides.map((slide, index) => (
                                   <div key={index} style={{ gridArea: '1/1/2/2' }} className={`w-full h-full ${index === vslide ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}>
@@ -197,30 +197,30 @@ const VerticalSlider = (props) => {
                       </div>
                     </div>
 
-                    <div className={`flex flex-col md:flex-row ${flipOrientation} items-start md:items-center ${settings.backgroundColor === 'white' ? 'md:w-[70%]' : 'w-full'}`}>
+                    <div className={`flex flex-col xl:flex-row ${flipOrientation} items-start xl:items-center ${settings.backgroundColor === 'white' ? 'xl:w-[70%]' : 'w-full'}`}>
                           {/* Text next to progress bar ON MOBILE */}
-                          <div className="flex w-full mb-4 md:mb-0">
-                              <div id="slides-main" className="md:ml-[10%] md:mr-[10%]">
+                          <div className="flex w-full mb-4 xl:mb-0">
+                              <div id="slides-main" className="xl:ml-[10%] xl:mr-[10%]">
                               {!content.styleToggle && (
                                   <p className={`${theme.text['CIRCLE_NUM']} w-[55px] h-[55px] text-rm-green border-rm-green animate-quote`}> { vslide + 1 } </p>
                               )}
                               
-                              <h2 key={Math.random()} className={`${content.styleToggle ? theme.text.H3 + ' text-rm-green md:pb-6' : theme.text.H2} mt-5 mb-5 md:mb-0 md:mt-10 animate-slideUp opacity-0`} style={{animationDelay:'0.22s'}}>
-                                  { vslides[vslide].heading }
+                              <h2 key={Math.random()} className={`${content.styleToggle ? `${theme.text.H5} mb-6 text-center xl:text-left` + ' font-stratos-lights mt-0' : `${theme.text.H2} mt-5 mb-5 xl:mb-0 xl:mt-10`}  animate-slideUp opacity-0`} style={{animationDelay:'0.22s'}}>
+                                  { vslides[vslide]?.heading }
                               </h2>
-                              {vslides[vslide].smallText && (<>
-                                  <p key={Math.random()} className={`${theme.text['P_STD']} mt-0 animate-slideUp opacity-0 !text-[28px]`} style={{animationDelay:'0.37s'}}>
-                                  { vslides[vslide].smallText }
+                              {vslides[vslide]?.smallText && (<>
+                                  <p key={Math.random()} className={`mt-0 animate-slideUp opacity-0 ${content.styleToggle ? `${theme.text.H4_LTE} mb-6 text-center xl:text-left` : ` ${theme.text.P_STD} !text-[28px]`} `} style={{animationDelay:'0.37s'}}>
+                                  { vslides[vslide]?.smallText }
                                   </p>
                                   <div key={Math.random()} style={{animationDelay:'0.5s'}} className="ease-out animate-slideUp opacity-0">
                                     {!content.styleToggle && 
-                                      <AnchorLink key={Math.random()} to='#skipVerticalSlider' title="Skip to the next section" className={ `md:hidden text-left w-full mt-[5%] h-[3%] transition-all ${theme.text.P_STD} ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${settings.backgroundColor === 'black' ? theme.text_links.ARW_FWD_GREY : 'before:hidden after:bg-[url("../static/arrow-right-grey.svg")] ' + theme.text_links.HOVER_ARW_FWD_GREEN} flex items-center text-rm-grey ${settings.backgroundColor === 'black' ? 'hover:text-rm-white' : 'hover:text-rm-green'} capitalize`}>Skip </AnchorLink>
+                                      <AnchorLink key={Math.random()} to='#skipVerticalSlider' title="Skip to the next section" className={ `xl:hidden text-left w-full mt-[5%] h-[3%] transition-all ${theme.text.P_STD} ${theme.text_links.BASE_STYLING} ${theme.text_links.FWD_BASE} ${settings.backgroundColor === 'black' ? theme.text_links.ARW_FWD_GREY : 'before:hidden after:bg-[url("../static/arrow-right-grey.svg")] ' + theme.text_links.HOVER_ARW_FWD_GREEN} flex items-center text-rm-grey ${settings.backgroundColor === 'black' ? 'hover:text-rm-white' : 'hover:text-rm-green'} capitalize`}>Skip </AnchorLink>
                                     }
                                   </div>
                               </>)}
 
-                              {(vslide + 1) < vslides.length &&
-                                <button onClick={() => (setVslide(vslide + 1), skipTo(vslide + 1))}>
+                              {content.styleToggle && (vslide + 1) < vslides.length &&
+                                <button className={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links.FWD_BASE} ${theme.text_links.ARW_FWD_GREEN} text-rm-green text-center xl:text-left mx-auto xl:mx-0`} onClick={() => (setVslide(vslide + 1), skipTo(vslide + 1))}>
                                   Skip to Next Floor
                                 </button>
                               }
@@ -230,8 +230,9 @@ const VerticalSlider = (props) => {
                     </div>
 
                 { vslides.map( (key, index) => (
-                    <div ref={ el => otherSlides.current[ index ] = el } key={ key.heading } className={ `block invisible` } style={ { height:slideHeight + 'px' } } aria-hidden="true" ></div>
+                    <div ref={ el => otherSlides.current[ index ] = el } key={ key.heading } className={ `block invisible ${((index + 1) === vslides.length) ? '-mb-[25vh] xs:-mb-[18vh] md:-mb-[10vh] xl:-mb-[7vh]' : `${index + 1}`}` } style={ { height:slideHeight + 'px' } } aria-hidden="true" ></div>
                 ) ) }
+                
                 {content.componentButton && content.componentButton.link && (
                         <div className="w-full flex justify-center pb-28 pt-0 mt-0">
                           <Buttons
