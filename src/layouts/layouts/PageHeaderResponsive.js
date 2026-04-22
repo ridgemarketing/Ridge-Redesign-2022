@@ -4,7 +4,7 @@ import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { theme } from "../../static/theme"
 import { graphql } from "gatsby"
 import Parser from "../../components/global/Parser"
-import { motion, useScroll, useTransform } from "framer-motion"
+import { motion, useScroll, useTransform, useMotionTemplate } from "framer-motion"
 
 const PageHeaderResponsive = (props) => {
     const content       = props.layoutData.layoutContent;
@@ -33,15 +33,15 @@ const PageHeaderResponsive = (props) => {
       target: sectionRef,
       offset: ["start end", "end start"]
     })
-    const parallaxY = useTransform(scrollYProgress, [0, 1], ["-30%", "30%"])
+    const parallaxY = useTransform(scrollYProgress, [0, 1], ["30%", "0%"])
 
     return (<>
-        <section ref={sectionRef} className={`relative overflow-hidden min-h-[400px]`}>
+        <section ref={sectionRef} className={`relative overflow-hidden min-h-[400px] lg:min-h-[580px]`}>
 
-          <motion.div
-            style={{ y: parallaxY, scale: 1.1 }}
+          {/* <motion.div
+            style={{ y: parallaxY, scale: 1 }}
             className={noBox === 'absolute' ? 'absolute inset-0' : 'relative w-full h-[400px] lg:h-[580px]'}
-          >
+          > */}
             {imageLarge &&
               <GatsbyImage
                 imgStyle={{objectPosition: `${content.objectPosition} center`}}
@@ -77,7 +77,7 @@ const PageHeaderResponsive = (props) => {
             {video &&
               <video playsInline autoPlay="1" muted loop="loop" src={video} className={'absolute top-0 left-0 object-cover object-center w-full h-full'} type="video/mp4" />
             }
-          </motion.div>
+          {/* </motion.div> */}
           <div className={`absolute bottom-0 left-0 w-full h-16 bg-white hidden md:block ${noSpace}`}></div>
           <div className={`hidden md:block`}>
             <Container container={settings.containerWidth} classes={`${noSpace} pt-[320px] lg:pt-[500px] ${content.boxAlignment === 'centered' ? ' xl:pt-[27rem] ' : ' xl:pt-96 ' }  ${settings.classes && settings.classes !== null ? settings.classes : ''}`}>

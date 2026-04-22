@@ -16,11 +16,13 @@ const VerticalSlider = (props) => {
   const backgroundColor       = settings.backgroundColor === 'black' ? 'bg-rm-black' : 'bg-rm-white';
 
   const [vslide, setVslide]   = useState(0);
+  const [lastMb, setLastMb]   = useState({});
   const firstSlide            = useRef(null);
   const otherSlides           = useRef([]);
   const progressBar           = useRef([]);
   const outerContainer        = useRef(null);
   const innerContainer        = useRef(null);
+  const calcWidthEl           = useRef(null);
 
   const progressBgColor       = settings.backgroundColor === 'black' ? '#FFFFFF' : '#E5E7EB';
   let slideHeight             = content.styleToggle ? 500 : 550;
@@ -119,6 +121,27 @@ const VerticalSlider = (props) => {
     }, [])
 
 
+    useEffect(() => {
+      const calculate = () => {
+        if (!calcWidthEl.current) return
+        const contentHeight = calcWidthEl.current.offsetHeight
+        const vh = window.innerHeight
+        // Gap = space from bottom of centered content to viewport bottom,
+        // mirroring the space above it so it looks symmetrically spaced.
+        const gap = Math.max(0, (vh - contentHeight) / 2)
+        setLastMb({ marginBottom: `-${Math.max(0, Math.round(slideHeight - gap))}px` })
+      }
+
+      const ro = new ResizeObserver(calculate)
+      if (calcWidthEl.current) ro.observe(calcWidthEl.current)
+      calculate()
+      window.addEventListener('resize', calculate)
+      return () => {
+        ro.disconnect()
+        window.removeEventListener('resize', calculate)
+      }
+    }, [slideHeight])
+
     const offSetTop =  firstSlide.current ?  firstSlide.current.offsetTop : 0
     const skipTo = (location) => {
       window.scrollBy(0, (scrollPointsRef.current[location] + slideHeight) - offSetTop );
@@ -130,7 +153,7 @@ const VerticalSlider = (props) => {
             <Container>
                 {content.heading &&
                   <h2
-                  className={`${content.styleToggle ? 'font-stratos uppercase font-light text-40px leading-44px' : theme.text.H1_STD} text-center pt-10 ${textColor}`}
+                  className={`${content.styleToggle ? 'font-stratos uppercase font-light text-40px leading-44px' : `${theme.text.H1_STD} pt-10`} text-center ${textColor}`}
                   dangerouslySetInnerHTML={{ __html: Parser(content.heading) }}
                 />
                 }
@@ -197,7 +220,7 @@ const VerticalSlider = (props) => {
                       </div>
                     </div>
 
-                    <div className={`flex flex-col xl:flex-row ${flipOrientation} items-start xl:items-center ${settings.backgroundColor === 'white' ? 'xl:w-[70%]' : 'w-full'}`}>
+                    <div ref={calcWidthEl} className={`calcWidth flex flex-col xl:flex-row ${flipOrientation} items-start xl:items-center ${settings.backgroundColor === 'white' ? 'xl:w-[70%]' : 'w-full'}`}>
                           {/* Text next to progress bar ON MOBILE */}
                           <div className="flex w-full mb-4 xl:mb-0">
                               <div id="slides-main" className="xl:ml-[10%] xl:mr-[10%]">
@@ -224,13 +247,18 @@ const VerticalSlider = (props) => {
                                   Skip to Next Floor
                                 </button>
                               }
+                              {content.styleToggle && (vslide + 1) === vslides.length &&
+                                <button className={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links.BACK_BASE} ${theme.text_links.ARW_BACK_GREEN} text-rm-green text-center xl:text-left mx-auto xl:mx-0`} onClick={() => (setVslide(0), skipTo(0))}>
+                                  Back to Exterior
+                                </button>
+                              }
                             </div>
                           </div>
                       </div>
                     </div>
 
                 { vslides.map( (key, index) => (
-                    <div ref={ el => otherSlides.current[ index ] = el } key={ key.heading } className={ `block invisible ${((index + 1) === vslides.length) ? '-mb-[25vh] xs:-mb-[18vh] md:-mb-[10vh] xl:-mb-[7vh]' : `${index + 1}`}` } style={ { height:slideHeight + 'px' } } aria-hidden="true" ></div>
+                    <div ref={ el => otherSlides.current[ index ] = el } key={ key.heading } className={ `block invisible` } style={ { height:slideHeight + 'px', ...((index + 1) === vslides.length ? lastMb : {}) } } aria-hidden="true" ></div>
                 ) ) }
                 
                 {content.componentButton && content.componentButton.link && (

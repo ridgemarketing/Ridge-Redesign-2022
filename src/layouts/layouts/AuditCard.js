@@ -38,7 +38,7 @@ const AuditCard = (props) => {
               <div className={`absolute top-0 left-0 h-1/2 w-full bg-${halfBackgroundColor}`}></div>
             }
             <Container container="default">
-                <div className="bg-[#F3F1EE] rounded-[21px] overflow-hidden flex flex-col xl:flex-row gap-8 xl:gap-12 p-8 md:p-12 xl:p-16">
+                <div className="bg-[#F3F1EE] rounded-[21px] overflow-hidden flex flex-col xl:flex-row gap-8 xl:gap-12 p-8 md:p-12 xl:p-16 mx-2">
 
                     <div className="flex flex-col gap-5 xl:w-1/2">
                         {heading &&
@@ -79,7 +79,7 @@ const AuditCard = (props) => {
                     </div>
 
                     {renderImage &&
-                        <div className="xl:w-1/2 flex items-center justify-center self-center max-w-[667px]">
+                        <div className="xl:w-1/2 flex items-center justify-center self-center max-w-[500px]">
                             {renderImage}
                         </div>
                     }
