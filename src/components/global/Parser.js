@@ -14,6 +14,10 @@ const tagList = [
         replace: '<span style="font-size: 50px;">'
     },   
     {
+        tag: `[font40]`,
+        replace: '<span style="font-size: 40px;">'
+    },   
+    {
         tag: `[temp]`,
         replace: '<span style="font-weight: 600; font-size: 26px;">'
     },

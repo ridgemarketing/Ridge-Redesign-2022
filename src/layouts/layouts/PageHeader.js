@@ -11,6 +11,7 @@ const PageHeader = (props) => {
     const image         = content.backgroundImage ? getImage(content.backgroundImage.localFile) : false;
     const video         = content.backgroundVideo ? content.backgroundVideo : false;
     let noBox, noSpace;
+    
     if (content.heading || content.subheading || content.eyebrow){
       noBox             = `absolute`;
       noSpace           = ``;
@@ -18,7 +19,9 @@ const PageHeader = (props) => {
       noBox             = `relative`;
       noSpace           = `hidden`; 
     }
+
     const width = (settings.containerWidth === "default") ? 'lg:w-4/6' : 'lg:w-4/5';
+    const boxAlignment = content.boxAlignment === 'centered' ? 'mx-auto' : '';
 
     return (
         <section className={`relative`}>
@@ -31,9 +34,9 @@ const PageHeader = (props) => {
           }
           <div className={`absolute bottom-0 left-0 w-full h-16 bg-white ${noSpace}`}></div>
           <div className={``}> 
-            <Container container={settings.containerWidth} classes={`${noSpace} pt-[320px] lg:pt-[500px] xl:pt-96 ${settings.classes && settings.classes !== null ? settings.classes : ''}`}>
+            <Container container={settings.containerWidth} classes={`${noSpace} pt-[320px] lg:pt-[500px] ${content.boxAlignment === 'centered' ? ' xl:pt-[27rem] ' : ' xl:pt-96 ' }  ${settings.classes && settings.classes !== null ? settings.classes : ''}`}>
             {content.heading &&
-              <div className={`bg-black text-white py-12 px-6 lg:px-12 xl:pt-14 xl:pb-12 xl:pl-20 xl:pr-16 ${width} ${content.maxWidth ? `xl:w-auto` : ``}`} style={{maxWidth:content.maxWidth}}>
+              <div className={`bg-black text-white py-12 xl:pt-14  ${content.boxAlignment === 'centered' ? 'px-2 max-w-[855px] xl:p-14' : `px-6 lg:px-12 xl:pl-20 xl:pr-16 xl:pb-12 ${width}`} ${content.maxWidth ? `xl:w-auto` : ``} ${boxAlignment}`} style={{maxWidth:content.maxWidth}}>
                 {content.eyebrow &&
                   <span className={`block mb-8 ${theme.text.H4}`}>
                     {content.eyebrow}
@@ -42,7 +45,7 @@ const PageHeader = (props) => {
                 {(content.heading || content.subheading) &&
                   <h2 className={`flex flex-col ${content.reverseHeading ? `flex-col-reverse` : ``}`}>
                     {content.heading && 
-                      <span dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`block ${theme.text.PAGE_HEADER}`}></span>
+                      <span dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`block  ${content.boxAlignment === 'centered' ? `text-center font-stratos uppercase font-bold leading-[6.25rem] lg:text-[6.25rem]` : `${theme.text.PAGE_HEADER}`}`}></span>
                     }
                     {content.subheading && 
                       <span className={`block ${theme.text.H1_LTE}`} style={{fontSize: content.subheadingFontSize ? content.subheadingFontSize : ``}}>
@@ -84,6 +87,7 @@ export const query = graphql`
           heading
           maxWidth
           reverseHeading
+          boxAlignment
           subheading
           subheadingFontSize
         }
@@ -127,6 +131,7 @@ export const landerQuery = graphql`
           heading
           maxWidth
           reverseHeading
+          boxAlignment
           subheading
           subheadingFontSize
         }
