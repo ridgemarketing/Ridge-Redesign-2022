@@ -106,7 +106,7 @@ const PageHeaderResponsive = (props) => {
           </div>
         </section>
         <div className={`md:hidden`}>
-          <Container container={settings.containerWidth} classes={`${noSpace} -mt-6 ${content.boxAlignment === 'centered' ? ' xl:pt-[27rem] ' : ' xl:pt-96 ' }  ${settings.classes && settings.classes !== null ? settings.classes : ''}`}>
+          <Container container={settings.containerWidth} classes={`${noSpace} -mt-20 md:mt-0 ${content.boxAlignment === 'centered' ? ' xl:pt-[27rem] ' : ' xl:pt-96 ' }  ${settings.classes && settings.classes !== null ? settings.classes : ''}`}>
           {content.heading &&
             <div className={`bg-black text-white py-12 xl:pt-14  ${content.boxAlignment === 'centered' ? 'px-2 max-w-[500px] lg:max-w-[855px] xl:p-14' : `px-6 lg:px-12 xl:pl-20 xl:pr-16 xl:pb-12 ${width}`} ${content.maxWidth ? `xl:w-auto` : ``} ${boxAlignment}`} style={{maxWidth:content.maxWidth}}>
               {content.eyebrow &&
