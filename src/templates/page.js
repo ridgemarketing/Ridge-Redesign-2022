@@ -5,6 +5,7 @@ import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import Blog from "./blog"
 import HomeHero from "../layouts/layouts/HomeHero"
 import PageHeader from "../layouts/layouts/PageHeader"
+import PageHeaderResponsive from "../layouts/layouts/PageHeaderResponsive"
 import Menu from "../components/global/FooterMenu"
 import { Container } from "../components/global/Wrappers"
 import CustomHeader from "../components/global/headerColor"
@@ -85,7 +86,9 @@ export const Head = ({data}) => (
 //   </>
 // )
 
-const WpPage = ({ data, location }) =>{
+const WpPage = ({ data, location }) => {
+
+  // console.log(process.env.NODE_ENV);
 
   let color = 'black';
   if(data.wpPage.uri === '/contact/' || data.wpPage.uri === `/terms-and-conditions/` || data.wpPage.uri === `/privacy-policy/`){
@@ -128,7 +131,10 @@ const WpPage = ({ data, location }) =>{
       <>
         {/* <Seo post={data.wpPage} /> */}
         <CustomHeader color={color} />
-        {(data.wpPage.pageHeader && !data.wpPage.isFrontPage && !blackList.includes(data.wpPage.title)) &&
+        {data.wpPage.template.templateName === "Page Header Alt" && 
+          <PageHeaderResponsive layoutData={data.wpPage.pageHeaderResponsive.pageHeaderResponsive} />
+        }
+        {(data.wpPage.pageHeader && !data.wpPage.isFrontPage && !blackList.includes(data.wpPage.title)) && data.wpPage.template.templateName !== "Page Header Alt" &&
           <PageHeader layoutData={data.wpPage.pageHeader.pageHeader} />
         }
         {(data.wpPage.title === "Portfolio" || data.wpPage.title === 'PortfolioDev') &&
@@ -164,6 +170,9 @@ export const query = graphql`
       content
       isPostsPage
       isFrontPage
+      template {
+        templateName
+      }
       homeHero {
         layoutHomeHero {
           layoutContent {
@@ -209,6 +218,7 @@ export const query = graphql`
         }
       }
       ...PageHeader
+      ...PageHeaderResponsive
       ...PortfolioHeader
       ...FlexibleLayoutsPage
       seo {
