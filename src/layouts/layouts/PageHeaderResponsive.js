@@ -117,7 +117,7 @@ const PageHeaderResponsive = (props) => {
               {(content.heading || content.subheading) &&
                 <h1 className={`flex flex-col ${content.reverseHeading ? `flex-col-reverse` : ``}`}>
                   {content.heading &&
-                    <span dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`block text-[60px] leading-[3.73125rem] ${content.boxAlignment === 'centered' ? `text-center font-stratos uppercase font-bold lg:text-[6.25rem] lg:leading-[6.25rem]` : `${theme.text.PAGE_HEADER}`}`}></span>
+                    <span dangerouslySetInnerHTML={{__html: Parser(content.heading)}} className={`block text-[60px] leading-[3.73125rem] ${content.boxAlignment === 'centered' ? `text-[60px] leading-[3.73125rem] text-center font-stratos uppercase font-bold lg:text-[6.25rem] lg:leading-[6.25rem]` : `${theme.text.PAGE_HEADER}`}`}></span>
                   }
                   {content.subheading &&
                     <span className={`block ${theme.text.H1_LTE}`} style={{fontSize: content.subheadingFontSize ? content.subheadingFontSize : ``}}>
