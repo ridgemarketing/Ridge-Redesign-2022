@@ -63,7 +63,8 @@ module.exports = {
     'text-left',
     'text-right',
     'xs:pt-10',
-    '600:!pt-20'
+    '600:!pt-20',
+    'text-[3.75rem]'
   ],
   theme: {
     screens:{
