@@ -7,6 +7,8 @@ module.exports = {
       pattern: /p(\w?)-[0-9]+/g,
       variants: ['sm', 'md', 'lg', 'xl', 'xlz', '2xl'],
     },
+    'text-[3.75rem]',
+    'leading-[3.73125rem]',
     'bg-[#EFEEEE]',
     'bg-[#FFFAF4]',
     'bg-allshifts',
@@ -64,12 +66,13 @@ module.exports = {
     'text-right',
     'xs:pt-10',
     '600:!pt-20',
-    'text-[3.75rem]'
+    'text-[3.75rem]',
+    'text-[60px]'
   ],
   theme: {
     screens:{
       'xs'                 : '400px',
-      '600'                 : '600px',
+      '600'                : '600px',
       'sm'                 : '640px',
       'md'                 : '768px',
       'lg'                 : '1024px',
