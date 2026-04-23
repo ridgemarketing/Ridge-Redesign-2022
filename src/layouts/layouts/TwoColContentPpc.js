@@ -34,7 +34,7 @@ const TwoColContentPpc = (props) => {
                 if (entry.isIntersecting) {
                     entry.target.play()
                     if (videoPopup) {
-                        setLightboxOpen(true)
+                        // setLightboxOpen(true)
                         observer.disconnect()
                     }
                 }
@@ -97,7 +97,7 @@ const TwoColContentPpc = (props) => {
                 </div>
                 {videoText?.video?.mediaItemUrl &&
                     <div className={`relative max-w-[630px] mx-auto ${columnAlignment} xl:w-1/2 ${videoTop ? 'order-first xl:order-none' : ''}`}>
-                        <video ref={video} className="aspect-video rounded-3xl flex-1 w-full" autoPlay={true} muted={true} controls={false} loop={true}>
+                        <video ref={video} className="aspect-video rounded-3xl flex-1 w-full" autoPlay muted loop playsInline>
                             <source src={videoText.video.mediaItemUrl} type={videoText.video.mimeType} />
                         </video>
                         {componentButton?.link?.url && buttonUnderVideo &&

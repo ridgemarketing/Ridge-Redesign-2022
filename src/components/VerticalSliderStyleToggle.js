@@ -16,6 +16,7 @@ const VerticalSlider = (props) => {
   const backgroundColor       = settings.backgroundColor === 'black' ? 'bg-rm-black' : 'bg-rm-white';
 
   const [vslide, setVslide]   = useState(0);
+  const [bottomMb, setBottomMb] = useState(0);
   const firstSlide            = useRef(null);
   const otherSlides           = useRef([]);
   const progressBar           = useRef([]);
@@ -23,12 +24,31 @@ const VerticalSlider = (props) => {
   const innerContainer        = useRef(null);
 
   const progressBgColor       = settings.backgroundColor === 'black' ? '#FFFFFF' : '#E5E7EB';
-  let slideHeight             = content.styleToggle ? 500 : 550;
+  const slideHeight           = content.styleToggle ? 500 : 550;
   let totalHeight             = 0;
   const scrollPointsRef       = useRef([]);
 
   const vslides               = content.slides;
   const flipOrientation       = content.styleToggle ? "xl:flex-row-reverse" : "xl:flex-row";
+
+  useEffect(() => {
+    // Negative margin on the outerContainer bottom to close the gap to the next section.
+    // Applied here (outside scroll mechanics) so it doesn't affect slide transitions.
+    const calculate = () => {
+      const vh = window.innerHeight
+      const vw = window.innerWidth
+      if (vw >= 930 && vw <= 1024) {
+        setBottomMb(0)
+        return
+      }
+      const targetGap = vh * 0.3
+      const raw = Math.round((slideHeight - targetGap) / 2)
+      setBottomMb(-Math.max(0, raw))
+    }
+    calculate()
+    window.addEventListener('resize', calculate)
+    return () => window.removeEventListener('resize', calculate)
+  }, [slideHeight])
 
   useEffect(() => {
 
@@ -48,14 +68,14 @@ const VerticalSlider = (props) => {
               if (entry.boundingClientRect.top < (-1 * totalHeight)) {
                 setVslide(vslides.length - 1)
               }
-              
+
               onscroll = () => {
                 const scrollPoints = scrollPointsRef.current;
                 for( let i = 0; scrollPoints.length > i; i++ ){
                   if (!firstSlide.current){
                     continue
                   }
-                  
+
                   if ( firstSlide.current.offsetTop > scrollPoints[i] ){
                     setVslide(i);
                     current = i;
@@ -82,8 +102,8 @@ const VerticalSlider = (props) => {
                   }
                 }
               }
- 
-            }) 
+
+            })
           },
         {
           threshold: [0.1, 1]
@@ -130,7 +150,7 @@ const VerticalSlider = (props) => {
             <Container>
                 {content.heading &&
                   <h2
-                  className={`${content.styleToggle ? 'font-stratos uppercase font-light text-40px leading-44px' : theme.text.H1_STD} text-center pt-10 ${textColor}`}
+                  className={`${content.styleToggle ? 'font-stratos uppercase font-light text-40px leading-44px' : `${theme.text.H1_STD} pt-10`} text-center ${textColor}`}
                   dangerouslySetInnerHTML={{ __html: Parser(content.heading) }}
                 />
                 }
@@ -141,10 +161,10 @@ const VerticalSlider = (props) => {
                 }
             </Container>
         </Section>    
-        <div ref={outerContainer} className={`${backgroundColor} ${textColor} w-full block`} style={ {marginTop:'-' + slideHeight/1.7 + 'px'} }>
+        <div ref={outerContainer} className={`${backgroundColor} ${textColor} w-full block`} style={ {marginTop:'-' + slideHeight/1.7 + 'px', marginBottom: bottomMb + 'px'} }>
             <div className={`block invisible`} style={ { height:`${slideHeight}px` } } aria-hidden="true"></div>
               <div ref={innerContainer} className={ `container flex-wrap relative`} style={{height:"inherit"}}>
-                  <div ref={firstSlide} className={`flex flex-col ml-auto mr-auto w-[95%] xl:flex-row xl:w-full items-center sticky ${content.styleToggle ? ' -translate-y-[60%] ' : ' -translate-y-1/2 ' } top-[50%] ${content.styleToggle && 'gap-[50px]'}`} style={ { height : slideHeight } }> 
+                  <div ref={firstSlide} className={`flex flex-col ml-auto mr-auto w-[95%] xl:flex-row xl:w-full items-center sticky ${content.styleToggle ? ' -translate-y-[60%] ' : ' -translate-y-1/2 ' } top-[50%] ${content.styleToggle && 'gap-[50px]'}`} style={ { height : slideHeight } }>
                     <div className="w-full h-full xl:h-[80%] flex items-center" >
                       <div className="hidden sm:block h-1/2 xl:h-[150px]">
                             <div role={`progressbar`} aria-valuenow={0} aria-labelledby={`slides-main`} className={`block h-[100%] w-[7px]`}>
@@ -197,7 +217,7 @@ const VerticalSlider = (props) => {
                       </div>
                     </div>
 
-                    <div className={`flex flex-col xl:flex-row ${flipOrientation} items-start xl:items-center ${settings.backgroundColor === 'white' ? 'xl:w-[70%]' : 'w-full'}`}>
+                    <div className={`calcWidth flex flex-col xl:flex-row ${flipOrientation} items-start xl:items-center ${settings.backgroundColor === 'white' ? 'xl:w-[70%]' : 'w-full'}`}>
                           {/* Text next to progress bar ON MOBILE */}
                           <div className="flex w-full mb-4 xl:mb-0">
                               <div id="slides-main" className="xl:ml-[10%] xl:mr-[10%]">
@@ -224,13 +244,18 @@ const VerticalSlider = (props) => {
                                   Skip to Next Floor
                                 </button>
                               }
+                              {content.styleToggle && (vslide + 1) === vslides.length &&
+                                <button className={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links.BACK_BASE} ${theme.text_links.ARW_BACK_GREEN} text-rm-green text-center xl:text-left mx-auto xl:mx-0`} onClick={() => (setVslide(0), skipTo(0))}>
+                                  Back to Exterior
+                                </button>
+                              }
                             </div>
                           </div>
                       </div>
                     </div>
 
                 { vslides.map( (key, index) => (
-                    <div ref={ el => otherSlides.current[ index ] = el } key={ key.heading } className={ `block invisible ${((index + 1) === vslides.length) ? '-mb-[25vh] xs:-mb-[18vh] md:-mb-[10vh] xl:-mb-[7vh]' : `${index + 1}`}` } style={ { height:slideHeight + 'px' } } aria-hidden="true" ></div>
+                    <div ref={ el => otherSlides.current[ index ] = el } key={ key.heading } className={ `block invisible` } style={ { height:`${slideHeight}px` } } aria-hidden="true" ></div>
                 ) ) }
                 
                 {content.componentButton && content.componentButton.link && (

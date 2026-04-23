@@ -62,10 +62,13 @@ module.exports = {
     'text-center',
     'text-left',
     'text-right',
+    'xs:pt-10',
+    '600:!pt-20'
   ],
   theme: {
     screens:{
       'xs'                 : '400px',
+      '600'                 : '600px',
       'sm'                 : '640px',
       'md'                 : '768px',
       'lg'                 : '1024px',
