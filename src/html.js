@@ -15,6 +15,22 @@ export default function HTML(props) {
         {props.headComponents}
         <link rel="stylesheet" href="https://use.typekit.net/thq8rzi.css"></link>
 
+        <script dangerouslySetInnerHTML={{ __html: `!function(w, d, s, u) {if (w.oaiq) return;
+var q = function() {
+q.q.push(arguments);
+};
+q.q = [];
+w.oaiq = q;
+var j = d.createElement(s);
+j.async = 1;
+j.src = u;
+var f = d.getElementsByTagName(s)[0];
+f.parentNode.insertBefore(j, f);
+}(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+oaiq("init", {pixelId: "NRXzCDimo5wSMTzGQtZYuF",debug: true});
+`}}></script>
+    <script dangerouslySetInnerHTML={{ __html: `oaiq("measure", "registration_completed", {type: "customer_action",amount: 0,currency: "USD"});`}}></script>
+      
       </head> 
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
