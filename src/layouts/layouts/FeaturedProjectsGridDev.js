@@ -520,10 +520,10 @@ const FeaturedProjectsGridDev = (props) => {
 
     const context = useContext(ThemeContext);
 
-    const [toRender, setRendering] = useState(false);
-    const [websites, setWebsites] = useState([]);
-    const [brandings, setBrandings] = useState([]);
-    const [videos, setVideos] = useState([]);
+    const [toRender, setRendering]    = useState(false);
+    const [websites, setWebsites]     = useState([]);
+    const [brandings, setBrandings]   = useState([]);
+    const [videos, setVideos]         = useState([]);
     const [interactives, setInteractives] = useState([]);
 
     const url = new URLSearchParams(props.layoutData.location.search);
