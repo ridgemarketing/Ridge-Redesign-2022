@@ -23,9 +23,9 @@ const ResultsTextBlock = (props) => {
                         <h2 dangerouslySetInnerHTML={{__html: content.heading}} className={`${theme.text.H2} `}></h2>
                         <p dangerouslySetInnerHTML={{__html: content.body}} className={`${theme.text.H4_LTE} mt-8`}></p>
                         <div className='mt-8'>
-                        <Buttons 
-                        content={content.componentButton} 
-                        sectionBackground={settings.backgroundColor}/>
+                          <Buttons 
+                            content={content.componentButton} 
+                            sectionBackground={settings.backgroundColor}/>
                         </div>
                     </div>
                     <div className={`mt-12 lg:mt-0 lg:pl-10 lg:w-auto`}>

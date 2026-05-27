@@ -648,6 +648,48 @@ export const query = graphql`
                   altText
                   sourceUrl
                 }
+          backgroundImageMobile {
+            localFile {
+              ext
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+            altText
+            sourceUrl
+          }
+          backgroundImageTablet {
+            localFile {
+              ext
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+            altText
+            sourceUrl
+          }
+          backgroundImageDesktop {
+            localFile {
+              ext
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+            altText
+            sourceUrl
+          }
+          carousel {
+            image {
+              localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+              altText
+              sourceUrl
+            }
+          }
             componentButton {
               style
               link {
