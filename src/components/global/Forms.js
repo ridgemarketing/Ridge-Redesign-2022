@@ -526,7 +526,7 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
     )
 }
 
-export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnStyle, redirectForm, persistantEmail}) => {
+export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnStyle, redirectForm, persistantEmail, persistantName}) => {
     const { register, handleSubmit, watch, reset, setValue, setFocus, formState, formState: { errors, isSubmitSuccessful } } = useForm()
     const [status, setStatus]               = useState(false)
     const [submittedData, setSubmittedData] = useState({})
@@ -543,9 +543,19 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
     },[])
 
     useEffect( () => {
+        if (persistantName) {
+            setValue('name', persistantName)
+        }
+    }, [persistantName])
+
+    useEffect( () => {
         if (persistantEmail) {
             setValue('email', persistantEmail)
             setFocus('email')
+
+            if (persistantName) {
+                setFocus('name')
+            }
         }
     }, [persistantEmail])
 

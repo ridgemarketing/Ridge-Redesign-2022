@@ -8,7 +8,7 @@ import { Link } from "gatsby"
 import { Splide, SplideSlide } from '@splidejs/react-splide'
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll'
 
-const PPCHeroCMO = ({data, setPersistantEmail}) => {
+const PPCHeroCMO = ({data, setPersistantEmail, setPersistantName}) => {
 
     const heading           = data.heading ?? false
     const subHeading        = data.subHeading ?? false
@@ -20,30 +20,56 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
     const callout           = data.callout ?? false
     const list              = data.list ?? false
 
-    const backgroundImageDesktop = data.backgroundImageDesktop ?? false
-    const carousel               = data.carousel ?? false
+    const backgroundImageDesktop    = data.backgroundImageDesktop ?? false
+    const backgroundImageTablet     = data.backgroundImageTablet ?? false
+    const backgroundImageMobile     = data.backgroundImageMobile ?? false
+    const carousel                  = data.carousel ?? false
 
-    const handleBlur = (e) => {
+    const handleBlurEmail = (e) => {
         setPersistantEmail(e.target.value)
+    }
+
+    const handleBlurName = (e) => {
+        setPersistantName(e.target.value)
     }
 
     return(<>
         <section className="relative bg-[#f3f1ee] overflow-hidden mb-20">
             <div className="bg-[linear-gradient(170deg,#F3F1EE_25.61%,#E1DED9_88.95%)] absolute inset-0 pointer-events-none" />
             <div className="bg-[linear-gradient(125deg,rgba(0,171,182,0.00)_54.21%,rgba(0,171,182,0.60)_112.49%)] absolute inset-0 pointer-events-none" />
+            {backgroundImageMobile &&
+                <div className="sm:hidden">
+                    <GatsbyImage 
+                        className={`w-full absolute top-0 left-0`} 
+                        objectFit="contain" 
+                        image={backgroundImageMobile.localFile.childImageSharp.gatsbyImageData} 
+                        alt={backgroundImageMobile.altText} />
+                </div>
+            }
+            {backgroundImageTablet &&
+                <div className="hidden sm:block lg:hidden">
+                    <GatsbyImage 
+                        className={`w-full absolute top-0 left-0`} 
+                        objectFit="contain" 
+                        image={backgroundImageTablet.localFile.childImageSharp.gatsbyImageData} 
+                        alt={backgroundImageTablet.altText} />
+                </div>
+            }
             {backgroundImageDesktop &&
-                <GatsbyImage 
-                    className={`w-full absolute top-0 left-0`} 
-                    objectFit="contain" 
-                    image={backgroundImageDesktop.localFile.childImageSharp.gatsbyImageData} 
-                    alt={backgroundImageDesktop.altText} />
+                <div className="hidden lg:block">
+                    <GatsbyImage 
+                        className={`w-full absolute top-0 left-0`} 
+                        objectFit="contain" 
+                        image={backgroundImageDesktop.localFile.childImageSharp.gatsbyImageData} 
+                        alt={backgroundImageDesktop.altText} />
+                </div>
             }
 
-            <div className="flex flex-col gap-6 text-center py-20 z-10 mx-auto max-w-[700px] lg:min-w-[700px] relative">
+            <div className="flex flex-col gap-6 text-center px-6 py-20 z-10 mx-auto w-full max-w-[700px] lg:min-w-[700px] relative">
                 {heading &&
                     <h1
                         dangerouslySetInnerHTML={{__html: Parser(heading)}}
-                        className="font-stratos uppercase xl:text-[3.75rem] leading-[3.10938rem] text-black text-center"
+                        className="font-stratos uppercase text-[3.75rem] leading-[3.10938rem] text-black text-center"
                     />
                 }
                 {subHeading &&
@@ -52,7 +78,6 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
                         className={`text-[1.5rem] leading-[2rem] font-basic-sans font-light text-[#1F1F1F]`}
                     />
                 }
-                
 
             </div>
 
@@ -62,17 +87,17 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
                         extensions={ { AutoScroll } }
                         options={ {
                             type: 'loop',
-                            perPage: 4,
+                            perPage: 5,
                             gap: '4rem',
                             drag: 'free',
                             focus: 'center',
                             arrows: false,
-                            perMove: 1,
+                            perMove: 2,
                             pagination: false,
                             breakpoints: {
-                                1024: { perPage: 5 },
-                                768:  { perPage: 2 },
-                                480:  { perPage: 1 },
+                                1024: { perPage: 4 },
+                                768:  { perPage: 3 },
+                                640:  { perPage: 2 },
                             },
                             autoScroll: {
                                 pauseOnHover: false,
@@ -99,7 +124,7 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
                 </div>
             }
 
-            <div className="relative rounded-[21px] overflow-hidden py-16 px-8 md:px-20 mb-20 max-w-[700px] mx-auto">
+            <div className="relative rounded-[21px] overflow-hidden py-16 px-8 md:px-20 mb-20 w-[calc(100%-48px)] max-w-[700px] mx-auto">
                 <div className="bg-[#107d84] mix-blend-soft-light w-full h-full absolute top-0 left-0"></div>
                 <div className="bg-[#107d84] opacity-10 mix-blend-multiply w-full h-full absolute top-0 left-0"></div>
                 
@@ -110,12 +135,12 @@ const PPCHeroCMO = ({data, setPersistantEmail}) => {
                         </h2>
                     }
                     <input 
-                        onBlur={(e) => handleBlur(e)}
+                        onBlur={(e) => handleBlurName(e)}
                         placeholder="Your Name"
                         type={`email`} 
                         className={` ${theme.text.P_STD} placeholder:text-black w-full font-basic-sans text-center text-black rounded-xl border-solid border-2 border-[#A7A7A7] max-w-[715px] min-h-[60px] mx-auto`}/>
                     <input 
-                        onBlur={(e) => handleBlur(e)}
+                        onBlur={(e) => handleBlurEmail(e)}
                         placeholder="Your Business Email"
                         type={`email`} 
                         className={` ${theme.text.P_STD} placeholder:text-black w-full font-basic-sans text-center text-black rounded-xl border-solid border-2 border-[#A7A7A7] max-w-[715px] min-h-[60px] mx-auto`}/>
