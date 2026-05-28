@@ -638,6 +638,8 @@ export const query = graphql`
         heroCmo{
           heading
           subHeading
+          headingDesktop
+          subHeadingDesktop
           image {
                   localFile {
                       ext

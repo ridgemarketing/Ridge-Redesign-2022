@@ -5,6 +5,7 @@ import PPCProjectSlider from "./PpcProjectSlider"
 import PPCForm from "./PpcForm"
 import PPCQuotes from "./PpcQuotes"
 import PPCHeroCMO from "./PpcHeroCmo"
+import PPCHeroCMODesktop from "./PpcHeroCmoDesktop"
 import PPCApproach from "./PpcApproach"
 import PPCAudit from "./PpcAudit"
 import AuditStats from "../auditLander/AuditStats"
@@ -19,9 +20,10 @@ const PPCLanderWrapperCMO = ({data, cmo}) => {
         <style>{`
             main { overflow : hidden }
         `}</style>
-        {data.heroCmo && cmo &&
+        {data.heroCmo && cmo && <>
             <PPCHeroCMO data={data.heroCmo} setPersistantEmail={setPersistantEmail} setPersistantName={setPersistantName} />
-        }
+            <PPCHeroCMODesktop data={data.heroCmo} setPersistantEmail={setPersistantEmail} />
+        </>}
         {data.twoColumnContentCopy &&
             <PPCTwoColContentCMO data={data.twoColumnContentCopy} cmo={cmo} />
         }

@@ -34,7 +34,7 @@ const PPCHeroCMO = ({data, setPersistantEmail, setPersistantName}) => {
     }
 
     return(<>
-        <section className="relative bg-[#f3f1ee] overflow-hidden mb-20">
+        <section className="relative bg-[#f3f1ee] overflow-hidden mb-20 lgz:hidden">
             <div className="bg-[linear-gradient(170deg,#F3F1EE_25.61%,#E1DED9_88.95%)] absolute inset-0 pointer-events-none" />
             <div className="bg-[linear-gradient(125deg,rgba(0,171,182,0.00)_54.21%,rgba(0,171,182,0.60)_112.49%)] absolute inset-0 pointer-events-none" />
             {backgroundImageMobile &&
