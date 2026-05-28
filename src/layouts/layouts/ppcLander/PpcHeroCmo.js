@@ -25,51 +25,82 @@ const PPCHeroCMO = ({data, setPersistantEmail, setPersistantName}) => {
     const backgroundImageMobile     = data.backgroundImageMobile ?? false
     const carousel                  = data.carousel ?? false
 
-    const handleBlurEmail = (e) => {
-        setPersistantEmail(e.target.value)
-    }
+    const [heroStatus, setHeroStatus] = useState(null)
 
-    const handleBlurName = (e) => {
-        setPersistantName(e.target.value)
+
+    const handleHeroSubmit = async (e) => {
+        e.preventDefault()
+        const formData = new FormData(e.currentTarget)
+        const name     = formData.get('name') || ''
+        const email    = formData.get('email') || ''
+
+        if (!email) return
+        setHeroStatus('processing')
+
+        const message = JSON.stringify({
+            name:   name,
+            email:  email,
+            source: 'B2B Hero Top Form',
+        })
+
+        try {
+            const res = await fetch('/api/sendgrid-ppc-hero', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email:   email,
+                    subject: `Ridge PPC Hero Lead - ${name || 'Unknown'}`,
+                    message: message,
+                }),
+            })
+            const { error } = await res.json()
+            if (error) {
+                setHeroStatus('fail')
+                return
+            }
+            setHeroStatus('success')
+        } catch (err) {
+            setHeroStatus('fail')
+        }
     }
 
     return(<>
         <section className="relative bg-[#f3f1ee] overflow-hidden mb-20 lgz:hidden">
-            <div className="bg-[linear-gradient(170deg,#F3F1EE_25.61%,#E1DED9_88.95%)] absolute inset-0 pointer-events-none" />
-            <div className="bg-[linear-gradient(125deg,rgba(0,171,182,0.00)_54.21%,rgba(0,171,182,0.60)_112.49%)] absolute inset-0 pointer-events-none" />
+            <div className="bg-[linear-gradient(170deg,#F3F1EE_25.61%,#E1DED9_88.95%)] [transform:translate3d(0,0,0)] absolute inset-0 pointer-events-none" />
+            <div className="bg-[linear-gradient(125deg,rgba(0,171,182,0.00)_54.21%,rgba(0,171,182,0.60)_112.49%)] [transform:translate3d(0,0,0)] absolute inset-0 pointer-events-none" />
             {backgroundImageMobile &&
                 <div className="sm:hidden">
                     <GatsbyImage 
-                        className={`w-full absolute top-0 left-0`} 
+                        className={`w-full absolute -top-[100px] left-0`} 
                         objectFit="contain" 
                         image={backgroundImageMobile.localFile.childImageSharp.gatsbyImageData} 
                         alt={backgroundImageMobile.altText} />
                 </div>
             }
             {backgroundImageTablet &&
-                <div className="hidden sm:block lg:hidden">
+                <div className="hidden sm:block md:hidden">
                     <GatsbyImage 
-                        className={`w-full absolute top-0 left-0`} 
+                        className={`w-full absolute -top-[100px] left-0`} 
                         objectFit="contain" 
                         image={backgroundImageTablet.localFile.childImageSharp.gatsbyImageData} 
                         alt={backgroundImageTablet.altText} />
                 </div>
             }
             {backgroundImageDesktop &&
-                <div className="hidden lg:block">
+                <div className="hidden md:block">
                     <GatsbyImage 
-                        className={`w-full absolute top-0 left-0`} 
+                        className={`w-full absolute -top-[100px] left-0`} 
                         objectFit="contain" 
                         image={backgroundImageDesktop.localFile.childImageSharp.gatsbyImageData} 
                         alt={backgroundImageDesktop.altText} />
                 </div>
             }
 
-            <div className="flex flex-col gap-6 text-center px-6 py-20 z-10 mx-auto w-full max-w-[700px] lg:min-w-[700px] relative">
+            <div className="flex flex-col gap-6 text-center px-6 pt-16 pb-12 md:py-20 z-10 mx-auto w-full max-w-[700px] lg:min-w-[700px] relative">
                 {heading &&
                     <h1
                         dangerouslySetInnerHTML={{__html: Parser(heading)}}
-                        className="font-stratos uppercase text-[3.75rem] leading-[3.10938rem] text-black text-center"
+                        className="font-stratos uppercase text-[3.75rem] leading-[3.3rem] md:leading-[3.10938rem] text-black text-center"
                     />
                 }
                 {subHeading &&
@@ -82,7 +113,7 @@ const PPCHeroCMO = ({data, setPersistantEmail, setPersistantName}) => {
             </div>
 
             {carousel && carousel.length > 0 &&
-                <div className="relative pb-20">
+                <div className="relative pb-12 md:pb-20">
                     <Splide
                         extensions={ { AutoScroll } }
                         options={ {
@@ -125,32 +156,42 @@ const PPCHeroCMO = ({data, setPersistantEmail, setPersistantName}) => {
             }
 
             <div className="relative rounded-[21px] overflow-hidden py-16 px-8 md:px-20 mb-20 w-[calc(100%-48px)] max-w-[700px] mx-auto">
-                <div className="bg-[#107d84] mix-blend-soft-light w-full h-full absolute top-0 left-0"></div>
-                <div className="bg-[#107d84] opacity-10 mix-blend-multiply w-full h-full absolute top-0 left-0"></div>
-                
+
+                <div className="bg-[#1F9DA5]/15 w-full h-full absolute top-0 left-0"></div>
+
                 <div className="z-10 text-center text-black flex flex-col items-center gap-6 relative">
                     {callout.heading &&
                         <h2 className={`${theme.text.H4}`}>
                             Let's Talk
                         </h2>
                     }
-                    <input 
-                        onBlur={(e) => handleBlurName(e)}
-                        placeholder="Your Name"
-                        type={`email`} 
-                        className={` ${theme.text.P_STD} placeholder:text-black w-full font-basic-sans text-center text-black rounded-xl border-solid border-2 border-[#A7A7A7] max-w-[715px] min-h-[60px] mx-auto`}/>
-                    <input 
-                        onBlur={(e) => handleBlurEmail(e)}
-                        placeholder="Your Business Email"
-                        type={`email`} 
-                        className={` ${theme.text.P_STD} placeholder:text-black w-full font-basic-sans text-center text-black rounded-xl border-solid border-2 border-[#A7A7A7] max-w-[715px] min-h-[60px] mx-auto`}/>
-                    {buttonData?.link?.url &&
-                        <Link
-                            className={`border-white border border-solid ${theme.button['BASE_STYLING']} ${theme.button[`SOLID_GREEN_HOVER_DARK`]} ${theme.text_links.FWD_BASE} ${theme.text_links.ARW_FWD_BLACK} ${theme.text_links.HOVER_ARW_FWD_WHITE} !inline-flex items-center cursor-pointer min-w-[210px]`}
-                            to={buttonData.link.url}
-                        >
-                            {buttonData.link.title}
-                        </Link>
+                    {heroStatus === 'success'
+                        ? <p className={`${theme.text.P_STD} text-black`}>Thanks — we'll be in touch shortly.</p>
+                        : <form onSubmit={handleHeroSubmit} className="flex flex-col items-center gap-6 w-full">
+                            <input
+                                name="name"
+                                placeholder="Your Name"
+                                type="text"
+                                className={` ${theme.text.P_STD} placeholder:text-black w-full font-basic-sans text-center text-black rounded-xl border-solid border-2 border-[#A7A7A7] max-w-[715px] min-h-[60px] mx-auto`}/>
+                            <input
+                                name="email"
+                                required
+                                placeholder="Your Business Email"
+                                type="email"
+                                className={` ${theme.text.P_STD} placeholder:text-black w-full font-basic-sans text-center text-black rounded-xl border-solid border-2 border-[#A7A7A7] max-w-[715px] min-h-[60px] mx-auto`}/>
+                            {buttonData?.link?.title &&
+                                <button
+                                    type="submit"
+                                    disabled={heroStatus === 'processing'}
+                                    className={`border-white border border-solid ${theme.button['BASE_STYLING']} ${theme.button[`SOLID_GREEN_HOVER_DARK`]} ${theme.text_links.FWD_BASE} ${theme.text_links.ARW_FWD_BLACK} ${theme.text_links.HOVER_ARW_FWD_WHITE} !inline-flex items-center cursor-pointer min-w-[210px] disabled:opacity-60`}
+                                >
+                                    {heroStatus === 'processing' ? 'Sending…' : buttonData.link.title}
+                                </button>
+                            }
+                            {heroStatus === 'fail' &&
+                                <p className={`${theme.text.P_STD} text-red-700`}>Something went wrong. Please try again.</p>
+                            }
+                        </form>
                     }
                 </div>
             </div>

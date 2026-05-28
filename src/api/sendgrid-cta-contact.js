@@ -30,6 +30,10 @@ async function sendEmail(req, res) {
             {
               email:"dev@ridgemarketing.com", 
               name:"Developers"
+            },
+            {
+              email:"chase@ridgemarketing.com", 
+              name:"Chase"
             }
           ],
           dynamic_template_data:{

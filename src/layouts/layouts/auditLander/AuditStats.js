@@ -30,13 +30,13 @@ const StatItem = ({stat, index, cmo}) => {
             <div className="flex flex-col gap-3">
                 {/* STATS style with custom size */}
                 {statValue &&
-                    <p className={`${theme.text.STATS} !text-[80px] md:!text-[120px] !leading-[1] text-rm-green tracking-[-6px]`}>
+                    <p className={`${theme.text.STATS} !text-[100px] md:!text-[120px] !leading-[1] text-rm-green tracking-[-6px]`}>
                         {statValue}
                     </p>
                 }
                 {/* H3 style */}
                 {heading &&
-                    <p className={`${theme.text.H3} !leading-[1] ${cmo ? ' text-white' : 'text-black' }`}>
+                    <p className={`${theme.text.H3} !text-[34px] md:!text-[50px] !leading-[1.1] md:!leading-H2-H3 ${cmo ? ' text-white' : 'text-black' }`}>
                         {heading}
                     </p>
                 }
@@ -67,7 +67,7 @@ const AuditStats = ({data, cmo, pb = false}) => {
                     {heading &&
                         <h2
                             dangerouslySetInnerHTML={{__html: Parser(heading)}}
-                            className={`${theme.text.H5}  ${cmo ? ' text-white' : 'text-black' }`}
+                            className={`${theme.text.H5} !text-[34px] !leading-[1.1] !font-semibold lg:!text-[40px] lg:!leading-[44px] lg:!font-bold ${cmo ? ' text-white' : 'text-black' }`}
                         />
                     }
                     {/* H4-Light style */}

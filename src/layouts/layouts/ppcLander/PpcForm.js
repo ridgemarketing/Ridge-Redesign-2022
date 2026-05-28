@@ -45,7 +45,7 @@ const PPCForm = ({data, cmo, persistantEmail, persistantName, pt = false}) => {
                         }
                     </div>
                     <div className="flex flex-col gap-4">
-                        <h2 className={`${theme.text.H5} font-semibold text-black text-center xl:text-left`}>Let's Talk</h2>
+                        <h2 className={`${theme.text.H5} !text-[26px] !leading-[36px] !normal-case md:!text-[40px] md:!leading-[44px] md:!uppercase font-semibold text-black text-center xl:text-left`}>Let's Talk</h2>
                         <FormLander2026 
                             classes             ={`w-full`} 
                             submitLabel         ={`Submit`}

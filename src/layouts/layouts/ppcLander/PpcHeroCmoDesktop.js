@@ -18,7 +18,7 @@ const PPCHeroCMODesktop = ({data, setPersistantEmail}) => {
     const callout           = data.callout ?? false
     const list              = data.list ?? false
 
-    const calloutRef                    = useRef(null)
+    const calloutRef        = useRef(null)
     const [calloutHeight, setCalloutHeight] = useState(0)
     const videoRef          = useRef(null)
 

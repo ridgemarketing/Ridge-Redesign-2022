@@ -67,16 +67,12 @@ const FooterMenu = () =>{
                           if(menuItem.childItems.nodes.length > 0){
                               return(
                                   <li key={menuItem.url + Math.random()} className={`mt-4 lg:mr-12`}>
-                                      <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase`}>
-                                          {menuItem.label}
-                                      </Link>
+                                      <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase`} dangerouslySetInnerHTML={{__html:menuItem.label}} />
                                       <ul key={menuItem.label + Math.random()}>
                                           {menuItem.childItems.nodes.map( (subMenuItem) => { 
                                               return(
                                                   <li key={subMenuItem.label + Math.random()} className={`${theme.text.FOOTER} normal-case mt-2`}>
-                                                      <Link to={subMenuItem.url} className={`hover:text-rm-green hover:underline`}>                                                        
-                                                          {subMenuItem.label}
-                                                      </Link>
+                                                      <Link to={subMenuItem.url} className={`hover:text-rm-green hover:underline`}  dangerouslySetInnerHTML={{__html:subMenuItem.label}} />                                                        
                                                   </li>
                                               )
                                           }
@@ -87,9 +83,7 @@ const FooterMenu = () =>{
                           }else{
                               return(
                                   <li key={menuItem.url + Math.random()} className="mt-4 lg:mr-12">
-                                      <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase`}>
-                                          {menuItem.label}
-                                      </Link>
+                                      <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase`} dangerouslySetInnerHTML={{__html:menuItem.label}} />
                                   </li>
                               )
                           }

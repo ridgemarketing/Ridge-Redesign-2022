@@ -18,7 +18,7 @@
     }
     
     sup {
-        top: -0.25em;
+        @apply -top-[0.5rem] text-[50%]
     }
     q:before{
         @apply content-['“'] -ml-3 lg:-ml-6 absolute;
@@ -298,6 +298,9 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     @apply bg-transparent relative
 }
 
+.sup-tm{
+    @apply text-[15%] align-top top-[0.5rem];
+}
 
 main {
     @apply outline-none

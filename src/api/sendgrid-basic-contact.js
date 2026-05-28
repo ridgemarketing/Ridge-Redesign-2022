@@ -30,6 +30,10 @@ async function sendEmail(req, res) {
             {
               email:"dev@ridgemarketing.com", 
               name:"Developers"
+            },
+            {
+              email:"chase@ridgemarketing.com", 
+              name:"Chase"
             }
           ],
           subject: `Ridge Site Lead - ${message['name']}`,

@@ -89,12 +89,17 @@ const DesktopMenu = () => {
                                                 if(subNavItem.acfWpMenu.icon){
                                                     menuIcon = checkImg(subNavItem.acfWpMenu.icon, 'h-[40px] w-[40px] mr-5');
                                                 }
-                                                return(
-                                                    <Link key={`level-2a__${uid}__${index}`} to={subNavItem.url} className={`hover:text-rm-green hover:underline`}>
-                                                        {menuIcon && menuIcon}
-                                                        {subNavItem.label}
-                                                    </Link>
-                                                )
+                                                if (menuIcon) {
+                                                    return(
+                                                        <Link key={`level-2a__${uid}__${index}`} to={subNavItem.url} className={`hover:text-rm-green hover:underline`} dangerouslySetInnerHTML={{__html:`${menuIcon} ${subNavItem.label}`}} />
+                                                    )
+                                                }
+                                                if (!menuIcon) {
+                                                    return(
+                                                        <Link key={`level-2a__${uid}__${index}`} to={subNavItem.url} className={`hover:text-rm-green hover:underline`} dangerouslySetInnerHTML={{__html:`${subNavItem.label}`}}/>
+                                                    )
+                                                }
+
                                             })}
                                         </div>
                                     }

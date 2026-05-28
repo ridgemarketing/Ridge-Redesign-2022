@@ -203,35 +203,33 @@ const Footer = ({location, data}) =>{
                               //let colWidth = Math.round((1/menuBreakpoints.length)*100);
                               return(<div key={`breakpoint${ breakPoint.map((bp) =>{return(bp.label)} )}`}>
                                   {breakPoint.map( (menuItem) => {   
-                                          if(menuItem.childItems.nodes.length > 0){
-                                              return(
-                                                  <li key={`${menuItem.url}footer-a`} className={`mt-4 lg:mr-12`}>
-                                                      <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase hover:text-rm-green hover:underline`}>
-                                                          {menuItem.label}
-                                                      </Link>
-                                                      <ul key={`${menuItem.label}footer`}>
-                                                          {menuItem.childItems.nodes.map( (subMenuItem) => { 
-                                                              return(
-                                                                  <li key={subMenuItem.label} className={`${theme.text.FOOTER} normal-case mt-2`}>
-                                                                      <Link to={subMenuItem.url} className={`hover:text-rm-green hover:underline`}>                                                        
-                                                                          {subMenuItem.label}
-                                                                      </Link>
-                                                                  </li>
-                                                              )
-                                                          }
-                                                          )}
-                                                      </ul>
-                                                  </li>
-                                              )
-                                          }else{
-                                              return(
-                                                  <li key={`${menuItem.url}${menuItem.label}}footer-b`} className="mt-4 lg:mr-12">
-                                                      <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase hover:text-rm-green hover:underline`}>
-                                                          {menuItem.label}
-                                                      </Link>
-                                                  </li>
-                                              )
-                                          }
+                                      if(menuItem.childItems.nodes.length > 0){
+                                          return(
+                                              <li key={`${menuItem.url}footer-a`} className={`mt-4 lg:mr-12`}>
+                                                  <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase hover:text-rm-green hover:underline`}>
+                                                      {menuItem.label}
+                                                  </Link>
+                                                  <ul key={`${menuItem.label}footer`}>
+                                                        {menuItem.childItems.nodes.map( (subMenuItem) => { 
+                                                          return(
+                                                              <li key={subMenuItem.label} className={`${theme.text.FOOTER} normal-case mt-2`}>
+                                                                  <Link to={subMenuItem.url} className={`hover:text-rm-green hover:underline`} dangerouslySetInnerHTML={{__html:subMenuItem.label}} />
+                                                              </li>
+                                                          )
+                                                        } 
+                                                      )}
+                                                  </ul>
+                                              </li>
+                                          )
+                                      } else {
+                                          return(
+                                              <li key={`${menuItem.url}${menuItem.label}}footer-b`} className="mt-4 lg:mr-12">
+                                                  <Link to={menuItem.url} className={`${theme.text.P_BLD} uppercase hover:text-rm-green hover:underline`}>
+                                                      {menuItem.label}
+                                                  </Link>
+                                              </li>
+                                          )
+                                      }
                                   })}
                               </div>)
                             })}

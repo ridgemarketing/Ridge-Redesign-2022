@@ -121,7 +121,7 @@ const PpcCaseStudies = ({ data }) => {
                     {body &&
                         <div
                             dangerouslySetInnerHTML={{ __html: Parser(body) }}
-                            className={`${theme.text.H4_LTE} text-black mt-4 max-w-[800px] mx-auto`}
+                            className={`${theme.text.H4_LTE} !text-[21px] !leading-[28px] md:!text-[26px] md:!leading-[36px] text-black mt-4 max-w-[800px] mx-auto`}
                         />
                     }
                 </Container>
@@ -133,11 +133,11 @@ const PpcCaseStudies = ({ data }) => {
                     {current.mediaType === 'image' ? (renderImage) : (renderVideo)}
                 </div>
 
-                <div className="w-full xl:w-[45%] xlz:w-[35%] flex flex-col justify-center gap-10 px-8 md:px-14 xl:pl-20 xl:pr-0 py-12 xl:py-0">
+                <div className="w-full xl:w-[45%] xlz:w-[35%] flex flex-col justify-center gap-10 px-8 md:px-14 xl:pl-20 xl:pr-0 py-12 xl:py-0 text-center md:text-left items-center md:items-start">
 
                     <div className="flex flex-col gap-6">
                         {current.heading &&
-                            <h3 className="font-stratos font-normal text-[2.5rem] md:text-[2.875rem] leading-[1.2] text-black">
+                            <h3 className="font-stratos font-normal text-[34px] leading-[38px] md:text-[2.875rem] md:leading-[1.2] text-black">
                                 {current.heading}
                             </h3>
                         }

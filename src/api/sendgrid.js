@@ -26,7 +26,7 @@ async function sendEmail(req, res) {
     const sendGridRequest = {
       to: [{email: "aquincy@ridgemarketing.com", name: "Andrea Quincy"}], // Your email where you'll receive emails
       replyTo: req.body.email,
-      cc: [{email:"rquincy@ridgemarketing.com", name:"Rob Quincy"}, {email:"dev@ridgemarketing.com", name:"Ridge Marketing"}],
+      cc: [{email:"rquincy@ridgemarketing.com", name:"Rob Quincy"}, {email:"dev@ridgemarketing.com", name:"Ridge Marketing"}, {email:"chase@ridgemarketing.com", name:"Chase"}],
       from: "noreply@ridgemarketing.com", // your website email address here
       subject: `${req.body.subject}`,
       html: `<div>${stringHTML}</div>`
