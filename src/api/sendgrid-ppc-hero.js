@@ -15,25 +15,25 @@ async function sendEmail(req, res) {
     const sendGridRequest = {
       personalizations: [
         {
-          to: [
+        to: [
               {
-                email: "dev@ridgemarketing.com",
-                name: "Test Send"
+                email: "aquincy@ridgemarketing.com", 
+                name: "Andrea Quincy"
               }
-            ],
+            ], 
           cc: [
-            // {
-            //   email:"rquincy@ridgemarketing.com",
-            //   name:"Rob Quincy"
-            // },
-            // {
-            //   email:"dev@ridgemarketing.com",
-            //   name:"Developers"
-            // },
-            // {
-            //   email:"chase@ridgemarketing.com",
-            //   name:"Chase"
-            // }
+            {
+              email:"rquincy@ridgemarketing.com", 
+              name:"Rob Quincy"
+            }, 
+            {
+              email:"dev@ridgemarketing.com", 
+              name:"Developers"
+            },
+            {
+              email:"chase@ridgemarketing.com", 
+              name:"Chase"
+            }
           ],
           subject: subject && subject.length > 0 ? subject : `Ridge PPC Hero Lead - ${message['name']}`,
           dynamic_template_data:{
@@ -44,7 +44,7 @@ async function sendEmail(req, res) {
           }
         },
       ],
-      template_id:"d-1c2baa9d7c274ccdb0a12f3cc7ba3155",
+      template_id:"d-eea7a403662548d39b583b0a700bcb2f",
 
       from: {
         email: "noreply@ridgemarketing.com",
