@@ -171,7 +171,7 @@ const PPCQuotes = ({data, cmo}) => {
                 <Container classes={`bg-transparent`}>
                     <div ref={sliderRef} className={`mt-12 flex w-full flex-wrap justify-between relative`}>
                         <div className={`p-8 lg:p-14 w-full`}>
-                            <div key={Math.random()}  className={`animate-quote text-center ${cmo ? ' text-white md:text-rm-aqua' : 'text-black' }`}>
+                            <div key={Math.random()}  className={`animate-quote text-center ${cmo ? ' text-white lgz:text-rm-aqua' : 'text-black' }`}>
                                 <div dangerouslySetInnerHTML={{__html: Parser(slidedata.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out font-normal' }></div>
                                 <p className={ theme.text.P_BLD +  `pt-8 pb-2 text-white` }>
                                     { slidedata.title }
@@ -182,11 +182,11 @@ const PPCQuotes = ({data, cmo}) => {
                             </div>
                         </div>
                         {arrows &&
-                            <div className={`flex justify-center items-center bg-transparent md:bg-rm-pale-grey mx-auto text-white md:text-black [&_path]:fill-current`}>
+                            <div className={`flex justify-center items-center bg-transparent lgz:bg-rm-pale-grey mx-auto text-white lgz:text-black [&_path]:fill-current`}>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(false)}>
                                     <ArrowTallLeftBlack/>
                                 </button>
-                                <span className={ theme.text.FOOTER + 'flex items-center font-basic-sans !text-white md:!text-black'}> {slide + 1} / {slides.length}</span>
+                                <span className={ theme.text.FOOTER + 'flex items-center font-basic-sans !text-white lgz:!text-black'}> {slide + 1} / {slides.length}</span>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(true)}>
                                     <ArrowTallRightBlack/>
                                 </button>

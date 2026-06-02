@@ -776,6 +776,8 @@ export const query = graphql`
           videoText {
             body
             heading
+            bodyMobile
+            headingMobile
             video {
               mediaDetails {
                 file
