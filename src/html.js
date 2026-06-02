@@ -14,7 +14,7 @@ export default function HTML(props) {
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         {props.headComponents}
         <link rel="stylesheet" href="https://use.typekit.net/thq8rzi.css"></link>
-      
+ 
       </head> 
       <body {...props.bodyAttributes}>
         {props.preBodyComponents}
