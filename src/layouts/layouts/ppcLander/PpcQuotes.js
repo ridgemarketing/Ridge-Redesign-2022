@@ -171,7 +171,7 @@ const PPCQuotes = ({data, cmo}) => {
                 <Container classes={`bg-transparent`}>
                     <div ref={sliderRef} className={`mt-12 flex w-full flex-wrap justify-between relative`}>
                         <div className={`p-8 lg:p-14 w-full`}>
-                            <div key={Math.random()}  className={`animate-quote text-center ${cmo ? ' text-rm-aqua' : 'text-black' }`}>
+                            <div key={Math.random()}  className={`animate-quote text-center ${cmo ? ' text-white lgz:text-rm-aqua' : 'text-black' }`}>
                                 <div dangerouslySetInnerHTML={{__html: Parser(slidedata.content)}} className={ theme.text['Q'] + slide.class + ' block transition-all ease-in-out font-normal' }></div>
                                 <p className={ theme.text.P_BLD +  `pt-8 pb-2 text-white` }>
                                     { slidedata.title }
@@ -182,11 +182,11 @@ const PPCQuotes = ({data, cmo}) => {
                             </div>
                         </div>
                         {arrows &&
-                            <div className={`flex justify-center items-center bg-rm-pale-grey mx-auto`}>
+                            <div className={`flex justify-center items-center bg-transparent lgz:bg-rm-pale-grey mx-auto text-white lgz:text-black [&_path]:fill-current`}>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(false)}>
                                     <ArrowTallLeftBlack/>
                                 </button>
-                                <span className={ theme.text.FOOTER + 'flex items-center font-basic-sans'}> {slide + 1} / {slides.length}</span>
+                                <span className={ theme.text.FOOTER + 'flex items-center font-basic-sans !text-white lgz:!text-black'}> {slide + 1} / {slides.length}</span>
                                 <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(true)}>
                                     <ArrowTallRightBlack/>
                                 </button>
@@ -204,7 +204,7 @@ const PPCQuotes = ({data, cmo}) => {
                         </div>
                     }
                     <span ref={quoteLeft}  aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-[15%] left-[40px] sm:left-[88px] md:left-16 lg:left-18 xl:left-28 md:top-1/4 -z-10`}> “</span>
-                    <span ref={quoteRight} aria-hidden="true" className={`hidden md:block font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-3/4 right-[40px] sm:right-[88px] md:right-16 lg:right-18 xl:right-28 md:top-3/4 -z-10`}>” </span>
+                    <span ref={quoteRight} aria-hidden="true" className={`font-stratos text-3xl uppercase font-bold transition-all ease-out duration-1000 text-rm-green opacity-20 absolute scale-[7] lg:scale-[10] top-3/4 right-[40px] sm:right-[88px] md:right-16 lg:right-18 xl:right-28 md:top-3/4 -z-10`}>” </span>
                 </Container>
                 {cmo && 
                     <div className="absolute -z-20 w-full h-full bg-rm-carbon top-0 left-0" aria-hidden="true"></div>

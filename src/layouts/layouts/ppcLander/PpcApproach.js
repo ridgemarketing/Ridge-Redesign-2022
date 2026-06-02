@@ -131,7 +131,7 @@ const PPCApproach = ({data}) => {
                 {body &&
                     <p
                         dangerouslySetInnerHTML={{__html: Parser(body)}}
-                        className={`${theme.text.H4_LTE} text-rm-grey max-w-[958px] mb-4`}
+                        className={`${theme.text.H4_LTE} !text-[21px] !leading-[28px] md:!text-[26px] md:!leading-[36px] text-rm-grey max-w-[958px] mb-4`}
                     />
                 }
                 {/* {renderImage &&

@@ -4,6 +4,7 @@ import { AutoScroll } from "@splidejs/splide-extension-auto-scroll"
 import { Intersection } from '@splidejs/splide-extension-intersection';
 import { GatsbyImage } from "gatsby-plugin-image"
 import Buttons from "../../../components/global/Buttons"
+import Parser from "../../../components/global/Parser";
 
 const PPCProjectSlider = ({data, cmo}) => {
 
@@ -80,7 +81,7 @@ const PPCProjectSlider = ({data, cmo}) => {
         </>}
         <div id="ppcSlider" ref={container} className={`overflow-hidden will-change-transform py-20 ${cmo && 'bg-rm-carbon text-white lg:pt-40'}`}>
             {data.heading &&
-                <h2 className={`font-stratos uppercase font-bold text-[40px] leading-[44px] text-center ${cmo ? 'text-white mb-20' : 'text-black mb-10'} `}>{data.heading}</h2>
+                <h2 className={`font-stratos uppercase font-bold text-[40px] leading-[44px] text-center ${cmo ? 'text-white mb-20 max-w-[330px] md:max-w-full mx-auto' : 'text-black mb-10'} `} dangerouslySetInnerHTML={{__html: Parser(data.heading)}} />
             }
             {data.images &&
                 <Splide 

@@ -112,6 +112,13 @@ The site pulls content from WordPress via GraphQL. Content is structured using:
 - **SEO Fields**: Yoast SEO plugin integration
 - **Media Library**: WordPress media with Gatsby image processing
 
+### WordPress Hosting & Local Dev
+The WordPress backend runs as a full WordPress instance hosted on **WP Engine**, and is developed locally via **Local by Flywheel**.
+
+### ACF JSON Location
+ACF field group definitions are synced as JSON in the local WordPress theme:
+`/Users/user/Local Sites/ridge-marketing-2022/app/public/wp-content/themes/headless/acf-json`
+
 ## Environment Configuration
 
 Required environment variables:

@@ -24,19 +24,19 @@ const PPCAudit = ({data}) => {
                         {heading &&
                             <h2
                                 dangerouslySetInnerHTML={{__html: Parser(heading)}}
-                                className={`${theme.text.H5} text-black`}
+                                className={`${theme.text.H5} text-black text-center md:text-left`}
                             />
                         }
                         {subHeading &&
                             <p
                                 dangerouslySetInnerHTML={{__html: Parser(subHeading)}}
-                                className={`${theme.text.H4} text-black mb-8`}
+                                className={`${theme.text.H4} text-black mb-8 text-center md:text-left`}
                             />
                         }
                         {body &&
                             <div
                                 dangerouslySetInnerHTML={{__html: Parser(body)}}
-                                className={`font-basic-sans text-[1.3125rem] leading-[2rem] text-black xl:max-w-[535px]`}
+                                className={`font-basic-sans text-[1.3125rem] leading-[2rem] text-black xl:max-w-[535px] text-center md:text-left`}
                             />
                         }
                         {list && list.length > 0 &&

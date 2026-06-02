@@ -638,6 +638,8 @@ export const query = graphql`
         heroCmo{
           heading
           subHeading
+          headingDesktop
+          subHeadingDesktop
           image {
                   localFile {
                       ext
@@ -648,6 +650,48 @@ export const query = graphql`
                   altText
                   sourceUrl
                 }
+          backgroundImageMobile {
+            localFile {
+              ext
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+            altText
+            sourceUrl
+          }
+          backgroundImageTablet {
+            localFile {
+              ext
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+            altText
+            sourceUrl
+          }
+          backgroundImageDesktop {
+            localFile {
+              ext
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+            altText
+            sourceUrl
+          }
+          carousel {
+            image {
+              localFile {
+                ext
+                childImageSharp {
+                  gatsbyImageData
+                }
+              }
+              altText
+              sourceUrl
+            }
+          }
             componentButton {
               style
               link {
@@ -732,6 +776,8 @@ export const query = graphql`
           videoText {
             body
             heading
+            bodyMobile
+            headingMobile
             video {
               mediaDetails {
                 file

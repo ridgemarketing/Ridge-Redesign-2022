@@ -16,7 +16,6 @@ const TwoColTextQuote = (props) => {
     let order;
     (content.imageLeft) ? order= 'order-2' : order = '';
     
-
     return (
         <Section settings={settings}>
             <Container container={settings.containerWidth}>

@@ -6,7 +6,7 @@ import { theme } from "../../../static/theme"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { FormLander2026 } from "../../../components/global/Forms"
 
-const PPCForm = ({data, cmo, persistantEmail, pt = false}) => {
+const PPCForm = ({data, cmo, persistantEmail, persistantName, pt = false}) => {
 
     const heading   = data.heading ?? false
     const body      = data.body ?? false
@@ -45,7 +45,7 @@ const PPCForm = ({data, cmo, persistantEmail, pt = false}) => {
                         }
                     </div>
                     <div className="flex flex-col gap-4">
-                        <h2 className={`${theme.text.H5} font-semibold text-black text-center xl:text-left`}>Let's Talk</h2>
+                        <h2 className={`${theme.text.H5} !text-[26px] !leading-[36px] !normal-case md:!text-[40px] md:!leading-[44px] font-semibold text-black text-center xl:text-left`}>Let's Talk</h2>
                         <FormLander2026 
                             classes             ={`w-full`} 
                             submitLabel         ={`Submit`}
@@ -54,7 +54,8 @@ const PPCForm = ({data, cmo, persistantEmail, pt = false}) => {
                             textColor           ={textColor} 
                             bgColor             ={`white`} 
                             redirectForm        ={true}
-                            persistantEmail     ={persistantEmail} />
+                            persistantEmail     ={persistantEmail} 
+                            persistantName      ={persistantName}/>
                     </div>
                 </Container>
             </div>

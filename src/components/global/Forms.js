@@ -48,8 +48,21 @@ export const FormCareers = ({classes, submitLabel, btnContainerClasses, btnStyle
         }
 
         const dataToSend    = { ...data }
+        dataToSend.type     = 'careers'
         delete dataToSend.resume;
         const message       = JSON.stringify(dataToSend)
+
+        const googleSheet = await fetch("/api/google-sheet", {
+            body: JSON.stringify({
+                message : message,
+            }),
+            headers : {
+                "Content-Type": "application/json",
+            },
+            method  : "POST",
+        })
+        const { googleError } = await googleSheet.json()
+        console.log('google data', googleError)
 
         const res = await fetch("/api/sendgrid-careers", {
             body: JSON.stringify({
@@ -152,6 +165,18 @@ export const FormContactPage = ({classes, submitLabel, btnContainerClasses, btnS
         setStatus(`processing`)
 
         const message = JSON.stringify(data)
+
+        const googleSheet = await fetch("/api/google-sheet", {
+            body: JSON.stringify({
+                message : message,
+            }),
+            headers : {
+                "Content-Type": "application/json",
+            },
+            method  : "POST",
+        })
+        const { googleError } = await googleSheet.json()
+        console.log('google data', googleError)
 
         const res = await fetch("/api/sendgrid-basic-contact", {
             body: JSON.stringify({
@@ -298,6 +323,18 @@ export const FormCTALayout = ({classes, submitLabel, btnContainerClasses, btnSty
 
         const message = JSON.stringify(data)
 
+        const googleSheet = await fetch("/api/google-sheet", {
+            body: JSON.stringify({
+                message : message,
+            }),
+            headers : {
+                "Content-Type": "application/json",
+            },
+            method  : "POST",
+        })
+        const { googleError } = await googleSheet.json()
+        console.log('google data', googleError)
+
         const res = await fetch("/api/sendgrid-cta-contact", {
             body: JSON.stringify({
             email: data.email,
@@ -397,6 +434,18 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
         setStatus(`processing`)
 
         const message = JSON.stringify(data)
+
+        const googleSheet = await fetch("/api/google-sheet", {
+            body: JSON.stringify({
+                message : message,
+            }),
+            headers : {
+                "Content-Type": "application/json",
+            },
+            method  : "POST",
+        })
+        const { googleError } = await googleSheet.json()
+        console.log('google data', googleError)
 
         const res = await fetch("/api/sendgrid-landers", {
             body    : JSON.stringify({
@@ -526,7 +575,7 @@ export const FormLanders = ({classes, submitLabel, btnContainerClasses, btnStyle
     )
 }
 
-export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnStyle, redirectForm, persistantEmail}) => {
+export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnStyle, redirectForm, persistantEmail, persistantName}) => {
     const { register, handleSubmit, watch, reset, setValue, setFocus, formState, formState: { errors, isSubmitSuccessful } } = useForm()
     const [status, setStatus]               = useState(false)
     const [submittedData, setSubmittedData] = useState({})
@@ -543,9 +592,19 @@ export const FormLander2026 = ({classes, submitLabel, btnContainerClasses, btnSt
     },[])
 
     useEffect( () => {
+        if (persistantName) {
+            setValue('name', persistantName)
+        }
+    }, [persistantName])
+
+    useEffect( () => {
         if (persistantEmail) {
             setValue('email', persistantEmail)
             setFocus('email')
+
+            if (persistantName) {
+                setFocus('name')
+            }
         }
     }, [persistantEmail])
 
@@ -725,6 +784,18 @@ export const FormAudit2026 = ({classes, submitLabel, btnStyle, redirectForm}) =>
         setStatus(`processing`)
 
         const message = JSON.stringify(data)
+
+        const googleSheet = await fetch("/api/google-sheet", {
+            body: JSON.stringify({
+                message : message,
+            }),
+            headers : {
+                "Content-Type": "application/json",
+            },
+            method  : "POST",
+        })
+        const { googleError } = await googleSheet.json()
+        console.log('google data', googleError)
 
         const res = await fetch("/api/sendgrid-audit", {
             body    : JSON.stringify({

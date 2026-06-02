@@ -83,7 +83,7 @@ const Blog = () => {
    <div className="w-full bg-cover bg-center bg-no-repeat" style={{backgroundImage:'url("https://cms.ridgemarketing.com/wp-content/uploads/2022/07/blog-hero.png")'}}>
       <hgroup className="container">
         <h1 className={theme.text.H1_STD + 'text-rm-white text-left py-12'}>
-            The Barn of Brands <span className="text-rm-green">Blog</span>
+            The Barn of Brands<sup class="sup-tm">SM</sup> <span className="text-rm-green">Blog</span>
         </h1>
       </hgroup>
     </div>

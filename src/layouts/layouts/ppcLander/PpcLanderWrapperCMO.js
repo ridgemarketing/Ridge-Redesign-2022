@@ -5,6 +5,7 @@ import PPCProjectSlider from "./PpcProjectSlider"
 import PPCForm from "./PpcForm"
 import PPCQuotes from "./PpcQuotes"
 import PPCHeroCMO from "./PpcHeroCmo"
+import PPCHeroCMODesktop from "./PpcHeroCmoDesktop"
 import PPCApproach from "./PpcApproach"
 import PPCAudit from "./PpcAudit"
 import AuditStats from "../auditLander/AuditStats"
@@ -13,14 +14,16 @@ import PpcCaseStudies from "./PpcCaseStudies"
 const PPCLanderWrapperCMO = ({data, cmo}) => {
 
     const [persistantEmail, setPersistantEmail] = useState(null)
+    const [persistantName, setPersistantName] = useState(null)
 
     return(<>
         <style>{`
             main { overflow : hidden }
         `}</style>
-        {data.heroCmo && cmo &&
-            <PPCHeroCMO data={data.heroCmo} setPersistantEmail={setPersistantEmail} />
-        }
+        {data.heroCmo && cmo && <>
+            <PPCHeroCMO data={data.heroCmo} setPersistantEmail={setPersistantEmail} setPersistantName={setPersistantName} />
+            <PPCHeroCMODesktop data={data.heroCmo} setPersistantEmail={setPersistantEmail} />
+        </>}
         {data.twoColumnContentCopy &&
             <PPCTwoColContentCMO data={data.twoColumnContentCopy} cmo={cmo} />
         }
@@ -43,7 +46,7 @@ const PPCLanderWrapperCMO = ({data, cmo}) => {
             <PpcCaseStudies data={data.caseStudies} />
         }
         {data.formCopy &&
-            <PPCForm data={data.formCopy} cmo={cmo} persistantEmail={persistantEmail} />
+            <PPCForm data={data.formCopy} cmo={cmo} persistantEmail={persistantEmail} persistantName={persistantName} />
         }
     </>)
 }
