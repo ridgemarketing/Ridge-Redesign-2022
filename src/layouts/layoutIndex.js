@@ -23,6 +23,12 @@ import TwoColBreakoutImageHeading from "./layouts/TwoColBreakoutImageHeading"
 import TwoColImageText from "./layouts/TwoColImageText"
 import TwoColList from "./layouts/TwoColList"
 import TwoColTextQuote from "./layouts/TwoColTextQuote"
+import TwoColTextQuoteCard from "./layouts/TwoColTextQuoteCard"
+import StepsWithCard from "./layouts/StepsWithCard"
+import OverlapImageCard from "./layouts/OverlapImageCard"
+import StepsWithImages from "./layouts/StepsWithImages"
+import BulletsWithImage from "./layouts/BulletsWithImage"
+import ExpandableIconBoxes from "./layouts/ExpandableIconBoxes"
 import VennDiagram from "./layouts/VennDiagram"
 import VerticalSlider from "./layouts/VerticalSlider"
 import QuarterImageText from "./layouts/QuarterImageText"
@@ -84,6 +90,12 @@ Layouts['TwoColBreakoutImageHeading']       = TwoColBreakoutImageHeading;
 Layouts['TwoColImageText']                  = TwoColImageText;
 Layouts['TwoColList']                       = TwoColList;
 Layouts['TwoColTextQuote']                  = TwoColTextQuote;
+Layouts['TwoColTextQuoteCard']              = TwoColTextQuoteCard;
+Layouts['StepsWithCard']                    = StepsWithCard;
+Layouts['OverlapImageCard']                 = OverlapImageCard;
+Layouts['StepsWithImages']                  = StepsWithImages;
+Layouts['BulletsWithImage']                 = BulletsWithImage;
+Layouts['ExpandableIconBoxes']              = ExpandableIconBoxes;
 Layouts['VennDiagram']                      = VennDiagram;
 Layouts['QuarterImageText']                 = QuarterImageText;
 Layouts['CtaForm']                          = CtaForm;

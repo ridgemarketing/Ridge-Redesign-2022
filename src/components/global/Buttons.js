@@ -34,7 +34,7 @@ const Buttons = (props) => {
 
     let buttonClass   = style + baseColor + background;
 
-    //Transparent background with white hover state 
+    //Transparent background with white hover state
     if (baseColor.toUpperCase() === 'TRANSPARENT') {
         buttonClass = 'GHOST_TRANSPARENT_WHITE';
     }

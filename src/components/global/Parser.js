@@ -30,6 +30,10 @@ const tagList = [
         replace: `<span class="text-rm-green font-semibold">`
     },
     {
+        tag: `[black]`,
+        replace: `<span class="text-rm-black">`
+    },
+    {
         tag: `[lightBlue]`,
         replace: `<span class="text-[#A4FAFF]">`
     },
@@ -53,6 +57,14 @@ const tagList = [
         tag: `[i]`,
         replace: `<span style="font-style:italic;">`
     }, 
+    {
+        tag:`[H1_STD]`,
+        replace:`<span style="display:block;" class="${theme.text.H1_STD}">`
+    },
+    {
+        tag:`[H1_LTE]`,
+        replace:`<span style="display:block;" class="${theme.text.H1_LTE}">`
+    },
     {
         tag:`[h2]`,
         replace:`<span style="display:block;" class="${theme.text.H2}">`

@@ -49,6 +49,11 @@ export const theme = {
 
         GHOST_TRANSPARENT_WHITE:        'GHOST_TRANSPARENT_WHITE text-rm-white border-rm-white bg-transparent hover:bg-white hover:text-black',
 
+        GHOST_GREEN_BLACK_HOVER_DARK:     'GHOST_GREEN_BLACK_HOVER_DARK text-rm-black border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-black ',
+        GHOST_GREEN_BLACK_HOVER_LIGHT:    'GHOST_GREEN_BLACK_HOVER_LIGHT text-rm-black border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-black ',
+        GHOST_GREEN_BLACK_TRANSPARENT:    'GHOST_GREEN_BLACK_TRANSPARENT text-rm-black border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-black ',
+        GHOST_GREEN_BLACK_GREY_HOVER_DARK:'GHOST_GREEN_BLACK_GREY_HOVER_DARK text-rm-black border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-black ',
+
 
     },
     
