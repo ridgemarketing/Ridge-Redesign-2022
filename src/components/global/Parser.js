@@ -80,7 +80,12 @@ const tagList = [
     {
         tag:`[h5]`,
         replace:`<span style="display:block;" class="${theme.text.H5}">`
-    }
+    },
+    {
+        tag:`[basicSans]`,
+        replace:`<span class="font-basic-sans">`
+    },
+    
 ];
 
 const tagListBlog = [

@@ -53,7 +53,7 @@ const StepsWithCard = (props) => {
                                 {card.body &&
                                     <div
                                         dangerouslySetInnerHTML={{ __html: Parser(card.body) }}
-                                        className="font-basic-sans font-light text-[21px] leading-[28px] [&_p]:mb-4 [&_a]:underline [&_strong]:font-bold"
+                                        className="font-basic-sans font-light text-[21px] leading-[28px] [&_p]:mb-4 [&_a]:underline [&_strong]:font-bold max-w-[750px]"
                                     />
                                 }
                             </div>
