@@ -38,7 +38,7 @@ const TwoColBreakoutImageHeading = (props) => {
                   </div>
                   <div className={`lg:max-w-1/2`}></div>
               </div>
-              </div>
+            </div>
           </Container>
         </Section>
     )

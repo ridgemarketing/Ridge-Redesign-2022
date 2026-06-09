@@ -100,32 +100,32 @@ const IconTextBoxFlex = (props) => {
     }
 
     return(
-            <div className={wrapperClasses} key={`iconTextBoxFlex-item${Math.random()}`}>
-                <div ref={iconElement}>
-                    {component}
-                </div>
-                <div className={'flex-col flex flex-1'}>
-                    {content.heading && 
-                        <div className={`mb-4`}>
-                            <p ref={ref}
-                                style={{marginTop: customTop, marginBottom: customBottom, marginLeft: '24px', textTransform: customCase}}
-                                className={ `${headingfont} block items-center ${props.color} w-full` }>
-                                { content.heading }
-                            </p>
-                        </div>
-                    }
-                    {content.body && 
-                        <div className={ `${marginClasses}`}>
-                            <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={ `${theme.text['FOOTER']}  ${props.color}` }></p>
-                        </div>
-                    }
-                    {content.link && 
-                        <div className={ marginClasses + `mt-4`}>
-                            <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links.HOVER_ARW_FWD_WHITE} ${theme.text_links.HOVER_WHITE} text-[#A9CF38]`} />
-                        </div>
-                    }
-                </div>
+        <div className={wrapperClasses} key={`iconTextBoxFlex-item${Math.random()}`}>
+            <div ref={iconElement}>
+                {component}
             </div>
+            <div className={'flex-col flex flex-1'}>
+                {content.heading && 
+                    <div className={`mb-4`}>
+                        <p ref={ref}
+                            style={{marginTop: customTop, marginBottom: customBottom, marginLeft: '24px', textTransform: customCase}}
+                            className={ `${headingfont} block items-center ${props.color} w-full` }>
+                            { content.heading }
+                        </p>
+                    </div>
+                }
+                {content.body && 
+                    <div className={ `${marginClasses}`}>
+                        <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={ `${theme.text['FOOTER']}  ${props.color}` }></p>
+                    </div>
+                }
+                {content.link && 
+                    <div className={ marginClasses + `mt-4`}>
+                        <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links.HOVER_ARW_FWD_WHITE} ${theme.text_links.HOVER_WHITE} text-[#A9CF38]`} />
+                    </div>
+                }
+            </div>
+        </div>
     )
 }
 

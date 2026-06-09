@@ -9,7 +9,7 @@ const IconTextBoxStack = (props) => {
     const content   = props.content;
     const iconType  = props.iconType;
     
-    let component   =  <span className={'block w-[138px] ml-auto mr-auto md:ml-0 md:mr-0 border-t-2 border-t-rm-green mb-7'}></span>;
+    let component   = <span className={'block w-[138px] ml-auto mr-auto md:ml-0 md:mr-0 border-t-2 border-t-rm-green mb-7'}></span>;
 
     const body      = content.body && Parser(content.body);
     const heading   = content.heading && Parser(content.heading);
@@ -26,6 +26,7 @@ const IconTextBoxStack = (props) => {
             {image}
         </div> 
     } 
+
     if (iconType === 'number') {
         component = 
         <div className={"mb-5 text-center md:text-left lg:mx-0"}>
@@ -44,18 +45,19 @@ const IconTextBoxStack = (props) => {
             </div> 
         </div>
     }
-            return (
-            <div className={'py-4'} key={`iconTextBoxFlex-item${Math.random()}`}>
-                {component}
-                <h5 dangerouslySetInnerHTML={{__html: heading}} className={theme.text.H5 + ` text-center md:text-left ${props.color}`}></h5>        
-                <p dangerouslySetInnerHTML={{__html: body}} className={ theme.text.P_STD + `text-center md:text-left mt-4 ${props.color}`}></p>
-                {content.link && 
-                    <div className={`mt-4`}>
-                        <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links.HOVER_ARW_FWD_WHITE} ${theme.text_links.HOVER_WHITE} text-[#A9CF38]`} />
-                    </div>
-                }
-            </div>
-            )
+
+    return (
+        <div className={'py-4'} key={`iconTextBoxFlex-item${Math.random()}`}>
+            {component}
+            <h5 dangerouslySetInnerHTML={{__html: heading}} className={theme.text.H5 + ` text-center md:text-left ${props.color}`}></h5>        
+            <p dangerouslySetInnerHTML={{__html: body}} className={ theme.text.P_STD + `text-center md:text-left mt-4 ${props.color}`}></p>
+            {content.link && 
+                <div className={`mt-4`}>
+                    <Link link={content.link} classes={`${theme.text_links.BASE_STYLING} ${theme.text_links.STD} ${theme.text_links['FWD_BASE']} ${theme.text_links['ARW_FWD_GREEN']} ${theme.text_links.HOVER_ARW_FWD_WHITE} ${theme.text_links.HOVER_WHITE} text-[#A9CF38]`} />
+                </div>
+            }
+        </div>
+    )
 }
 
 export default IconTextBoxStack;
