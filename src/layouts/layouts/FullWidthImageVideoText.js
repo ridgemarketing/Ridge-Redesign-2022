@@ -90,7 +90,7 @@ const FullWidthImageVideoText = (props) => {
             }
 
             {content.mobile &&
-              <video ref={mobileVideo} className="md:hidden block mx-auto" controls={false} muted loop={true}>
+              <video ref={mobileVideo} className="md:hidden block mx-auto" controls={false} muted loop={true} playsInline>
                   <source src={content.mobile.mediaItemUrl} type={content.mobile.mimeType} />
               </video>
             }

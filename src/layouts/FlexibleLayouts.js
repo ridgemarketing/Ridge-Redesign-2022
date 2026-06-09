@@ -45,6 +45,12 @@ export const pageQuery = graphql`
         ...TwoColBreakoutImageTextPage
         ...TwoColBreakoutImageHeadingPage
         ...TwoColTextQuotePage
+        ...TwoColTextQuoteCardPage
+        ...StepsWithCardPage
+        ...OverlapImageCardPage
+        ...StepsWithImagesPage
+        ...BulletsWithImagePage
+        ...ExpandableIconBoxesPage
         ...FlexibleProjectBlocksPage
         ...ProjectBlocksPage
         ...TextBlockPage
@@ -99,6 +105,12 @@ export const serviceQuery = graphql`
         ...TwoColBreakoutImageTextService
         ...TwoColBreakoutImageHeadingService 
         ...TwoColTextQuoteService
+        ...TwoColTextQuoteCardService
+        ...StepsWithCardService
+        ...OverlapImageCardService
+        ...StepsWithImagesService
+        ...BulletsWithImageService
+        ...ExpandableIconBoxesService
         ...FlexibleProjectBlocksService
         ...ProjectBlocksService
         ...TextBlockService
@@ -150,6 +162,12 @@ export const projectQuery = graphql`
         ...TwoColBreakoutImageTextProject
         ...TwoColBreakoutImageHeadingProject
         ...TwoColTextQuoteProject
+        ...TwoColTextQuoteCardProject
+        ...StepsWithCardProject
+        ...OverlapImageCardProject
+        ...StepsWithImagesProject
+        ...BulletsWithImageProject
+        ...ExpandableIconBoxesProject
         ...FlexibleProjectBlocksProject
         ...ProjectBlocksProject
         ...VideoPlayerProject

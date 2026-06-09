@@ -15,7 +15,7 @@ const Results = (props) => {
 
     return(
         <Section settings={settings}>
-            <Container>
+            <Container container={settings.containerWidth}>
                 {content.heading &&
                   <h2 className={'text-center mb-4'}>
                       <span 
@@ -68,6 +68,7 @@ export const query = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
@@ -97,6 +98,7 @@ export const serviceQuery = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
@@ -127,6 +129,7 @@ export const projectQuery = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
@@ -157,6 +160,7 @@ export const landerQuery = graphql`
             backgroundColor
             classes
             id
+            containerWidth
           }
         }
       }
