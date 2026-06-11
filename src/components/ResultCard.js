@@ -12,8 +12,8 @@ const ResultCard = (props) => {
         ${props.columns === '1' ? 'md:max-w-[60%]' : ''}
         ${props.noBoldDescription ? 'font-normal' : ''}
         `;
-    const statNumber        = content.stat ? content.stat.split(/[^\d.]+/)[0] : false;
-    const suffixString      = content.stat ? content.stat.split(/[\d.]+/)[1] : false;
+    const statNumber        = content.stat ? content.stat.match(/[\d.]+/)?.[0] || false : false;
+    const suffixString      = content.stat ? content.stat.match(/[^\d.]+$/)?.[0] || '' : false;
     const columnsNum        = parseInt(props.columns);
 
     const classes = {
@@ -39,11 +39,12 @@ const ResultCard = (props) => {
                     <Counter number={statNumber} title={suffixString} classes={statClass} columns={columnsNum} />   
                 }
                 {!props.noCounter && content.stat && statNumber < 40 &&
-                    <span className={statClass}>{`${statNumber}${suffixString}`}</span>   
+                    <span className={statClass}>{`${content.stat}`}</span>   
                 }          
                 {props.noCounter && content.stat &&
                     <span className={statClass}>{content.stat}</span>
-                    }   
+                }   
+                
                 {content.description &&  
                    <p dangerouslySetInnerHTML={{__html: Parser(content.description)}} className={`${theme.text.H5 + 'font-basic-sans normal-case'} ${descriptionClass}`}></p>  
                 }
