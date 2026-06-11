@@ -102,8 +102,8 @@ const WpPost = ({ data, pageContext }) => {
   return (
     <>
       {/* <Seo post={content} /> */}
-      <hgroup className="container pt-20">
-        <h1 className={theme.text.H1_STD + 'mb-9'}> {content.title} </h1>
+      <hgroup className="container pt-12 max-w-[900px]">
+        <h1 className='font-stratos uppercase font-bold text-60px leading-H1-m mb-9'> {content.title} </h1>
         <div className="flex items-center">
           {content.author.node.users.avatar && 
             <GatsbyImage className="w-[70px] h-[70px] mr-5 rounded-full object-center object-cover" image={content.author.node.users.avatar.localFile.childImageSharp.gatsbyImageData} alt={content.author.node.name} />
@@ -112,7 +112,7 @@ const WpPost = ({ data, pageContext }) => {
         </div>
         <GatsbyImage className="w-full mt-9" image={content.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={`featured image`} />    
       </hgroup>
-      <article className="container blog-container my-9 font-basic-sans">
+      <article className="container blog-container my-9 font-basic-sans max-w-[900px]">
         <div dangerouslySetInnerHTML={ {__html: Parser(content.content, 'blog')} }></div>
       </article>
       <nav className="container mb-20">
