@@ -4,6 +4,7 @@ import { graphql } from "gatsby"
 import FlexibleLayouts from "../layouts/FlexibleLayouts"
 import Blog from "./blog"
 import HomeHero from "../layouts/layouts/HomeHero"
+import HomeHero2026 from "../layouts/layouts/HomeHero2026"
 import PageHeader from "../layouts/layouts/PageHeader"
 import PageHeaderResponsive from "../layouts/layouts/PageHeaderResponsive"
 import Menu from "../components/global/FooterMenu"
@@ -138,10 +139,13 @@ const WpPage = ({ data, location }) => {
           <PageHeader layoutData={data.wpPage.pageHeader.pageHeader} />
         }
         {(data.wpPage.title === "Portfolio" || data.wpPage.title === 'PortfolioDev') &&
-            <PortfolioHeader layoutData={data.wpPage.portfolioHeader.portfolioHeader} />
+          <PortfolioHeader layoutData={data.wpPage.portfolioHeader.portfolioHeader} />
         }
         {data.wpPage.isFrontPage &&
           <HomeHero layoutData={data.wpPage.homeHero.layoutHomeHero}/>
+        }
+        {data.wpPage.uri === "/home-page-2026/" &&
+          <HomeHero2026 layoutData={data.wpPage.homeHero2026} />
         }
         {data.wpPage.title === "404" &&
           <Container>
@@ -212,6 +216,47 @@ export const query = graphql`
                 childImageSharp {
                   gatsbyImageData(height: 686)
                 }
+              }
+            }
+          }
+        }
+      }
+      homeHero2026 {
+        layoutContent {
+          eyebrow
+          heading
+          subheading
+          componentButton {
+            style
+            link {
+              url
+              title
+              target
+            }
+            colors {
+              resting
+            }
+          }
+          video
+          backgroundImage {
+            sourceUrl
+            localFile {
+              childImageSharp {
+                gatsbyImageData
+              }
+            }
+          }
+          mobileImage {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(height: 686)
+              }
+            }
+          }
+          tabletImage {
+            localFile {
+              childImageSharp {
+                gatsbyImageData(height: 686)
               }
             }
           }
