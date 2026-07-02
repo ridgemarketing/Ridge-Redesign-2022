@@ -24,6 +24,7 @@ import TwoColImageText from "./layouts/TwoColImageText"
 import TwoColList from "./layouts/TwoColList"
 import TwoColTextQuote from "./layouts/TwoColTextQuote"
 import TwoColTextQuoteCard from "./layouts/TwoColTextQuoteCard"
+import TwoColTextText from "./layouts/TwoColTextText"
 import StepsWithCard from "./layouts/StepsWithCard"
 import OverlapImageCard from "./layouts/OverlapImageCard"
 import StepsWithImages from "./layouts/StepsWithImages"
@@ -54,6 +55,9 @@ import TwoColIconText from "./layouts/TwoColIconText"
 import FrequentlyAskedQuestions from "./layouts/FrequentlyAskedQuestions"
 import TwoColImageList from "./layouts/TwoColImageList"
 import AuditCard from "./layouts/AuditCard"
+import FeaturedCampaigns from "./layouts/FeaturedCampaigns"
+import BarnOfBrands from "./layouts/BarnOfBrands"
+import LogoCarousel from "./layouts/LogoCarousel"
 import TwoColContentPpc from "./layouts/TwoColContentPpc"
 import PpcFormLayout from "./layouts/PpcFormLayout"
 import AuditStatsLayout from "./layouts/AuditStatsLayout"
@@ -91,6 +95,7 @@ Layouts['TwoColImageText']                  = TwoColImageText;
 Layouts['TwoColList']                       = TwoColList;
 Layouts['TwoColTextQuote']                  = TwoColTextQuote;
 Layouts['TwoColTextQuoteCard']              = TwoColTextQuoteCard;
+Layouts['TwoColTextText']                   = TwoColTextText;
 Layouts['StepsWithCard']                    = StepsWithCard;
 Layouts['OverlapImageCard']                 = OverlapImageCard;
 Layouts['StepsWithImages']                  = StepsWithImages;
@@ -120,6 +125,9 @@ Layouts['TwoColIconText']                   = TwoColIconText;
 Layouts['FrequentlyAskedQuestions']         = FrequentlyAskedQuestions;
 Layouts['TwoColImageList']                  = TwoColImageList;
 Layouts['AuditCard']                        = AuditCard;
+Layouts['FeaturedCampaigns']                = FeaturedCampaigns;
+Layouts['BarnOfBrands']                     = BarnOfBrands;
+Layouts['LogoCarousel']                     = LogoCarousel;
 Layouts['TwoColumnContentPpc']              = TwoColContentPpc;
 Layouts['PpcForm']                          = PpcFormLayout;
 Layouts['AuditStats']                       = AuditStatsLayout;

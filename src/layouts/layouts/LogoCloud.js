@@ -13,6 +13,7 @@ const LogoCloud = props => {
 
   const content   = props.layoutData.layoutContent;
   const settings  = props.layoutData.layoutSettings;
+  const disableAnimation = content.disableAnimation ?? false;
 
   let heading     = '';
   let body        = '';
@@ -82,7 +83,7 @@ const LogoCloud = props => {
                           : <GatsbyImage key={logo.image.sourceUrl} className={`w-full`} objectFit="contain" image={logo.image.localFile.childImageSharp.gatsbyImageData} alt={logo.image.altText} /> ;
                           return(
                             <SplideSlide>
-                              <motion.div key={`LogoCloudItem__${image.id}__${index}`} variants={variantItems} className={"h-[110px] flex flex-col items-center justify-center"}>
+                              <motion.div key={`LogoCloudItem__${image.id}__${index}`} {...(disableAnimation ? {} : { variants: variantItems })} className={"h-[110px] flex flex-col items-center justify-center"}>
                                 {image}                        
                               </motion.div>
                             </SplideSlide>
@@ -95,17 +96,14 @@ const LogoCloud = props => {
                   <motion.div
                   suppressHydrationWarning
                   className={"mt-12 flex w-full flex-wrap justify-center items-center lg:justify-around gap-y-6 md:gap-y-8 gap-x-10 sm:gap-x-12 md:gap-x-20 lg:gap-x-6"}
-                  variants={containerVariant}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true }}
+                  {...(disableAnimation ? {} : { variants: containerVariant, initial: "hidden", whileInView: "visible", viewport: { once: true } })}
                   >
                     {content.logos.map((logo, index) => {
                       const image = (logo.image.localFile.ext === ".svg")
                       ? <img key={logo.image.sourceUrl} className={`w-full object-contain`} src={logo.image.sourceUrl} alt={logo.image.altText}/>
                       : <GatsbyImage key={logo.image.sourceUrl} className={`w-full`} objectFit="contain" image={logo.image.localFile.childImageSharp.gatsbyImageData} alt={logo.image.altText} /> ;
                       return(
-                        <motion.div suppressHydrationWarning key={`LogoCloudItem__${image.id}__${index}`} variants={variantItems} className={"w-[24%] lg:w-[15%] h-full"}>
+                        <motion.div suppressHydrationWarning key={`LogoCloudItem__${image.id}__${index}`} {...(disableAnimation ? {} : { variants: variantItems })} className={"w-[24%] lg:w-[15%] h-full"}>
                           {image}                        
                         </motion.div>
                       )
@@ -135,6 +133,7 @@ export const query = graphql`
             body
             heading
             type
+            disableAnimation
             logos {
               image {
                 id
@@ -185,6 +184,7 @@ export const serviceQuery = graphql`
             body
             heading
             type
+            disableAnimation
             logos {
               image {
                 id
@@ -236,6 +236,7 @@ export const projectQuery = graphql`
             body
             heading
             type
+            disableAnimation
             logos {
               image {
                 id
@@ -287,6 +288,7 @@ export const landerQuery = graphql`
             body
             heading
             type
+            disableAnimation
             logos {
               image {
                 id

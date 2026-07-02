@@ -11,6 +11,7 @@ const Quotes = (props) => {
     const content = props.layoutData.layoutContent;
     const settings = props.layoutData.layoutSettings;
     const slides = content.quotes ? content.quotes : [];
+    const alternateStyle = content.alternateStyle ?? false;
     const [slide, setSlide] = useState(0);
     const [data, setData] = useState(content.quotes[0]);
     const [slideInteraction, setInteraction] = useState(false);
@@ -140,6 +141,47 @@ const Quotes = (props) => {
     if(slides.length > 1){
       arrows = true;
     }
+
+    if (alternateStyle) {
+      return(
+        <div ref={parallaxContainer} className={`block`}>
+          <Section classes="overflow-hidden" settings={ settings }>
+            <Container container={settings.containerWidth}>
+              {content.heading &&
+                <h2 className={ theme.text['H2'] + ' text-center' }>
+                    { content.heading }
+                </h2>
+              }
+              <div ref={sliderRef} className={`mt-12 max-w-[1122px] mx-auto text-center`}>
+                <span aria-hidden="true" className={`block font-stratos font-semibold text-rm-green text-[70px] md:text-[120px] leading-[0.7] tracking-[-0.16em]`}>“</span>
+                <div key={Math.random()} className={`animate-quote`}>
+                  <div dangerouslySetInnerHTML={{__html: Parser(data.content)}} className={`font-basic-sans italic text-[26px] md:text-[40px] leading-[1.1] text-black [&_strong]:font-semibold`}></div>
+                </div>
+                <span aria-hidden="true" className={`block font-stratos font-semibold text-rm-green text-[70px] md:text-[120px] leading-[0.7] tracking-[-0.16em] mt-4`}>”</span>
+                <p className={ theme.text.P_BLD + 'mt-2' }>
+                    { data.title }
+                </p>
+                <small className={ theme.text.FOOTER }>
+                    { data.reviewsFields.titleCompany }
+                </small>
+                {arrows &&
+                <div className={`w-[175px] flex bg-rm-pale-grey mx-auto mt-10`}>
+                    <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(false)}>
+                        <ArrowTallLeftBlack/>
+                    </button>
+                    <span className={ theme.text.FOOTER + 'flex items-center font-basic-sans'}> {slide + 1} / {slides.length}</span>
+                    <button className={`flex-1 px-5 py-3 text-40px`} onClick={() => handleClick(true)}>
+                        <ArrowTallRightBlack/>
+                    </button>
+                </div>
+                }
+              </div>
+            </Container>
+          </Section>
+        </div>
+      )
+    }
+
     return(
       <div ref={parallaxContainer} className={`block `}>
         <Section classes="overflow-hidden" settings={ settings }>
@@ -190,6 +232,7 @@ export const query = graphql`
         layoutQuotes {
           layoutContent {
             heading
+            alternateStyle
             quotes {
                 ... on WpReview {
                   title
@@ -222,6 +265,7 @@ export const serviceQuery = graphql`
         layoutQuotes {
           layoutContent {
             heading
+            alternateStyle
             quotes {
                 ... on WpReview {
                   title
@@ -255,6 +299,7 @@ export const projectQuery = graphql`
         layoutQuotes {
           layoutContent {
             heading
+            alternateStyle
             quotes {
                 ... on WpReview {
                   title
@@ -288,6 +333,7 @@ export const landerQuery = graphql`
         layoutQuotes {
           layoutContent {
             heading
+            alternateStyle
             quotes {
                 ... on WpReview {
                   title

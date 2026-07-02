@@ -46,6 +46,7 @@ export const pageQuery = graphql`
         ...TwoColBreakoutImageHeadingPage
         ...TwoColTextQuotePage
         ...TwoColTextQuoteCardPage
+        ...TwoColTextTextPage
         ...StepsWithCardPage
         ...OverlapImageCardPage
         ...StepsWithImagesPage
@@ -88,6 +89,9 @@ export const pageQuery = graphql`
         ...FrequentlyAskedQuestionsPage
         ...TwoColImageListPage
         ...AuditCardPage
+        ...FeaturedCampaignsPage
+        ...BarnOfBrandsPage
+        ...LogoCarouselPage
         ...TwoColContentPpcPage
         ...PpcFormLayoutPage
         ...AuditStatsLayoutPage
@@ -106,6 +110,7 @@ export const serviceQuery = graphql`
         ...TwoColBreakoutImageHeadingService 
         ...TwoColTextQuoteService
         ...TwoColTextQuoteCardService
+        ...TwoColTextTextService
         ...StepsWithCardService
         ...OverlapImageCardService
         ...StepsWithImagesService
@@ -144,6 +149,9 @@ export const serviceQuery = graphql`
         ...FrequentlyAskedQuestionsService
         ...TwoColImageListService
         ...AuditCardService
+        ...FeaturedCampaignsService
+        ...BarnOfBrandsService
+        ...LogoCarouselService
         ...TwoColContentPpcService
         ...PpcFormLayoutService
         ...AuditStatsLayoutService
@@ -163,6 +171,7 @@ export const projectQuery = graphql`
         ...TwoColBreakoutImageHeadingProject
         ...TwoColTextQuoteProject
         ...TwoColTextQuoteCardProject
+        ...TwoColTextTextProject
         ...StepsWithCardProject
         ...OverlapImageCardProject
         ...StepsWithImagesProject
@@ -208,6 +217,9 @@ export const projectQuery = graphql`
         ...FrequentlyAskedQuestionsProject
         ...TwoColImageListProject
         ...AuditCardProject
+        ...FeaturedCampaignsProject
+        ...BarnOfBrandsProject
+        ...LogoCarouselProject
         ...TwoColContentPpcProject
         ...PpcFormLayoutProject
         ...AuditStatsLayoutProject
