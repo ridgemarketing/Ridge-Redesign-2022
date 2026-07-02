@@ -4,6 +4,8 @@ import { useStaticQuery, graphql } from 'gatsby';
 import { theme, ThemeContext } from "../../static/theme"
 import Header from "./Header"
 import Footer from "./Footer"
+import CookieConsent from "./CookieConsent"
+import ConsentLoader from "./ConsentLoader"
 import "../../css/styles.css"
 
 export default function Layout({ location, children, data }) {
@@ -173,6 +175,8 @@ export default function Layout({ location, children, data }) {
                     {children}
                 </main>
                 <Footer location={location} data={data} />
+                <ConsentLoader />
+                <CookieConsent />
             </ThemeContext.Provider>
         // </SEOContext.Provider>
     )
