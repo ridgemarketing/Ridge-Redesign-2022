@@ -112,8 +112,16 @@ input:-internal-autofill-selected, input:-internal-autofill:active, input:-inter
     @apply font-stratos uppercase font-bold text-60px lg:text-100px leading-H1-m lg:leading-H1 mt-10 mb-14
 }
 .page404, .terms {
-    @apply container mt-20;
+    @apply container mt-20 px-4;
     max-width: 1120px;
+}
+.terms li,
+.terms table * {
+    @apply font-basic-sans
+}
+.terms table {
+    @apply block overflow-x-auto max-w-full md:table;
+    -webkit-overflow-scrolling: touch;
 }
 .page404 h4, .terms h4 {
     @apply font-basic-sans font-semibold text-26px leading-30px
