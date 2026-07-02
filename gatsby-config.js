@@ -138,15 +138,9 @@ module.exports = {
         policy: [{ userAgent: '*', allow: '/' }]
       }
     },
-    {
-      resolve: "gatsby-plugin-google-tagmanager",
-      options: {
-        id: "GTM-NV9M24V",
-        includeInDevelopment: false,
-        defaultDataLayer: { platform: "gatsby" },
-        enableWebVitalsTracking: true,
-      },
-    },
+    // Google Tag Manager is loaded on consent via
+    // src/components/global/CookieConsent.js rather than unconditionally here,
+    // so users (e.g. in California) can opt out of tracking.
     'gatsby-plugin-postcss',
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
