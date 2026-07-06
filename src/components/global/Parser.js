@@ -30,6 +30,10 @@ const tagList = [
         replace: `<span class="text-rm-green font-semibold">`
     },
     {
+        tag: `[teal]`,
+        replace: `<span class="text-rm-aqua font-semibold">`
+    },
+    {
         tag: `[black]`,
         replace: `<span class="text-rm-black">`
     },

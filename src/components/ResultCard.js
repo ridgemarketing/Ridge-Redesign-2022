@@ -7,7 +7,8 @@ import Counter from "./Counter"
 const ResultCard = (props) => {
 
     const content           = props.content;
-    let statClass           = `accent-text font-semibold font-stratos ${props.statFontSize || 'text-[100px] xl:text-[120px]'}`;
+    const statColorClass    = props.tealStats ? '!text-rm-ocean-teal' : 'accent-text';
+    let statClass           = `${statColorClass} font-semibold font-stratos ${props.statFontSize || 'text-[100px] xl:text-[120px]'}`;
     let descriptionClass = `
         ${props.columns === '1' ? 'md:max-w-[60%]' : ''}
         ${props.noBoldDescription ? 'font-normal' : ''}
@@ -24,7 +25,7 @@ const ResultCard = (props) => {
     }
 
     if (columnsNum === 4) {
-        statClass = 'accent-text text-[100px] xl:text-[100px] font-semibold font-stratos';
+        statClass = `${statColorClass} text-[100px] xl:text-[100px] font-semibold font-stratos`;
     }
 
     if (columnsNum !== 3 && columnsNum !== 4) {

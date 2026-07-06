@@ -28,7 +28,7 @@ const LogoCarousel = (props) => {
                         dangerouslySetInnerHTML={{ __html: Parser(content.body) }}
                     ></p>
                 }
-            </Container>
+          
 
             {logos.length > 0 &&
                 <div className="relative mt-12 overflow-hidden">
@@ -52,7 +52,6 @@ const LogoCarousel = (props) => {
                         }}
                     >
                         {logos.map((logo, index) => {
-                          console.log(logo)
                             const image = logo.image
                             if (!image) return null
                             const rendered = (image.localFile?.ext === '.svg')
@@ -77,6 +76,7 @@ const LogoCarousel = (props) => {
                     <div aria-hidden={true} className="pointer-events-none absolute right-0 top-0 h-full w-[100px] md:w-[200px] z-10 bg-gradient-to-l from-white to-transparent"></div>
                 </div>
             }
+            </Container>
         </Section>
     )
 }
