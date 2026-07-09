@@ -19,7 +19,8 @@ const BarnOfBrands = (props) => {
 
     const content         = props.layoutData.layoutContent
     const settings        = props.layoutData.layoutSettings
-    const heading         = content.heading ?? false
+    // Strip whitespace before a <sup> (e.g. the ™) so it can't wrap onto its own line
+    const heading         = content.heading ? Parser(content.heading).replace(/\s+(<sup)/gi, '$1') : false
     const body            = content.body ?? false
     const componentButton = content.componentButton ?? false
     const image           = content.image ?? false
@@ -33,8 +34,8 @@ const BarnOfBrands = (props) => {
                     <div className="lg:w-[70%] flex flex-col justify-center p-8 md:p-12 xl:p-[80px] relative">
                         {heading &&
                             <h2
-                                dangerouslySetInnerHTML={{ __html: Parser(heading) }}
-                                className={`${theme.text.H5} text-rm-white [&_sup]:text-[0.45em] [&_sup]:align-super`}
+                                dangerouslySetInnerHTML={{ __html: heading }}
+                                className={`${theme.text.H5} text-rm-white [&_sup]:text-[0.45em] [&_sup]:align-super md:w-[90%]`}
                             />
                         }
                         {body &&
