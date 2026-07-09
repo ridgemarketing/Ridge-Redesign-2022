@@ -38,7 +38,7 @@ const AuditCard = (props) => {
               <div className={`absolute top-0 left-0 h-1/2 w-full bg-${halfBackgroundColor}`}></div>
             }
             <Container container="default">
-                <div className="bg-[#F3F1EE] rounded-[21px] overflow-hidden flex flex-col xl:flex-row gap-8 xl:gap-12 p-8 md:p-12 xl:p-16 mx-2">
+                <div className="bg-[#F3F1EE] rounded-[21px] overflow-hidden flex flex-col lg:flex-row gap-8 xl:gap-12 p-8 md:p-12 xl:p-16 mx-2">
 
                     <div className="flex flex-col gap-5 xl:w-1/2">
                         {heading &&
@@ -56,13 +56,13 @@ const AuditCard = (props) => {
                         {body &&
                             <div
                                 dangerouslySetInnerHTML={{ __html: Parser(body) }}
-                                className={`font-basic-sans text-[1.3125rem] leading-[2rem] text-black max-w-[535px]`}
+                                className={`font-basic-sans font-light text-[1.3125rem] leading-[2rem] text-black max-w-[535px] flex-col flex gap-5`}
                             />
                         }
                         {list && list.length > 0 &&
                             <ul className="flex flex-col gap-4 mt-2">
                                 {list.map((item, index) => (
-                                    <li key={index} className="flex items-start md:items-center gap-3 font-basic-sans font-semibold text-[1.375rem] leading-[1.4rem]">
+                                    <li key={index} className="flex items-start md:items-center gap-3 font-basic-sans font-normal text-[1.375rem] leading-[1.4rem]">
                                         <svg className="w-[24px] shrink-0" viewBox="0 0 24 24" fill="none">
                                             <path d="M5 12H19M19 12L13 6M19 12L13 18" stroke="#1F9DA5" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
                                         </svg>
@@ -79,7 +79,7 @@ const AuditCard = (props) => {
                     </div>
 
                     {renderImage &&
-                        <div className="xl:w-1/2 flex items-center justify-center self-center max-w-[500px]">
+                        <div className="lg:w-1/2 flex items-center justify-center self-center max-w-[500px]">
                             {renderImage}
                         </div>
                     }

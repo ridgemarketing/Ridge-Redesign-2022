@@ -51,7 +51,7 @@ const BarnOfBrands = (props) => {
                         {badge &&
                             renderImage(
                                 badge,
-                                'hidden lg:block absolute bottom-[30px] right-[30px] w-[146px] h-[146px] z-10',
+                                'block absolute bottom-[30px] right-[30px] size-[100px] md:w-[146px] md:h-[146px] z-10',
                                 'contain'
                             )
                         }

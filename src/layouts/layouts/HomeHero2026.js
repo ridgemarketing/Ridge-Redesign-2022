@@ -31,7 +31,6 @@ const HomeHero2026 = (props) => {
 
     return (
         <Section classes={'relative overflow-hidden'} settings={settings}>
-            here 
             {!isImage && video}
             {isImage && <BackgroundImage image={image} mobile={mobileImage} tablet={tabletImage} classes={'h-full'} />}
 
@@ -40,7 +39,7 @@ const HomeHero2026 = (props) => {
 
             <Container containerWidth={'slim'} classes={'z-10'}>
                 <div className={'flex flex-col justify-center min-h-[520px] md:min-h-[620px] xl:min-h-[794px] py-16 md:py-20'}>
-                    <div className={'max-w-[560px] lg:max-w-[760px]'}>
+                    <div className={'max-w-[560px] md:max-w-[760px]'}>
                         {heading &&
                             <h1 className={'font-stratos font-semibold uppercase text-rm-white text-[42px] md:text-[64px] xl:text-[80px] leading-[0.95]'}>{heading}</h1>
                         }

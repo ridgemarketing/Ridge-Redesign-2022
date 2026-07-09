@@ -22,7 +22,7 @@ const TwoColTextText = (props) => {
                             {content.heading &&
                                 <h2
                                     dangerouslySetInnerHTML={{ __html: Parser(content.heading) }}
-                                    className={`${theme.text.H2} ${textColor}`}
+                                    className={`font-stratos font-bold uppercase text-60px leading-[3.73125rem] ${textColor}`}
                                 ></h2>
                             }
                         </div>

@@ -134,7 +134,7 @@ module.exports = {
           '30px'             : '1.875rem',
           '40px'             : '2.5rem',//2.5rem
           '45px'             : '2.8125rem',
-          '50px'             : '2.9rem',//3.125rem
+          '50px'             : '3.125rem', //2.9rem
           '55px'             : '3.4375rem', 
           '60px'             : '3.75rem',
           '80px'             : '4.25rem',//5rem
