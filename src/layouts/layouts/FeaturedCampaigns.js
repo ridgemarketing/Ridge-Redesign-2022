@@ -1,16 +1,10 @@
-import React from "react"
+import React, { useEffect, useRef } from "react"
 import { graphql } from "gatsby"
 import { GatsbyImage } from "gatsby-plugin-image"
 import { Splide, SplideTrack, SplideSlide } from "@splidejs/react-splide"
 import { Section, Container } from "../../components/global/Wrappers"
 import Link from "../../components/global/FlexibleLink"
 import { theme } from "../../static/theme"
-
-const Chevron = ({ className }) => (
-    <svg className={className} width="14" height="24" viewBox="0 0 14 24" fill="none" aria-hidden="true">
-        <path d="M12 2L2 12L12 22" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
-)
 
 const renderImage = (image) => {
     if (!image) return null
@@ -19,6 +13,47 @@ const renderImage = (image) => {
         : image.localFile?.childImageSharp?.gatsbyImageData
             ? <GatsbyImage image={image.localFile.childImageSharp.gatsbyImageData} alt={image.altText || ''} className="w-full h-full" objectFit="cover" />
             : null
+}
+
+const CampaignVideo = ({ src }) => {
+    const videoRef = useRef(null)
+
+    useEffect(() => {
+        const video = videoRef.current
+        if (!video) return
+
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    video.play().catch(() => {})
+                } else {
+                    video.pause()
+                }
+            },
+            { threshold: 0.25 }
+        )
+
+        observer.observe(video)
+        return () => observer.disconnect()
+    }, [])
+
+    return (
+        <video
+            ref={videoRef}
+            src={src}
+            className="w-full h-full object-cover"
+            playsInline
+            muted
+            autoPlay
+            loop
+        />
+    )
+}
+
+const renderMedia = (campaign) => {
+    return (campaign.useVideo && campaign.video)
+        ? <CampaignVideo src={campaign.video} />
+        : renderImage(campaign.image)
 }
 
 const FeaturedCampaigns = (props) => {
@@ -57,7 +92,7 @@ const FeaturedCampaigns = (props) => {
                                     <SplideSlide key={`campaign__${index}`}>
                                         <div className="flex flex-col lg:flex-row gap-8 xl:gap-16 items-stretch">
                                             <div className="lg:w-1/2 shrink-0 rounded-[16px] overflow-hidden aspect-[500/327]">
-                                                {renderImage(campaign.image)}
+                                                {renderMedia(campaign)}
                                             </div>
                                             <div className="lg:w-1/2 flex flex-col justify-center pb-20 md:pb-14 lg:pb-0 lg:pr-6">
                                                 {campaign.eyebrow &&
@@ -109,6 +144,8 @@ export const query = graphql`
       layoutFeaturedCampaigns {
         layoutContent {
           campaigns {
+            useVideo
+            video
             eyebrow
             heading
             link {
@@ -148,6 +185,8 @@ export const serviceQuery = graphql`
       layoutFeaturedCampaigns {
         layoutContent {
           campaigns {
+            useVideo
+            video
             eyebrow
             heading
             link {
@@ -187,6 +226,8 @@ export const projectQuery = graphql`
       layoutFeaturedCampaigns {
         layoutContent {
           campaigns {
+            useVideo
+            video
             eyebrow
             heading
             link {

@@ -15,7 +15,7 @@ const LogoCarousel = (props) => {
 
     return (
         <Section settings={settings}>
-            <Container>
+            <Container container={'default'}>
                 {content.heading &&
                     <h2
                         className={`${theme.text.H2} text-black text-center`}

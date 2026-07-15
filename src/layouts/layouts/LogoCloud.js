@@ -49,7 +49,7 @@ const LogoCloud = props => {
 
     return(
         <Section settings={ settings }>
-            <Container>
+            <Container container={'default'}>
                 {content.heading &&
                     <h2 className={`${content.type !== 'carousel' ? ' text-[28px] leading-[1.925rem] font-stratos uppercase font-bold ' : theme.text['H2'] }  text-center`} dangerouslySetInnerHTML={{__html: heading}}></h2>
                 }
