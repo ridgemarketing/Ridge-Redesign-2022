@@ -59,7 +59,7 @@ const FullWidthImage = (props) => {
     splitMargins()
 
     let imgSize
-    if (settings.classes.includes('image-sml')){
+    if (settings?.classes?.includes('image-sml')){
       imgSize = 'max-w-[950px]'
     }
 
