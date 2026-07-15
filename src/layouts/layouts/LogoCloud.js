@@ -8,6 +8,7 @@ import Parser from '../../components/global/Parser'
 import { motion } from "framer-motion"
 import { Splide, SplideSlide } from '@splidejs/react-splide';
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
+import { set } from "react-hook-form"
 
 const LogoCloud = props => {
 

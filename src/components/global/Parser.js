@@ -89,7 +89,10 @@ const tagList = [
         tag:`[basicSans]`,
         replace:`<span class="font-basic-sans">`
     },
-    
+    {
+        tag:`[SMLTEXT]`,
+        replace:`<span class="text-base leading-[1.4375rem] block">`
+    }
 ];
 
 const tagListBlog = [

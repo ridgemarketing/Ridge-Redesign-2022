@@ -5,13 +5,16 @@ import FeaturedProjectsCarousel from "./layouts/FeaturedProjectsCarousel"
 import FeaturedProjectsGrid from "./layouts/FeaturedProjectsGrid"
 import FullWidthImage from "./layouts/FullWidthImage"
 import FullWidthImageText from "./layouts/FullWidthImageText"
+import FullWidthVideoText from "./layouts/FullWidthVideoText"
 import FullWidthImageVideoText from "./layouts/FullWidthImageVideoText"
 import HomeHero from "./layouts/HomeHero"
 import IconTextBoxes from "./layouts/IconTextBoxes"
 import LogoCloud from "./layouts/LogoCloud"
 import Quotes from "./layouts/Quotes"
+import QuotesPpc from "./layouts/QuotesPpc"
 import PostCards from "./layouts/PostCards"
 import Results from "./layouts/Results"
+import CaseStudies from "./layouts/CaseStudies"
 import ResultsImage from "./layouts/ResultsImage"
 import ResultsMixed from "./layouts/ResultsMixed"
 import TextBlock from "./layouts/TextBlock"
@@ -72,6 +75,7 @@ Layouts['FeaturedProjectsGrid']             = FeaturedProjectsGrid;
 Layouts['FeaturedProjectsGridDev']          = FeaturedProjectsGridDev;
 Layouts['FullWidthImage']                   = FullWidthImage;
 Layouts['FullWidthImageText']               = FullWidthImageText;
+Layouts['FullWidthVideoText']               = FullWidthVideoText;
 Layouts['FullWidthImageVideoText']          = FullWidthImageVideoText;
 // Layouts['ThreeColumnTextBlock']          = ThreeColumnTextBlock;
 Layouts['TextBlock']                        = TextBlock;
@@ -81,8 +85,10 @@ Layouts['IconTextBoxes']                    = IconTextBoxes;
 Layouts['LogoCloud']                        = LogoCloud;
 Layouts['VerticalSlider']                   = VerticalSlider;
 Layouts['Quotes']                           = Quotes;
+Layouts['QuotesPpc']                        = QuotesPpc;
 Layouts['PostCards']                        = PostCards;
 Layouts['Results']                          = Results;
+Layouts['CaseStudies']                      = CaseStudies;
 Layouts['ResultsImage']                     = ResultsImage;
 Layouts['ResultsMix']                       = ResultsMixed; //component name is different in backend, causing this change to be necessary to match up
 Layouts['TextBlock']                        = TextBlock;

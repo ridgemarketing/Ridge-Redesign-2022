@@ -58,12 +58,15 @@ export const pageQuery = graphql`
         ...VideoPlayerPage
         ...FullWidthImagePage
         ...FullWidthImageTextPage
+        ...FullWidthVideoTextPage
         ...IconTextBoxesPage
         ...VerticalSliderPage
         ...MediaBlocksPage
         ...FeaturedProjectsCarouselPage
         ...QuotesPage
+        ...QuotesPpcPage
         ...ResultsPage
+        ...CaseStudiesPage
         ...ResultsImagePage
         ...ResultsMixPage
         ...LogoCloudPage
@@ -122,13 +125,16 @@ export const serviceQuery = graphql`
         ...VideoPlayerService
         ...FullWidthImageService
         ...FullWidthImageTextService
+        ...FullWidthVideoTextService
         ...FullWidthImageVideoTextService
         ...IconTextBoxesService
         ...VerticalSliderService
         ...MediaBlocksService
         ...FeaturedProjectsCarouselService 
         ...QuotesService
+        ...QuotesPpcService
         ...ResultsService
+        ...CaseStudiesService
         ...ResultsImageService
         ...ResultsMixService
         ...LogoCloudService
@@ -185,7 +191,9 @@ export const projectQuery = graphql`
         ...IconTextBoxesProject
         ...MediaBlocksProject
         ...QuotesProject
+        ...QuotesPpcProject
         ...ResultsProject
+        ...CaseStudiesProject
         ...ResultsImageProject
         ...ResultsMixProject
         ...LogoCloudProject
@@ -195,9 +203,11 @@ export const projectQuery = graphql`
         ...VideoPlayerProject
         ...FullWidthImageProject
         ...FullWidthImageTextProject
+        ...FullWidthVideoTextProject
         ...IconTextBoxesProject
         ...MediaBlocksProject
         ...QuotesProject
+        ...QuotesPpcProject
         ...ResultsProject
         ...ResultsMixProject
         ...LogoCloudProject
@@ -237,6 +247,7 @@ export const landerQuery = graphql`
         ...IconTextBoxesLander
         ...ResultsLander
         ...QuotesLander
+        ...QuotesPpcLander
         ...LogoCloudLander
         ...CtaFooterPpcLander
         ...ImageCarouselLander
