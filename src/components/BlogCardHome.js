@@ -13,7 +13,7 @@ const BlogCardHome = (props) => {
                 <div className={`w-full flex flex-col flex-1`}>
                     <h3 className={theme.text['H4'] + `mb-14 lg:mb-7 flex-1`}>{props.heading}</h3>
                     <div>
-                        <span
+                        <span 
                             className={ 
                                 theme.text_links['BASE_STYLING'] + 
                                 theme.text_links['STD'] + 
