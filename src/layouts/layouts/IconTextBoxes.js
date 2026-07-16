@@ -95,8 +95,8 @@ const IconTextBoxes = (props) => {
               </h2>
             }
           {content.body &&
-          //testing removal of mb from p below and adding to icon box wrapper class
-          <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} max-w-[1120px] mx-auto text-center ${textColor}`}></p>
+            //testing removal of mb from p below and adding to icon box wrapper class
+            <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} max-w-[1120px] mx-auto text-center ${textColor}`}></p>
           }
           {content.subheading &&
           <p className={`mt-10 text-center ${textColor}`}>

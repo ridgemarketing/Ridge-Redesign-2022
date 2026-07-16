@@ -5,13 +5,16 @@ import FeaturedProjectsCarousel from "./layouts/FeaturedProjectsCarousel"
 import FeaturedProjectsGrid from "./layouts/FeaturedProjectsGrid"
 import FullWidthImage from "./layouts/FullWidthImage"
 import FullWidthImageText from "./layouts/FullWidthImageText"
+import FullWidthVideoText from "./layouts/FullWidthVideoText"
 import FullWidthImageVideoText from "./layouts/FullWidthImageVideoText"
 import HomeHero from "./layouts/HomeHero"
 import IconTextBoxes from "./layouts/IconTextBoxes"
 import LogoCloud from "./layouts/LogoCloud"
 import Quotes from "./layouts/Quotes"
+import QuotesPpc from "./layouts/QuotesPpc"
 import PostCards from "./layouts/PostCards"
 import Results from "./layouts/Results"
+import CaseStudies from "./layouts/CaseStudies"
 import ResultsImage from "./layouts/ResultsImage"
 import ResultsMixed from "./layouts/ResultsMixed"
 import TextBlock from "./layouts/TextBlock"
@@ -24,6 +27,7 @@ import TwoColImageText from "./layouts/TwoColImageText"
 import TwoColList from "./layouts/TwoColList"
 import TwoColTextQuote from "./layouts/TwoColTextQuote"
 import TwoColTextQuoteCard from "./layouts/TwoColTextQuoteCard"
+import TwoColTextText from "./layouts/TwoColTextText"
 import StepsWithCard from "./layouts/StepsWithCard"
 import OverlapImageCard from "./layouts/OverlapImageCard"
 import StepsWithImages from "./layouts/StepsWithImages"
@@ -54,6 +58,9 @@ import TwoColIconText from "./layouts/TwoColIconText"
 import FrequentlyAskedQuestions from "./layouts/FrequentlyAskedQuestions"
 import TwoColImageList from "./layouts/TwoColImageList"
 import AuditCard from "./layouts/AuditCard"
+import FeaturedCampaigns from "./layouts/FeaturedCampaigns"
+import BarnOfBrands from "./layouts/BarnOfBrands"
+import LogoCarousel from "./layouts/LogoCarousel"
 import TwoColContentPpc from "./layouts/TwoColContentPpc"
 import PpcFormLayout from "./layouts/PpcFormLayout"
 import AuditStatsLayout from "./layouts/AuditStatsLayout"
@@ -68,6 +75,7 @@ Layouts['FeaturedProjectsGrid']             = FeaturedProjectsGrid;
 Layouts['FeaturedProjectsGridDev']          = FeaturedProjectsGridDev;
 Layouts['FullWidthImage']                   = FullWidthImage;
 Layouts['FullWidthImageText']               = FullWidthImageText;
+Layouts['FullWidthVideoText']               = FullWidthVideoText;
 Layouts['FullWidthImageVideoText']          = FullWidthImageVideoText;
 // Layouts['ThreeColumnTextBlock']          = ThreeColumnTextBlock;
 Layouts['TextBlock']                        = TextBlock;
@@ -77,8 +85,10 @@ Layouts['IconTextBoxes']                    = IconTextBoxes;
 Layouts['LogoCloud']                        = LogoCloud;
 Layouts['VerticalSlider']                   = VerticalSlider;
 Layouts['Quotes']                           = Quotes;
+Layouts['QuotesPpc']                        = QuotesPpc;
 Layouts['PostCards']                        = PostCards;
 Layouts['Results']                          = Results;
+Layouts['CaseStudies']                      = CaseStudies;
 Layouts['ResultsImage']                     = ResultsImage;
 Layouts['ResultsMix']                       = ResultsMixed; //component name is different in backend, causing this change to be necessary to match up
 Layouts['TextBlock']                        = TextBlock;
@@ -91,6 +101,7 @@ Layouts['TwoColImageText']                  = TwoColImageText;
 Layouts['TwoColList']                       = TwoColList;
 Layouts['TwoColTextQuote']                  = TwoColTextQuote;
 Layouts['TwoColTextQuoteCard']              = TwoColTextQuoteCard;
+Layouts['TwoColTextText']                   = TwoColTextText;
 Layouts['StepsWithCard']                    = StepsWithCard;
 Layouts['OverlapImageCard']                 = OverlapImageCard;
 Layouts['StepsWithImages']                  = StepsWithImages;
@@ -120,6 +131,9 @@ Layouts['TwoColIconText']                   = TwoColIconText;
 Layouts['FrequentlyAskedQuestions']         = FrequentlyAskedQuestions;
 Layouts['TwoColImageList']                  = TwoColImageList;
 Layouts['AuditCard']                        = AuditCard;
+Layouts['FeaturedCampaigns']                = FeaturedCampaigns;
+Layouts['BarnOfBrands']                     = BarnOfBrands;
+Layouts['LogoCarousel']                     = LogoCarousel;
 Layouts['TwoColumnContentPpc']              = TwoColContentPpc;
 Layouts['PpcForm']                          = PpcFormLayout;
 Layouts['AuditStats']                       = AuditStatsLayout;

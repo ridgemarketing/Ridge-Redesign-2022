@@ -55,7 +55,7 @@ export const Container = (props) => {
     }
     let container = (props.container) ? size[props.container] : size['slim'];
     return (
-        <div className={`${container} relative ${props.classes || ''}`}>
+        <div className={`${container} relative ${props.classes || ''} px-4`}>
             {props.children}
         </div>
     )

@@ -32,7 +32,7 @@ const Results = (props) => {
                 <div className={`flex flex-wrap justify-center ${columns}`}>
                     { content.results && content.results.map((result, index) => {
                       if (result) {
-                        return <ResultCard key={`ResultCard__${result.stat}__${index}`} content ={result} columns={content.columns} settings={settings?.classes ? settings.classes : ''}/>
+                        return <ResultCard key={`ResultCard__${result.stat}__${index}`} content ={result} columns={content.columns} tealStats={content.tealStats} settings={settings?.classes ? settings.classes : ''}/>
                       }
                     })           
                     }
@@ -53,6 +53,7 @@ export const query = graphql`
             columns
             body
             heading
+            tealStats
             results {
               company
               description
@@ -83,6 +84,7 @@ export const serviceQuery = graphql`
             columns
             body
             heading
+            tealStats
             results {
               company
               description
@@ -114,6 +116,7 @@ export const projectQuery = graphql`
             columns
             body
             heading
+            tealStats
             results {
               company
               description
@@ -145,6 +148,7 @@ export const landerQuery = graphql`
             columns
             body
             heading
+            tealStats
             results {
               company
               description

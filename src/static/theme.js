@@ -26,7 +26,7 @@ export const theme = {
     },
 
     button: {
-        BASE_STYLING:                   'inline-block text-21px font-stratos uppercase py-3 px-16 text-center font-normal border-2 border-solid transition-all ease-in-out ',
+        BASE_STYLING:                   'inline-block text-21px font-stratos uppercase py-3 px-8 sm:px-16 text-center font-normal border-2 border-solid transition-all ease-in-out ',
         
         GHOST_GREEN_HOVER_DARK:         'GHOST_GREEN_HOVER_DARK text-rm-black border-rm-green bg-white hover:bg-rm-green ',
         GHOST_GREEN_HOVER_LIGHT:        'GHOST_GREEN_HOVER_LIGHT text-rm-white border-rm-green bg-rm-black hover:bg-rm-green hover:text-rm-black ',
@@ -53,8 +53,6 @@ export const theme = {
         GHOST_GREEN_BLACK_HOVER_LIGHT:    'GHOST_GREEN_BLACK_HOVER_LIGHT text-rm-black border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-black ',
         GHOST_GREEN_BLACK_TRANSPARENT:    'GHOST_GREEN_BLACK_TRANSPARENT text-rm-black border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-black ',
         GHOST_GREEN_BLACK_GREY_HOVER_DARK:'GHOST_GREEN_BLACK_GREY_HOVER_DARK text-rm-black border-rm-green bg-transparent hover:bg-rm-green hover:text-rm-black ',
-
-
     },
     
     text_links: {

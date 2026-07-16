@@ -30,6 +30,10 @@ const tagList = [
         replace: `<span class="text-rm-green font-semibold">`
     },
     {
+        tag: `[teal]`,
+        replace: `<span class="text-rm-aqua font-semibold">`
+    },
+    {
         tag: `[black]`,
         replace: `<span class="text-rm-black">`
     },
@@ -85,7 +89,10 @@ const tagList = [
         tag:`[basicSans]`,
         replace:`<span class="font-basic-sans">`
     },
-    
+    {
+        tag:`[SMLTEXT]`,
+        replace:`<span class="text-base leading-[1.4375rem] block">`
+    }
 ];
 
 const tagListBlog = [

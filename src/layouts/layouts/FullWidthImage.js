@@ -3,6 +3,7 @@ import {Section, Container } from "../../components/global/Wrappers"
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { graphql } from "gatsby"
 import { theme } from '../../static/theme'
+import Parser from "../../components/global/Parser"
 
 const FullWidthImage = (props) => {
     const content       = props.layoutData.layoutContent;
@@ -57,16 +58,20 @@ const FullWidthImage = (props) => {
 
     splitMargins()
 
+    let imgSize
+    if (settings?.classes?.includes('image-sml')){
+      imgSize = 'max-w-[950px]'
+    }
+
     return (
       <>
         <Section settings={settings}>
             <Container container={settings.containerWidth}>
 
                 {content.heading && 
-                  <p className={`${theme.text.H2} px-2 pb-8 ${settings?.classes?.includes('text-center') ? 'text-center' : 'text-center lg:text-left'}`}>{content.heading}</p>
-
+                  <p className={`${theme.text.H2} px-2 pb-8 ${settings?.classes?.includes('text-center') ? 'text-center' : 'text-center lg:text-left'}`} dangerouslySetInnerHTML={{__html: Parser(content.heading)}}/>
                 }
-                <div ref={overlapImage} className={`mx-auto ${overlapImageClass}`}> 
+                <div ref={overlapImage} className={`mx-auto ${overlapImageClass} ${imgSize}`}> 
                     {image}
                 </div>
                 {content.caption&& 

@@ -46,6 +46,7 @@ export const pageQuery = graphql`
         ...TwoColBreakoutImageHeadingPage
         ...TwoColTextQuotePage
         ...TwoColTextQuoteCardPage
+        ...TwoColTextTextPage
         ...StepsWithCardPage
         ...OverlapImageCardPage
         ...StepsWithImagesPage
@@ -57,12 +58,15 @@ export const pageQuery = graphql`
         ...VideoPlayerPage
         ...FullWidthImagePage
         ...FullWidthImageTextPage
+        ...FullWidthVideoTextPage
         ...IconTextBoxesPage
         ...VerticalSliderPage
         ...MediaBlocksPage
         ...FeaturedProjectsCarouselPage
         ...QuotesPage
+        ...QuotesPpcPage
         ...ResultsPage
+        ...CaseStudiesPage
         ...ResultsImagePage
         ...ResultsMixPage
         ...LogoCloudPage
@@ -88,6 +92,9 @@ export const pageQuery = graphql`
         ...FrequentlyAskedQuestionsPage
         ...TwoColImageListPage
         ...AuditCardPage
+        ...FeaturedCampaignsPage
+        ...BarnOfBrandsPage
+        ...LogoCarouselPage
         ...TwoColContentPpcPage
         ...PpcFormLayoutPage
         ...AuditStatsLayoutPage
@@ -106,6 +113,7 @@ export const serviceQuery = graphql`
         ...TwoColBreakoutImageHeadingService 
         ...TwoColTextQuoteService
         ...TwoColTextQuoteCardService
+        ...TwoColTextTextService
         ...StepsWithCardService
         ...OverlapImageCardService
         ...StepsWithImagesService
@@ -117,13 +125,16 @@ export const serviceQuery = graphql`
         ...VideoPlayerService
         ...FullWidthImageService
         ...FullWidthImageTextService
+        ...FullWidthVideoTextService
         ...FullWidthImageVideoTextService
         ...IconTextBoxesService
         ...VerticalSliderService
         ...MediaBlocksService
         ...FeaturedProjectsCarouselService 
         ...QuotesService
+        ...QuotesPpcService
         ...ResultsService
+        ...CaseStudiesService
         ...ResultsImageService
         ...ResultsMixService
         ...LogoCloudService
@@ -144,6 +155,9 @@ export const serviceQuery = graphql`
         ...FrequentlyAskedQuestionsService
         ...TwoColImageListService
         ...AuditCardService
+        ...FeaturedCampaignsService
+        ...BarnOfBrandsService
+        ...LogoCarouselService
         ...TwoColContentPpcService
         ...PpcFormLayoutService
         ...AuditStatsLayoutService
@@ -163,6 +177,7 @@ export const projectQuery = graphql`
         ...TwoColBreakoutImageHeadingProject
         ...TwoColTextQuoteProject
         ...TwoColTextQuoteCardProject
+        ...TwoColTextTextProject
         ...StepsWithCardProject
         ...OverlapImageCardProject
         ...StepsWithImagesProject
@@ -176,7 +191,9 @@ export const projectQuery = graphql`
         ...IconTextBoxesProject
         ...MediaBlocksProject
         ...QuotesProject
+        ...QuotesPpcProject
         ...ResultsProject
+        ...CaseStudiesProject
         ...ResultsImageProject
         ...ResultsMixProject
         ...LogoCloudProject
@@ -186,9 +203,11 @@ export const projectQuery = graphql`
         ...VideoPlayerProject
         ...FullWidthImageProject
         ...FullWidthImageTextProject
+        ...FullWidthVideoTextProject
         ...IconTextBoxesProject
         ...MediaBlocksProject
         ...QuotesProject
+        ...QuotesPpcProject
         ...ResultsProject
         ...ResultsMixProject
         ...LogoCloudProject
@@ -208,6 +227,9 @@ export const projectQuery = graphql`
         ...FrequentlyAskedQuestionsProject
         ...TwoColImageListProject
         ...AuditCardProject
+        ...FeaturedCampaignsProject
+        ...BarnOfBrandsProject
+        ...LogoCarouselProject
         ...TwoColContentPpcProject
         ...PpcFormLayoutProject
         ...AuditStatsLayoutProject
@@ -225,6 +247,7 @@ export const landerQuery = graphql`
         ...IconTextBoxesLander
         ...ResultsLander
         ...QuotesLander
+        ...QuotesPpcLander
         ...LogoCloudLander
         ...CtaFooterPpcLander
         ...ImageCarouselLander

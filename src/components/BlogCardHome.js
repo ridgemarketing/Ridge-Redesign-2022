@@ -5,7 +5,7 @@ import { theme } from '../static/theme'
 
 const BlogCardHome = (props) => {
     return (
-        <article key={`blogCard${props.heading}`} className="w-full sm:w-[360px] md:w-[330px] lg:w-[300px] xl:w-[330px] flex flex-col mb-14 lg:mb-0 justify-between">
+        <article key={`blogCard${props.heading}`} className="w-full sm:w-[360px] md:w-[330px] lg:w-[285px] xl:w-[330px] flex flex-col mb-14 lg:mb-0 justify-between">
             <Link to={ props.link } className={'flex flex-col flex-1'}>
                 <div className={`relative pt-[100%] mb-4 bg-grey `}>
                     <GatsbyImage image={ props.image } alt={props.alt} className={ `absolute top-0 left-0 object-cover h-full w-full ` } />
@@ -13,7 +13,7 @@ const BlogCardHome = (props) => {
                 <div className={`w-full flex flex-col flex-1`}>
                     <h3 className={theme.text['H4'] + `mb-14 lg:mb-7 flex-1`}>{props.heading}</h3>
                     <div>
-                        <span 
+                        <span
                             className={ 
                                 theme.text_links['BASE_STYLING'] + 
                                 theme.text_links['STD'] + 
