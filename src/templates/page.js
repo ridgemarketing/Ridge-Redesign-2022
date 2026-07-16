@@ -142,10 +142,10 @@ const WpPage = ({ data, location }) => {
           <PortfolioHeader layoutData={data.wpPage.portfolioHeader.portfolioHeader} />
         }
         {data.wpPage.isFrontPage &&
-          <HomeHero layoutData={data.wpPage.homeHero.layoutHomeHero}/>
-        }
-        {data.wpPage.uri === "/home-page-2026/" &&
           <HomeHero2026 layoutData={data.wpPage.homeHero2026} />
+        }
+        {data.wpPage.uri === "/homepage/" &&
+          <HomeHero layoutData={data.wpPage.homeHero.layoutHomeHero}/>
         }
         {data.wpPage.title === "404" &&
           <Container>
