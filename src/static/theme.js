@@ -16,6 +16,7 @@ export const theme = {
         H4_LTE:             'font-basic-sans font-light text-26px leading-36px ',
         H5:                 'font-stratos uppercase font-bold text-40px leading-44px ',
         P_STD:              'font-basic-sans font-light text-21px leading-28px ',
+        P_SML:              'font-basic-sans font-light text-16px leading-23px ',
         P_BLD:              'font-basic-sans font-bold text-21px leading-28px ',
         LINK:               'font-basic-sans font-light underline text-21px leading-28px ',
         FOOTER:             'font-basic-sans font-normal text-18px leading-26px ',

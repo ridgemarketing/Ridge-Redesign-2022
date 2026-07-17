@@ -128,6 +128,7 @@ module.exports = {
         'rm-ocean-teal'      : '#209DA5'
       },
       fontSize: {
+          '16px'             : '1rem',
           '18px'             : '1.125rem',
           '21px'             : '1.3125rem',
           '26px'             : '1.625rem',
@@ -143,6 +144,7 @@ module.exports = {
           '160px'            : '10rem',
       },
       lineHeight: {
+          '23px'            : '1.4375rem',
           '26px'            : '1.625rem',
           '28px'            : '2rem', //1.75rem
           '30px'            : '1.875rem',
