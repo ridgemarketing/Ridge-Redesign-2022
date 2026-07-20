@@ -69,7 +69,9 @@ module.exports = {
     '600:!pt-20',
     'text-[3.75rem]',
     'text-[60px]',
-    'opacity-25'
+    'opacity-25',
+    'lg:max-w-[650px]',
+    'lg:max-w-[640px]'
   ],
   theme: {
     screens:{

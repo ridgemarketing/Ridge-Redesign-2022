@@ -111,7 +111,7 @@ const WpService = ({ data }) =>{
             </h1>
           }
           {content.heading.green && content.heading.black && 
-            <h2 className={"font-stratos uppercase font-bold text-50px sm:text-60px lg:text-100px leading-[3rem] lg:leading-H1 mb-9"}>
+            <h2 className={"font-stratos uppercase font-bold text-50px sm:text-60px lg:text-100px leading-[3.5rem] lg:leading-H1 mb-9"}>
                 <span className="text-rm-green lg:block" dangerouslySetInnerHTML={{__html: Parser(`${content.heading.green} `)}} />
                 <span className="text-rm-black" dangerouslySetInnerHTML={{__html: Parser(content.heading.black)}} />
             </h2>
