@@ -1,21 +1,12 @@
 import { useEffect } from "react"
-import { hasConsent, loadGtm } from "../../static/consent"
+import { shouldLoadGtm, loadGtm } from "../../static/consent"
 
-// Renders nothing. On window load, checks the stored consent cookie and, if the
-// visitor previously accepted, injects Google Tag Manager into the head — no
-// banner. New/undecided visitors are handled by CookieConsent instead.
+// Renders nothing. Loads Google Tag Manager on page load for everyone except
+// visitors who have opted out via "Do Not Sell or Share My Personal
+// Information" in the footer.
 export default function ConsentLoader() {
     useEffect(() => {
-        const run = () => {
-            if (hasConsent()) loadGtm()
-        }
-
-        if (document.readyState === "complete") {
-            run()
-        } else {
-            window.addEventListener("load", run)
-            return () => window.removeEventListener("load", run)
-        }
+        if (shouldLoadGtm()) loadGtm()
     }, [])
 
     return null

@@ -12,18 +12,18 @@ const OVERLAY = "linear-gradient(127deg, rgba(29,64,67,0.85) 24.09%, rgba(28,56,
 
 const HomeHero2026 = (props) => {
 
-    const data     = props.layoutData || {};
-    const content  = data.layoutContent || {};
-    const settings = data.layoutSettings || {};
+    const data          = props.layoutData || {};
+    const content       = data.layoutContent || {};
+    const settings      = data.layoutSettings || {};
 
-    const image       = (content.backgroundImage) ? getImage(content.backgroundImage.localFile.childImageSharp.gatsbyImageData) : false;
-    const mobileImage = (content.mobileImage)      ? getImage(content.mobileImage.localFile.childImageSharp.gatsbyImageData)      : false;
-    const tabletImage = (content.tabletImage)      ? getImage(content.tabletImage.localFile.childImageSharp.gatsbyImageData)      : false;
+    const image         = (content.backgroundImage) ? getImage(content.backgroundImage.localFile.childImageSharp.gatsbyImageData) : false;
+    const mobileImage   = (content.mobileImage) ? getImage(content.mobileImage.localFile.childImageSharp.gatsbyImageData) : false;
+    const tabletImage   = (content.tabletImage) ? getImage(content.tabletImage.localFile.childImageSharp.gatsbyImageData) : false;
 
-    const eyebrow    = content.eyebrow;
-    const heading    = content.heading;
-    const subheading = content.subheading;
-    const button     = content.componentButton;
+    const eyebrow       = content.eyebrow;
+    const heading       = content.heading;
+    const subheading    = content.subheading;
+    const button        = content.componentButton;
 
     let isImage = true;
     if (content.video) {

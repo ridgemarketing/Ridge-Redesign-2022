@@ -1,6 +1,8 @@
 // Shared consent + Google Tag Manager helpers.
-// Used by ConsentLoader (loads GTM on window load for returning visitors who
-// already accepted) and CookieConsent (the opt-in banner for new visitors).
+// Opt-out model: GTM loads on page load for everyone EXCEPT visitors who have
+// used the footer's "Do Not Sell or Share My Personal Information" control to
+// opt out. ConsentLoader loads GTM on mount; DoNotSell records the opt-out and
+// clears any cookies that were already set.
 
 export const GTM_ID      = "GTM-NV9M24V"
 export const COOKIE_NAME = "ridge_consent"
@@ -18,6 +20,25 @@ export const getCookie = (name) => {
 export const setCookie = (name, value, days) => {
     const maxAge = days * 24 * 60 * 60
     document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${maxAge}; SameSite=Lax`
+}
+
+export const deleteCookie = (name) => {
+    document.cookie = `${name}=; path=/; max-age=0; SameSite=Lax`
+}
+
+// Best-effort removal of every cookie the browser exposes to JS. Prefers the
+// async CookieStore API, falling back to the classic document.cookie loop.
+export const clearAllCookies = async () => {
+    if (typeof window === "undefined") return
+    if ("cookieStore" in window) {
+        const cookies = await window.cookieStore.getAll()
+        await Promise.all(cookies.map((el) => window.cookieStore.delete(el.name)))
+    } else if (typeof document !== "undefined") {
+        document.cookie.split(";").forEach((c) => {
+            const name = c.split("=")[0].trim()
+            if (name) deleteCookie(name)
+        })
+    }
 }
 
 // --- GTM loader -----------------------------------------------------------
@@ -39,4 +60,18 @@ export const loadGtm = () => {
     document.head.appendChild(script)
 }
 
-export const hasConsent = () => getCookie(COOKIE_NAME) === "accepted"
+// --- opt-out state --------------------------------------------------------
+export const hasOptedOut  = () => getCookie(COOKIE_NAME) === "opted_out"
+export const shouldLoadGtm = () => !hasOptedOut()
+
+// Record the opt-out and purge any cookies already dropped this session.
+// The opt-out cookie is re-set AFTER clearing so the choice survives.
+export const optOut = async () => {
+    await clearAllCookies()
+    setCookie(COOKIE_NAME, "opted_out", COOKIE_DAYS)
+}
+
+// Undo the opt-out; analytics may load again on the next page load.
+export const optIn = () => {
+    setCookie(COOKIE_NAME, "allowed", COOKIE_DAYS)
+}
