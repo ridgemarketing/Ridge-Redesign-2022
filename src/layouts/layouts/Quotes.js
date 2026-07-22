@@ -151,7 +151,7 @@ const Quotes = (props) => {
                 <h2 className={ theme.text['H2'] + ' text-center' }>
                     { content.heading }
                 </h2>
-              }
+              } 
               <div ref={sliderRef} className={`mt-12 max-w-[1122px] mx-auto text-center`}>
                 <span aria-hidden="true" className={`block font-stratos font-semibold text-rm-green text-[70px] md:text-[120px] leading-[0.7] tracking-[-0.16em]`}>“</span>
                 <div key={Math.random()} className={`animate-quote`}>
