@@ -6,9 +6,9 @@ import { getImage } from "gatsby-plugin-image"
 
 // Teal gradient overlay pulled from Figma (node 11053:1447). Decimal angle + rgba stops
 // can't be expressed as a Tailwind arbitrary value, so it lives in an inline style.
-const OVERLAY = "linear-gradient(127deg, rgba(29,64,67,0.85) 24.09%, rgba(29,64,67,0.5) 62.33%, rgba(29,64,67,0.7) 88.78%)"
+// const OVERLAY = "linear-gradient(127deg, rgba(29,64,67,0.85) 24.09%, rgba(29,64,67,0.5) 62.33%, rgba(29,64,67,0.7) 88.78%)"
+const OVERLAY = "linear-gradient(127deg, rgba(29,64,67,0.85) 24.09%, rgba(28,56,56,0.5) 62.33%, rgba(28,56,56,0.7) 88.78%)"
 
-//background: linear-gradient(127deg, rgba(29, 64, 67, 0.85) 24.09%, rgba(29, 64, 67, 0.50) 62.33%, rgba(29, 64, 67, 0.70) 88.78%);
 
 const HomeHero2026 = (props) => {
 
