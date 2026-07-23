@@ -15,7 +15,7 @@ const tagList = [
     },   
     {
         tag: `[font40]`,
-        replace: '<span style="font-size: 40px;">'
+        replace: '<span style="font-size: 40px;" class="leading-H2-H3 block">'
     },   
     {
         tag: `[temp]`,
@@ -92,7 +92,15 @@ const tagList = [
     {
         tag:`[SMLTEXT]`,
         replace:`<span class="text-base leading-[1.4375rem] block">`
-    }
+    },
+    {
+        tag:`[650pxcenter]`,
+        replace:`<span class="lg:max-w-[650px] xl:max-w-full mx-auto block">`
+    },
+    {
+        tag:`[640px]`,
+        replace:`<span class="lg:max-w-[640px] xl:max-w-full block">`
+    },
 ];
 
 const tagListBlog = [

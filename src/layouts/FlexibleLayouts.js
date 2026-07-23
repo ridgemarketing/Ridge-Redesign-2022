@@ -47,6 +47,7 @@ export const pageQuery = graphql`
         ...TwoColTextQuotePage
         ...TwoColTextQuoteCardPage
         ...TwoColTextTextPage
+        ...TwoColTextListPage
         ...StepsWithCardPage
         ...OverlapImageCardPage
         ...StepsWithImagesPage
@@ -114,6 +115,7 @@ export const serviceQuery = graphql`
         ...TwoColTextQuoteService
         ...TwoColTextQuoteCardService
         ...TwoColTextTextService
+        ...TwoColTextListService
         ...StepsWithCardService
         ...OverlapImageCardService
         ...StepsWithImagesService
@@ -178,6 +180,7 @@ export const projectQuery = graphql`
         ...TwoColTextQuoteProject
         ...TwoColTextQuoteCardProject
         ...TwoColTextTextProject
+        ...TwoColTextListProject
         ...StepsWithCardProject
         ...OverlapImageCardProject
         ...StepsWithImagesProject

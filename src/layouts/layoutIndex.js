@@ -28,6 +28,7 @@ import TwoColList from "./layouts/TwoColList"
 import TwoColTextQuote from "./layouts/TwoColTextQuote"
 import TwoColTextQuoteCard from "./layouts/TwoColTextQuoteCard"
 import TwoColTextText from "./layouts/TwoColTextText"
+import TwoColTextList from "./layouts/TwoColTextList"
 import StepsWithCard from "./layouts/StepsWithCard"
 import OverlapImageCard from "./layouts/OverlapImageCard"
 import StepsWithImages from "./layouts/StepsWithImages"
@@ -102,6 +103,7 @@ Layouts['TwoColList']                       = TwoColList;
 Layouts['TwoColTextQuote']                  = TwoColTextQuote;
 Layouts['TwoColTextQuoteCard']              = TwoColTextQuoteCard;
 Layouts['TwoColTextText']                   = TwoColTextText;
+Layouts['TwoColTextList']                   = TwoColTextList;
 Layouts['StepsWithCard']                    = StepsWithCard;
 Layouts['OverlapImageCard']                 = OverlapImageCard;
 Layouts['StepsWithImages']                  = StepsWithImages;

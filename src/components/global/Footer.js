@@ -4,6 +4,7 @@ import { theme } from '../../static/theme'
 import { Link } from "gatsby" 
 import { GatsbyImage } from 'gatsby-plugin-image'
 import { Container } from "./Wrappers"
+import DoNotSell from "./DoNotSell"
 
 const Footer = ({location, data}) =>{
     
@@ -237,12 +238,15 @@ const Footer = ({location, data}) =>{
                         }
                     </ul> 
                 </div>
-                {content.copyright &&
-                  <div className="block mt-16 lg:mt-32">
-                    <small className={`${theme.text.FOOTER} text-[14px] inline`} >&copy; {new Date().getFullYear()} &nbsp;</small>
-                    <small className={`${theme.text.FOOTER} text-[14px] inline`} dangerouslySetInnerHTML={ {__html:content.copyright} }></small>
-                  </div>
-                }
+                <div className="block mt-16 lg:mt-32">
+                  {content.copyright &&
+                    <>
+                      <small className={`${theme.text.FOOTER} text-[14px] inline`} >&copy; {new Date().getFullYear()} &nbsp;</small>
+                      <small className={`${theme.text.FOOTER} text-[14px] inline`} dangerouslySetInnerHTML={ {__html:content.copyright} }></small>
+                    </>
+                  }
+                  <DoNotSell />
+                </div>
             </Container>
         </footer>
     )
