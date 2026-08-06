@@ -91,18 +91,17 @@ const IconTextBoxes = (props) => {
           <Container container={settings.containerWidth}>
           <div>
             {content.heading &&
-              <h2 className={`text-center mb-4 ${textColor} ${headingfont}`} dangerouslySetInnerHTML={{__html: Parser(content.heading)}}>
-              </h2>
+              <h2 className={`text-center mb-4 ${textColor} ${headingfont}`} dangerouslySetInnerHTML={{__html: Parser(content.heading)}}/>
             }
-          {content.body &&
-            //testing removal of mb from p below and adding to icon box wrapper class
-            <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} max-w-[1120px] mx-auto text-center ${textColor}`}></p>
-          }
-          {content.subheading &&
-          <p className={`mt-10 text-center ${textColor}`}>
-              <span dangerouslySetInnerHTML={{__html: Parser(content.subheading)}} className={theme.text.H4}></span>
-          </p>
-          }
+            {content.body &&
+              //testing removal of mb from p below and adding to icon box wrapper class
+              <p dangerouslySetInnerHTML={{__html: Parser(content.body)}} className={`${theme.text.P_STD} max-w-[1120px] mx-auto text-center ${textColor}`}/>
+            }
+            {content.subheading &&
+              <p className={`mt-10 text-center ${textColor}`}>
+                  <span dangerouslySetInnerHTML={{__html: Parser(content.subheading)}} className={theme.text.H4}></span>
+              </p>
+            }
           </div>
 
           <div ref={iconContainer} className={wrapperClasses}>

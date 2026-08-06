@@ -109,7 +109,7 @@ const IconTextBoxFlex = (props) => {
                     <div className={`mb-4`}>
                         <p ref={ref}
                             style={{marginTop: customTop, marginBottom: customBottom, marginLeft: '24px', textTransform: customCase}}
-                            className={ `${headingfont} block items-center ${props.color} w-full` }>
+                            className={ `${headingfont} block items-center ${props.color} break-words` }>
                             { content.heading }
                         </p>
                     </div>
