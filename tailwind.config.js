@@ -71,7 +71,12 @@ module.exports = {
     'text-[60px]',
     'opacity-25',
     'lg:max-w-[650px]',
-    'lg:max-w-[640px]'
+    'lg:max-w-[640px]',
+    '!m-0',
+    '!pr-8',
+    '!pb-8',
+    '!pl-12',
+    '!py-12'
   ],
   theme: {
     screens:{
