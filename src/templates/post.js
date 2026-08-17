@@ -112,7 +112,7 @@ const WpPost = ({ data, pageContext }) => {
         </div>
         <GatsbyImage className="w-full mt-9" image={content.featuredImage.node.localFile.childImageSharp.gatsbyImageData} alt={`featured image`} />    
       </hgroup>
-      <article className="container blog-container my-9 font-basic-sans max-w-[900px]">
+      <article className="container blog-container my-9 font-basic-sans max-w-[900px] px-4">
         <div dangerouslySetInnerHTML={ {__html: Parser(content.content, 'blog')} }></div>
       </article>
       <nav className="container mb-20">
