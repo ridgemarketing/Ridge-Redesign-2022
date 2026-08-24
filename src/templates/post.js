@@ -102,8 +102,8 @@ const WpPost = ({ data, pageContext }) => {
   return (
     <>
       {/* <Seo post={content} /> */}
-      <hgroup className="container pt-12 max-w-[900px]">
-        <h1 className='font-stratos uppercase font-bold text-60px leading-H1-m mb-9'> {content.title} </h1>
+      <hgroup className="container blog-container pt-12 max-w-[900px] max-w-[900px] px-4">
+        <h1 className='font-stratos uppercase font-bold text-50px lg:text-60px leading-H1-m mb-9'> {content.title} </h1>
         <div className="flex items-center">
           {content.author.node.users.avatar && 
             <GatsbyImage className="w-[70px] h-[70px] mr-5 rounded-full object-center object-cover" image={content.author.node.users.avatar.localFile.childImageSharp.gatsbyImageData} alt={content.author.node.name} />
